@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class TbTahun extends Migration
+class CreateTbPendidikanTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class TbTahun extends Migration
      */
     public function up()
     {
-        Schema::create('tb_tahun',function(Blueprint $table){
-            $table->increments('id_tahun');
-            $table->string('tahun');
-            $table->rememberToken();
+        Schema::create('tb_pendidikan', function (Blueprint $table) {
+            $table->increments('id_pendidikan');
+            $table->integer('id_mahasiswa')->unsigned();
             $table->timestamps();
+            $table->foreign('id_mahasiswa')->references('id_mahasiswa')->on('tb_mahasiswa');
         });
     }
 
@@ -28,6 +28,6 @@ class TbTahun extends Migration
      */
     public function down()
     {
-        schema::dropIfExists('tb_tahun');
+        Schema::dropIfExists('tb_pendidikan');
     }
 }
