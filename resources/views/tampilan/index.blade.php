@@ -63,6 +63,15 @@
 							<li><a href="#"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Jadwal</a></li>
 						</ul>
 					</li>
+			<li class="dropdown ">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg> Alumni PUB <span class="caret"></span></a>
+				<ul class="dropdown-menu" role="menu">
+					<li><a href="#"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Struktur Organisasi</a></li>
+					<li><a href="#"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg></svg> Syarat dan Ketentuan</a></li>
+					<li><a href="#"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"></use></svg> Jadwal</a></li>
+					<li><a href="#"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"></use></svg> Jadwal</a></li>
+				</ul>
+			</li>
 			<li><a href="/lumino/forms.html"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Forms</a></li>
 			<li><a href="/lumino/panels.html"><svg class="glyph stroked app-window"><use xlink:href="#stroked-app-window"></use></svg> Alerts &amp; Panels</a></li>
 			<li><a href="/lumino/icons.html"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg> Icons</a></li>
