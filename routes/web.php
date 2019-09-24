@@ -11,9 +11,9 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('tampilan.angkatan.viewang');
-// });
+Route::get('/', function () {
+    return view('tampilan.index');
+});
 Auth::routes();
 
 	Route::get('tampilan/angkatan/viewang','angkatanController@index');
