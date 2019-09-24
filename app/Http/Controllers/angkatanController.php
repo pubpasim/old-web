@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\angkatanModel;
 use Illuminate\Http\Request;
-
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 class angkatanController extends Controller
 {
     /**
@@ -13,7 +16,8 @@ class angkatanController extends Controller
      */
     public function index()
     {
-        
+        $ang=angkatanModel::all();
+        return view('tampilan/angkatan/viewang',compact('ang'));
     }
 
     /**
@@ -23,7 +27,7 @@ class angkatanController extends Controller
      */
     public function create()
     {
-        //
+        return view('tampilan/angkatan/createang');
     }
 
     /**
@@ -34,7 +38,12 @@ class angkatanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $ang=new angkatanModel();
+        $ang->nama_angkatan=$request->nama_angkatan;
+        $ang->angkatan=$request->angkatan;
+        $ang->save();
+        return redirect('tampilan/angkatan/viewang');
     }
 
     /**
