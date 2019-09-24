@@ -11,10 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('tampilan.index');
-});
-
+// Route::get('/', function () {
+//     return view('tampilan.angkatan.viewang');
+// });
 Auth::routes();
+
+	Route::get('tampilan/angkatan/viewang','angkatanController@index');
+ 	Route::get('tampilan/angkatan/createang','angkatanController@create');
+ 	Route::post('angkatanModel','angkatanController@store');
+
 
 // Route::get('/home', 'HomeController@index')->name('home');
