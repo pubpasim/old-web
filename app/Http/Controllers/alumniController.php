@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use app\mahasiswaModel;
+use DB;
 
-class mahasiswaController extends Controller
+class alumniController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,9 @@ class mahasiswaController extends Controller
      */
     public function index()
     {
-        $mhs=mahasiswaModel::all();
-        return view('tampilan.alumni.Alumni',compact('mhs'));
+        $dr=DB::table('tb_daerah')
+        ->select('tb_daerah.id_daerah','tb_daerah.kab_kot')->get();
+        return view('tampilan.alumni.Alumni',compact('dr'));
     }
 
     /**

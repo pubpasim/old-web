@@ -12,10 +12,10 @@
 */
 
 // Route::get('/', function () {
-//     return view('tampilan.angkatan.viewang');
+//     return view('tampilan.alumni.Alumni');
 // });
-Auth::routes();
-
+// Auth::routes();
+	Route::get('/','alumniController@index');
 	Route::get('tampilan/angkatan/viewang','angkatanController@index');
  	Route::get('tampilan/angkatan/createang','angkatanController@create');
  	Route::post('angkatanModel','angkatanController@store');
