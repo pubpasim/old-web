@@ -11,14 +11,16 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('tampilan.alumni.Alumni');
-// });
-// Auth::routes();
-	Route::get('/','alumniController@index');
+Route::get('/', function () {
+    return view('tampilan.index');
+});
+Auth::routes();
+	Route::get('alumni','alumniController@index');
+	Route::get('mahasiswa','mahasiswaController@index');
 	Route::get('tampilan/angkatan/viewang','angkatanController@index');
  	Route::get('tampilan/angkatan/createang','angkatanController@create');
  	Route::post('angkatanModel','angkatanController@store');
+ 	Route::post('lanjut','alumniController@store');
 
 
 // Route::get('/home', 'HomeController@index')->name('home');

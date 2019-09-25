@@ -16,7 +16,19 @@ class alumniController extends Controller
     {
         $dr=DB::table('tb_daerah')
         ->select('tb_daerah.id_daerah','tb_daerah.kab_kot')->get();
-        return view('tampilan.alumni.Alumni',compact('dr'));
+        $skl=DB::table('tb_sekolah')
+        ->select('tb_sekolah.id_sekolah','tb_sekolah.sekolah')->get();
+        $sts1=DB::table('tb_statusSos')
+        ->select('tb_statusSos.id_status','tb_statusSos.status')->get();
+        $angkt=DB::table('tb_angkatan')
+        ->select('tb_angkatan.id_angkatan','tb_angkatan.angkatan')->get();
+        $orgpub=DB::table('tb_orgpub')
+        ->select('tb_orgpub.id_orgpub','tb_orgpub.jabatan')->get();
+        $orgppmb=DB::table('tb_orgppmb')
+        ->select('tb_orgppmb.id_orgppmb','tb_orgppmb.jabatan')->get();
+        $jur=DB::table('tb_jurusan')
+        ->select('tb_jurusan.id_jur','tb_jurusan.nama_jur')->get();
+        return view('tampilan.alumni.Alumni',compact('dr','skl','sts1','angkt','orgpub','orgppmb','jur'));
     }
 
     /**
@@ -37,7 +49,9 @@ class alumniController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('tb_mahasiswa')->insert([
+            'nama'=>$request->Tname,'NIM'=>$request->nim
+        ]);
     }
 
     /**

@@ -14,8 +14,8 @@ class mahasiswaController extends Controller
      */
     public function index()
     {
-        $mhs=mahasiswaModel::all();
-        return view('tampilan.alumni.Alumni',compact('mhs'));
+        
+        return view('tampilan.tmahasiswa');
     }
 
     /**
