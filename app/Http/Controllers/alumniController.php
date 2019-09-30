@@ -50,8 +50,12 @@ class alumniController extends Controller
     public function store(Request $request)
     {
         DB::table('tb_mahasiswa')->insert([
-            'nama'=>$request->Tname,'NIM'=>$request->nim
+            'nama'=>$request->Tname,'NIM'=>$request->nim,'id_daerah'=>$request->daerah,
+            'id_angkatan'=>$request->angkatan,'id_sekolah'=>$request->skl,
+            'id_statusSos'=>$request->spkw,'id_orgpub'=>$request->jbPUB,'id_orgppmb'=>$request->jbPPMB,
+            'id_jur'=>$request->jurusan, 'id_statusPub'=>$request->alm
         ]);
+        return view('tampilan.alumni.Alumni');
     }
 
     /**
