@@ -139,7 +139,7 @@
 						<select id="spkw" name="spkw">
 							<option value="0"> --Status Perkawinan--</option>
 							@foreach($sts1 as $data)
-							<option value="{{$data->id_status}}">{{$data->status}}</option>
+							<option value="{{$data->id_statusSos}}">{{$data->status}}</option>
 							@endforeach
 						</select>
 					</div>
@@ -152,7 +152,7 @@
 						<select id="jbPUB" name="jbPUB">
 							<option value="0"> --Jabatan di PUB--</option>
 							@foreach($orgpub as $data)
-							<option value="{{$data->id_orgpub}}">{{$data->jabatan}}</option>
+							<option value="{{$data->id_orgpub}}">{{$data->jabatan_pub}}</option>
 							@endforeach
 						</select>
 					</div>
