@@ -74,7 +74,7 @@
 										<option value="NON AKTIF">NON AKTIF</option>
 									</select>
 								</div>
-<<<<<<< HEAD
+
 								<button type="submit" class="btn btn-primary">TAMBAH DATA </button>
 								
 																
@@ -85,38 +85,6 @@
 
 	</div><!--/.main-->
 
-	<script src="/lumino/js/jquery-1.11.1.min.js"></script>
-	<script src="/lumino/js/bootstrap.min.js"></script>
-	<script src="/lumino/js/chart.min.js"></script>
-	<script src="/lumino/js/chart-data.js"></script>
-	<script src="/lumino/js/easypiechart.js"></script>
-	<script src="/lumino/js/easypiechart-data.js"></script>
-	<script src="/lumino/js/bootstrap-datepicker.js"></script>
-	<script src="/lumino/js/bootstrap-table.js"></script>
-	<script>
-		!function ($) {
-			$(document).on("click","ul.nav li.parent > a > span.icon", function(){		  
-				$(this).find('em:first').toggleClass("glyphicon-minus");	  
-			}); 
-			$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
-		}(window.jQuery);
-
-		$(window).on('resize', function () {
-		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
-		})
-		$(window).on('resize', function () {
-		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
-		})
-	</script>	
-</body>
-
-</html>
-=======
-								<button type="submit" class="btn btn-primary">TAMBAH DATA </button>			
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>	
+	
 	@include('tampilan.foot')
->>>>>>> dedad0d3486545bd96b8b46ffefc059588cf49fa
+

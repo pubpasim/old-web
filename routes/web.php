@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('tampilan.index');
 });
 Auth::routes();
-<<<<<<< HEAD
+
 
 	//Route::get('tampilan/mahasiswa','mahasiswaController@index');
 
@@ -45,7 +45,7 @@ Auth::routes();
  	Route::get('tampilan/jurusan/{a}','jurusanController@edit');
  	Route::post('tampilan/jurusan/{b}','jurusanController@update');
  	Route::get('tampilan/jurusan/del/{id}','jurusanController@destroy');
-=======
+
 	Route::get('alumni','alumniController@index');
 	Route::get('mahasiswa','mahasiswaController@index');
 	Route::get('tampilan/angkatan/viewang','angkatanController@index');
@@ -89,7 +89,7 @@ Route::post('storeFinal/{x}', 'hasilController@storeFinal');
 Route::get('hapusFinal/{x}', 'hasilController@hapusFinal');
 Route::get('editFinal/{x}', 'hasilController@editFinal');
 Route::post('updateFinal/{x}', 'hasilController@updateFinal');
->>>>>>> dedad0d3486545bd96b8b46ffefc059588cf49fa
+
 
 
  	Route::get('tampilan/daerah/viewdae','daerahController@index');
