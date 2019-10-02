@@ -7,6 +7,7 @@
 
 <link href="/lumino/css/bootstrap.min.css" rel="stylesheet">
 <link href="/lumino/css/datepicker3.css" rel="stylesheet">
+<link href="/lumino/css/bootstrap-table.css" rel="stylesheet">
 <link href="/lumino/css/styles.css" rel="stylesheet">
 
 <!--Icons-->
@@ -68,6 +69,8 @@
 							<li><a href="#"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Struktur Organisasi</a></li>
 							<li><a href="#"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg></svg> Syarat dan Ketentuan</a></li>
 							<li><a href="#"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Jadwal</a></li>
+							<li><a href="{{url('hasilSeleksi')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Hasil Seleksi</a></li>
+							<li><a href="{{url('dokumentasi')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Dokumentasi</a></li>
 						</ul>
 					</li>
 			<li class="dropdown ">
