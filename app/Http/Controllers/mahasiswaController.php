@@ -12,9 +12,6 @@ use App\statusSosialModel;
 use App\mahasiswaModel;
 use DB;
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Redirect;
 
 class mahasiswaController extends Controller
 {
@@ -25,16 +22,6 @@ class mahasiswaController extends Controller
      */
     public function index()
     {
-        $mhs=DB::table('tb_mahasiswa')->select('nim','nama')->get();
-        $mhs2=DB::table('tb_daerah')->select('kab_kot')->get();
-        $mhs3=DB::table('tb_sekolah')->select('sekolah')->get();
-        $mhss=DB::table('tb_angkatan')->select('angkatan','nama_angkatan')->get();
-        $mhs5=DB::table('tb_jurusan')->select('nama_jur')->get();
-        $mhs6=DB::table('tb_orgpub')->select('jabatan')->get();
-        $mhs7=DB::table('tb_orgppmb')->select('jabatan')->get();
-        $mhs8=DB::table('tb_statuspub')->select('status')->get();
-        $mhs9=DB::table('tb_statussos')->select('status')->get();
-        return view('tampilan/mahasiswa',compact('mhs','mhs2','mhs3','mhs4','mhs5','mhs6','mhs7','mhs8','mhs9'));
 
     }
 
