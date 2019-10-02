@@ -78,7 +78,7 @@ class orgPUBcontroller extends Controller
         DB::table('tb_orgpub')->where('id_orgpub',$id_orgpub)->update([
             'jabatan'=>$request->tb_orgpub
         ]);
-        return redirect('struktur_organisasi.index');
+        return redirect('struktur_organisasi/'.$id);
     }
 
     /**
