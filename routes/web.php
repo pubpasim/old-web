@@ -21,6 +21,10 @@ Auth::routes();
  	Route::get('tampilan/angkatan/createang','angkatanController@create');
  	Route::post('angkatanModel','angkatanController@store');
  	Route::post('lanjut','alumniController@store');
+ 	Route::get('lanjut/pengalaman','alumniController@index2');
+ 	Route::get('tambahAlumni','alumniController@index3');
+ 	Route::post('tambah/pengalaman','alumniController@store2');
+ 	Route::post('tambah/pendidikan','alumniController@store3');
 
 
 Route::get('tambahTahun', 'hasilController@tambahTahun');
