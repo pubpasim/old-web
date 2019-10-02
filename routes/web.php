@@ -27,7 +27,7 @@ Auth::routes();
  	Route::post('tambah/pendidikan','alumniController@store3');
 
 
-Route::get('tambahTahun', 'hasilController@tambahTahun');
+Route::get('tambahTahun', 'ppmbDokController@tambahTahun');
 Route::get('tambahTPA/{x}', 'hasilController@tambahTPA');
 Route::post('storeTPA/{x}', 'hasilController@storeTPA');
 Route::post('storeTahun', 'hasilController@storeTahun');
@@ -62,3 +62,8 @@ Route::post('updateFinal/{x}', 'hasilController@updateFinal');
 
 
 Route::get('dokumentasi', 'ppmbDokController@dokumentasi');
+Route::get('tambahDok', 'ppmbDokController@tambahDok');
+Route::post('storeDok', 'ppmbDokController@storeDok');
+Route::get('hapusDok/{x}', 'ppmbDokController@hapusDok');
+Route::get('editDok/{x}', 'ppmbDokController@editDok');
+Route::post('updateDok/{x}', 'ppmbDokController@updateDok');
