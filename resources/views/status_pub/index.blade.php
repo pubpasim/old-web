@@ -21,9 +21,6 @@
 </head>
 
 <body>
-<<<<<<< HEAD
-	@include('tampilan.head')	
-=======
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -33,7 +30,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"><span>PUB</span>Admin</a>
+				<a class="navbar-brand" href="#"><span>Lumino</span>Admin</a>
 				<ul class="user-menu">
 					<li class="dropdown pull-right">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> User <span class="caret"></span></a>
@@ -91,7 +88,6 @@
 
 	</div><!--/.sidebar-->
 		
->>>>>>> a5ccd9c903826ea41d48e1222953111dd52e80c6
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
 		<div class="row">
 			<ol class="breadcrumb">
@@ -99,37 +95,81 @@
 				<li class="active">Icons</li>
 			</ol>
 		</div><!--/.row-->
-		<form method="POST" action="{{URL('angkatanModel')}}" Class="form-horizontal" id="block-validate">
-		{{csrf_field()}}>
+		
 		<div class="row">
-			<div class="panel-heading">INPUT DATA</div>
+			<div class="col-lg-12">
+				<h1 class="page-header">Status PUB</h1>
+			</div>
+		</div><!--/.row-->
+				
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Tabel Status PUB</div>
+					 <br><p class="icon-plus-sign"></i> <a href="{{url('status_pub/tambah')}}">Tambah Data</a></p>
 					<div class="panel-body">
-						<div class="col-md-6">
-							<form role="form">
-							
-								<div class="form-group">
-									<label>NAMA ANGKATAN</label>
-									<input class="form-control" placeholder="Nama Angkatan" name="nama_angkatan">
-								</div>
-								<div class="form-group">
-									<label>ANGKATAN</label>
-									<input class="form-control" placeholder="Angkatan" name="angkatan">
-								</div>
-								<div class="form-group">
-									<label>ANGKATAN</label>
-									<input class="form-control" placeholder="Angkatan" name="angkatan">		
-								</div>				
-								<button type="submit" class="btn btn-primary">TAMBAH DATA </button>
+						<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+						    <!-- <thead>
+						    <tr>   
+						        <th data-field="id_orgpub" data-sortable="true" name="id_orgpub">ID</th>
+						        <th data-field="name"  data-
+						        sortable="true" name="jabatan">Jabatan</th>
+						      </tr>
+						      <tr> -->
+						      	<tr>
+						      		<td>No</td>
+									<td>Status</td>
+
+								</tr> 
+								@foreach($status_pub as $data)
+
+								<tr align="center">
+								<td>{{$data->id_status}}</td>
+								<td>{{$data->status}}</td>
 								
-																
-								
+								<td>
+								<a href="{{url('status_pub/edit'.$data->id_status)}}">Edit</a>
+								<a href="{{url('status_pub/hapus'.$data->id_status)}}">Hapus</a>
+							  </td>
+							</tr>
+							 
+						@endforeach
 					
+                         	</tr>
+						    </thead>
+						</table>
+					</div>
+				</div>
+			</div>
 		</div>
-	</form>
 		<!--/.row-->	
+		
 	</div><!--/.main-->
 
-	@include('tampilan.foot')
+	<script src="/lumino/js/jquery-1.11.1.min.js"></script>
+	<script src="/lumino/js/bootstrap.min.js"></script>
+	<script src="/lumino/js/chart.min.js"></script>
+	<script src="/lumino/js/chart-data.js"></script>
+	<script src="/lumino/js/easypiechart.js"></script>
+	<script src="/lumino/js/easypiechart-data.js"></script>
+	<script src="/lumino/js/bootstrap-datepicker.js"></script>
+	<script src="/lumino/js/bootstrap-table.js"></script>
+	<script>
+		!function ($) {
+			$(document).on("click","ul.nav li.parent > a > span.icon", function(){		  
+				$(this).find('em:first').toggleClass("glyphicon-minus");	  
+			}); 
+			$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+		}(window.jQuery);
+
+		$(window).on('resize', function () {
+		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+		})
+		$(window).on('resize', function () {
+		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+		})
+	</script>	
 </body>
 
 </html>

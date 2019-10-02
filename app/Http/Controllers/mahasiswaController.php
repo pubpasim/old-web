@@ -22,7 +22,11 @@ class mahasiswaController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
 
+=======
+        return view('tampilan/mahasiswa/index',compact('index'));  
+>>>>>>> a5ccd9c903826ea41d48e1222953111dd52e80c6
     }
 
     /**

@@ -21,9 +21,6 @@
 </head>
 
 <body>
-<<<<<<< HEAD
-	@include('tampilan.head')	
-=======
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -91,7 +88,6 @@
 
 	</div><!--/.sidebar-->
 		
->>>>>>> a5ccd9c903826ea41d48e1222953111dd52e80c6
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
 		<div class="row">
 			<ol class="breadcrumb">
@@ -99,8 +95,8 @@
 				<li class="active">Icons</li>
 			</ol>
 		</div><!--/.row-->
-		<form method="POST" action="{{URL('angkatanModel')}}" Class="form-horizontal" id="block-validate">
-		{{csrf_field()}}>
+		<form method="POST" action="{{URL('struktur_organisasi/store')}}" Class="form-horizontal" id="block-validate">
+		{{csrf_field()}}
 		<div class="row">
 			<div class="panel-heading">INPUT DATA</div>
 					<div class="panel-body">
@@ -108,19 +104,33 @@
 							<form role="form">
 							
 								<div class="form-group">
-									<label>NAMA ANGKATAN</label>
-									<input class="form-control" placeholder="Nama Angkatan" name="nama_angkatan">
+									<label>JABATAN</label>
+									<select name="jabatan">
+										<option name="ketua_pub">KETUA PUB</option>
+										<option name="ketua_ppmb">KETUA PPMB</option>
+										<option name="keamanan_pub">KEAMAN PUB</option>
+										<option name="sekretaris">SEKRETARIS</option>
+										<option name="bendahara_in">BENDAHARA INTERNAL</option>
+										<option name="bendahara_ex">BENDAHARA EKSTERNAL</option>
+										<option name="koor_divdik">KOOR DIV PENDIDIKAN</option>
+										<option name="koor_divrohani">KOOR DIV KEROHANIAN</option>
+										<option name="koor_divasrama">KOOR DIV KEASRAMAAN</option>
+										<option name="koor_divsejahtera">KOOR DIV KESEJAHTERAAN</option>
+										<option name="koor_divsehat">KOOR DIV KESEHATAN</option>
+										<option name="koor_divmagang">KOOR DIV MAGANG</option>
+										<option name="koor_kebersihan">KOOR DIV KEBERSIHAN</option>
+										<option name="anggota_divdik">ANGGOTA DIV PENDIDIKAN</option>
+										<option name="anggota_rohani">ANGGOTA DIV KEROHANIAN</option>
+										<option name="anggota_asrama">ANGGOTA DIV KEASRAMAAN</option>
+										<option name="anggota_sejahtera">ANGGOTA DIV KESEJAHTERAAN</option>
+										<option name="anggota_kesehatan">ANGGOTA DIV KESEHATAN</option>
+										<option name="anggota_magang">ANGGOTA DIV MAGANG</option>
+										<option name="anggota_kebersihan">ANGGOTA DIV KEBERSIHAN</option>
+									</select>
+									
 								</div>
-								<div class="form-group">
-									<label>ANGKATAN</label>
-									<input class="form-control" placeholder="Angkatan" name="angkatan">
-								</div>
-								<div class="form-group">
-									<label>ANGKATAN</label>
-									<input class="form-control" placeholder="Angkatan" name="angkatan">		
-								</div>				
-								<button type="submit" class="btn btn-primary">TAMBAH DATA </button>
-								
+								<button type="submit" name="submit" class="btn btn-primary">TAMBAH DATA </button>
+								 
 																
 								
 					
@@ -129,7 +139,29 @@
 		<!--/.row-->	
 	</div><!--/.main-->
 
-	@include('tampilan.foot')
+	<script src="/lumino/js/jquery-1.11.1.min.js"></script>
+	<script src="/lumino/js/bootstrap.min.js"></script>
+	<script src="/lumino/js/chart.min.js"></script>
+	<script src="/lumino/js/chart-data.js"></script>
+	<script src="/lumino/js/easypiechart.js"></script>
+	<script src="/lumino/js/easypiechart-data.js"></script>
+	<script src="/lumino/js/bootstrap-datepicker.js"></script>
+	<script src="/lumino/js/bootstrap-table.js"></script>
+	<script>
+		!function ($) {
+			$(document).on("click","ul.nav li.parent > a > span.icon", function(){		  
+				$(this).find('em:first').toggleClass("glyphicon-minus");	  
+			}); 
+			$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+		}(window.jQuery);
+
+		$(window).on('resize', function () {
+		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+		})
+		$(window).on('resize', function () {
+		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+		})
+	</script>	
 </body>
 
 </html>
