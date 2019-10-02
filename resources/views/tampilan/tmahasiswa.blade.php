@@ -100,7 +100,8 @@
 			<div class="panel-heading">FROM TAMBAH DATA MAHASISWA</div>
 					<div class="panel-body">
 						<div class="col-md-6">
-							<form role="form">
+							<form role="form" method="POST" action="{{URL('tb_mahasiswa')}}" Class="form-horizontal" id="block-validate">
+                             {{csrf_field()}}
 							
 								<div class="form-group">
 									<label>NIM</label>
@@ -112,7 +113,11 @@
 								</div>
 								<div class="form-group">
 									<label>NAMA ANGKATAN</label>
-									<input class="form-control" placeholder="NAMA ANGKATAN">
+									 		      <select name="nama_angkatan">
+                                                    @foreach($mhss as $data)
+                                                      <option value="{{$data->nama_angkatan}}">{{$data->nama_angkatan}}</option>
+                                                    @endforeach
+                                                  </select>
 								</div>
 								<div class="form-group">
 									<label>ASAL SEKOLAH</label>
@@ -162,9 +167,10 @@
 								
 																
 								
-					
+				</form>					
 		</div>
 		<!--/.row-->	
+
 	</div><!--/.main-->
 
 	<script src="/lumino/js/jquery-1.11.1.min.js"></script>

@@ -54,7 +54,19 @@
 		</form>
 		<ul class="nav menu">
 			<li class="active"><a href="/lumino/index.html"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
-			<li><a href="/lumino/widgets.html"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> PUB</a></li>
+			<li class="dropdown ">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg> PUB <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="{{url('tampilan/angkatan/viewang')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Daftar Angkatan</a></li>
+							<li><a href="{{url('tampilan/sekolah/viewsek')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg></svg> Asal Sekolah</a></li>
+							<li><a href="{{url('tampilan/daerah/viewdae')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-blank-document"></use></svg> Asal Daerah</a></li>
+							<li><a href="{{url('tampilan/jurusan/viewjur')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-blank-document"></use></svg> Jurusan</a></li>
+							<li><a href="#"><svg class="glyph stroked cancel"><use xlink:href="#stroked-blank-document"></use></svg> Status Di PUB</a></li>
+							<li><a href="#"><svg class="glyph stroked cancel"><use xlink:href="#stroked-blank-document"></use></svg> Status Sosial</a></li>
+							<li><a href="#"><svg class="glyph stroked cancel"><use xlink:href="#stroked-blank-document"></use></svg> Jabatan di PUB</a></li>
+							<li><a href="#"><svg class="glyph stroked cancel"><use xlink:href="#stroked-blank-document"></use></svg> Jabatan di PPMB</a></li>
+						</ul>
+					</li>
 			<li class="dropdown ">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg> PPMB <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
