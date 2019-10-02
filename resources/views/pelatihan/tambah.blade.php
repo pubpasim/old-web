@@ -95,28 +95,25 @@
 				<li class="active">Icons</li>
 			</ol>
 		</div><!--/.row-->
-		<form method="POST" action="{{URL('angkatanModel')}}" Class="form-horizontal" id="block-validate">
-		{{csrf_field()}}>
+		<form method="POST" action="{{URL('pelatihan/store')}}" Class="form-horizontal" id="block-validate">
+		{{csrf_field()}}
 		<div class="row">
-			<div class="panel-heading">INPUT DATA</div>
+			<div class="panel-heading">TAMBAH DATA</div>
 					<div class="panel-body">
 						<div class="col-md-6">
 							<form role="form">
 							
 								<div class="form-group">
-									<label>NAMA ANGKATAN</label>
-									<input class="form-control" placeholder="Nama Angkatan" name="nama_angkatan">
+									<label>PELATIHAN</label>
+									<select name="pelatihan">
+										<option name="php">PHP</option>
+										<option name="vb.net">VB.NET</option>
+										<option name="java">JAVA</option>		
+									</select>
+									
 								</div>
-								<div class="form-group">
-									<label>ANGKATAN</label>
-									<input class="form-control" placeholder="Angkatan" name="angkatan">
-								</div>
-								<div class="form-group">
-									<label>ANGKATAN</label>
-									<input class="form-control" placeholder="Angkatan" name="angkatan">		
-								</div>				
-								<button type="submit" class="btn btn-primary">TAMBAH DATA </button>
-								
+							<button type="submit" name="submit" class="btn btn-primary">TAMBAH DATA</button>
+								 
 																
 								
 					
@@ -151,3 +148,6 @@
 </body>
 
 </html>
+
+
+

@@ -1,18 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use Illuminate\Http\Request;
 
 class statusPubController extends Controller
 {
-     * Display a listing of the resource.
+     /* Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $status_pub = DB::table('tb_statuspub')->get();
+        return view('status_pub.index',compact('status_pub'));
     }
 
     /**
@@ -22,7 +23,8 @@ class statusPubController extends Controller
      */
     public function create()
     {
-        //
+        $status_pub = DB::table('tb_statuspub')->get();
+        return view('status_pub.tambah',compact('status_pub'));
     }
 
     /**
@@ -33,7 +35,11 @@ class statusPubController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('tb_statuspub')->insert 
+        ([ 
+            'status'=>$request->status
+        ]);
+        return redirect('/');
     }
 
     /**
@@ -53,9 +59,10 @@ class statusPubController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id_status)
     {
-        //
+        $status_pub = DB::table('tb_statuspub')->where('id_status',$id_status)->get();
+        return view('status_pub.edit', compact('status_pub'));
     }
 
     /**
@@ -65,9 +72,12 @@ class statusPubController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_status)
     {
-        //
+        DB::table('tb_statuspub')->where('id_status',$id_status)->update([
+            'status'=>$request->tb_statuspub
+        ]);
+        return redirect('/');
     }
 
     /**
