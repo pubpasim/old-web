@@ -1,18 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\daerahModel;
 use Illuminate\Http\Request;
 
 class daerahController extends Controller
 {
-     * Display a listing of the resource.
+     /* Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $dae=daerahModel::all();
+        return view('tampilan/daerah/viewdae',compact('dae'));        
     }
 
     /**
@@ -22,7 +23,7 @@ class daerahController extends Controller
      */
     public function create()
     {
-        //
+        return view('tampilan/daerah/createdae');
     }
 
     /**
@@ -33,7 +34,10 @@ class daerahController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dae=new daerahModel();
+        $dae->kab_kot=$request->kab_kot;
+        $dae->save();
+        return redirect('tampilan/daerah/viewdae');
     }
 
     /**
@@ -55,7 +59,8 @@ class daerahController extends Controller
      */
     public function edit($id)
     {
-        //
+        $dae=daerahModel::where('id_daerah',$id)->get();
+        return view('tampilan/daerah/editdae',compact('dae'));
     }
 
     /**
@@ -67,7 +72,8 @@ class daerahController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $dae=daerahModel::where('id_daerah',$id)->update(['kab_kot'=>$request->kab_kot]);
+        return redirect('tampilan/daerah/viewdae');
     }
 
     /**
@@ -78,6 +84,7 @@ class daerahController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sek=sekolahModel::where('id_daerah',$id)->delete();
+        return redirect('tampilan/daerah/viewdae');
     }
 }

@@ -44,6 +44,7 @@ class angkatanController extends Controller
         $ang->angkatan=$request->angkatan;
         $ang->save();
         return redirect('tampilan/angkatan/viewang');
+        
     }
 
     /**
@@ -54,7 +55,7 @@ class angkatanController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -65,7 +66,8 @@ class angkatanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ang=angkatanModel::where('id_angkatan',$id)->get();
+        return view('tampilan/angkatan/editang',compact('ang'));
     }
 
     /**
@@ -77,7 +79,9 @@ class angkatanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ang=angkatanModel::where('id_angkatan',$id)->update(['nama_angkatan'=>$request->nama_angkatan]);
+        $ang=angkatanModel::where('id_angkatan',$id)->update(['angkatan'=>$request->angkatan]);
+        return redirect('tampilan/angkatan/viewang');
     }
 
     /**
@@ -88,6 +92,7 @@ class angkatanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ang=angkatanModel::where('id_angkatan',$id)->delete();
+       return redirect('tampilan/angkatan/viewang');
     }
 }

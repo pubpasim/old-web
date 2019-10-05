@@ -21,7 +21,7 @@
 </head>
 
 <body>
-	@include('tampilan.head')
+	@include('tampilan.head')	
 		<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
 		<div class="row">
 			<ol class="breadcrumb">
@@ -29,37 +29,28 @@
 				<li class="active">Icons</li>
 			</ol>
 		</div><!--/.row-->
-	
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header">DaftraAngkatan PUB</h1>
-			</div>
-		</div><!--/.row-->
-				
 		
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">Tabel Angkatan</div>
-					 <br><p class="icon-plus-sign"></i> <a href="{{url('tampilan/angkatan/createang')}}">Tambah Data</a></p>
+					<div class="panel-heading">Tabel Jurusan</div>
+					 <br><p class="icon-plus-sign"></i> <a href="{{url('tampilan/jurusan/createjur')}}">Tambah Data</a></p>
 					<div class="panel-body">
 						<table class="table table-striped table-bordered table-hover" id="tabel_angkatan">
 						    <thead>
 						   	<tr>
 						   		<th data-field="state" data-checkbox="true" name ""><center>No</center></th>
-						        <th data-field="id" data-sortable="true"><center>Nama Angkatan</center></th>
-						        <th data-field="name"  data-sortable="true"><center>Angkatan</center></th>
+						        <th data-field="id" data-sortable="true"><center>Nama Jurusan </center></th>
 						        <th colspan="2" align="text-center"><center>Aksi</center></th>
 						    </tr>
 
-						    @foreach($ang as $data)
+						    @foreach($jur as $data)
 						    <tr> 
 						    				
-						    		      <td ><center>{{$data->id_angkatan}}</center></td>
-                                          <td ><center>{{$data->nama_angkatan}}</center></td>
-                                          <td><center>{{$data->angkatan}}</center></td>  
-                                           <th><a href="{{URL('tampilan/angkatan/'.$data->id_angkatan)}}" class=" icon-edit-sign"><center>EDIT</center></a></th>
-                                           <th><a href="{{URL('tampilan/angkatan/hapu/'.$data->id_angkatan)}}" class="icon-trash"><center>Hapus</center></a></th>
+						    		      <td ><center>{{$data->id_jur}}</center></td>
+                                          <td ><center>{{$data->nama_jur}}</center></td>
+                                           <th><a href="{{URL('tampilan/jurusan/'.$data->id_jur)}}" class=" icon-edit-sign"><center>EDIT</center></a></th>
+                                           <th><a href="{{URL('tampilan/jurusan/del/'.$data->id_jur)}}" class="icon-trash"><center>Hapus</center></a></th>
                             
                          	</tr>
                          	
@@ -75,7 +66,8 @@
 		<!--/.row-->	
 		
 	</div><!--/.main-->
-	@include('tampilan.foot')
+s	@include('tampilan.foot')
+			
 </body>
 
 </html>

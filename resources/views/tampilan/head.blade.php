@@ -58,6 +58,13 @@
 			<li class="dropdown ">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg> PUB <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
+
+							<li><a href="#"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Struktur Organisasi</a></li>
+							<li><a href="{{url('tampilan/angkatan/viewang')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Daftar Angkatan</a></li>
+							<li><a href="{{url('tampilan/sekolah/viewsek')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg></svg> Asal Sekolah</a></li>
+							<li><a href="{{url('tampilan/daerah/viewdae')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-blank-document"></use></svg> Asal Daerah</a></li>
+							<li><a href="{{url('tampilan/jurusan/viewjur')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-blank-document"></use></svg> Jurusan</a></li>
+
 							<li><a href="{{url('struktur_organisasi/index/')}}"><svg class="glyph stroked blank document"></svg>Struktur Organisasi</a></li>
 
 							<li><a href="{{url('pelatihan/index/')}}"><svg class="glyph stroked blank document"></svg>Pelatihan</a></li>
@@ -65,6 +72,7 @@
 							<li><a href="{{url('status_pub/index/')}}"><svg class="glyph stroked blank document"></svg>Status PUB</a></li>
 
 							<li><a href="{{url('pub_dok/uploadfoto')}}"><svg class="glyph stroked blank document"></svg>Upload Foto</a></li>
+
 
 							<li><a href="{{url('mahasiswa')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg></svg> Data Mahasiswa PUB</a></li>
 

@@ -1,9 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\daerahModel;
+use App\sekolahModel;
+use App\angkatanModel;
+use App\orgPUBmodel;
+use App\jurusanModel;
+use App\orgPPMBmodel;
+use App\statusPubmodel;
+use App\statusSosialModel;
+use App\mahasiswaModel;
+use DB;
 use Illuminate\Http\Request;
-use app\mahasiswaModel;
 
 class mahasiswaController extends Controller
 {
@@ -14,7 +22,11 @@ class mahasiswaController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
+
+=======
         return view('tampilan/mahasiswa/index',compact('index'));  
+>>>>>>> a5ccd9c903826ea41d48e1222953111dd52e80c6
     }
 
     /**
@@ -24,7 +36,7 @@ class mahasiswaController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
