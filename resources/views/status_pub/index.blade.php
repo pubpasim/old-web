@@ -125,12 +125,12 @@
 								@foreach($status_pub as $data)
 
 								<tr align="center">
-								<td>{{$data->id_status}}</td>
+								<td>{{$data->id_statusPub}}</td>
 								<td>{{$data->status}}</td>
 								
 								<td>
-								<a href="{{url('status_pub/edit'.$data->id_status)}}">Edit</a>
-								<a href="{{url('status_pub/hapus'.$data->id_status)}}">Hapus</a>
+								<a href="{{url('status_pub/edit'.$data->id_statusPub)}}">Edit</a>
+								<a href="{{url('status_pub/hapus'.$data->id_statusPub)}}">Hapus</a>
 							  </td>
 							</tr>
 							 

@@ -54,7 +54,7 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li class="active"><a href="/lumino/index.html"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
+			<li class="active"><a href="{{url('/')}}"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
 			<li class="dropdown ">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg> PUB <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">

@@ -36,10 +36,6 @@ Auth::routes();
  	Route::post('status_pub/update/{y}','statusPubController@update');
  	Route::get('status_pub/hapus/{z}','statusPubController@destroy'); 	
 
-Route::get('/', function () {
-    return view('tampilan.index');
-});
-Auth::routes();
 	Route::get('alumni','alumniController@index');
 	Route::get('mahasiswa','mahasiswaController@index');
 	Route::get('tampilan/angkatan/viewang','angkatanController@index');
@@ -68,7 +64,7 @@ Auth::routes();
 // });
 // Route::post('/', 'UploadImageController@upload')->name('pub_dok.image');
 
-Route::get('tambahTahun', 'hasilController@tambahTahun');
+Route::get('tambahTahun', 'ppmbDokController@tambahTahun');
 Route::get('tambahTPA/{x}', 'hasilController@tambahTPA');
 Route::post('storeTPA/{x}', 'hasilController@storeTPA');
 Route::post('storeTahun', 'hasilController@storeTahun');
@@ -84,7 +80,7 @@ Route::get('tambahPsi/{x}', 'hasilController@tambahPsi');
 Route::post('storePsikotes/{x}', 'hasilController@storePsikotes');
 Route::get('hapusPsi/{x}', 'hasilController@hapusPsi');
 Route::get('editPsi/{x}', 'hasilController@editPsi');
-Route::post('updatePsi/{x}', 'hasilController@updatePsi');\
+Route::post('updatePsi/{x}', 'hasilController@updatePsi');
 
 Route::get('dataSurvei/{x}', 'hasilController@dataSurvei');
 Route::get('tambahSurvei/{x}', 'hasilController@tambahSurvei');
@@ -100,4 +96,9 @@ Route::get('hapusFinal/{x}', 'hasilController@hapusFinal');
 Route::get('editFinal/{x}', 'hasilController@editFinal');
 Route::post('updateFinal/{x}', 'hasilController@updateFinal');
 
-
+Route::get('dokumentasi', 'ppmbDokController@dokumentasi');
+Route::get('tambahDok', 'ppmbDokController@tambahDok');
+Route::post('storeDok', 'ppmbDokController@storeDok');
+Route::get('hapusDok/{x}', 'ppmbDokController@hapusDok');
+Route::get('editDok/{x}', 'ppmbDokController@editDok');
+Route::post('updateDok/{x}', 'ppmbDokController@updateDok');
