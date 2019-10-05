@@ -15,7 +15,7 @@
 Route::get('/', function () {
 	return view('tampilan.index');
 });
-Route::get('alumni','alumniController@index');
+//Route::get('alumni','alumniController@index');
 Route::get('tampilan/angkatan/viewang','angkatanController@index');
 Route::get('tampilan/angkatan/createang','angkatanController@create');
 Route::post('angkatanModel','angkatanController@store');
@@ -36,6 +36,7 @@ Route::post('status_pub/update/{y}','statusPubController@update');
 Route::get('status_pub/hapus/{z}','statusPubController@destroy'); 	
 
 Route::get('alumni','alumniController@index');
+Route::get('tambah/mahasiswa','alumniController@create');
 Route::get('mahasiswa','mahasiswaController@index');
 Route::get('tampilan/angkatan/viewang','angkatanController@index');
 Route::get('tampilan/angkatan/createang','angkatanController@create');
@@ -93,3 +94,6 @@ Route::post('storeDok', 'ppmbDokController@storeDok');
 Route::get('hapusDok/{x}', 'ppmbDokController@hapusDok');
 Route::get('editDok/{x}', 'ppmbDokController@editDok');
 Route::post('updateDok/{x}', 'ppmbDokController@updateDok');
+
+//===================================USER=========================//
+Route::get('user','userController@index');
