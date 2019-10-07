@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Data Mahasiswa</title>
+<title>Lumino - Tables</title>
 
 <link href="/lumino/css/bootstrap.min.css" rel="stylesheet">
 <link href="/lumino/css/datepicker3.css" rel="stylesheet">
@@ -98,7 +98,7 @@
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Daftar Angkatan PUB</h1>
+				<h1 class="page-header">Struktur Organisasi PUB</h1>
 			</div>
 		</div><!--/.row-->
 				
@@ -106,22 +106,40 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">Tabel Angkatan</div>
-					 <br><p class="icon-plus-sign"></i> <a href="{{url('tampilan/angkatan/createang')}}">Tambah Data</a></p>
+					<div class="panel-heading">Struktur Organisasi PUB</div>
+					 <br><p class="icon-plus-sign"></i> <a href="{{url('det_orgpub/tambah')}}">Tambah Data</a></p>
 					<div class="panel-body">
 						<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
-						    <thead>
-						    <tr>
-						        
-						        <th data-field="id" data-sortable="true" name="nama_angkatan">Nama Angkatan</th>
+						    <!-- <thead>
+						    <tr>   
+						        <th data-field="id_orgpub" data-sortable="true" name="id_orgpub">ID</th>
 						        <th data-field="name"  data-
-						        sortable="true" name="angkatan">Angkatan</th>
+						        sortable="true" name="jabatan">Jabatan</th>
 						      </tr>
-						      <tr>
-						     @foreach($ang as $data)
-                                          <td >{{$data->nama_angkatan}}</td>
-                                          <td>{{$data->angkatan}}</td>  
-                             @endforeach
+						      <tr> -->
+						      	<tr>
+						      		<td>No</td>
+									<td>Jabatan</td>
+									<td>Angkatan</td>
+									<td>Mahasiswa</td>
+
+								</tr> 
+								@foreach($detorg_pub as $data)
+
+								<tr align="center">
+								<td>{{$data->id_detorg_pub}}</td>
+								<td>{{$data->id_orgpub}}</td>
+								<td>{{$data->id_angkatan}}</td>
+								<td>{{$data->id_mahasiswa}}</td>
+								
+								<td>
+								<a href="{{url('detorg_pub/edit'.$data->id_detorg_pub)}}">Edit</a>
+								<a href="{{url('detorg_pub/hapus'.$data->id_detorg_pub)}}">Hapus</a>
+							  </td>
+							</tr>
+							 
+						@endforeach
+					
                          	</tr>
 						    </thead>
 						</table>

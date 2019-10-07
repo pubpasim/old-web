@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use Illuminate\Http\Request;
 
 class detOrgPubController extends Controller
@@ -13,7 +13,9 @@ class detOrgPubController extends Controller
      */
     public function index()
     {
-        //
+        $detorg_pub = DB::table('detorg_pub')->get();
+        return view('detorg_pub.index',compact('org_pub'));
+
     }
 
     /**
@@ -23,7 +25,8 @@ class detOrgPubController extends Controller
      */
     public function create()
     {
-        //
+        $detorg_pub = DB::table('detorg_pub')->get();
+        return view('detorg_pub.tambah',compact('detorg_pub'));
     }
 
     /**
