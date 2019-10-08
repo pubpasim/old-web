@@ -94,7 +94,7 @@
 						    	@foreach($dok as $data)
 						    	<tr>
 						    		<td>{{ $no++}}</td>
-						    		<td> <img src="{{url("imgs")}}/{{($data->foto) }}" width="100" height="100"></td>						    		
+						    		<td> <img src="{{url('imgs')}}/{{($data->foto) }}" width="100" height="100"></td>						    		
 						    		<td>{{ $data->keterangan}}</td>
 						    		<td>
 						    			<a href="{{url('editDok/'.$data->id_dok)}}" class="btn btn-info">Edit</a>

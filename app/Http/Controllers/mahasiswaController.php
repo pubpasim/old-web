@@ -69,6 +69,7 @@ class mahasiswaController extends Controller
         //
     }
 
+
     /**
      * Display the specified resource.
      *

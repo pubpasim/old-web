@@ -12,7 +12,7 @@
 */
 
 
-Route::get('/', function () {
+Route::get('admin', function () {
 	return view('tampilan.index');
 });
 //Route::get('alumni','alumniController@index');
@@ -95,5 +95,14 @@ Route::get('hapusDok/{x}', 'ppmbDokController@hapusDok');
 Route::get('editDok/{x}', 'ppmbDokController@editDok');
 Route::post('updateDok/{x}', 'ppmbDokController@updateDok');
 
-//===================================USER=========================//
-Route::get('user','userController@index');
+//===================================USER=================================//
+Route::get('/','userController@index');
+Route::get('login','userController@login');
+Route::post('login/masuk','userController@doLogin');
+Route::get('user/mahasiswa','userController@view_mhs');
+Route::post('tampil/angkatan','userController@view_dataMhs');
+
+//================================ADMIN ALUMNI=============================//
+
+Route::get('admin/alumni/{x}','alumni_adminController@index');
+Route::post('tambahFoto','alumni_adminController@store');
