@@ -1,0 +1,303 @@
+#head{
+	width: 100%;
+	height: 100%;
+	background-color: #333333;
+	padding-bottom: 80px;
+}
+#des{
+	float: left;
+	width: 50%;
+	height: 350%;
+	background-color: #33cc66;
+}
+#bg{
+	position: relative;
+	top: -20px; 
+}
+#bar{
+	position: relative;
+	top: -80px;
+	width: 100%;
+	height: 150%;
+	background-color: #333333;
+      /*opacity:0.4;
+      filter:alpha(opacity=40);*/
+      color: white;
+  }
+  .mySlides {
+  	display:none;
+  }
+  body{
+  	background-size: cover;
+  }
+  
+  a{color:#58bff6;text-decoration: none;}
+  a:hover{color:#aaa; }
+  .pull-right{float: right;}
+  .pull-left{float: left;}
+  .clear-fix{clear:both;}
+  div.logo{text-align: center; margin: 20px 20px 30px 20px; fill: #566375;}
+  div.logo svg{
+  	width:180px;
+  	height:100px;
+  }
+  .logo-active{fill: #44aacc !important;}
+  #formWrapper{
+  	background: rgba(0,0,0,.2); 
+  	width:100%; 
+  	height:100%; 
+  	position: absolute; 
+  	top:0; 
+  	left:0;
+  	transition:all .3s ease;}
+  	.darken-bg{background: rgba(0,0,0,.5) !important; transition:all .3s ease;}
+
+  	div#form{
+  		position: absolute;
+  		width:360px;
+  		height:320px;
+  		height:auto;
+  		background-color: #fff;
+  		margin:auto;
+  		border-radius: 5px;
+  		padding:20px;
+  		left:50%;
+  		top:50%;
+  		margin-left:-180px;
+  		margin-top:-200px;
+  	}
+  	div.form-item{position: relative; display: block; margin-bottom: 20px;}
+  	input{transition: all .2s ease;}
+  	input.form-style{
+  		color:#8a8a8a;
+  		display: block;
+  		width: 90%;
+  		height: 44px;
+  		padding: 5px 5%;
+  		border:1px solid #ccc;
+  		-moz-border-radius: 27px;
+  		-webkit-border-radius: 27px;
+  		border-radius: 27px;
+  		-moz-background-clip: padding;
+  		-webkit-background-clip: padding-box;
+  		background-clip: padding-box;
+  		background-color: #fff;
+  		font-family:'HelveticaNeue','Arial', sans-serif;
+  		font-size: 105%;
+  		letter-spacing: .8px;
+  	}
+  	div.form-item .form-style:focus{outline: none; border:1px solid #58bff6; color:#58bff6; }
+  	div.form-item p.formLabel {
+  		position: absolute;
+  		left:26px;
+  		top:2px;
+  		transition:all .4s ease;
+  		color:#bbb;}
+  		.formTop{top:-22px !important; left:26px; background-color: #fff; padding:0 5px; font-size: 14px; color:#58bff6 !important;}
+  		.formStatus{color:#8a8a8a !important;}
+  		input[type="submit"].login{
+  			float:right;
+  			width: 112px;
+  			height: 37px;
+  			-moz-border-radius: 19px;
+  			-webkit-border-radius: 19px;
+  			border-radius: 19px;
+  			-moz-background-clip: padding;
+  			-webkit-background-clip: padding-box;
+  			background-clip: padding-box;
+  			background-color: #55b1df;
+  			border:1px solid #55b1df;
+  			border:none;
+  			color: #fff;
+  			font-weight: bold;
+  		}
+  		input[type="submit"].login:hover{
+  			background-color: #fff;
+  			border:1px solid #55b1df;
+  			color:#55b1df; 
+  			cursor:pointer;
+  		}
+  		input[type="submit"].login:focus{
+  			outline: none;
+  		}
+  		#slide{
+  			position: relative;
+  			left: 20px;
+  			top: 10px;
+  		}
+  		.kiri{
+  			width: 30%;
+  			height: 100%;
+  			border-style: dashed;
+  			border:2px;
+  			padding-left: 2%;
+  			padding-top: 2%;
+  			padding-bottom: 5%;
+  			margin-left: 2%;
+  			margin-top: -7%;
+  		}
+  		.kanan{
+  			width: 90%;
+  			background-color: #99cccc;
+  			margin-left: 4.5%;
+  			padding-right: 2%;
+  			padding-left: -10%;
+  			padding-bottom: 3%;
+  			padding-top: 2%;
+
+  		}
+
+  		/* ===== Actual Styles ===== */
+
+  		/* ===== Horizontal Rule ===== */
+  		.rule {
+  			margin: 10px 0;
+  			border: none;
+  			height: 1.5px;
+  			background-image: linear-gradient(left, #f0f0f0, #c9bbae, #f0f0f0);
+  		}
+
+  		/* ===== Select Box ===== */
+  		.sel {
+  			font-size: 1rem;
+  			display: inline-block;
+  			margin: 3em 0em;
+  			width: 350px;
+  			background-color: transparent;
+  			position: relative;
+  			cursor: pointer;
+
+  		}
+
+  		.sel::before {
+  			position: absolute;
+  			content: '\f063';
+  			font-family: 'FontAwesome';
+  			font-size: 2em;
+  			color: #FFF;
+  			right: 20px;
+  			top: calc(50% - 0.5em);
+  		}
+
+  		.sel.active::before {
+  			transform: rotateX(-180deg);
+  		}
+
+  		.sel__placeholder {
+  			display: block;
+  			font-family: 'Quicksand';
+  			font-size: 2.3em;
+  			color: #838e95;
+  			padding: 0.2em 0.5em;
+  			text-align: left;
+  			pointer-events: none;
+  			user-select: none;
+  			visibility: visible;
+  		}
+
+  		.sel.active .sel__placeholder {
+  			visibility: hidden;
+  		}
+
+  		.sel__placeholder::before {
+  			position: absolute;
+  			top: 0;
+  			bottom: 0;
+  			left: 0;
+  			right: 0;
+  			padding: 0.2em 0.5em;
+  			content: attr(data-placeholder);
+  			visibility: hidden;
+  		}
+
+  		.sel.active .sel__placeholder::before {
+  			visibility: visible;
+  		}
+
+  		.sel__box {
+  			position: absolute;
+  			top: calc(100% + 4px);
+  			left: -4px;
+  			display: none;
+  			list-style-type: none;
+  			text-align: left;
+  			font-size: 1em;
+  			background-color: #FFF;
+  			width: calc(100% + 8px);
+  			box-sizing: border-box;
+  		}
+
+  		.sel.active .sel__box {
+  			display: block;
+  			animation: fadeInUp 500ms;
+  		}
+
+  		.sel__box__options {
+  			display: list-item;
+  			font-family: 'Quicksand';
+  			font-size: 1.5em;
+  			color: #838e95;
+  			padding: 0.5em 1em;
+  			user-select: none;
+  		}
+
+  		.sel__box__options::after {
+  			content: '\f00c';
+  			font-family: 'FontAwesome';
+  			font-size: 0.5em;
+  			margin-left: 5px;
+  			display: none;
+  		}
+
+  		.sel__box__options.selected::after {
+  			display: inline;
+  		}
+
+  		.sel__box__options:hover {
+  			background-color: #ebedef;
+  		}
+
+  		/* ----- Select Box Black Panther ----- */
+  		.sel {
+  			border-bottom: 4px solid rgba(0, 0, 0, 0.3);
+  		}
+
+  		.sel--black-panther {
+  			z-index: 3;
+  		}
+
+  		/* ----- Select Box Superman ----- */
+  		.sel--superman {
+  			/*   display: none; */
+  			z-index: 2;
+  		}
+
+  		/* ===== Keyframes ===== */
+  		@keyframes fadeInUp {
+  			from {
+  				opacity: 0;
+  				transform: translate3d(0, 20px, 0);
+  			}
+
+  			to {
+  				opacity: 1;
+  				transform: none;
+  			}
+  		}
+
+  		@keyframes fadeOut {
+  			from {
+  				opacity: 1;
+  			}
+
+  			to {
+  				opacity: 0;
+  			}
+  		}
+  		#btn{
+  			height: 40px;
+  			width: 80px;
+  			border-radius: 5px;
+  			background-color: #9999FF;
+  		}
+

@@ -1,10 +1,8 @@
 <?php
-
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
-class CreateTbUserTable extends Migration
+class CreateImageUploadedsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +11,14 @@ class CreateTbUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_user', function (Blueprint $table) {
-            $table->increments('id_user');
-            $table->string('username');
-            $table->string('password'); //tanggal lahir
-            $table->string('level');
+        Schema::create('image_uploadeds', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('dimensions');
+            $table->string('path');
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -29,6 +26,6 @@ class CreateTbUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_user');
+        Schema::dropIfExists('image_uploadeds');
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use Illuminate\Http\Request;
 
 class orgPUBcontroller extends Controller
@@ -13,7 +13,8 @@ class orgPUBcontroller extends Controller
      */
     public function index()
     {
-        //
+        $organisasi=DB::table('tb_orgpub')->get();
+        return view('struktur_organisasi.index',compact('organisasi'));
     }
 
     /**
@@ -23,7 +24,8 @@ class orgPUBcontroller extends Controller
      */
     public function create()
     {
-        //
+        $organisasi=DB::table('tb_orgpub')->get();
+        return view('struktur_organisasi.tambah',compact('organisasi'));
     }
 
     /**
@@ -34,7 +36,11 @@ class orgPUBcontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('tb_orgpub')->insert
+            ([
+                'jabatan_pub'=>$request->jabatan
+            ]);
+        return redirect ('/');
     }
 
     /**
@@ -54,9 +60,10 @@ class orgPUBcontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id_orgpub)
     {
-        //
+        $organisasi = DB::table('tb_orgpub')->where('id_orgpub',$id_orgpub)->get();
+        return view('struktur_organisasi.edit',compact('organisasi'));
     }
 
     /**
@@ -66,9 +73,12 @@ class orgPUBcontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_orgpub)
     {
-        //
+        DB::table('tb_orgpub')->where('id_orgpub',$id_orgpub)->update([
+            'jabatan'=>$request->tb_orgpub
+        ]);
+        return redirect('struktur_organisasi/'.$id);
     }
 
     /**
@@ -77,8 +87,9 @@ class orgPUBcontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_orgpub)
     {
-        //
+        DB::table('tb_orgpub')->where('id_orgpub',$id_orgpub)->delete();
+        return redirect('struktur_organisasi.index');
     }
 }

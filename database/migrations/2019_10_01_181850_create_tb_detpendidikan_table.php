@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTbPengalamanTable extends Migration
+class CreateTbDetpendidikanTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateTbPengalamanTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_pengalaman', function (Blueprint $table) {
-            $table->increments('id_pengalaman');
-            $table->string('pengalaman');
+        Schema::create('tb_detpendidikan', function (Blueprint $table) {
+            $table->increments('id_detpendidikan');
             $table->integer('id_mahasiswa')->unsigned();
+            $table->string('pendidikan');
+            $table->string('Universitas');
+            $table->string('Tahun_lulus');
             $table->timestamps();
-
             $table->foreign('id_mahasiswa')->references('id_mahasiswa')->on('tb_mahasiswa');
         });
     }
@@ -30,6 +31,6 @@ class CreateTbPengalamanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_pengalaman');
+        Schema::dropIfExists('tb_detpendidikan');
     }
 }
