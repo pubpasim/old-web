@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use Illuminate\Http\Request;
-use app\mahasiswaModel;
 
-class mahasiswaController extends Controller
+class AktivitasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,12 @@ class mahasiswaController extends Controller
      */
     public function index()
     {
-        $mhs=mahasiswaModel::all();
-        return view('tampilan.alumni.Alumni',compact('mhs'));
+        $dokalumni=DB::table('tb_alumni_dok')
+        ->select('tb_alumni_dok.foto_alumni','tb_alumni_dok.keterangan')
+        ->get();
+        return view('tampilan.alumni.aktivitas',compact('dokalumni'));
+
+       
     }
 
     /**
@@ -25,7 +28,10 @@ class mahasiswaController extends Controller
      */
     public function create()
     {
-        //
+        $dokalumni=DB::table('tb_alumni_dok')
+        ->select('tb_alumni_dok.foto_alumni','tb_alumni_dok.keterangan')
+        ->get();
+        return view('tampilan.alumni.tambahdok_alumni',compact('dokalumni'));
     }
 
     /**
@@ -36,7 +42,10 @@ class mahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $namafoto=$_FILES['foto_alumni'];
+        DB::table('tb_alumni_dok')->insert(['foto_alumni'=>$namafoto,'keterangan'=>$request->keterangan]);
+        move_uploaded_file($lokasi,"alumni/images/NOVEL/".$namafoto);
+        return redirect('/');
     }
 
     /**
