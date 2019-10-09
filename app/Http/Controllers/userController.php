@@ -62,6 +62,30 @@ class userController extends Controller
             return redirect('login')->with('alert','Password atau Email, Salah!');
         }
 
+    }public function tampilUser(){
+        $user=DB::table('tb_user')
+        ->join('tb_mahasiswa', 'tb_user.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
+        ->select('tb_mahasiswa.nama','tb_user.username','tb_user.password','tb_user.level')->get();
+
+        return view('tampilan.user.user',compact('user'));
+    }
+    public function tambahUser(){
+        $lempar="";
+        $angkatan=DB::table('tb_angkatan')->orderby('angkatan')->get();
+        $mahasiswa=DB::table('tb_mahasiswa')->get();
+        return view('tampilan.user.tambah',compact('angkatan','lempar','mahasiswa'));
+    }
+    public function simpanUser(Request $request){
+        $user=DB::table('tb_user')->insert([
+            'id_mahasiswa'=>$request->nama,'username'=>$request->usr,'password'=>$request->pass,'level'=>$request->level
+        ]);
+        return redirect('tampilUser');
+    }
+    public function tambahUser_store(Request $request){
+        $lempar=$request->select;
+        $angkatan=DB::table('tb_angkatan')->orderby('angkatan')->get();
+        $mahasiswa=DB::table('tb_mahasiswa')->where('id_angkatan',$request->select)->get();
+        return view('tampilan.user.tambah',compact('angkatan','mahasiswa','lempar'));
     }
     public function view_mhs(){
         $angkatan=DB::table('tb_angkatan')->orderby('angkatan')->get();

@@ -101,6 +101,11 @@ Route::get('login','userController@login');
 Route::post('login/masuk','userController@doLogin');
 Route::get('user/mahasiswa','userController@view_mhs');
 Route::post('tampil/angkatan','userController@view_dataMhs');
+Route::get('tampilUser','userController@tampilUser');
+Route::get('tambahUser','userController@tambahUser');
+Route::post('tambahUser/store','userController@tambahUser_store');
+Route::post('tambah/user','userController@simpanUser');
+
 
 //================================ADMIN ALUMNI=============================//
 

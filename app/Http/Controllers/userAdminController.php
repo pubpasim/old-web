@@ -3,20 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
 
-class alumni_adminController extends Controller
+class userAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        $foto=DB::table('tb_alumni_dok')->orderby('id_alumnidok','DESC')->get();
-        $data=DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->first();
-        return view('Alumni_admin.index',compact('data','foto'));
+        //
     }
 
     /**
@@ -37,22 +34,7 @@ class alumni_adminController extends Controller
      */
     public function store(Request $request)
     {
-        $file = $request->file('foto');
-        $nama_file = time()."_".$file->getClientOriginalName();
-         
-        // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload = ('imgs');
-        $file->move($tujuan_upload,$nama_file);
-
-        DB::table('tb_alumni_dok')
-        ->insert([
-            'file' => $nama_file,            
-            'keterangan' => $request->contact_message,   
-            'id_angkatan'=> $request->id_ang,
-            'id_mahasiswa'=> $request->id_mhs         
-        ]);
-
-        return redirect('admin/alumni/'.$request->id_mhs);
+        //
     }
 
     /**
