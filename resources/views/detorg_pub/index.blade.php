@@ -107,7 +107,7 @@
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">Struktur Organisasi PUB</div>
-					 <br><p class="icon-plus-sign"></i> <a href="{{url('det_orgpub/tambah')}}">Tambah Data</a></p>
+					 <br><p class="icon-plus-sign"></i> <a href="{{url('detorg_pub/tambah')}}">Tambah Data</a></p>
 					<div class="panel-body">
 						<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 						    <!-- <thead>

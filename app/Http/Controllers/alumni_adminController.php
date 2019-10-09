@@ -1,21 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
-use DB;
-use Illuminate\Http\Request;
 
-class detPelatihanController extends Controller
+use Illuminate\Http\Request;
+use DB;
+
+class alumni_adminController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $det_pelatihan = DB::table('tb_detpelatihan')->get();
-        return view('det_pelatihan.index',compact('det_pelatihan'));
-
+        $foto=DB::table('tb_alumni_dok')->orderby('id_alumnidok','DESC')->get();
+        $data=DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->first();
+        return view('Alumni_admin.index',compact('data','foto'));
     }
 
     /**
@@ -36,7 +37,21 @@ class detPelatihanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $file = $request->file('foto');
+        $nama_file = time()."_".$file->getClientOriginalName();
+         
+        // isi dengan nama folder tempat kemana file diupload
+        $tujuan_upload = base_path('imgs');
+        $file->move($tujuan_upload,$nama_file);
+
+        DB::table('tb_alumni_dok')
+        ->insert([
+            'file' => $nama_file,            
+            'keterangan' => $request->contact_message,   
+            'id_angkatan'=> $request->id           
+        ]);
+
+        return redirect('admin/alumni/'.$request->id);
     }
 
     /**

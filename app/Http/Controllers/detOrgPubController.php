@@ -13,19 +13,19 @@ class detOrgPubController extends Controller
      */
     public function index()
     {
-        $detorg_pub = DB::table('detorg_pub')->get();
-        return view('detorg_pub.index',compact('org_pub'));
+        $detorg_pub = DB::table('tb_detorg_pub')->get();
+        return view('detorg_pub.index',compact('detorg_pub'));
 
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creatingsss a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        $detorg_pub = DB::table('detorg_pub')->get();
+        $detorg_pub = DB::table('tb_detorg_pub')->get();
         return view('detorg_pub.tambah',compact('detorg_pub'));
     }
 
@@ -37,7 +37,13 @@ class detOrgPubController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('tb_detorg_pub')->insert
+            ([
+                'id_orgpub'=>$request->jabatan,
+                'id_angkatan'=>$request->angkatan,
+                'id_mahasiswa'=>$request->id_mahasiswa
+            ]);
+        return redirect ('/');
     }
 
     /**

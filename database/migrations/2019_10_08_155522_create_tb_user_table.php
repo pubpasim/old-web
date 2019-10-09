@@ -15,10 +15,11 @@ class CreateTbUserTable extends Migration
     {
         Schema::create('tb_user', function (Blueprint $table) {
             $table->increments('id_user');
+            $table->integer('id_mahasiswa')->unsigned();
             $table->string('username');
             $table->string('password'); //tanggal lahir
             $table->string('level');
-            $table->timestamps();
+            $table->foreign('id_mahasiswa')->references('id_mahasiswa')->on('tb_mahasiswa');
         });
     }
 

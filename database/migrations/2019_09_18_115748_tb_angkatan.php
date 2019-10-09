@@ -16,7 +16,7 @@ class TbAngkatan extends Migration
         Schema::create('tb_angkatan',function(Blueprint $table){
             $table->increments('id_angkatan');
             $table->string('nama_angkatan');
-            $table->string('angkatan');
+            $table->integer('angkatan');
             //$table->string('id')->foreignkey('id')->table('mahasiswa')
             $table->rememberToken();
             $table->timestamps();
