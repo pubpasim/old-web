@@ -1,18 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\sekolahModel;
 use Illuminate\Http\Request;
 
 class sekolahController extends Controller
 {
-     * Display a listing of the resource.
+     /* Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $sek=sekolahModel::all();
+        return view('tampilan/sekolah/viewsek',compact('sek'));
     }
 
     /**
@@ -22,7 +23,7 @@ class sekolahController extends Controller
      */
     public function create()
     {
-        //
+           return view('tampilan/sekolah/createsek');
     }
 
     /**
@@ -33,7 +34,10 @@ class sekolahController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $sek=new sekolahModel();
+        $sek->sekolah=$request->sekolah;
+        $sek->save();
+        return redirect('tampilan/sekolah/viewsek');
     }
 
     /**
@@ -55,7 +59,8 @@ class sekolahController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sek=sekolahModel::where('id_sekolah',$id)->get();
+        return view('tampilan/sekolah/editsek',compact('sek'));
     }
 
     /**
@@ -67,7 +72,8 @@ class sekolahController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $sek=sekolahModel::where('id_sekolah',$id)->update(['sekolah'=>$request->sekolah]);
+        return redirect('tampilan/sekolah/viewsek');
     }
 
     /**
@@ -78,6 +84,7 @@ class sekolahController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sek=sekolahModel::where('id_sekolah',$id)->delete();
+        return redirect('tampilan/sekolah/viewsek');
     }
 }

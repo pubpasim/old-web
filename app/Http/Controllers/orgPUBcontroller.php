@@ -38,7 +38,7 @@ class orgPUBcontroller extends Controller
     {
         DB::table('tb_orgpub')->insert
             ([
-                'jabatan'=>$request->jabatan
+                'jabatan_pub'=>$request->jabatan
             ]);
         return redirect ('/');
     }

@@ -111,10 +111,17 @@
 						<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 						    <thead>
 						    <tr>
-						        <th data-field="state" data-checkbox="true" >Item ID</th>
-						        <th data-field="id" data-sortable="true">Item ID</th>
-						        <th data-field="name"  data-sortable="true">Item Name</th>
-						        <th data-field="price" data-sortable="true">Item Price</th>
+						        <th data-field="id" data-sortable="true">Nim</th>
+						        <th data-field="id" data-sortable="true">Nama Mahasiswa</th>
+						        <th data-field="name"  data-sortable="true">Asal Sekolah</th>
+						        <th data-field="price" data-sortable="true">Asal Daerah</th>
+						        <th data-field="price" data-sortable="true">Angkatan</th>
+						        <th data-field="price" data-sortable="true">Nama Angkatan</th>
+						        <th data-field="price" data-sortable="true">Jabatan Pub</th>
+						        <th data-field="price" data-sortable="true">Jabatan PPMB</th>
+						        <th data-field="price" data-sortable="true">Jurusan</th>
+						        <th data-field="price" data-sortable="true">Status Pub</th>
+						        <th data-field="price" data-sortable="true">Status Sosial</th>
 						    </tr>
 						    </thead>
 						</table>

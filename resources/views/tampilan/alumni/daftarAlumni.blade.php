@@ -1,8 +1,4 @@
 @include('tampilan.head')
-
-<!DOCTYPE html>
-<html>
-<head>
 	<style>
 		#dataTable {
 			font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
