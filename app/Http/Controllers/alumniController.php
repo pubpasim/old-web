@@ -12,18 +12,28 @@ class alumniController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function aktivitas()
     {
-        $mahasiswa = DB::table('tb_mahasiswa')
-            ->join('tb_daerah', 'tb_mahasiswa.id_daerah', '=', 'tb_daerah.id_daerah')
-            ->join('tb_sekolah', 'tb_mahasiswa.id_sekolah', '=', 'tb_sekolah.id_sekolah')
-            ->join('tb_orgpub', 'tb_mahasiswa.id_orgpub', '=', 'tb_orgpub.id_orgpub')
-            ->join('tb_orgppmb', 'tb_mahasiswa.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
-            ->join('tb_statusSos', 'tb_mahasiswa.id_statusSos', '=', 'tb_statusSos.id_statusSos')
-            ->join('tb_jurusan', 'tb_mahasiswa.id_jur', '=', 'tb_jurusan.id_jur')
-            ->select('tb_mahasiswa.nama','tb_mahasiswa.nim','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusSos.status')
+        $lempar="";
+        $angkatan=DB::table('tb_angkatan')->get();
+        $alumniDok = DB::table('tb_alumni_dok')
+            ->join('tb_angkatan', 'tb_alumni_dok.id_angkatan', '=', 'tb_angkatan.id_angkatan')
+            ->join('tb_mahasiswa', 'tb_alumni_dok.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
+            ->select('tb_angkatan.angkatan','tb_mahasiswa.nama','tb_alumni_dok.file','tb_alumni_dok.keterangan')
             ->get();
-        return view('tampilan.alumni.daftarAlumni',compact('mahasiswa'));
+        return view('tampilan.alumni.aktivitas',compact('alumniDok','angkatan','lempar'));
+        
+    }
+    public function aktivitasTampil(Request $request)
+    {
+        $lempar=$request->select;
+        $angkatan=DB::table('tb_angkatan')->get();
+        $alumniDok = DB::table('tb_alumni_dok')
+            ->join('tb_angkatan', 'tb_alumni_dok.id_angkatan', '=', 'tb_angkatan.id_angkatan')
+            ->join('tb_mahasiswa', 'tb_alumni_dok.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
+            ->select('tb_angkatan.angkatan','tb_mahasiswa.nama','tb_alumni_dok.file','tb_alumni_dok.keterangan')->where('tb_alumni_dok.id_angkatan',$lempar)
+            ->get();
+        return view('tampilan.alumni.aktivitas',compact('alumniDok','angkatan','lempar'));
         
     }
     public function index3(){
