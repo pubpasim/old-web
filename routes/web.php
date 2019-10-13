@@ -160,7 +160,12 @@ Route::get('tampilUser','userController@tampilUser');
 Route::get('tambahUser','userController@tambahUser');
 Route::post('tambahUser/store','userController@tambahUser_store');
 Route::post('tambah/user','userController@simpanUser');
-
+Route::get('pub_profile','userController@profile');
+Route::get('ppmb_profile','userController@ppmb_profile');
+Route::get('organisasi_pub','userController@organisasi_pub');
+Route::get('detail/org/{x}','userController@detail');
+Route::get('pelatihan','userController@pelatihan');
+Route::post('pelatihan_data','userController@pelatihan_data');
 //================================ADMIN ALUMNI=============================//
 
 Route::get('admin/alumni/{x}','alumni_adminController@index');

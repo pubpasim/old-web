@@ -1,62 +1,114 @@
- </body>
- <!-- The content of your page would go here. -->        
- <footer class="footer-distributed">
- 	<div class="footer-left">
- 		<img src="{{url('imgs')}}/{{('pub web.png') }}" width="70%" style="margin-left: 30px;">                
- 		<!-- <h3>Company<span>logo</span></h3> -->                
- 		<p class="footer-links">                    
- 			<a href="#">Home</a>                    ·                    
- 			<a href="#">Blog</a>                    ·                    
- 			<a href="#">Pricing</a>                    ·                    
- 			<a href="#">About</a>                    ·                    
- 			<a href="#">Faq</a>                    ·                    
- 			<a href="#">Contact</a>                
- 		</p>                
- 		<p class="footer-company-name">Pemberdayaan Umat Berkelanjutan &copy; 2019</p>            
- 	</div>            
- 	<div class="footer-center">                
- 		<div>                    
- 			<i class="fa fa-map-marker"></i>                    
- 			<p><span>Sukaraja, Jl. Dakota NO 8A</span> Cicendo, Bandung</p>                
- 		</div>                
- 		<div>                    
- 			<i class="fa fa-phone"></i>                    
- 			<p>+1 555 123456</p>                
- 		</div>                
- 		<div>                    
- 			<i class="fa fa-envelope"></i>                    
- 			<p><a href="mailto:support@company.com">support@company.com</a></p>                
- 		</div>            
- 	</div>            
- 	<div class="footer-right">                
- 		<p class="footer-company-about">                    
- 			<span>About the company</span>                    
- 			Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.                
- 		</p>                
- 		<div class="footer-icons">                    
- 			<a href="#"><i class="fa fa-facebook"></i></a>                    
- 			<a href="#"><i class="fa fa-twitter"></i></a>                    
- 			<a href="#"><i class="fa fa-linkedin"></i></a>                    
- 			<a href="#"><i class="fa fa-github"></i></a>                
- 		</div>            
- 	</div>        
+	<!-- Footer Area Start -->
+	<footer class="footer-area section-padding-80-0">
+		<!-- Main Footer Area -->
+		<div class="main-footer-area">
+			<div class="container">
+				<div class="row align-items-baseline justify-content-between">
+					<!-- Single Footer Widget Area -->
+					<div class="col-12 col-sm-6 col-lg-3">
+						<div class="single-footer-widget mb-80">
+							<!-- Footer Logo -->
+							<a href="#" class="footer-logo"><img src="img/core-img/logo2.png" alt=""></a>
 
- </footer>
- </html>
- <script type="text/javascript" src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
- <script>
- 	var myIndex = 0;
- 	carousel();
+							<h4>+12 345-678-9999</h4>
+							<span>Info.colorlib@gmail.com</span>
+							<span>856 Cordia Extension Apt. 356, Lake Deangeloburgh, South Africa</span>
+						</div>
+					</div>
 
- 	function carousel() {
- 		var i;
- 		var x = document.getElementsByClassName("mySlides");
- 		for (i = 0; i < x.length; i++) {
- 			x[i].style.display = "none";  
- 		}
- 		myIndex++;
- 		if (myIndex > x.length) {myIndex = 1}    
- 			x[myIndex-1].style.display = "block";  
-  setTimeout(carousel, 3000); // Change image every 2 seconds
-}
-</script>
+					<!-- Single Footer Widget Area -->
+					<div class="col-12 col-sm-6 col-lg-3">
+						<div class="single-footer-widget mb-80">
+							<!-- Widget Title -->
+							<h5 class="widget-title">Our Blog</h5>
+
+							<!-- Single Blog Area -->
+							<div class="latest-blog-area">
+								<a href="#" class="post-title">Freelance Design Tricks How</a>
+								<span class="post-date"><i class="fa fa-clock-o" aria-hidden="true"></i> Jan 02, 2019</span>
+							</div>
+
+							<!-- Single Blog Area -->
+							<div class="latest-blog-area">
+								<a href="#" class="post-title">Free Advertising For Your Online</a>
+								<span class="post-date"><i class="fa fa-clock-o" aria-hidden="true"></i> Jan 02, 2019</span>
+							</div>
+						</div>
+					</div>
+					<!-- Single Footer Widget Area -->
+					<div class="col-12 col-sm-4 col-lg-2">
+						<div class="single-footer-widget mb-80">
+							<!-- Widget Title -->
+							<h5 class="widget-title">Links</h5>
+
+							<!-- Footer Nav -->
+							<ul class="footer-nav">
+								<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> About Us</a></li>
+								<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Our Room</a></li>
+								<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Career</a></li>
+								<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> FAQs</a></li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Single Footer Widget Area -->
+					<div class="col-12 col-sm-8 col-lg-4">
+						<div class="single-footer-widget mb-80">
+							<!-- Widget Title -->
+							<h5 class="widget-title">Subscribe Newsletter</h5>
+							<span>Subscribe our newsletter gor get notification about new updates.</span>
+
+							<!-- Newsletter Form -->
+							<form action="index.html" class="nl-form">
+								<input type="email" class="form-control" placeholder="Enter your email...">
+								<button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Copywrite Area -->
+		<div class="container">
+			<div class="copywrite-content">
+				<div class="row align-items-center">
+					<div class="col-12 col-md-8">
+						<!-- Copywrite Text -->
+						<div class="copywrite-text">
+							<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+							</div>
+						</div>
+						<div class="col-12 col-md-4">
+							<!-- Social Info -->
+							<div class="social-info">
+								<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+								<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+								<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+								<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- Footer Area End -->
+
+		<!-- **** All JS Files ***** -->
+		<!-- jQuery 2.2.4 -->
+		<script src="/roberto-master/js/jquery.min.js"></script>
+		<!-- Popper -->
+		<script src="/roberto-master/js/popper.min.js"></script>
+		<!-- Bootstrap -->
+		<script src="/roberto-master/js/bootstrap.min.js"></script>
+		<!-- All Plugins -->
+		<script src="/roberto-master/js/roberto.bundle.js"></script>
+		<!-- Active -->
+		<script src="/roberto-master/js/default-assets/active.js"></script>
+		<script type="text/javascript" src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+	</body>
+
+	</html>
