@@ -41,17 +41,18 @@ class alumni_adminController extends Controller
         $nama_file = time()."_".$file->getClientOriginalName();
          
         // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload = base_path('imgs');
+        $tujuan_upload = ('imgs');
         $file->move($tujuan_upload,$nama_file);
 
         DB::table('tb_alumni_dok')
         ->insert([
             'file' => $nama_file,            
             'keterangan' => $request->contact_message,   
-            'id_angkatan'=> $request->id           
+            'id_angkatan'=> $request->id_ang,
+            'id_mahasiswa'=> $request->id_mhs         
         ]);
 
-        return redirect('admin/alumni/'.$request->id);
+        return redirect('admin/alumni/'.$request->id_mhs);
     }
 
     /**

@@ -3,9 +3,10 @@
 <hr>
 <section id="welcome" class="tm-section">
 
-    <form action="{{url('tambahFoto')}}" method="post">
+    <form action="{{url('tambahFoto')}}" method="post" enctype="multipart/form-data">
         {{csrf_field()}}
-        <input type="hidden" name="id" value="{{$data->id_angkatan}}">
+        <input type="hidden" name="id_mhs" value="{{$data->id_mahasiswa}}">
+        <input type="hidden" name="id_ang" value="{{$data->id_angkatan}}">
         <h2 style="color: #003399;">Upload aktivitasmu disini</h2>
         <hr>
         <input  id="uploadFile" placeholder="Pilih File..." disabled="disabled" />
@@ -22,15 +23,16 @@
         </div>
         <hr>
     </form>
+
 </section>
 <!-- About section -->
+@foreach($foto as $kegiatan)
 <section id="about" class="tm-section">
     <div class="row">                                                                
         <div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 push-lg-4 push-md-5">
             <header>
                 <h2 class="tm-blue-text tm-section-title tm-margin-b-45">About the team</h2>
             </header>
-            @foreach($foto as $kegiatan)
             <p>{{$kegiatan->keterangan}}</p>
             <a href="#" class="tm-button tm-button-wide">Read More</a>  
         </div>
@@ -38,10 +40,10 @@
         <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 pull-lg-8 pull-md-7 tm-about-img-container">
             <img src="{{url('imgs')}}/{{($kegiatan->file) }}" alt="Image" class="img-fluid">    
         </div>  
-        @endforeach
+        
     </div>                            
 </section>  
-
+@endforeach
 <!-- Gallery One section -->     
 <section id="galleryone" class="tm-section">
     <header><h2 class="tm-blue-text tm-section-title tm-margin-b-30">Gallery One</h2></header>

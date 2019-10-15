@@ -105,9 +105,7 @@
 							
 								<div class="form-group">
 									<label>Struktur Organisasi</label>
-									<select id="det_orgpub" name="det_orgpub">
-										<option value=""></option>
-									</select>
+									
 								</div>
 
 								<div class="col-75">
@@ -115,24 +113,26 @@
 										<option value="0"> --Jabatan di PUB--</option>
 										@foreach($detorg_pub as $data)
 										<option value="{{$data->id_orgpub}}">{{$data->id_orgpub}}</option>
+										<option>Salma</option>
 										@endforeach
 									</select>
 								</div>
 
 								<div class="col-75">
-									<select id="det_orgpub" name="angkatan">
+									<select id="det_orgpub" name="detorg_pub">
 										<option value="0"> --Angkatan--</option>
 										@foreach($detorg_pub as $data)
-										<option value="{{$data->id_angkatan}}">{{$data->id_angkatan}}</option>
+										<option value="{{$data->id_angkatan}}">{{$data->angkatan}}</option>
 										@endforeach
 									</select>
 								</div>
 
 								<div class="col-75">
 									<select id="det_orgpub" name="mahasiswa">
-										<option value="0"> --ID Mahasiswa--</option>
+										<option value="0"> --ID Mahasiswa-- </option>
 										@foreach($detorg_pub as $data)
 										<option value="{{$data->id_mahasiswa}}">{{$data->id_mahasiswa}}</option>
+										<option>salmaaaa</option>
 										@endforeach
 									</select>
 								</div>

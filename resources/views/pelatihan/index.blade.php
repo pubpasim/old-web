@@ -21,7 +21,7 @@
 						</thead>
 						<tbody> 
 							@foreach($pelatihan as $data)
-							<tr align="censser">
+							<tr align="center">
 								<td>{{$data->id_pelatihan}}</td>
 								<td>{{$data->pelatihan}}</td>
 								<td>

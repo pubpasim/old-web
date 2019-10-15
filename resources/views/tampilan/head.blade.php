@@ -66,6 +66,15 @@
 				</ul>
 			</li>
 			<li class="dropdown ">
+<<<<<<< HEAD
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg> PPMB <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="/struktur_ppmb"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Struktur Organisasi</a></li>
+							<li><a href="/syarat_ketentuan"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg></svg> Syarat dan Ketentuan</a></li>
+							<li><a href="/jadwal_ppmb"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Jadwal</a></li>
+						</ul>
+					</li>
+=======
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg> PUB <span class="caret"></span></a>
 				<ul class="dropdown-menu" role="menu">
 
@@ -89,6 +98,7 @@
 				</ul>
 			</li>
 
+>>>>>>> b164e43f00c93a1f7405b8ded9537b99bc71ad69
 			<li class="dropdown ">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg> Alumni PUB <span class="caret"></span></a>
 				<ul class="dropdown-menu" role="menu">
@@ -104,6 +114,8 @@
 					<li><a href="{{url('tampilan/angkatan/viewang')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Angkatan</a></li>
 
 					<li><a href="{{url('struktur_organisasi/index/')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Jabatan PUB</a></li>
+
+					<li><a href="{{url('tampilUser')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Data User</a></li>
 
 					<li><a href="{{url('alumni')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Jabatan PPMB</a></li>
 

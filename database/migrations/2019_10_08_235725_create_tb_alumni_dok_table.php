@@ -18,8 +18,10 @@ class CreateTbAlumniDokTable extends Migration
             $table->string('file');
             $table->string('keterangan');
             $table->integer('id_angkatan')->unsigned();
+            $table->integer('id_mahasiswa')->unsigned();
             $table->timestamps();
             $table->foreign('id_angkatan')->references('id_angkatan')->on('tb_angkatan');
+            $table->foreign('id_mahasiswa')->references('id_mahasiswa')->on('tb_mahasiswa');
         });
     }
 
