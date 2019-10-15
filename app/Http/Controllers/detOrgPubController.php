@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use Illuminate\Http\Request;
 
 class detOrgPubController extends Controller
@@ -13,17 +13,20 @@ class detOrgPubController extends Controller
      */
     public function index()
     {
-        //
+        $detorg_pub = DB::table('tb_detorg_pub')->get();
+        return view('detorg_pub.index',compact('detorg_pub'));
+
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creatingsss a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        $detorg_pub = DB::table('tb_detorg_pub')->get();
+        return view('detorg_pub.tambah',compact('detorg_pub'));
     }
 
     /**
@@ -34,7 +37,13 @@ class detOrgPubController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('tb_detorg_pub')->insert
+            ([
+                'id_orgpub'=>$request->id_orgpub,
+                'id_angkatan'=>$request->id_angkatan,
+                'id_mahasiswa'=>$request->id_mahasiswa
+            ]);
+        return redirect ('/');
     }
 
     /**
@@ -54,9 +63,10 @@ class detOrgPubController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id_detorg_pub)
     {
-        //
+        $detorg_pub = DB::table('tb_detorg_ub')->where('id_detorg_pub',$id_detorg_pub)->get();
+        return view('detorg_pub.edit',compact('detorg_pub'));
     }
 
     /**
@@ -66,9 +76,12 @@ class detOrgPubController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_detorg_pub)
     {
-        //
+         $detorg_pub = DB::table('tb_detorg_ub')->where('id_detorg_pub',$id_detorg_pub)->update([
+            'id_orgpub'=>$request->tb_pelatihan
+        ]);
+        return redirect('/');
     }
 
     /**

@@ -76,23 +76,38 @@ Route::get('tampilan/daerah/viewdae','daerahController@index');
 Route::get('tampilan/daerah/createdae','daerahController@create');
 
 
-Route::get('struktur_organisasi/index/','orgPUBController@index');
+Route::get('struktur_organisasi','orgPUBController@index');
 Route::get('struktur_organisasi/tambah/','orgPUBController@create');
 Route::post('struktur_organisasi/store/','orgPUBController@store');
 Route::get('struktur_organisasi/edit/{x}','orgPUBController@edit');
 Route::post('struktur_organisasi/update/{y}','orgPUBController@update');
 Route::get('struktur_organisasi/hapus/{z}','orgPUBController@destroy');
 
-Route::get('status_pub/index/','statusPubController@index');
+Route::get('status_pub','statusPubController@index');
 Route::get('status_pub/tambah/','statusPubController@create');
 Route::post('status_pub/store/','statusPubController@store');
 Route::get('status_pub/edit/{x}','statusPubController@edit');
 Route::post('status_pub/update/{y}','statusPubController@update');
 Route::get('status_pub/hapus/{z}','statusPubController@destroy'); 	
 
+Route::get('alumni','alumniController@index');
 Route::get('alumni/aktivitas','alumniController@aktivitas');
 Route::post('alumni/aktivitas/tampil','alumniController@aktivitasTampil');
-Route::get('alumni','alumniController@index');
+
+Route::get('detorg_pub','detOrgPubController@index');
+Route::get('detorg_pub/tambah/','detOrgPubController@create');
+Route::post('detorg_pub/store/','detOrgPubController@store');
+Route::get('detorg_pub/edit/{x}','detOrgPubController@edit');
+Route::post('detorg_pub/update/{x}','detOrgPubController@update');
+Route::get('detorg_pub/hapus/{x}','detOrgPubController@destroy'); 	
+
+Route::get('Alumni_admin/det_pelatihan','detPelatihanController@index');
+Route::get('Alumni_admin/det_pelatihan/tambah/','detPelatihanController@create');
+Route::post('Alumni_admin/det_pelatihan/store/','detPelatihanController@store');
+Route::get('Alumni_admin/det_pelatihan/edit/{x}','detPelatihanController@edit');
+Route::post('Alumni_admin/det_pelatihan/update/{x}','detPelatihanController@update');
+Route::get('Alumni_admin/det_pelatihan/hapus/{x}','detPelatihanController@destroy'); 	
+
 
 Route::get('mahasiswa','mahasiswaController@index');
 Route::get('tambah/mahasiswa','mahasiswaController@create');
@@ -115,12 +130,12 @@ Route::get('editInfaq/{id}','alumniController@editInfaq');
 Route::post('editInfaq/{id}','alumniController@updateInfaq');
 Route::get('hapusInfaq/{id}','alumniController@hapusInfaq');
 
-Route::get('pelatihan/index/','pelatihanController@index');
+Route::get('pelatihan','pelatihanController@index');
 Route::get('pelatihan/tambah/','pelatihanController@create');
 Route::post('pelatihan/store/','pelatihanController@store');
 Route::get('pelatihan/edit/{x}','pelatihanController@edit');
-Route::post('pelatihan/update/{y}','pelatihanController@update');
-Route::get('pelatihan/hapus/{z}','pelatihanController@destroy');
+Route::post('pelatihan/update/{x}','pelatihanController@update');
+Route::get('pelatihan/hapus/{x}','pelatihanController@destroy');
 
 Route::get('dokumentasiPub','dokumentasiPubController@index');
 Route::get('tambah_pubdok','dokumentasiPubController@create');
@@ -148,6 +163,8 @@ Route::post('storePsikotes/{x}', 'hasilController@storePsikotes');
 Route::get('hapusPsi/{x}', 'hasilController@hapusPsi');
 Route::get('editPsi/{x}', 'hasilController@editPsi');
 Route::post('updatePsi/{x}', 'hasilController@updatePsi');
+
+Route::get('det_pelatihan/','detPelatihanController@index');
 
 Route::get('dataSurvei/{x}', 'hasilController@dataSurvei');
 Route::get('tambahSurvei/{x}', 'hasilController@tambahSurvei');

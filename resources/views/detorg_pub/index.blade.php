@@ -30,7 +30,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"><span>PUB</span>Admin</a>
+				<a class="navbar-brand" href="#"><span>Lumino</span>Admin</a>
 				<ul class="user-menu">
 					<li class="dropdown pull-right">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> User <span class="caret"></span></a>
@@ -95,33 +95,60 @@
 				<li class="active">Icons</li>
 			</ol>
 		</div><!--/.row-->
-		@foreach ($pelatihan as $data)
-		<form method="POST" action="{{URL('pelatihan/store')}}" Class="form-horizontal" id="block-validate">
-		{{csrf_field()}}
+		
 		<div class="row">
-			<div class="panel-heading">INPUT DATA</div>
+			<div class="col-lg-12">
+				<h1 class="page-header">Struktur Organisasi PUB</h1>
+			</div>
+		</div><!--/.row-->
+				
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Struktur Organisasi PUB</div>
+					 <br><p class="icon-plus-sign"></i> <a href="{{url('detorg_pub/tambah')}}">Tambah Data</a></p>
 					<div class="panel-body">
-						<div class="col-md-6">
-							<form role="form">
-							
-								<div class="form-group">
-									<label>PELATIHAN</label>
-									<select name="jabatan">
-										<option name="php">PHP</option>
-										<option name="vb.net">VB.NET</option>
-										<option name="java">JAVA</option>
-									</select>
-									
-								</div>
-								<button type="submit" name="submit" class="btn btn-primary">TAMBAH DATA </button>
-								 
-																
+						<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+						    <!-- <thead>
+						    <tr>   
+						        <th data-field="id_orgpub" data-sortable="true" name="id_orgpub">ID</th>
+						        <th data-field="name"  data-
+						        sortable="true" name="jabatan">Jabatan</th>
+						      </tr>
+						      <tr> -->
+						      	<tr>
+						      		<td>No</td>
+									<td>Jabatan</td>
+									<td>Angkatan</td>
+									<td>Mahasiswa</td>
+
+								</tr> 
+								@foreach($detorg_pub as $data)
+
+								<tr align="center">
+								<td>{{$data->id_detorg_pub}}</td>
+								<td>{{$data->id_orgpub}}</td>
+								<td>{{$data->id_angkatan}}</td>
+								<td>{{$data->id_mahasiswa}}</td>
 								
+								<td>
+								<a href="{{url('detorg_pub/edit'.$data->id_detorg_pub)}}">Edit</a>
+								<a href="{{url('detorg_pub/hapus'.$data->id_detorg_pub)}}">Hapus</a>
+							  </td>
+							</tr>
+							 
+						@endforeach
 					
+                         	</tr>
+						    </thead>
+						</table>
+					</div>
+				</div>
+			</div>
 		</div>
-	</form>
-	@endforeach
 		<!--/.row-->	
+		
 	</div><!--/.main-->
 
 	<script src="/lumino/js/jquery-1.11.1.min.js"></script>

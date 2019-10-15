@@ -86,7 +86,8 @@ class pelatihanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_pelatihan)
     {
-        //
+        DB::table('tb_pelatihan')->where('id_peltihan',$id_peltihan)->delete();
+        return redirect('pelatihan.index');
     }}
