@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Input;
 
+
 Route::get('admin', function () {
 	return view('tampilan.index');
 });
@@ -82,8 +83,14 @@ Route::get('status_pub/hapus/{z}','statusPubController@destroy');
 Route::get('alumni/aktivitas','alumniController@aktivitas');
 Route::post('alumni/aktivitas/tampil','alumniController@aktivitasTampil');
 Route::get('alumni','alumniController@index');
-Route::get('tambah/mahasiswa','alumniController@create');
+
 Route::get('mahasiswa','mahasiswaController@index');
+Route::get('tambah/mahasiswa','mahasiswaController@create');
+Route::post('simpan/mahasiswa','mahasiswaController@store');
+Route::get('mahasiswaEdit/{id}','mahasiswaController@edit');
+Route::post('mahasiswaEdit/{id}','mahasiswaController@update');
+Route::get('mahasiswaHapus/{id}','mahasiswaController@destroy');
+
 Route::post('angkatanModel','angkatanController@store');
 
 Route::post('lanjut','alumniController@store');
@@ -91,6 +98,12 @@ Route::get('lanjut/pengalaman','alumniController@index2');
 Route::get('tambahAlumni','alumniController@index3');
 Route::post('tambah/pengalaman','alumniController@store2');
 Route::post('tambah/pendidikan','alumniController@store3');
+Route::get('infaq','alumniController@infaq_view');
+Route::get('tambahInfaq','alumniController@tambahInfaq');
+Route::post('tambahInfaq','alumniController@simpanInfaq');
+Route::get('editInfaq/{id}','alumniController@editInfaq');
+Route::post('editInfaq/{id}','alumniController@updateInfaq');
+Route::get('hapusInfaq/{id}','alumniController@hapusInfaq');
 
 
 Route::get('strukturOrgAlumni','alumniController@strukturOrgAlumni');
@@ -114,9 +127,22 @@ Route::get('pelatihan/edit/{x}','pelatihanController@edit');
 Route::post('pelatihan/update/{y}','pelatihanController@update');
 Route::get('pelatihan/hapus/{z}','pelatihanController@destroy');
 
-Route::get('/pub_dok/upload', 'pubDokController@upload');
-Route::post('/pub_dok/proses', 'pubDokController@proses_upload');
-Route::get('tambahTahun', 'hasilController@tambahTahun');
+
+// Route::get('/pub_dok/upload', 'pubDokController@upload');
+// Route::post('/pub_dok/proses', 'pubDokController@proses_upload');
+// Route::get('tambahTahun', 'hasilController@tambahTahun');
+
+Route::get('dokumentasiPub','dokumentasiPubController@index');
+Route::get('tambah_pubdok','dokumentasiPubController@create');
+Route::post('simpan/kegiatan','dokumentasiPubController@store');
+Route::get('edit/kegiatan/{x}','dokumentasiPubController@edit');
+Route::post('edit/kegiatan/{x}','dokumentasiPubController@update');
+Route::get('hapus/kegiatan/{x}','dokumentasiPubController@destroy');
+
+Route::get('/pub_dok/upload', 'dokumentasiPubController@upload');
+Route::post('/pub_dok/proses', 'dokumentasiPubController@proses_upload');
+Route::get('tambahTahun', 'ppmbDokController@tambahTahun');
+
 Route::get('tambahTPA/{x}', 'hasilController@tambahTPA');
 Route::post('storeTPA/{x}', 'hasilController@storeTPA');
 Route::post('storeTahun', 'hasilController@storeTahun');
@@ -165,7 +191,13 @@ Route::get('tampilUser','userController@tampilUser');
 Route::get('tambahUser','userController@tambahUser');
 Route::post('tambahUser/store','userController@tambahUser_store');
 Route::post('tambah/user','userController@simpanUser');
-
+Route::get('pub_profile','userController@profile');
+Route::get('ppmb_profile','userController@ppmb_profile');
+Route::get('organisasi_pub','userController@organisasi_pub');
+Route::get('detail/org/{x}','userController@detail');
+Route::get('pelatihan','userController@pelatihan');
+Route::get('pelatihan_data','userController@pelatihan_data');
+Route::get('kegiatanPub','userController@kegiatanPub');
 //================================ADMIN ALUMNI=============================//
 
 Route::get('admin/alumni/{x}','alumni_adminController@index');

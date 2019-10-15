@@ -76,92 +76,70 @@
 	<div class="container">
 		@foreach($psi as $data)
 		<form method="POST" action="{{url('updatePsi/'.$id)}}">
-		{{csrf_field()}}
-				
-		<div class="row">
+			{{csrf_field()}}
+			
+			<div class="row">
 
-			<input hidden value="{{$data->id_psi}}" type="text" class="form-control" placeholder="Nama Peserta" name="id_psi">
+				<input hidden value="{{$data->id_psi}}" type="text" class="form-control" placeholder="Nama Peserta" name="id_psi">
 
-			<div class="col-25">
-				<label>Edit Psikotest</label>
-			</div>
-			<div class="col-75">
-				<label for="nama_peserta">Nama Peserta</label>
-				<input value="{{$data->nama_peserta}}" type="text" class="form-control" placeholder="Nama Peserta" name="nama_peserta">
-			</div>
-			<div class="col-75">
-				<label for="nama_peserta">Jenis Kelamin</label>
-				<select id="jk" name="jk">
-					<option value="Laki - Laki"> Laki - Laki</option>
-					<option value="Perempuan"> Perempuan</option>
-				</select>
-			</div>
+				<div class="col-25">
+					<label>Edit Psikotest</label>
+				</div>
+				<div class="col-75">
+					<label for="nama_peserta">Nama Peserta</label>
+					<input value="{{$data->nama_peserta}}" type="text" class="form-control" placeholder="Nama Peserta" name="nama_peserta">
+				</div>
+				<div class="col-75">
+					<label for="nama_peserta">Jenis Kelamin</label>
+					<select id="jk" name="jk">
+						<option value="Laki - Laki"> Laki - Laki</option>
+						<option value="Perempuan"> Perempuan</option>
+					</select>
+				</div>
 
-			<div class="col-75">
-				<label for="nama_peserta">Jurusan Pilihan</label>
-				<select id="jurusan" name="jurusan">
-					<option value="0" disabled=""> --Jurusan Pilihan--</option>
-					<option value="S1 Teknik Informatika"> S1 Teknik Informatika</option>
-					<option value="S1 Akuntansi"> S1 Akuntansi</option>
-					<option value="S1 Manajemen"> S1 Manajemen</option>
-					<option value="S1 Sastra Jepang"> S1 Sastra Jepang</option>
-					<option value="D3 Bahasa Inggris"> D3 Bahasa Inggris</option>
-					<option value="D3 Manajemen Informatika"> D3 Manajemen Informatika</option>
+				<div class="col-75">
+					<label for="nama_peserta">Jurusan Pilihan</label>
+					<select id="jurusan" name="jurusan">
+						<option value="0" disabled=""> --Jurusan Pilihan--</option>
+						<option value="S1 Teknik Informatika"> S1 Teknik Informatika</option>
+						<option value="S1 Akuntansi"> S1 Akuntansi</option>
+						<option value="S1 Manajemen"> S1 Manajemen</option>
+						<option value="S1 Sastra Jepang"> S1 Sastra Jepang</option>
+						<option value="D3 Bahasa Inggris"> D3 Bahasa Inggris</option>
+						<option value="D3 Manajemen Informatika"> D3 Manajemen Informatika</option>
 
-					
-				</select>
-			</div>
-			<div class="col-75">
-				<label for="asal_sekolah">Asal Sekolah</label>
-				<input value="{{$data->asal_sekolah}}" type="text" class="form-control" placeholder="Asal Sekolah" name="asal_sekolah">
-			</div>
-			<div class="col-75">
-				<label for="asal_daerah">Asal Daerah</label>
-				<input value="{{$data->asal_daerah}}" type="text" class="form-control" placeholder="asal_daerah" name="asal_daerah">
-			</div>
-			<div class="col-75">
-				<label for="no_hp">No HP</label>
-				<input value="{{$data->no_hp}}" type="text" class="form-control" placeholder="no_hp" name="no_hp">
-			</div>
-			<div class="col-75">
-				<label for="nama_peserta">Status</label>
-				<select id="jenis" name="jenis">
-					<option value="LULUS"> Lulus</option>
-					<option value="TIDAK LULUS"> Tidak lulus</option>
-				</select>
-			</div>
+						
+					</select>
+				</div>
+				<div class="col-75">
+					<label for="asal_sekolah">Asal Sekolah</label>
+					<input value="{{$data->asal_sekolah}}" type="text" class="form-control" placeholder="Asal Sekolah" name="asal_sekolah">
+				</div>
+				<div class="col-75">
+					<label for="asal_daerah">Asal Daerah</label>
+					<input value="{{$data->asal_daerah}}" type="text" class="form-control" placeholder="asal_daerah" name="asal_daerah">
+				</div>
+				<div class="col-75">
+					<label for="no_hp">No HP</label>
+					<input value="{{$data->no_hp}}" type="text" class="form-control" placeholder="no_hp" name="no_hp">
+				</div>
+				<div class="col-75">
+					<label for="nama_peserta">Status</label>
+					<select id="jenis" name="jenis">
+						<option value="LULUS"> Lulus</option>
+						<option value="TIDAK LULUS"> Tidak lulus</option>
+					</select>
+				</div>
 
-		</div>
-		<br>
-		<div class="row" align="center">
-			<input type="submit" value="Submit">
-		</div>
+			</div>
+			<br>
+			<div class="row" align="center">
+				<input type="submit" value="Submit">
+			</div>
 		</form>
 		@endforeach
+	</div>
 </div>
-</div>
-<body >
-	<script src="/lumino/js/jquery-1.11.1.min.js"></script>
-	<script src="/lumino/js/bootstrap.min.js"></script>
-	<script src="/lumino/js/chart.min.js"></script>
-	<script src="/lumino/js/chart-data.js"></script>
-	<script src="/lumino/js/easypiechart.js"></script>
-	<script src="/lumino/js/easypiechart-data.js"></script>
-	<script src="/lumino/js/bootstrap-datepicker.js"></script>
-	<script src="/lumino/js/bootstrap-table.js"></script>
-	<script>
-		!function ($) {
-			$(document).on("click","ul.nav li.parent > a > span.icon", function(){		  
-				$(this).find('em:first').toggleClass("glyphicon-minus");	  
-			}); 
-			$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
-		}(window.jQuery);
 
-		$(window).on('resize', function () {
-		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
-		})
-		$(window).on('resize', function () {
-		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
-		})
-	</script>	
-</body>
+@include('tampilan.foot')
+
