@@ -73,9 +73,9 @@
 			margin-top: 6px;
 		}
 		#form1{
-			width: 750px;
-			height: 500px;
-			margin-left: 300px;
+			width: 70%;
+			height: 100%;
+			margin-left: 17%;
 		}
 		/* Clear floats after the columns */
 		.row:after {
@@ -97,7 +97,7 @@
 	<div id="form1">
 		<h1>Daftar Mahasiswa PUB</h1>
 		<div class="container">
-			<a href="{{url('tambahAlumni')}}"><button class="btn btn-primary" style=" background-color: #339966; width: 100%;"><svg class="glyph stroked plus sign" style="height: 30px;"><use xlink:href="#stroked-plus-sign"/></svg></button></a>
+			<a href="{{url('tambah/mahasiswa')}}"><button class="btn btn-primary" style=" background-color: #339966; width: 100%;"><svg class="glyph stroked plus sign" style="height: 30px;"><use xlink:href="#stroked-plus-sign"/></svg></button></a>
 			<table id="myTable">
 				
 				<thead>
@@ -108,7 +108,7 @@
 						<th>ASAL SEKOLAH</th>
 						<th>JABATAN DI PUB</th>
 						<th>JABATAN DI PPMB</th>
-						<th>STATUS PERNIKAHAN</th>
+						<th>STATUS PUB</th>
 						<th>JURUSAN</th>
 						<th>AKSI</th>
 						<th></th>
@@ -126,9 +126,9 @@
 						<td>{{$mhs->jabatan}}</td>
 						<td>{{$mhs->status}}</td>
 						<td>{{$mhs->nama_jur}}</td>
-						<td><button type="reset" class="btn btn-default">Detail</button></td>
-						<td><button class="btn btn-primary" style="background-color: red;">Hapus</button></td>
-						<td><button class="btn btn-primary">Edit</button></td>
+						<td><a href="{{url('detail/org/'.$mhs->id_mahasiswa)}}"><button type="reset" class="btn btn-default">Detail</button></a></td>
+						<td><a href="{{url('mahasiswaHapus/'.$mhs->id_mahasiswa)}}"><button class="btn btn-primary" style="background-color: red;">Hapus</button></a></td>
+						<td><a href="{{url('mahasiswaEdit/'.$mhs->id_mahasiswa)}}"><button class="btn btn-primary">Edit</button></a></td>
 					</tr>
 					@endforeach
 				</tbody>

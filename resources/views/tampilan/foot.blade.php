@@ -1,3 +1,5 @@
+
+
 <script src="/lumino/js/jquery-1.11.1.min.js"></script>
 <script src="/lumino/js/bootstrap.min.js"></script>
 <script src="/lumino/js/chart.min.js"></script>
@@ -5,6 +7,7 @@
 <script src="/lumino/js/easypiechart.js"></script>
 <script src="/lumino/js/easypiechart-data.js"></script>
 <script src="/lumino/js/bootstrap-datepicker.js"></script>
+<script src="/lumino/js/bootstrap-table.js"></script>
 	<script type="text/javascript" src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
 	$(document).ready( function () {

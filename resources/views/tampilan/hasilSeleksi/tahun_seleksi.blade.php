@@ -75,29 +75,29 @@
 <div id="form1">
 	<div class="container">
 		<form method="POST" action="{{url('hasil2')}}">
-		{{csrf_field()}}
-				
-		<div class="row">
-			<div class="col-25">
-				<label for="jbPUB">Tahun Seleksi</label>
-			</div>
+			{{csrf_field()}}
 			
-			<div class="col-75">
-				<a href="{{url('tambahTahun')}}" class="btn btn-info">Add</a>
-				<br><br>
+			<div class="row">
+				<div class="col-25">
+					<label for="jbPUB">Tahun Seleksi</label>
+				</div>
+				
+				<div class="col-75">
+					<a href="{{url('tambahTahun')}}" class="btn btn-info">Add</a>
+					<br><br>
 
-				<select id="tahun" name="tahun">
-					<option value="0"> --Tahun Seleksi--</option>
-					@foreach($tahun as $data)
-					<option value="{{$data->id}}">{{$data->tahun}}</option>
-					@endforeach
-				</select>
+					<select id="tahun" name="tahun">
+						<option value="0"> --Tahun Seleksi--</option>
+						@foreach($tahun as $data)
+						<option value="{{$data->id}}">{{$data->tahun}}</option>
+						@endforeach
+					</select>
+				</div>
 			</div>
-		</div>
-		<br>
-		<div class="row" align="center">
-			<input type="submit" value="Cari">
-		</div>
+			<br>
+			<div class="row" align="center">
+				<input type="submit" value="Cari">
+			</div>
 		</form>
 		<br><br>
 		<div class="row" @if($lempar=="") style="display: none;" @endif style="padding-left: 100px;">
@@ -106,33 +106,7 @@
 			<a href="{{url('dataSurvei/'.$lempar)}}" class="btn btn-info">Survei</a>
 			<a href="{{url('dataFinal/'.$lempar)}}" class="btn btn-info">Hasil Final</a>
 		</div>
+	</div>
 </div>
-</div>
-<body >
-	<script src="/lumino/js/jquery-1.11.1.min.js"></script>
-	<script src="/lumino/js/bootstrap.min.js"></script>
-	<script src="/lumino/js/chart.min.js"></script>
-	<script src="/lumino/js/chart-data.js"></script>
-	<script src="/lumino/js/easypiechart.js"></script>
-	<script src="/lumino/js/easypiechart-data.js"></script>
-	<script src="/lumino/js/bootstrap-datepicker.js"></script>
-	<script src="/lumino/js/bootstrap-table.js"></script>
-	<script>
-		!function ($) {
-			$(document).on("click","ul.nav li.parent > a > span.icon", function(){		  
-				$(this).find('em:first').toggleClass("glyphicon-minus");	  
-			}); 
-			$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
-		}(window.jQuery);
-
-		$(window).on('resize', function () {
-		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
-		})
-		$(window).on('resize', function () {
-		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
-		})
-	</script>	
-</body>
-
 
 @include('tampilan.foot')

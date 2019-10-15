@@ -169,32 +169,36 @@
 				<div class="service-content d-flex align-items-center justify-content-between">
 					<!-- Single Service Area -->
 					<div class="single-service--area mb-100 wow fadeInUp" data-wow-delay="100ms">
-						<img src="img/core-img/icon-1.png" alt="">
-						<h5>Transportion</h5>
+						<img src="{{url('imgs/icon/house.png')}}" alt="">
+						<h5>Asrama</h5>
 					</div>
 
 					<!-- Single Service Area -->
 					<div class="single-service--area mb-100 wow fadeInUp" data-wow-delay="300ms">
-						<img src="img/core-img/icon-2.png" alt="">
-						<h5>Reiseservice</h5>
+						<img src="{{url('imgs/icon/makan.png')}}" alt="">
+						<h5>Makan 2x Sehari</h5>
 					</div>
 
 					<!-- Single Service Area -->
 					<div class="single-service--area mb-100 wow fadeInUp" data-wow-delay="500ms">
-						<img src="img/core-img/icon-3.png" alt="">
-						<h5>Spa Relaxtion</h5>
+						<img src="{{url('imgs/icon/soap.png')}}" alt="">
+						<h5>Toiletris</h5>
 					</div>
 
 					<!-- Single Service Area -->
 					<div class="single-service--area mb-100 wow fadeInUp" data-wow-delay="700ms">
-						<img src="img/core-img/icon-4.png" alt="">
-						<h5>Restaurant</h5>
+						<img src="{{url('imgs/icon/classroom.png')}}" alt="">
+						<h5>Pelatihan Pemrogramman dan Bahasa Inggris</h5>
 					</div>
 
 					<!-- Single Service Area -->
 					<div class="single-service--area mb-100 wow fadeInUp" data-wow-delay="900ms">
-						<img src="img/core-img/icon-1.png" alt="">
-						<h5>Bar &amp; Drink</h5>
+						<img src="{{url('imgs/icon/responsive.png')}}" alt="">
+						<h5>Lab Computer</h5>
+					</div>
+					<div class="single-service--area mb-100 wow fadeInUp" data-wow-delay="900ms">
+						<img src="{{url('imgs/icon/money.png')}}" alt="">
+						<h5>Uang Saku</h5>
 					</div>
 				</div>
 			</div>

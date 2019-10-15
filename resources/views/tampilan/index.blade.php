@@ -1,10 +1,3 @@
+@include('tampilan.head')
 
-	@include('tampilan.head')
-
-
-
-
-
-	
-	@include('tampilan.foot')
-
+@include('tampilan.foot')

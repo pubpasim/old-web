@@ -182,12 +182,12 @@
     background-color: maroon;
   }
   #det{
-    width: 70%;
+    width: 90%;
     margin-left: 7%;
     margin-right: 70%;
     font-style: bold;
-
-    line-height: 400%;
+    margin-bottom: 250px;
+    line-height: 200%;
     font-family: century gothic;
     font-size: 20pt;
   }

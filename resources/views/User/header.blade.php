@@ -33,7 +33,7 @@
 
     </head>
 
-    <body>
+    <body style="font-family: century gothic;">
       <!-- Preloader -->
       <div id="preloader">
         <div class="loader"></div>
@@ -126,7 +126,7 @@
                           <li><a href="{{url('organisasi_pub')}}">-Organisasi PUB</a></li>
                           <li><a href="{{url('user/mahasiswa')}}">-Mahasiswa PUB</a></li>
                           <li><a href="{{url('pelatihan')}}">-Pelatihan PUB</a></li>
-                          <li><a href="#">-Kegiatan PUB</a></li>
+                          <li><a href="{{url('kegiatanPub')}}">-Kegiatan PUB</a></li>
 
                         </ul>
                       </li>

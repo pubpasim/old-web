@@ -102,7 +102,46 @@ class alumniController extends Controller
         $idmax =DB::table('tb_mahasiswa')->max('id_mahasiswa');
         return view('tampilan.alumni.lanjut',compact('idmax'));
     }
-    
+    public function infaq_view()
+    {
+        $infaq=DB::table('tb_infaq')
+        ->join('tb_angkatan','tb_infaq.id_angkatan','=','tb_angkatan.id_angkatan')
+        ->select('tb_infaq.id_infaq','tb_infaq.periode','tb_infaq.total_infaq','tb_angkatan.angkatan')
+        ->get();
+        return view('tampilan.alumni.infaq',compact('infaq'));
+    }
+    public function tambahInfaq()
+    {
+        $angkatan=DB::table('tb_angkatan')->orderby('angkatan')->get();
+        return view('tampilan.alumni.tambahInfaq',compact('angkatan'));
+    }
+     public function simpanInfaq(Request $request)
+    {
+        DB::table('tb_infaq')->insert([
+            'id_angkatan'=>$request->angkatan,'periode'=>$request->periode,'total_infaq'=>
+            $request->total
+        ]);
+        $idmax =DB::table('tb_mahasiswa')->max('id_mahasiswa');
+        return redirect('infaq');
+    }
+    public function editInfaq($id)
+    {
+        $infaq=DB::table('tb_infaq')->where('id_infaq',$id)->first();
+        $angkatan=DB::table('tb_angkatan')->orderby('angkatan')->get();
+        return view('tampilan.alumni.editInfaq',compact('infaq','angkatan'));
+    }
+    public function updateInfaq(Request $request,$id)
+    {
+        DB::table('tb_infaq')->where('id_infaq',$id)->update([
+            'id_angkatan'=>$request->angkatan,'periode'=>$request->periode,'total_infaq'=>$request->total
+        ]);
+        return redirect('infaq');
+    }
+    public function hapusInfaq($id)
+    {
+        DB::table('tb_infaq')->where('id_infaq',$id)->delete();
+        return redirect('infaq');
+    }
 
     /**
      * Display the specified resource.

@@ -13,6 +13,7 @@ class userController extends Controller
      */
     public function index()
     {
+        $kegiatan=DB::table('tb_pubdok')->get();
         return view('user.index');
     }
 
@@ -258,11 +259,15 @@ class userController extends Controller
         ->join('tb_orgppmb', 'tb_mahasiswa.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
         ->join('tb_statusPub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statusPub.id_statusPub')
         ->join('tb_jurusan', 'tb_mahasiswa.id_jur', '=', 'tb_jurusan.id_jur')
-        ->select('tb_mahasiswa.nama','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_angkatan.nama_angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_mahasiswa.jenis_kelamin')
+        ->select('tb_mahasiswa.nama','tb_mahasiswa.file','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_angkatan.nama_angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_mahasiswa.jenis_kelamin')
         ->where('tb_mahasiswa.id_mahasiswa',$id)->first();
         return view('user.detail',compact('mahasiswa'));
     }
-    
+    public function kegiatanPub()
+    {
+        $keg=DB::table('tb_pubdok')->get();
+        return view('user.kegiatanPub',compact('keg'));
+    }
 
     /**
      * Show the form for creating a new resource.

@@ -75,61 +75,35 @@
 <div id="form1">
 	<div class="container">
 		<form method="POST" action="{{url('storeDok')}}" enctype="multipart/form-data">
-		{{csrf_field()}}
-				
-		<div class="row">
-			<div class="col-25">
-				<label for="jbPUB">Dokumentasi</label>
-			</div>
-			<div class="col-75">
-				<label for="tahun">Foto</label>
-				<input type="file" class="form-control" name="foto">
-			</div>
+			{{csrf_field()}}
+			
+			<div class="row">
+				<div class="col-25">
+					<label for="jbPUB">Dokumentasi</label>
+				</div>
+				<div class="col-75">
+					<label for="tahun">Foto</label>
+					<input type="file" class="form-control" name="foto">
+				</div>
 
-			<div class="col-75">
-				<label for="jbPUB">Kegiatan</label>
-				<select id="keterangan" name="keterangan">
-					<option value="TPA dan Wawancara Awal">TPA dan Wawancara Awal</option>
-					<option value="Psikotest">Psikotest</option>
-					<option value="Home Visit">Home Visit</option>
-					<option value="Wawancara Akhir">Wawancara Akhir</option>
-					<option value="MOU">MOU</option>
-				</select>
-			</div>
+				<div class="col-75">
+					<label for="jbPUB">Kegiatan</label>
+					<select id="keterangan" name="keterangan">
+						<option value="TPA dan Wawancara Awal">TPA dan Wawancara Awal</option>
+						<option value="Psikotest">Psikotest</option>
+						<option value="Home Visit">Home Visit</option>
+						<option value="Wawancara Akhir">Wawancara Akhir</option>
+						<option value="MOU">MOU</option>
+					</select>
+				</div>
 
+			</div>
+			<br>
+			<div class="row" align="center">
+				<input type="submit" value="Cari">
+			</div>
 		</div>
-		<br>
-		<div class="row" align="center">
-			<input type="submit" value="Cari">
-		</div>
-</div>
-</div>
-<body >
-	<script src="/lumino/js/jquery-1.11.1.min.js"></script>
-	<script src="/lumino/js/bootstrap.min.js"></script>
-	<script src="/lumino/js/chart.min.js"></script>
-	<script src="/lumino/js/chart-data.js"></script>
-	<script src="/lumino/js/easypiechart.js"></script>
-	<script src="/lumino/js/easypiechart-data.js"></script>
-	<script src="/lumino/js/bootstrap-datepicker.js"></script>
-	<script src="/lumino/js/bootstrap-table.js"></script>
-	<script>
-		!function ($) {
-			$(document).on("click","ul.nav li.parent > a > span.icon", function(){		  
-				$(this).find('em:first').toggleClass("glyphicon-minus");	  
-			}); 
-			$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
-		}(window.jQuery);
+	</div>
 
-		$(window).on('resize', function () {
-		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
-		})
-		$(window).on('resize', function () {
-		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
-		})
-	</script>	
-</body>
-
-
-@include('tampilan.foot')
+	@include('tampilan.foot')
 	

@@ -1,40 +1,134 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Daengweb - Upload image</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-</head>
-<body>
+@include('tampilan.head')
+
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    input[type=text], select, textarea {
+        width: 100%;
+        padding: 17px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+    }
+
+    label {
+        padding: 12px 12px 12px 0;
+        display: inline-block;
+    }
+
+    input[type=submit] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        margin-left: 100px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: left;
+    }
+
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+
+    .container {
+        border-radius: 5px;
+        background-color: #ffffff;
+        padding: 5px;
+    }
+
+    .col-25 {
+        padding-left: 100px;
+        width: 25%;
+        margin-top: 6px;
+    }
+
+    .col-75 {
+        padding-left: 100px;
+        width: 50%;
+        margin-top: 6px;
+    }
+    #form1{
+        width: 750px;
+        height: 500px;
+
+        margin-left: 300px;
+    }
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 600px) {
+        .col-25, .col-75, input[type=submit] {
+            width: 100%;
+            margin-top: 0;
+        }
+    }
+    #uploadFile{
+        height: 50px;
+        width: 510px;
+        border-radius: 5px;
+        border-style: groove;
+    }
+</style>
+<div id="form1">
+    <h1>Tambah Data Kegiatan</h1>
     <div class="container">
-        <div class="row mt-4">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                        <form action="{{ route('upload.image') }}" method="post" enctype="multipart/form-data">
-                            @csrf
+        <form method="POST" action="{{url('simpan/kegiatan')}}" enctype="multipart/form-data">
+            {{csrf_field()}}
+            <div class="row">
+                <div class="col-25">
 
-                            @if (session('success'))
-                                <div class="alert alert-success">
-                                    {{ session('success') }}
-                                </div>
-                            @endif
-
-                            <div class="form-group">
-                                <label for="">Pilih gambar</label>
-                                <input type="file" name="image">
-                                <p class="text-danger">{{ $errors->first('image') }}</p>
-                            </div>
-                            <div class="form-group">
-                                <button class="btn btn-danger btn-sm">Upload</button>
-                            </div>
-                        </form>
-                    </div>
+                    @if ($errors->has('foto'))
+                    <div class="alert alert-danger">Format atau ukuran file tidak sesuai</div>
+                    @endif
+                    <label for="jurusan">Foto Kegiatan</label>
+                </div>
+                <div class="col-75">
+                    <input id="uploadFile" type="file" name="foto">
                 </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="spkw">Tema Kegiatan</label>
+                </div>
+                <div class="col-75">
+                    <select id="kegiatan" name="kegiatan">
+                        <option disabled="false"> --pilih kegiatan--</option>
+                        <option>Pengajian</option>
+                        <option>Pelatihan</option>
+                        <option>Magang</option>
+                        <option>Bersih-bersih</option>
+                        <option>Kuliah</option>
+                        <option>Pembinaan</option>
+                        <option>Pemilihan PUB</option>
+                        <option>Bakti Sosial</option>
+                        <option>Masak-masak</option>
+                        <option>Makan-makan</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="jurusan">Keterangan</label>
+                </div>
+                <div class="col-75">
+
+                    <textarea name="ket" style="width: 50%;height: 30%;"></textarea>
+
+                </div>
+            </div>
+            <div class="row">
+                <input type="submit" value="Simpan">
+            </div>
+        </form>
     </div>
-</body>
-</html>
+</div>
+@include('tampilan.foot')
