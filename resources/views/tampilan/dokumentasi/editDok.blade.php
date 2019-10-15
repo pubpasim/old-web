@@ -101,7 +101,7 @@
 		</div>
 		<br>
 		<div class="row" align="center">
-			<input type="submit" value="Cari">
+			<input type="submit" value="Simpan">
 		</div>
 	</form>
 	@endforeach
@@ -132,7 +132,4 @@
 		})
 	</script>	
 </body>
-
-
-@include('tampilan.foot')
 	

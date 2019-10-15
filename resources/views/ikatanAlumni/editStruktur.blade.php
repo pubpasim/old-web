@@ -74,70 +74,47 @@
 </style>
 <div id="form1">
 	<div class="container">
-		@foreach($survei as $data)
-		<form method="POST" action="{{url('updateSurvei/'.$id)}}">
+		@foreach($tamp as $dataxxx)
+		<form method="POST" action="{{url('updateStrukAlumni/'.$dataxxx->id_ikatan)}}">
 		{{csrf_field()}}
 				
 		<div class="row">
-
-			<input hidden value="{{$data->id_survei}}" type="text" class="form-control" placeholder="Nama Peserta" name="id_survei">
-
 			<div class="col-25">
-				<label>Edit Survei</label>
+				<label for="jbPUB">Edit Struktur</label>
 			</div>
+			
 			<div class="col-75">
-				<label for="nama_peserta">Nama Peserta</label>
-				<input value="{{$data->nama_peserta}}" type="text" class="form-control" placeholder="Nama Peserta" name="nama_peserta">
-			</div>
+				<label for="jbPUB">Nama Alumni</label>
+				<select id="id_mahasiswa" name="id_mahasiswa">
+					<option value> --Nama Alumni--</option>
+					@foreach($mhs as $data)
+						<option @if($data->id_mahasiswa==$dataxxx->id_mahasiswa) selected @endif value="{{$data->id_mahasiswa}}">{{$data->angkatan}} - {{$data->nama_angkatan}} - {{$data->nama}}</option>
+					@endforeach
+				</select>
+			</div>		
+
 			<div class="col-75">
-				<label for="nama_peserta">Jenis Kelamin</label>
-				<select id="jk" name="jk">
-					<option value="Laki - Laki"> Laki - Laki</option>
-					<option value="Perempuan"> Perempuan</option>
+				<label for="jbPUB">Jabatan</label>
+				<select id="jabatan" name="jabatan">
+					<option value> --Jabatan--</option>
+					@foreach($jab as $dataxx)
+						<option @if($dataxx->id_orgpub==$dataxxx->id_jabatan) selected @endif value="{{$dataxx->id_orgpub}}">{{$dataxx->jabatan_pub}}</option>
+					@endforeach
 				</select>
 			</div>
 
 			<div class="col-75">
-				<label for="nama_peserta">Jurusan Pilihan</label>
-				<select id="jurusan" name="jurusan">
-					<option value="0" disabled=""> --Jurusan Pilihan--</option>
-					<option value="S1 Teknik Informatika"> S1 Teknik Informatika</option>
-					<option value="S1 Akuntansi"> S1 Akuntansi</option>
-					<option value="S1 Manajemen"> S1 Manajemen</option>
-					<option value="S1 Sastra Jepang"> S1 Sastra Jepang</option>
-					<option value="D3 Bahasa Inggris"> D3 Bahasa Inggris</option>
-					<option value="D3 Manajemen Informatika"> D3 Manajemen Informatika</option>
-
-					
-				</select>
-			</div>
-			<div class="col-75">
-				<label for="asal_sekolah">Asal Sekolah</label>
-				<input value="{{$data->asal_sekolah}}" type="text" class="form-control" placeholder="Asal Sekolah" name="asal_sekolah">
-			</div>
-			<div class="col-75">
-				<label for="asal_daerah">Asal Daerah</label>
-				<input value="{{$data->asal_daerah}}" type="text" class="form-control" placeholder="asal_daerah" name="asal_daerah">
-			</div>
-			<div class="col-75">
-				<label for="no_hp">No HP</label>
-				<input value="{{$data->no_hp}}" type="text" class="form-control" placeholder="no_hp" name="no_hp">
-			</div>
-			<div class="col-75">
-				<label for="nama_peserta">Status</label>
-				<select id="jenis" name="jenis">
-					<option value="LULUS"> Lulus</option>
-					<option value="TIDAK LULUS"> Tidak lulus</option>
-				</select>
+				<label for="jbPUB">Masa Bakti</label>
+				<input type="text" class="form-control" name="masa_bakti" placeholder="Ex. 2019 - 2020" value="{{$dataxxx->masa_bakti}}">
 			</div>
 
 		</div>
 		<br>
 		<div class="row" align="center">
-			<input type="submit" value="Submit">
+			<input type="submit" value="Simpan">
 		</div>
-		</form>
-		@endforeach
+	</form>
+	@endforeach
 </div>
 </div>
 <body >
@@ -165,3 +142,4 @@
 		})
 	</script>	
 </body>
+	

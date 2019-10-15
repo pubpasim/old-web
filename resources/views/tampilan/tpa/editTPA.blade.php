@@ -134,6 +134,3 @@
 		})
 	</script>	
 </body>
-
-
-@include('tampilan.foot')

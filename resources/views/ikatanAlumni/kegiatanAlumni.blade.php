@@ -76,16 +76,18 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">Tabel Dokumentasi</div>
+					<div class="panel-heading">Tabel Kegiatan Alumni</div>
 
 					<div class="panel-body">
-						<a href="{{url('tambahDok')}}" class="btn btn-info">Add</a>
+						<a href="{{url('tambahDokAlumni')}}" class="btn btn-info">Add</a>
 						<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 						    <thead>
 						    <tr>
 						        <th>No</th>
 						        <th>Foto</th>						        
 						        <th>Keterangan</th>
+						        <th>Angkatan</th>
+						        <th>Alumni</th>
 						        <th>Aksi</th>
 						    </tr>
 						    </thead>
@@ -94,11 +96,13 @@
 						    	@foreach($dok as $data)
 						    	<tr>
 						    		<td>{{ $no++}}</td>
-						    		<td> <img src="{{url('imgs')}}/{{($data->foto) }}" width="100" height="100"></td>						    		
-						    		<td>{{ $data->keterangan}}</td>
+						    		<td> <img src="{{url('imgs')}}/{{($data->foto) }}" width="100" height="100"></td>	
+						    		<td>{{$data->keterangan}}</td>
+						    		<td>{{$data->angkatan}} - {{$data->nama_angkatan}}</td>
+						    		<td>{{$data->nama}}</td>
 						    		<td>
-						    			<a href="{{url('editDok/'.$data->id_dok)}}" class="btn btn-info">Edit</a>
-						    			<a href="{{url('hapusDok/'.$data->id_dok)}}" class="btn btn-info">Hapus</a>
+						    			<a href="{{url('editDokAlumni/'.$data->id)}}" class="btn btn-info">Edit</a>
+						    			<a href="{{url('hapusDokAlumni/'.$data->id)}}" class="btn btn-info">Hapus</a>
 						    		</td>
 						    	</tr>
 						    	@endforeach

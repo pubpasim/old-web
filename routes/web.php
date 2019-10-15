@@ -1,16 +1,6 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
+use Illuminate\Support\Facades\Input;
 
 Route::get('admin', function () {
 	return view('tampilan.index');
@@ -102,6 +92,21 @@ Route::get('tambahAlumni','alumniController@index3');
 Route::post('tambah/pengalaman','alumniController@store2');
 Route::post('tambah/pendidikan','alumniController@store3');
 
+
+Route::get('strukturOrgAlumni','alumniController@strukturOrgAlumni');
+Route::get('tambahStrukAlumni', 'alumniController@tambahStrukAlumni');
+Route::post('storeStrukAlumni', 'alumniController@storeStrukAlumni');
+Route::get('hapusStrukAlumni/{x}', 'alumniController@hapusStrukAlumni');
+Route::get('editStrukAlumni/{x}', 'alumniController@editStrukAlumni');
+Route::post('updateStrukAlumni/{x}', 'alumniController@updateStrukAlumni');
+
+Route::get('kegiatanAlumni','alumniController@kegiatanAlumni');
+Route::get('tambahDokAlumni', 'alumniController@tambahDokAlumni');
+Route::post('storeDokAlumni', 'alumniController@storeDokAlumni');
+Route::get('hapusDokAlumni/{x}', 'alumniController@hapusDokAlumni');
+Route::get('editDokAlumni/{x}', 'alumniController@editDokAlumni');
+Route::post('updateDokAlumni/{x}', 'alumniController@updateDokAlumni');
+
 Route::get('pelatihan/index/','pelatihanController@index');
 Route::get('pelatihan/tambah/','pelatihanController@create');
 Route::post('pelatihan/store/','pelatihanController@store');
@@ -111,7 +116,7 @@ Route::get('pelatihan/hapus/{z}','pelatihanController@destroy');
 
 Route::get('/pub_dok/upload', 'pubDokController@upload');
 Route::post('/pub_dok/proses', 'pubDokController@proses_upload');
-Route::get('tambahTahun', 'ppmbDokController@tambahTahun');
+Route::get('tambahTahun', 'hasilController@tambahTahun');
 Route::get('tambahTPA/{x}', 'hasilController@tambahTPA');
 Route::post('storeTPA/{x}', 'hasilController@storeTPA');
 Route::post('storeTahun', 'hasilController@storeTahun');
