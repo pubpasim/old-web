@@ -95,32 +95,59 @@
 				<li class="active">Icons</li>
 			</ol>
 		</div><!--/.row-->
-		@foreach ($pelatihan as $data)
-		<form method="POST" action="{{URL('pelatihan/store')}}" Class="form-horizontal" id="block-validate">
+		<form method="POST" action="{{URL('Alumni_admin/det_pelatihan/store')}}" Class="form-horizontal" id="block-validate">
 		{{csrf_field()}}
 		<div class="row">
-			<div class="panel-heading">INPUT DATA</div>
+			<div class="panel-heading">TAMBAH DATA</div>
 					<div class="panel-body">
 						<div class="col-md-6">
 							<form role="form">
 							
 								<div class="form-group">
-									<label>PELATIHAN</label>
-									<select name="jabatan">
-										<option name="php">PHP</option>
-										<option name="vb.net">VB.NET</option>
-										<option name="java">JAVA</option>
-									</select>
+									<label>Struktur Organisasi</label>
 									
 								</div>
-								<button type="submit" name="submit" class="btn btn-primary">TAMBAH DATA </button>
+
+								<div class="col-75">
+									<select id="det_orgpub" name="angkatan">
+										<option value="0"> --Angkatan--</option>
+										@foreach($angkatan as $data)
+										<option value="{{$data->id_angkatan}}">{{$data->angkatan}}</option>
+									
+										@endforeach
+									</select>
+								</div>
+
+								<div class="col-75">
+									<select id="det_orgpub" name="pelatihan">
+										<option value="0"> --Pelatihan--</option>
+										@foreach($pelatihan as $data)
+										<option value="{{$data->id_pelatihan}}">{{$data->pelatihan}}</option>
+										@endforeach
+									</select>
+								</div>
+
+								<div class="col-75">
+									<div class="form-group">
+									<b>File Gambar</b><br/>
+									<input type="file" name="file">
+								</div>
+								
+
+
+								
+									
+						</tr>
+								</div>
+
+							<button type="submit" name="submit" class="btn btn-primary">TAMBAH DATA</button>
 								 
+
 																
 								
 					
 		</div>
 	</form>
-	@endforeach
 		<!--/.row-->	
 	</div><!--/.main-->
 
@@ -150,3 +177,6 @@
 </body>
 
 </html>
+
+
+
