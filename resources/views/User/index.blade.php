@@ -136,13 +136,13 @@
 					<img src="img/core-img/signature.png" alt="" class="wow fadeInUp" data-wow-delay="500ms">
 				</div>
 			</div>
-
+			@foreach($kegiatan as $keg)
 			<div class="col-12 col-lg-6">
 				<div class="about-us-thumbnail mb-100 wow fadeInUp" data-wow-delay="700ms">
 					<div class="row no-gutters">
 						<div class="col-6">
 							<div class="single-thumb">
-								<img src="img/bg-img/13.jpg" alt="">
+								<img src="{{url('imgs/kegiatan')}}/{{$keg->file}}" alt="">
 							</div>
 							<div class="single-thumb">
 								<img src="img/bg-img/14.jpg" alt="">
@@ -156,6 +156,7 @@
 					</div>
 				</div>
 			</div>
+			@endforeach
 		</div>
 	</div>
 </section>

@@ -59,26 +59,21 @@
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg> PPMB <span class="caret"></span></a>
 				<ul class="dropdown-menu" role="menu">
 					<li><a href="{{url('/struktur_ppmb')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Struktur Organisasi</a></li>
-					<li><a href="{{url('/persyaratan')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg></svg> Syarat dan Ketentuan</a></li>
-					<li><a href="{{url('/jadwal_ppmb')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Jadwal</a></li>
-					<li><a href="{{url('hasilSeleksi')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Hasil Seleksi</a></li>
-					<li><a href="{{url('dokumentasi')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Dokumentasi</a></li>
+					<li><a href="{{url('/persyaratan')}}"><svg class="glyph stroked app window with content"><use xlink:href="#stroked-app-window-with-content"/></svg> Syarat dan Ketentuan</a></li>
+					<li><a href="{{url('/jadwal_ppmb')}}"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"/></svg>
+					Jadwal</a></li>
+					<li><a href="{{url('hasilSeleksi')}}"><svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad"/></svg> Hasil Seleksi</a></li>
+					<li><a href="{{url('dokumentasi')}}"><svg class="glyph stroked landscape"><use xlink:href="#stroked-landscape"/></svg> Dokumentasi</a></li>
 				</ul>
 			</li>
 			<li class="dropdown "> 
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg> PUB <span class="caret"></span></a>
 				<ul class="dropdown-menu" role="menu">
 
-					<li><a href="#"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Struktur Organisasi</a></li>
-					<li><a href="{{url('mahasiswa')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg></svg> Data Mahasiswa PUB</a></li>
-					
-					<li><a href="{{url('tampilan/sekolah/viewsek')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg></svg> Asal Sekolah</a></li>
-					<li><a href="{{url('tampilan/daerah/viewdae')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-blank-document"></use></svg> Asal Daerah</a></li>
-					<li><a href="{{url('tampilan/jurusan/viewjur')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-blank-document"></use></svg> Jurusan</a></li>
+					<li><a href="{{url('detorg_pub')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Struktur Organisasi</a></li>
+					<li><a href="{{url('mahasiswa')}}"><svg class="glyph stroked clipboard with paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Data Mahasiswa PUB</a></li>
+					<li><a href="{{url('dokumentasiPub')}}"><svg class="glyph stroked landscape"><use xlink:href="#stroked-landscape"/></svg>Dokumentasi PUB</a></li>
 
-					<li><a href="{{url('dokumentasiPub')}}"><svg class="glyph stroked blank document"></svg>Dokumenasi PUB</a></li>
-
-					<li><a href="#"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Jadwal</a></li>
 				</ul>
 			</li>
 			<li class="dropdown ">
