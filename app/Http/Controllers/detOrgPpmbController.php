@@ -24,15 +24,6 @@ class detOrgPpmbController extends Controller
         return view('ppmb.struktur.det_lihat',compact('detorgppmb'));
     }
 
-    public function user(){
-        $detorgppmb=DB::table('tb_detorg_ppmb')
-        ->join('tb_mahasiswa','tb_mahasiswa.id_mahasiswa','=','tb_detorg_ppmb.id_mahasiswa')
-        ->join('tb_angkatan','tb_angkatan.id_angkatan','=','tb_detorg_ppmb.id_angkatan')
-        ->join('tb_orgppmb','tb_orgppmb.id_orgppmb','=','tb_detorg_ppmb.id_orgppmb')
-        ->get();
-        return view('User.struktur_ppmb_user',compact('detorgppmb'));
-    }
-
     /**
      * Show the form for creating a new resource.
      *

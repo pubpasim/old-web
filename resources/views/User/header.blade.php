@@ -111,9 +111,9 @@
                       <li><a href="#">PPMB PUB</a>
                         <ul class="dropdown">
                           <li><a href="{{url('ppmb_profile')}}">- Profile PPMB</a></li>
-                          <li><a href="/det_struktur_ppmb/">- Kepanitiaan PPMB</a></li>
-                          <li><a href="/detjadwal_ppmb_user">- Jadwal PPMB</a></li>
-                          <li><a href="/syarat_ketentuan_user">- Syarat & Ketentuan</a></li>
+                          <li><a href="/organisasi_ppmb/">- Kepanitiaan PPMB</a></li>
+                          <li><a href="/jadwal_ppmb_user">- Jadwal PPMB</a></li>
+                          <li><a href="/syarat_user">- Syarat & Ketentuan</a></li>
                           
                           <li><a href="{{url('hasilSeleksi')}}">- Hasil Seleksi</a></li>
                           <li><a href="#">- Dokumentasi PPMB</a></li>

@@ -24,13 +24,16 @@ Route::get('/det_struktur_ppmb/edit/{id}','detOrgPpmbController@edit');
 Route::post('/det_struktur_ppmb/update','detOrgPpmbController@update');
 Route::get('/det_struktur_ppmb/delete/{id}','detOrgPpmbController@destroy');
 //struktur for user
-Route::get('/det_struktur_ppmb_user/','detOrgPpmbController@user'); 
- 
+
 
 //syarat ketentuan 
 Route::get('/syarat_ketentuan','SyaratController@index'); 
+Route::get('/syarat_ketentuan/create','SyaratController@create'); 
+Route::post('/syarat_ketentuan/store','SyaratController@store'); 
 Route::get('/syarat_ketentuan/edit/{id}','SyaratController@edit');
 Route::post('/syarat_ketentuan/update','SyaratController@update');
+Route::get('/syarat_ketentuan/delete/{id}','SyaratController@destroy'); 
+
 
 
 //jadwal
@@ -237,6 +240,9 @@ Route::post('tambahUser/store','userController@tambahUser_store');
 Route::post('tambah/user','userController@simpanUser');
 Route::get('pub_profile','userController@profile');
 Route::get('ppmb_profile','userController@ppmb_profile');
+Route::get('/jadwal_ppmb_user','UserController@jadwal_ppmb'); 
+Route::get('/syarat_user','UserController@syarat_ketentuan');
+Route::get('organisasi_ppmb','userController@organisasi_ppmb');
 Route::get('organisasi_pub','userController@organisasi_pub');
 Route::get('detail/org/{x}','userController@detail');
 Route::get('pelatihan','userController@pelatihan');
