@@ -42,4 +42,4 @@
 	</div>
 </div>
 
-@include('tampilan.boot')
+@include('tampilan.foot')

@@ -75,12 +75,12 @@
 <div id="form1">
 	<div class="container">
 		@foreach($dok as $data)
-		<form method="POST" action="{{url('updateDok/'.$data->id_dok)}}" enctype="multipart/form-data">
+		<form method="POST" action="{{url('updateDokAlumni/'.$data->id)}}" enctype="multipart/form-data">
 		{{csrf_field()}}
 				
 		<div class="row">
 			<div class="col-25">
-				<label for="jbPUB">Dokumentasi</label>
+				<label for="jbPUB">Dokumentasi Alumni</label>
 			</div>
 			<div class="col-75">
 				<label for="tahun">Foto</label>
@@ -89,12 +89,15 @@
 
 			<div class="col-75">
 				<label for="jbPUB">Kegiatan</label>
-				<select id="keterangan" name="keterangan">
-					<option value="TPA dan Wawancara Awal">TPA dan Wawancara Awal</option>
-					<option value="Psikotest">Psikotest</option>
-					<option value="Home Visit">Home Visit</option>
-					<option value="Wawancara Akhir">Wawancara Akhir</option>
-					<option value="MOU">MOU</option>
+				<input type="text" class="form-control" name="keterangan" value="{{$data->keterangan}}">
+			</div>
+			<div class="col-75">
+				<label for="jbPUB">Nama Alumni</label>
+				<select id="id _alumni" name="id_alumni">
+					<option value> --Nama Alumni--</option>
+					@foreach($ang as $data)
+						<option value="{{$data->id_mahasiswa}}">{{$data->angkatan}} - {{$data->nama_angkatan}} - {{$data->nama}}</option>
+					@endforeach
 				</select>
 			</div>
 
@@ -107,6 +110,29 @@
 	@endforeach
 </div>
 </div>
-@include('tampilan.foot')
+<body >
+	<script src="/lumino/js/jquery-1.11.1.min.js"></script>
+	<script src="/lumino/js/bootstrap.min.js"></script>
+	<script src="/lumino/js/chart.min.js"></script>
+	<script src="/lumino/js/chart-data.js"></script>
+	<script src="/lumino/js/easypiechart.js"></script>
+	<script src="/lumino/js/easypiechart-data.js"></script>
+	<script src="/lumino/js/bootstrap-datepicker.js"></script>
+	<script src="/lumino/js/bootstrap-table.js"></script>
+	<script>
+		!function ($) {
+			$(document).on("click","ul.nav li.parent > a > span.icon", function(){		  
+				$(this).find('em:first').toggleClass("glyphicon-minus");	  
+			}); 
+			$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+		}(window.jQuery);
 
+		$(window).on('resize', function () {
+		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+		})
+		$(window).on('resize', function () {
+		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+		})
+	</script>	
+</body>
 	

@@ -1,16 +1,6 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
+use Illuminate\Support\Facades\Input;
 
 
 Route::get('admin', function () {
@@ -157,12 +147,33 @@ Route::get('editInfaq/{id}','alumniController@editInfaq');
 Route::post('editInfaq/{id}','alumniController@updateInfaq');
 Route::get('hapusInfaq/{id}','alumniController@hapusInfaq');
 
-Route::get('pelatihan','pelatihanController@index');
+
+Route::get('strukturOrgAlumni','alumniController@strukturOrgAlumni');
+Route::get('tambahStrukAlumni', 'alumniController@tambahStrukAlumni');
+Route::post('storeStrukAlumni', 'alumniController@storeStrukAlumni');
+Route::get('hapusStrukAlumni/{x}', 'alumniController@hapusStrukAlumni');
+Route::get('editStrukAlumni/{x}', 'alumniController@editStrukAlumni');
+Route::post('updateStrukAlumni/{x}', 'alumniController@updateStrukAlumni');
+
+Route::get('kegiatanAlumni','alumniController@kegiatanAlumni');
+Route::get('tambahDokAlumni', 'alumniController@tambahDokAlumni');
+Route::post('storeDokAlumni', 'alumniController@storeDokAlumni');
+Route::get('hapusDokAlumni/{x}', 'alumniController@hapusDokAlumni');
+Route::get('editDokAlumni/{x}', 'alumniController@editDokAlumni');
+Route::post('updateDokAlumni/{x}', 'alumniController@updateDokAlumni');
+
+Route::get('pelatihan/index/','pelatihanController@index');
+
 Route::get('pelatihan/tambah/','pelatihanController@create');
 Route::post('pelatihan/store/','pelatihanController@store');
 Route::get('pelatihan/edit/{x}','pelatihanController@edit');
 Route::post('pelatihan/update/{x}','pelatihanController@update');
 Route::get('pelatihan/hapus/{x}','pelatihanController@destroy');
+
+
+Route::get('/pub_dok/upload', 'pubDokController@upload');
+Route::post('/pub_dok/proses', 'pubDokController@proses_upload');
+Route::get('tambahTahun', 'hasilController@tambahTahun');
 
 Route::get('dokumentasiPub','dokumentasiPubController@index');
 Route::get('tambah_pubdok','dokumentasiPubController@create');
@@ -171,9 +182,10 @@ Route::get('edit/kegiatan/{x}','dokumentasiPubController@edit');
 Route::post('edit/kegiatan/{x}','dokumentasiPubController@update');
 Route::get('hapus/kegiatan/{x}','dokumentasiPubController@destroy');
 
-Route::get('/pub_dok/upload', 'dokumentasiPubController@upload');
-Route::post('/pub_dok/proses', 'dokumentasiPubController@proses_upload');
-Route::get('tambahTahun', 'ppmbDokController@tambahTahun');
+// Route::get('/pub_dok/upload', 'dokumentasiPubController@upload');
+// Route::post('/pub_dok/proses', 'dokumentasiPubController@proses_upload');
+// Route::get('tambahTahun', 'ppmbDokController@tambahTahun');
+
 Route::get('tambahTPA/{x}', 'hasilController@tambahTPA');
 Route::post('storeTPA/{x}', 'hasilController@storeTPA');
 Route::post('storeTahun', 'hasilController@storeTahun');
@@ -234,6 +246,13 @@ Route::get('detail/org/{x}','userController@detail');
 Route::get('pelatihan','userController@pelatihan');
 Route::get('pelatihan_data','userController@pelatihan_data');
 Route::get('kegiatanPub','userController@kegiatanPub');
+Route::get('hasilSeleksi','userController@hasilSeleksi');
+Route::post('hasilSeleksi','userController@tampilSeleksi');
+Route::get('user_tpa/{x}','userController@user_tpa');
+Route::get('user_survei/{x}','userController@user_survei');
+Route::get('user_psikotes/{x}','userController@user_psikotes');
+Route::get('user_final/{x}','userController@user_final');
+
 //================================ADMIN ALUMNI=============================//
 
 Route::get('admin/alumni/{x}','alumni_adminController@index');

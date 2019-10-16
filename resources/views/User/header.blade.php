@@ -21,6 +21,7 @@
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
+  <link href="/lumino/css/bootstrap-table.css" rel="stylesheet">
 
   <link href="/css/slide.css" rel="stylesheet">
   <link href="/css/struktur.css" rel="stylesheet">
@@ -114,7 +115,7 @@
                           <li><a href="/jadwal_ppmb_user">- Jadwal PPMB</a></li>
                           <li><a href="/syarat_user">- Syarat & Ketentuan</a></li>
                           
-                          <li><a href="">- Hasil Seleksi</a></li>
+                          <li><a href="{{url('hasilSeleksi')}}">- Hasil Seleksi</a></li>
                           <li><a href="#">- Dokumentasi PPMB</a></li>
 
                           <!-- <li><a href="#">- PPMB PUB</a>

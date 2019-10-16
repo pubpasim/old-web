@@ -106,6 +106,7 @@
 		<!-- All Plugins -->
 		<script src="/roberto-master/js/roberto.bundle.js"></script>
 		<!-- Active -->
+		<script src="/lumino/js/bootstrap-table.js"></script>
 		<script src="/roberto-master/js/default-assets/active.js"></script>
 		<script type="text/javascript" src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
