@@ -39,8 +39,11 @@ Route::get('/det_struktur_ppmb_user/','detOrgPpmbController@user');
 
 //syarat ketentuan 
 Route::get('/syarat_ketentuan','SyaratController@index'); 
+Route::get('/syarat_ketentuan/create','SyaratController@create'); 
+Route::post('/syarat_ketentuan/store','SyaratController@store'); 
 Route::get('/syarat_ketentuan/edit/{id}','SyaratController@edit');
 Route::post('/syarat_ketentuan/update','SyaratController@update');
+Route::get('/syarat_ketentuan/delete/{id}','SyaratController@destroy'); 
 
 
 //jadwal
