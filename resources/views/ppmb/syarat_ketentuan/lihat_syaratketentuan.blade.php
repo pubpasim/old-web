@@ -7,8 +7,6 @@
 			}
 		</style>
 			<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
-			<link rel="stylesheet" type="text/css" href="style.css">
-		
 
 		<div id="form1">
 		<div class="row">
@@ -16,7 +14,6 @@
 					<br>
 					<?php 
 						foreach($syarat as $data){
-
 					 ?>
 					<div>
 						<!-- <a href="syarat_ketentuan/create"><button>Tambah</button></a>	 -->
@@ -40,5 +37,7 @@
 							</div>
 						</div>
 					</div>
+				</div>
+			</div>
 			
 	@include('tampilan.foot')

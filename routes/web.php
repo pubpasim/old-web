@@ -34,15 +34,14 @@ Route::get('/det_struktur_ppmb/edit/{id}','detOrgPpmbController@edit');
 Route::post('/det_struktur_ppmb/update','detOrgPpmbController@update');
 Route::get('/det_struktur_ppmb/delete/{id}','detOrgPpmbController@destroy');
 //struktur for user
-Route::get('/det_struktur_ppmb/','detOrgPpmbController@user'); 
+Route::get('/det_struktur_ppmb_user/','detOrgPpmbController@user'); 
  
 
 //syarat ketentuan 
 Route::get('/syarat_ketentuan','SyaratController@index'); 
 Route::get('/syarat_ketentuan/edit/{id}','SyaratController@edit');
 Route::post('/syarat_ketentuan/update','SyaratController@update');
-//for user
-Route::get('/syarat_ketentuan_user','SyaratController@user'); 
+
 
 //jadwal
 Route::get('/jadwal_ppmb','JadwalController@index'); 

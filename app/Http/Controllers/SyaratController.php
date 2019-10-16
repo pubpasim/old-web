@@ -19,12 +19,6 @@ class SyaratController extends Controller
         return view('ppmb.syarat_ketentuan.lihat_syaratketentuan',compact('syarat'));
     }
 
-     public function user()
-    {
-        $syarat=syaratKetentuanModel::all();
-        return view('User.syarat_ketentuan_user',compact('syarat'));
-    }
-
     /**
      * Show the form for creating a new resource.
      *
