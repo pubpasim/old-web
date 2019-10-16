@@ -16,7 +16,41 @@ class userController extends Controller
        $kegiatan=DB::table('tb_pubdok')->orderby('id_pubdok','DESC')->limit('3')->get();
         return view('user.index',compact('kegiatan'));
     }
+    public function hasilSeleksi()
+    {
+        $tpa="";
+        $lempar="";
+        $tahun = DB::table('tb_tahunSel')->get();
+        return view('user.hasilSeleksi',compact('tahun','lempar','tpa'));
+    }
+    public function tampilSeleksi(Request $request)
+    {
+        $tpa="";
+        $lempar = $request->tahun;
+        $tahun = DB::table('tb_tahunSel')->get();
+        return view('user.hasilSeleksi',compact('tahun','lempar','tpa'));
+    }
+    public function user_tpa($id)
+    {   
+        $tpa = DB::table('tb_tpa')->where('id_tahun',$id)->get();
+        return view('user.user_tpa',compact('tpa','id'));
+    }
+    public function user_survei($id)
+    {
+        $survei = DB::table('tb_survei')->where('id_tahun3',$id)->get();
+        return view('user.user_survei',compact('survei','id'));
+    }
+    public function user_psikotes($id)
+    {
+        $psi = DB::table('tb_psikotest')->where('id_tahun2',$id)->get();
+        return view('user.user_psikotes',compact('psi','id'));
+    }
+    public function user_final($id)
+    {
+        $final = DB::table('tb_final')->where('id_tahun4',$id)->get();
 
+        return view('user.user_final',compact('final'));
+    }
     /**
      * Display a listing of the resource.
      *

@@ -126,7 +126,15 @@ class alumniController extends Controller
     }
     public function storeStrukAlumni(Request $request)
     {
-=======
+         DB::table('tb_ikatan_alumni')
+        ->insert([
+            'id_mahasiswa' => $request->id_mahasiswa,
+            'id_jabatan' => $request->jabatan,
+            'masa_bakti' => $request->masa_bakti,
+        ]);
+
+        return redirect('strukturOrgAlumni');
+    }
     public function infaq_view()
     {
         $infaq=DB::table('tb_infaq')
@@ -168,15 +176,7 @@ class alumniController extends Controller
         return redirect('infaq');
     }
 
-        DB::table('tb_ikatan_alumni')
-        ->insert([
-            'id_mahasiswa' => $request->id_mahasiswa,
-            'id_jabatan' => $request->jabatan,
-            'masa_bakti' => $request->masa_bakti,
-        ]);
-
-        return redirect('strukturOrgAlumni');
-    }
+       
     public function editStrukAlumni($id)
     {
         $tamp = DB::table('tb_ikatan_alumni')->where('id_ikatan',$id)->get();
