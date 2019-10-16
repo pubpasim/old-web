@@ -95,4 +95,6 @@
 		</form>
 	</div>
 </div>
+
 @include('tampilan.foot')
+

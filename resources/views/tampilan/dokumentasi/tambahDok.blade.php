@@ -98,12 +98,14 @@
 				</div>
 
 			</div>
-			<br>
-			<div class="row" align="center">
-				<input type="submit" value="Cari">
-			</div>
-		</div>
-	</div>
 
-	@include('tampilan.foot')
+
+		</div>
+		<br>
+		<div class="row" align="center">
+			<input type="submit" value="Simpan">
+		</div>
+</div>
+</div>	@include('tampilan.foot')
+
 	
