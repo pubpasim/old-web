@@ -96,7 +96,7 @@ Route::post('alumni/aktivitas/tampil','alumniController@aktivitasTampil');
 
 Route::get('detorg_pub','detOrgPubController@index');
 Route::get('detorg_pub/tambah/','detOrgPubController@create');
-Route::post('detorg_pub/store/','detOrgPubController@store');
+Route::post('detorg_pub/store','detOrgPubController@store');
 Route::get('detorg_pub/edit/{x}','detOrgPubController@edit');
 Route::post('detorg_pub/update/{x}','detOrgPubController@update');
 Route::get('detorg_pub/hapus/{x}','detOrgPubController@destroy'); 	

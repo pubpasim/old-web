@@ -133,7 +133,7 @@
                       <li><a href="./room.html">Alumni PUB</a>
                         <ul class="dropdown">
                           <li><a href="#">-Data Alumni PUB</a></li>
-                          <li><a href="#">-Data Infaq Alumni PUB</a></li>
+                          <li><a href="#">-Data Infaq Alumni</a></li>
                           <li><a href="#">-Kegiatan Alumni</a></li>
                           <li><a href="./room.html">Ikatan Alumni PUB</a>
                             <ul class="dropdown">

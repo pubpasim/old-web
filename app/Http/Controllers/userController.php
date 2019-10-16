@@ -13,8 +13,8 @@ class userController extends Controller
      */
     public function index()
     {
-        $kegiatan=DB::table('tb_pubdok')->get();
-        return view('user.index');
+       $kegiatan=DB::table('tb_pubdok')->orderby('id_pubdok','DESC')->limit('3')->get();
+        return view('user.index',compact('kegiatan'));
     }
 
     /**

@@ -13,7 +13,12 @@ class detOrgPubController extends Controller
      */
     public function index()
     {
-        $detorg_pub = DB::table('tb_detorg_pub')->get();
+        $detorg_pub = DB::table('tb_detorg_pub')
+        ->join('tb_orgpub','tb_detorg_pub.id_orgpub','=','tb_orgpub.id_orgpub')
+        ->join('tb_angkatan','tb_detorg_pub.id_angkatan','=','tb_angkatan.id_angkatan')
+        ->join('tb_mahasiswa','tb_detorg_pub.id_mahasiswa','=','tb_mahasiswa.id_mahasiswa')
+        ->select('tb_detorg_pub.id_detorg_pub','tb_orgpub.jabatan_pub','tb_angkatan.angkatan','tb_mahasiswa.nama')->get();
+
         return view('detorg_pub.index',compact('detorg_pub'));
 
     }
@@ -25,8 +30,14 @@ class detOrgPubController extends Controller
      */
     public function create()
     {
-        $detorg_pub = DB::table('tb_detorg_pub')->get();
-        return view('detorg_pub.tambah',compact('detorg_pub'));
+        $angkatan=DB::table('tb_angkatan')->where('angkatan','>=','16')->get();
+        $mhs=DB::table('tb_mahasiswa')
+        ->join('tb_angkatan','tb_mahasiswa.id_angkatan','=','tb_angkatan.id_angkatan')
+        ->select('tb_mahasiswa.id_mahasiswa','tb_angkatan.angkatan','tb_angkatan.id_angkatan','tb_mahasiswa.nama')
+        ->where('tb_angkatan.angkatan','>=','16')->get();
+        $jabatan=DB::table('tb_orgpub')->get();
+        
+        return view('detorg_pub.tambah',compact('mhs','jabatan','angkatan'));
     }
 
     /**
@@ -37,13 +48,12 @@ class detOrgPubController extends Controller
      */
     public function store(Request $request)
     {
-        DB::table('tb_detorg_pub')->insert
-            ([
-                'id_orgpub'=>$request->id_orgpub,
-                'id_angkatan'=>$request->id_angkatan,
-                'id_mahasiswa'=>$request->id_mahasiswa
+        DB::table('tb_detorg_pub')->insert([
+                'id_orgpub'=>$request->jabatan,
+                'id_angkatan'=>$request->angkatan,
+                'id_mahasiswa'=>$request->mahasiswa
             ]);
-        return redirect ('/');
+        return redirect ('detorg_pub');
     }
 
     /**
@@ -65,8 +75,15 @@ class detOrgPubController extends Controller
      */
     public function edit($id_detorg_pub)
     {
-        $detorg_pub = DB::table('tb_detorg_ub')->where('id_detorg_pub',$id_detorg_pub)->get();
-        return view('detorg_pub.edit',compact('detorg_pub'));
+        $angkatan=DB::table('tb_angkatan')->where('angkatan','>=','16')->get();
+        $mhs=DB::table('tb_mahasiswa')
+        ->join('tb_angkatan','tb_mahasiswa.id_angkatan','=','tb_angkatan.id_angkatan')
+        ->select('tb_mahasiswa.id_mahasiswa','tb_angkatan.angkatan','tb_angkatan.id_angkatan','tb_mahasiswa.nama')
+        ->where('tb_angkatan.angkatan','>=','16')->get();
+        $jabatan=DB::table('tb_orgpub')->get();
+
+        $detail = DB::table('tb_detorg_pub')->where('id_detorg_pub',$id_detorg_pub)->first();
+        return view('detorg_pub.edit',compact('detail','angkatan','jabatan','mhs'));
     }
 
     /**
@@ -78,10 +95,10 @@ class detOrgPubController extends Controller
      */
     public function update(Request $request, $id_detorg_pub)
     {
-         $detorg_pub = DB::table('tb_detorg_ub')->where('id_detorg_pub',$id_detorg_pub)->update([
-            'id_orgpub'=>$request->tb_pelatihan
+         DB::table('tb_detorg_pub')->where('id_detorg_pub',$id_detorg_pub)->update([
+            'id_orgpub'=>$request->jabatan,'id_mahasiswa'=>$request->mahasiswa,'id_angkatan'=>$request->angkatan
         ]);
-        return redirect('/');
+        return redirect('detorg_pub');
     }
 
     /**
@@ -92,6 +109,7 @@ class detOrgPubController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('tb_detorg_pub')->where('id_detorg_pub',$id)->delete();
+        return redirect('detorg_pub');
     }
 }
