@@ -10,16 +10,15 @@
 				<option value="" disabled>--Pilih Periode--</option>
 				@foreach($periode as $data)
 				<option value="{{$data->id_periode}}">
-					Periode {{ $data->periode }}
+					{{ $data->periode }}
 				</option>
 				@endforeach
-				
 			</select>
 		</div>
 		<button type="submit" id="btn">OKE</button>
 	</form>
 </div>
-<div class="kanan" @if($lempar=="") style="display: none;" @endif id="kanan" style="padding-left: 100px;">
+<div class="kanan" @if($periode=="") style="display: none;" @endif id="kanan" style="padding-left: 100px;">
 	<table id="myTable">
 		<thead>
 			<tr>
@@ -45,9 +44,8 @@
 				<td>{{$d->tanggal_awal}}</td>
 				<td>{{$d->tanggal_akhir}}</td>
 				<td>{{$d->waktu}}</td>
-				<td>{{$d->tempat}}</td>
+				<td>{{$d->sekolah}}</td>
 				<td>{{$d->alamat}}</td>
-				<td><button type="reset" class="btn btn-default">Detail</button></td>
 			</tr>
 			@endforeach
 		</tbody>
