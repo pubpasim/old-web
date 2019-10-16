@@ -57,9 +57,9 @@
 			<li class="dropdown ">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg> PPMB <span class="caret"></span></a>
 				<ul class="dropdown-menu" role="menu">
-					<li><a href="{{url('/struktur_ppmb')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Struktur Organisasi</a></li>
-					<li><a href="{{url('/persyaratan')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg></svg> Syarat dan Ketentuan</a></li>
-					<li><a href="{{url('/jadwal_ppmb')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Jadwal</a></li>
+					<li><a href="{{url('/det_struktur_ppmb')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Struktur Organisasi</a></li>
+					<li><a href="{{url('/syarat_ketentuan')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg></svg> Syarat dan Ketentuan</a></li>
+					<li><a href="{{url('/detjadwal_ppmb')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Jadwal</a></li>
 					<li><a href="{{url('hasilSeleksi')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Hasil Seleksi</a></li>
 					<li><a href="{{url('dokumentasi')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Dokumentasi</a></li>
 				</ul>
@@ -94,11 +94,15 @@
 				<ul class="dropdown-menu" role="menu">
 					<li><a href="{{url('tampilan/angkatan/viewang')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Angkatan</a></li>
 
+					<li><a href="{{url('periode')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Periode Kepengurusan</a></li>
+
 					<li><a href="{{url('struktur_organisasi/index/')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Jabatan PUB</a></li>
 
 					<li><a href="{{url('tampilUser')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Data User</a></li>
 
 					<li><a href="{{url('struktur_ppmb')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Jabatan PPMB</a></li>
+
+					<li><a href="{{url('jadwal_ppmb')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Kegiatan PPMB</a></li>
 
 					<li><a href="{{url('tampilan/daerah/viewdae')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Daerah</a></li>
 

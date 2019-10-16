@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTbDetjadwalTSTable extends Migration
+class CreateTbPeriodeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateTbDetjadwalTSTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_detjadwal_t_s', function (Blueprint $table) {
-            $table->increments('id_detjadwal_ts');
-            $table->integer('id_detjadwal')->unsigned();
-            $table->integer('id_daerah')->unsigned();
-            $table->string('tanggal');
+        Schema::create('tb_periode', function (Blueprint $table) {
+            $table->increments('id_periode');
+            $table->string('periode');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateTbDetjadwalTSTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_detjadwal_t_s');
+        Schema::dropIfExists('tb_periode');
     }
 }

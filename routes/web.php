@@ -25,17 +25,24 @@ Route::get('/struktur_ppmb/edit/{id}','orgPPMBcontroller@edit');
 Route::post('/struktur_ppmb/update','orgPPMBcontroller@update');
 Route::get('/struktur_ppmb/delete/{id}','orgPPMBcontroller@destroy');
 
+
+//detorg 
+Route::get('/det_struktur_ppmb/','detOrgPpmbController@index'); 
+Route::get('/det_struktur_ppmb/create','detOrgPpmbController@create');
+Route::post('/det_struktur_ppmb/store','detOrgPpmbController@store');
+Route::get('/det_struktur_ppmb/edit/{id}','detOrgPpmbController@edit');
+Route::post('/det_struktur_ppmb/update','detOrgPpmbController@update');
+Route::get('/det_struktur_ppmb/delete/{id}','detOrgPpmbController@destroy');
+//struktur for user
+Route::get('/det_struktur_ppmb/','detOrgPpmbController@user'); 
+ 
+
 //syarat ketentuan 
-Route::post('/syarat_ketentuan','SyaratController@index'); 
-//Route::get('/syarat_ketentuan/create','orgPPMBcontroller@create');
-// Route::get('/syarat_ketentuan/store','orgPPMBcontroller@store');
+Route::get('/syarat_ketentuan','SyaratController@index'); 
 Route::get('/syarat_ketentuan/edit/{id}','SyaratController@edit');
 Route::post('/syarat_ketentuan/update','SyaratController@update');
-// Route::get('/syarat_ketentuan/delete','orgPPMBcontroller@destroy');
-
-Route::get('/persyaratan', function () {
-	return view('ppmb.syarat_ketentuan.edit_syarat');
-});
+//for user
+Route::get('/syarat_ketentuan_user','SyaratController@user'); 
 
 //jadwal
 Route::get('/jadwal_ppmb','JadwalController@index'); 
@@ -44,6 +51,24 @@ Route::post('/jadwal_ppmb/store','JadwalController@store');
 Route::get('/jadwal_ppmb/edit/{id}','JadwalController@edit');
 Route::post('/jadwal_ppmb/update','JadwalController@update');
 Route::get('/jadwal_ppmb/delete/{id}','JadwalController@destroy');
+
+// det jadwal
+Route::get('/detjadwal_ppmb','detJadwalController@index'); 
+Route::get('/detjadwal_ppmb/create','detJadwalController@create');
+Route::post('/detjadwal_ppmb/store','detJadwalController@store');
+Route::get('/detjadwal_ppmb/edit/{id}','detJadwalController@edit');
+Route::post('/detjadwal_ppmb/update','detJadwalController@update');
+Route::get('/detjadwal_ppmb/delete/{id}','detJadwalController@destroy');
+//for user
+Route::get('/detjadwal_ppmb_user','detJadwalController@user');
+
+//periode
+Route::get('/periode','PeriodeController@index'); 
+Route::get('/periode/create','PeriodeController@create');
+Route::post('/periode/store','PeriodeController@store');
+Route::get('/periode/edit/{id}','PeriodeController@edit');
+Route::post('/periode/update','PeriodeController@update');
+Route::get('/periode/delete/{id}','PeriodeController@destroy');
 
 Route::get('tampilan/sekolah/viewsek','sekolahController@index');
 Route::get('tampilan/sekolah/createsek','sekolahController@create');

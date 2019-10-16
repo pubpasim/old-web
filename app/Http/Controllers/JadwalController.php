@@ -6,16 +6,17 @@ use Illuminate\Http\Request;
 use App\Jadwalmodel;
 use DB;
 
+
 class JadwalController extends Controller
 {
     /* Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+     public function index()
     {
         $jadwalppmb=Jadwalmodel::all();
-        return view('ppmb.jadwal.lihat_jadwal',compact('jadwalppmb'));
+        return view('ppmb.jadwal.lihat_jadwal',compact('jadwalppmb'));        
     }
 
     /**
@@ -36,17 +37,10 @@ class JadwalController extends Controller
      */
     public function store(Request $request)
     {
-        
-        // $this->validate($request[
-        //     'kegiatan' => 'required'
-        // ]);
-
-        Jadwalmodel::create([
-            'id_jadwal' => $request->id_jadwal,
-            'kegiatan' => $request->kegiatan
-        ]);
-
-        return redirect('/jadwal_ppmb');
+        $jadwalppmb=new Jadwalmodel();
+        $jadwalppmb->kegiatan=$request->jadwal;
+        $jadwalppmb->save();
+        return redirect('jadwal_ppmb');
     }
 
     /**
@@ -66,10 +60,10 @@ class JadwalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+   public function edit($id)
     {
-        $jadwalppmb= DB::table('tb_jadwal')->where('id_jadwal',$id);
-        return view('ppmb.jadwal.edit_jadwal',compact($jadwalppmb));
+        $jadwalppmb= DB::table('tb_jadwal')->where('id_jadwal',$id)->get();
+        return view('ppmb.jadwal.edit_jadwal',compact('jadwalppmb'));
     }
 
     /**
@@ -83,18 +77,15 @@ class JadwalController extends Controller
     {
 
         // $this->validate($request[
-        //     'kegiatan' => 'required'
-        // ]);
-
-        // $jadwalppmb=Jadwalmodel::find($id);
-        // $jadwalppmb->kegiata= $request->kegiatan;
-        // $jadwalppmb=save();
-
+        //     'jabatan' => 'required'
+// ]);
+        
         DB::table('tb_jadwal')->where('id_jadwal',$request->id_jadwal)->update([
-            'jadwal'=>$request->jadwal
+            'kegiatan'=>$request->jadwal
         ]);
         return redirect('/jadwal_ppmb');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -104,7 +95,7 @@ class JadwalController extends Controller
      */
     public function destroy($id)
     {
-        $jadwalppmb=Jadwalmodel::find($id);
-        $jadwalppmb=delete();
+        DB::table('tb_jadwal')->where('id_jadwal',$id)->delete();
+        return redirect('jadwal_ppmb');
     }
 }

@@ -8,22 +8,20 @@
 		</style>
 		<div id="form1">
 		<div class="row">
-			<div class="panel-heading">FROM UBAH PANITIA</div>
+			<div class="panel-heading">FROM TAMBAH PERIODE</div>
 					<div class="panel-body">
 						<div class="col-md-6">
 
-							<form role="form" action="/struktur_ppmb/update" method="POST">
+							<form role="form" action="/periode/store" method="POST">
 								 {{ @csrf_field() }}
-								 <?php  foreach($detorgppmb as $data) {?>
 								<div class="form-group">
-									<label>ID Jabatan</label>
-									<input class="form-control" name="id_jabatan" placeholder="Id Jabatan" value="{{$data->id_orgppmb}}" readonly="">
+									<label>ID Periode</label>
+									<input class="form-control" name="id_periode" placeholder="Id Periode" readonly="">
 								</div>
 								<div class="form-group">
-									<label>Jabatan</label>
-									<input class="form-control" name="jabatan" placeholder="Jabatan" value="{{$data->jabatan}}">
+									<label>Periode</label>
+									<input class="form-control" name="periode" placeholder="Periode">
 								</div>
-								<?php } ?>
 								<button type="submit" class="btn btn-primary">TAMBAH DATA </button>			
 							</form>
 						</div>

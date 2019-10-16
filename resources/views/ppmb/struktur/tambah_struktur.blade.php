@@ -4,7 +4,7 @@
 				width: 750px;
 				height: 500px;
 				margin-left: 300px;
-			}
+			}s
 		</style>
 		<div id="form1">
 		<div class="row">

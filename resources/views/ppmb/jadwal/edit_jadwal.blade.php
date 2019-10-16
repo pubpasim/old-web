@@ -8,24 +8,24 @@
 		</style>
 		<div id="form1">
 		<div class="row">
-			<div class="panel-heading">FROM UBAH PANITIA</div>
+			<div class="panel-heading">FROM UBAH JADWAL</div>
 					<div class="panel-body">
-						<div class="col-md-6">
-
-							<form role="form" action="/struktur_ppmb/update" method="POST">
-								
-								 @foreach($jadwalppmb as $jadwal)
-								  {{ @csrf_field() }}
+						<div class="col-md-6">			
+							<form role="form" action="/jadwal_ppmb/update" method="POST">
+								 {{ @csrf_field() }}
+								 <?php  foreach($jadwalppmb as $data) {?>
 								<div class="form-group">
 									<label>ID Jadwal</label>
-									<input class="form-control" name="id_jadwal" placeholder="Id Jadwal" value="{{$jadwal->id_jadwal}}" readonly="">
+									<input class="form-control" name="id_jadwal" placeholder="Id Jadwal" value="{{$data->id_jadwal}}" readonly="">
 								</div>
 								<div class="form-group">
 									<label>Kegiatan</label>
-									<input class="form-control" name="kegiatan" placeholder="Kegiatan" value="{{$jadwal->kegiatan}}">
+									<input class="form-control" name="jadwal" placeholder="Kegiatan" value="{{$data->kegiatan}}">
 								</div>
-								<button type="submit" class="btn btn-primary">TAMBAH DATA </button>	@endforeach
+								<?php } ?>
+								<button type="submit" class="btn btn-primary">SIMPAN DATA </button>
 							</form>
+						
 						</div>
 					</div>
 				</div>

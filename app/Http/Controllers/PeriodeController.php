@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-class detJadwalTSController extends Controller
+use DB;
+class PeriodeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,8 @@ class detJadwalTSController extends Controller
      */
     public function index()
     {
-        //
+        $periode=DB::table('tb_periode')->get();
+        return view('periode.index',compact('periode'));        
     }
 
     /**
@@ -23,7 +24,7 @@ class detJadwalTSController extends Controller
      */
     public function create()
     {
-        //
+        return view('periode.tambah');
     }
 
     /**
@@ -34,7 +35,11 @@ class detJadwalTSController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('tb_periode')->insert([
+        'id_periode'=> $request->id_periode,
+        'periode'=> $request->periode
+        ]);
+        return redirect('periode');
     }
 
     /**
@@ -54,9 +59,10 @@ class detJadwalTSController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+   public function edit($id)
     {
-        //
+        $periode= DB::table('tb_periode')->where('id_periode',$id)->get();
+        return view('periode.edit',compact('periode'));
     }
 
     /**
@@ -66,10 +72,19 @@ class detJadwalTSController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+
+        // $this->validate($request[
+        //     'jabatan' => 'required'
+// ]);
+        
+        DB::table('tb_periode')->where('id_periode',$request->id_periode)->update([
+            'periode'=>$request->periode
+        ]);
+        return redirect('/periode');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -79,6 +94,7 @@ class detJadwalTSController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('tb_periode')->where('id_periode',$id)->delete();
+        return redirect('periode');
     }
 }
