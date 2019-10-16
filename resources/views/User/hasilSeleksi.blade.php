@@ -1,5 +1,5 @@
 @include('User.header')
-<div id="design" style="padding-bottom: 100px;">
+<div id="design" style="width: 90%;">
 	<form method="POST" action="{{url('hasilSeleksi')}}">
 		{{csrf_field()}}
 		<div class="col-25">

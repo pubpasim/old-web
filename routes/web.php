@@ -152,6 +152,8 @@ Route::get('hapusStrukAlumni/{x}', 'alumniController@hapusStrukAlumni');
 Route::get('editStrukAlumni/{x}', 'alumniController@editStrukAlumni');
 Route::post('updateStrukAlumni/{x}', 'alumniController@updateStrukAlumni');
 
+
+
 Route::get('kegiatanAlumni','alumniController@kegiatanAlumni');
 Route::get('tambahDokAlumni', 'alumniController@tambahDokAlumni');
 Route::post('storeDokAlumni', 'alumniController@storeDokAlumni');
@@ -247,6 +249,8 @@ Route::get('user_survei/{x}','userController@user_survei');
 Route::get('user_psikotes/{x}','userController@user_psikotes');
 Route::get('user_final/{x}','userController@user_final');
 
+Route::get('org_ikatan_alumni', 'userController@OrgIkatanAlumni');
+Route::get('keg_ikatan_alumni', 'userController@KegIkatanAlumni');
 //================================ADMIN ALUMNI=============================//
 
 Route::get('admin/alumni/{x}','alumni_adminController@index');

@@ -46,7 +46,7 @@
     <!-- Search Form -->
     <div class="search-form d-flex align-items-center">
       <div class="container">
-        <form action="index.html" method="get">
+        <form action="#" method="get">
           <input type="search" name="search-form-input" id="searchFormInput" placeholder="Type your keyword ...">
           <button type="submit"><i class="icon_search"></i></button>
         </form>
@@ -125,7 +125,7 @@
                           </li> -->
                         </ul>
                       </li>
-                      <li><a href="./room.html">PUB Aktif</a>
+                      <li><a href="#">PUB Aktif</a>
                         <ul class="dropdown">
                           <li><a href="{{url('pub_profile')}}">-Profile PUB</a></li>
                           <li><a href="{{url('organisasi_pub')}}">-Organisasi PUB</a></li>
@@ -135,20 +135,20 @@
 
                         </ul>
                       </li>
-                      <li><a href="./room.html">Alumni PUB</a>
+                      <li><a href="#">Alumni PUB</a>
                         <ul class="dropdown">
                           <li><a href="#">-Data Alumni PUB</a></li>
                           <li><a href="#">-Data Infaq Alumni</a></li>
                           <li><a href="#">-Kegiatan Alumni</a></li>
-                          <li><a href="./room.html">Ikatan Alumni PUB</a>
+                          <li><a href="#">Ikatan Alumni PUB</a>
                             <ul class="dropdown">
-                              <li><a href="#">-Organisasi</a></li>
-                              <li><a href="#">-Kegiatan Organisasi</a></li>
+                              <li><a href="{{url('org_ikatan_alumni')}}">-Organisasi</a></li>
+                              <li><a href="{{url('keg_ikatan_alumni')}}">-Kegiatan Organisasi</a></li>
                             </ul>
                           </li>
                         </ul>
                       </li>
-                      <li><a href="./contact.html">Pembina PUB</a></li>
+                      <li><a href="#">Pembina PUB</a></li>
                       
                       
                     </ul>

@@ -302,70 +302,21 @@ class userController extends Controller
         $keg=DB::table('tb_pubdok')->get();
         return view('user.kegiatanPub',compact('keg'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function OrgIkatanAlumni()
     {
-        //
+        $struk = DB::table('tb_ikatan_alumni')
+        ->join('tb_orgpub','tb_orgpub.id_orgpub','tb_ikatan_alumni.id_jabatan')
+        ->join('tb_mahasiswa','tb_mahasiswa.id_mahasiswa','tb_ikatan_alumni.id_mahasiswa')
+        ->join('tb_angkatan','tb_angkatan.id_angkatan','tb_mahasiswa.id_angkatan')
+        ->get();
+        return view('User.orgIkatanAlumni',compact('struk'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function KegIkatanAlumni()
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $dok =DB::table('tb_dok_alumni')
+        ->join('tb_mahasiswa','tb_mahasiswa.id_mahasiswa','tb_dok_alumni.id_mahasiswa')
+        ->join('tb_angkatan','tb_mahasiswa.id_angkatan','tb_angkatan.id_angkatan')
+        ->get();
+        return view('User.kegIkatanAlumni',compact('dok'));
     }
 }

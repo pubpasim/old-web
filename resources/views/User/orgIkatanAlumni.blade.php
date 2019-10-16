@@ -4,21 +4,23 @@
 		<thead>
 			<tr>
 				<th>No</th>
-				<th>Nama Sekolah</th>
-				<th>Jumlah Peserta</th>
-				<th>Peserta Lulus</th>
-				<th>Peserta Gagal</th>
+				<th>Nama Alumni</th>						        
+				<th>Angkatan</th>
+				<th>Jabatan</th>
+				<th>Masa Bakti</th>
+				
 			</tr>
 		</thead>
 		<tbody>
 			@php $no = 1; @endphp
-			@foreach($tpa as $data)
+			@foreach($struk as $data)
 			<tr>
-				<td>{{ $no++}}</td>
-				<td>{{ $data->sekolah}}</td>
-				<td>{{ $data->jml_peserta}}</td>
-				<td>{{ $data->jml_lulus}}</td>
-				<td>{{ $data->jml_gagal}}</td>
+				<td>{{ $no++}}</td>						    		
+				<td>{{$data->nama}}</td>
+				<td>{{$data->angkatan}} - {{$data->nama_angkatan}}</td>
+				<td>{{$data->jabatan_pub}}</td>
+				<td>{{$data->masa_bakti}}</td>
+
 			</tr>
 			@endforeach
 		</tbody>						    
