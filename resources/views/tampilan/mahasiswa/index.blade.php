@@ -56,9 +56,11 @@
 			}
 
 			.container {
+				width: 100%;
 				border-radius: 5px;
 				background-color: #ffffff;
-				padding: 30px;
+				padding: 0px;
+				margin-left: 2px;
 			}
 
 			.col-25 {
@@ -73,7 +75,7 @@
 				margin-top: 6px;
 			}
 			#form1{
-				width: 70%;
+				width: 100%;
 				height: 100%;
 				margin-left: 17%;
 			}
@@ -95,6 +97,7 @@
 		</style>
 
 		<div id="form1">
+			<br>
 			<h1>Daftar Mahasiswa PUB</h1>
 			<div class="container">
 				<a href="{{url('tambah/mahasiswa')}}"><button class="btn btn-primary" style=" background-color: #339966; width: 100%;"><svg class="glyph stroked plus sign" style="height: 30px;"><use xlink:href="#stroked-plus-sign"/></svg></button></a>
@@ -103,15 +106,15 @@
 						<tr>
 							<th>NIM</th>
 							<th>NAMA</th>
+							<th>TTL</th>
 							<th>ASAL DAERAH</th>
 							<th>ASAL SEKOLAH</th>
 							<th>JABATAN DI PUB</th>
 							<th>JABATAN DI PPMB</th>
 							<th>STATUS PUB</th>
-							<th>JURUSAN</th>
+							<th>PRODI</th>
+							<th>NO TELPON</th>
 							<th>AKSI</th>
-							<th></th>
-							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -119,15 +122,17 @@
 						<tr>
 							<td>{{$mhs->nim}}</td>
 							<td>{{$mhs->nama}}</td>
+							<td>{{$mhs->tempat_lahir}},&nbsp;{{$mhs->tanggal_lahir}}</td>
 							<td>{{$mhs->kab_kot}}</td>
 							<td>{{$mhs->sekolah}}</td>
 							<td>{{$mhs->jabatan_pub}}</td>
 							<td>{{$mhs->jabatan}}</td>
 							<td>{{$mhs->status}}</td>
 							<td>{{$mhs->nama_jur}}</td>
-							<td><a href="{{url('detail/org/'.$mhs->id_mahasiswa)}}"><button type="reset" class="btn btn-default">Detail</button></a></td>
-							<td><a href="{{url('mahasiswaHapus/'.$mhs->id_mahasiswa)}}"><button class="btn btn-primary" style="background-color: red;">Hapus</button></a></td>
-							<td><a href="{{url('mahasiswaEdit/'.$mhs->id_mahasiswa)}}"><button class="btn btn-primary">Edit</button></a></td>
+							<td>{{$mhs->no_telp}}</td>
+							<td><a href="{{url('detail/org/'.$mhs->id_mahasiswa)}}"><button type="reset" class="btn btn-default">Detail</button></a>&nbsp;&nbsp;
+							<a href="{{url('mahasiswaHapus/'.$mhs->id_mahasiswa)}}"><button class="btn btn-primary" style="background-color: red;">Hapus</button></a>&nbsp;&nbsp;
+							<a href="{{url('mahasiswaEdit/'.$mhs->id_mahasiswa)}}"><button class="btn btn-primary">Edit</button></a></td>
 						</tr>
 						@endforeach
 					</tbody>

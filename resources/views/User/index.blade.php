@@ -4,7 +4,7 @@
 <section class="welcome-area">
 	<div class="welcome-slides owl-carousel">
 		<!-- Single Welcome Slide -->
-		<div class="single-welcome-slide bg-img bg-overlay" style="background-image: url(imgs/pasim.jpg);" data-img-url="imgs/pasim.jpg">
+		<div class="single-welcome-slide bg-img bg-overlay" style="background-image: url({{url('imgs/pasim.jpg')}});" data-img-url="imgs/pasim.jpg">
 			<!-- Welcome Content -->
 			<div class="welcome-content h-100">
 				<div class="container h-100">
@@ -209,27 +209,23 @@
 <!-- Service Area End -->
 
 <!-- Our Room Area Start -->
+
 <section class="roberto-rooms-area">
 	<div class="rooms-slides owl-carousel">
+		@foreach($ppmb as $data)
 		<!-- Single Room Slide -->
 		<div class="single-room-slide d-flex align-items-center">
 			<!-- Thumbnail -->
-			<div class="room-thumbnail h-100 bg-img" style="background-image: url(img/bg-img/16.jpg);"></div>
+			<div class="room-thumbnail h-100 bg-img" style="background-image: url({{url('imgs')}}/{{$data->foto}});"></div>
 
-			<!-- Content -->
+			<!-- Content -->	
+			
 			<div class="room-content">
-				<h2 data-animation="fadeInUp" data-delay="100ms">Premium King Room</h2>
-				<h3 data-animation="fadeInUp" data-delay="300ms">400$ <span>/ Day</span></h3>
-				<ul class="room-feature" data-animation="fadeInUp" data-delay="500ms">
-					<li><span><i class="fa fa-check"></i> Size</span> <span>: 30 ft</span></li>
-					<li><span><i class="fa fa-check"></i> Capacity</span> <span>: Max persion 5</span></li>
-					<li><span><i class="fa fa-check"></i> Bed</span> <span>: King Beds</span></li>
-					<li><span><i class="fa fa-check"></i> Services</span> <span>: Wifi, Television, Bathroom</span></li>
-				</ul>
-				<a href="#" class="btn roberto-btn mt-30" data-animation="fadeInUp" data-delay="700ms">View Details</a>
+				<h2 data-animation="fadeInUp" data-delay="100ms">{{$data->keterangan}}</h2>
+				
 			</div>
 		</div>
-
+		@endforeach
 		<!-- Single Room Slide -->
 		<div class="single-room-slide d-flex align-items-center">
 			<!-- Thumbnail -->
@@ -516,7 +512,7 @@
 <!-- Call To Action Area Start -->
 <section class="roberto-cta-area">
 	<div class="container">
-		<div class="cta-content bg-img bg-overlay jarallax" style="background-image: url(img/bg-img/1.jpg);">
+		<div class="cta-content bg-img bg-overlay jarallax" style="background-image: url({{url('imgs/pasim.jpg')}});">
 			<div class="row align-items-center">
 				<div class="col-12 col-md-7">
 					<div class="cta-text mb-50">

@@ -17,8 +17,8 @@ class detPelatihanController extends Controller
         $detpelatihan = DB::table('tb_detpelatihan')
         ->join('tb_angkatan','tb_angkatan.id_angkatan','=','tb_detpelatihan.id_angkatan')
         ->join('tb_pelatihan','tb_pelatihan.id_pelatihan','=','tb_detpelatihan.id_pelatihan')
-        ->select('tb_detpelatihan.id_detpelatihan','tb_pelatihan.id_pelatihan','tb_angkatan.id_angkatan')
-        ->get();
+        ->select('tb_detpelatihan.id_detpelatihan','tb_pelatihan.pelatihan','tb_angkatan.angkatan','tb_detpelatihan.file')
+        ->get(); 
         return view('Alumni_admin.det_pelatihan.index',compact('detpelatihan'));
 
         // $detjadwalppmb=DB::table('tb_detjadwal')

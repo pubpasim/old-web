@@ -101,6 +101,22 @@
 			</div>
 			<div class="row">
 				<div class="col-25">
+					<label for="tl">Tempat Lahir</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="tl" name="tl" placeholder="tempat lahir">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="tgl">Tanggal Lahir</label>
+				</div>
+				<div class="col-75">
+					<input type="date" id="tgl" name="tgl" placeholder="Tanggal Lahir">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
 					<label for="kelamin">Jenis Kelamin</label>
 				</div>
 				<div class="col-75">
@@ -220,6 +236,14 @@
 				</div>
 				<div class="col-75">
 					<input id="uploadFile" type="file" name="foto">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="telp">Nomor Telpon</label>
+				</div>
+				<div class="col-75">
+					<input type="number" id="telp" name="telp" placeholder="Nomor telpon">
 				</div>
 			</div>
 			<div class="row">

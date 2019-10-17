@@ -25,7 +25,7 @@
 							<!-- Single Blog Area -->
 							<div class="latest-blog-area">
 								<a href="#" class="post-title">Freelance Design Tricks How</a>
-								<span class="post-date"><i class="fa fa-clock-o" aria-hidden="true"></i> Jan 02, 2019</span>
+								<span class="post-date"><i class="fa fa-clock-o" aria-hidden="true"></i> Okt 16, 2019</span>
 							</div>
 
 							<!-- Single Blog Area -->
@@ -43,10 +43,10 @@
 
 							<!-- Footer Nav -->
 							<ul class="footer-nav">
-								<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> About Us</a></li>
-								<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Our Room</a></li>
-								<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Career</a></li>
-								<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> FAQs</a></li>
+								<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> PUB</a></li>
+								<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Fasilitas</a></li>
+								<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> PPMB</a></li>
+								<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Alumni</a></li>
 							</ul>
 						</div>
 					</div>

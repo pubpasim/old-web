@@ -60,8 +60,8 @@
 
           <div class="col-6">
             <div class="top-header-content">
-              <a href="#"><i class="icon_phone"></i> <span>(123) 456-789-1230</span></a>
-              <a href="#"><i class="icon_mail"></i> <span>info.colorlib@gmail.com</span></a>
+              <a href="#"><i class="icon_phone"></i> <span>0857-2275-2570</span></a>
+              <a href="#"><i class="icon_mail"></i> <span>hafiztanjung70@gmail.com</span></a>
             </div>
           </div>
 
@@ -116,13 +116,6 @@
                           <li><a href="/syarat_user">- Syarat & Ketentuan</a></li>
                           
                           <li><a href="{{url('hasilSeleksi')}}">- Hasil Seleksi</a></li>
-                          <li><a href="#">- Dokumentasi PPMB</a></li>
-
-                          <!-- <li><a href="#">- PPMB PUB</a>
-                            <ul class="dropdown">
-
-                            </ul>
-                          </li> -->
                         </ul>
                       </li>
                       <li><a href="#">PUB Aktif</a>
@@ -137,9 +130,8 @@
                       </li>
                       <li><a href="#">Alumni PUB</a>
                         <ul class="dropdown">
-                          <li><a href="#">-Data Alumni PUB</a></li>
-                          <li><a href="#">-Data Infaq Alumni</a></li>
-                          <li><a href="#">-Kegiatan Alumni</a></li>
+                          <li><a href="{{url('user_alumni')}}">-Data Alumni PUB</a></li>
+                          <li><a href="{{url('user_infaq')}}">-Data Infaq Alumni</a></li>
                           <li><a href="#">Ikatan Alumni PUB</a>
                             <ul class="dropdown">
                               <li><a href="{{url('org_ikatan_alumni')}}">-Organisasi</a></li>

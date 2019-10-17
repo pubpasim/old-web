@@ -254,9 +254,12 @@ Route::get('user_tpa/{x}','userController@user_tpa');
 Route::get('user_survei/{x}','userController@user_survei');
 Route::get('user_psikotes/{x}','userController@user_psikotes');
 Route::get('user_final/{x}','userController@user_final');
-
 Route::get('org_ikatan_alumni', 'userController@OrgIkatanAlumni');
 Route::get('keg_ikatan_alumni', 'userController@KegIkatanAlumni');
+Route::get('user_infaq', 'userController@user_infaq');
+Route::get('user_alumni', 'userController@user_alumni');
+Route::post('user_alumni/', 'userController@user_alumniView');
+
 //================================ADMIN ALUMNI=============================//
 
 Route::get('admin/alumni/{x}','alumni_adminController@index');
