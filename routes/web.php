@@ -132,7 +132,7 @@ Route::get('editFinal/{x}', 'hasilController@editFinal');
 Route::post('updateFinal/{x}', 'hasilController@updateFinal');
 
 
-<<<<<<< HEAD
+
 
  	Route::get('tampilan/daerah/viewdae','daerahController@index');
  	Route::get('tampilan/daerah/createdae','daerahController@create');
@@ -143,5 +143,3 @@ Route::post('updateFinal/{x}', 'hasilController@updateFinal');
  	Route::get('tampilan/daerah/delet/{id}','daerahController@destroy');
 
 Route::get('dokumentasi', 'ppmbDokController@dokumentasi');
-=======
->>>>>>> a5ccd9c903826ea41d48e1222953111dd52e80c6

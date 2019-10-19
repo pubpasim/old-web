@@ -73,7 +73,7 @@
 
 							<li><a href="{{url('pub_dok/uploadfoto')}}"><svg class="glyph stroked blank document"></svg>Upload Foto</a></li>
 
-
+s
 							<li><a href="{{url('mahasiswa')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg></svg> Data Mahasiswa PUB</a></li>
 
 							<li><a href="#"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Jadwal</a></li>
