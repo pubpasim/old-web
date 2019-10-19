@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Ramsey\Uuid\Uuid;
 
 class RegisterController extends Controller
 {
@@ -49,6 +50,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
+            'nim' => 'required|alpha_num|max:10|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -62,8 +64,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $uuid1 = Uuid::uuid1();      //////pake uuid
         return User::create([
+            'id' => $uuid1->toString(),    //////pake uuid
             'name' => $data['name'],
+            'nim' => $data['nim'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
