@@ -1,0 +1,125 @@
+@include('Alumni_admin.head')
+<hr>
+<h1 id="judul">Profile Alumni PUB</h1>
+<hr>
+<table align="center">
+	<tr>
+		<td>NIM</td>
+		<td>:</td>
+		<td>{{$data->nim}}</td>
+	</tr>
+	<tr>
+		<td>Nama Lengkap</td>
+		<td>:</td>
+		<td>{{$data->nama}}</td>
+	</tr>
+	<tr>
+		<td>Tempat, Tanggal Lahir</td>
+		<td>:</td>
+		<td>{{$data->tempat_lahir}}, {{$data->tanggal_lahir}}</td>
+	</tr>
+	<tr>
+		<td>Angkatan</td>
+		<td>:</td>
+		<td>{{$data->angkatan}}</td>
+	</tr>
+	<tr>
+		<td>Nama Angkatan</td>
+		<td>:</td>
+		<td>{{$data->nama_angkatan}}</td>
+	</tr>
+	<tr>
+		<td>Jenis Kelamin</td>
+		<td>:</td>
+		<td>{{$data->jenis_kelamin}}</td>
+	</tr>
+	<tr>
+		<td>Asal Daerah</td>
+		<td>:</td>
+		<td>{{$data->kab_kot}}</td>
+	</tr>
+	<tr>
+		<td>Asal Sekolah</td>
+		<td>:</td>
+		<td>{{$data->sekolah}}</td>
+	</tr>
+	<tr>
+		<td>Prodi</td>
+		<td>:</td>
+		<td>{{$data->nama_jur}}</td>
+	</tr>
+	<tr>
+		<td>Jabatan selama di PUB</td>
+		<td>:</td>
+		<td>{{$data->jabatan_pub}}</td>
+	</tr>
+	<tr>
+		<td>Jabatan di PPMB</td>
+		<td>:</td>
+		<td>{{$data->jabatan}}</td>
+	</tr>
+	<tr>
+		<td>No Telpon</td>
+		<td>:</td>
+		<td>{{$data->no_telp}}</td>
+	</tr>
+	<tr><td colspan="2"><a href="{{url('editProfil/'.$data->id_mahasiswa)}}">Edit Profil</a></td></tr>
+</table>
+<hr>
+<h1 id="judul">Pendidikan Lanjut</h1>
+<hr>
+<a href="{{url('tambahPend/'.$data->id_mahasiswa)}}"><button><b>+</b>&nbsp;Tambah Pendidikan Lanjut</button></a>
+<div @if($pendidikan2==0) hidden="true" @endif>
+		@foreach($pendidikan as $pnd)
+		<table align="center">
+			<tr>
+				<td>Perguruan Tinggi</td>
+				<td>:</td>
+				<td>{{$pnd->Universitas}}</td>
+			</tr>
+			<tr>
+				<td>Program Studi</td>
+				<td>:</td>
+				<td>{{$pnd->prodi}}</td>
+			</tr>
+			<tr>
+				<td>Tahun Lulus</td>
+				<td>:</td>
+				<td>{{$pnd->Tahun_lulus}}</td>
+			</tr>
+			
+		</table>
+		<a href="{{url('edit/admin/alumni')}}">Edit Pendidikan Lanjutan</a>
+		<hr>
+		@endforeach
+</div>
+<hr>
+<h1 id="judul">Pengalaman Kerja</h1>
+<hr>
+<a href="{{url('tambahPeng/'.$data->id_mahasiswa)}}"><button><b>+</b>&nbsp;Tambah Pengalaman</button></a>
+<div @if($pengalaman2==0) hidden="true" @endif>
+	
+	@foreach($pengalaman as $peng)
+	<table align="center">
+		<tr>
+			<td>Nama Perusahaan</td>
+			<td>:</td>
+			<td>{{$peng->instansi}}</td>
+		</tr>
+		<tr>
+			<td>Lama Bekerja</td>
+			<td>:</td>
+			<td>{{$peng->lama_kerja}}</td>
+		</tr>
+		<tr>
+			<td>Jabatan di Perusahaan</td>
+			<td>:</td>
+			<td>{{$peng->jabatan}}</td>
+		</tr>
+	</table>
+	<a href="{{url('tambahPeng/'.$data->id_mahasiswa)}}">Edit Pengalaman</a>
+	@endforeach
+	
+	
+</div>
+@include('Alumni_admin.foot')

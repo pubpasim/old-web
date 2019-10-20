@@ -138,7 +138,7 @@ Route::post('angkatanModel','angkatanController@store');
 Route::post('lanjut','alumniController@store');
 Route::get('lanjut/pengalaman','alumniController@index2');
 Route::get('tambahAlumni','alumniController@index3');
-Route::post('tambah/pengalaman','alumniController@store2');
+
 Route::post('tambah/pendidikan','alumniController@store3');
 Route::get('infaq','alumniController@infaq_view');
 Route::get('tambahInfaq','alumniController@tambahInfaq');
@@ -263,4 +263,14 @@ Route::post('user_alumni/', 'userController@user_alumniView');
 //================================ADMIN ALUMNI=============================//
 
 Route::get('admin/alumni/{x}','alumni_adminController@index');
+Route::get('admin/alumni/profile/{x}','alumni_adminController@profile');
+Route::get('editProfil/{x}','alumni_adminController@editProfil');
+Route::post('simpanProfil/edit/{x}','alumni_adminController@updateProfil');
+
 Route::post('tambahFoto','alumni_adminController@store');
+Route::get('tambahPend/{x}','alumni_adminController@tambahPnd');
+Route::post('simpanPend','alumni_adminController@simpanPnd');
+
+Route::get('tambahPeng/{x}','alumni_adminController@tambahPeng');
+Route::post('tambah/pengalaman','alumni_adminController@simpanPeng');
+
