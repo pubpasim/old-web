@@ -76,7 +76,7 @@ class mahasiswaController extends Controller
         $file->move($tujuan_upload,$nama_file);
 
         DB::table('tb_mahasiswa')->insert([
-            'nama'=>$request->Tname,'NIM'=>$request->nim,'id_daerah'=>$request->daerah,'id_angkatan'=>$request->angkatan,'id_sekolah'=>$request->skl,'id_statusSos'=>$request->spkw,'id_orgpub'=>$request->jbPUB,'id_orgppmb'=>$request->jbPPMB,'id_jur'=>$request->jurusan, 'id_statusPub'=>$request->alm,'jenis_kelamin'=>$request->kelamin,'id_statusPub'=>$request->st_pub,'file'=>$nama_file,'tempat_lahir'=>$requesttl,'tanggal_lahir'=>$request->tgl,'no_telp'=>$request->telp
+            'nama'=>$request->Tname,'NIM'=>$request->nim,'id_daerah'=>$request->daerah,'id_angkatan'=>$request->angkatan,'id_sekolah'=>$request->skl,'id_statusSos'=>$request->spkw,'id_orgpub'=>$request->jbPUB,'id_orgppmb'=>$request->jbPPMB,'id_jur'=>$request->jurusan, 'id_statusPub'=>$request->alm,'jenis_kelamin'=>$request->kelamin,'id_statusPub'=>$request->st_pub,'file'=>$nama_file,'tempat_lahir'=>$request->tl,'tanggal_lahir'=>$request->tgl,'no_telp'=>$request->telp
         ]);
 
         return redirect('mahasiswa');

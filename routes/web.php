@@ -273,4 +273,5 @@ Route::post('simpanPend','alumni_adminController@simpanPnd');
 
 Route::get('tambahPeng/{x}','alumni_adminController@tambahPeng');
 Route::post('tambah/pengalaman','alumni_adminController@simpanPeng');
-
+Route::get('editPengalaman/{x}/{y}','alumni_adminController@editPengalaman');
+Route::post('updatePengalaman','alumni_adminController@updatePengalaman');
