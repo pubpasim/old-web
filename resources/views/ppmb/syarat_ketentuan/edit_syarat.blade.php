@@ -15,7 +15,7 @@
 					<div class="panel-body" align="center">
 						<div class="col-md-12">
 
-							<form role="form" action="/syarat_ketentuan/update" method="POST">
+							<form role="form" action="/syarat_ketentuan" method="POST">
 								 {{ @csrf_field() }}
 								</div>
 								<div class="form-group">
