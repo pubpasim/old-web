@@ -64,6 +64,32 @@ class alumni_adminController extends Controller
         return redirect('admin/alumni/profile/'.$id);
         //return redirect('lanjut/pengalaman');
     }
+    public function editPengalaman($id,$id_peng)
+    {
+        $data = DB::table('tb_mahasiswa')
+        ->join('tb_angkatan','tb_mahasiswa.id_angkatan','=','tb_angkatan.id_angkatan')
+        ->join('tb_daerah', 'tb_mahasiswa.id_daerah', '=', 'tb_daerah.id_daerah')
+        ->join('tb_sekolah', 'tb_mahasiswa.id_sekolah', '=', 'tb_sekolah.id_sekolah')
+        ->join('tb_orgpub', 'tb_mahasiswa.id_orgpub', '=', 'tb_orgpub.id_orgpub')
+        ->join('tb_orgppmb', 'tb_mahasiswa.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
+        ->join('tb_statusPub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statusPub.id_statusPub')
+        ->join('tb_statusSos', 'tb_mahasiswa.id_statusSos', '=', 'tb_statusSos.id_statusSos')
+        ->join('tb_jurusan', 'tb_mahasiswa.id_jur', '=', 'tb_jurusan.id_jur')
+        ->select('tb_mahasiswa.jenis_kelamin','tb_mahasiswa.no_telp','tb_angkatan.angkatan','tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status','tb_statusSos.status AS spkw','tb_mahasiswa.file')
+        ->where('tb_mahasiswa.id_mahasiswa',$id)->first();
+        $peng=DB::table('tb_detpengalaman')->where('id_detpengalaman',$id_peng)->first();
+        return view('Alumni_admin.editPengalaman',compact('data','peng','id'));
+    }
+    public function updatePengalaman(Request $request)
+    {
+        $id=$request->id;
+        $lama=$request->thn1.' s/d '.$request->thn2;
+        DB::table('tb_detpengalaman')->update([
+            'id_mahasiswa'=>$request->id,'jabatan'=>$request->jabatan,'lama_kerja'=>$lama,'instansi'=>$request->perusahaan
+        ]);
+        return redirect('admin/alumni/profile/'.$id);
+        //return redirect('lanjut/pengalaman');
+    }
     public function editProfil($id)
     {
         $dr=DB::table('tb_daerah')

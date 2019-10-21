@@ -117,7 +117,8 @@
 			<td>{{$peng->jabatan}}</td>
 		</tr>
 	</table>
-	<a href="{{url('tambahPeng/'.$data->id_mahasiswa)}}">Edit Pengalaman</a>
+	<input type="hidden" name="id_peng" value="{{$peng->id_detpengalaman}}">
+	<a href="{{url('editPengalaman/'.$data->id_mahasiswa,$peng->id_detpengalaman)}}">Edit Pengalaman</a>
 	@endforeach
 	
 	
