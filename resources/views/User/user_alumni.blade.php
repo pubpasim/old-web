@@ -23,12 +23,7 @@
 				<th>NIM</th>
 				<th>NAMA</th>
 				<th>ANGKATAN</th>
-				<th>ASAL DAERAH</th>
-				<th>ASAL SEKOLAH</th>
-				<th>JABATAN DI PUB</th>
-				<th>JABATAN DI PPMB</th>
-				<th>STATUS PUB</th>
-				<th>JURUSAN</th>
+				<th>AKSI</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -37,12 +32,7 @@
 				<td>{{$mhs->nim}}</td>
 				<td>{{$mhs->nama}}</td>
 				<td>{{$mhs->angkatan}}</td>
-				<td>{{$mhs->kab_kot}}</td>
-				<td>{{$mhs->sekolah}}</td>
-				<td>{{$mhs->jabatan_pub}}</td>
-				<td>{{$mhs->jabatan}}</td>
-				<td>{{$mhs->status}}</td>
-				<td>{{$mhs->nama_jur}}</td>
+				<td><a href="{{url('detail/org/'.$mhs->id_mahasiswa)}}"><button id="btn">detail</button></a></td>
 			</tr>
 			@endforeach
 		</tbody>				    

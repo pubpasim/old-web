@@ -207,6 +207,7 @@
 					<label for="jurusan">Jurusan</label>
 				</div>
 				<div class="col-75">
+
 					<select id="jurusan" name="jurusan">
 						<option disabled="true"> --Jurusan--</option>
 						@foreach($jur as $data)
@@ -220,7 +221,7 @@
 					<label for="jurusan">Foto</label>
 				</div>
 				<div class="col-75">
-					<input type="text" name="" value="{{$mhsEdit->file}}">
+					<img src="{{url('imgs/mahasiswa')}}/{{$mhsEdit->file}}" width="150">
 					<input id="uploadFile" type="file" name="foto" value="{{$mhsEdit->file}}">
 				</div>
 			</div>

@@ -77,25 +77,8 @@ class alumniController extends Controller
         ]);
         return redirect('lanjut/pengalaman');
     }
-    public function store2(Request $request)
-    {
-        DB::table('tb_detpengalaman')->insert([
-            'id_mahasiswa'=>$request->idmhs,'jabatan'=>$request->jabatan,'lama_kerja'=>$request->lama,'instansi'=>$request->perusahaan
-        ]);
-        $idmax =DB::table('tb_mahasiswa')->max('id_mahasiswa');
-        return view('tampilan.alumni.lanjut',compact('idmax'));
-        //return redirect('lanjut/pengalaman');
-    }
-    public function store3(Request $request)
-    {
-        DB::table('tb_detpendidikan')->insert([
-            'id_mahasiswa'=>$request->idmhs2,'universitas'=>$request->kampus,'tahun_lulus'=>
-            $request->lulus,'pendidikan'=>$request->pddk
-        ]);
-        $idmax =DB::table('tb_mahasiswa')->max('id_mahasiswa');
-        return view('tampilan.alumni.lanjut',compact('idmax'));
-        //return redirect('lanjut/pengalaman');
-    }
+    
+    
     public function index2()
     {
 

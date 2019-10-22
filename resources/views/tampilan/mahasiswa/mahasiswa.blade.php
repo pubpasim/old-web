@@ -120,8 +120,8 @@
 					<label for="kelamin">Jenis Kelamin</label>
 				</div>
 				<div class="col-75">
-					<input type="radio" id="kelamin" name="kelamin">Laki-laki
-					<input type="radio" id="kelamin" name="kelamin">Perempuan
+					<input type="radio" id="kelamin" name="kelamin" value="Laki-laki">Laki-laki
+					<input type="radio" id="kelamin" name="kelamin" value="Perempuan">Perempuan
 				</div>
 			</div>
 			<div class="row">

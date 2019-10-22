@@ -97,21 +97,18 @@
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="spkw">Tema Kegiatan</label>
+                    <label for="spkw">Divisi</label>
                 </div>
                 <div class="col-75">
                     <select id="kegiatan" name="kegiatan">
-                        <option disabled="false"> --pilih kegiatan--</option>
-                        <option>Pengajian</option>
-                        <option>Pelatihan</option>
-                        <option>Magang</option>
-                        <option>Bersih-bersih</option>
-                        <option>Kuliah</option>
-                        <option>Pembinaan</option>
-                        <option>Pemilihan PUB</option>
-                        <option>Bakti Sosial</option>
-                        <option>Masak-masak</option>
-                        <option>Makan-makan</option>
+                        <option disabled="false"> --pilih Divisi--</option>
+                        <option>Divisi Pendidikan</option>
+                        <option>Divisi Kerohanian</option>
+                        <option>Divisi Kebersihan</option>
+                        <option>Divisi Keasramaan</option>
+                        <option>Divisi Magang</option>
+                        <option>Divisi Kesehatan</option>
+                        <option>Divisi Kesejahteraan</option>
                     </select>
                 </div>
             </div>
