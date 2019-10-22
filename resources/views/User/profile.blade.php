@@ -1,7 +1,7 @@
 @include('User.header')
 <div id="design" >
 	<center><img src="{{url('imgs')}}/{{('pub.png') }}" width="30%"></center>
-	<h1 align="center">PROFILE PUB</h1>
+	<h1 align="center">SEKILAS PUB</h1>
 	<h2>LATAR BELAKANG</h2>
 	<p>
 		Melihat fenomena ditengah-tengah masyarakat dengan banyaknya lulusan SMA/SMK yang berpotensi namun tidak mampu melanjutkan ke perguruan tinggi yang disebabkan besarnya biaya pendidikan pada perguruan tinggi negeri maupun swasta, apalagi ditambah dengan biaya hidup selama mereka mengikuti pendidikan tinggi tersebut. Kebanyakan dari mereka ini adalah generasi muda islam yang kurang beruntung dikarenakan ketidakberdayaan ekonomi orang tua. Namun dibalik itu, mereka memiliki potensi yang sangat tinggi, baik dalam bidang kecerdasan intelektual, emosional, maupun spiritual. Jika hal ini didiamkan maka dapat dipastikan generasi muda islam Indonesia di masa akan datang tertinggal dari saudara-saudaranya yang lain.

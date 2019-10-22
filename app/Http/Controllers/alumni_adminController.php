@@ -14,7 +14,10 @@ class alumni_adminController extends Controller
      */
     public function index($id)
     {
-        $foto=DB::table('tb_alumni_dok')->orderby('id_alumnidok','DESC')->get();
+        $foto=DB::table('tb_alumni_dok')
+        ->join('tb_mahasiswa','tb_alumni_dok.id_mahasiswa','=','tb_mahasiswa.id_mahasiswa')
+        ->select('tb_mahasiswa.nama','tb_alumni_dok.file','tb_alumni_dok.keterangan')
+        ->orderby('id_alumnidok','DESC')->get();
         $data=DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->first();
         return view('Alumni_admin.index',compact('data','foto'));
     }
@@ -45,6 +48,29 @@ class alumni_adminController extends Controller
     {
         DB::table('tb_detpendidikan')->insert([
             'id_mahasiswa'=>$request->idmhs,'universitas'=>$request->kampus,'tahun_lulus'=>
+            $request->lulus,'prodi'=>$request->pddk.' '.$request->jur
+        ]);
+        return redirect('admin/alumni/profile/'.$request->idmhs);
+    }
+    public function editPendidikan($id,$id_pnd)
+    {
+        $data = DB::table('tb_mahasiswa')
+        ->join('tb_daerah', 'tb_mahasiswa.id_daerah', '=', 'tb_daerah.id_daerah')
+        ->join('tb_angkatan','tb_mahasiswa.id_angkatan', '=', 'tb_angkatan.id_angkatan')
+        ->join('tb_sekolah', 'tb_mahasiswa.id_sekolah', '=', 'tb_sekolah.id_sekolah')
+        ->join('tb_orgpub', 'tb_mahasiswa.id_orgpub', '=', 'tb_orgpub.id_orgpub')
+        ->join('tb_orgppmb', 'tb_mahasiswa.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
+        ->join('tb_statusPub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statusPub.id_statusPub')
+        ->join('tb_jurusan', 'tb_mahasiswa.id_jur', '=', 'tb_jurusan.id_jur')
+        ->select('tb_mahasiswa.tanggal_lahir','tb_mahasiswa.tempat_lahir','tb_mahasiswa.jenis_kelamin','tb_mahasiswa.no_telp','tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_angkatan.nama_angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status','tb_mahasiswa.file')
+        ->where('tb_mahasiswa.id_mahasiswa',$id)->first();
+        $pnd=DB::table('tb_detpendidikan')->where('id_detpendidikan',$id_pnd)->first();
+        return view('Alumni_admin.editPendidikan',compact('data','pnd'));
+    }
+    public function updatePendidikan(Request $request)
+    {
+        DB::table('tb_detpendidikan')->where('id_detpendidikan',$request->idpnd)->update([
+            'universitas'=>$request->kampus,'tahun_lulus'=>
             $request->lulus,'prodi'=>$request->pddk.' '.$request->jur
         ]);
         return redirect('admin/alumni/profile/'.$request->idmhs);
@@ -84,7 +110,7 @@ class alumni_adminController extends Controller
     {
         $id=$request->id;
         $lama=$request->thn1.' s/d '.$request->thn2;
-        DB::table('tb_detpengalaman')->update([
+        DB::table('tb_detpengalaman')->where('id_detpengalaman',$request->idpeng)->update([
             'id_mahasiswa'=>$request->id,'jabatan'=>$request->jabatan,'lama_kerja'=>$lama,'instansi'=>$request->perusahaan
         ]);
         return redirect('admin/alumni/profile/'.$id);
@@ -137,11 +163,68 @@ class alumni_adminController extends Controller
             ]);
         }else{
             DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->update([
-            'nama'=>$request->Tname,'NIM'=>$request->nim,'id_daerah'=>$request->daerah,'id_angkatan'=>$request->angkatan,'id_sekolah'=>$request->skl,'id_statusSos'=>$request->spkw,'id_orgpub'=>$request->jbPUB,'id_orgppmb'=>$request->jbPPMB,'id_jur'=>$request->jurusan, 'jenis_kelamin'=>$request->kelamin,'no_telp'=>$request->no_telp
-        ]);
+                'nama'=>$request->Tname,'NIM'=>$request->nim,'id_daerah'=>$request->daerah,'id_angkatan'=>$request->angkatan,'id_sekolah'=>$request->skl,'id_statusSos'=>$request->spkw,'id_orgpub'=>$request->jbPUB,'id_orgppmb'=>$request->jbPPMB,'id_jur'=>$request->jurusan, 'jenis_kelamin'=>$request->kelamin,'no_telp'=>$request->no_telp
+            ]);
         }
         return redirect('admin/alumni/profile/'.$request->idmhs);
     }
+    public function aktivitas($id)
+    {
+     $foto=DB::table('tb_alumni_dok')->where('id_mahasiswa',$id)->orderby('id_alumnidok','DESC')->get();
+     $data=DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->first();
+     return view('Alumni_admin.aktivitas',compact('data','foto'));
+ }
+ public function storeAktivitas(Request $request)
+ {
+    $file = $request->file('foto');
+    $nama_file = time()."_".$file->getClientOriginalName();
+
+        // isi dengan nama folder tempat kemana file diupload
+    $tujuan_upload = ('imgs');
+    $file->move($tujuan_upload,$nama_file);
+
+    DB::table('tb_alumni_dok')
+    ->insert([
+        'file' => $nama_file,            
+        'keterangan' => $request->contact_message,   
+        'id_angkatan'=> $request->id_ang,
+        'id_mahasiswa'=> $request->id_mhs         
+    ]);
+
+    return redirect('admin/alumni/aktivitas/'.$request->id_mhs);
+}
+public function editAktivitas($id,$id_dok)
+{
+    $foto=DB::table('tb_alumni_dok')->where('id_alumnidok',$id_dok)->first();
+    $data=DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->first();
+    return view('Alumni_admin.editAktivitas',compact('data','foto'));
+}
+public function updateAktivitas(Request $request)
+{
+    if ($request->foto=="") {
+        DB::table('tb_alumni_dok')->where('id_alumnidok',$request->id_dok)->update([           
+                'keterangan' => $request->contact_message      
+            ]);  
+        }else{
+           $file = $request->file('foto');
+           $nama_file = time()."_".$file->getClientOriginalName();
+
+        // isi dengan nama folder tempat kemana file diupload
+           $tujuan_upload = ('imgs');
+           $file->move($tujuan_upload,$nama_file);
+
+           DB::table('tb_alumni_dok')->where('id_alumnidok',$request->id_dok)->update([
+            'file' => $nama_file,            
+            'keterangan' => $request->contact_message        
+            ]);
+       }
+       return redirect('admin/alumni/aktivitas/'.$request->id_mhs);
+}
+public function hapusAktivitas($id,$id_dok)
+{
+    DB::table('tb_alumni_dok')->where('id_alumnidok',$id_dok)->delete();
+    return redirect('admin/alumni/aktivitas/'.$id);
+}
     /**
      * Show the form for creating a new resource.
      *
@@ -149,8 +232,8 @@ class alumni_adminController extends Controller
      */
     public function create()
     {
-        //
-    }
+
+   }
 
     /**
      * Store a newly created resource in storage.

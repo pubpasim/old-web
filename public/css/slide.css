@@ -163,6 +163,17 @@
     font-size: 13pt;
     margin-top: 100px;
   }
+  #chart{
+    width: 90%;
+    height: 100%;
+    margin-left: 7%;
+    margin-right: 7%;
+    text-align: justify;
+    line-height: 200%;
+    font-family: times new roman;
+    font-size: 13pt;
+    margin-top: 100px;
+  }
   #strk{
     color: #3399cc;
     margin-left: -10px;
