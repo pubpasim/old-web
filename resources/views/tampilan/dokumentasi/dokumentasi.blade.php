@@ -76,7 +76,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">Tabel Psikotes</div>
+					<div class="panel-heading">Tabel Dokumentasi</div>
 
 					<div class="panel-body">
 						<a href="{{url('tambahDok')}}" class="btn btn-info">Add</a>
@@ -108,30 +108,6 @@
 				</div>
 			</div>
 		</div>
-	<script src="/lumino/js/jquery-1.11.1.min.js"></script>
-	<script src="/lumino/js/bootstrap.min.js"></script>
-	<script src="/lumino/js/chart.min.js"></script>
-	<script src="/lumino/js/chart-data.js"></script>
-	<script src="/lumino/js/easypiechart.js"></script>
-	<script src="/lumino/js/easypiechart-data.js"></script>
-	<script src="/lumino/js/bootstrap-datepicker.js"></script>
-	<script src="/lumino/js/bootstrap-table.js"></script>
-	<script>
-		!function ($) {
-			$(document).on("click","ul.nav li.parent > a > span.icon", function(){		  
-				$(this).find('em:first').toggleClass("glyphicon-minus");	  
-			}); 
-			$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
-		}(window.jQuery);
-
-		$(window).on('resize', function () {
-		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
-		})
-		$(window).on('resize', function () {
-		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
-		})
-	</script>	
-</body>
-
 
 @include('tampilan.foot')
+

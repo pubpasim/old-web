@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-//use App\orgPPMBmodel;
+// use App\orgPPMBmodel;
 use Illuminate\Support\Facades\DB;   //ini wajib d Qbuilder
 
 class orgPPMBcontroller extends Controller
@@ -25,7 +25,7 @@ class orgPPMBcontroller extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {  
         return view('ppmb.struktur.tambah_struktur');
     }
 
@@ -75,7 +75,7 @@ class orgPPMBcontroller extends Controller
     public function edit($id)
     {
         $orgppmb= DB::table('tb_orgppmb')->where('id_orgppmb',$id)->get();
-        return view('ppmb.struktur.edit_struktur',['tb_orgppmb' => $orgppmb]);
+        return view('ppmb.struktur.edit_struktur',compact('orgppmb'));
     }
 
     /**

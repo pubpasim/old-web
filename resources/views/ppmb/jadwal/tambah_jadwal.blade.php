@@ -20,9 +20,8 @@
 								</div>
 								<div class="form-group">
 									<label>Kegiatan</label>
-									<input class="form-control" name="kegiatan" placeholder="kegiatan">
+									<input class="form-control" name="jadwal" placeholder="kegiatan">
 								</div>
-								
 								<button type="submit" class="btn btn-primary">TAMBAH DATA </button>			
 							</form>
 						</div>

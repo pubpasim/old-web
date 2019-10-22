@@ -102,50 +102,195 @@ class alumniController extends Controller
         $idmax =DB::table('tb_mahasiswa')->max('id_mahasiswa');
         return view('tampilan.alumni.lanjut',compact('idmax'));
     }
+
     
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function strukturOrgAlumni()
     {
-        //
+        $struk = DB::table('tb_ikatan_alumni')
+        ->join('tb_orgpub','tb_orgpub.id_orgpub','tb_ikatan_alumni.id_jabatan')
+        ->join('tb_mahasiswa','tb_mahasiswa.id_mahasiswa','tb_ikatan_alumni.id_mahasiswa')
+        ->join('tb_angkatan','tb_angkatan.id_angkatan','tb_mahasiswa.id_angkatan')
+        ->get();
+        return view('ikatanAlumni.struktur',compact('struk'));
+    }
+    public function tambahStrukAlumni()
+    {
+        $mhs=DB::table('tb_mahasiswa')
+        ->join('tb_angkatan','tb_angkatan.id_angkatan','tb_mahasiswa.id_angkatan')
+        ->where('id_statusPub',2)
+        ->orderby('angkatan','ASC')
+        ->orderby('nama','ASC')        
+        ->get();
+        $jab=DB::table('tb_orgpub')->get();
+        return view('ikatanAlumni.tambahStruktur',compact('mhs','jab'));
+    }
+    public function storeStrukAlumni(Request $request)
+    {
+         DB::table('tb_ikatan_alumni')
+        ->insert([
+            'id_mahasiswa' => $request->id_mahasiswa,
+            'id_jabatan' => $request->jabatan,
+            'masa_bakti' => $request->masa_bakti,
+        ]);
+
+        return redirect('strukturOrgAlumni');
+    }
+    public function infaq_view()
+    {
+        $infaq=DB::table('tb_infaq')
+        ->join('tb_angkatan','tb_infaq.id_angkatan','=','tb_angkatan.id_angkatan')
+        ->select('tb_infaq.id_infaq','tb_infaq.periode','tb_infaq.total_infaq','tb_angkatan.angkatan')
+        ->get();
+        return view('tampilan.alumni.infaq',compact('infaq'));
+    }
+    public function tambahInfaq()
+    {
+        $angkatan=DB::table('tb_angkatan')->orderby('angkatan')->get();
+        return view('tampilan.alumni.tambahInfaq',compact('angkatan'));
+    }
+     public function simpanInfaq(Request $request)
+    {
+        DB::table('tb_infaq')->insert([
+            'id_angkatan'=>$request->angkatan,'periode'=>$request->periode,'total_infaq'=>
+            $request->total
+        ]);
+        $idmax =DB::table('tb_mahasiswa')->max('id_mahasiswa');
+        return redirect('infaq');
+    }
+    public function editInfaq($id)
+    {
+        $infaq=DB::table('tb_infaq')->where('id_infaq',$id)->first();
+        $angkatan=DB::table('tb_angkatan')->orderby('angkatan')->get();
+        return view('tampilan.alumni.editInfaq',compact('infaq','angkatan'));
+    }
+    public function updateInfaq(Request $request,$id)
+    {
+        DB::table('tb_infaq')->where('id_infaq',$id)->update([
+            'id_angkatan'=>$request->angkatan,'periode'=>$request->periode,'total_infaq'=>$request->total
+        ]);
+        return redirect('infaq');
+    }
+    public function hapusInfaq($id)
+    {
+        DB::table('tb_infaq')->where('id_infaq',$id)->delete();
+        return redirect('infaq');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+       
+    public function editStrukAlumni($id)
     {
-        //
+        $tamp = DB::table('tb_ikatan_alumni')->where('id_ikatan',$id)->get();
+        $mhs=DB::table('tb_mahasiswa')
+        ->join('tb_angkatan','tb_angkatan.id_angkatan','tb_mahasiswa.id_angkatan')
+        ->where('id_statusPub',2)
+        ->orderby('angkatan','ASC')
+        ->orderby('nama','ASC') 
+        ->get();
+        $jab=DB::table('tb_orgpub')->get();
+
+        return view('ikatanAlumni.editStruktur',compact('tamp','mhs','jab'));
+    }
+    public function updateStrukAlumni(Request $request,$id){
+        
+        DB::table('tb_ikatan_alumni')
+        ->where('id_ikatan',$id)
+        ->update([
+            'id_mahasiswa' => $request->id_mahasiswa,
+            'id_jabatan' => $request->jabatan,
+            'masa_bakti' => $request->masa_bakti,
+        ]);
+            return redirect('strukturOrgAlumni');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function hapusStrukAlumni($id)
     {
-        //
+            DB::table('tb_ikatan_alumni')->where('id_ikatan',$id)->delete();
+            return redirect('strukturOrgAlumni');
+        
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+
+    public function kegiatanAlumni()
     {
-        //
+        $dok =DB::table('tb_dok_alumni')
+        ->join('tb_mahasiswa','tb_mahasiswa.id_mahasiswa','tb_dok_alumni.id_mahasiswa')
+        ->join('tb_angkatan','tb_mahasiswa.id_angkatan','tb_angkatan.id_angkatan')
+        ->get();
+        return view('ikatanAlumni.kegiatanAlumni',compact('dok'));
+    }
+
+
+    public function tambahDokAlumni()
+    {
+        $ang=DB::table('tb_angkatan')            
+            ->join('tb_mahasiswa','tb_angkatan.id_angkatan','=','tb_mahasiswa.id_angkatan')
+            ->orderby('angkatan','ASC')
+            ->orderby('nama','ASC')
+            ->where('id_statusPub',2)
+            ->get();
+        return view('ikatanAlumni.tambahDokAlumni',compact('ang'));
+    }
+    public function storeDokAlumni(Request $request)
+    {
+        $file = $request->file('foto');
+        $nama_file = time()."_".$file->getClientOriginalName();
+         
+        // isi dengan nama folder tempat kemana file diupload
+        $tujuan_upload = 'imgs';
+        $file->move($tujuan_upload,$nama_file);
+
+        DB::table('tb_dok_alumni')
+        ->insert([
+            'foto' => $nama_file,            
+            'keterangan' => $request->keterangan,            
+            'id_mahasiswa' => $request->id_alumni,
+        ]);
+
+        return redirect('kegiatanAlumni');
+    }
+    public function editDokAlumni($id)
+    {
+        $ang=DB::table('tb_angkatan')            
+            ->join('tb_mahasiswa','tb_angkatan.id_angkatan','=','tb_mahasiswa.id_angkatan')
+            ->orderby('angkatan','ASC')
+            ->orderby('nama','ASC')
+            ->where('id_statusPub',2)
+            ->get();
+        $dok = DB::table('tb_dok_alumni')->where('id',$id)->get();
+        return view('ikatanAlumni.editDokAlumni',compact('dok','ang'));
+    }
+    public function updateDokAlumni(Request $request,$id){
+        $file = $request->file('foto');
+            
+            if($file == ""){
+                $nama_file = ""; 
+                    DB::table('tb_dok_alumni')->where('id',$id)->update([
+                    'keterangan' => $request->keterangan,         
+                ]);   
+            }
+            else{
+
+                $nama_file = time()."_".$file->getClientOriginalName();
+         
+                // isi dengan nama folder tempat kemana file diupload
+                $tujuan_upload = 'imgs';
+                $file->move($tujuan_upload,$nama_file);
+
+
+                DB::table('tb_dok_alumni')->where('id',$id)->update([
+                    'foto' => $nama_file,
+                    'keterangan' => $request->keterangan,  
+                    'id_mahasiswa' => $request->id_alumni,       
+                ]);   
+            }
+
+            return redirect('kegiatanAlumni');
+    }
+
+    public function hapusDokAlumni($id)
+    {
+            DB::table('tb_dok_alumni')->where('id',$id)->delete();
+            return redirect('kegiatanAlumni');
+        
     }
 }

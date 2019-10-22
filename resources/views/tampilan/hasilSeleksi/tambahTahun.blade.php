@@ -75,51 +75,26 @@
 <div id="form1">
 	<div class="container">
 		<form method="POST" action="{{url('storeTahun')}}">
-		{{csrf_field()}}
-				
-		<div class="row">
-			<div class="col-75">
-				<label for="id">Id Tahun</label>
-				<input class="form-control" placeholder="Id Tahun" name="id">
-			</div>
-			<div class="col-75">
-				<label for="tahun">Tahun</label>
-				<input class="form-control" placeholder="Tahun" name="tahun">
-			</div>
+			{{csrf_field()}}
+			
+			<div class="row">
+				<div class="col-75">
+					<label for="id">Id Tahun</label>
+					<input class="form-control" placeholder="Id Tahun" name="id">
+				</div>
+				<div class="col-75">
+					<label for="tahun">Tahun</label>
+					<input class="form-control" placeholder="Tahun" name="tahun">
+				</div>
 
-		</div>
-		<br>
-		<div class="row" align="center">
-			<input type="submit" value="Submit">
-		</div>
+			</div>
+			<br>
+			<div class="row" align="center">
+				<input type="submit" value="Submit">
+			</div>
 		</form>
+	</div>
 </div>
-</div>
-<body >
-	<script src="/lumino/js/jquery-1.11.1.min.js"></script>
-	<script src="/lumino/js/bootstrap.min.js"></script>
-	<script src="/lumino/js/chart.min.js"></script>
-	<script src="/lumino/js/chart-data.js"></script>
-	<script src="/lumino/js/easypiechart.js"></script>
-	<script src="/lumino/js/easypiechart-data.js"></script>
-	<script src="/lumino/js/bootstrap-datepicker.js"></script>
-	<script src="/lumino/js/bootstrap-table.js"></script>
-	<script>
-		!function ($) {
-			$(document).on("click","ul.nav li.parent > a > span.icon", function(){		  
-				$(this).find('em:first').toggleClass("glyphicon-minus");	  
-			}); 
-			$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
-		}(window.jQuery);
-
-		$(window).on('resize', function () {
-		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
-		})
-		$(window).on('resize', function () {
-		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
-		})
-	</script>	
-</body>
-
 
 @include('tampilan.foot')
+

@@ -75,58 +75,33 @@
 <div id="form1">
 	<div class="container">
 		<form method="POST" action="{{url('storeTPA/'.$id)}}">
-		{{csrf_field()}}
-				
-		<div class="row">
-			<div class="col-25">
-				<label>Tambah TPA</label>
-			</div>
-			<div class="col-75">
-				<label for="Sekolah">Sekolah</label>
-				<input type="text" class="form-control" placeholder="Sekolah" name="sekolah">
-			</div>
-			<div class="col-75">
-				<label for="jml_peserta">Jumlah Peserta</label>
-				<input type="number" class="form-control" placeholder="Jumlah Peserta" name="jml_peserta">
-			</div>
-			<div class="col-75">
-				<label for="jml_lulus">Jumlah Peserta Lulus</label>
-				<input type="number" class="form-control" placeholder="Jumlah Lulus" name="jml_lulus">
-			</div>
+			{{csrf_field()}}
+			
+			<div class="row">
+				<div class="col-25">
+					<label>Tambah TPA</label>
+				</div>
+				<div class="col-75">
+					<label for="Sekolah">Sekolah</label>
+					<input type="text" class="form-control" placeholder="Sekolah" name="sekolah">
+				</div>
+				<div class="col-75">
+					<label for="jml_peserta">Jumlah Peserta</label>
+					<input type="number" class="form-control" placeholder="Jumlah Peserta" name="jml_peserta">
+				</div>
+				<div class="col-75">
+					<label for="jml_lulus">Jumlah Peserta Lulus</label>
+					<input type="number" class="form-control" placeholder="Jumlah Lulus" name="jml_lulus">
+				</div>
 
-		</div>
-		<br>
-		<div class="row" align="center">
-			<input type="submit" value="Submit">
-		</div>
+			</div>
+			<br>
+			<div class="row" align="center">
+				<input type="submit" value="Submit">
+			</div>
 		</form>
+	</div>
 </div>
-</div>
-<body >
-	<script src="/lumino/js/jquery-1.11.1.min.js"></script>
-	<script src="/lumino/js/bootstrap.min.js"></script>
-	<script src="/lumino/js/chart.min.js"></script>
-	<script src="/lumino/js/chart-data.js"></script>
-	<script src="/lumino/js/easypiechart.js"></script>
-	<script src="/lumino/js/easypiechart-data.js"></script>
-	<script src="/lumino/js/bootstrap-datepicker.js"></script>
-	<script src="/lumino/js/bootstrap-table.js"></script>
-	<script>
-		!function ($) {
-			$(document).on("click","ul.nav li.parent > a > span.icon", function(){		  
-				$(this).find('em:first').toggleClass("glyphicon-minus");	  
-			}); 
-			$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
-		}(window.jQuery);
-
-		$(window).on('resize', function () {
-		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
-		})
-		$(window).on('resize', function () {
-		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
-		})
-	</script>	
-</body>
-
 
 @include('tampilan.foot')
+
