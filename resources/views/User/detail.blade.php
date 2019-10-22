@@ -17,14 +17,12 @@
 		color: white;
 	}
 	.foto{
-		width: 40%;
+		width: 20%;
 		height: 100%;
+		position: relative;
+		left: 39%;
 	}
-	.teks{
-		margin-top: -54%;
-		margin-left: 41%;
 
-	}
 </style>
 <div id="det" >
 	<center><strong><h1 >{{$mahasiswa->jabatan_pub}}</h1></strong></center>
@@ -32,7 +30,7 @@
 		<div class="foto">
 			<img src="{{url('imgs/mahasiswa')}}/{{$mahasiswa->file}}">
 		</div>
-		<div class="teks">
+		<div class="">
 			<table align="center">
 				<tr>
 					<td>NIM</td>
@@ -43,6 +41,11 @@
 					<td>Nama Lengkap</td>
 					<td>:</td>
 					<td>{{$mahasiswa->nama}}</td>
+				</tr>
+				<tr>
+					<td>Tempat, Tanggal Lahir</td>
+					<td>:</td>
+					<td>{{$mahasiswa->tempat_lahir}}, {{$mahasiswa->tanggal_lahir}}</td>
 				</tr>
 				<tr>
 					<td>Angkatan</td>
@@ -70,9 +73,14 @@
 					<td>{{$mahasiswa->sekolah}}</td>
 				</tr>
 				<tr>
-					<td>Jurusan</td>
+					<td>Prodi</td>
 					<td>:</td>
 					<td>{{$mahasiswa->nama_jur}}</td>
+				</tr>
+				<tr>
+					<td>No Telpon</td>
+					<td>:</td>
+					<td>{{$mahasiswa->no_telp}}</td>
 				</tr>
 
 			</table>

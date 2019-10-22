@@ -22,24 +22,64 @@ http://www.templatemo.com/tm-501-neaty
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
-  </head>
-  <body>        
+      <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even){background-color: #f2f2f2}
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .foto{
+            width: 20%;
+            height: 100%;
+            position: relative;
+            left: 39%;
+        }
+        #judul{
+            color: #2980B9;
+            text-align: center;
+        }
+        head{
+            font-family: cursive;
+        }
+        button,#btn{
+            background-color:#2980B9;
+            color: white;
+            border-style: groove;
+            padding: 5px;
+            border-radius: 5px; 
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>        
     <div class="container">
         <div class="row">
             <div class="tm-left-right-container">
                 <!-- Left column: logo and menu -->
                 <div class="tm-blue-bg tm-left-column">                        
                     <div class="tm-logo-div text-xs-center">
-                        <img src="{{url('imgs')}}/{{('pasim.jpg') }}" alt="Logo" width="120">
+                        <img src="{{url('imgs/mahasiswa')}}/{{$data->file}}" alt="Logo" width="120">
                         <h1 class="tm-site-name">{{$data->nama}}</h1>
                     </div>
-                    <nav class="tm-main-nav">
-                        <ul class="tm-main-nav-ul">
+                    <nav>
+                        <ul >
                             <li class="tm-nav-item">
-                                <a href="#welcome" class="tm-nav-item-link">Beranda</a>
+                                <a href="{{url('admin/alumni/'.$data->id_mahasiswa)}}" class="tm-nav-item-link">Beranda</a>
                             </li>
+                            <input type="hidden" name="id_mhs" value="{{$data->id_mahasiswa}}">
                             <li class="tm-nav-item">
-                                <a href="#about" class="tm-nav-item-link">Profile</a>
+                                <a href="{{url('admin/alumni/profile/'.$data->id_mahasiswa)}}" class="tm-nav-item-link">Profile</a>
                             </li>
                             <li class="tm-nav-item">
                                 <a href="#galleryone" class="tm-nav-item-link">My Activity</a>
@@ -63,12 +103,3 @@ http://www.templatemo.com/tm-501-neaty
                         <img src="{{url('imgs')}}/{{('pasim.jpg') }}" alt="Header image" class="img-fluid">    
                     </figure>
                     <div class="tm-content-div">
-                        <!-- Welcome section -->
-                        <section id="welcome" class="tm-section">
-                            <header>
-                                <h3>Hi.. {{$data->nama}}...!!</h3>
-                                <h2 class="tm-blue-text tm-welcome-title tm-margin-b-45">Selamat Datang di Halaman Alumni PUB</h2>
-                            </header>
-                            <p>Halaman Alumni PUB adalah halaman dimana kamu bisa berekspresi, berkomunikasi, serta mencari informasi.</p>
-                            <p>Selamat bergabung bersama kami :)</p>
-                        </section>

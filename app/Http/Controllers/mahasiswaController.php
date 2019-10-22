@@ -76,7 +76,7 @@ class mahasiswaController extends Controller
         $file->move($tujuan_upload,$nama_file);
 
         DB::table('tb_mahasiswa')->insert([
-            'nama'=>$request->Tname,'NIM'=>$request->nim,'id_daerah'=>$request->daerah,'id_angkatan'=>$request->angkatan,'id_sekolah'=>$request->skl,'id_statusSos'=>$request->spkw,'id_orgpub'=>$request->jbPUB,'id_orgppmb'=>$request->jbPPMB,'id_jur'=>$request->jurusan, 'id_statusPub'=>$request->alm,'jenis_kelamin'=>$request->kelamin,'id_statusPub'=>$request->st_pub,'file'=>$nama_file,'tempat_lahir'=>$requesttl,'tanggal_lahir'=>$request->tgl,'no_telp'=>$request->telp
+            'nama'=>$request->Tname,'NIM'=>$request->nim,'id_daerah'=>$request->daerah,'id_angkatan'=>$request->angkatan,'id_sekolah'=>$request->skl,'id_statusSos'=>$request->spkw,'id_orgpub'=>$request->jbPUB,'id_orgppmb'=>$request->jbPPMB,'id_jur'=>$request->jurusan, 'id_statusPub'=>$request->alm,'jenis_kelamin'=>$request->kelamin,'id_statusPub'=>$request->st_pub,'file'=>$nama_file,'tempat_lahir'=>$request->tl,'tanggal_lahir'=>$request->tgl,'no_telp'=>$request->telp
         ]);
 
         return redirect('mahasiswa');
@@ -143,16 +143,24 @@ class mahasiswaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $file = $request->file('foto');
-        $nama_file = time()."_".$file->getClientOriginalName();
+        if ($request->foto!="") {
+            $file = $request->file('foto');
+            $nama_file = time()."_".$file->getClientOriginalName();
 
         // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload = ('imgs/mahasiswa');
-        $file->move($tujuan_upload,$nama_file);
-
-        DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->update([
-            'nama'=>$request->Tname,'NIM'=>$request->nim,'id_daerah'=>$request->daerah,'id_angkatan'=>$request->angkatan,'id_sekolah'=>$request->skl,'id_statusSos'=>$request->spkw,'id_orgpub'=>$request->jbPUB,'id_orgppmb'=>$request->jbPPMB,'id_jur'=>$request->jurusan, 'id_statusPub'=>$request->alm,'jenis_kelamin'=>$request->kelamin,'id_statusPub'=>$request->st_pub,'file'=>$nama_file
+            $tujuan_upload = ('imgs/mahasiswa');
+            $file->move($tujuan_upload,$nama_file);
+            DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->update([
+                'nama'=>$request->Tname,'NIM'=>$request->nim,'id_daerah'=>$request->daerah,'id_angkatan'=>$request->angkatan,'id_sekolah'=>$request->skl,'id_statusSos'=>$request->spkw,'id_orgpub'=>$request->jbPUB,'id_orgppmb'=>$request->jbPPMB,'id_jur'=>$request->jurusan, 'id_statusPub'=>$request->alm,'jenis_kelamin'=>$request->kelamin,'id_statusPub'=>$request->st_pub,'file'=>$nama_file
+            ]);
+        }else{
+            DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->update([
+            'nama'=>$request->Tname,'NIM'=>$request->nim,'id_daerah'=>$request->daerah,'id_angkatan'=>$request->angkatan,'id_sekolah'=>$request->skl,'id_statusSos'=>$request->spkw,'id_orgpub'=>$request->jbPUB,'id_orgppmb'=>$request->jbPPMB,'id_jur'=>$request->jurusan, 'id_statusPub'=>$request->alm,'jenis_kelamin'=>$request->kelamin,'id_statusPub'=>$request->st_pub
         ]);
+        }
+        
+
+        
 
         return redirect('mahasiswa');
     }
@@ -176,9 +184,9 @@ class mahasiswaController extends Controller
             DB::table('tb_user')->where('id_mahasiswa',$id)->delete();   
         }
         DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->delete();
-         
-         
-         
+
+
+
         return redirect('mahasiswa');
     }
 }
