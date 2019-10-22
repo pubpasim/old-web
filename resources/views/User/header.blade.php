@@ -51,8 +51,6 @@
           <button type="submit"><i class="icon_search"></i></button>
         </form>
       </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <ul class="nav navbar-nav">
         <li><a href="{{url('/')}}">HOME</a></li>
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">PPMB <span class="caret"></span></a>
@@ -110,10 +108,8 @@
             </form>
           </div>
         </div>
-=======
-    </div>
->>>>>>> e2ad05a792166ce0dee9e00d4249f75c6a63f02e
 
+    </div>
     <!-- Top Header Area Start -->
     <div class="top-header-area">
       <div class="container">
