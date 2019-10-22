@@ -259,6 +259,19 @@ Route::get('keg_ikatan_alumni', 'userController@KegIkatanAlumni');
 Route::get('user_infaq', 'userController@user_infaq');
 Route::get('user_alumni', 'userController@user_alumni');
 Route::post('user_alumni/', 'userController@user_alumniView');
+Route::get('materilogika', 'userController@materilog');
+Route::get('materibasis', 'userController@materibasis');
+Route::get('materistruktur', 'userController@materistruktur');
+Route::get('materihtml', 'userController@materihtml');
+Route::get('materifund', 'userController@materifdm');
+Route::get('fdmphp', 'userController@materifdmphp');
+Route::get('fdmvb', 'userController@materifdmvb');
+Route::get('fdmjava', 'userController@materifdmjava');
+Route::get('materifundljt', 'userController@materifdmljt');
+Route::get('fdmljtphp', 'userController@materifdmphpljt');
+Route::get('fdmljtvb', 'userController@materifdmvbljt');
+Route::get('fdmljtjava', 'userController@materifdmjavaljt');
+
 
 //================================ADMIN ALUMNI=============================//
 Route::get('admin/alumni/{x}','alumni_adminController@index');

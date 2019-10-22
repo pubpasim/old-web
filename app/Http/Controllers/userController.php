@@ -450,4 +450,52 @@ class userController extends Controller
         ->get();
         return view('User.kegIkatanAlumni',compact('dok'));
     }
+    public function materilog()
+    {
+        return view('User.materilogika');
+    }
+    public function materibasis()
+    {
+        return view('User.materibasis');
+    }
+    public function materistruktur()
+    {
+        return view('User.materistruktur');
+    }
+    public function materihtml()
+    {
+        return view('User.materihtml');
+    }
+    public function materifdm()
+    {
+        return view('User.materifund');
+    }
+    public function materifdmphp()
+    {
+        return view('User.fdmphp');
+    }
+    public function materifdmvb()
+    {
+        return view('User.fdmvb');
+    }
+    public function materifdmjava()
+    {
+        return view('User.fdmjava');
+    }
+    public function materifdmljt()
+    {
+        return view('User.materifundljt');
+    }
+    public function materifdmphpljt()
+    {
+        return view('User.fdmphpljt');
+    }
+    public function materifdmvbljt()
+    {
+        return view('User.fdmvbljt');
+    }
+    public function materifdmjavaljt()
+    {
+        return view('User.fdmjavaljt');
+    }
 }

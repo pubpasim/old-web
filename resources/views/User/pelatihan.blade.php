@@ -28,49 +28,23 @@
 	}
 </style>
 <div id="design">
-	<div class="kiri">
+	<div class="tengah">
 
 		<form method="POST" action="{{url('pelatihan_data')}}">
-			{{csrf_field()}}
-			<h2>Pilih Angkatan</h2>
-			<hr>
-			<div>
-				<select name="select"  >
-					<option value="" disabled>--Pilih Angkatan--</option>
-					@foreach($angkatan as $data)
-					<option value="{{$data->id_angkatan}}">
-						Angkatan {{ $data->angkatan }}
-					</option>
-					@endforeach
-
-				</select>
-			</div>
-			<button type="submit" id="btn">OKE</button>
+			<center><h1>Pelatihan PUB</h1></center>
+			
+			<button> <a href="{{url('materilogika')}}">Logika Dan Algoritma</a></button>
+			<button> <a href="{{url('materibasis')}}">Basis Data</a></button>
+			<button> <a href="{{url('materistruktur')}}">Struktur Data</a></button>
+			<button> <a href="{{url('materihtml')}}">HTML</a></button>
+			<button> <a href="{{url('materifund')}}">Fundamental</a></button>
+			<button> <a href="{{url('materifundljt')}}">Fundamental Lanjutan</a></button>
+			
+			
 		</form>
 	</div>
-	<div @if($lempar=="") style="display: none;" @endif>
-		<table class="table1">
-			<tr>
-				<th>NO</th>
-				<th>PELATIHAN</th>
-				<th colspan="2">KETERANGAN</th>
-			</tr>
-			@php $no=1; @endphp
-			@foreach($pelatihan1 as $pel)
-			<tr>
-				<td>{{$no++}}</td>
-				<td>{{$pel->pelatihan}}</td>
-				<td><a href=""><button>UTS</button></a></td>
-				<td><a href=""><button>UAS</button></a></td>
-			</tr>
-			@endforeach
-		</table>
-	</div>
+	
 	
 </div>
-@php
-for($x=0;$x<3;$x++){
-echo "<br>";
-}
-@endphp
+
 @include('user.footer')
