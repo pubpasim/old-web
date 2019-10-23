@@ -126,22 +126,11 @@
 										@endforeach
 									</select>
 								</div>
-
-								<div class="col-75">
-									<div class="form-group">
-									<b>File Gambar</b><br/>
-									<input type="file" name="file">
-								</div>
-								
-
-
-								
 									
-						</tr>
 								</div>
-
+							<div class="col-75">
 							<button type="submit" name="submit" class="btn btn-primary">TAMBAH DATA</button>
-								 
+							</div>
 
 																
 								

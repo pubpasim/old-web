@@ -25,6 +25,8 @@ Route::post('/det_struktur_ppmb/update','detOrgPpmbController@update');
 Route::get('/det_struktur_ppmb/delete/{id}','detOrgPpmbController@destroy');
 //struktur for user
 
+//detpelatihan
+Route::get('Alumni_admin/pelatihan','detail_pelatihan@index');
 
 //syarat ketentuan 
 Route::get('/syarat_ketentuan','SyaratController@index'); 
