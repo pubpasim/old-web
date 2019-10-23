@@ -88,7 +88,7 @@ input[type=submit]:hover {
         </div>
         @endif
  
-        <form action="/tambahdk_alumni/tampil" method="POST" enctype="multipart/form-data">
+        <form action="/tambahdok_alumni/tampil" method="POST" enctype="multipart/form-data">
           {{ csrf_field() }}
  
           <div class="form-group">
