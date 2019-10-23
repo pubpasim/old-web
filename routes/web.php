@@ -95,7 +95,7 @@ Route::get('tampilan/daerah/viewdae','daerahController@index');
 Route::get('tampilan/daerah/createdae','daerahController@create');
 
 
-Route::get('struktur_organisasi','orgPUBController@index');
+Route::get('struktur_organisasi/index','orgPUBController@index');
 Route::get('struktur_organisasi/tambah/','orgPUBController@create');
 Route::post('struktur_organisasi/store/','orgPUBController@store');
 Route::get('struktur_organisasi/edit/{x}','orgPUBController@edit');
@@ -267,16 +267,33 @@ Route::get('keg_ikatan_alumni', 'userController@KegIkatanAlumni');
 Route::get('user_infaq', 'userController@user_infaq');
 Route::get('user_alumni', 'userController@user_alumni');
 Route::post('user_alumni/', 'userController@user_alumniView');
+
+Route::get('materilogika', 'userController@materilog');
+Route::get('materibasis', 'userController@materibasis');
+Route::get('materistruktur', 'userController@materistruktur');
+Route::get('materihtml', 'userController@materihtml');
+Route::get('materifund', 'userController@materifdm');
+Route::get('fdmphp', 'userController@materifdmphp');
+Route::get('fdmvb', 'userController@materifdmvb');
+Route::get('fdmjava', 'userController@materifdmjava');
+Route::get('materifundljt', 'userController@materifdmljt');
+Route::get('fdmljtphp', 'userController@materifdmphpljt');
+Route::get('fdmljtvb', 'userController@materifdmvbljt');
+Route::get('fdmljtjava', 'userController@materifdmjavaljt');
 Route::get('totalAlumni', 'userController@totalAlumni');
 
-//================================ADMIN ALUMNI=============================//
 
+
+//================================ADMIN ALUMNI=============================//
 Route::get('admin/alumni/{x}','alumni_adminController@index');
 Route::get('admin/alumni/profile/{x}','alumni_adminController@profile');
 Route::get('editProfil/{x}','alumni_adminController@editProfil');
 Route::post('simpanProfil/edit/{x}','alumni_adminController@updateProfil');
 
 Route::post('tambahFoto','alumni_adminController@store');
+
+
+
 Route::get('tambahPend/{x}','alumni_adminController@tambahPnd');
 Route::post('simpanPend','alumni_adminController@simpanPnd');
 Route::get('editPendidikan/{x}/{y}','alumni_adminController@editPendidikan');
@@ -292,5 +309,6 @@ Route::post('tambahFoto/aktivitas','alumni_adminController@storeAktivitas');
 Route::get('edit/aktivitas/{x}/{y}','alumni_adminController@editAktivitas');
 Route::post('simpan/aktivitasEdit','alumni_adminController@updateAktivitas');
 Route::get('hapusAktivitas/{x}/{y}','alumni_adminController@hapusAktivitas');
+
 
 
