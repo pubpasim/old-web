@@ -56,9 +56,11 @@
 			}
 
 			.container {
+				width: 100%;
 				border-radius: 5px;
 				background-color: #ffffff;
-				padding: 30px;
+				padding: 0px;
+				margin-left: 2px;
 			}
 
 			.col-25 {
@@ -73,7 +75,7 @@
 				margin-top: 6px;
 			}
 			#form1{
-				width: 70%;
+				width: 100%;
 				height: 100%;
 				margin-left: 17%;
 			}
@@ -95,28 +97,52 @@
 		</style>
 
 		<div id="form1">
-			<h1>Tambah Data</h1>
+			<br>
+			<h1>Daftar Mahasiswa PUB</h1>
 			<div class="container">
-				@foreach ($organisasi as $data)
-				<form method="POST" action="{{URL('struktur_organisasi/store')}}" Class="form-horizontal" id="block-validate">
-					{{csrf_field()}}
-					<div class="row">
-						<div class="panel-heading">INPUT DATA</div>
-						<div class="panel-body">
-							<div class="col-md-6">
-								<form role="form">
-									
-									<div class="form-group">
-										<label>JABATAN</label>
-										<input type="text" name="jabatan" value="{{$data->jabatan_pub}}">
-									</div>
-									<button type="submit" name="submit" class="btn btn-primary">SIMPAN DATA </button>
-								</form>
-							</div>
-						</div>
-					</div>
-				</form>
-				@endforeach
+				<a href="{{url('tambah/mahasiswa')}}"><button class="btn btn-primary" style=" background-color: #339966; width: 100%;"><svg class="glyph stroked plus sign" style="height: 30px;"><use xlink:href="#stroked-plus-sign"/></svg></button></a>
+				<table id="myTable">
+					<thead>
+						<tr>
+							<th>NIM</th>
+							<th>NAMA</th>
+							<th>JENIS KELAMIN</th>
+							<th>TTL</th>
+							<th>ANGKATAN</th>
+							<th>ASAL DAERAH</th>
+							<th>ASAL SEKOLAH</th>
+							<th>JABATAN DI PUB</th>
+							<th>JABATAN DI PPMB</th>
+							<th>STATUS PUB</th>
+							<th>PRODI</th>
+							<th>NO TELPON</th>
+							<th>AKSI</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach($mahasiswa as $mhs)
+						<tr>
+							<td>{{$mhs->nim}}</td>
+							<td>{{$mhs->nama}}</td>
+							<td>{{$mhs->jenis_kelamin}}</td>
+							<td>{{$mhs->tempat_lahir}},&nbsp;{{$mhs->tanggal_lahir}}</td>
+							<td>{{$mhs->angkatan}}</td>
+							<td>{{$mhs->kab_kot}}</td>
+							<td>{{$mhs->sekolah}}</td>
+							<td>{{$mhs->jabatan_pub}}</td>
+							<td>{{$mhs->jabatan}}</td>
+							<td>{{$mhs->status}}</td>
+							<td>{{$mhs->nama_jur}}</td>
+							<td>{{$mhs->no_telp}}</td>
+							<td><a href="{{url('detail/org/'.$mhs->id_mahasiswa)}}"><button type="reset" class="btn btn-default">Detail</button></a>&nbsp;&nbsp;
+							<a href="{{url('mahasiswaHapus/'.$mhs->id_mahasiswa)}}"><button class="btn btn-primary" style="background-color: red;">Hapus</button></a>&nbsp;&nbsp;
+							<a href="{{url('mahasiswaEdit/'.$mhs->id_mahasiswa)}}"><button class="btn btn-primary">Edit</button></a></td>
+						</tr>
+						@endforeach
+					</tbody>
+				</table>
 			</div>
 		</div>
+
 		@include('tampilan.foot')
+
