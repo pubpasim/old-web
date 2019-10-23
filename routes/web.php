@@ -266,6 +266,7 @@ Route::get('keg_ikatan_alumni', 'userController@KegIkatanAlumni');
 Route::get('user_infaq', 'userController@user_infaq');
 Route::get('user_alumni', 'userController@user_alumni');
 Route::post('user_alumni/', 'userController@user_alumniView');
+Route::get('totalAlumni', 'userController@totalAlumni');
 
 //================================ADMIN ALUMNI=============================//
 
@@ -277,8 +278,18 @@ Route::post('simpanProfil/edit/{x}','alumni_adminController@updateProfil');
 Route::post('tambahFoto','alumni_adminController@store');
 Route::get('tambahPend/{x}','alumni_adminController@tambahPnd');
 Route::post('simpanPend','alumni_adminController@simpanPnd');
+Route::get('editPendidikan/{x}/{y}','alumni_adminController@editPendidikan');
+Route::post('editPendidikan','alumni_adminController@updatePendidikan');
 
 Route::get('tambahPeng/{x}','alumni_adminController@tambahPeng');
 Route::post('tambah/pengalaman','alumni_adminController@simpanPeng');
 Route::get('editPengalaman/{x}/{y}','alumni_adminController@editPengalaman');
 Route::post('updatePengalaman','alumni_adminController@updatePengalaman');
+
+Route::get('admin/alumni/aktivitas/{x}','alumni_adminController@aktivitas');
+Route::post('tambahFoto/aktivitas','alumni_adminController@storeAktivitas');
+Route::get('edit/aktivitas/{x}/{y}','alumni_adminController@editAktivitas');
+Route::post('simpan/aktivitasEdit','alumni_adminController@updateAktivitas');
+Route::get('hapusAktivitas/{x}/{y}','alumni_adminController@hapusAktivitas');
+
+

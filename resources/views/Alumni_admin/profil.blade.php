@@ -89,7 +89,7 @@
 			</tr>
 			
 		</table>
-		<a href="{{url('edit/admin/alumni')}}">Edit Pendidikan Lanjutan</a>
+		<a href="{{url('editPendidikan/'.$data->id_mahasiswa,$pnd->id_detpendidikan)}}">Edit Pendidikan Lanjutan</a>
 		<hr>
 		@endforeach
 </div>
@@ -119,6 +119,7 @@
 	</table>
 	<input type="hidden" name="id_peng" value="{{$peng->id_detpengalaman}}">
 	<a href="{{url('editPengalaman/'.$data->id_mahasiswa,$peng->id_detpengalaman)}}">Edit Pengalaman</a>
+	<hr>
 	@endforeach
 	
 	

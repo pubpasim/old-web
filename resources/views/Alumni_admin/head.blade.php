@@ -60,6 +60,9 @@ http://www.templatemo.com/tm-501-neaty
             border-radius: 5px; 
             cursor: pointer;
         }
+        button .hapus{
+            background-color:#DC143C;
+        }
     </style>
 </head>
 <body>        
@@ -82,16 +85,10 @@ http://www.templatemo.com/tm-501-neaty
                                 <a href="{{url('admin/alumni/profile/'.$data->id_mahasiswa)}}" class="tm-nav-item-link">Profile</a>
                             </li>
                             <li class="tm-nav-item">
-                                <a href="#galleryone" class="tm-nav-item-link">My Activity</a>
+                                <a href="{{url('admin/alumni/aktivitas/'.$data->id_mahasiswa)}}" class="tm-nav-item-link">My Activity</a>
                             </li>
                             <li class="tm-nav-item">
-                                <a href="#secondgallery" class="tm-nav-item-link">Data Infaq</a>
-                            </li>
-                            <li class="tm-nav-item">
-                                <a href="#thirdgallery" class="tm-nav-item-link">Data Alumni</a>
-                            </li>
-                            <li class="tm-nav-item">
-                                <a href="#contact" class="tm-nav-item-link">Log out</a>
+                                <a href="{{url('login')}}" class="tm-nav-item-link">Log out</a>
                             </li>
                         </ul>
                     </nav>                                         
