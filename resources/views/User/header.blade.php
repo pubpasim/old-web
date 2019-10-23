@@ -64,10 +64,11 @@
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">PUB Aktif<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Profile PUB</a></li>
+
             <li><a href="{{url('detorg_pub/index')}}">Organisasi PUB</a></li>
             <li><a href="{{url('user/mahasiswa')}}">Mahasiswa PUB</a></li>
             <li><a href="{{url('pelatihan/index')}}">Pelatihan PUB</a></li>
-            <li><a href="#">Kegiatan PUB</a></li>
+            <li><a href="{{url('kegiatan/index')}}">Kegiatan PUB</a></li>
           </ul>
         </li>
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Alumni PUB <span class="caret"></span></a>
@@ -86,15 +87,6 @@
       </ul>
     </div>
   </nav>
-  <div id="bg">
-    <img src="{{url('imgs')}}/{{('pasim.jpg') }}" style="width: 100%;">
-    
-    <div id="bar">
-      <marquee> 
-        <h2>Pemberdayaan Umat Berkelanjutan Universitas Nasional PASIM</h2>
-      </marquee>
-    </div>
-  </div>
       <!-- /Preloader -->
 
       <!-- Header Area Start -->

@@ -69,7 +69,13 @@
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg> PUB <span class="caret"></span></a>
 				<ul class="dropdown-menu" role="menu">
 
-					<li><a href="{{url('detorg_pub')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Struktur Organisasi</a></li>
+					<li><a href="{{url('detorg_pub')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Struktur Organisasi</a>
+						<ul class="dropdown">
+							<li><a href="{{url('detorg_pub')}}">-Periode 2018/2019</a></li>
+                            <li><a href="{{url('detorg_pub2')}}">-Periode 2019/2020</a></li>
+						</ul>
+					</li>
+
 					<li><a href="{{url('mahasiswa')}}"><svg class="glyph stroked clipboard with paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Data Mahasiswa PUB</a></li>
 					<li><a href="{{url('Alumni_admin/det_pelatihan')}}"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"/></svg> Pelatihan PUB</a></li>
 					<li><a href="{{url('dokumentasiPub')}}"><svg class="glyph stroked landscape"><use xlink:href="#stroked-landscape"/></svg>Dokumentasi PUB</a></li>

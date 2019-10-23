@@ -52,6 +52,7 @@
 				<td>{{$mhs->jabatan}}</td>
 				<td>{{$mhs->status}}</td>
 				<td>{{$mhs->nama_jur}}</td>
+				<td><a href="{{url('detail/org/'.$mhs->id_mahasiswa)}}"></a></td>
 				<td><button type="reset" class="btn btn-default">Detail</button></td>
 			</tr>
 			@endforeach

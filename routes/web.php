@@ -254,7 +254,8 @@ Route::get('organisasi_pub','userController@organisasi_pub');
 Route::get('detail/org/{x}','userController@detail');
 Route::get('pelatihan','userController@pelatihan');
 Route::get('pelatihan_data','userController@pelatihan_data');
-Route::get('kegiatanPub','userController@kegiatanPub');
+
+Route::get('pub_dok','userController@kegiatanPub');
 Route::get('hasilSeleksi','userController@hasilSeleksi');
 Route::post('hasilSeleksi','userController@tampilSeleksi');
 Route::get('user_tpa/{x}','userController@user_tpa');
