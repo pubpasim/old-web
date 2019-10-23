@@ -451,6 +451,7 @@ class userController extends Controller
         ->get();
         return view('User.kegIkatanAlumni',compact('dok'));
     }
+<<<<<<< HEAD
     public function materilog()
     {
         return view('User.materilogika');
@@ -498,5 +499,48 @@ class userController extends Controller
     public function materifdmjavaljt()
     {
         return view('User.fdmjavaljt');
+=======
+    public function totalAlumni()
+    {
+        $data1=DB::table('tb_mahasiswa')
+        ->leftJoin('tb_angkatan','tb_mahasiswa.id_angkatan','=','tb_angkatan.id_angkatan')
+        ->leftJoin('tb_statusPub','tb_mahasiswa.id_statusPub','=','tb_statusPub.id_statusPub')
+        ->select('tb_mahasiswa.jenis_kelamin','tb_angkatan.angkatan',\DB::raw('count(*) as total'))
+        ->groupBy('tb_angkatan.angkatan')
+        ->groupBy('tb_mahasiswa.jenis_kelamin');
+
+        $data2=DB::table('tb_mahasiswa')
+        ->leftJoin('tb_angkatan','tb_mahasiswa.id_angkatan','=','tb_angkatan.id_angkatan')
+        ->leftJoin('tb_statusPub','tb_mahasiswa.id_statusPub','=','tb_statusPub.id_statusPub')
+        ->select('tb_mahasiswa.jenis_kelamin','tb_angkatan.angkatan',\DB::raw('count(*) as total'))
+        ->groupBy('tb_angkatan.angkatan')
+        ->groupBy('tb_mahasiswa.jenis_kelamin');
+
+        $totalL=DB::table('tb_mahasiswa')
+        ->leftJoin('tb_angkatan','tb_mahasiswa.id_angkatan','=','tb_angkatan.id_angkatan')
+        ->leftJoin('tb_statusPub','tb_mahasiswa.id_statusPub','=','tb_statusPub.id_statusPub')
+        ->select('tb_mahasiswa.jenis_kelamin',\DB::raw('count(*) as total'))
+        ->groupBy('tb_mahasiswa.jenis_kelamin')->where('tb_mahasiswa.jenis_kelamin','Laki-laki')
+        ->where('tb_statusPub.status','Alumni')->get();
+
+        $totalP=DB::table('tb_mahasiswa')
+        ->leftJoin('tb_angkatan','tb_mahasiswa.id_angkatan','=','tb_angkatan.id_angkatan')
+        ->leftJoin('tb_statusPub','tb_mahasiswa.id_statusPub','=','tb_statusPub.id_statusPub')
+        ->select('tb_mahasiswa.jenis_kelamin',\DB::raw('count(*) as total'))
+        ->groupBy('tb_mahasiswa.jenis_kelamin')->where('tb_mahasiswa.jenis_kelamin','Perempuan')
+        ->where('tb_statusPub.status','Alumni')->get();
+
+        $total=DB::table('tb_mahasiswa')
+        ->leftJoin('tb_statusPub','tb_mahasiswa.id_statusPub','=','tb_statusPub.id_statusPub')
+        ->select(\DB::raw('count(*) as total'))
+        ->where('tb_statusPub.status','Alumni')->get();
+
+        $lk=$data1->where('tb_mahasiswa.jenis_kelamin','Laki-laki')
+        ->where('tb_statusPub.status','Alumni')->get();
+        $pr=$data2->where('tb_mahasiswa.jenis_kelamin','Perempuan')
+        ->where('tb_statusPub.status','Alumni')->get();
+        
+        return view('User.totalAlumni',compact('lk','pr','totalL','totalP','total'));
+>>>>>>> 716e1ab00453b6d54683f46219eb35ef48f23d9e
     }
 }
