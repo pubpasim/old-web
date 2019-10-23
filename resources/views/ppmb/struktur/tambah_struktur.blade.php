@@ -4,16 +4,16 @@
 				width: 750px;
 				height: 500px;
 				margin-left: 300px;
-			}s
-		</style>
-		<div id="form1">
-		<div class="row">
-			<div class="panel-heading">FROM TAMBAH PANITIA</div>
+			}
+			</style>
+			<div id="form1">
+				<div class="row">
+					<div class="panel-heading">FROM TAMBAH PANITIA</div>
 					<div class="panel-body">
 						<div class="col-md-6">
 
 							<form role="form" action="/struktur_ppmb/store" method="POST">
-								 {{ @csrf_field() }}
+								{{ @csrf_field() }}
 								<div class="form-group">
 									<label>ID Jabatan</label>
 									<input class="form-control" name="id_jabatan" placeholder="Id Jabatan" readonly="">
@@ -29,4 +29,4 @@
 					</div>
 				</div>
 			</div>	
-	@include('tampilan.foot')
+			@include('tampilan.foot')

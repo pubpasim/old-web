@@ -20,19 +20,12 @@
 	</form>
 </div>
 <div class="kanan" @if($lempar=="") style="display: none;" @endif id="kanan" style="padding-left: 100px;">
-	<table id="myTable">
+	<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 		<thead>
 			<tr>
 				<th>NO</th>
 				<th>NIM</th>
 				<th>NAMA</th>
-				<th>ANGKATAN</th>
-				<th>ASAL DAERAH</th>
-				<th>ASAL SEKOLAH</th>
-				<th>JABATAN DI PUB</th>
-				<th>JABATAN DI PPMB</th>
-				<th>STATUS PERNIKAHAN</th>
-				<th>JURUSAN</th>
 				<th>AKSI</th>
 			</tr>
 		</thead>
@@ -45,15 +38,7 @@
 				<td>{{$no++}}</td>
 				<td>{{$mhs->nim}}</td>
 				<td>{{$mhs->nama}}</td>
-				<td>{{$mhs->angkatan}}</td>
-				<td>{{$mhs->kab_kot}}</td>
-				<td>{{$mhs->sekolah}}</td>
-				<td>{{$mhs->jabatan_pub}}</td>
-				<td>{{$mhs->jabatan}}</td>
-				<td>{{$mhs->status}}</td>
-				<td>{{$mhs->nama_jur}}</td>
 				<td><a href="{{url('detail/org/'.$mhs->id_mahasiswa)}}"><button id="btn">detail</button></a></td>
-
 			</tr>
 			@endforeach
 		</tbody>

@@ -4,22 +4,22 @@
 				width: 750px;
 				height: 500px;
 				margin-left: 300px;
-			}s
-		</style>
-		<div id="form1">
-		<div class="row">
-			<div class="panel-heading">FROM UBAH PANITIA</div>
+			}
+			</style>
+			<div id="form1">
+				<div class="row">
+					<div class="panel-heading">FROM UBAH PANITIA</div>
 					<div class="panel-body">
 						<div class="col-md-6">
 
 							<form role="form" action="/det_struktur_ppmb/update" method="POST">
 								@foreach($detorgppmb as $d)
-								 {{ @csrf_field() }}
+								{{ @csrf_field() }}
 								<div class="form-group">
 									<label>ID Panitia</label>
 									<input class="form-control" name="id_pengurus" value="{{$d->id_detil}}" placeholder="Id Panitia" readonly="">
 								</div>
-							
+
 								<div class="form-group">
 									<select class="form-control" id="mahasiswa" name="mhs">
 										<label>Mahasiswa</label>
@@ -52,11 +52,11 @@
 								</div>
 								@endforeach
 								<button type="submit" class="btn btn-primary">SIMPAN DATA </button>
-										
+
 							</form>
 
 						</div>
 					</div>
 				</div>
 			</div>	
-	@include('tampilan.foot')
+			@include('tampilan.foot')
