@@ -1,5 +1,8 @@
 @include('user.header')
-<style type="text/css">
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
 	.table1 {
 		font-family: sans-serif;
 		color: #444;
@@ -42,18 +45,22 @@
 		background-color: #1ABC9C;
 	}
 </style>
-<div >
-	<div class="tengah">
-			<center><h1>Pelatihan PUB</h1></center>
-			<a href="{{url('materilogika')}}"><button> Logika Dan Algoritma</button></a>
-			<a href="{{url('materibasis')}}"><button> Basis Data</button></a>
-			<a href="{{url('materistruktur')}}"><button> Struktur Data</button></a>
-			<a href="{{url('materihtml')}}"><button> HTML</button></a>
-			<a href="{{url('materifund')}}"><button> Fundamental</button></a>
-			<a href="{{url('materifundljt')}}"><button> Lanjutan</button></a>
-	</div>
-	
-	
-</div>
 
+	<title>Fundamental</title>
+</head>
+<body>
+	<div class="tengah">
+	<center><img src="{{url('imgs')}}/{{('pub.png') }}" width="30%"></center>
+	<h1 align="center">Fundamental</h1>
+		<center><p>
+			<a href="{{url('fdmjava')}}"><button> Java</button></a>
+			<a href="{{url('fdmvb')}}"><button> VB.Net</button></a>
+			<a href="{{url('fdmphp')}}"><button>PHP</button></a>
+		</p>
+		</center>
+
+	</div>
+
+</body>
+</html>
 @include('user.footer')

@@ -40,7 +40,7 @@ class orgPUBcontroller extends Controller
             ([
                 'jabatan_pub'=>$request->jabatan
             ]);
-        return redirect ('/');
+        return redirect ('struktur_organisasi/index');
     }
 
     /**
@@ -63,7 +63,7 @@ class orgPUBcontroller extends Controller
     public function edit($id_orgpub)
     {
         $organisasi = DB::table('tb_orgpub')->where('id_orgpub',$id_orgpub)->get();
-        return view('struktur_organisasi.edit',compact('organisasi'));
+        return view('struktur_organisasi/edit',compact('organisasi'));
     }
 
     /**
