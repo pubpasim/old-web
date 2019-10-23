@@ -26,22 +26,31 @@
 	.table1 tr:nth-child(even) {
 		background-color: #f2f2f2;
 	}
+	.tengah{
+		text-align: center;
+		margin: 10%;
+	}
+	button{
+		background-color: #16A085;
+		color: white;
+		width: 180px;
+		height: 100px;
+		border-radius: 10px;
+		border-style: groove;
+	}
+	button:hover{
+		background-color: #1ABC9C;
+	}
 </style>
-<div id="design">
+<div >
 	<div class="tengah">
-
-		<form method="POST" action="{{url('pelatihan_data')}}">
 			<center><h1>Pelatihan PUB</h1></center>
-			
-			<button> <a href="{{url('materilogika')}}">Logika Dan Algoritma</a></button>
-			<button> <a href="{{url('materibasis')}}">Basis Data</a></button>
-			<button> <a href="{{url('materistruktur')}}">Struktur Data</a></button>
-			<button> <a href="{{url('materihtml')}}">HTML</a></button>
-			<button> <a href="{{url('materifund')}}">Fundamental</a></button>
-			<button> <a href="{{url('materifundljt')}}">Fundamental Lanjutan</a></button>
-			
-			
-		</form>
+			<a href="{{url('materilogika')}}"><button> Logika Dan Algoritma</button></a>
+			<a href="{{url('materibasis')}}"><button> Basis Data</button></a>
+			<a href="{{url('materistruktur')}}"><button> Struktur Data</button></a>
+			<a href="{{url('materihtml')}}"><button> HTML</button></a>
+			<a href="{{url('materifund')}}"><button> Fundamental</button></a>
+			<a href="{{url('materifundljt')}}"><button> Lanjutan</button></a>
 	</div>
 	
 	

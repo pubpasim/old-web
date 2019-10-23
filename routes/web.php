@@ -93,7 +93,7 @@ Route::get('tampilan/daerah/viewdae','daerahController@index');
 Route::get('tampilan/daerah/createdae','daerahController@create');
 
 
-Route::get('struktur_organisasi','orgPUBController@index');
+Route::get('struktur_organisasi/index','orgPUBController@index');
 Route::get('struktur_organisasi/tambah/','orgPUBController@create');
 Route::post('struktur_organisasi/store/','orgPUBController@store');
 Route::get('struktur_organisasi/edit/{x}','orgPUBController@edit');

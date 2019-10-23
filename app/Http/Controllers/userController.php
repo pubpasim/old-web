@@ -173,7 +173,7 @@ class userController extends Controller
         ->join('tb_orgppmb', 'tb_mahasiswa.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
         ->join('tb_statusPub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statusPub.id_statusPub')
         ->join('tb_jurusan', 'tb_mahasiswa.id_jur', '=', 'tb_jurusan.id_jur')
-        ->select('tb_mahasiswa.nama','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status')->get();
+        ->select('tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status')->get();
         return view('user.mahasiswa',compact('angkatan','mahasiswa','lempar'));
     }
     public function view_dataMhs(Request $request){
@@ -451,7 +451,6 @@ class userController extends Controller
         ->get();
         return view('User.kegIkatanAlumni',compact('dok'));
     }
-<<<<<<< HEAD
     public function materilog()
     {
         return view('User.materilogika');
@@ -499,7 +498,7 @@ class userController extends Controller
     public function materifdmjavaljt()
     {
         return view('User.fdmjavaljt');
-=======
+    }
     public function totalAlumni()
     {
         $data1=DB::table('tb_mahasiswa')
@@ -541,6 +540,5 @@ class userController extends Controller
         ->where('tb_statusPub.status','Alumni')->get();
         
         return view('User.totalAlumni',compact('lk','pr','totalL','totalP','total'));
->>>>>>> 716e1ab00453b6d54683f46219eb35ef48f23d9e
     }
 }
