@@ -6,7 +6,7 @@
 </head>
 <body>
 	<div id="design" >
-	<center><img src="{{url('imgs')}}/{{('pub.png') }}" width="30%"></center>
+	<center><img src="{{url('imgs')}}/{{('sql.jpg') }}" width="30%"></center>
 	<h1 align="center">Basis Data</h1>
 		<p>
 			Materi Basis Data

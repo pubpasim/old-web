@@ -280,9 +280,9 @@ Route::get('editProfil/{x}','alumni_adminController@editProfil');
 Route::post('simpanProfil/edit/{x}','alumni_adminController@updateProfil');
 
 Route::post('tambahFoto','alumni_adminController@store');
-<<<<<<< HEAD
 
-=======
+
+
 Route::get('tambahPend/{x}','alumni_adminController@tambahPnd');
 Route::post('simpanPend','alumni_adminController@simpanPnd');
 
@@ -290,4 +290,4 @@ Route::get('tambahPeng/{x}','alumni_adminController@tambahPeng');
 Route::post('tambah/pengalaman','alumni_adminController@simpanPeng');
 Route::get('editPengalaman/{x}/{y}','alumni_adminController@editPengalaman');
 Route::post('updatePengalaman','alumni_adminController@updatePengalaman');
->>>>>>> 652e751d27e564a8b02c7738e0a8702cbe29042b
+

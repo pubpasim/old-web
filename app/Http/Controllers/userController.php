@@ -428,6 +428,7 @@ class userController extends Controller
         ->where('tb_mahasiswa.id_mahasiswa',$id)->first();
         return view('user.detail',compact('mahasiswa'));
     }
+    
     public function kegiatanPub()
     {
         $keg=DB::table('tb_pubdok')->get();
