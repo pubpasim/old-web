@@ -74,7 +74,6 @@
 
 					<li><a href="{{url('detorg_pub')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Struktur Organisasi</a></li>
 					<li><a href="{{url('mahasiswa')}}"><svg class="glyph stroked clipboard with paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> Data Mahasiswa PUB</a></li>
-					<li><a href="{{url('Alumni_admin/det_pelatihan')}}"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"/></svg> Pelatihan PUB</a></li>
 					<li><a href="{{url('dokumentasiPub')}}"><svg class="glyph stroked landscape"><use xlink:href="#stroked-landscape"/></svg>Dokumentasi PUB</a></li>
 
 				</ul>
@@ -115,7 +114,6 @@
 
 					<li><a href="{{url('tampilan/sekolah/viewsek')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Asal Sekolah</a></li>
 
-					<li><a href="{{url('pelatihan/index/')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Pelatihan</a></li>
 
 					<li><a href="{{url('tampilan/jurusan/viewjur')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Jurusan</a></li>
 

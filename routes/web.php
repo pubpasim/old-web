@@ -283,7 +283,7 @@ Route::get('/',function () {
 });
 Route::get('user/index','userController@index');
 Route::get('user/mahasiswa','userController@view_mhs');
-Route::post('tampil/angkatan','userController@view_dataMhs');
+Route::post('user/mahasiswa/','userController@view_dataMhs');
 
 Route::get('pub_profile','userController@profile');
 Route::get('ppmb_profile','userController@ppmb_profile');
@@ -325,6 +325,7 @@ Route::get('fdmljtphp', 'userController@materifdmphpljt');
 Route::get('fdmljtvb', 'userController@materifdmvbljt');
 Route::get('fdmljtjava', 'userController@materifdmjavaljt');
 Route::get('totalAlumni', 'userController@totalAlumni');
+Route::get('pembinaPub', 'userController@pembinaPub');
 
 
 //================================ADMIN ALUMNI=============================//

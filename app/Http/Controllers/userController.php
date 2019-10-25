@@ -128,10 +128,16 @@ public function user_alumniView(request $request)
     ->join('tb_orgppmb', 'tb_mahasiswa.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
     ->join('tb_statusPub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statusPub.id_statusPub')
     ->join('tb_jurusan', 'tb_mahasiswa.id_jur', '=', 'tb_jurusan.id_jur')
-    ->select('tb_mahasiswa.nama','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status')
+    ->select('tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status')
     ->where('tb_statusPub.status','Alumni')
-    ->where('tb_angkatan.angkatan',$request->select)->get();
-    return view('user.user_alumni',compact('angkatan','mahasiswa'));
+    ->where('tb_angkatan.angkatan',$request->select)
+    ->orderby('tb_mahasiswa.nama')
+    ->get();
+    if ($request->select=="") {
+        return redirect('user_alumni');
+    }else{     
+        return view('user.user_alumni',compact('angkatan','mahasiswa'));
+    }
 }
     public function login()
     {
@@ -225,7 +231,9 @@ public function user_alumniView(request $request)
         ->join('tb_orgppmb', 'tb_mahasiswa.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
         ->join('tb_statusPub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statusPub.id_statusPub')
         ->join('tb_jurusan', 'tb_mahasiswa.id_jur', '=', 'tb_jurusan.id_jur')
-        ->select('tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status')->get();
+        ->select('tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status')
+        ->where('tb_statusPub.status','PUB Aktif')
+        ->orderby('tb_angkatan.angkatan')->get();
         return view('user.mahasiswa',compact('angkatan','mahasiswa','lempar'));
     }
     public function view_dataMhs(Request $request){
@@ -239,8 +247,16 @@ public function user_alumniView(request $request)
         ->join('tb_orgppmb', 'tb_mahasiswa.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
         ->join('tb_statusPub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statusPub.id_statusPub')
         ->join('tb_jurusan', 'tb_mahasiswa.id_jur', '=', 'tb_jurusan.id_jur')
-        ->select('tb_mahasiswa.nama','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status')->where('tb_angkatan.angkatan',$request->select)->get();
-        return view('user.mahasiswa',compact('angkatan','mahasiswa','lempar'));
+        ->select('tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status')
+        ->where('tb_angkatan.angkatan',$request->select)
+        ->where('tb_statusPub.status','PUB Aktif')
+        ->orderby('tb_mahasiswa.nama')->get();
+        if ($request->select=="") {
+            return redirect('user/mahasiswa');
+        }else{     
+           return view('user.mahasiswa',compact('angkatan','mahasiswa','lempar'));
+        }
+        
     }
 
     public function pelatihan(){
@@ -550,6 +566,10 @@ public function user_alumniView(request $request)
     public function materifdmjavaljt()
     {
         return view('User.fdmjavaljt');
+    }
+    public function pembinaPub()
+    {
+        return view('User.pembina');
     }
     public function totalAlumni()
     {

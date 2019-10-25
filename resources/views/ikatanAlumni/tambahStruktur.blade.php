@@ -87,7 +87,9 @@
 					<select id="id_mahasiswa" name="id_mahasiswa">
 						<option value> --Nama Alumni--</option>
 						@foreach($mhs as $data)
-						<option value="{{$data->id_mahasiswa}}">{{$data->angkatan}} - {{$data->nama_angkatan}} - {{$data->nama}}</option>
+						<option value="{{$data->id_mahasiswa}}">
+							{{$data->angkatan}} - {{$data->nama_angkatan}} - {{$data->nama}}
+						</option>
 						@endforeach
 					</select>
 				</div>		
