@@ -120,7 +120,7 @@
                       </li>
                       <li><a href="#">PUB Aktif</a>
                         <ul class="dropdown">
-                          <li><a href="{{url('pub_profile')}}">-Profile PUB</a></li>
+                          <li><a href="{{url('pub_profile')}}">-Sekilas PUB</a></li>
                           <li><a href="{{url('organisasi_pub')}}">-Organisasi PUB</a></li>
                           <li><a href="{{url('user/mahasiswa')}}">-Mahasiswa PUB</a></li>
                           <li><a href="{{url('pelatihan')}}">-Pelatihan PUB</a></li>
@@ -139,7 +139,7 @@
                             </ul>
 
                           </li>
-                          <li><a href="{{url('user_infaq')}}">-Total Alumni</a></li>
+                          <li><a href="{{url('totalAlumni')}}">-Total Alumni</a></li>
                         </ul>
                       </li>
                       <li><a href="#">Pembina PUB</a></li>

@@ -9,7 +9,7 @@
 			</div>
 			<div class="col-75">
 				<input type="hidden" name="id" value="{{$id}}">
-
+				<input type="hidden" name="idpeng" value="{{$peng->id_detpengalaman}}">
 				<input type="text" id="perusahaan" name="perusahaan" placeholder="Perusahaan" value="{{$peng->instansi}}">
 			</div>	
 		</div>	

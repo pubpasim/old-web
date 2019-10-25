@@ -22,7 +22,7 @@
 			</div>
 		</div>
 		<!-- Single Welcome Slide -->
-		<div class="single-welcome-slide bg-img bg-overlay" style="background-image: url(imgs/kegiatan/KBB.jpg);" data-img-url="imgs/kegiatan/KBB.jpg">
+		<div class="single-welcome-slide bg-img bg-overlay" style="background-image: url({{url('imgs/gambar/KBB.jpg')}});" data-img-url="imgs/gambar/KBB.jpg">
 			<!-- Welcome Content -->
 			<div class="welcome-content h-100">
 				<div class="container h-100">
@@ -42,7 +42,7 @@
 
 
 		<!-- Single Welcome Slide -->
-		<div class="single-welcome-slide bg-img bg-overlay" style="background-image: url(imgs/kegiatan/akt16_i.jpg);" data-img-url="imgs/kegiatan/akt16_i.jpg">
+		<div class="single-welcome-slide bg-img bg-overlay" style="background-image: url({{url('imgs/gambar/akt16_i.jpg')}});" data-img-url="imgs/gambar/akt16_i.jpg">
 			<!-- Welcome Content -->
 			<div class="welcome-content h-100">
 				<div class="container h-100">
@@ -61,7 +61,7 @@
 		</div>
 
 		<!-- Single Welcome Slide -->
-		<div class="single-welcome-slide bg-img bg-overlay" style="background-image: url(imgs/kegiatan/akt16_a.jpg);" data-img-url="imgs/kegiatan/akt16_a.jpg">
+		<div class="single-welcome-slide bg-img bg-overlay" style="background-image: url({{url('imgs/gambar/akt16_a.jpg')}});" data-img-url="imgs/gambar/akt16_a.jpg">
 			<!-- Welcome Content -->
 			<div class="welcome-content h-100">
 				<div class="container h-100">
@@ -81,7 +81,7 @@
 
 
 		<!-- Welcome Area End -->
-		<div class="single-welcome-slide bg-img bg-overlay" style="background-image: url(imgs/kegiatan/akt17_i.jpg);" data-img-url="imgs/kegiatan/akt17_i.jpg">
+		<div class="single-welcome-slide bg-img bg-overlay" style="background-image: url({{url('imgs/gambar/akt17_i.jpg')}});" data-img-url="imgs/gambar/akt17_i.jpg">
 			<!-- Welcome Content -->
 			<div class="welcome-content h-100">
 				<div class="container h-100">
@@ -100,7 +100,7 @@
 		</div>
 
 		<!-- Single Welcome Slide -->
-		<div class="single-welcome-slide bg-img bg-overlay" style="background-image: url(imgs/kegiatan/akt17_a.jpg);" data-img-url="imgs/kegiatan/akt17_a.jpg">
+		<div class="single-welcome-slide bg-img bg-overlay" style="background-image: url({{url('imgs/gambar/akt17_a.jpg')}});" data-img-url="imgs/gambar/akt17_a.jpg">
 			<!-- Welcome Content -->
 			<div class="welcome-content h-100">
 				<div class="container h-100">

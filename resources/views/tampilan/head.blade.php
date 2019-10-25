@@ -20,7 +20,11 @@
 <![endif]-->
 
 </head>
-
+<style type="text/css">
+	#hide{
+		display: none;
+	}
+</style>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
@@ -36,8 +40,6 @@
 					<li class="dropdown pull-right">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> User <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Profile</a></li>
-							<li><a href="#"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"></use></svg> Settings</a></li>
 							<li><a href="{{url('login')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Logout</a></li>
 						</ul>
 					</li>
@@ -54,9 +56,9 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li class="active"><a href="{{url('/')}}"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
-			<li class="dropdown ">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg> PPMB <span class="caret"></span></a>
+			<li class="active"><a href="{{url('admin')}}"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
+			<li class="dropdown " >
+				<a @if(\Session::get("level")=="admin_pub" || \Session::get("level")=="ikatan_alumni") id="hide" @endif href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg> PPMB <span class="caret"></span></a>
 				<ul class="dropdown-menu" role="menu">
 					<li><a href="{{url('/det_struktur_ppmb')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Struktur Organisasi</a></li>
 					<li><a href="{{url('/syarat_ketentuan')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg></svg> Syarat dan Ketentuan</a></li>
@@ -66,8 +68,8 @@
 					<li><a href="{{url('uploadFormulir')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Upload Formulir</a></li>
 				</ul>
 			</li>
-			<li class="dropdown "> 
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg> PUB <span class="caret"></span></a>
+			<li class="dropdown " > 
+				<a @if(\Session::get("level")=="admin_ppmb" || \Session::get("level")=="ikatan_alumni" ) id="hide" @endif href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg> PUB <span class="caret"></span></a>
 				<ul class="dropdown-menu" role="menu">
 
 					<li><a href="{{url('detorg_pub')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Struktur Organisasi</a></li>
@@ -77,8 +79,8 @@
 
 				</ul>
 			</li>
-			<li class="dropdown ">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg> Alumni PUB <span class="caret"></span></a>
+			<li class="dropdown " >
+				<a @if(\Session::get("level")=="admin_pub" || \Session::get("level")=="admin_ppmb" || \Session::get("level")=="ikatan_alumni" ) id="hide" @endif href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg> Alumni PUB <span class="caret"></span></a>
 				<ul class="dropdown-menu" role="menu">
 					<li><a href="{{url('alumni')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Daftar Alumni</a></li>
 					<li><a href="{{url('alumni/aktivitas')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg></svg> Aktivitas Alumni</a></li>
@@ -87,8 +89,8 @@
 				</ul>
 			</li>
 
-			<li class="dropdown ">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg> Ikatan Alumni PUB <span class="caret"></span></a>
+			<li class="dropdown " >
+				<a @if(\Session::get("level")=="admin_pub" || \Session::get("level")=="admin_ppmb" ) id="hide" @endif href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg> Ikatan Alumni PUB <span class="caret"></span></a>
 				<ul class="dropdown-menu" role="menu">
 					<li><a href="{{url('strukturOrgAlumni')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Struktur Organisasi</a></li>
 					<li><a href="{{url('kegiatanAlumni')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg></svg> Kegiatan Alumni PUB</a></li>				
@@ -101,14 +103,14 @@
 
 					<li><a href="{{url('periode')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Periode Kepengurusan</a></li>
 
-					<li><a href="{{url('struktur_organisasi/index/')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Jabatan PUB</a></li>
+
+					<li><a href="{{url('struktur_organisasi/index')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Jabatan PUB</a></li>
 
 					<li><a href="{{url('tampilUser')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Data User</a></li>
 
 					<li><a href="{{url('struktur_ppmb')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Jabatan PPMB</a></li>
 
 					<li><a href="{{url('jadwal_ppmb')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Kegiatan PPMB</a></li>
-
 					<li><a href="{{url('tampilan/daerah/viewdae')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Daerah</a></li>
 
 					<li><a href="{{url('tampilan/sekolah/viewsek')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Asal Sekolah</a></li>
@@ -117,38 +119,13 @@
 
 					<li><a href="{{url('tampilan/jurusan/viewjur')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Jurusan</a></li>
 
-					<li><a href="{{url('alumni')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Staus Sosial</a></li>
+					<li><a href="{{url('status_sos')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Staus Sosial</a></li>
 
-					<li><a href="{{url('status_pub/index/')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Status PUB</a></li>
+					<li><a href="{{url('status_pub')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Status PUB</a></li>
 					
 				</ul>
 			</li>
-			<li><a href="/lumino/panels.html"><svg class="glyph stroked app-window"><use xlink:href="#stroked-app-window"></use></svg> Alerts &amp; Panels</a></li>
-			<li><a href="/lumino/icons.html"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg> Icons</a></li>
-			<li class="parent ">
-				<a href="#">
-					<span data-toggle="collapse" href="#sub-item-1"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span> Dropdown 
-				</a>
-				<ul class="children collapse" id="sub-item-1">
-					<li>
-						<a class="" href="#">
-							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 1
-						</a>
-					</li>
-					<li>
-						<a class="" href="#">
-							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 2
-						</a>
-					</li>
-					<li>
-						<a class="" href="#">
-							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 3
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li role="presentation" class="divider"></li>
-			<li><a href="/lumino/login.html"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Login Page</a></li>
+			<li><a href="{{url('login')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Logout</a></li>
 		</ul>
 
 	</div><!--/.sidebar-->
@@ -160,4 +137,4 @@
 				<li class="active">Icons</li>
 			</ol>
 		</div><!--/.row-->
-	</div>
+	

@@ -39,7 +39,7 @@ class statusPubController extends Controller
         ([ 
             'status'=>$request->status
         ]);
-        return redirect('/');
+        return redirect('status_pub');
     }
 
     /**
@@ -61,7 +61,7 @@ class statusPubController extends Controller
      */
     public function edit($id_status)
     {
-        $status_pub = DB::table('tb_statuspub')->where('id_status',$id_status)->get();
+        $status_pub = DB::table('tb_statuspub')->where('id_statusPub',$id_status)->first();
         return view('status_pub.edit', compact('status_pub'));
     }
 
@@ -74,10 +74,10 @@ class statusPubController extends Controller
      */
     public function update(Request $request, $id_status)
     {
-        DB::table('tb_statuspub')->where('id_status',$id_status)->update([
-            'status'=>$request->tb_statuspub
+        DB::table('tb_statuspub')->where('id_statusPub',$id_status)->update([
+            'status'=>$request->status_pub
         ]);
-        return redirect('/');
+        return redirect('status_pub');
     }
 
     /**
@@ -88,6 +88,7 @@ class statusPubController extends Controller
      */
     public function destroy($id)
     {
-        //
+         DB::table('tb_statuspub')->where('id_statusPub',$id)->delete();
+          return redirect('status_pub');
     }
 }

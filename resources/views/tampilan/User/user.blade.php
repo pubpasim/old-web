@@ -73,9 +73,9 @@
 			margin-top: 6px;
 		}
 		#form1{
-			width: 90%;
+			width: 70%;
 			height: 100%;
-			padding-left: 20%;
+			padding-left: 17%;
 			
 		}
 		/* Clear floats after the columns */
@@ -94,12 +94,10 @@
 		}
 
 	</style>
-
-	<div id="form1">
 		<h1>Daftar User</h1>
 		<div class="container">
 			<a href="{{url('tambahUser')}}"><button class="btn btn-primary" style=" background-color: #339966; width: 100%;"><svg class="glyph stroked plus sign" style="height: 30px;"><use xlink:href="#stroked-plus-sign"/></svg></button></a>
-			<table id="myTable">
+			<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 				
 				<thead>
 					<tr>
@@ -120,13 +118,12 @@
 						<td>{{$data->username}}</td>
 						<td>{{$data->password}}</td>
 						<td>{{$data->level}}</td>
-						<td><button type="reset" class="btn btn-default">Edit</button></td>
-						<td><button class="btn btn-primary" style="background-color: red;">Hapus</button></td>
+						<td><a href="{{url('editUser/'.$data->id_user)}}"><button type="reset" class="btn btn-default">Edit</button></a></td>
+						<td><a href="{{url('hapusUser/'.$data->id_user)}}"><button class="btn btn-primary" style="background-color: red;">Hapus</button></a></td>
 					</tr>
 					@endforeach
 				</tbody>
 			</table>
-		</div>
 	</div>
 
 @include('tampilan.foot')

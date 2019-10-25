@@ -72,7 +72,6 @@
 		}
 	}
 </style>
-<div id="form1">
 	<div class="container">
 		<form method="POST" action="{{url('storeWawancaraAkhir/'.$id)}}">
 		{{csrf_field()}}
@@ -139,7 +138,6 @@
 			<input type="submit" value="Submit">
 		</div>
 		</form>
-</div>
 </div>
 
 @include('tampilan.foot')

@@ -72,7 +72,6 @@
 		}
 	}
 </style>
-<div id="form1">
 	<div class="container">
 		<form method="POST" action="{{url('storeFinal/'.$id)}}">
 			{{csrf_field()}}
@@ -98,7 +97,6 @@
 			</div>
 		</form>
 	</div>
-</div>
 
 @include('tampilan.foot')
 

@@ -41,10 +41,9 @@
             <div class="row">                                                                
                 <div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 push-lg-4 push-md-5">
                     <header>
-                        <h2 class="tm-blue-text tm-section-title tm-margin-b-45">About the team</h2>
+                        <h2 class="tm-blue-text tm-section-title tm-margin-b-45">{{$kegiatan->nama}}</h2>
                     </header>
-                    <p>{{$kegiatan->keterangan}}</p>
-                    <a href="#" class="tm-button tm-button-wide">Read More</a>  
+                    <p>{{$kegiatan->keterangan}}</p> 
                 </div>
 
                 <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 pull-lg-8 pull-md-7 tm-about-img-container">

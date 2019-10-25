@@ -1,4 +1,4 @@
-@include('tampilan.foot')
+@include('tampilan.head')
 <style>
 	* {
 		box-sizing: border-box;
@@ -50,10 +50,10 @@
 		margin-top: 6px;
 	}
 	#form1{
-		width: 750px;
-		height: 500px;
+		width: 70%;
+		height: 100%;
 
-		margin-left: 300px;
+		margin-left: 17%;
 	}
 	/* Clear floats after the columns */
 	.row:after {
@@ -70,7 +70,6 @@
 		}
 	}
 </style>
-<div id="form1">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
@@ -98,5 +97,4 @@
 			</div>
 		</form>
 	</div>
-</div>
 @include('tampilan.foot')

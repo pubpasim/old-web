@@ -1,12 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
+
+
 
 
 Route::get('admin', function () {
-	return view('tampilan.index');
-});
 
+	if (!Session::get('level')) {
+		return redirect('login')->with('alert','Silahkan Login terlebih dahulu');
+	}else{	
+		return view('tampilan.index');
+	}
+});
 //struktur organisasi ppmb
 Route::get('/struktur_ppmb','orgPPMBcontroller@index'); 
 Route::get('/struktur_ppmb/create','orgPPMBcontroller@create');
@@ -93,7 +100,7 @@ Route::get('tampilan/daerah/viewdae','daerahController@index');
 Route::get('tampilan/daerah/createdae','daerahController@create');
 
 
-Route::get('struktur_organisasi','orgPUBController@index');
+Route::get('struktur_organisasi/index','orgPUBController@index');
 Route::get('struktur_organisasi/tambah/','orgPUBController@create');
 Route::post('struktur_organisasi/store/','orgPUBController@store');
 Route::get('struktur_organisasi/edit/{x}','orgPUBController@edit');
@@ -106,6 +113,14 @@ Route::post('status_pub/store/','statusPubController@store');
 Route::get('status_pub/edit/{x}','statusPubController@edit');
 Route::post('status_pub/update/{y}','statusPubController@update');
 Route::get('status_pub/hapus/{z}','statusPubController@destroy'); 	
+
+Route::get('status_sos','statusSosialController@index');
+Route::get('status_sos/tambah','statusSosialController@create');
+Route::post('status_sos/store','statusSosialController@store');
+Route::get('status_sos/edit/{x}','statusSosialController@edit');
+Route::post('status_sos/update/{x}','statusSosialController@update');
+Route::get('status_sos/hapus/{x}','statusSosialController@destroy'); 
+
 
 Route::get('alumni','alumniController@index');
 Route::get('alumni/aktivitas','alumniController@aktivitas');
@@ -242,14 +257,34 @@ Route::post('updateDok/{x}', 'ppmbDokController@updateDok');
 
 //===================================USER=================================//
 Route::get('/','userController@index');
+
+//==============================LOGIN=====================================//
+
 Route::get('login','userController@login');
 Route::post('login/masuk','userController@doLogin');
-Route::get('user/mahasiswa','userController@view_mhs');
-Route::post('tampil/angkatan','userController@view_dataMhs');
+
+//===================================USER=================================//
 Route::get('tampilUser','userController@tampilUser');
 Route::get('tambahUser','userController@tambahUser');
 Route::post('tambahUser/store','userController@tambahUser_store');
 Route::post('tambah/user','userController@simpanUser');
+Route::get('editUser/{x}','userController@editUser');
+Route::post('editUser','userController@updateUser');
+Route::get('hapusUser/{x}','userController@hapusUser');
+
+
+Route::get('/',function () {
+	if (Session::get('level')) {
+		Session::forget('level');
+		return redirect('user/index');
+	}else{	
+		return redirect('user/index');
+	}
+});
+Route::get('user/index','userController@index');
+Route::get('user/mahasiswa','userController@view_mhs');
+Route::post('tampil/angkatan','userController@view_dataMhs');
+
 Route::get('pub_profile','userController@profile');
 Route::get('ppmb_profile','userController@ppmb_profile');
 Route::get('/jadwal_ppmb_user','UserController@jadwal_ppmb'); 
@@ -277,16 +312,42 @@ Route::get('user_dok_ppmb','userController@user_dok_ppmb');
 Route::get('user_down_formulir','userController@user_down_formulir');
 //================================ADMIN ALUMNI=============================//
 
+Route::get('materilogika', 'userController@materilog');
+Route::get('materibasis', 'userController@materibasis');
+Route::get('materistruktur', 'userController@materistruktur');
+Route::get('materihtml', 'userController@materihtml');
+Route::get('materifund', 'userController@materifdm');
+Route::get('fdmphp', 'userController@materifdmphp');
+Route::get('fdmvb', 'userController@materifdmvb');
+Route::get('fdmjava', 'userController@materifdmjava');
+Route::get('materifundljt', 'userController@materifdmljt');
+Route::get('fdmljtphp', 'userController@materifdmphpljt');
+Route::get('fdmljtvb', 'userController@materifdmvbljt');
+Route::get('fdmljtjava', 'userController@materifdmjavaljt');
+Route::get('totalAlumni', 'userController@totalAlumni');
+
+
+//================================ADMIN ALUMNI=============================//
 Route::get('admin/alumni/{x}','alumni_adminController@index');
 Route::get('admin/alumni/profile/{x}','alumni_adminController@profile');
 Route::get('editProfil/{x}','alumni_adminController@editProfil');
 Route::post('simpanProfil/edit/{x}','alumni_adminController@updateProfil');
-
 Route::post('tambahFoto','alumni_adminController@store');
 Route::get('tambahPend/{x}','alumni_adminController@tambahPnd');
 Route::post('simpanPend','alumni_adminController@simpanPnd');
+Route::get('editPendidikan/{x}/{y}','alumni_adminController@editPendidikan');
+Route::post('editPendidikan','alumni_adminController@updatePendidikan');
 
 Route::get('tambahPeng/{x}','alumni_adminController@tambahPeng');
 Route::post('tambah/pengalaman','alumni_adminController@simpanPeng');
 Route::get('editPengalaman/{x}/{y}','alumni_adminController@editPengalaman');
 Route::post('updatePengalaman','alumni_adminController@updatePengalaman');
+
+Route::get('admin/alumni/aktivitas/{x}','alumni_adminController@aktivitas');
+Route::post('tambahFoto/aktivitas','alumni_adminController@storeAktivitas');
+Route::get('edit/aktivitas/{x}/{y}','alumni_adminController@editAktivitas');
+Route::post('simpan/aktivitasEdit','alumni_adminController@updateAktivitas');
+Route::get('hapusAktivitas/{x}/{y}','alumni_adminController@hapusAktivitas');
+
+
+

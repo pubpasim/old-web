@@ -72,7 +72,6 @@
 		}
 	}
 </style>
-<div id="form1">
 	<div class="container">
 		<form method="POST" action="{{url('hasil2')}}">
 			{{csrf_field()}}
@@ -107,7 +106,6 @@
 			<a href="{{url('dataFinal/'.$lempar)}}" class="btn btn-info">Penandatanganan MOU</a>
 		</div>
 	</div>
-</div>
 
 @include('tampilan.foot')
 

@@ -3,16 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use DB;
 class statusSosialController extends Controller
 {
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $status_sos=DB::table('tb_statussos')->get();
+        return view('status_sosial.index',compact('status_sos'));
     }
 
     /**
@@ -22,7 +24,7 @@ class statusSosialController extends Controller
      */
     public function create()
     {
-        //
+        return view('status_sosial.tambah',compact('status_sos'));
     }
 
     /**
@@ -33,7 +35,10 @@ class statusSosialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('tb_statussos')->insert([
+            'status'=>$request->status
+        ]);
+        return redirect('status_sos');
     }
 
     /**
@@ -55,7 +60,8 @@ class statusSosialController extends Controller
      */
     public function edit($id)
     {
-        //
+        $status_sos=DB::table('tb_statussos')->where('id_statusSos',$id)->first();
+        return view('status_sosial.edit',compact('status_sos'));
     }
 
     /**
@@ -67,7 +73,10 @@ class statusSosialController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('tb_statussos')->where('id_statusSos',$id)->update([
+            'status'=>$request->status
+        ]);
+        return redirect('status_sos');
     }
 
     /**
@@ -78,6 +87,7 @@ class statusSosialController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('tb_statussos')->where('id_statusSos',$id)->delete();
+        return redirect('status_sos');
     }
 }
