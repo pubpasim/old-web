@@ -74,29 +74,23 @@
 </style>
 <div id="form1">
 	<div class="container">
-		<form method="POST" action="{{url('storeDokAlumni')}}" enctype="multipart/form-data">
-		{{csrf_field()}}
-				
-		<div class="row">
-			<div class="col-25">
-				<label for="jbPUB">Dokumentasi</label>
-			</div>
-			<div class="col-75">
-				<label for="tahun">Foto</label>
-				<input type="file" class="form-control" name="foto">
-			</div>
+		<form method="POST" action="{{url('storeFormulir')}}" enctype="multipart/form-data">
+			{{csrf_field()}}
+				<div class="col-75">
+					<label for="tahun">Formulir </label>
+					<input type="file" class="form-control" name="dokumen">
+				</div>
 
-			<div class="col-75">
-				<label for="jbPUB">Kegiatan</label>
-				<input type="text" class="form-control" name="keterangan">
+				<div class="col-75">
+					<label for="jbPUB">Kegiatan</label>
+					<textarea class="form-control" name="keterangan"></textarea>					
+				</div>
+				<div class="row" style="padding-left: 110px;padding-top: 10px;">
+					<button type="submit" class="btn btn-info">Submit</button>
+				</div>
 			</div>
-			
-		</div>
-		<br>
-		<div class="row" align="center">
-			<input type="submit" value="Simpan">
-		</div>
-	</form>
+		</form>
 </div>
-</div>
-@include('tampilan.foot')
+</div>	@include('tampilan.foot')
+
+	

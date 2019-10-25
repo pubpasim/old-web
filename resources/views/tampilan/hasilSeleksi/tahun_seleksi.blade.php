@@ -103,8 +103,8 @@
 		<div class="row" @if($lempar=="") style="display: none;" @endif style="padding-left: 100px;">
 			<a href="{{url('dataTPA/'.$lempar)}}" class="btn btn-info">TPA</a>
 			<a href="{{url('dataPsikotes/'.$lempar)}}" class="btn btn-info">Psikotes</a>
-			<a href="{{url('dataSurvei/'.$lempar)}}" class="btn btn-info">Survei</a>
-			<a href="{{url('dataFinal/'.$lempar)}}" class="btn btn-info">Hasil Final</a>
+			<a href="{{url('dataWawancaraAkhir/'.$lempar)}}" class="btn btn-info">Wawancara Akhir</a>
+			<a href="{{url('dataFinal/'.$lempar)}}" class="btn btn-info">Penandatanganan MOU</a>
 		</div>
 	</div>
 </div>

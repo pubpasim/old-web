@@ -82,6 +82,10 @@
 					<label>Tambah TPA</label>
 				</div>
 				<div class="col-75">
+					<label for="Sekolah">Daerah</label>
+					<input type="text" class="form-control" placeholder="Daerah" name="daerah">
+				</div>
+				<div class="col-75">
 					<label for="Sekolah">Sekolah</label>
 					<input type="text" class="form-control" placeholder="Sekolah" name="sekolah">
 				</div>

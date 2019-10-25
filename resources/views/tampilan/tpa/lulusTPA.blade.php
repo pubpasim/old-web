@@ -7,16 +7,19 @@
 				<div class="panel-heading">Tabel TPA</div>
 
 				<div class="panel-body">
-					<a href="{{url('tambahTPA/'.$id)}}" class="btn btn-info">Add</a>
-					<a href="{{url('hasilSeleksi')}}" class="btn btn-info">Back</a>
+					<a href="{{url('tambahLulusTPA/'.$id)}}" class="btn btn-info">Add</a>
+					<a href="{{url('dataTPA/'.$back)}}" class="btn btn-info">Back</a>
 					<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 						<thead>
 							<tr>
 								<th>No</th>
-								<th>Daerah</th>
-								<th>Sekolah Tempat Test</th>
-								<th>Lulus</th>
-								<th>Tidak Lulus</th>
+								<th>Nama</th>
+								<th>Jenis Kelamin</th>
+								<th>TTL</th>
+								<th>Asal Daerah</th>
+								<th>Asal Sekolah</th>
+								<th>Alamat</th>
+								<th>No Hp</th>
 								<th>Aksi</th>
 							</tr>
 						</thead>
@@ -25,13 +28,16 @@
 							@foreach($tpa as $data)
 							<tr>
 								<td>{{ $no++}}</td>
+								<td>{{ $data->nama}}</td>
+								<td>{{ $data->jk}}</td>
+								<td>{{ $data->tempat}}, {{ $data->tanggal}}</td>
 								<td>{{ $data->daerah}}</td>
-								<td>{{ $data->sekolah}}</td>								
-								<td><a href="{{url('lulusTPA/'.$data->id_tpa)}}">{{ $data->jml_lulus}}</a></td>
-								<td>{{ $data->jml_gagal}}</td>
+								<td>{{ $data->sekolah}}</td>
+								<td>{{ $data->alamat}}</td>
+								<td>{{ $data->no_hp}}</td>
 								<td>
-									<a href="{{url('editTPA/'.$data->id_tpa)}}" class="btn btn-info">Edit</a>
-									<a href="{{url('hapusTPA/'.$data->id_tpa)}}" class="btn btn-info">Hapus</a>
+									<a href="{{url('editLulusTPA/'.$data->id_lulus)}}" class="btn btn-info">Edit</a>
+									<a href="{{url('hapusLulusTPA/'.$data->id_lulus)}}" class="btn btn-info">Hapus</a>
 								</td>
 							</tr>
 							@endforeach

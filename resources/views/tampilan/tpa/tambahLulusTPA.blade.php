@@ -74,40 +74,50 @@
 </style>
 <div id="form1">
 	<div class="container">
-		@foreach($tpa as $data)
-		<form method="POST" action="{{url('updateTPA/'.$id)}}">
+		<form method="POST" action="{{url('storeLulusTPA/'.$id)}}">
 			{{csrf_field()}}
 			
 			<div class="row">
 				<div class="col-25">
-					<label>Edit TPA</label>
+					<label>Tambah Lulus TPA</label>
 				</div>
 				<div class="col-75">
-					<label for="Sekolah">Id</label>
-					<input readonly="" value="{{$data->id_tpa}}" type="text" class="form-control" placeholder="Id" name="id_tpa">
+					<label for="Sekolah">Nama</label>
+					<input type="text" class="form-control" placeholder="Nama" name="nama">
 				</div>
-
-				
+				<div class="col-75">
+					<label for="Sekolah">Jenis Kelamin</label>
+					<select class="form-control" name="jk">
+						<option>Laki - Laki</option>
+						<option>Perempuan</option>
+					</select>
+				</div>
+				<div class="col-75">
+					<label for="Sekolah">Tempat Lahir</label>
+					<input type="text" class="form-control" placeholder="Tempat Lahir" name="tempat">
+				</div>
+				<div class="col-75">
+					<label for="Sekolah">Tanggal Lahir</label>
+					<input type="date" class="form-control" placeholder="tgl" name="tanggal">
+				</div>
 				<div class="col-75">
 					<label for="Sekolah">Daerah</label>
-					<input value="{{$data->daerah}}" type="text" class="form-control" placeholder="Daerah" name="daerah">
+					<input type="text" class="form-control" placeholder="Daerah" name="daerah">
 				</div>
 				<div class="col-75">
 					<label for="Sekolah">Sekolah</label>
-					<input value="{{$data->sekolah}}" type="text" class="form-control" placeholder="Sekolah" name="sekolah">
+					<input type="text" class="form-control" placeholder="Sekolah" name="sekolah">
+				</div>
+
+				<div class="col-75">
+					<label for="Sekolah">Alamat</label>
+					<input type="text" class="form-control" placeholder="Alamat" name="alamat">
 				</div>
 				<div class="col-75">
-					<label for="jml_peserta">Jumlah Peserta</label>
-					<input value="{{$data->jml_peserta}}" type="number" class="form-control" placeholder="Jumlah Peserta" name="jml_peserta">
+					<label for="Sekolah">No_Hp</label>
+					<input type="number" class="form-control" placeholder="No Hp" name="no_hp">
 				</div>
-				<div class="col-75">
-					<label for="jml_lulus">Jumlah Peserta Lulus</label>
-					<input value="{{$data->jml_lulus}}" type="number" class="form-control" placeholder="Jumlah Lulus" name="jml_lulus">
-				</div>
-				<div class="col-75">
-					<label for="jml_gagal">Jumlah Peserta Gagal</label>
-					<input readonly="" value="{{$data->jml_gagal}}" type="number" class="form-control" placeholder="Jumlah Gagal" name="jml_gagal">
-				</div>
+				
 
 			</div>
 			<br>
@@ -115,8 +125,8 @@
 				<input type="submit" value="Submit">
 			</div>
 		</form>
-		@endforeach
 	</div>
 </div>
+
 @include('tampilan.foot')
 

@@ -112,9 +112,10 @@
                         <ul class="dropdown">
                           <li><a href="/organisasi_ppmb/">- Kepanitiaan PPMB</a></li>
                           <li><a href="/jadwal_ppmb_user">- Jadwal PPMB</a></li>
-                          <li><a href="/syarat_user">- Syarat & Ketentuan</a></li>
-                          
-                          <li><a href="{{url('hasilSeleksi')}}">- Hasil Seleksi</a></li>
+                          <li><a href="/syarat_user">- Syarat & Ketentuan</a></li>                          
+                          <li><a href="{{url('user_hasilSeleksi')}}">- Hasil Seleksi</a></li>
+                          <li><a href="{{url('user_dok_ppmb')}}">- Dokumentasi PPMB</a></li>
+                          <li><a href="{{url('user_down_formulir')}}" target="_blank">- Download Formulir</a></li>
                         </ul>
                       </li>
                       <li><a href="#">PUB Aktif</a>
@@ -131,7 +132,7 @@
                         <ul class="dropdown">
                           <li><a href="{{url('user_alumni')}}">-Data Alumni PUB</a></li>
                           <li><a href="{{url('user_infaq')}}">-Data Infaq Alumni</a></li>
-                          <li><a href="#">Ikatan Alumni PUB</a>
+                          <li><a href="#">-Ikatan Alumni PUB</a>
                             <ul class="dropdown">
                               <li><a href="{{url('org_ikatan_alumni')}}">-Organisasi</a></li>
                               <li><a href="{{url('keg_ikatan_alumni')}}">-Kegiatan Organisasi</a></li>

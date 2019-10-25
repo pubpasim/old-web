@@ -83,16 +83,29 @@
 				</div>
 				<div class="col-75">
 					<label for="nama_peserta">Nama Peserta</label>
-					<input type="text" class="form-control" placeholder="Nama Peserta" name="nama_peserta">
+					<select id="jurusan" name="nama_peserta">
+						<option value="0"> --Nama Peserta--</option>
+						@foreach($nama as $data)
+							<option value="{{$data->id_lulus}}">{{$data->nama}} -- {{$data->sekolah}}</option>
+						@endforeach
+					</select>					
 				</div>
-				<div class="col-75">
+				<!-- <div class="col-75">
 					<label for="nama_peserta">Jenis Kelamin</label>
 					<select id="jk" name="jk">
 						<option value="Laki - Laki"> Laki - Laki</option>
 						<option value="Perempuan"> Perempuan</option>
 					</select>
 				</div>
-
+				<div class="col-75">
+					<label for="Sekolah">Tempat Lahir</label>
+					<input type="text" class="form-control" placeholder="Tempat Lahir" name="tempat">
+				</div>
+				<div class="col-75">
+					<label for="Sekolah">Tanggal Lahir</label>
+					<input type="date" class="form-control" placeholder="tgl" name="tanggal">
+				</div> -->
+				
 				<div class="col-75">
 					<label for="nama_peserta">Jurusan Pilihan</label>
 					<select id="jurusan" name="jurusan">
@@ -107,26 +120,18 @@
 						
 					</select>
 				</div>
-				<div class="col-75">
+				<!-- <div class="col-75">
 					<label for="asal_sekolah">Asal Sekolah</label>
 					<input type="text" class="form-control" placeholder="Asal Sekolah" name="asal_sekolah">
 				</div>
 				<div class="col-75">
 					<label for="asal_daerah">Asal Daerah</label>
-					<input type="text" class="form-control" placeholder="asal_daerah" name="asal_daerah">
+					<input type="text" class="form-control" placeholder="Asal Daerah" name="asal_daerah">
 				</div>
 				<div class="col-75">
 					<label for="no_hp">No HP</label>
-					<input type="text" class="form-control" placeholder="no_hp" name="no_hp">
-				</div>
-				<div class="col-75">
-					<label for="nama_peserta">Status</label>
-					<select id="jenis" name="jenis">
-						<option value="LULUS"> Lulus</option>
-						<option value="TIDAK LULUS"> Tidak lulus</option>
-					</select>
-				</div>
-
+					<input type="text" class="form-control" placeholder="No. Hp" name="no_hp">
+				</div> -->
 			</div>
 			<br>
 			<div class="row" align="center">

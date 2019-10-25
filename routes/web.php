@@ -187,6 +187,17 @@ Route::get('hapus/kegiatan/{x}','dokumentasiPubController@destroy');
 // Route::get('/pub_dok/upload', 'dokumentasiPubController@upload');
 // Route::post('/pub_dok/proses', 'dokumentasiPubController@proses_upload');
 // Route::get('tambahTahun', 'ppmbDokController@tambahTahun');
+Route::get('lulusTPA/{x}', 'hasilController@lulusTPA');
+Route::get('tambahLulusTPA/{x}', 'hasilController@tambahLulusTPA');
+Route::post('storeLulusTPA/{x}', 'hasilController@storeLulusTPA');
+Route::get('editLulusTPA/{x}', 'hasilController@editLulusTPA');
+Route::post('updateLulusTPA/{x}', 'hasilController@updateLulusTPA');
+Route::get('hapusLulusTPA/{x}', 'hasilController@hapusLulusTPA');
+
+Route::get('uploadFormulir', 'hasilController@uploadFormulir');
+Route::get('tambahFormulir', 'hasilController@tambahFormulir');
+Route::post('storeFormulir', 'hasilController@storeFormulir');
+Route::get('hapusFormulir/{x}', 'hasilController@hapusFormulir');
 
 Route::get('tambahTPA/{x}', 'hasilController@tambahTPA');
 Route::post('storeTPA/{x}', 'hasilController@storeTPA');
@@ -207,12 +218,12 @@ Route::post('updatePsi/{x}', 'hasilController@updatePsi');
 
 Route::get('det_pelatihan/','detPelatihanController@index');
 
-Route::get('dataSurvei/{x}', 'hasilController@dataSurvei');
-Route::get('tambahSurvei/{x}', 'hasilController@tambahSurvei');
-Route::post('storeSurvei/{x}', 'hasilController@storeSurvei');
-Route::get('hapusSurvei/{x}', 'hasilController@hapusSurvei');
-Route::get('editSurvei/{x}', 'hasilController@editSurvei');
-Route::post('updateSurvei/{x}', 'hasilController@updateSurvei');
+Route::get('dataWawancaraAkhir/{x}', 'hasilController@dataWawancaraAkhir');
+Route::get('tambahWawancaraAkhir/{x}', 'hasilController@tambahWawancaraAkhir');
+Route::post('storeWawancaraAkhir/{x}', 'hasilController@storeWawancaraAkhir');
+Route::get('hapusWawancaraAkhir/{x}', 'hasilController@hapusWawancaraAkhir');
+Route::get('editWawancaraAkhir/{x}', 'hasilController@editWawancaraAkhir');
+Route::post('updateWawancaraAkhir/{x}', 'hasilController@updateWawancaraAkhir');
 
 Route::get('dataFinal/{x}', 'hasilController@dataFinal');
 Route::get('tambahFinal/{x}', 'hasilController@tambahFinal');
@@ -227,6 +238,7 @@ Route::post('storeDok', 'ppmbDokController@storeDok');
 Route::get('hapusDok/{x}', 'ppmbDokController@hapusDok');
 Route::get('editDok/{x}', 'ppmbDokController@editDok');
 Route::post('updateDok/{x}', 'ppmbDokController@updateDok');
+
 
 //===================================USER=================================//
 Route::get('/','userController@index');
@@ -248,10 +260,10 @@ Route::get('detail/org/{x}','userController@detail');
 Route::get('pelatihan','userController@pelatihan');
 Route::get('pelatihan_data','userController@pelatihan_data');
 Route::get('kegiatanPub','userController@kegiatanPub');
-Route::get('hasilSeleksi','userController@hasilSeleksi');
-Route::post('hasilSeleksi','userController@tampilSeleksi');
+Route::get('user_hasilSeleksi','userController@hasilSeleksi');
+Route::post('user_hasilSeleksi','userController@tampilSeleksi');
 Route::get('user_tpa/{x}','userController@user_tpa');
-Route::get('user_survei/{x}','userController@user_survei');
+Route::get('user_wawancara_akhir/{x}','userController@user_wawancara_akhir');
 Route::get('user_psikotes/{x}','userController@user_psikotes');
 Route::get('user_final/{x}','userController@user_final');
 Route::get('org_ikatan_alumni', 'userController@OrgIkatanAlumni');
@@ -260,6 +272,9 @@ Route::get('user_infaq', 'userController@user_infaq');
 Route::get('user_alumni', 'userController@user_alumni');
 Route::post('user_alumni/', 'userController@user_alumniView');
 
+Route::get('user_lulus_tpa/{x}','userController@user_lulus_tpa');
+Route::get('user_dok_ppmb','userController@user_dok_ppmb');
+Route::get('user_down_formulir','userController@user_down_formulir');
 //================================ADMIN ALUMNI=============================//
 
 Route::get('admin/alumni/{x}','alumni_adminController@index');

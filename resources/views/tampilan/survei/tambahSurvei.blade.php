@@ -74,24 +74,37 @@
 </style>
 <div id="form1">
 	<div class="container">
-		<form method="POST" action="{{url('storeSurvei/'.$id)}}">
+		<form method="POST" action="{{url('storeWawancaraAkhir/'.$id)}}">
 		{{csrf_field()}}
 				
 		<div class="row">
 			<div class="col-25">
-				<label>Tambah Survei</label>
+				<label>Tambah Wawancara Akhir</label>
 			</div>
-			<div class="col-75">
-				<label for="nama_peserta">Nama Peserta</label>
-				<input type="text" class="form-control" placeholder="Nama Peserta" name="nama_peserta">
-			</div>
-			<div class="col-75">
-				<label for="nama_peserta">Jenis Kelamin</label>
-				<select id="jk" name="jk">
-					<option value="Laki - Laki"> Laki - Laki</option>
-					<option value="Perempuan"> Perempuan</option>
-				</select>
-			</div>
+			<div class="col-75">			
+					<label for="nama_peserta">Nama Peserta</label>
+					<select id="jurusan" name="nama_peserta">
+						<option value="0"> --Nama Peserta--</option>
+						@foreach($nama as $data)
+							<option value="{{$data->id_lulus}}">{{$data->nama}} -- {{$data->sekolah}}</option>
+						@endforeach
+					</select>					
+				</div>
+				<!-- <div class="col-75">
+					<label for="nama_peserta">Jenis Kelamin</label>
+					<select id="jk" name="jk">
+						<option value="Laki - Laki"> Laki - Laki</option>
+						<option value="Perempuan"> Perempuan</option>
+					</select>
+				</div>
+				<div class="col-75">
+					<label for="Sekolah">Tempat Lahir</label>
+					<input type="text" class="form-control" placeholder="Tempat Lahir" name="tempat">
+				</div>
+				<div class="col-75">
+					<label for="Sekolah">Tanggal Lahir</label>
+					<input type="date" class="form-control" placeholder="tgl" name="tanggal">
+				</div>
 
 			<div class="col-75">
 				<label for="nama_peserta">Jurusan Pilihan</label>
@@ -118,15 +131,8 @@
 			<div class="col-75">
 				<label for="no_hp">No HP</label>
 				<input type="text" class="form-control" placeholder="no_hp" name="no_hp">
-			</div>
-			<div class="col-75">
-				<label for="nama_peserta">Status</label>
-				<select id="jenis" name="jenis">
-					<option value="LULUS"> Lulus</option>
-					<option value="TIDAK LULUS"> Tidak lulus</option>
-				</select>
-			</div>
-
+			</div> -->
+			
 		</div>
 		<br>
 		<div class="row" align="center">

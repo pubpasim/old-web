@@ -7,11 +7,12 @@ use DB;
 use App\syaratKetentuanModel;
 class userController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function user_down_formulir()
+    {
+        $formulir = DB::table('tb_formulir')->get();
+        return view('user.user_down_formulir',compact('formulir'));
+    }
+
     public function index()
     {
        $kegiatan=DB::table('tb_pubdok')->orderby('id_pubdok','DESC')->limit('3')->get();
@@ -32,25 +33,50 @@ class userController extends Controller
         $tahun = DB::table('tb_tahunSel')->get();
         return view('user.hasilSeleksi',compact('tahun','lempar','tpa'));
     }
+
+    public function user_dok_ppmb()
+    {  
+        $dok = DB::table('tb_dokumentasi')->get();
+        return view('user.user_dok_ppmb',compact('dok'));
+    }
+
+
     public function user_tpa($id)
-    {   
-        $tpa = DB::table('tb_tpa')->where('id_tahun',$id)->get();
+    {   $tpa = DB::table('tb_tpa')->where('id_tahun',$id)->get();        
         return view('user.user_tpa',compact('tpa','id'));
     }
-    public function user_survei($id)
+    public function user_lulus_tpa($id)
     {
-        $survei = DB::table('tb_survei')->where('id_tahun3',$id)->get();
+        $lulus = DB::table('tb_tpa')->where('id_tpa',$id)->first();
+        $tpa = DB::table('tb_lulus_tpa')->where('fk_tpa',$id)->get();
+        $back = $lulus->id_tahun;
+        return view('user.user_lulus_tpa',compact('id','tpa','back'));
+    }
+
+    public function user_wawancara_akhir($id)
+    {
+        $survei = DB::table('tb_survei')
+        ->select('tb_survei.*','tb_lulus_tpa.nama')
+        ->join('tb_lulus_tpa','tb_survei.nama_peserta','tb_lulus_tpa.id_lulus')
+        ->where('id_tahun3',$id)->get();
         return view('user.user_survei',compact('survei','id'));
     }
     public function user_psikotes($id)
     {
-        $psi = DB::table('tb_psikotest')->where('id_tahun2',$id)->get();
+        $psi = DB::table('tb_psikotest')
+        ->select('tb_psikotest.*','tb_lulus_tpa.nama')
+        ->join('tb_lulus_tpa','tb_psikotest.nama_peserta','tb_lulus_tpa.id_lulus')
+        ->where('id_tahun2',$id)
+        ->orderBy('tb_lulus_tpa.nama','ASC')
+        ->get();
         return view('user.user_psikotes',compact('psi','id'));
     }
     public function user_final($id)
     {
-        $final = DB::table('tb_final')->where('id_tahun4',$id)->get();
-
+        $final = DB::table('tb_final')
+        ->select('tb_final.*','tb_lulus_tpa.nama')
+        ->join('tb_lulus_tpa','tb_final.nama_peserta','tb_lulus_tpa.id_lulus')
+        ->where('id_tahun4',$id)->get();
         return view('user.user_final',compact('final'));
     }
     public function user_infaq()
@@ -445,8 +471,6 @@ class userController extends Controller
     public function KegIkatanAlumni()
     {
         $dok =DB::table('tb_dok_alumni')
-        ->join('tb_mahasiswa','tb_mahasiswa.id_mahasiswa','tb_dok_alumni.id_mahasiswa')
-        ->join('tb_angkatan','tb_mahasiswa.id_angkatan','tb_angkatan.id_angkatan')
         ->get();
         return view('User.kegIkatanAlumni',compact('dok'));
     }
