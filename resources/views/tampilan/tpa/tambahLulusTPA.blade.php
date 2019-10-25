@@ -72,7 +72,7 @@
 		}
 	}
 </style>
-<div id="form1">
+
 	<div class="container">
 		<form method="POST" action="{{url('storeLulusTPA/'.$id)}}">
 			{{csrf_field()}}
@@ -126,7 +126,5 @@
 			</div>
 		</form>
 	</div>
-</div>
-
 @include('tampilan.foot')
 
