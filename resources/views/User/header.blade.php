@@ -88,78 +88,70 @@
             </div>
 
 
-                <!-- Menu -->
-                <div class="classy-menu">
-                  <!-- Menu Close Button -->
-                  <div class="classycloseIcon">
-                    <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                  </div>
-                  <!-- Nav Start -->
-                  <div class="classynav" >
-                    <ul id="nav">
-                      <li class="active"><a href="{{url('/')}}">Home</a></li>
-                      <li><a href="#">PPMB PUB</a>
-                        <ul class="dropdown">
-                          <li><a href="/organisasi_ppmb/">- Kepanitiaan PPMB</a></li>
-                          <li><a href="/jadwal_ppmb_user">- Jadwal PPMB</a></li>
-<<<<<<< HEAD
-                          <li><a href="/syarat_user">- Syarat & Ketentuan</a></li>
-                          
-                          <li><a href="{{url('hasilSeleksi')}}">- Hasil Seleksi</a></li>
-                          <li><a href="#">- Dokumentasi PPMB</a></li>
-                          <li><a href="#">- Download Formulir</a></li>
-=======
-                          <li><a href="/syarat_user">- Syarat & Ketentuan</a></li>                          
-                          <li><a href="{{url('user_hasilSeleksi')}}">- Hasil Seleksi</a></li>
-                          <li><a href="{{url('user_dok_ppmb')}}">- Dokumentasi PPMB</a></li>
-                          <li><a href="{{url('user_down_formulir')}}" target="_blank">- Download Formulir</a></li>
->>>>>>> 2e18bd0b9b0cf8e9b238b7e0b83de89c8fb445be
-                        </ul>
-                      </li>
-                      <li><a href="#">PUB Aktif</a>
-                        <ul class="dropdown">
-                          <li><a href="{{url('pub_profile')}}">-Sekilas PUB</a></li>
-                          <li><a href="{{url('organisasi_pub')}}">-Organisasi PUB</a></li>
-                          <li><a href="{{url('user/mahasiswa')}}">-Mahasiswa PUB</a></li>
-                          <li><a href="{{url('pelatihan')}}">-Pelatihan PUB</a></li>
-                          <li><a href="{{url('kegiatanPub')}}">-Dokumentasi PUB</a></li>
-
-                        </ul>
-                      </li>
-                      <li><a href="#">Alumni PUB</a>
-                        <ul class="dropdown">
-                          <li><a href="{{url('user_alumni')}}">-Data Alumni PUB</a></li>
-                          <li><a href="{{url('user_infaq')}}">-Data Infaq Alumni</a></li>
-                          <li><a href="#">-Ikatan Alumni PUB</a>
-                            <ul class="dropdown">
-                              <li><a href="{{url('org_ikatan_alumni')}}">-Organisasi</a></li>
-                              <li><a href="{{url('keg_ikatan_alumni')}}">-Dokumentasi</a></li>
-                            </ul>
-
-                          </li>
-                          <li><a href="{{url('totalAlumni')}}">-Total Alumni</a></li>
-                        </ul>
-                      </li>
-                      <li><a href="{{url('pembinaPub')}}">Pembina PUB</a></li>
-                      
-                      
+            <!-- Menu -->
+            <div class="classy-menu">
+              <!-- Menu Close Button -->
+              <div class="classycloseIcon">
+                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+              </div>
+              <!-- Nav Start -->
+              <div class="classynav" >
+                <ul id="nav">
+                  <li class="active"><a href="{{url('/')}}">Home</a></li>
+                  <li><a href="#">PPMB PUB</a>
+                    <ul class="dropdown">
+                      <li><a href="/organisasi_ppmb/">- Kepanitiaan PPMB</a></li>
+                      <li><a href="/jadwal_ppmb_user">- Jadwal PPMB</a></li>
+                      <li><a href="/syarat_user">- Syarat & Ketentuan</a></li>                          
+                      <li><a href="{{url('user_hasilSeleksi')}}">- Hasil Seleksi</a></li>
+                      <li><a href="{{url('user_dok_ppmb')}}">- Dokumentasi PPMB</a></li>
+                      <li><a href="{{url('user_down_formulir')}}" target="_blank">- Download Formulir</a></li>
                     </ul>
+                  </li>
+                  <li><a href="#">PUB Aktif</a>
+                    <ul class="dropdown">
+                      <li><a href="{{url('pub_profile')}}">-Sekilas PUB</a></li>
+                      <li><a href="{{url('organisasi_pub')}}">-Organisasi PUB</a></li>
+                      <li><a href="{{url('user/mahasiswa')}}">-Mahasiswa PUB</a></li>
+                      <li><a href="{{url('pelatihan')}}">-Pelatihan PUB</a></li>
+                      <li><a href="{{url('kegiatanPub')}}">-Dokumentasi PUB</a></li>
 
-                    <!-- Search -->
-                    <div class="search-btn ml-4">
-                      <i class="fa fa-search" aria-hidden="true"></i>
-                    </div>
+                    </ul>
+                  </li>
+                  <li><a href="#">Alumni PUB</a>
+                    <ul class="dropdown">
+                      <li><a href="{{url('user_alumni')}}">-Data Alumni PUB</a></li>
+                      <li><a href="{{url('user_infaq')}}">-Data Infaq Alumni</a></li>
+                      <li><a href="#">-Ikatan Alumni PUB</a>
+                        <ul class="dropdown">
+                          <li><a href="{{url('org_ikatan_alumni')}}">-Organisasi</a></li>
+                          <li><a href="{{url('keg_ikatan_alumni')}}">-Dokumentasi</a></li>
+                        </ul>
 
-                    <!-- Book Now -->
-                    <div class="book-now-btn ml-3 ml-lg-5">
-                      <a href="{{url('login')}}">LOGIN<i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                  <!-- Nav End -->
+                      </li>
+                      <li><a href="{{url('totalAlumni')}}">-Total Alumni</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="{{url('pembinaPub')}}">Pembina PUB</a></li>
+                  
+                  
+                </ul>
+
+                <!-- Search -->
+                <div class="search-btn ml-4">
+                  <i class="fa fa-search" aria-hidden="true"></i>
                 </div>
-              </nav>
+
+                <!-- Book Now -->
+                <div class="book-now-btn ml-3 ml-lg-5">
+                  <a href="{{url('login')}}">LOGIN<i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                </div>
+              </div>
+              <!-- Nav End -->
             </div>
-          </div>
+          </nav>
         </div>
-      </header>
+      </div>
+    </div>
+  </header>
       <!-- Header Area End -->
