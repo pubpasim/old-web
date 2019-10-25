@@ -60,7 +60,7 @@
 
           <div class="col-6">
             <div class="top-header-content">
-              <a href="#"><i class="fa fa-whatsapp"></i> <span>0857-2275-2570</span></a>
+              <a href="{{url('https://wa.me/6285722752570')}}" target="_blank"><i class="fa fa-whatsapp"></i> <span>0857-2275-2570</span></a>
               <a href="#"><i class="icon_mail"></i> <span>CONTACT US</span></a>
             </div>
           </div>
@@ -100,20 +100,12 @@
                       <li class="active"><a href="{{url('/')}}">Home</a></li>
                       <li><a href="#">PPMB PUB</a>
                         <ul class="dropdown">
-                          <li><a href="/organisasi_ppmb/">- Kepanitiaan PPMB</a></li>
-                          <li><a href="/jadwal_ppmb_user">- Jadwal PPMB</a></li>
-<<<<<<< HEAD
-                          <li><a href="/syarat_user">- Syarat & Ketentuan</a></li>
-                          
-                          <li><a href="{{url('hasilSeleksi')}}">- Hasil Seleksi</a></li>
-                          <li><a href="#">- Dokumentasi PPMB</a></li>
-                          <li><a href="#">- Download Formulir</a></li>
-=======
-                          <li><a href="/syarat_user">- Syarat & Ketentuan</a></li>                          
+                          <li><a href="{{url('organisasi_ppmb')}}">- Kepanitiaan PPMB</a></li>
+                          <li><a href="{{url('jadwal_ppmb_user')}}">- Jadwal PPMB</a></li>
+                          <li><a href="{{url('syarat_user')}}">- Syarat & Ketentuan</a></li>                          
                           <li><a href="{{url('user_hasilSeleksi')}}">- Hasil Seleksi</a></li>
                           <li><a href="{{url('user_dok_ppmb')}}">- Dokumentasi PPMB</a></li>
                           <li><a href="{{url('user_down_formulir')}}" target="_blank">- Download Formulir</a></li>
->>>>>>> 2e18bd0b9b0cf8e9b238b7e0b83de89c8fb445be
                         </ul>
                       </li>
                       <li><a href="#">PUB Aktif</a>
@@ -134,6 +126,7 @@
                             <ul class="dropdown">
                               <li><a href="{{url('org_ikatan_alumni')}}">-Organisasi</a></li>
                               <li><a href="{{url('keg_ikatan_alumni')}}">-Dokumentasi</a></li>
+                              <li><a href="{{url('legalitas')}}">-Legalitas</a></li>
                             </ul>
 
                           </li>

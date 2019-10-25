@@ -310,6 +310,7 @@ Route::post('user_alumni/', 'userController@user_alumniView');
 Route::get('user_lulus_tpa/{x}','userController@user_lulus_tpa');
 Route::get('user_dok_ppmb','userController@user_dok_ppmb');
 Route::get('user_down_formulir','userController@user_down_formulir');
+Route::get('legalitas','userController@legalitas');
 //================================ADMIN ALUMNI=============================//
 
 Route::get('materilogika', 'userController@materilog');
