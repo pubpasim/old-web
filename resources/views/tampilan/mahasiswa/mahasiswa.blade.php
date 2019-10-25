@@ -242,7 +242,7 @@
 					<label for="telp">Nomor Telpon</label>
 				</div>
 				<div class="col-75">
-					<input type="number" id="telp" name="telp" placeholder="Nomor telpon">
+					<input type="text" id="telp" name="telp" placeholder="Nomor telpon">
 				</div>
 			</div>
 			<div class="row">

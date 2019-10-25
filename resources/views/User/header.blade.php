@@ -60,22 +60,12 @@
 
           <div class="col-6">
             <div class="top-header-content">
-              <a href="#"><i class="icon_phone"></i> <span>0857-2275-2570</span></a>
+              <a href="#"><i class="fa fa-whatsapp"></i> <span>0857-2275-2570</span></a>
               <a href="#"><i class="icon_mail"></i> <span>CONTACT US</span></a>
             </div>
           </div>
 
-          <div class="col-6">
-            <div class="top-header-content">
-              <!-- Top Social Area -->
-              <div class="top-social-area ml-auto">
-                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-tripadvisor" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-              </div>
-            </div>
-          </div>
+          
 
         </div>
       </div>
@@ -115,6 +105,8 @@
                           <li><a href="/syarat_user">- Syarat & Ketentuan</a></li>
                           
                           <li><a href="{{url('hasilSeleksi')}}">- Hasil Seleksi</a></li>
+                          <li><a href="#">- Dokumentasi PPMB</a></li>
+                          <li><a href="#">- Download Formulir</a></li>
                         </ul>
                       </li>
                       <li><a href="#">PUB Aktif</a>
@@ -123,7 +115,7 @@
                           <li><a href="{{url('organisasi_pub')}}">-Organisasi PUB</a></li>
                           <li><a href="{{url('user/mahasiswa')}}">-Mahasiswa PUB</a></li>
                           <li><a href="{{url('pelatihan')}}">-Pelatihan PUB</a></li>
-                          <li><a href="{{url('kegiatanPub')}}">-Kegiatan PUB</a></li>
+                          <li><a href="{{url('kegiatanPub')}}">-Dokumentasi PUB</a></li>
 
                         </ul>
                       </li>
@@ -134,14 +126,14 @@
                           <li><a href="#">-Ikatan Alumni PUB</a>
                             <ul class="dropdown">
                               <li><a href="{{url('org_ikatan_alumni')}}">-Organisasi</a></li>
-                              <li><a href="{{url('keg_ikatan_alumni')}}">-Kegiatan Organisasi</a></li>
+                              <li><a href="{{url('keg_ikatan_alumni')}}">-Dokumentasi</a></li>
                             </ul>
 
                           </li>
                           <li><a href="{{url('totalAlumni')}}">-Total Alumni</a></li>
                         </ul>
                       </li>
-                      <li><a href="#">Pembina PUB</a></li>
+                      <li><a href="{{url('pembinaPub')}}">Pembina PUB</a></li>
                       
                       
                     </ul>
