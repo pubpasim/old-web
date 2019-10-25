@@ -3,15 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use DB;
 use App\syaratKetentuanModel;
 class userController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function user_down_formulir()
+    {
+        $formulir = DB::table('tb_formulir')->get();
+        return view('user.user_down_formulir',compact('formulir'));
+    }
+
     public function index()
     {
        $kegiatan=DB::table('tb_pubdok')->orderby('id_pubdok','DESC')->limit('3')->get();
@@ -32,25 +35,50 @@ class userController extends Controller
         $tahun = DB::table('tb_tahunSel')->get();
         return view('user.hasilSeleksi',compact('tahun','lempar','tpa'));
     }
+
+    public function user_dok_ppmb()
+    {  
+        $dok = DB::table('tb_dokumentasi')->get();
+        return view('user.user_dok_ppmb',compact('dok'));
+    }
+
+
     public function user_tpa($id)
-    {   
-        $tpa = DB::table('tb_tpa')->where('id_tahun',$id)->get();
+    {   $tpa = DB::table('tb_tpa')->where('id_tahun',$id)->get();        
         return view('user.user_tpa',compact('tpa','id'));
     }
-    public function user_survei($id)
+    public function user_lulus_tpa($id)
     {
-        $survei = DB::table('tb_survei')->where('id_tahun3',$id)->get();
+        $lulus = DB::table('tb_tpa')->where('id_tpa',$id)->first();
+        $tpa = DB::table('tb_lulus_tpa')->where('fk_tpa',$id)->get();
+        $back = $lulus->id_tahun;
+        return view('user.user_lulus_tpa',compact('id','tpa','back'));
+    }
+
+    public function user_wawancara_akhir($id)
+    {
+        $survei = DB::table('tb_survei')
+        ->select('tb_survei.*','tb_lulus_tpa.nama')
+        ->join('tb_lulus_tpa','tb_survei.nama_peserta','tb_lulus_tpa.id_lulus')
+        ->where('id_tahun3',$id)->get();
         return view('user.user_survei',compact('survei','id'));
     }
     public function user_psikotes($id)
     {
-        $psi = DB::table('tb_psikotest')->where('id_tahun2',$id)->get();
+        $psi = DB::table('tb_psikotest')
+        ->select('tb_psikotest.*','tb_lulus_tpa.nama')
+        ->join('tb_lulus_tpa','tb_psikotest.nama_peserta','tb_lulus_tpa.id_lulus')
+        ->where('id_tahun2',$id)
+        ->orderBy('tb_lulus_tpa.nama','ASC')
+        ->get();
         return view('user.user_psikotes',compact('psi','id'));
     }
     public function user_final($id)
     {
-        $final = DB::table('tb_final')->where('id_tahun4',$id)->get();
-
+        $final = DB::table('tb_final')
+        ->select('tb_final.*','tb_lulus_tpa.nama')
+        ->join('tb_lulus_tpa','tb_final.nama_peserta','tb_lulus_tpa.id_lulus')
+        ->where('id_tahun4',$id)->get();
         return view('user.user_final',compact('final'));
     }
     public function user_infaq()
@@ -90,23 +118,90 @@ class userController extends Controller
         ->where('tb_statusPub.status','Alumni')
         ->where('tb_angkatan.angkatan',$request->select)->get();
         return view('user.user_alumni',compact('angkatan','mahasiswa'));
+ }
+ public function hasilSeleksi()
+ {
+    $tpa="";
+    $lempar="";
+    $tahun = DB::table('tb_tahunSel')->get();
+    return view('user.hasilSeleksi',compact('tahun','lempar','tpa'));
+}
+public function tampilSeleksi(Request $request)
+{
+    $tpa="";
+    $lempar = $request->tahun;
+    $tahun = DB::table('tb_tahunSel')->get();
+    return view('user.hasilSeleksi',compact('tahun','lempar','tpa'));
+}
+public function user_tpa($id)
+{   
+    $tpa = DB::table('tb_tpa')->where('id_tahun',$id)->get();
+    return view('user.user_tpa',compact('tpa','id'));
+}
+public function user_survei($id)
+{
+    $survei = DB::table('tb_survei')->where('id_tahun3',$id)->get();
+    return view('user.user_survei',compact('survei','id'));
+}
+public function user_psikotes($id)
+{
+    $psi = DB::table('tb_psikotest')->where('id_tahun2',$id)->get();
+    return view('user.user_psikotes',compact('psi','id'));
+}
+public function user_final($id)
+{
+    $final = DB::table('tb_final')->where('id_tahun4',$id)->get();
+
+    return view('user.user_final',compact('final'));
+}
+public function user_infaq()
+{
+    $infaq=DB::table('tb_infaq')
+    ->join('tb_angkatan','tb_infaq.id_angkatan','=','tb_angkatan.id_angkatan')
+    ->select('tb_infaq.id_infaq','tb_infaq.periode','tb_infaq.total_infaq','tb_angkatan.angkatan')
+    ->get();
+    return view('user.user_infaq',compact('infaq'));
+}
+public function user_alumni()
+{
+    $angkatan=DB::table('tb_angkatan')->orderby('angkatan')->get();
+    $mahasiswa = DB::table('tb_mahasiswa')
+    ->join('tb_daerah', 'tb_mahasiswa.id_daerah', '=', 'tb_daerah.id_daerah')
+    ->join('tb_angkatan','tb_mahasiswa.id_angkatan', '=', 'tb_angkatan.id_angkatan')
+    ->join('tb_sekolah', 'tb_mahasiswa.id_sekolah', '=', 'tb_sekolah.id_sekolah')
+    ->join('tb_orgpub', 'tb_mahasiswa.id_orgpub', '=', 'tb_orgpub.id_orgpub')
+    ->join('tb_orgppmb', 'tb_mahasiswa.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
+    ->join('tb_statusPub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statusPub.id_statusPub')
+    ->join('tb_jurusan', 'tb_mahasiswa.id_jur', '=', 'tb_jurusan.id_jur')
+    ->select('tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status')->where('tb_statusPub.status','Alumni')->orderby('tb_angkatan.angkatan')->get();
+    return view('user.user_alumni',compact('angkatan','mahasiswa'));
+}
+public function user_alumniView(request $request)
+{
+    $angkatan=DB::table('tb_angkatan')->orderby('angkatan')->get();
+    $mahasiswa = DB::table('tb_mahasiswa')
+    ->join('tb_daerah', 'tb_mahasiswa.id_daerah', '=', 'tb_daerah.id_daerah')
+    ->join('tb_angkatan','tb_mahasiswa.id_angkatan', '=', 'tb_angkatan.id_angkatan')
+    ->join('tb_sekolah', 'tb_mahasiswa.id_sekolah', '=', 'tb_sekolah.id_sekolah')
+    ->join('tb_orgpub', 'tb_mahasiswa.id_orgpub', '=', 'tb_orgpub.id_orgpub')
+    ->join('tb_orgppmb', 'tb_mahasiswa.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
+    ->join('tb_statusPub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statusPub.id_statusPub')
+    ->join('tb_jurusan', 'tb_mahasiswa.id_jur', '=', 'tb_jurusan.id_jur')
+    ->select('tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status')
+    ->where('tb_statusPub.status','Alumni')
+    ->where('tb_angkatan.angkatan',$request->select)
+    ->orderby('tb_mahasiswa.nama')
+    ->get();
+    if ($request->select=="") {
+        return redirect('user_alumni');
+    }else{     
+        return view('user.user_alumni',compact('angkatan','mahasiswa'));
     }
-    /**
-     * Display a listing of the resource. 
-     *
-     * @return \Illuminate\Http\Response
-     */
+}
     public function login()
     {
         return view('user.login');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function doLogin(Request $request)
     {
         $usr = $request->username;
@@ -115,6 +210,9 @@ class userController extends Controller
         //echo $pass;die;
         $data = DB::table('tb_user')->where('username',$usr)->first();
         $id_mhs=$data->id_mahasiswa;
+        Session::put('level',$data->level);
+        Session::put('username',$data->username);
+        Session::put('password',$data->password);
         if($data){
             if($pass==$data->password){
                 if ($data->level=='admin') {
@@ -123,7 +221,7 @@ class userController extends Controller
                     return redirect('admin/alumni/'.$id_mhs);
                 }elseif ($data->level=='admin_pub') {
                     return redirect('admin');
-                }elseif ($data->level=='admin_pub') {
+                }elseif ($data->level=='ikatan_alumni') {
                     return redirect('admin');
                 }elseif ($data->level=='admin_ppmb') {
                     return redirect('admin');
@@ -137,12 +235,31 @@ class userController extends Controller
             return redirect('login')->with('alert','Password atau Email, Salah!');
         }
 
-    }public function tampilUser(){
+    }
+    public function tampilUser(){
         $user=DB::table('tb_user')
         ->join('tb_mahasiswa', 'tb_user.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
-        ->select('tb_mahasiswa.nama','tb_user.username','tb_user.password','tb_user.level')->get();
+        ->select('tb_user.id_user','tb_mahasiswa.nama','tb_user.username','tb_user.password','tb_user.level')->get();
 
         return view('tampilan.user.user',compact('user'));
+    }
+    public function editUser($id){
+        $user=DB::table('tb_user')
+        ->join('tb_mahasiswa', 'tb_user.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
+        ->select('tb_user.id_user','tb_mahasiswa.nama','tb_user.username','tb_user.password','tb_user.level')
+        ->where('tb_user.id_user',$id)->first();
+
+        return view('tampilan.user.editUser',compact('user'));
+    }
+    public function updateUser(Request $request){
+        $user=DB::table('tb_user')->where('id_user',$request->id)->update([
+            'username'=>$request->usr,'password'=>$request->pass,'level'=>$request->level
+        ]);
+        return redirect('tampilUser');
+    }
+    public function hapusUser($id){
+        $user=DB::table('tb_user')->where('id_user',$id)->delete();
+        return redirect('tampilUser');
     }
     public function tambahUser(){
         $lempar="";
@@ -173,7 +290,9 @@ class userController extends Controller
         ->join('tb_orgppmb', 'tb_mahasiswa.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
         ->join('tb_statusPub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statusPub.id_statusPub')
         ->join('tb_jurusan', 'tb_mahasiswa.id_jur', '=', 'tb_jurusan.id_jur')
-        ->select('tb_mahasiswa.nama','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status')->get();
+        ->select('tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status')
+        ->where('tb_statusPub.status','PUB Aktif')
+        ->orderby('tb_angkatan.angkatan')->get();
         return view('user.mahasiswa',compact('angkatan','mahasiswa','lempar'));
     }
     public function view_dataMhs(Request $request){
@@ -187,8 +306,16 @@ class userController extends Controller
         ->join('tb_orgppmb', 'tb_mahasiswa.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
         ->join('tb_statusPub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statusPub.id_statusPub')
         ->join('tb_jurusan', 'tb_mahasiswa.id_jur', '=', 'tb_jurusan.id_jur')
-        ->select('tb_mahasiswa.nama','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status')->where('tb_angkatan.angkatan',$request->select)->get();
-        return view('user.mahasiswa',compact('angkatan','mahasiswa','lempar'));
+        ->select('tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status')
+        ->where('tb_angkatan.angkatan',$request->select)
+        ->where('tb_statusPub.status','PUB Aktif')
+        ->orderby('tb_mahasiswa.nama')->get();
+        if ($request->select=="") {
+            return redirect('user/mahasiswa');
+        }else{     
+           return view('user.mahasiswa',compact('angkatan','mahasiswa','lempar'));
+        }
+        
     }
 
     public function pelatihan(){
@@ -217,7 +344,7 @@ class userController extends Controller
     {
         return view('user.profile');
     }
-     public function syarat_ketentuan()
+    public function syarat_ketentuan()
     {
         $syarat=syaratKetentuanModel::all();
         return view('User.syarat_user',compact('syarat'));
@@ -228,7 +355,7 @@ class userController extends Controller
     {
         return view('user.profile_ppmb');
     }
-     public function jadwal_ppmb()
+    public function jadwal_ppmb()
     {
         $tes=DB::table('tb_jadwal')->get();
         $periode=DB::table('tb_periode')->get();
@@ -308,7 +435,7 @@ class userController extends Controller
         $kadiv_dokumentasi2=$kadiv_dokumentasi->count();
         $kadiv_dokumentasi=$kadiv_dokumentasi->first();
         
-      
+
         
         return view('User.struktur_ppmb_user',compact('ketua','sekretaris','keamanan','kadiv_logistik','kadiv_humas','kadiv_acara','kadiv_dokumentasi','kadiv_kesejahtraan','ketua2','sekretaris2','keamanan2','kadiv_logistik2','kadiv_humas2','kadiv_acara2','kadiv_dokumentasi2','kadiv_kesejahtraan2'));    
     }
@@ -424,10 +551,13 @@ class userController extends Controller
         ->join('tb_orgppmb', 'tb_mahasiswa.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
         ->join('tb_statusPub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statusPub.id_statusPub')
         ->join('tb_jurusan', 'tb_mahasiswa.id_jur', '=', 'tb_jurusan.id_jur')
-        ->select('tb_mahasiswa.tempat_lahir','tb_mahasiswa.tanggal_lahir','tb_mahasiswa.no_telp','tb_mahasiswa.nama','tb_mahasiswa.file','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_angkatan.nama_angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_mahasiswa.jenis_kelamin')
+        ->select('tb_statusPub.status','tb_mahasiswa.tempat_lahir','tb_mahasiswa.tanggal_lahir','tb_mahasiswa.no_telp','tb_mahasiswa.nama','tb_mahasiswa.file','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_angkatan.nama_angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_mahasiswa.jenis_kelamin')
         ->where('tb_mahasiswa.id_mahasiswa',$id)->first();
-        return view('user.detail',compact('mahasiswa'));
+        $pendidikan=DB::table('tb_detpendidikan')->where('id_mahasiswa',$id)->get();
+        $pengalaman=DB::table('tb_detpengalaman')->where('id_mahasiswa',$id)->get();
+        return view('user.detail',compact('mahasiswa','pendidikan','pengalaman'));
     }
+    
     public function kegiatanPub()
     {
         $keg=DB::table('tb_pubdok')->get();
@@ -445,9 +575,101 @@ class userController extends Controller
     public function KegIkatanAlumni()
     {
         $dok =DB::table('tb_dok_alumni')
-        ->join('tb_mahasiswa','tb_mahasiswa.id_mahasiswa','tb_dok_alumni.id_mahasiswa')
-        ->join('tb_angkatan','tb_mahasiswa.id_angkatan','tb_angkatan.id_angkatan')
         ->get();
         return view('User.kegIkatanAlumni',compact('dok'));
+    }
+    public function materilog()
+    {
+        return view('User.materilogika');
+    }
+    public function materibasis()
+    {
+        return view('User.materibasis');
+    }
+    public function materistruktur()
+    {
+        return view('User.materistruktur');
+    }
+    public function materihtml()
+    {
+        return view('User.materihtml');
+    }
+    public function materifdm()
+    {
+        return view('User.materifund');
+    }
+    public function materifdmphp()
+    {
+        return view('User.fdmphp');
+    }
+    public function materifdmvb()
+    {
+        return view('User.fdmvb');
+    }
+    public function materifdmjava()
+    {
+        return view('User.fdmjava');
+    }
+    public function materifdmljt()
+    {
+        return view('User.materifundljt');
+    }
+    public function materifdmphpljt()
+    {
+        return view('User.fdmphpljt');
+    }
+    public function materifdmvbljt()
+    {
+        return view('User.fdmvbljt');
+    }
+    public function materifdmjavaljt()
+    {
+        return view('User.fdmjavaljt');
+    }
+    public function pembinaPub()
+    {
+        return view('User.pembina');
+    }
+    public function totalAlumni()
+    {
+        $data1=DB::table('tb_mahasiswa')
+        ->leftJoin('tb_angkatan','tb_mahasiswa.id_angkatan','=','tb_angkatan.id_angkatan')
+        ->leftJoin('tb_statusPub','tb_mahasiswa.id_statusPub','=','tb_statusPub.id_statusPub')
+        ->select('tb_mahasiswa.jenis_kelamin','tb_angkatan.angkatan',\DB::raw('count(*) as total'))
+        ->groupBy('tb_angkatan.angkatan')
+        ->groupBy('tb_mahasiswa.jenis_kelamin');
+
+        $data2=DB::table('tb_mahasiswa')
+        ->leftJoin('tb_angkatan','tb_mahasiswa.id_angkatan','=','tb_angkatan.id_angkatan')
+        ->leftJoin('tb_statusPub','tb_mahasiswa.id_statusPub','=','tb_statusPub.id_statusPub')
+        ->select('tb_mahasiswa.jenis_kelamin','tb_angkatan.angkatan',\DB::raw('count(*) as total'))
+        ->groupBy('tb_angkatan.angkatan')
+        ->groupBy('tb_mahasiswa.jenis_kelamin');
+
+        $totalL=DB::table('tb_mahasiswa')
+        ->leftJoin('tb_angkatan','tb_mahasiswa.id_angkatan','=','tb_angkatan.id_angkatan')
+        ->leftJoin('tb_statusPub','tb_mahasiswa.id_statusPub','=','tb_statusPub.id_statusPub')
+        ->select('tb_mahasiswa.jenis_kelamin',\DB::raw('count(*) as total'))
+        ->groupBy('tb_mahasiswa.jenis_kelamin')->where('tb_mahasiswa.jenis_kelamin','Laki-laki')
+        ->where('tb_statusPub.status','Alumni')->get();
+
+        $totalP=DB::table('tb_mahasiswa')
+        ->leftJoin('tb_angkatan','tb_mahasiswa.id_angkatan','=','tb_angkatan.id_angkatan')
+        ->leftJoin('tb_statusPub','tb_mahasiswa.id_statusPub','=','tb_statusPub.id_statusPub')
+        ->select('tb_mahasiswa.jenis_kelamin',\DB::raw('count(*) as total'))
+        ->groupBy('tb_mahasiswa.jenis_kelamin')->where('tb_mahasiswa.jenis_kelamin','Perempuan')
+        ->where('tb_statusPub.status','Alumni')->get();
+
+        $total=DB::table('tb_mahasiswa')
+        ->leftJoin('tb_statusPub','tb_mahasiswa.id_statusPub','=','tb_statusPub.id_statusPub')
+        ->select(\DB::raw('count(*) as total'))
+        ->where('tb_statusPub.status','Alumni')->get();
+
+        $lk=$data1->where('tb_mahasiswa.jenis_kelamin','Laki-laki')
+        ->where('tb_statusPub.status','Alumni')->get();
+        $pr=$data2->where('tb_mahasiswa.jenis_kelamin','Perempuan')
+        ->where('tb_statusPub.status','Alumni')->get();
+        
+        return view('User.totalAlumni',compact('lk','pr','totalL','totalP','total'));
     }
 }

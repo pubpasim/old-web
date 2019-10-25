@@ -163,6 +163,17 @@
     font-size: 13pt;
     margin-top: 100px;
   }
+  #chart{
+    width: 90%;
+    height: 100%;
+    margin-left: 7%;
+    margin-right: 7%;
+    text-align: justify;
+    line-height: 200%;
+    font-family: times new roman;
+    font-size: 13pt;
+    margin-top: 100px;
+  }
   #strk{
     color: #3399cc;
     margin-left: -10px;
@@ -190,4 +201,15 @@
     line-height: 200%;
     font-family: century gothic;
     font-size: 20pt;
+  }
+  .alert{
+    width: 93%;
+    height: 100%;
+    background-color: #ff9999;
+    padding: 10px;
+    text-align: center;
+    border-radius: 3px;
+    color: white;
+    font-style: bold;
+    font-family: century gothic;
   }

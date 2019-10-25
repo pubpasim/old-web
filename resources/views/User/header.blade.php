@@ -60,22 +60,12 @@
 
           <div class="col-6">
             <div class="top-header-content">
-              <a href="#"><i class="icon_phone"></i> <span>0857-2275-2570</span></a>
+              <a href="#"><i class="fa fa-whatsapp"></i> <span>0857-2275-2570</span></a>
               <a href="#"><i class="icon_mail"></i> <span>CONTACT US</span></a>
             </div>
           </div>
 
-          <div class="col-6">
-            <div class="top-header-content">
-              <!-- Top Social Area -->
-              <div class="top-social-area ml-auto">
-                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-tripadvisor" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-              </div>
-            </div>
-          </div>
+          
 
         </div>
       </div>
@@ -112,18 +102,27 @@
                         <ul class="dropdown">
                           <li><a href="/organisasi_ppmb/">- Kepanitiaan PPMB</a></li>
                           <li><a href="/jadwal_ppmb_user">- Jadwal PPMB</a></li>
+<<<<<<< HEAD
                           <li><a href="/syarat_user">- Syarat & Ketentuan</a></li>
                           
                           <li><a href="{{url('hasilSeleksi')}}">- Hasil Seleksi</a></li>
+                          <li><a href="#">- Dokumentasi PPMB</a></li>
+                          <li><a href="#">- Download Formulir</a></li>
+=======
+                          <li><a href="/syarat_user">- Syarat & Ketentuan</a></li>                          
+                          <li><a href="{{url('user_hasilSeleksi')}}">- Hasil Seleksi</a></li>
+                          <li><a href="{{url('user_dok_ppmb')}}">- Dokumentasi PPMB</a></li>
+                          <li><a href="{{url('user_down_formulir')}}" target="_blank">- Download Formulir</a></li>
+>>>>>>> 2e18bd0b9b0cf8e9b238b7e0b83de89c8fb445be
                         </ul>
                       </li>
                       <li><a href="#">PUB Aktif</a>
                         <ul class="dropdown">
-                          <li><a href="{{url('pub_profile')}}">-Profile PUB</a></li>
+                          <li><a href="{{url('pub_profile')}}">-Sekilas PUB</a></li>
                           <li><a href="{{url('organisasi_pub')}}">-Organisasi PUB</a></li>
                           <li><a href="{{url('user/mahasiswa')}}">-Mahasiswa PUB</a></li>
                           <li><a href="{{url('pelatihan')}}">-Pelatihan PUB</a></li>
-                          <li><a href="{{url('kegiatanPub')}}">-Kegiatan PUB</a></li>
+                          <li><a href="{{url('kegiatanPub')}}">-Dokumentasi PUB</a></li>
 
                         </ul>
                       </li>
@@ -131,17 +130,17 @@
                         <ul class="dropdown">
                           <li><a href="{{url('user_alumni')}}">-Data Alumni PUB</a></li>
                           <li><a href="{{url('user_infaq')}}">-Data Infaq Alumni</a></li>
-                          <li><a href="#">Ikatan Alumni PUB</a>
+                          <li><a href="#">-Ikatan Alumni PUB</a>
                             <ul class="dropdown">
                               <li><a href="{{url('org_ikatan_alumni')}}">-Organisasi</a></li>
-                              <li><a href="{{url('keg_ikatan_alumni')}}">-Kegiatan Organisasi</a></li>
+                              <li><a href="{{url('keg_ikatan_alumni')}}">-Dokumentasi</a></li>
                             </ul>
 
                           </li>
-                          <li><a href="{{url('user_infaq')}}">-Total Alumni</a></li>
+                          <li><a href="{{url('totalAlumni')}}">-Total Alumni</a></li>
                         </ul>
                       </li>
-                      <li><a href="#">Pembina PUB</a></li>
+                      <li><a href="{{url('pembinaPub')}}">Pembina PUB</a></li>
                       
                       
                     </ul>

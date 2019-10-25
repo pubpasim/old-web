@@ -94,8 +94,7 @@
 
 		</style>
 
-		<div id="form1">
-			<h1>Tambah Data</h1>
+			<h1>Edit Data</h1>
 			<div class="container">
 				@foreach ($organisasi as $data)
 				<form method="POST" action="{{URL('struktur_organisasi/store')}}" Class="form-horizontal" id="block-validate">
@@ -108,9 +107,9 @@
 									
 									<div class="form-group">
 										<label>JABATAN</label>
-										<input type="text" name="jabatan" value="{{$data->jabatan}}">
+										<input type="text" name="jabatan" value="{{$data->jabatan_pub}}">
 									</div>
-									<button type="submit" name="submit" class="btn btn-primary">TAMBAH DATA </button>
+									<button type="submit" name="submit" class="btn btn-primary">SIMPAN DATA </button>
 								</form>
 							</div>
 						</div>
@@ -118,5 +117,4 @@
 				</form>
 				@endforeach
 			</div>
-		</div>
 		@include('tampilan.foot')

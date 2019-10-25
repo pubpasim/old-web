@@ -72,122 +72,121 @@
 		}
 	}
 </style>
-<div id="form1">
-	<div class="container">
-		<form method="POST" action="{{url('lanjut')}}">
-			{{csrf_field()}}
+<div class="container">
+	<form method="POST" action="{{url('lanjut')}}">
+		{{csrf_field()}}
+		<div class="row">
+			<div class="col-25">
+				<label for="nim">NIM</label>
+			</div>
+			<div class="col-75">
+				<input type="text" id="nim" name="nim" placeholder="Nama Lengkap">
+			</div>	
 			<div class="row">
 				<div class="col-25">
-					<label for="nim">NIM</label>
+					<label for="nama">Nama Lengkap</label>
 				</div>
 				<div class="col-75">
-					<input type="text" id="nim" name="nim" placeholder="Nama Lengkap">
-				</div>	
-				<div class="row">
-					<div class="col-25">
-						<label for="nama">Nama Lengkap</label>
-					</div>
-					<div class="col-75">
-						<input type="text" id="Tname" name="Tname" placeholder="Nama Lengkap">
-					</div>
+					<input type="text" id="Tname" name="Tname" placeholder="Nama Lengkap">
 				</div>
-				<div class="row">
-					<div class="col-25">
-						<label for="daerah">Asal Daerah</label>
-					</div>
-					<div class="col-75">
-						<select id="daerah" name="daerah">
-							<option value="0"> --pilih daerah--</option>
-							@foreach($dr as $data)
-							<option value="{{$data->id_daerah}}">{{$data->kab_kot}}</option>
-							@endforeach
-						</select>
-					</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="daerah">Asal Daerah</label>
 				</div>
-				<div class="row">
-					<div class="col-25">
-						<label for="angkatan">Angkatan</label>
-					</div>
-					<div class="col-75">
-						<select id="angkatan" name="angkatan">
-							<option value="0"> --pilih Angkatan--</option>
-							@foreach($angkt as $data)
-							<option value="{{$data->id_angkatan}}">{{$data->angkatan}}</option>
-							@endforeach
+				<div class="col-75">
+					<select id="daerah" name="daerah">
+						<option value="0"> --pilih daerah--</option>
+						@foreach($dr as $data)
+						<option value="{{$data->id_daerah}}">{{$data->kab_kot}}</option>
+						@endforeach
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="angkatan">Angkatan</label>
+				</div>
+				<div class="col-75">
+					<select id="angkatan" name="angkatan">
+						<option value="0"> --pilih Angkatan--</option>
+						@foreach($angkt as $data)
+						<option value="{{$data->id_angkatan}}">{{$data->angkatan}}</option>
+						@endforeach
 
-						</select>
-					</div>
+					</select>
 				</div>
-				<div class="row">
-					<div class="col-25">
-						<label for="skl">Asal Sekolah</label>
-					</div>
-					<div class="col-75">
-						<select id="skl" name="skl">
-							<option value="0"> --pilih Asal Sekolah--</option>
-							@foreach($skl as $data)
-							<option value="{{$data->id_sekolah}}">{{$data->sekolah}}</option>
-							@endforeach
-						</select>
-					</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="skl">Asal Sekolah</label>
 				</div>
-				<div class="row">
-					<div class="col-25">
-						<label for="spkw">Status Perkawinan</label>
-					</div>
-					<div class="col-75">
-						<select id="spkw" name="spkw">
-							<option value="0"> --Status Perkawinan--</option>
-							@foreach($sts1 as $data)
-							<option value="{{$data->id_statusSos}}">{{$data->status}}</option>
-							@endforeach
-						</select>
-					</div>
+				<div class="col-75">
+					<select id="skl" name="skl">
+						<option value="0"> --pilih Asal Sekolah--</option>
+						@foreach($skl as $data)
+						<option value="{{$data->id_sekolah}}">{{$data->sekolah}}</option>
+						@endforeach
+					</select>
 				</div>
-				<div class="row">
-					<div class="col-25">
-						<label for="jbPUB">Jabatan di PUB</label>
-					</div>
-					<div class="col-75">
-						<select id="jbPUB" name="jbPUB">
-							<option value="0"> --Jabatan di PUB--</option>
-							@foreach($orgpub as $data)
-							<option value="{{$data->id_orgpub}}">{{$data->jabatan_pub}}</option>
-							@endforeach
-						</select>
-					</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="spkw">Status Perkawinan</label>
 				</div>
-				<div class="row">
-					<div class="col-25">
-						<label for="jbPUB">Jabatan di PPMB</label>
-					</div>
-					<div class="col-75">
-						<select id="jbPPMB" name="jbPPMB">
-							<option value="0"> --Jabatan di PPMB--</option>
-							@foreach($orgppmb as $data)
-							<option value="{{$data->id_orgppmb}}">{{$data->jabatan}}</option>
-							@endforeach
-						</select>
-					</div>
+				<div class="col-75">
+					<select id="spkw" name="spkw">
+						<option value="0"> --Status Perkawinan--</option>
+						@foreach($sts1 as $data)
+						<option value="{{$data->id_statusSos}}">{{$data->status}}</option>
+						@endforeach
+					</select>
 				</div>
-				<div class="row">
-					<div class="col-25">
-						<label for="jurusan">Jurusan</label>
-					</div>
-					<div class="col-75">
-						<select id="jurusan" name="jurusan">
-							<option value="0"> --Jurusan--</option>
-							@foreach($jur as $data)
-							<option value="{{$data->id_jur}}">{{$data->nama_jur}}</option>
-							@endforeach
-						</select>
-					</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="jbPUB">Jabatan di PUB</label>
 				</div>
-				<div class="row">
-					<div class="col-75">
+				<div class="col-75">
+					<select id="jbPUB" name="jbPUB">
+						<option value="0"> --Jabatan di PUB--</option>
+						@foreach($orgpub as $data)
+						<option value="{{$data->id_orgpub}}">{{$data->jabatan_pub}}</option>
+						@endforeach
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="jbPUB">Jabatan di PPMB</label>
+				</div>
+				<div class="col-75">
+					<select id="jbPPMB" name="jbPPMB">
+						<option value="0"> --Jabatan di PPMB--</option>
+						@foreach($orgppmb as $data)
+						<option value="{{$data->id_orgppmb}}">{{$data->jabatan}}</option>
+						@endforeach
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="jurusan">Jurusan</label>
+				</div>
+				<div class="col-75">
+					<select id="jurusan" name="jurusan">
+						<option value="0"> --Jurusan--</option>
+						@foreach($jur as $data)
+						<option value="{{$data->id_jur}}">{{$data->nama_jur}}</option>
+						@endforeach
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-75">
 					<input type="hidden" id="alm" name="alm" value="2">
-					</div>
 				</div>
+			</div>
 
 	  <!-- <div class="row">
 	    <div class="col-25">
@@ -201,7 +200,6 @@
 		<input type="submit" value="Selanjutnya">
 	</div>
 </form>
-</div>
 </div>
 
 @include('tampilan.foot')

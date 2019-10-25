@@ -26,51 +26,34 @@
 	.table1 tr:nth-child(even) {
 		background-color: #f2f2f2;
 	}
+	.tengah{
+		text-align: center;
+		margin: 10%;
+	}
+	button{
+		background-color: #16A085;
+		color: white;
+		width: 180px;
+		height: 100px;
+		border-radius: 10px;
+		border-style: groove;
+	}
+	button:hover{
+		background-color: #1ABC9C;
+	}
 </style>
-<div id="design">
-	<div class="kiri">
-
-		<form method="POST" action="{{url('pelatihan_data')}}">
-			{{csrf_field()}}
-			<h2>Pilih Angkatan</h2>
-			<hr>
-			<div>
-				<select name="select"  >
-					<option value="" disabled>--Pilih Angkatan--</option>
-					@foreach($angkatan as $data)
-					<option value="{{$data->id_angkatan}}">
-						Angkatan {{ $data->angkatan }}
-					</option>
-					@endforeach
-
-				</select>
-			</div>
-			<button type="submit" id="btn">OKE</button>
-		</form>
-	</div>
-	<div @if($lempar=="") style="display: none;" @endif>
-		<table class="table1">
-			<tr>
-				<th>NO</th>
-				<th>PELATIHAN</th>
-				<th colspan="2">KETERANGAN</th>
-			</tr>
-			@php $no=1; @endphp
-			@foreach($pelatihan1 as $pel)
-			<tr>
-				<td>{{$no++}}</td>
-				<td>{{$pel->pelatihan}}</td>
-				<td><a href=""><button>UTS</button></a></td>
-				<td><a href=""><button>UAS</button></a></td>
-			</tr>
-			@endforeach
-		</table>
+<div >
+	<div class="tengah">
+			<center><h1>Pelatihan PUB</h1></center>
+			<a href="{{url('materilogika')}}"><button> Logika Dan Algoritma</button></a>
+			<a href="{{url('materibasis')}}"><button> Basis Data</button></a>
+			<a href="{{url('materistruktur')}}"><button> Struktur Data</button></a>
+			<a href="{{url('materihtml')}}"><button> HTML</button></a>
+			<a href="{{url('materifund')}}"><button> Fundamental</button></a>
+			<a href="{{url('materifundljt')}}"><button> Lanjutan</button></a>
 	</div>
 	
+	
 </div>
-@php
-for($x=0;$x<3;$x++){
-echo "<br>";
-}
-@endphp
+
 @include('user.footer')

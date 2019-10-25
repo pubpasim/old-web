@@ -72,7 +72,6 @@
 		}
 	}
 </style>
-<div id="form1">
 	<div class="container">
 		@foreach($final as $data)
 		<form method="POST" action="{{url('updateFinal/'.$id)}}">
@@ -80,36 +79,61 @@
 				
 		<div class="row">
 
-			<input hidden value="{{$data->id_final}}" type="text" class="form-control" placeholder="Nama Peserta" name="id_final">
+			
 
 			<div class="col-25">
-				<label>Edit Final</label>
+				<label>Edit Penandatanganan MOU</label>
 			</div>
+
 			<div class="col-75">
-				<label for="nama_peserta">Nama Peserta</label>
-				<input value="{{$data->nama_peserta}}" type="text" class="form-control" placeholder="Nama Peserta" name="nama_peserta">
-			</div>
+					<label for="Sekolah">Id Peserta</label>
+					<input readonly="" value="{{$data->id_final}}" type="text" class="form-control" placeholder="Nama Peserta" name="id_final">
+				</div>
+
 			<div class="col-75">
-				<label for="nama_peserta">Jenis Kelamin</label>
-				<select id="jk" name="jk">
-					<option value="Laki - Laki"> Laki - Laki</option>
-					<option value="Perempuan"> Perempuan</option>
-				</select>
-			</div>
+					<label for="Sekolah">Tempat Lahir</label>
+					<input type="text" value="{{$data->tempat}}" class="form-control" placeholder="Tempat Lahir" name="tempat">
+				</div>
+
+			<div class="col-75">
+					<label for="nama_peserta">Nama Peserta</label>
+					<select id="jurusan" name="nama_peserta">
+						<option value="0"> --Nama Peserta--</option>
+						@foreach($nama as $datax)
+							<option value="{{$datax->id_lulus}}" @if($datax->id_lulus==$data->nama_peserta) selected="" @endif >{{$datax->nama}}</option>
+						@endforeach
+					</select>					
+				</div>
+				<div class="col-75">
+					<label for="nama_peserta">Jenis Kelamin</label>
+					<select id="jk" name="jk">
+						<option @if($data->jk == "Laki - Laki") selected="" @endif value="Laki - Laki"> Laki - Laki</option>
+						<option @if($data->jk == "Perempuan") selected="" @endif value="Perempuan"> Perempuan</option>
+					</select>
+				</div>
+
+				<div class="col-75">
+					<label for="Sekolah">Tempat Lahir</label>
+					<input type="text" value="{{$data->tempat}}" class="form-control" placeholder="Tempat Lahir" name="tempat">
+				</div>
+				<div class="col-75">
+					<label for="Sekolah">Tanggal Lahir</label>
+					<input type="date" value="{{$data->tanggal}}" class="form-control" placeholder="tgl" name="tanggal">
+				</div>
 
 			<div class="col-75">
 				<label for="nama_peserta">Jurusan Pilihan</label>
 				<select id="jurusan" name="jurusan">
-					<option value="0" disabled=""> --Jurusan Pilihan--</option>
-					<option value="S1 Teknik Informatika"> S1 Teknik Informatika</option>
-					<option value="S1 Akuntansi"> S1 Akuntansi</option>
-					<option value="S1 Manajemen"> S1 Manajemen</option>
-					<option value="S1 Sastra Jepang"> S1 Sastra Jepang</option>
-					<option value="D3 Bahasa Inggris"> D3 Bahasa Inggris</option>
-					<option value="D3 Manajemen Informatika"> D3 Manajemen Informatika</option>
+						<option value="0" disabled=""> --Jurusan Pilihan--</option>
+						<option  @if($data->jurusan == "S1 Teknik Informatika") selected="" @endif value="S1 Teknik Informatika"> S1 Teknik Informatika</option>
+						<option @if($data->jurusan == "S1 Akuntansi") selected="" @endif value="S1 Akuntansi"> S1 Akuntansi</option>
+						<option @if($data->jurusan == "S1 Manajemen") selected="" @endif value="S1 Manajemen"> S1 Manajemen</option>
+						<option @if($data->jurusan == "S1 Sastra Jepang") selected="" @endif value="S1 Sastra Jepang"> S1 Sastra Jepang</option>
+						<option @if($data->jurusan == "D3 Bahasa Inggris") selected="" @endif value="D3 Bahasa Inggris"> D3 Bahasa Inggris</option>
+						<option @if($data->jurusan == "D3 Manajemen Informatika") selected="" @endif value="D3 Manajemen Informatika"> D3 Manajemen Informatika</option>
 
-					
-				</select>
+						
+					</select>
 			</div>
 			<div class="col-75">
 				<label for="asal_sekolah">Asal Sekolah</label>
@@ -123,13 +147,6 @@
 				<label for="no_hp">No HP</label>
 				<input value="{{$data->no_hp}}" type="text" class="form-control" placeholder="no_hp" name="no_hp">
 			</div>
-			<div class="col-75">
-				<label for="nama_peserta">Status</label>
-				<select id="jenis" name="jenis">
-					<option value="LULUS"> Lulus</option>
-					<option value="TIDAK LULUS"> Tidak lulus</option>
-				</select>
-			</div>
 
 		</div>
 		<br>
@@ -138,7 +155,6 @@
 		</div>
 		</form>
 		@endforeach
-</div>
 </div>
 
 @include('tampilan.foot')

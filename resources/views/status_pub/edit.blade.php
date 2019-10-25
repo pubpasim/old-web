@@ -93,11 +93,9 @@
 	}
 
 </style>
-<div id="form1">
 	<h1>Daftar Data Angkatan</h1>
 	<div class="container">	
-		@foreach ($status_pub as $data)
-		<form method="POST" action="{{URL('status_pub/store')}}" Class="form-horizontal" id="block-validate">
+		<form method="POST" action="{{URL('status_pub/update/'.$status_pub->id_statusPub)}}" Class="form-horizontal" id="block-validate">
 			{{csrf_field()}}
 			<div class="row">
 				<div class="panel-heading">INPUT DATA</div>
@@ -107,19 +105,16 @@
 							
 							<div class="form-group">
 								<label>STATUS</label>
-								<select name="jabatan">
-									<option name="aktif">AKTIF</option>
-									<option name="alumni">ALUMNI</option>
+								<select name="status_pub">
+									<option name="aktif" value="PUB Aktif">AKTIF</option>
+									<option name="alumni" value="Alumni">ALUMNI</option> 	
 								</select>
 							</div>
 							<button type="submit" name="submit" class="btn btn-primary">TAMBAH DATA </button>
-
 						</form>
-						@endforeach
 					</div>
 				</div>
 			</div>
 		</form>
 	</div>
-</div>
-include('tampil.foot')
+@include('tampilan.foot')

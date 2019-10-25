@@ -94,7 +94,7 @@
 
 </style>
 
-<div id="form1">
+
 	<h1>Daftar Mahasiswa PUB</h1>
 	<div class="container">
 		
@@ -155,5 +155,5 @@
 			</div>
 		</div>
 	</div>
-</div>
+
 @include('tampilan.foot')

@@ -108,7 +108,6 @@
 
 	</style>
 
-	<div id="form1">
 		<h1>Daftar Infaq Alumni PUB</h1>
 		<div class="container">
 			<div id="frm">
@@ -144,6 +143,4 @@
 				</tbody>
 			</table>
 		</div>
-	</div>
-
 	@include('tampilan.foot')

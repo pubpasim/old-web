@@ -72,7 +72,6 @@
 		}
 	}
 </style>
-<div class="col-sm-5 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
@@ -85,9 +84,7 @@
 						    <tr>
 						        <th>No</th>
 						        <th>Foto</th>						        
-						        <th>Keterangan</th>
-						        <th>Angkatan</th>
-						        <th>Alumni</th>
+						        <th>Keterangan</th>						        
 						        <th>Aksi</th>
 						    </tr>
 						    </thead>
@@ -97,9 +94,7 @@
 						    	<tr>
 						    		<td>{{ $no++}}</td>
 						    		<td> <img src="{{url('imgs')}}/{{($data->foto) }}" width="100" height="100"></td>	
-						    		<td>{{$data->keterangan}}</td>
-						    		<td>{{$data->angkatan}} - {{$data->nama_angkatan}}</td>
-						    		<td>{{$data->nama}}</td>
+						    		<td>{{$data->keterangan}}</td>						    		
 						    		<td>
 						    			<a href="{{url('editDokAlumni/'.$data->id)}}" class="btn btn-info">Edit</a>
 						    			<a href="{{url('hapusDokAlumni/'.$data->id)}}" class="btn btn-info">Hapus</a>
@@ -111,27 +106,4 @@
 					</div>
 				</div>
 			</div>
-		</div>
-	<script src="/lumino/js/jquery-1.11.1.min.js"></script>
-	<script src="/lumino/js/bootstrap.min.js"></script>
-	<script src="/lumino/js/chart.min.js"></script>
-	<script src="/lumino/js/chart-data.js"></script>
-	<script src="/lumino/js/easypiechart.js"></script>
-	<script src="/lumino/js/easypiechart-data.js"></script>
-	<script src="/lumino/js/bootstrap-datepicker.js"></script>
-	<script src="/lumino/js/bootstrap-table.js"></script>
-	<script>
-		!function ($) {
-			$(document).on("click","ul.nav li.parent > a > span.icon", function(){		  
-				$(this).find('em:first').toggleClass("glyphicon-minus");	  
-			}); 
-			$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
-		}(window.jQuery);
-
-		$(window).on('resize', function () {
-		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
-		})
-		$(window).on('resize', function () {
-		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
-		})
-	</script>
+	@include('tampilan.foot')
