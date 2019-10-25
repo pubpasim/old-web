@@ -78,7 +78,6 @@
 		border-style: groove;
 	}
 </style>
-<div id="form1">
 	<div class="container">
 		<form method="POST" action="{{url('simpan/mahasiswa')}}" enctype="multipart/form-data">
 			{{csrf_field()}}
@@ -251,5 +250,4 @@
 			</div>
 		</form>
 	</div>
-</div>
 @include('tampilan.foot')

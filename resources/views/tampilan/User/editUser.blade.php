@@ -1,4 +1,4 @@
-@include('tampilan.foot')
+@include('tampilan.head')
 <style>
 	* {
 		box-sizing: border-box;
@@ -70,80 +70,53 @@
 		}
 	}
 </style>
-<div id="form1">
 	<div class="container">
 		<div class="kiri">
 			<h1>Angkatan</h1>
 			<hr>
-			<form method="POST" action="{{url('tambahUser/store')}}">
-				{{csrf_field()}}
-				<div class="sel sel--black-panther">
-					<select name="select" id="select-profession">
-						<option value="" disabled>--Pilih Angkatan--</option>
-						@foreach($angkatan as $data)
-						<option value="{{$data->id_angkatan}}">
-							Angkatan {{ $data->angkatan }}
-						</option>
-						@endforeach
-
-					</select>
-				</div>
-				<button type="submit" id="btn">OKE</button>
-			</form>
 		</div>
-		<div class="kanan" @if($lempar=="") style="display: none;" @endif id="kanan" style="padding-left: 100px;">
-			<form method="POST" action="{{url('tambah/user')}}">
+		<div class="kanan" >
+			<form method="POST" action="{{url('editUser')}}">
 				{{csrf_field()}}
-				<div class="row">
-					<div class="col-25">
-						<label for="nama">Nama Lengkap</label>
-					</div>
-					<div class="col-75">
-						<select id="nama" name="nama">
-							<option disabled> --pilih nama--</option>
-							@foreach($mahasiswa as $data)
-							<option value="{{$data->id_mahasiswa}}">{{$data->nama}}</option>
-							@endforeach
-						</select>
-					</div>
-				</div>
+				
 				<div class="row">
 					<div class="col-25">
 						<label for="usr">USERNAME</label>
 					</div>
 					<div class="col-75">
-						<input type="text" id="usr" name="usr" placeholder="Username">
+						<input type="text" id="usr" name="usr" placeholder="Username" value="{{$user->username}}">
 					</div>	
-					<div class="row">
-						<div class="col-25">
-							<label for="pass">PASSWORD</label>
-						</div>
-						<div class="col-75">
-							<input type="text" id="pass" name="pass" placeholder="Enter your Password">
-						</div>
+				</div>
+				<div class="row">
+					<div class="col-25">
+						<label for="pass">PASSWORD</label>
 					</div>
-					<div class="row">
-						<div class="col-25">
-							<label for="level">HAK AKSES</label>
-						</div>
-						<div class="col-75">
-							<select id="level" name="level">
-								<option disabled> --pilih level--</option>
-								<option value="admin">Admin</option>
-								<option value="admin_pub">Admin PUB</option>
-								<option value="admin_ppmb">Admin PPMB</option>
-								<option value="alumni">Admin Alumni</option>
-								<option value="ikatan alumni">Admin Ikatan Alumni</option>
+					<div class="col-75">
+						<input type="text" id="pass" name="pass" placeholder="Enter your Password" value="{{$user->password}}">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-25">
+						<label for="level">HAK AKSES</label>
+					</div>
+					<div class="col-75">
+						<select id="level" name="level">
+							<option disabled> --pilih level--</option>
+							<option @if($user->level=="admin") selected="true"@endif value="admin">Admin</option>
+							<option @if($user->level=="admin_pub") selected="true"@endif value="admin_pub">Admin PUB</option>
+							<option @if($user->level=="admin_ppmb") selected="true"@endif value="admin_ppmb">Admin PPMB</option>
+							<option @if($user->level=="alumni") selected="true"@endif value="alumni">Admin Alumni</option>
+							<option @if($user->level=="ikatan_alumni") selected="true"@endif value="ikatan alumni">Admin Ikatan Alumni</option>
 
-							</select>
-						</div>
+						</select>
 					</div>
-					<div class="row">
-						<input type="submit" value="Simpan">
-					</div>
-				</form>
-			</div>
+				</div>
+				<div class="row">
+					<input type="hidden" name="id" value="{{$user->id_user}}">
+					<input type="submit" value="Simpan">
+				</div>
+			</form>
 		</div>
 	</div>
 
-	@include('tampilan.foot')
+@include('tampilan.foot')

@@ -72,7 +72,6 @@
 		}
 	}
 </style>
-<div id="form1">
 	<h1>Pengalaman Bekerja</h1>
 	<div class="container">
 		<form method="POST" action="{{url('tambah/pengalaman')}}">
@@ -175,6 +174,4 @@
 			
 		</form>
 	</div>
-</div>
-
 @include('tampilan.foot')

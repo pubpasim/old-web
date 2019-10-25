@@ -80,7 +80,6 @@
 
 	}
 </style>
-<div id="form1">
 	<div class="container">
 		<form method="POST" action="{{url('tambahInfaq')}}">
 			{{csrf_field()}}
@@ -120,6 +119,5 @@
 			
 		</form>
 	</div>
-</div>
 
 @include('tampilan.foot')

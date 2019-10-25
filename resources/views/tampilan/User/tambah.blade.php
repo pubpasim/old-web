@@ -1,4 +1,4 @@
-@include('tampilan.foot')
+@include('tampilan.head')
 <style>
 	* {
 		box-sizing: border-box;
@@ -70,7 +70,6 @@
 		}
 	}
 </style>
-<div id="form1">
 	<div class="container">
 		<div class="kiri">
 			<h1>Angkatan</h1>
@@ -143,6 +142,5 @@
 				</form>
 			</div>
 		</div>
-	</div>
 
 	@include('tampilan.foot')

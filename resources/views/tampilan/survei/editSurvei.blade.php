@@ -72,7 +72,6 @@
 		}
 	}
 </style>
-<div id="form1">
 	<div class="container">
 		@foreach($survei as $data)
 		<form method="POST" action="{{url('updateSurvei/'.$id)}}">
@@ -139,7 +138,6 @@
 		</form>
 		@endforeach
 	</div>
-</div>
 
 @include('tampilan.foot')
 

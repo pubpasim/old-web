@@ -97,7 +97,6 @@
 
 </style>
 
-<div id="form1">
 	<div class="container">		
 		<div class="row">
 			<div class="col-lg-12">
@@ -139,6 +138,5 @@
 			</div>
 		</div>
 	</div>
-</div>
 
 @include('tampilan.foot')

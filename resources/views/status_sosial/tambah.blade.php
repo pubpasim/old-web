@@ -1,4 +1,4 @@
-@include('tampilan.head')	
+@include('tampilan.head')
 <style>
 	#dataTable {
 		font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -93,28 +93,24 @@
 	}
 
 </style>
-	<h1>Edit Data Sekolah</h1>
-	<div class="container">
-
-		@foreach($sek as $data)
-		<form method="POST" action="{{URL('tampilan/sekolah/'.$data->id_sekolah)}}" Class="form-horizontal" id="block-validate">
-			{{csrf_field()}}>
+	<h1>Daftar Data Angkatan</h1>
+	<div class="container">	
+		<form method="POST" action="{{URL('status_sos/store')}}" Class="form-horizontal" id="block-validate">
+			{{csrf_field()}}
 			<div class="row">
-				<div class="panel-heading">FROM UBAH DATA SEKOLAH</div>
+				<div class="panel-heading">TAMBAH DATA</div>
 				<div class="panel-body">
 					<div class="col-md-6">
 						<form role="form">
-							
 							<div class="form-group">
-								<label>NAMA SEKOLAH</label>
-								<input class="form-control" placeholder="Nama Sekolah" name="sekolah" value="{{$data->sekolah}}">
+								<label>STATUS</label>
+								<input type="text" name="status">
 							</div>
-							<button type="submit" class="btn btn-primary">UBAH DATA </button>
-						</form>
+							<button type="submit" name="submit" class="btn btn-primary">TAMBAH DATA</button>
+						</form>	
 					</div>
 				</div>
 			</div>
 		</form>
-		@endforeach
 	</div>
-include('tampil.foot')
+@include('tampilan.foot')

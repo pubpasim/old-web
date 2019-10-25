@@ -93,10 +93,8 @@
 		}
 
 	</style>
-
-	<div id="form1">
 		<h1>Daftar Mahasiswa Alumni PUB</h1>
-		<div class="container">
+		
 			<a href="{{url('tambahAlumni')}}"><button class="btn btn-primary" style=" background-color: #339966; width: 100%;"><svg class="glyph stroked plus sign" style="height: 30px;"><use xlink:href="#stroked-plus-sign"/></svg></button></a>
 			<table id="myTable">
 				
@@ -133,7 +131,6 @@
 					@endforeach
 				</tbody>
 			</table>
-		</div>
-	</div>
+
 
 	@include('tampilan.foot')

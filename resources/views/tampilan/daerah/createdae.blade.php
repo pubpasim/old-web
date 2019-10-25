@@ -95,11 +95,8 @@
 	}
 
 </style>
-
-<div id="form1">
 	<h1>Daftar Daerah</h1>
-	<div class="container">
-		<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
+	<div class="container">			
 			<form method="POST" action="{{URL('daerahModel')}}" Class="form-horizontal" id="block-validate">
 				{{csrf_field()}}
 				<div class="row">
@@ -119,6 +116,4 @@
 				</div>
 			</form>
 		</div>
-	</div>
-</div>
 @include('tampilan.foot')

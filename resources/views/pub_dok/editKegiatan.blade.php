@@ -78,7 +78,6 @@
         border-style: groove;
     }
 </style>
-<div id="form1">
     <h1>Edit data Kegiatan</h1>
     <div class="container">
         <form method="POST" action="{{url('edit/kegiatan/'.$dokumen->id_pubdok)}}" enctype="multipart/form-data">
@@ -129,5 +128,4 @@
             </div>
         </form>
     </div>
-</div>
 @include('tampilan.foot')
