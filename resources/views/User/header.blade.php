@@ -102,11 +102,18 @@
                         <ul class="dropdown">
                           <li><a href="/organisasi_ppmb/">- Kepanitiaan PPMB</a></li>
                           <li><a href="/jadwal_ppmb_user">- Jadwal PPMB</a></li>
+<<<<<<< HEAD
                           <li><a href="/syarat_user">- Syarat & Ketentuan</a></li>
                           
                           <li><a href="{{url('hasilSeleksi')}}">- Hasil Seleksi</a></li>
                           <li><a href="#">- Dokumentasi PPMB</a></li>
                           <li><a href="#">- Download Formulir</a></li>
+=======
+                          <li><a href="/syarat_user">- Syarat & Ketentuan</a></li>                          
+                          <li><a href="{{url('user_hasilSeleksi')}}">- Hasil Seleksi</a></li>
+                          <li><a href="{{url('user_dok_ppmb')}}">- Dokumentasi PPMB</a></li>
+                          <li><a href="{{url('user_down_formulir')}}" target="_blank">- Download Formulir</a></li>
+>>>>>>> 2e18bd0b9b0cf8e9b238b7e0b83de89c8fb445be
                         </ul>
                       </li>
                       <li><a href="#">PUB Aktif</a>

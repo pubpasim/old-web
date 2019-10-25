@@ -72,40 +72,61 @@
 		}
 	}
 </style>
+<div id="form1">
 	<div class="container">
-		<form method="POST" action="{{url('hasil2')}}">
+		<form method="POST" action="{{url('storeLulusTPA/'.$id)}}">
 			{{csrf_field()}}
 			
 			<div class="row">
 				<div class="col-25">
-					<label for="jbPUB">Tahun Seleksi</label>
+					<label>Tambah Lulus TPA</label>
 				</div>
-				
 				<div class="col-75">
-					<a href="{{url('tambahTahun')}}" class="btn btn-info">Add</a>
-					<br><br>
-
-					<select id="tahun" name="tahun">
-						<option value="0"> --Tahun Seleksi--</option>
-						@foreach($tahun as $data)
-						<option value="{{$data->id}}">{{$data->tahun}}</option>
-						@endforeach
+					<label for="Sekolah">Nama</label>
+					<input type="text" class="form-control" placeholder="Nama" name="nama">
+				</div>
+				<div class="col-75">
+					<label for="Sekolah">Jenis Kelamin</label>
+					<select class="form-control" name="jk">
+						<option>Laki - Laki</option>
+						<option>Perempuan</option>
 					</select>
 				</div>
+				<div class="col-75">
+					<label for="Sekolah">Tempat Lahir</label>
+					<input type="text" class="form-control" placeholder="Tempat Lahir" name="tempat">
+				</div>
+				<div class="col-75">
+					<label for="Sekolah">Tanggal Lahir</label>
+					<input type="date" class="form-control" placeholder="tgl" name="tanggal">
+				</div>
+				<div class="col-75">
+					<label for="Sekolah">Daerah</label>
+					<input type="text" class="form-control" placeholder="Daerah" name="daerah">
+				</div>
+				<div class="col-75">
+					<label for="Sekolah">Sekolah</label>
+					<input type="text" class="form-control" placeholder="Sekolah" name="sekolah">
+				</div>
+
+				<div class="col-75">
+					<label for="Sekolah">Alamat</label>
+					<input type="text" class="form-control" placeholder="Alamat" name="alamat">
+				</div>
+				<div class="col-75">
+					<label for="Sekolah">No_Hp</label>
+					<input type="number" class="form-control" placeholder="No Hp" name="no_hp">
+				</div>
+				
+
 			</div>
 			<br>
 			<div class="row" align="center">
-				<input type="submit" value="Cari">
+				<input type="submit" value="Submit">
 			</div>
 		</form>
-		<br><br>
-		<div class="row" @if($lempar=="") style="display: none;" @endif style="padding-left: 100px;">
-			<a href="{{url('dataTPA/'.$lempar)}}" class="btn btn-info">TPA</a>
-			<a href="{{url('dataPsikotes/'.$lempar)}}" class="btn btn-info">Psikotes</a>
-			<a href="{{url('dataWawancaraAkhir/'.$lempar)}}" class="btn btn-info">Wawancara Akhir</a>
-			<a href="{{url('dataFinal/'.$lempar)}}" class="btn btn-info">Penandatanganan MOU</a>
-		</div>
 	</div>
+</div>
 
 @include('tampilan.foot')
 

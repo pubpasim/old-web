@@ -90,16 +90,7 @@
 			<div class="col-75">
 				<label for="jbPUB">Kegiatan</label>
 				<input type="text" class="form-control" name="keterangan" value="{{$data->keterangan}}">
-			</div>
-			<div class="col-75">
-				<label for="jbPUB">Nama Alumni</label>
-				<select id="id _alumni" name="id_alumni">
-					<option value> --Nama Alumni--</option>
-					@foreach($ang as $data)
-						<option value="{{$data->id_mahasiswa}}">{{$data->angkatan}} - {{$data->nama_angkatan}} - {{$data->nama}}</option>
-					@endforeach
-				</select>
-			</div>
+			</div>			
 
 		</div>
 		<br>
@@ -109,5 +100,4 @@
 	</form>
 	@endforeach
 </div>
-
 @include('tampilan.foot')

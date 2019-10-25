@@ -4,34 +4,29 @@
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="panel panel-default">
-				<div class="panel-heading">Tabel TPA</div>
+				<div class="panel-heading">Tabel Dokumen</div>
 
 				<div class="panel-body">
-					<a href="{{url('tambahTPA/'.$id)}}" class="btn btn-info">Add</a>
-					<a href="{{url('hasilSeleksi')}}" class="btn btn-info">Back</a>
+					<a href="{{url('tambahFormulir/')}}" class="btn btn-info">Add</a>					
 					<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 						<thead>
 							<tr>
 								<th>No</th>
-								<th>Daerah</th>
-								<th>Sekolah Tempat Test</th>
-								<th>Lulus</th>
-								<th>Tidak Lulus</th>
+								<th>Dokumen</th>
+								<th>Keterangan</th>
 								<th>Aksi</th>
 							</tr>
 						</thead>
 						<tbody>
 							@php $no = 1; @endphp
-							@foreach($tpa as $data)
+							@foreach($formulir as $data)
 							<tr>
 								<td>{{ $no++}}</td>
-								<td>{{ $data->daerah}}</td>
-								<td>{{ $data->sekolah}}</td>								
-								<td><a href="{{url('lulusTPA/'.$data->id_tpa)}}">{{ $data->jml_lulus}}</a></td>
-								<td>{{ $data->jml_gagal}}</td>
-								<td>
-									<a href="{{url('editTPA/'.$data->id_tpa)}}" class="btn btn-info">Edit</a>
-									<a href="{{url('hapusTPA/'.$data->id_tpa)}}" class="btn btn-info">Hapus</a>
+								<td><embed width="600" height="450" src="{{url('file')}}/{{($data->dokumen) }}" type="application/pdf"></embed></td>
+								
+								<td>{{ $data->keterangan}}</td>
+								<td>									
+									<a href="{{url('hapusFormulir/'.$data->id)}}" class="btn btn-info">Hapus</a>
 								</td>
 							</tr>
 							@endforeach
@@ -44,3 +39,6 @@
 </div>
 
 @include('tampilan.foot')
+
+
+<embed width="600" height="450" src="mypdf.pdf" type="application/pdf"></embed>

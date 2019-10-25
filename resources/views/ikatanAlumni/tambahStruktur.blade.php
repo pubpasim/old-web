@@ -103,17 +103,16 @@
 						@endforeach
 					</select>
 				</div>
-
-				<div class="col-75">
-					<label for="jbPUB">Masa Bakti</label>
-					<input type="text" class="form-control" name="masa_bakti" placeholder="Ex. 2019 - 2020">
-				</div>
-
+			<div class="col-75">
+				<label for="jbPUB">Masa Bakti</label>
+				<input type="text" class="form-control" name="masa_bakti" placeholder="Ex. 2019 - 2020">
 			</div>
-			<br>
-			<div class="row" align="center">
-				<input type="submit" value="Simpan">
-			</div>
-		</form>
-	</div>
+
+		</div>
+		<br>
+		<div class="row" align="center">
+			<input type="submit" value="Simpan">
+		</div>
+	</form>
+</div>
 @include('tampilan.foot')

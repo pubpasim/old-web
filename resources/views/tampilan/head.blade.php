@@ -65,6 +65,7 @@
 					<li><a href="{{url('/detjadwal_ppmb')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Jadwal</a></li>
 					<li><a href="{{url('hasilSeleksi')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Hasil Seleksi</a></li>
 					<li><a href="{{url('dokumentasi')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Dokumentasi</a></li>
+					<li><a href="{{url('uploadFormulir')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Upload Formulir</a></li>
 				</ul>
 			</li>
 			<li class="dropdown " > 

@@ -4,31 +4,30 @@
 		<thead>
 			<tr>
 				<th>No</th>
-				<th>Nama Peserta</th>
+				<th>Nama</th>
 				<th>Jenis Kelamin</th>
 				<th>TTL</th>
-				<th>Jurusan Pilihan</th>
-				<th>Asal Sekolah</th>
 				<th>Asal Daerah</th>
-				<th>No Hp</th>												
+				<th>Asal Sekolah</th>
+				<th>Alamat</th>
+				<th>No Hp</th>				
 			</tr>
 		</thead>
 		<tbody>
 			@php $no = 1; @endphp
-			@foreach($survei as $data)
+			@foreach($tpa as $data)
 			<tr>
 				<td>{{ $no++}}</td>
 				<td>{{ $data->nama}}</td>
 				<td>{{ $data->jk}}</td>
 				<td>{{ $data->tempat}}, {{ $data->tanggal}}</td>
-				<td>{{ $data->jurusan}}</td>
-				<td>{{ $data->asal_sekolah}}</td>
-				<td>{{ $data->asal_daerah}}</td>
+				<td>{{ $data->daerah}}</td>
+				<td>{{ $data->sekolah}}</td>
+				<td>{{ $data->alamat}}</td>
 				<td>{{ $data->no_hp}}</td>				
 			</tr>
 			@endforeach
 		</tbody>						    
 	</table>
-
-	@include('User.footer')
 </div>
+@include('User.footer')

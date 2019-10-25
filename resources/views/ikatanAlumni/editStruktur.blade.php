@@ -116,4 +116,4 @@
 	@endforeach
 </div>
 @include('tampilan.foot')
-	
+

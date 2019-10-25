@@ -72,40 +72,25 @@
 		}
 	}
 </style>
+<div id="form1">
 	<div class="container">
-		<form method="POST" action="{{url('hasil2')}}">
+		<form method="POST" action="{{url('storeFormulir')}}" enctype="multipart/form-data">
 			{{csrf_field()}}
-			
-			<div class="row">
-				<div class="col-25">
-					<label for="jbPUB">Tahun Seleksi</label>
-				</div>
-				
 				<div class="col-75">
-					<a href="{{url('tambahTahun')}}" class="btn btn-info">Add</a>
-					<br><br>
-
-					<select id="tahun" name="tahun">
-						<option value="0"> --Tahun Seleksi--</option>
-						@foreach($tahun as $data)
-						<option value="{{$data->id}}">{{$data->tahun}}</option>
-						@endforeach
-					</select>
+					<label for="tahun">Formulir </label>
+					<input type="file" class="form-control" name="dokumen">
 				</div>
-			</div>
-			<br>
-			<div class="row" align="center">
-				<input type="submit" value="Cari">
+
+				<div class="col-75">
+					<label for="jbPUB">Kegiatan</label>
+					<textarea class="form-control" name="keterangan"></textarea>					
+				</div>
+				<div class="row" style="padding-left: 110px;padding-top: 10px;">
+					<button type="submit" class="btn btn-info">Submit</button>
+				</div>
 			</div>
 		</form>
-		<br><br>
-		<div class="row" @if($lempar=="") style="display: none;" @endif style="padding-left: 100px;">
-			<a href="{{url('dataTPA/'.$lempar)}}" class="btn btn-info">TPA</a>
-			<a href="{{url('dataPsikotes/'.$lempar)}}" class="btn btn-info">Psikotes</a>
-			<a href="{{url('dataWawancaraAkhir/'.$lempar)}}" class="btn btn-info">Wawancara Akhir</a>
-			<a href="{{url('dataFinal/'.$lempar)}}" class="btn btn-info">Penandatanganan MOU</a>
-		</div>
-	</div>
+</div>
+</div>	@include('tampilan.foot')
 
-@include('tampilan.foot')
-
+	
