@@ -1,18 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use Illuminate\Http\Request;
 
 class pelatihanController extends Controller
 {
-     * Display a listing of the resource.
+     /* Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $pelatihan = DB::table('tb_pelatihan')->get();
+        return view('pelatihan.index',compact('pelatihan'));
     }
 
     /**
@@ -22,7 +23,8 @@ class pelatihanController extends Controller
      */
     public function create()
     {
-        //
+        $pelatihan = DB::table('tb_pelatihan')->get();
+        return view('pelatihan.tambah',compact('pelatihan'));
     }
 
     /**
@@ -33,7 +35,11 @@ class pelatihanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('tb_pelatihan')->insert
+        ([
+            'pelatihan'=>$request->pelatihan
+        ]);
+        return redirect('/');
     }
 
     /**
@@ -53,9 +59,10 @@ class pelatihanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id_pelatihan)
     {
-        //
+        $pelatihan = DB::table('tb_pelatihan')->where('id_pelatihan',$id_pelatihan)->get();
+        return view('pelatihan.edit',compact('pelatihan'));
     }
 
     /**
@@ -65,9 +72,12 @@ class pelatihanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_pelatihan)
     {
-        //
+        $pelatihan = DB::table('tb_pelatihan')->where('id_pelatihan',$id_pelatihan)->update([
+            'pelatihan'=>$request->tb_pelatihan
+        ]);
+        return redirect('/');
     }
 
     /**
@@ -76,7 +86,8 @@ class pelatihanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_pelatihan)
     {
-        //
+        DB::table('tb_pelatihan')->where('id_peltihan',$id_peltihan)->delete();
+        return redirect('pelatihan.index');
     }}
