@@ -27,6 +27,7 @@
   <link href="/css/slide.css" rel="stylesheet">
   <link href="/css/struktur.css" rel="stylesheet">
   <link href="/css/footer.css" rel="stylesheet">
+  <link href="/css/chat.css" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 
@@ -62,7 +63,7 @@
           <div class="col-6">
             <div class="top-header-content">
               <a href="{{url('https://wa.me/6285722752570')}}" target="_blank"><i class="fa fa-whatsapp"></i> <span>0857-2275-2570</span></a>
-              <a href="#"><i class="icon_mail"></i> <span>CONTACT US</span></a>
+              <a href="{{url("")}}"><i class="icon_mail"></i> <span>CONTACT US</span></a>
             </div>
           </div>
 
