@@ -72,7 +72,6 @@
 		}
 	}
 </style>
-<div id="form1">
 	<div class="container">
 		<form method="POST" action="{{url('storeDokAlumni')}}" enctype="multipart/form-data">
 		{{csrf_field()}}
@@ -90,57 +89,12 @@
 				<label for="jbPUB">Kegiatan</label>
 				<input type="text" class="form-control" name="keterangan">
 			</div>
-			<div class="col-75">
-				<label for="jbPUB">Nama Alumni</label>
-				<select id="id _alumni" name="id_alumni">
-					<option value> --Nama Alumni--</option>
-					@foreach($ang as $data)
-						<option value="{{$data->id_mahasiswa}}">{{$data->angkatan}} - {{$data->nama_angkatan}} - {{$data->nama}}</option>
-					@endforeach
-				</select>
-			</div>
-
-			<!-- <div class="form-group">
-                            <label class="control-label col-md-3">Product Code</label>
-                                <div class="col-md-6">
-                                    <select id="product_code_detail" class="form-control" name="product_id">
-                                        <option disabled selected value> -- Select Production Code -- </option>
-                                    </select>
-                                </div>
-                            </div> -->
-
 			
 		</div>
 		<br>
 		<div class="row" align="center">
 			<input type="submit" value="Simpan">
-		</div>\
+		</div>
 	</form>
 </div>
-</div>
-<body >
-	<script src="/lumino/js/jquery-1.11.1.min.js"></script>
-	<script src="/lumino/js/bootstrap.min.js"></script>
-	<script src="/lumino/js/chart.min.js"></script>
-	<script src="/lumino/js/chart-data.js"></script>
-	<script src="/lumino/js/easypiechart.js"></script>
-	<script src="/lumino/js/easypiechart-data.js"></script>
-	<script src="/lumino/js/bootstrap-datepicker.js"></script>
-	<script src="/lumino/js/bootstrap-table.js"></script>
-	<script>
-		!function ($) {
-			$(document).on("click","ul.nav li.parent > a > span.icon", function(){		  
-				$(this).find('em:first').toggleClass("glyphicon-minus");	  
-			}); 
-			$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
-		}(window.jQuery);
-
-		$(window).on('resize', function () {
-		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
-		})
-		$(window).on('resize', function () {
-		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
-		})
-	</script>	
-</body>
-	
+@include('tampilan.foot')

@@ -80,7 +80,6 @@
 
 	}
 </style>
-<div id="form1">
 	<h2>Edit Data Infaq</h2>
 	<div class="container">
 		<form method="POST" action="{{url('editInfaq/'.$infaq->id_infaq)}}">
@@ -121,6 +120,6 @@
 			
 		</form>
 	</div>
-</div>
+
 
 @include('tampilan.foot')

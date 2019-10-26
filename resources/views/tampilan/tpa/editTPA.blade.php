@@ -72,7 +72,6 @@
 		}
 	}
 </style>
-<div id="form1">
 	<div class="container">
 		@foreach($tpa as $data)
 		<form method="POST" action="{{url('updateTPA/'.$id)}}">
@@ -82,7 +81,16 @@
 				<div class="col-25">
 					<label>Edit TPA</label>
 				</div>
-				<input hidden value="{{$data->id_tpa}}" type="text" class="form-control" placeholder="Nama Peserta" name="id_tpa">
+				<div class="col-75">
+					<label for="Sekolah">Id</label>
+					<input readonly="" value="{{$data->id_tpa}}" type="text" class="form-control" placeholder="Id" name="id_tpa">
+				</div>
+
+				
+				<div class="col-75">
+					<label for="Sekolah">Daerah</label>
+					<input value="{{$data->daerah}}" type="text" class="form-control" placeholder="Daerah" name="daerah">
+				</div>
 				<div class="col-75">
 					<label for="Sekolah">Sekolah</label>
 					<input value="{{$data->sekolah}}" type="text" class="form-control" placeholder="Sekolah" name="sekolah">
@@ -108,6 +116,5 @@
 		</form>
 		@endforeach
 	</div>
-</div>
 @include('tampilan.foot')
 

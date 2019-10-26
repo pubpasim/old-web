@@ -115,15 +115,7 @@ input[type=submit]:hover {
 @include('tampilan.foot')
 =======
 @include('tampilan.head')
-<style type="text/css">
-	#form1{
-		width: 750px;
-		height: 500px;
-
-		margin-left: 300px;
-	}
-</style>
-<div id="form1">	
+	
 	<div class="kiri">
 		<h1>Angkatan</h1>
 		<hr>
@@ -169,7 +161,6 @@ input[type=submit]:hover {
 			</tbody>
 		</table>
 	</div>
-</div>
 
 @include('tampilan.foot')
 <script type="text/javascript">
