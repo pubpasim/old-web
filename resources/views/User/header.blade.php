@@ -1,6 +1,5 @@
  <!DOCTYPE html>
  <html lang="en">
-
  <head>
   <meta charset="UTF-8">
   <meta name="description" content="">
@@ -9,6 +8,10 @@
 
   <!-- Title -->
   <title>Pemberdayaan Umat Berkelanjutan</title>
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
   <!-- Favicon -->
   <link rel="icon" href="./img/core-img/favicon.png"> 
@@ -23,7 +26,7 @@
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
   <link href="/lumino/css/bootstrap-table.css" rel="stylesheet">
-
+  <link href="/css/chat.css" rel="stylesheet">
   <link href="/css/slide.css" rel="stylesheet">
   <link href="/css/struktur.css" rel="stylesheet">
   <link href="/css/footer.css" rel="stylesheet">
@@ -32,6 +35,21 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style type="text/css">
+    #pesan{
+      width: 400px;
+      height: 35px;
+      border-radius: 5px;
+      border-style: groove;
+      padding: 20px;
+      margin: 10px;
+    }
+    #text{
+      margin: 10px;
+      width: 400px;
+      height: 250px;
+    }
+  </style>
 
 </head>
 
@@ -61,11 +79,21 @@
 
           <div class="col-6">
             <div class="top-header-content">
+<<<<<<< HEAD
               <a href="{{url('https://wa.me/6285722752570')}}" target="_blank"><i class="fa fa-whatsapp"></i> <span>0857-2275-2570</span></a>
               <a href="#"><i class="icon_mail"></i> <span>CONTACT US</span></a>
+=======
+              <a href="#"><i class="fa fa-whatsapp"></i> <span>0857-2275-2570</span></a>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <i class="icon_mail"></i> <span>Chatt with us</span>
+              </button>
+>>>>>>> 9b251893e126ac19ce6cc301746f3f0576406d9f
             </div>
           </div>
 
+
+          <!-- Modal -->
+          
           
 
         </div>
@@ -87,7 +115,6 @@
             <div class="classy-navbar-toggler">
               <span class="navbarToggler"><span></span><span></span><span></span></span>
             </div>
-
 
                 <!-- Menu -->
                 <div class="classy-menu">
@@ -129,31 +156,50 @@
                               <li><a href="{{url('keg_ikatan_alumni')}}">-Dokumentasi</a></li>
                               <li><a href="{{url('legalitas')}}">-Legalitas</a></li>
                             </ul>
-
                           </li>
-                          <li><a href="{{url('totalAlumni')}}">-Total Alumni</a></li>
+                          <li><a href="{{url('totalAlumni')}}">-Total Alumni</a></li>                      
                         </ul>
-                      </li>
-                      <li><a href="{{url('pembinaPub')}}">Pembina PUB</a></li>
-                      
-                      
+                      </li>                    
+                      <li><a href="{{url('pembinaPub')}}">Pembina PUB</a></li>                  
                     </ul>
-
-                    <!-- Search -->
-                    <div class="search-btn ml-4">
-                      <i class="fa fa-search" aria-hidden="true"></i>
-                    </div>
-
-                    <!-- Book Now -->
-                    <div class="book-now-btn ml-3 ml-lg-5">
-                      <a href="{{url('login')}}">LOGIN<i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                    </div>
                   </div>
-                  <!-- Nav End -->
+                <!-- Search -->
+                <div class="search-btn ml-4">
+                  <i class="fa fa-search" aria-hidden="true"></i>
                 </div>
-              </nav>
+
+                <!-- Book Now -->
+                <div class="book-now-btn ml-3 ml-lg-5">
+                  <a href="{{url('login')}}">LOGIN<i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                </div>
+              </div>
+              <!-- Nav End -->
             </div>
-          </div>
+          </nav>
         </div>
-      </header>
+      </div>
+    </div>
+  </header>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"><b>Chatting with Us</b></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input id="pesan" type="text" name="nama" placeholder="Masukkan Nama"><br>
+          <input id="pesan" type="text" name="sekolah" placeholder="Masukkan Asal Sekolah"><br>
+          <input id="pesan" type="text" name="daerah" placeholder="Masukkan Asal Daerah"><br>
+          <textarea id="text" placeholder="Pertanyaan..."></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">keluar</button>
+          <button type="button" class="btn btn-primary">Kirim Pesan</button>
+        </div>
+      </div>
+    </div>
+  </div>
       <!-- Header Area End -->
