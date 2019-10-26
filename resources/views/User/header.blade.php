@@ -11,7 +11,8 @@
   <title>Pemberdayaan Umat Berkelanjutan</title>
 
   <!-- Favicon -->
-  <link rel="icon" href="./img/core-img/favicon.png">
+  <link rel="icon" href="./img/core-img/favicon.png"> 
+  <link rel="shortcut icon" href="/imgs/pub.png" />
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="/roberto-master/style.css">
@@ -98,7 +99,7 @@
                   <div class="classynav" >
                     <ul id="nav">
                       <li class="active"><a href="{{url('/')}}">Home</a></li>
-                      <li><a href="#">PPMB PUB</a>
+                      <li><a href="#" id="ppmb">PPMB PUB</a>
                         <ul class="dropdown">
                           <li><a href="{{url('organisasi_ppmb')}}">- Kepanitiaan PPMB</a></li>
                           <li><a href="{{url('jadwal_ppmb_user')}}">- Jadwal PPMB</a></li>
@@ -108,7 +109,7 @@
                           <li><a href="{{url('user_down_formulir')}}" target="_blank">- Download Formulir</a></li>
                         </ul>
                       </li>
-                      <li><a href="#">PUB Aktif</a>
+                      <li><a href="#" id="pub">PUB Aktif</a>
                         <ul class="dropdown">
                           <li><a href="{{url('pub_profile')}}">-Sekilas PUB</a></li>
                           <li><a href="{{url('organisasi_pub')}}">-Organisasi PUB</a></li>
@@ -118,7 +119,7 @@
 
                         </ul>
                       </li>
-                      <li><a href="#">Alumni PUB</a>
+                      <li><a href="#" id="alumni">Alumni PUB</a>
                         <ul class="dropdown">
                           <li><a href="{{url('user_alumni')}}">-Data Alumni PUB</a></li>
                           <li><a href="{{url('user_infaq')}}">-Data Infaq Alumni</a></li>

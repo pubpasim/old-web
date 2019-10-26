@@ -267,7 +267,7 @@
 				<p>Abdul Hafiz Tanjung,S.E.,M.Si.,AK.,CA</p>
 			</div>
 			<div id="ketua">
-				<div id="judul">KETUA PUB</div>
+				<div id="judul">KETUA ALUMNI</div>
 				@if($ketua2==0)
 				<p>data Kosong</p>
 				@else
