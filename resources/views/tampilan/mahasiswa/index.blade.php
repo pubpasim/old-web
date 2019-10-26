@@ -100,7 +100,7 @@
 			<h1>Daftar Mahasiswa PUB</h1>
 			<div class="container">
 				<a href="{{url('tambah/mahasiswa')}}"><button class="btn btn-primary" style=" background-color: #339966; width: 100%;"><svg class="glyph stroked plus sign" style="height: 30px;"><use xlink:href="#stroked-plus-sign"/></svg></button></a>
-				<table id="myTable">
+				<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 					<thead>
 						<tr>
 							<th>NIM</th>

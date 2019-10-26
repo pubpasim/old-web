@@ -200,7 +200,8 @@
     margin-bottom: 250px;
     line-height: 200%;
     font-family: century gothic;
-    font-size: 20pt;
+    font-size: 17pt;
+    text-align: center;
   }
   .alert{
     width: 93%;
