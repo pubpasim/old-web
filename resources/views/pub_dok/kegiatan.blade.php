@@ -95,10 +95,11 @@
 			<thead>
 				<tr>
 					<th>NO</th>
-					<th>KEGIATAN</th>
+					<th>ANGKATAN</th>
+					<th>KEGIATAN DIVISI</th>
 					<th>KETERANGAN</th>
-					<th>DKUMENTASI</th>
-					<th>AKSI</th>
+					<th>DOKUMENTASI</th>
+					
 				</tr>
 			</thead>
 			<tbody>
@@ -106,12 +107,15 @@
 				@foreach($kegiatan as $keg)
 				<tr>
 					<td>{{$no++}}</td>
-					<td>{{$keg->tema}}</td>
+						<td> Angkatan {{$keg->angkatan}}</td>
+						<td>{{$keg->tema}}</td>
 					<td>{{$keg->keterangan}}</td>
 					<td><img src="{{url('imgs/kegiatan')}}/{{$keg->file}}" width="200px"></td>
 					<td><a href="{{url('hapus/kegiatan/'.$keg->id_pubdok)}}"><button class="btn btn-primary" style="background-color: red;">Hapus</button></a>&nbsp;&nbsp;<a href="{{url('edit/kegiatan/'.$keg->id_pubdok)}}"><button class="btn btn-primary">Edit</button></a></td>
 				</tr>
 				@endforeach
+				
+            </select>
 			</tbody>
 		</table>
 	</div>

@@ -433,8 +433,42 @@ class userController extends Controller
     
     public function kegiatanPub()
     {
-        $keg=DB::table('tb_pubdok')->get();
-        return view('user.kegiatanPub',compact('keg'));
+        $keg=DB::table('tb_pubdok')
+        ->join('tb_angkatan','tb_pubdok.id_angkatan','=','tb_angkatan.id_angkatan')
+        ->select('tb_pubdok.id_pubdok','tb_pubdok.file','tb_pubdok.keterangan','tb_pubdok.tema')
+        ->get();
+        $angkatan=DB::table('tb_angkatan')->orderby('angkatan')
+        ->where('angkatan','>=','16')
+        ->get();
+        $lempar='';
+
+        return view('user.kegiatanPub',compact('angkatan','keg','lempar'));
+    }
+    public function kegiatanPub_filter(Request $request,$id,$div)
+    {
+        $keg=DB::table('tb_pubdok')
+        ->join('tb_angkatan','tb_pubdok.id_angkatan','=','tb_angkatan.id_angkatan')
+        ->select('tb_pubdok.id_angkatan','tb_pubdok.id_pubdok','tb_pubdok.file','tb_pubdok.keterangan','tb_pubdok.tema')
+        ->where('tb_pubdok.id_angkatan',$id)->where('tb_pubdok.tema',$div)->get();
+        return view('user.tampil_pilihdiv',compact('angkatan','keg','lempar','pendidikan','magang','kesejahteraan','keasramaan','kerohanian','kesehatan','kebersihan','div'));
+    }
+
+    public function kegiatanPub_pilihdiv(Request $request){
+        $keg=DB::table('tb_pubdok')
+        ->join('tb_angkatan','tb_pubdok.id_angkatan','=','tb_angkatan.id_angkatan')
+        ->select('tb_pubdok.id_angkatan','tb_pubdok.id_pubdok','tb_pubdok.file','tb_pubdok.keterangan','tb_pubdok.tema')
+        ->where('tb_pubdok.id_angkatan',$request->select);
+        $pendidikan=$keg->where('tb_pubdok.tema','Divisi Pendidikan')->first();
+        $magang=$keg->where('tb_pubdok.tema','Divisi Magang')->first();
+        $kesejahteraan=$keg->where('tb_pubdok.tema','Divisi Kesejahteraan')->first();
+        $keasramaan=$keg->where('tb_pubdok.tema','Divisi Keasramaan')->first();
+        $kerohanian=$keg->where('tb_pubdok.tema','Divisi Kerohanian')->first();
+        $kesehatan=$keg->where('tb_pubdok.tema','Divisi Kesehatan')->first();
+        $kebersihan=$keg->where('tb_pubdok.tema','Divisi Kebersihan')->first();        
+        $angkatan=DB::table('tb_angkatan')->orderby('angkatan')->get();
+        $keg=$keg->get();
+        $lempar='bebas';
+        return view('user.pilihdivisi',compact('angkatan','keg','lempar','pendidikan','magang','kesejahteraan','keasramaan','kerohanian','kesehatan','kebersihan'));
     }
     public function OrgIkatanAlumni()
     {

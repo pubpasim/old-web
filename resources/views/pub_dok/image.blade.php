@@ -95,10 +95,31 @@
                     <input id="uploadFile" type="file" name="foto">
                 </div>
             </div>
+            
+            <div class="row">
+                <div class="col-25">
+                    <label for="spkw">Angkatan</label>
+            </div>
+
+            <div class="row">
+                    <div class="col-25">
+            <select name="select"  >
+                <option value="" disabled>--Pilih Angkatan--</option>
+                @foreach($angkatan as $data)
+                <option value="{{$data->id_angkatan}}">
+                    Angkatan {{ $data->angkatan }}
+                </option>
+                @endforeach
+                
+            </select>
+            </div>
+            </div>
+
             <div class="row">
                 <div class="col-25">
                     <label for="spkw">Divisi</label>
-                </div>
+            </div>
+
                 <div class="col-75">
                     <select id="kegiatan" name="kegiatan">
                         <option disabled="false"> --pilih Divisi--</option>

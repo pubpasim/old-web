@@ -68,7 +68,7 @@
             <li><a href="{{url('detorg_pub/index')}}">Organisasi PUB</a></li>
             <li><a href="{{url('user/mahasiswa')}}">Mahasiswa PUB</a></li>
             <li><a href="{{url('pelatihan/index')}}">Pelatihan PUB</a></li>
-            <li><a href="{{url('kegiatan/index')}}">Kegiatan PUB</a></li>
+            <li><a href="{{url('kegiatanPub')}}">Kegiatan PUB</a></li>
           </ul>
         </li>
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Alumni PUB <span class="caret"></span></a>

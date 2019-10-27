@@ -184,6 +184,7 @@ Route::get('/pub_dok/upload', 'pubDokController@upload');
 Route::post('/pub_dok/proses', 'pubDokController@proses_upload');
 Route::get('tambahTahun', 'hasilController@tambahTahun');
 
+
 Route::get('dokumentasiPub','dokumentasiPubController@index');
 Route::get('tambah_pubdok','dokumentasiPubController@create');
 Route::post('simpan/kegiatan','dokumentasiPubController@store');
@@ -256,6 +257,8 @@ Route::get('pelatihan','userController@pelatihan');
 Route::get('pelatihan_data','userController@pelatihan_data');
 
 Route::get('pub_dok','userController@kegiatanPub');
+Route::get('pub_dok/kegiatan','dokumentasiPubController@index');
+
 Route::get('hasilSeleksi','userController@hasilSeleksi');
 Route::post('hasilSeleksi','userController@tampilSeleksi');
 Route::get('user_tpa/{x}','userController@user_tpa');
@@ -282,7 +285,9 @@ Route::get('fdmljtvb', 'userController@materifdmvbljt');
 Route::get('fdmljtjava', 'userController@materifdmjavaljt');
 Route::get('totalAlumni', 'userController@totalAlumni');
 
-
+Route::get('kegiatanPub','userController@kegiatanPub');
+Route::post('kegiatanPub/pilihdiv','userController@kegiatanPub_pilihdiv');
+Route::get('kegiatanPub/filter/{x}/{y}','userController@kegiatanPub_filter');
 
 //================================ADMIN ALUMNI=============================//
 Route::get('admin/alumni/{x}','alumni_adminController@index');
