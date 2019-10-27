@@ -72,7 +72,6 @@
 		}
 	}
 </style>
-<div id="form1">
 	<div class="container">
 		@foreach($tamp as $dataxxx)
 		<form method="POST" action="{{url('updateStrukAlumni/'.$dataxxx->id_ikatan)}}">
@@ -116,6 +115,5 @@
 	</form>
 	@endforeach
 </div>
-</div>
 @include('tampilan.foot')
-	
+

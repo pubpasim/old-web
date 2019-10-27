@@ -94,8 +94,6 @@
 		}
 
 	</style>
-
-	<div id="form1">
 		<h1>Daftar User</h1>
 		<div class="container">
 			<a href="{{url('tambahUser')}}"><button class="btn btn-primary" style=" background-color: #339966; width: 100%;"><svg class="glyph stroked plus sign" style="height: 30px;"><use xlink:href="#stroked-plus-sign"/></svg></button></a>
@@ -120,13 +118,12 @@
 						<td>{{$data->username}}</td>
 						<td>{{$data->password}}</td>
 						<td>{{$data->level}}</td>
-						<td><button type="reset" class="btn btn-default">Edit</button></td>
-						<td><button class="btn btn-primary" style="background-color: red;">Hapus</button></td>
+						<td><a href="{{url('editUser/'.$data->id_user)}}"><button type="reset" class="btn btn-default">Edit</button></a></td>
+						<td><a href="{{url('hapusUser/'.$data->id_user)}}"><button class="btn btn-primary" style="background-color: red;">Hapus</button></a></td>
 					</tr>
 					@endforeach
 				</tbody>
 			</table>
-		</div>
 	</div>
 
 @include('tampilan.foot')

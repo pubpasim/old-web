@@ -93,7 +93,6 @@
 	}
 
 </style>
-<div id="form1">
 	<h1>Daftar Data Angkatan</h1>
 	<div class="container">	
 		<form method="POST" action="{{URL('status_pub/store')}}" Class="form-horizontal" id="block-validate">
@@ -119,5 +118,4 @@
 			</div>
 		</form>
 	</div>
-</div>
-include('tampil.foot')
+@include('tampilan.foot')

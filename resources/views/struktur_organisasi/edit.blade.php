@@ -94,7 +94,6 @@
 
 		</style>
 
-		<div id="form1">
 			<h1>Edit Data</h1>
 			<div class="container">
 				@foreach ($organisasi as $data)
@@ -118,5 +117,4 @@
 				</form>
 				@endforeach
 			</div>
-		</div>
 		@include('tampilan.foot')

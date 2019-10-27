@@ -72,7 +72,7 @@
 		}
 	}
 </style>
-<div id="form1">
+
 	<div class="container">
 		@foreach($dok as $data)
 		<form method="POST" action="{{url('updateDokAlumni/'.$data->id)}}" enctype="multipart/form-data">
@@ -90,16 +90,7 @@
 			<div class="col-75">
 				<label for="jbPUB">Kegiatan</label>
 				<input type="text" class="form-control" name="keterangan" value="{{$data->keterangan}}">
-			</div>
-			<div class="col-75">
-				<label for="jbPUB">Nama Alumni</label>
-				<select id="id _alumni" name="id_alumni">
-					<option value> --Nama Alumni--</option>
-					@foreach($ang as $data)
-						<option value="{{$data->id_mahasiswa}}">{{$data->angkatan}} - {{$data->nama_angkatan}} - {{$data->nama}}</option>
-					@endforeach
-				</select>
-			</div>
+			</div>			
 
 		</div>
 		<br>
@@ -108,6 +99,5 @@
 		</div>
 	</form>
 	@endforeach
-</div>
 </div>
 @include('tampilan.foot')

@@ -93,8 +93,6 @@
 	}
 
 </style>
-
-<div id="form1">
 	<h1>Edit Data Sekolah</h1>
 	<div class="container">
 
@@ -119,5 +117,4 @@
 		</form>
 		@endforeach
 	</div>
-</div>
 include('tampil.foot')
