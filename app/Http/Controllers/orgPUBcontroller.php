@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
+USE App\orgPUBmodel;
 
 class orgPUBcontroller extends Controller
 {
@@ -60,9 +61,9 @@ class orgPUBcontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id_orgpub)
+    public function edit($id)
     {
-        $organisasi = DB::table('tb_orgpub')->where('id_orgpub',$id_orgpub)->get();
+        $organisasi=orgPUBmodel::where('id_orgpub',$id)->get();
         return view('struktur_organisasi/edit',compact('organisasi'));
     }
 
@@ -73,12 +74,10 @@ class orgPUBcontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_orgpub)
+    public function update(Request $request, $id)
     {
-        DB::table('tb_orgpub')->where('id_orgpub',$id_orgpub)->update([
-            'jabatan'=>$request->tb_orgpub
-        ]);
-        return redirect('struktur_organisasi/'.$id);
+         $organisasi=orgPUBmodel::where('id_orgpub',$id)->update(['jabatan_pub'=>$request->jabatan_pub]);
+        return redirect('struktur_organisasi/index');
     }
 
     /**
@@ -87,9 +86,9 @@ class orgPUBcontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id_orgpub)
+    public function destroy($id)
     {
-        DB::table('tb_orgpub')->where('id_orgpub',$id_orgpub)->delete();
-        return redirect('struktur_organisasi.index');
+        $organisasi=orgPUBmodel::where('id_orgpub',$id)->delete();
+        return redirect('struktur_organisasi/index');
     }
 }

@@ -50,7 +50,7 @@
 </head>
 <body>
 	<div id="design" >
-	<center><img src="{{url('imgs')}}/{{('pub.png') }}" width="30%"></center>
+	<center><img src="{{url('imgs')}}/{{('ljt.png') }}" width="30%"></center>
 	<h1 align="center">Lanjutan</h1>
 		<center><p>
 			<a href="{{url('fdmljtjava')}}"><button>Java</button></a>

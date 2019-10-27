@@ -96,8 +96,8 @@ Route::get('tampilan/daerah/createdae','daerahController@create');
 Route::get('struktur_organisasi/index','orgPUBController@index');
 Route::get('struktur_organisasi/tambah/','orgPUBController@create');
 Route::post('struktur_organisasi/store/','orgPUBController@store');
-Route::get('struktur_organisasi/edit/{x}','orgPUBController@edit');
-Route::post('struktur_organisasi/update/{y}','orgPUBController@update');
+Route::get('struktur_organisasi/{x}','orgPUBController@edit');
+Route::post('struktur_organisasi/{y}','orgPUBController@update');
 Route::get('struktur_organisasi/hapus/{z}','orgPUBController@destroy');
 
 Route::get('status_pub','statusPubController@index');

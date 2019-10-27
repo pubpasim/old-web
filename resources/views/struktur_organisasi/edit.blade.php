@@ -98,7 +98,7 @@
 			<h1>Edit Data</h1>
 			<div class="container">
 				@foreach ($organisasi as $data)
-				<form method="POST" action="{{URL('struktur_organisasi/store')}}" Class="form-horizontal" id="block-validate">
+				<form method="POST" action="{{URL('struktur_organisasi/'.$data->id_orgpub)}}" Class="form-horizontal" id="block-validate">
 					{{csrf_field()}}
 					<div class="row">
 						<div class="panel-heading">INPUT DATA</div>
@@ -108,7 +108,7 @@
 									
 									<div class="form-group">
 										<label>JABATAN</label>
-										<input type="text" name="jabatan" value="{{$data->jabatan_pub}}">
+										<input type="text" name="jabatan_pub" value="{{$data->jabatan_pub}}">
 									</div>
 									<button type="submit" name="submit" class="btn btn-primary">SIMPAN DATA </button>
 								</form>
