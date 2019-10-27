@@ -38,7 +38,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <style type="text/css">
     #pesan{
-      width: 400px;
+      width: 100%;
       height: 35px;
       border-radius: 5px;
       border-style: groove;
@@ -47,9 +47,10 @@
     }
     #text{
       margin: 10px;
-      width: 400px;
+      width: 100%;
       height: 250px;
     }
+    
   </style>
 
 </head>
@@ -131,16 +132,10 @@
             <div class="top-header-content">
               <a href="#"><i class="fa fa-whatsapp"></i> <span>0857-2275-2570</span></a>
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                <i class="icon_mail"></i> <span>Chatt with us</span>
+                <i class="icon_mail"></i> <span>Chat with us</span>
               </button>
             </div>
           </div>
-
-
-          <!-- Modal -->
-          
-          
-
         </div>
       </div>
     </div>
@@ -228,7 +223,7 @@
       </div>
     </div>
   </header>
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -250,4 +245,4 @@
       </div>
     </div>
   </div>
-      <!-- Header Area End -->  
+  <!-- Header Area End -->  

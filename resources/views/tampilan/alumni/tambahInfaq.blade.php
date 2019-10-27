@@ -80,44 +80,61 @@
 
 	}
 </style>
-	<div class="container">
-		<form method="POST" action="{{url('tambahInfaq')}}">
-			{{csrf_field()}}
-			<div class="row">
-				<div class="col-25">
-					<label for="angkatan">Angkatan</label>
-				</div>
-				<div class="col-75">
-					<select id="angkatan" name="angkatan">
-						<option value="0"> --pilih Angkatan--</option>
-						@foreach($angkatan as $data)
-						<option value="{{$data->id_angkatan}}">{{$data->angkatan}}</option>
-						@endforeach
+<div class="container">
+	<form method="POST" action="{{url('tambahInfaq')}}">
+		{{csrf_field()}}
+		<div class="row">
+			<div class="col-25">
+				<label for="bulan">Bulan</label>
+			</div>
+			<div class="col-75">
+				<select name="tahun">
+					<option>--Tahun--</option>
+					<?php 
+					$th=getdate();
+					$thn=$th['year'];
+					for ($x=2011; $x <= $thn; $x++) { 
+						echo "<option value='$x'>Tahun $x</option>";
+					}
+					?>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-25">
+				<label for="bulan">Bulan</label>
+			</div>
+			<div class="col-75">
+				<select name="bulan">
+					<option>--Bulan--</option>
+					<option value="January">January</option>
+					<option value="February">February</option>
+					<option value="Maret">Maret</option>
+					<option value="April">April</option>
+					<option value="Mei">Mei</option>
+					<option value="Juni">Juni</option>
+					<option value="Juli">Juli</option>
+					<option value="Agustus">Agustus</option>
+					<option value="September">September</option>
+					<option value="Oktober">Oktober</option>
+					<option value="November">November</option>
+					<option value="Desember">January</option>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-25">
+				<label for="daerah">Total Infaq</label>
+			</div>
+			<div class="col-75">
+				<input id="inp" type="number" name="total" placeholder="Total Infaq...">
+			</div>
+		</div>
+		<div class="row" style="margin-top: 15px;">
+			<input type="submit" value="Simpan">
+		</div>
 
-					</select>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="bulan">Periode</label>
-				</div>
-				<div class="col-75">
-					<input id="inp" type="month" id="periode" name="periode">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="daerah">Total Infaq</label>
-				</div>
-				<div class="col-75">
-					<input id="inp" type="number" name="total" placeholder="Total Infaq...">
-				</div>
-			</div>
-			<div class="row" style="margin-top: 15px;">
-				<input type="submit" value="Simpan">
-			</div>
-			
-		</form>
-	</div>
+	</form>
+</div>
 
 @include('tampilan.foot')
