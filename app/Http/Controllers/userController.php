@@ -17,6 +17,74 @@ class userController extends Controller
 
     public function index()
     {
+     $kegiatan=DB::table('tb_pubdok')->orderby('id_pubdok','DESC')->limit('3')->get();
+     $ppmb=DB::table('tb_dokumentasi')->orderby('id_dok','DESC')->limit('10')->get();
+     return view('user.index',compact('kegiatan','ppmb'));
+ }
+ public function hasilSeleksi()
+ {
+    $tpa="";
+    $lempar="";
+    $tahun = DB::table('tb_tahunSel')->get();
+    return view('user.hasilSeleksi',compact('tahun','lempar','tpa'));
+}
+public function tampilSeleksi(Request $request)
+{
+    $tpa="";
+    $lempar = $request->tahun;
+    $tahun = DB::table('tb_tahunSel')->get();
+    return view('user.hasilSeleksi',compact('tahun','lempar','tpa'));
+}
+public function user_tpa($id)
+{   
+    $tpa = DB::table('tb_tpa')->where('id_tahun',$id)->get();
+    return view('user.user_tpa',compact('tpa','id'));
+}
+public function user_survei($id)
+{
+    $survei = DB::table('tb_survei')->where('id_tahun3',$id)->get();
+    return view('user.user_survei',compact('survei','id'));
+}
+public function user_psikotes($id)
+{
+    $psi = DB::table('tb_psikotest')->where('id_tahun2',$id)->get();
+    return view('user.user_psikotes',compact('psi','id'));
+}
+public function user_final($id)
+{
+    $final = DB::table('tb_final')->where('id_tahun4',$id)->get();
+
+    return view('user.user_final',compact('final'));
+}
+public function user_infaq()
+{
+    $lempar="";
+    $th=getdate();
+    $thn=$th['year'];
+    $data1=DB::table('tb_infaq')
+    ->select('tahun_infaq',\DB::raw('SUM(total_infaq) as total'))
+    ->groupBy('tahun_infaq')
+    ->get();
+    
+    $data2=DB::table('tb_infaq')->where('tahun_infaq',$thn)
+    ->get();
+    
+    return view('user.user_infaq',compact('data1','data2','thn','lempar'));
+}
+public function infaq_bulan(Request $request)
+{
+    $data1=DB::table('tb_infaq')
+    ->select('tahun_infaq',\DB::raw('SUM(total_infaq) as total'))
+    ->groupBy('tahun_infaq')
+    ->get();
+
+    $lempar="chartContainer1";
+    $thn=$request->select;
+    $data2=DB::table('tb_infaq')
+    ->where('tahun_infaq',$request->select)
+    ->get();
+    return view('user.user_infaq',compact('data2','data1','thn','lempar'));
+=======
        $kegiatan=DB::table('tb_pubdok')->orderby('id_pubdok','DESC')->limit('3')->get();
        $ppmb=DB::table('tb_dokumentasi')->orderby('id_dok','DESC')->limit('10')->get();
         return view('user.index',compact('kegiatan','ppmb'));
@@ -102,6 +170,7 @@ public function user_infaq()
     ->select('tb_infaq.id_infaq','tb_infaq.periode','tb_infaq.total_infaq','tb_angkatan.angkatan')
     ->get();
     return view('user.user_infaq',compact('infaq'));
+>>>>>>> 9b251893e126ac19ce6cc301746f3f0576406d9f
 }
 public function user_alumni()
 {
@@ -128,6 +197,16 @@ public function user_alumniView(request $request)
     ->join('tb_orgppmb', 'tb_mahasiswa.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
     ->join('tb_statusPub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statusPub.id_statusPub')
     ->join('tb_jurusan', 'tb_mahasiswa.id_jur', '=', 'tb_jurusan.id_jur')
+    ->select('tb_mahasiswa.nama','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status')
+    ->where('tb_statusPub.status','Alumni')
+    ->where('tb_angkatan.angkatan',$request->select)->get();
+    return view('user.user_alumni',compact('angkatan','mahasiswa'));
+}
+    /**
+     * Display a listing of the resource. 
+     *
+     * @return \Illuminate\Http\Response
+     */
     ->select('tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status')
     ->where('tb_statusPub.status','Alumni')
     ->where('tb_angkatan.angkatan',$request->select)
@@ -139,6 +218,7 @@ public function user_alumniView(request $request)
         return view('user.user_alumni',compact('angkatan','mahasiswa'));
     }
 }
+
     public function login()
     {
         return view('user.login');
