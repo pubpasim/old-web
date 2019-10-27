@@ -7,8 +7,6 @@
 			}
 		</style>
 			<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
-
-		<div id="form1">
 			<a href="syarat_ketentuan/create"><button type="submit" class="btn btn-primary">Tambah Data </button></a>
 		<div class="row">
 			<div class="panel-heading">FROM PERSYARATAN DAN KETENTUAN

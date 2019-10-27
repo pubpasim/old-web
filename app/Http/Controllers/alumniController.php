@@ -211,8 +211,6 @@ class alumniController extends Controller
     public function kegiatanAlumni()
     {
         $dok =DB::table('tb_dok_alumni')
-        ->join('tb_mahasiswa','tb_mahasiswa.id_mahasiswa','tb_dok_alumni.id_mahasiswa')
-        ->join('tb_angkatan','tb_mahasiswa.id_angkatan','tb_angkatan.id_angkatan')
         ->get();
         return view('ikatanAlumni.kegiatanAlumni',compact('dok'));
     }
@@ -220,13 +218,7 @@ class alumniController extends Controller
 
     public function tambahDokAlumni()
     {
-        $ang=DB::table('tb_angkatan')            
-            ->join('tb_mahasiswa','tb_angkatan.id_angkatan','=','tb_mahasiswa.id_angkatan')
-            ->orderby('angkatan','ASC')
-            ->orderby('nama','ASC')
-            ->where('id_statusPub',2)
-            ->get();
-        return view('ikatanAlumni.tambahDokAlumni',compact('ang'));
+        return view('ikatanAlumni.tambahDokAlumni');
     }
     public function storeDokAlumni(Request $request)
     {
@@ -240,22 +232,15 @@ class alumniController extends Controller
         DB::table('tb_dok_alumni')
         ->insert([
             'foto' => $nama_file,            
-            'keterangan' => $request->keterangan,            
-            'id_mahasiswa' => $request->id_alumni,
+            'keterangan' => $request->keterangan,                        
         ]);
 
         return redirect('kegiatanAlumni');
     }
     public function editDokAlumni($id)
     {
-        $ang=DB::table('tb_angkatan')            
-            ->join('tb_mahasiswa','tb_angkatan.id_angkatan','=','tb_mahasiswa.id_angkatan')
-            ->orderby('angkatan','ASC')
-            ->orderby('nama','ASC')
-            ->where('id_statusPub',2)
-            ->get();
         $dok = DB::table('tb_dok_alumni')->where('id',$id)->get();
-        return view('ikatanAlumni.editDokAlumni',compact('dok','ang'));
+        return view('ikatanAlumni.editDokAlumni',compact('dok'));
     }
     public function updateDokAlumni(Request $request,$id){
         $file = $request->file('foto');
@@ -277,8 +262,7 @@ class alumniController extends Controller
 
                 DB::table('tb_dok_alumni')->where('id',$id)->update([
                     'foto' => $nama_file,
-                    'keterangan' => $request->keterangan,  
-                    'id_mahasiswa' => $request->id_alumni,       
+                    'keterangan' => $request->keterangan,                      
                 ]);   
             }
 

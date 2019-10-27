@@ -94,7 +94,6 @@
 
 	</style>
 
-	<div id="form1">
 		<div class="container">	
 			<form method="POST" action="{{URL('sekolahModel')}}" Class="form-horizontal" id="block-validate">
 				{{csrf_field()}}
@@ -115,5 +114,4 @@
 				</div>
 			</form>
 		</div>
-	</div>
 	@include('tampilan.foot')

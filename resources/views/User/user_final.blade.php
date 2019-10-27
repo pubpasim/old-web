@@ -6,12 +6,11 @@
 				<th>No</th>
 				<th>Nama Peserta</th>
 				<th>Jenis Kelamin</th>
+				<th>TTL</th>
 				<th>Jurusan Pilihan</th>
 				<th>Asal Sekolah</th>
 				<th>Asal Daerah</th>
-				<th>No Hp</th>
-				<th>Status</th>
-				<th>Aksi</th>
+				<th>No Hp</th>												
 			</tr>
 		</thead>
 		<tbody>
@@ -19,14 +18,13 @@
 			@foreach($final as $data)
 			<tr>
 				<td>{{ $no++}}</td>
-				<td>{{ $data->nama_peserta}}</td>
+				<td>{{ $data->nama}}</td>
 				<td>{{ $data->jk}}</td>
+				<td>{{ $data->tempat}}, {{ $data->tanggal}}</td>
 				<td>{{ $data->jurusan}}</td>
 				<td>{{ $data->asal_sekolah}}</td>
 				<td>{{ $data->asal_daerah}}</td>
-				<td>{{ $data->no_hp}}</td>
-				<td @if($data->status == "LULUS") class="btn btn-info" @endif @if($data->status == "TIDAK LULUS") class="btn btn-danger" @endif>{{ $data->status}}</td>
-				
+				<td>{{ $data->no_hp}}</td>				
 			</tr>
 			@endforeach
 		</tbody>					    

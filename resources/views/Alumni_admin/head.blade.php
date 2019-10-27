@@ -82,10 +82,10 @@ http://www.templatemo.com/tm-501-neaty
                             </li>
                             <input type="hidden" name="id_mhs" value="{{$data->id_mahasiswa}}">
                             <li class="tm-nav-item">
-                                <a href="{{url('admin/alumni/profile/'.$data->id_mahasiswa)}}" class="tm-nav-item-link">Profile</a>
+                                <a href="{{url('admin/alumni/profile/'.$data->id_mahasiswa)}}" class="tm-nav-item-link">Profil</a>
                             </li>
                             <li class="tm-nav-item">
-                                <a href="{{url('admin/alumni/aktivitas/'.$data->id_mahasiswa)}}" class="tm-nav-item-link">My Activity</a>
+                                <a href="{{url('admin/alumni/aktivitas/'.$data->id_mahasiswa)}}" class="tm-nav-item-link">Aktivitas Saya</a>
                             </li>
                             <li class="tm-nav-item">
                                 <a href="{{url('login')}}" class="tm-nav-item-link">Log out</a>

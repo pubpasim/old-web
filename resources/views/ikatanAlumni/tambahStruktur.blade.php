@@ -72,7 +72,7 @@
 		}
 	}
 </style>
-<div id="form1">
+
 	<div class="container">
 		<form method="POST" action="{{url('storeStrukAlumni')}}">
 			{{csrf_field()}}
@@ -87,7 +87,9 @@
 					<select id="id_mahasiswa" name="id_mahasiswa">
 						<option value> --Nama Alumni--</option>
 						@foreach($mhs as $data)
-						<option value="{{$data->id_mahasiswa}}">{{$data->angkatan}} - {{$data->nama_angkatan}} - {{$data->nama}}</option>
+						<option value="{{$data->id_mahasiswa}}">
+							{{$data->angkatan}} - {{$data->nama_angkatan}} - {{$data->nama}}
+						</option>
 						@endforeach
 					</select>
 				</div>		
@@ -101,18 +103,16 @@
 						@endforeach
 					</select>
 				</div>
-
-				<div class="col-75">
-					<label for="jbPUB">Masa Bakti</label>
-					<input type="text" class="form-control" name="masa_bakti" placeholder="Ex. 2019 - 2020">
-				</div>
-
+			<div class="col-75">
+				<label for="jbPUB">Masa Bakti</label>
+				<input type="text" class="form-control" name="masa_bakti" placeholder="Ex. 2019 - 2020">
 			</div>
-			<br>
-			<div class="row" align="center">
-				<input type="submit" value="Simpan">
-			</div>
-		</form>
-	</div>
+
+		</div>
+		<br>
+		<div class="row" align="center">
+			<input type="submit" value="Simpan">
+		</div>
+	</form>
 </div>
 @include('tampilan.foot')

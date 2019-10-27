@@ -23,6 +23,11 @@
     });
   </script>
 </head>
+@php
+  Session::forget('level');
+  Session::forget('username');
+  Session::forget('password');
+@endphp
 <link href="/css/slide.css" rel="stylesheet">
 <link href="/css/footer.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-2.1.0.min.js" ></script>
@@ -31,6 +36,11 @@
     <form action="{{url('login/masuk')}}" method="POST">
       {{csrf_field()}}
       <div id="form">
+        @if(\Session::has('alert'))
+        <div class="alert">
+          {{Session::get('alert')}}!!
+        </div>
+        @endif
         <div class="logo">
           <img src="{{url('imgs')}}/{{('pub web.png') }}" width="100%" style="margin-left: 30px;">
         </div>

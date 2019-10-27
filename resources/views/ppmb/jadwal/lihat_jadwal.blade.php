@@ -1,13 +1,5 @@
 @include('tampilan.head')
-<style type="text/css">
-	#form1{
-		width: 750px;
-		height: 500px;
-		margin-left: 300px;
-		}
-	</style>
-	<div id="form1">
-		
+
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">Panitia PPMB PUB</h1>
@@ -62,8 +54,5 @@
 			</div>
 		</div>
 	</div>
-	<!--/.row-->	
-
-</div><!--/.main-->
 
 @include('tampilan.foot')

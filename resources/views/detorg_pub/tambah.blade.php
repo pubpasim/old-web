@@ -94,7 +94,6 @@
 
 </style>
 
-<div id="form1">
 	<h1>Daftar Mahasiswa PUB</h1>
 	<div class="container">
 		<form method="POST" action="{{url('detorg_pub/store')}}" Class="form-horizontal" id="block-validate">
@@ -160,6 +159,5 @@
 				</div>
 			</form>
 		</div>
-	</div>
 
 	@include('tampilan.foot')

@@ -1,7 +1,7 @@
 @include('User.header')
 <div id="design">
 	
-	<form method="POST" action="{{url('tampil/angkatan')}}">
+	<form method="POST" action="{{url('user/mahasiswa')}}">
 		{{csrf_field()}}
 		<h2>Pilih Angkatan</h2>
 		
@@ -26,6 +26,7 @@
 				<th>NO</th>
 				<th>NIM</th>
 				<th>NAMA</th>
+				<th>ANGKATAN</th>
 				<th>AKSI</th>
 			</tr>
 		</thead>
@@ -48,6 +49,7 @@
 				<td>{{$mhs->nama_jur}}</td>
 				<td><a href="{{url('detail/org/'.$mhs->id_mahasiswa)}}"></a></td>
 				<td><button type="reset" class="btn btn-default">Detail</button></td>
+				<td>{{$mhs->angkatan}}</td>
 				<td><a href="{{url('detail/org/'.$mhs->id_mahasiswa)}}"><button id="btn">detail</button></a></td>
 			</tr>
 			@endforeach

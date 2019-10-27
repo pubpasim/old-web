@@ -91,52 +91,51 @@
 			margin-top: 0;
 		}
 	}
+	th{
+		text-align: center;
+	}
 
 </style>
-<div id="form1">
-	<h1>Daftar Data Angkatan</h1>
-	<div class="container">	
-		
+
+	<div class="container">		
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">Status PUB</h1>
 			</div>
 		</div><!--/.row-->
 
-		
+
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">Tabel Status PUB</div>
 					<br><p class="icon-plus-sign"></i> <a href="{{url('status_pub/tambah')}}">Tambah Data</a></p>
 					<div class="panel-body">
-						<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+						<table class="table table-striped table-bordered table-hover" id="tabel_angkatan">
 							<thead>
-								<tr>
-									<td>No</td>
-									<td>Status</td>
+						<tr>
+							<td>No</td>
+							<td>Status</td>
+							<td>Aksi</td>
+						</tr> 
+					</thead>
+					<tbody>
+						@foreach($status_pub as $data)
+						<tr align="center">
+							<td>{{$data->id_statusPub}}</td>
+							<td>{{$data->status}}</td>
+							<td>
+								<a href="{{url('status_pub/edit/'.$data->id_statusPub)}}">Edit</a>
+								<a href="{{url('status_pub/hapus/'.$data->id_statusPub)}}">Hapus</a>
+							</td>
+						</tr>
+						@endforeach
 
-								</tr> 
-								@foreach($status_pub as $data)
-
-								<tr align="center">
-									<td>{{$data->id_statusPub}}</td>
-									<td>{{$data->status}}</td>
-
-									<td>
-										<a href="{{url('status_pub/edit'.$data->id_statusPub)}}">Edit</a>
-										<a href="{{url('status_pub/hapus'.$data->id_statusPub)}}">Hapus</a>
-									</td>
-								</tr>
-
-								@endforeach
-
-							</thead>
+					</tbody>
 						</table>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-include('tampilan.foot')
+
+@include('tampilan.foot')

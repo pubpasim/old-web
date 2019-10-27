@@ -6,7 +6,6 @@
 				margin-left: 300px;
 			}
 		</style>
-		<div id="form1">
 		<div class="row">
 			<div class="panel-heading">FROM UBAH PANITIA</div>
 					<div class="panel-body">
@@ -29,5 +28,4 @@
 						</div>
 					</div>
 				</div>
-			</div>	
 	@include('tampilan.foot')

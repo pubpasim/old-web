@@ -4,10 +4,10 @@
 		<thead>
 			<tr>
 				<th>No</th>
-				<th>Nama Sekolah</th>
-				<th>Jumlah Peserta</th>
-				<th>Peserta Lulus</th>
-				<th>Peserta Gagal</th>
+				<th>Daerah</th>
+				<th>Sekolah Tempat Test</th>
+				<th>Lulus</th>
+				<th>Tidak Lulus</th>				
 			</tr>
 		</thead>
 		<tbody>
@@ -15,10 +15,10 @@
 			@foreach($tpa as $data)
 			<tr>
 				<td>{{ $no++}}</td>
-				<td>{{ $data->sekolah}}</td>
-				<td>{{ $data->jml_peserta}}</td>
-				<td>{{ $data->jml_lulus}}</td>
-				<td>{{ $data->jml_gagal}}</td>
+				<td>{{ $data->daerah}}</td>
+				<td>{{ $data->sekolah}}</td>								
+				<td><a href="{{url('user_lulus_tpa/'.$data->id_tpa)}}">{{ $data->jml_lulus}}</a></td>
+				<td>{{ $data->jml_gagal}}</td>				
 			</tr>
 			@endforeach
 		</tbody>						    

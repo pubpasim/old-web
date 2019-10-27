@@ -81,7 +81,6 @@
 		color: white;
 	}
 </style>
-<div id="form1">
 	@if($errors->has('success'))
 	<div class="alert alert-success">Succes</div>
 	@endif
@@ -119,5 +118,4 @@
 			</tbody>
 		</table>
 	</div>
-</div>
 @include('tampilan.foot')

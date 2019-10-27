@@ -78,7 +78,6 @@
         border-style: groove;
     }
 </style>
-<div id="form1">
     <h1>Tambah Data Kegiatan</h1>
     <div class="container">
         <form method="POST" action="{{url('simpan/kegiatan')}}" enctype="multipart/form-data">
@@ -148,5 +147,4 @@
             </div>
         </form>
     </div>
-</div>
 @include('tampilan.foot')

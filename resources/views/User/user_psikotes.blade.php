@@ -5,12 +5,12 @@
 			<tr>
 				<th>No</th>
 				<th>Nama Peserta</th>
+				<th>TTL</th>
 				<th>Jenis Kelamin</th>
 				<th>Jurusan Pilihan</th>
-				<th>Asal Sekolah</th>
 				<th>Asal Daerah</th>
-				<th>No Hp</th>
-				<th>Status</th>
+				<th>Asal Sekolah</th>								
+				<th>No Hp</th>																
 			</tr>
 		</thead>
 		<tbody>
@@ -18,16 +18,15 @@
 			@foreach($psi as $data)
 			<tr>
 				<td>{{ $no++}}</td>
-				<td>{{ $data->nama_peserta}}</td>
+				<td>{{ $data->nama}}</td>
+				<td>{{ $data->tempat}}, {{ $data->tanggal}}</td>
 				<td>{{ $data->jk}}</td>
 				<td>{{ $data->jurusan}}</td>
-				<td>{{ $data->asal_sekolah}}</td>
 				<td>{{ $data->asal_daerah}}</td>
+				<td>{{ $data->asal_sekolah}}</td>								
 				<td>{{ $data->no_hp}}</td>
-				<td @if($data->jenis == "LULUS") class="btn btn-info" @endif @if($data->jenis == "TIDAK LULUS") class="btn btn-danger" @endif>{{ $data->jenis}}</td>
 			</tr>
 			@endforeach
-
 		</tbody>						    				    
 	</table>
 </div>
