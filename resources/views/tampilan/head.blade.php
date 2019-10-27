@@ -117,7 +117,7 @@
 
 					<li><a href="{{url('tampilan/jurusan/viewjur')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Jurusan</a></li>
 
-					<li><a href="{{url('status_sos')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Staus Sosial</a></li>
+					<li><a href="{{url('status_sos')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Status Sosial</a></li>
 
 					<li><a href="{{url('status_pub')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Status PUB</a></li>
 					

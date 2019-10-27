@@ -135,10 +135,7 @@ class alumniController extends Controller
     }
     public function infaq_view()
     {
-        $infaq=DB::table('tb_infaq')
-        ->join('tb_angkatan','tb_infaq.id_angkatan','=','tb_angkatan.id_angkatan')
-        ->select('tb_infaq.id_infaq','tb_infaq.periode','tb_infaq.total_infaq','tb_angkatan.angkatan')
-        ->get();
+        $infaq=DB::table('tb_infaq')->get();
         return view('tampilan.alumni.infaq',compact('infaq'));
     }
     public function tambahInfaq()
