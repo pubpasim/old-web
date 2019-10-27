@@ -110,19 +110,12 @@
 
 		<h1>Daftar Infaq Alumni PUB</h1>
 		<div class="container">
-			<div id="frm">
-				<h3>Periode&nbsp;:</h3>
-				
-				<input placeholder="Masukkan Bulan" type="month" id="bulan" name="bulan"><br><br>
-				<button>Cari</button>
-			</div>
 			<a href="{{url('tambahInfaq')}}"><button class="btn btn-primary" style=" background-color: #339966; width: 100%;"><svg class="glyph stroked plus sign" style="height: 30px;"><use xlink:href="#stroked-plus-sign"/></svg></button></a>
 			<table id="myTable">
 				
 				<thead>
 					<tr>
 						<th>NO</th>
-						<th>ANGKATAN</th>
 						<th>PERIODE</th>
 						<th>JUMLAH INFAQ</th>
 						<th>AKSi</th>
@@ -133,8 +126,7 @@
 					@foreach($infaq as $inf)
 					<tr>
 						<td>{{$no++}}</td>
-						<td>{{$inf->angkatan}}</td>
-						<td>{{$inf->periode}}</td>
+						<td>{{$inf->bulan_infaq}} {{$inf->tahun_infaq}}</td>
 						<td>{{$inf->total_infaq}}</td>
 						
 						<td><a href="{{url('editInfaq/'.$inf->id_infaq)}}"><button class="btn btn-primary">Edit</button></a>&nbsp;<a href="{{url('hapusInfaq/'.$inf->id_infaq)}}"><button class="btn btn-primary" style="background-color: red;">Hapus</button></a></td>
