@@ -136,9 +136,6 @@ Route::post('status_sos/update/{x}','statusSosialController@update');
 Route::get('status_sos/hapus/{x}','statusSosialController@destroy'); 
 
 
-Route::get('alumni','alumniController@index');
-Route::get('alumni/aktivitas','alumniController@aktivitas');
-Route::post('alumni/aktivitas/tampil','alumniController@aktivitasTampil');
 
 Route::get('detorg_pub','detOrgPubController@index');
 Route::get('detorg_pub/tambah/','detOrgPubController@create');
@@ -342,7 +339,7 @@ Route::get('user_down_formulir','userController@user_down_formulir');
 //================================ADMIN ALUMNI=============================//
 
 
-Route::post('Alumni_admin/index{x}','alumni_adminController@index');
+Route::post('Alumni_admin/index/{x}','alumni_adminController@index');
 Route::get('materilogika', 'userController@materilog');
 Route::get('materibasis', 'userController@materibasis');
 Route::get('materistruktur', 'userController@materistruktur');
@@ -362,7 +359,9 @@ Route::post('kegiatanPub/pilihdiv','userController@kegiatanPub_pilihdiv');
 Route::get('kegiatanPub/filter/{x}/{y}','userController@kegiatanPub_filter');
 Route::get('pembinaPub', 'userController@pembinaPub');
 
+Route::get('admin/alumni/{x}','alumni_adminController@index');
 Route::get('admin/alumni/profile/{x}','alumni_adminController@profile');
+Route::get('admin/alumni/aktivitas/{x}','alumni_adminController@aktivitas');
 Route::get('editProfil/{x}','alumni_adminController@editProfil');
 Route::post('simpanProfil/edit/{x}','alumni_adminController@updateProfil');
 Route::post('tambahFoto','alumni_adminController@store');

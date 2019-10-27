@@ -50,11 +50,11 @@ public function user_infaq()
 }
 public function infaq_bulan(Request $request)
 {
+    $thn=$request->select;
     $data1=DB::table('tb_infaq')
-    ->select('bulan_infaq',\DB::raw('SUM(total_infaq) as total'))
-    ->groupBy('bulan_infaq')
-    ->where('tahun_infaq',$request->select)->get();
-    return view('user.infaq_bulan',compact('data1'));
+    ->select('bulan_infaq','total_infaq as total','id_bulan')
+    ->where('tahun_infaq',$request->select)->orderby('id_bulan')->get();
+    return view('user.infaq_bulan',compact('data1','thn'));
 }
 
 public function user_dok_ppmb()

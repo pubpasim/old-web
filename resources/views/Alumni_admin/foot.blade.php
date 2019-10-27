@@ -1,5 +1,5 @@
 <footer>
-  <p class="tm-copyright-p">Copyright &copy; <span class="tm-current-year">2017</span> Your Company 
+  <p class="tm-copyright-p">Copyright &copy; <span class="tm-current-year"></span>| PUB Angkatan 16 
     
   | Designed by TemplateMo</p>
 </footer>

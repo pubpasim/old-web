@@ -79,10 +79,26 @@
 		border-style: groove;
 
 	}
+	.alert{
+		width: 93%;
+		height: 100%;
+		background-color: #ff9999;
+		padding: 10px;
+		text-align: center;
+		border-radius: 3px;
+		color: white;
+		font-style: bold;
+		font-family: century gothic;
+	}
 </style>
 <div class="container">
 	<form method="POST" action="{{url('tambahInfaq')}}">
 		{{csrf_field()}}
+		@if(\Session::has("alert"))
+		<div class="alert alert-danger">
+			<div>{{Session::get("alert")}}</div>
+		</div>
+		@endif
 		<div class="row">
 			<div class="col-25">
 				<label for="bulan">Bulan</label>
@@ -107,18 +123,9 @@
 			<div class="col-75">
 				<select name="bulan">
 					<option>--Bulan--</option>
-					<option value="January">January</option>
-					<option value="February">February</option>
-					<option value="Maret">Maret</option>
-					<option value="April">April</option>
-					<option value="Mei">Mei</option>
-					<option value="Juni">Juni</option>
-					<option value="Juli">Juli</option>
-					<option value="Agustus">Agustus</option>
-					<option value="September">September</option>
-					<option value="Oktober">Oktober</option>
-					<option value="November">November</option>
-					<option value="Desember">January</option>
+					@foreach($bulan as $bl)
+						<option value="{{$bl->bulan}}">{{$bl->bulan}}</option>
+					@endforeach
 				</select>
 			</div>
 		</div>
