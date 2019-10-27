@@ -21,32 +21,14 @@ class userController extends Controller
        $ppmb=DB::table('tb_dokumentasi')->orderby('id_dok','DESC')->limit('10')->get();
         return view('user.index',compact('kegiatan','ppmb'));
     }
-    public function hasilSeleksi()
-    {
-        $tpa="";
-        $lempar="";
-        $tahun = DB::table('tb_tahunSel')->get();
-        return view('user.hasilSeleksi',compact('tahun','lempar','tpa'));
-    }
-    public function tampilSeleksi(Request $request)
-    {
-        $tpa="";
-        $lempar = $request->tahun;
-        $tahun = DB::table('tb_tahunSel')->get();
-        return view('user.hasilSeleksi',compact('tahun','lempar','tpa'));
-    }
-
+    
+    
     public function user_dok_ppmb()
     {  
         $dok = DB::table('tb_dokumentasi')->get();
         return view('user.user_dok_ppmb',compact('dok'));
     }
 
-
-    public function user_tpa($id)
-    {   $tpa = DB::table('tb_tpa')->where('id_tahun',$id)->get();        
-        return view('user.user_tpa',compact('tpa','id'));
-    }
     public function user_lulus_tpa($id)
     {
         $lulus = DB::table('tb_tpa')->where('id_tpa',$id)->first();
@@ -103,36 +85,7 @@ class userController extends Controller
         ->select('tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status')->where('tb_statusPub.status','Alumni')->orderby('tb_angkatan.angkatan')->get();
         return view('user.user_alumni',compact('angkatan','mahasiswa'));
     }
-    public function user_alumniView(request $request)
-    {
-        $angkatan=DB::table('tb_angkatan')->orderby('angkatan')->get();
-        $mahasiswa = DB::table('tb_mahasiswa')
-        ->join('tb_daerah', 'tb_mahasiswa.id_daerah', '=', 'tb_daerah.id_daerah')
-        ->join('tb_angkatan','tb_mahasiswa.id_angkatan', '=', 'tb_angkatan.id_angkatan')
-        ->join('tb_sekolah', 'tb_mahasiswa.id_sekolah', '=', 'tb_sekolah.id_sekolah')
-        ->join('tb_orgpub', 'tb_mahasiswa.id_orgpub', '=', 'tb_orgpub.id_orgpub')
-        ->join('tb_orgppmb', 'tb_mahasiswa.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
-        ->join('tb_statusPub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statusPub.id_statusPub')
-        ->join('tb_jurusan', 'tb_mahasiswa.id_jur', '=', 'tb_jurusan.id_jur')
-        ->select('tb_mahasiswa.nama','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status')
-        ->where('tb_statusPub.status','Alumni')
-        ->where('tb_angkatan.angkatan',$request->select)->get();
-        return view('user.user_alumni',compact('angkatan','mahasiswa'));
- }
- public function hasilSeleksi()
- {
-    $tpa="";
-    $lempar="";
-    $tahun = DB::table('tb_tahunSel')->get();
-    return view('user.hasilSeleksi',compact('tahun','lempar','tpa'));
-}
-public function tampilSeleksi(Request $request)
-{
-    $tpa="";
-    $lempar = $request->tahun;
-    $tahun = DB::table('tb_tahunSel')->get();
-    return view('user.hasilSeleksi',compact('tahun','lempar','tpa'));
-}
+ 
 public function user_tpa($id)
 {   
     $tpa = DB::table('tb_tpa')->where('id_tahun',$id)->get();
@@ -142,39 +95,6 @@ public function user_survei($id)
 {
     $survei = DB::table('tb_survei')->where('id_tahun3',$id)->get();
     return view('user.user_survei',compact('survei','id'));
-}
-public function user_psikotes($id)
-{
-    $psi = DB::table('tb_psikotest')->where('id_tahun2',$id)->get();
-    return view('user.user_psikotes',compact('psi','id'));
-}
-public function user_final($id)
-{
-    $final = DB::table('tb_final')->where('id_tahun4',$id)->get();
-
-    return view('user.user_final',compact('final'));
-}
-public function user_infaq()
-{
-    $infaq=DB::table('tb_infaq')
-    ->join('tb_angkatan','tb_infaq.id_angkatan','=','tb_angkatan.id_angkatan')
-    ->select('tb_infaq.id_infaq','tb_infaq.periode','tb_infaq.total_infaq','tb_angkatan.angkatan')
-    ->get();
-    return view('user.user_infaq',compact('infaq'));
-}
-public function user_alumni()
-{
-    $angkatan=DB::table('tb_angkatan')->orderby('angkatan')->get();
-    $mahasiswa = DB::table('tb_mahasiswa')
-    ->join('tb_daerah', 'tb_mahasiswa.id_daerah', '=', 'tb_daerah.id_daerah')
-    ->join('tb_angkatan','tb_mahasiswa.id_angkatan', '=', 'tb_angkatan.id_angkatan')
-    ->join('tb_sekolah', 'tb_mahasiswa.id_sekolah', '=', 'tb_sekolah.id_sekolah')
-    ->join('tb_orgpub', 'tb_mahasiswa.id_orgpub', '=', 'tb_orgpub.id_orgpub')
-    ->join('tb_orgppmb', 'tb_mahasiswa.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
-    ->join('tb_statusPub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statusPub.id_statusPub')
-    ->join('tb_jurusan', 'tb_mahasiswa.id_jur', '=', 'tb_jurusan.id_jur')
-    ->select('tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status')->where('tb_statusPub.status','Alumni')->orderby('tb_angkatan.angkatan')->get();
-    return view('user.user_alumni',compact('angkatan','mahasiswa'));
 }
 public function user_alumniView(request $request)
 {

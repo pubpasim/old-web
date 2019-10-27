@@ -78,6 +78,7 @@
 		border-style: groove;
 	}
 </style>
+<div id="form1">
 	<div class="container">
 		<form method="POST" action="{{url('simpan/mahasiswa')}}" enctype="multipart/form-data">
 			{{csrf_field()}}
@@ -119,8 +120,8 @@
 					<label for="kelamin">Jenis Kelamin</label>
 				</div>
 				<div class="col-75">
-					<input type="radio" id="kelamin" name="kelamin" value="Laki-laki">Laki-laki
-					<input type="radio" id="kelamin" name="kelamin" value="Perempuan">Perempuan
+					<input type="radio" id="kelamin" name="kelamin">Laki-laki
+					<input type="radio" id="kelamin" name="kelamin">Perempuan
 				</div>
 			</div>
 			<div class="row">
@@ -242,7 +243,7 @@
 					<label for="telp">Nomor Telpon</label>
 				</div>
 				<div class="col-75">
-					<input type="text" id="telp" name="telp" placeholder="Nomor telpon">
+					<input type="number" id="telp" name="telp" placeholder="Nomor telpon">
 				</div>
 			</div>
 			<div class="row">
@@ -250,4 +251,5 @@
 			</div>
 		</form>
 	</div>
+</div>
 @include('tampilan.foot')
