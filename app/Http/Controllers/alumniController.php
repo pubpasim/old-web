@@ -146,7 +146,7 @@ class alumniController extends Controller
      public function simpanInfaq(Request $request)
     {
         DB::table('tb_infaq')->insert([
-            'id_angkatan'=>$request->angkatan,'periode'=>$request->periode,'total_infaq'=>
+            'bulan_infaq'=>$request->bulan,'tahun_infaq'=>$request->tahun,'total_infaq'=>
             $request->total
         ]);
         $idmax =DB::table('tb_mahasiswa')->max('id_mahasiswa');
@@ -155,13 +155,12 @@ class alumniController extends Controller
     public function editInfaq($id)
     {
         $infaq=DB::table('tb_infaq')->where('id_infaq',$id)->first();
-        $angkatan=DB::table('tb_angkatan')->orderby('angkatan')->get();
         return view('tampilan.alumni.editInfaq',compact('infaq','angkatan'));
     }
     public function updateInfaq(Request $request,$id)
     {
         DB::table('tb_infaq')->where('id_infaq',$id)->update([
-            'id_angkatan'=>$request->angkatan,'periode'=>$request->periode,'total_infaq'=>$request->total
+            'bulan_infaq'=>$request->bulan,'tahun_infaq'=>$request->tahun,'total_infaq'=>$request->total
         ]);
         return redirect('infaq');
     }

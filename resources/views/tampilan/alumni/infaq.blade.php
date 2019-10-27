@@ -110,12 +110,6 @@
 
 		<h1>Daftar Infaq Alumni PUB</h1>
 		<div class="container">
-			<div id="frm">
-				<h3>Periode&nbsp;:</h3>
-				
-				<input placeholder="Masukkan Bulan" type="month" id="bulan" name="bulan"><br><br>
-				<button>Cari</button>
-			</div>
 			<a href="{{url('tambahInfaq')}}"><button class="btn btn-primary" style=" background-color: #339966; width: 100%;"><svg class="glyph stroked plus sign" style="height: 30px;"><use xlink:href="#stroked-plus-sign"/></svg></button></a>
 			<table id="myTable">
 				

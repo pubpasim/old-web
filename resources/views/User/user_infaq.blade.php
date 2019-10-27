@@ -35,33 +35,6 @@ var options = {
 
 $("#chartContainer").CanvasJSChart(options);
 
-var options1 = {
-	animationEnabled: true,
-	title:{
-		text: "Jumlah Infaq PUB Tahun "
-	},
-	axisY:{
-		title:"Jumlah"
-	},
-	toolTip: {
-		shared: true,
-		reversed: true
-	},
-	data: [{
-		type: "stackedColumn",
-		name: "Jumlah Infaq",
-		showInLegend: "true",
-		yValueFormatString:"#,###",
-		dataPoints: [ 
-		<?php foreach ($data2 as $tot): ?>
-			{ y: {!!$tot->total_infaq!!},label: "Bulan "+{!!$tot->bulan_infaq!!}},
-		<?php endforeach ?>
-		]
-	}]
-};
-
-$("#chartContainer1").CanvasJSChart(options1);
-
 }
 </script>
 <div id="design">
@@ -73,7 +46,7 @@ $("#chartContainer1").CanvasJSChart(options1);
 			<select name="select" >
 				<option disabled>--Pilih Tahun--</option>
 				<?php 
-				for ($tahun=2010;$tahun<2025;$tahun++){ 
+				for ($tahun=2010;$tahun<$thn;$tahun++){ 
 					echo "<option value='$tahun'>$tahun</option>";
 				}
 				?>				
@@ -86,9 +59,7 @@ $("#chartContainer1").CanvasJSChart(options1);
 <div id="chart">
 	<div id="chartContainer" style="height: 700px; width: 100%;"></div>
 </div>
-<div id="chart">
-	<div id="chartContainer1" style="height: 700px; width: 100%;"></div>
-</div>
+
 @php
 for($x=0;$x<5;$x++){
 echo "<br>";

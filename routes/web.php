@@ -1,6 +1,4 @@
 <?php
-
-<<<<<<< HEAD
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,12 +14,8 @@
 
 
 // Route::get('/home', 'HomeController@index')->name('home');
-=======
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
-
-
->>>>>>> 9b251893e126ac19ce6cc301746f3f0576406d9f
 
 
 Route::get('admin', function () {
@@ -325,20 +319,15 @@ Route::get('keg_ikatan_alumni', 'userController@KegIkatanAlumni');
 Route::get('user_infaq', 'userController@user_infaq');
 Route::get('user_alumni', 'userController@user_alumni');
 Route::post('user_alumni/', 'userController@user_alumniView');
-<<<<<<< HEAD
-Route::get('totalAlumni', 'userController@totalAlumni');
 Route::post('tampil_infaq', 'userController@infaq_bulan');
-=======
->>>>>>> 9b251893e126ac19ce6cc301746f3f0576406d9f
 
 Route::get('user_lulus_tpa/{x}','userController@user_lulus_tpa');
 Route::get('user_dok_ppmb','userController@user_dok_ppmb');
 Route::get('user_down_formulir','userController@user_down_formulir');
 //================================ADMIN ALUMNI=============================//
 
-<<<<<<< HEAD
+
 Route::post('Alumni_admin/index{x}','alumni_adminController@index');
-=======
 Route::get('materilogika', 'userController@materilog');
 Route::get('materibasis', 'userController@materibasis');
 Route::get('materistruktur', 'userController@materistruktur');
@@ -354,10 +343,6 @@ Route::get('fdmljtjava', 'userController@materifdmjavaljt');
 Route::get('totalAlumni', 'userController@totalAlumni');
 Route::get('pembinaPub', 'userController@pembinaPub');
 
-
-//================================ADMIN ALUMNI=============================//
-Route::get('admin/alumni/{x}','alumni_adminController@index');
->>>>>>> 9b251893e126ac19ce6cc301746f3f0576406d9f
 Route::get('admin/alumni/profile/{x}','alumni_adminController@profile');
 Route::get('editProfil/{x}','alumni_adminController@editProfil');
 Route::post('simpanProfil/edit/{x}','alumni_adminController@updateProfil');
