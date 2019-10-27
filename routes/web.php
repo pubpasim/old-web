@@ -44,6 +44,8 @@ Route::post('/det_struktur_ppmb/update','detOrgPpmbController@update');
 Route::get('/det_struktur_ppmb/delete/{id}','detOrgPpmbController@destroy');
 //struktur for user
 
+//detpelatihan
+Route::get('Alumni_admin/pelatihan','detail_pelatihan@index');
 
 //syarat ketentuan 
 Route::get('/syarat_ketentuan','SyaratController@index'); 
@@ -153,6 +155,11 @@ Route::post('Alumni_admin/det_pelatihan/update/{x}','detPelatihanController@upda
 Route::get('Alumni_admin/det_pelatihan/hapus/{x}','detPelatihanController@destroy'); 	
 
 
+Route::get('alumni/aktivitas','alumniController@aktivitas');
+Route::post('alumni/aktivitas/tampil','alumniController@aktivitasTampil');
+
+Route::get('alumni','alumniController@index');
+Route::get('tambah/mahasiswa','alumniController@create');
 Route::get('mahasiswa','mahasiswaController@index');
 Route::get('tambah/mahasiswa','mahasiswaController@create');
 Route::post('simpan/mahasiswa','mahasiswaController@store');
@@ -204,6 +211,7 @@ Route::get('pelatihan/hapus/{x}','pelatihanController@destroy');
 Route::get('/pub_dok/upload', 'pubDokController@upload');
 Route::post('/pub_dok/proses', 'pubDokController@proses_upload');
 Route::get('tambahTahun', 'hasilController@tambahTahun');
+
 
 Route::get('dokumentasiPub','dokumentasiPubController@index');
 Route::get('tambah_pubdok','dokumentasiPubController@create');
@@ -307,6 +315,13 @@ Route::get('organisasi_pub','userController@organisasi_pub');
 Route::get('detail/org/{x}','userController@detail');
 Route::get('pelatihan','userController@pelatihan');
 Route::get('pelatihan_data','userController@pelatihan_data');
+
+Route::get('pub_dok','userController@kegiatanPub');
+Route::get('pub_dok/kegiatan','dokumentasiPubController@index');
+
+Route::get('hasilSeleksi','userController@hasilSeleksi');
+Route::post('hasilSeleksi','userController@tampilSeleksi');
+
 Route::get('kegiatanPub','userController@kegiatanPub');
 Route::get('user_hasilSeleksi','userController@hasilSeleksi');
 Route::post('user_hasilSeleksi','userController@tampilSeleksi');
@@ -341,6 +356,10 @@ Route::get('fdmljtphp', 'userController@materifdmphpljt');
 Route::get('fdmljtvb', 'userController@materifdmvbljt');
 Route::get('fdmljtjava', 'userController@materifdmjavaljt');
 Route::get('totalAlumni', 'userController@totalAlumni');
+
+Route::get('kegiatanPub','userController@kegiatanPub');
+Route::post('kegiatanPub/pilihdiv','userController@kegiatanPub_pilihdiv');
+Route::get('kegiatanPub/filter/{x}/{y}','userController@kegiatanPub_filter');
 Route::get('pembinaPub', 'userController@pembinaPub');
 
 Route::get('admin/alumni/profile/{x}','alumni_adminController@profile');

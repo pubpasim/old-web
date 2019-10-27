@@ -1,4 +1,6 @@
 @include('User.header');
+
+	@include('User.header');
 <!DOCTYPE html>
 <html>
 <head>

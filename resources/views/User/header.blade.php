@@ -72,8 +72,57 @@
           <button type="submit"><i class="icon_search"></i></button>
         </form>
       </div>
-    </div>
+      <ul class="nav navbar-nav">
+        <li><a href="{{url('/')}}">HOME</a></li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">PPMB <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Profile PPMB</a></li>
+            <li><a href="#">Kepanitiaan PPMB</a></li>
+            <li><a href="#">Jadwal PPMB</a></li>
+            <li><a href="#">Hasil Seleksi</a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">PUB Aktif<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Profile PUB</a></li>
 
+            <li><a href="{{url('detorg_pub/index')}}">Organisasi PUB</a></li>
+            <li><a href="{{url('user/mahasiswa')}}">Mahasiswa PUB</a></li>
+            <li><a href="{{url('pelatihan/index')}}">Pelatihan PUB</a></li>
+            <li><a href="{{url('kegiatanPub')}}">Kegiatan PUB</a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Alumni PUB <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Data Alumni PUB</a></li>
+            <li><a href="#">Data Infaq Alumni PUB</a></li>
+            <li><a href="#">Kegiatan Alumni</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Profil Pembina PUB</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-th"></span> Sign Up</a></li>
+        <li><a href="{{url('login')}}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </nav>
+      <!-- /Preloader -->
+
+      <!-- Header Area Start -->
+      <header class="header-area">
+        <!-- Search Form -->
+        <div class="search-form d-flex align-items-center">
+          <div class="container">
+            <form action="index.html" method="get">
+              <input type="search" name="search-form-input" id="searchFormInput" placeholder="Type your keyword ...">
+              <button type="submit"><i class="icon_search"></i></button>
+            </form>
+          </div>
+        </div>
+
+    </div>
     <!-- Top Header Area Start -->
     <div class="top-header-area">
       <div class="container">

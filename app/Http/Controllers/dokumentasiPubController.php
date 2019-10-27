@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\dokumentasiModel;
 class dokumentasiPubController extends Controller
 {
     /**
@@ -13,8 +14,15 @@ class dokumentasiPubController extends Controller
      */
     public function index()
     {
-     $kegiatan=DB::table('tb_pubdok')->get();
-     return view('pub_dok.kegiatan',compact('kegiatan'));
+     $angkatan=DB::table('tb_angkatan')->orderby('angkatan')->get();
+     $kegiatan=DB::table('tb_pubdok')
+        ->join('tb_angkatan','tb_pubdok.id_angkatan','=','tb_angkatan.id_angkatan')
+        ->select('tb_pubdok.id_pubdok','tb_angkatan.angkatan','tb_pubdok.file','tb_pubdok.keterangan','tb_pubdok.tema')
+        ->get();
+    $lempar='hai';
+        return view('pub_dok.kegiatan',compact('kegiatan','angkatan','lempar'));
+        
+    
  }
 
     /**
@@ -24,7 +32,11 @@ class dokumentasiPubController extends Controller
      */
     public function create()
     {
-        return view('pub_dok.image');
+        $angkatan=DB::table('tb_angkatan')->orderby('angkatan')->get();
+        $kegiatan=DB::table('tb_pubdok');
+        $lempar='hai';
+
+        return view('pub_dok.image',compact('angkatan','kegiatan','lempar'));
     }
 
     /**
@@ -35,13 +47,12 @@ class dokumentasiPubController extends Controller
      */
     public function store(Request $request)
     {
+       
          $this->validate($request, [
             // check validtion for image or file
             'foto' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
       ]);
-         
-        
-
+    
 
         $file = $request->file('foto');
         $nama_file = time()."_".$file->getClientOriginalName();
@@ -51,7 +62,7 @@ class dokumentasiPubController extends Controller
         $file->move($tujuan_upload,$nama_file);
 
         DB::table('tb_pubdok')->insert([
-            'file'=>$nama_file,'keterangan'=>$request->ket,'tema'=>$request->kegiatan
+            'file'=>$nama_file,'keterangan'=>$request->ket,'tema'=>$request->kegiatan,'id_angkatan'=>$request->select
         ]);
 
          return redirect('dokumentasiPub')->with('success','portfolio Has been You uploaded successfully.')

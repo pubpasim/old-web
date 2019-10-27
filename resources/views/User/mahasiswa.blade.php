@@ -39,6 +39,16 @@
 				<td>{{$no++}}</td>
 				<td>{{$mhs->nim}}</td>
 				<td>{{$mhs->nama}}</td>
+
+				<td>{{$mhs->angkatan}}</td>
+				<td>{{$mhs->kab_kot}}</td>
+				<td>{{$mhs->sekolah}}</td>
+				<td>{{$mhs->jabatan_pub}}</td>
+				<td>{{$mhs->jabatan}}</td>
+				<td>{{$mhs->status}}</td>
+				<td>{{$mhs->nama_jur}}</td>
+				<td><a href="{{url('detail/org/'.$mhs->id_mahasiswa)}}"></a></td>
+				<td><button type="reset" class="btn btn-default">Detail</button></td>
 				<td>{{$mhs->angkatan}}</td>
 				<td><a href="{{url('detail/org/'.$mhs->id_mahasiswa)}}"><button id="btn">detail</button></a></td>
 			</tr>

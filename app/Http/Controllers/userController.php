@@ -492,145 +492,180 @@ public function organisasi_pub(Request $request)
     $div_sej2=$div_sej->count();
     $div_sej=$div_sej->first();
         //div keseh
-    $div_kes=DB::table('tb_detorg_pub')
-    ->join('tb_mahasiswa','tb_detorg_pub.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
-    ->join('tb_orgpub','tb_detorg_pub.id_orgpub', '=', 'tb_orgpub.id_orgpub')
-    ->select('tb_mahasiswa.id_mahasiswa','tb_orgpub.jabatan_pub','tb_mahasiswa.nama')
-    ->where('tb_orgpub.jabatan_pub','KOOR DIV KESEHATAN');
-    $div_kes2=$div_kes->count();
-    $div_kes=$div_kes->first();
+        $div_kes=DB::table('tb_detorg_pub')
+        ->join('tb_mahasiswa','tb_detorg_pub.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
+        ->join('tb_orgpub','tb_detorg_pub.id_orgpub', '=', 'tb_orgpub.id_orgpub')
+        ->select('tb_mahasiswa.id_mahasiswa','tb_orgpub.jabatan_pub','tb_mahasiswa.nama')
+        ->where('tb_orgpub.jabatan_pub','KOOR DIV KESEHATAN');
+        $div_kes2=$div_kes->count();
+        $div_kes=$div_kes->first();
+        
+        return view('user.organisasi_pub',compact('ketua','sekretaris','keamanan','bendahara_in','bendahara_ex','div_pnd','div_kea','div_ker','div_keb','div_kes','div_sej','div_mag','ketua2','sekretaris2','keamanan2','bendahara_in2','bendahara_ex2','div_pnd2','div_ker2','div_kes2','div_mag2','div_kea2','div_keb2','div_sej2'));    
+    }
+    public function detail($id)
+    {
+        $mahasiswa = DB::table('tb_mahasiswa')
+        ->join('tb_daerah', 'tb_mahasiswa.id_daerah', '=', 'tb_daerah.id_daerah')
+        ->join('tb_angkatan','tb_mahasiswa.id_angkatan', '=', 'tb_angkatan.id_angkatan')
+        ->join('tb_sekolah', 'tb_mahasiswa.id_sekolah', '=', 'tb_sekolah.id_sekolah')
+        ->join('tb_orgpub', 'tb_mahasiswa.id_orgpub', '=', 'tb_orgpub.id_orgpub')
+        ->join('tb_orgppmb', 'tb_mahasiswa.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
+        ->join('tb_statusPub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statusPub.id_statusPub')
+        ->join('tb_jurusan', 'tb_mahasiswa.id_jur', '=', 'tb_jurusan.id_jur')
+        ->select('tb_statusPub.status','tb_mahasiswa.tempat_lahir','tb_mahasiswa.tanggal_lahir','tb_mahasiswa.no_telp','tb_mahasiswa.nama','tb_mahasiswa.file','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_angkatan.nama_angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_mahasiswa.jenis_kelamin')
+        ->where('tb_mahasiswa.id_mahasiswa',$id)->first();
+        $pendidikan=DB::table('tb_detpendidikan')->where('id_mahasiswa',$id)->get();
+        $pengalaman=DB::table('tb_detpengalaman')->where('id_mahasiswa',$id)->get();
+        return view('user.detail',compact('mahasiswa','pendidikan','pengalaman'));
+    }
+    
+    public function kegiatanPub()
+    {
+        $keg=DB::table('tb_pubdok')
+        ->join('tb_angkatan','tb_pubdok.id_angkatan','=','tb_angkatan.id_angkatan')
+        ->select('tb_pubdok.id_pubdok','tb_pubdok.file','tb_pubdok.keterangan','tb_pubdok.tema')
+        ->get();
+        $angkatan=DB::table('tb_angkatan')->orderby('angkatan')
+        ->where('angkatan','>=','16')
+        ->get();
+        $lempar='';
 
-    return view('user.organisasi_pub',compact('ketua','sekretaris','keamanan','bendahara_in','bendahara_ex','div_pnd','div_kea','div_ker','div_keb','div_kes','div_sej','div_mag','ketua2','sekretaris2','keamanan2','bendahara_in2','bendahara_ex2','div_pnd2','div_ker2','div_kes2','div_mag2','div_kea2','div_keb2','div_sej2'));    
-}
-public function detail($id)
-{
-    $mahasiswa = DB::table('tb_mahasiswa')
-    ->join('tb_daerah', 'tb_mahasiswa.id_daerah', '=', 'tb_daerah.id_daerah')
-    ->join('tb_angkatan','tb_mahasiswa.id_angkatan', '=', 'tb_angkatan.id_angkatan')
-    ->join('tb_sekolah', 'tb_mahasiswa.id_sekolah', '=', 'tb_sekolah.id_sekolah')
-    ->join('tb_orgpub', 'tb_mahasiswa.id_orgpub', '=', 'tb_orgpub.id_orgpub')
-    ->join('tb_orgppmb', 'tb_mahasiswa.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
-    ->join('tb_statusPub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statusPub.id_statusPub')
-    ->join('tb_jurusan', 'tb_mahasiswa.id_jur', '=', 'tb_jurusan.id_jur')
-    ->select('tb_statusPub.status','tb_mahasiswa.tempat_lahir','tb_mahasiswa.tanggal_lahir','tb_mahasiswa.no_telp','tb_mahasiswa.nama','tb_mahasiswa.file','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_angkatan.nama_angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_mahasiswa.jenis_kelamin')
-    ->where('tb_mahasiswa.id_mahasiswa',$id)->first();
-    $pendidikan=DB::table('tb_detpendidikan')->where('id_mahasiswa',$id)->get();
-    $pengalaman=DB::table('tb_detpengalaman')->where('id_mahasiswa',$id)->get();
-    return view('user.detail',compact('mahasiswa','pendidikan','pengalaman'));
-}
+        return view('user.kegiatanPub',compact('angkatan','keg','lempar'));
+    }
+    public function kegiatanPub_filter(Request $request,$id,$div)
+    {
+        $keg=DB::table('tb_pubdok')
+        ->join('tb_angkatan','tb_pubdok.id_angkatan','=','tb_angkatan.id_angkatan')
+        ->select('tb_pubdok.id_angkatan','tb_pubdok.id_pubdok','tb_pubdok.file','tb_pubdok.keterangan','tb_pubdok.tema')
+        ->where('tb_pubdok.id_angkatan',$id)->where('tb_pubdok.tema',$div)->get();
+        return view('user.tampil_pilihdiv',compact('angkatan','keg','lempar','pendidikan','magang','kesejahteraan','keasramaan','kerohanian','kesehatan','kebersihan','div'));
+    }
 
-public function kegiatanPub()
-{
-    $keg=DB::table('tb_pubdok')->get();
-    return view('user.kegiatanPub',compact('keg'));
-}
-public function OrgIkatanAlumni()
-{
-    $struk = DB::table('tb_ikatan_alumni')
-    ->join('tb_orgpub','tb_orgpub.id_orgpub','tb_ikatan_alumni.id_jabatan')
-    ->join('tb_mahasiswa','tb_mahasiswa.id_mahasiswa','tb_ikatan_alumni.id_mahasiswa')
-    ->join('tb_angkatan','tb_angkatan.id_angkatan','tb_mahasiswa.id_angkatan')
-    ->get();
-    return view('User.orgIkatanAlumni',compact('struk'));
-}
-public function KegIkatanAlumni()
-{
-    $dok =DB::table('tb_dok_alumni')
-    ->get();
-    return view('User.kegIkatanAlumni',compact('dok'));
-}
-public function materilog()
-{
-    return view('User.materilogika');
-}
-public function materibasis()
-{
-    return view('User.materibasis');
-}
-public function materistruktur()
-{
-    return view('User.materistruktur');
-}
-public function materihtml()
-{
-    return view('User.materihtml');
-}
-public function materifdm()
-{
-    return view('User.materifund');
-}
-public function materifdmphp()
-{
-    return view('User.fdmphp');
-}
-public function materifdmvb()
-{
-    return view('User.fdmvb');
-}
-public function materifdmjava()
-{
-    return view('User.fdmjava');
-}
-public function materifdmljt()
-{
-    return view('User.materifundljt');
-}
-public function materifdmphpljt()
-{
-    return view('User.fdmphpljt');
-}
-public function materifdmvbljt()
-{
-    return view('User.fdmvbljt');
-}
-public function materifdmjavaljt()
-{
-    return view('User.fdmjavaljt');
-}
-public function pembinaPub()
-{
-    return view('User.pembina');
-}
-public function totalAlumni()
-{
-    $data1=DB::table('tb_mahasiswa')
-    ->leftJoin('tb_angkatan','tb_mahasiswa.id_angkatan','=','tb_angkatan.id_angkatan')
-    ->leftJoin('tb_statusPub','tb_mahasiswa.id_statusPub','=','tb_statusPub.id_statusPub')
-    ->select('tb_mahasiswa.jenis_kelamin','tb_angkatan.angkatan',\DB::raw('count(*) as total'))
-    ->groupBy('tb_angkatan.angkatan')
-    ->groupBy('tb_mahasiswa.jenis_kelamin');
+    public function kegiatanPub_pilihdiv(Request $request){
+        $keg=DB::table('tb_pubdok')
+        ->join('tb_angkatan','tb_pubdok.id_angkatan','=','tb_angkatan.id_angkatan')
+        ->select('tb_pubdok.id_angkatan','tb_pubdok.id_pubdok','tb_pubdok.file','tb_pubdok.keterangan','tb_pubdok.tema')
+        ->where('tb_pubdok.id_angkatan',$request->select);
+        $pendidikan=$keg->where('tb_pubdok.tema','Divisi Pendidikan')->first();
+        $magang=$keg->where('tb_pubdok.tema','Divisi Magang')->first();
+        $kesejahteraan=$keg->where('tb_pubdok.tema','Divisi Kesejahteraan')->first();
+        $keasramaan=$keg->where('tb_pubdok.tema','Divisi Keasramaan')->first();
+        $kerohanian=$keg->where('tb_pubdok.tema','Divisi Kerohanian')->first();
+        $kesehatan=$keg->where('tb_pubdok.tema','Divisi Kesehatan')->first();
+        $kebersihan=$keg->where('tb_pubdok.tema','Divisi Kebersihan')->first();        
+        $angkatan=DB::table('tb_angkatan')->orderby('angkatan')->get();
+        $keg=$keg->get();
+        $lempar='bebas';
+        return view('user.pilihdivisi',compact('angkatan','keg','lempar','pendidikan','magang','kesejahteraan','keasramaan','kerohanian','kesehatan','kebersihan'));
+    }
+    public function OrgIkatanAlumni()
+    {
+        $struk = DB::table('tb_ikatan_alumni')
+        ->join('tb_orgpub','tb_orgpub.id_orgpub','tb_ikatan_alumni.id_jabatan')
+        ->join('tb_mahasiswa','tb_mahasiswa.id_mahasiswa','tb_ikatan_alumni.id_mahasiswa')
+        ->join('tb_angkatan','tb_angkatan.id_angkatan','tb_mahasiswa.id_angkatan')
+        ->get();
+        return view('User.orgIkatanAlumni',compact('struk'));
+    }
+    public function KegIkatanAlumni()
+    {
+        $dok =DB::table('tb_dok_alumni')
+        ->get();
+        return view('User.kegIkatanAlumni',compact('dok'));
+    }
+    public function materilog()
+    {
+        return view('User.materilogika');
+    }
+    public function materibasis()
+    {
+        return view('User.materibasis');
+    }
+    public function materistruktur()
+    {
+        return view('User.materistruktur');
+    }
+    public function materihtml()
+    {
+        return view('User.materihtml');
+    }
+    public function materifdm()
+    {
+        return view('User.materifund');
+    }
+    public function materifdmphp()
+    {
+        return view('User.fdmphp');
+    }
+    public function materifdmvb()
+    {
+        return view('User.fdmvb');
+    }
+    public function materifdmjava()
+    {
+        return view('User.fdmjava');
+    }
+    public function materifdmljt()
+    {
+        return view('User.materifundljt');
+    }
+    public function materifdmphpljt()
+    {
+        return view('User.fdmphpljt');
+    }
+    public function materifdmvbljt()
+    {
+        return view('User.fdmvbljt');
+    }
+    public function materifdmjavaljt()
+    {
+        return view('User.fdmjavaljt');
+    }
+    public function pembinaPub()
+    {
+        return view('User.pembina');
+    }
+    public function totalAlumni()
+    {
+        $data1=DB::table('tb_mahasiswa')
+        ->leftJoin('tb_angkatan','tb_mahasiswa.id_angkatan','=','tb_angkatan.id_angkatan')
+        ->leftJoin('tb_statusPub','tb_mahasiswa.id_statusPub','=','tb_statusPub.id_statusPub')
+        ->select('tb_mahasiswa.jenis_kelamin','tb_angkatan.angkatan',\DB::raw('count(*) as total'))
+        ->groupBy('tb_angkatan.angkatan')
+        ->groupBy('tb_mahasiswa.jenis_kelamin');
 
-    $data2=DB::table('tb_mahasiswa')
-    ->leftJoin('tb_angkatan','tb_mahasiswa.id_angkatan','=','tb_angkatan.id_angkatan')
-    ->leftJoin('tb_statusPub','tb_mahasiswa.id_statusPub','=','tb_statusPub.id_statusPub')
-    ->select('tb_mahasiswa.jenis_kelamin','tb_angkatan.angkatan',\DB::raw('count(*) as total'))
-    ->groupBy('tb_angkatan.angkatan')
-    ->groupBy('tb_mahasiswa.jenis_kelamin');
+        $data2=DB::table('tb_mahasiswa')
+        ->leftJoin('tb_angkatan','tb_mahasiswa.id_angkatan','=','tb_angkatan.id_angkatan')
+        ->leftJoin('tb_statusPub','tb_mahasiswa.id_statusPub','=','tb_statusPub.id_statusPub')
+        ->select('tb_mahasiswa.jenis_kelamin','tb_angkatan.angkatan',\DB::raw('count(*) as total'))
+        ->groupBy('tb_angkatan.angkatan')
+        ->groupBy('tb_mahasiswa.jenis_kelamin');
 
-    $totalL=DB::table('tb_mahasiswa')
-    ->leftJoin('tb_angkatan','tb_mahasiswa.id_angkatan','=','tb_angkatan.id_angkatan')
-    ->leftJoin('tb_statusPub','tb_mahasiswa.id_statusPub','=','tb_statusPub.id_statusPub')
-    ->select('tb_mahasiswa.jenis_kelamin',\DB::raw('count(*) as total'))
-    ->groupBy('tb_mahasiswa.jenis_kelamin')->where('tb_mahasiswa.jenis_kelamin','Laki-laki')
-    ->where('tb_statusPub.status','Alumni')->get();
+        $totalL=DB::table('tb_mahasiswa')
+        ->leftJoin('tb_angkatan','tb_mahasiswa.id_angkatan','=','tb_angkatan.id_angkatan')
+        ->leftJoin('tb_statusPub','tb_mahasiswa.id_statusPub','=','tb_statusPub.id_statusPub')
+        ->select('tb_mahasiswa.jenis_kelamin',\DB::raw('count(*) as total'))
+        ->groupBy('tb_mahasiswa.jenis_kelamin')->where('tb_mahasiswa.jenis_kelamin','Laki-laki')
+        ->where('tb_statusPub.status','Alumni')->get();
 
-    $totalP=DB::table('tb_mahasiswa')
-    ->leftJoin('tb_angkatan','tb_mahasiswa.id_angkatan','=','tb_angkatan.id_angkatan')
-    ->leftJoin('tb_statusPub','tb_mahasiswa.id_statusPub','=','tb_statusPub.id_statusPub')
-    ->select('tb_mahasiswa.jenis_kelamin',\DB::raw('count(*) as total'))
-    ->groupBy('tb_mahasiswa.jenis_kelamin')->where('tb_mahasiswa.jenis_kelamin','Perempuan')
-    ->where('tb_statusPub.status','Alumni')->get();
+        $totalP=DB::table('tb_mahasiswa')
+        ->leftJoin('tb_angkatan','tb_mahasiswa.id_angkatan','=','tb_angkatan.id_angkatan')
+        ->leftJoin('tb_statusPub','tb_mahasiswa.id_statusPub','=','tb_statusPub.id_statusPub')
+        ->select('tb_mahasiswa.jenis_kelamin',\DB::raw('count(*) as total'))
+        ->groupBy('tb_mahasiswa.jenis_kelamin')->where('tb_mahasiswa.jenis_kelamin','Perempuan')
+        ->where('tb_statusPub.status','Alumni')->get();
 
-    $total=DB::table('tb_mahasiswa')
-    ->leftJoin('tb_statusPub','tb_mahasiswa.id_statusPub','=','tb_statusPub.id_statusPub')
-    ->select(\DB::raw('count(*) as total'))
-    ->where('tb_statusPub.status','Alumni')->get();
+        $total=DB::table('tb_mahasiswa')
+        ->leftJoin('tb_statusPub','tb_mahasiswa.id_statusPub','=','tb_statusPub.id_statusPub')
+        ->select(\DB::raw('count(*) as total'))
+        ->where('tb_statusPub.status','Alumni')->get();
 
-    $lk=$data1->where('tb_mahasiswa.jenis_kelamin','Laki-laki')
-    ->where('tb_statusPub.status','Alumni')->get();
-    $pr=$data2->where('tb_mahasiswa.jenis_kelamin','Perempuan')
-    ->where('tb_statusPub.status','Alumni')->get();
+        $lk=$data1->where('tb_mahasiswa.jenis_kelamin','Laki-laki')
+        ->where('tb_statusPub.status','Alumni')->get();
+        $pr=$data2->where('tb_mahasiswa.jenis_kelamin','Perempuan')
+        ->where('tb_statusPub.status','Alumni')->get();
+        
+        return view('User.totalAlumni',compact('lk','pr','totalL','totalP','total'));
+    }
 
-    return view('User.totalAlumni',compact('lk','pr','totalL','totalP','total'));
-}
 }
