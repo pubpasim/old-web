@@ -70,7 +70,9 @@ class hasilController extends Controller
     }
     public function dataTPA($id)
     {	
-    	$tpa = DB::table('tb_tpa')->where('id_tahun',$id)->get();
+    	$tpa = DB::table('tb_tpa')
+        ->orderBy('tb_tpa.daerah','ASC')
+        ->where('id_tahun',$id)->get();
         return view('tampilan.tpa.tpa',compact('tpa','id'));
     }
     public function tambahTPA($id)
@@ -281,6 +283,7 @@ class hasilController extends Controller
     	$survei = DB::table('tb_survei')
         ->select('tb_survei.*','tb_lulus_tpa.nama')
         ->join('tb_lulus_tpa','tb_survei.nama_peserta','tb_lulus_tpa.id_lulus')
+        ->orderBy('tb_lulus_tpa.nama','ASC')
         ->where('id_tahun3',$id)->get();    	
         return view('tampilan.survei.survei',compact('survei','id'));
     }
@@ -373,6 +376,7 @@ class hasilController extends Controller
     	$final = DB::table('tb_final')
         ->select('tb_final.*','tb_lulus_tpa.nama')
         ->join('tb_lulus_tpa','tb_final.nama_peserta','tb_lulus_tpa.id_lulus')
+        ->orderBy('tb_lulus_tpa.nama','ASC')
         ->where('id_tahun4',$id)->get();  
         return view('tampilan.final.final',compact('final','id'));
     }

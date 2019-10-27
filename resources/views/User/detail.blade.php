@@ -17,19 +17,20 @@
 		color: white;
 	}
 	.foto{
-		width: 20%;
+		width: 30%;
 		height: 100%;
 		position: relative;
-		left: 39%;
+		left: 35%;
 	}
 
 </style>
 <div id="det" >
-	<center><b><h1 >{{$mahasiswa->jabatan_pub}}</h1></b></center>
-	<br><br><br>
+	
 	<div class="foto">
 		<img src="{{url('imgs/mahasiswa')}}/{{$mahasiswa->file}}">
 	</div>
+	<center><b><h1 >{{$mahasiswa->jabatan_pub}}</h1></b></center>
+	<br>
 	<div class="">
 		<table align="center">
 			<tr>

@@ -1,6 +1,6 @@
 @include('tampilan.head')
 
-<div class="col-sm-5 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="panel panel-default">
@@ -57,5 +57,5 @@
 			</div>
 		</div>
 	</div>
-</div>
+
 @include('tampilan.foot')

@@ -145,8 +145,9 @@ Route::get('mahasiswa','mahasiswaController@index');
 Route::get('tambah/mahasiswa','mahasiswaController@create');
 Route::post('simpan/mahasiswa','mahasiswaController@store');
 Route::get('mahasiswaEdit/{id}','mahasiswaController@edit');
-Route::post('mahasiswaEdit/{id}','mahasiswaController@update');
-Route::get('mahasiswaHapus/{id}','mahasiswaController@destroy');
+Route::post('mahasiswaEdit/{x}','mahasiswaController@update');
+Route::get('mahasiswaHapus/{y}','mahasiswaController@destroy');
+Route::get('alumniEdit/{id}','mahasiswaController@editAlumni');
 
 Route::post('angkatanModel','angkatanController@store');
 
