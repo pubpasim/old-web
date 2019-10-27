@@ -46,23 +46,15 @@ public function user_infaq()
     ->groupBy('tahun_infaq')
     ->get();
     
-    $data2=DB::table('tb_infaq')->where('tahun_infaq',$thn)
-    ->get();
-    
-    return view('user.user_infaq',compact('data1','data2','thn','lempar'));
+    return view('user.user_infaq',compact('data1','thn','lempar'));
 }
 public function infaq_bulan(Request $request)
 {
     $data1=DB::table('tb_infaq')
-    ->select('tahun_infaq',\DB::raw('SUM(total_infaq) as total'))
-    ->groupBy('tahun_infaq')
-    ->get();
-
-    $lempar="chartContainer1";
-    $thn=$request->select;
-    $data2=DB::table('tb_infaq')
-    ->where('tahun_infaq',$thn)->first();
-    return view('user.user_infaq',compact('data2','data1','thn','lempar'));
+    ->select('bulan_infaq',\DB::raw('SUM(total_infaq) as total'))
+    ->groupBy('bulan_infaq')
+    ->where('tahun_infaq',$request->select)->get();
+    return view('user.infaq_bulan',compact('data1'));
 }
 
 public function user_dok_ppmb()

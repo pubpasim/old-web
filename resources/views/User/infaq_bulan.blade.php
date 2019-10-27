@@ -27,7 +27,7 @@ var options = {
 		dataPoints: [ 
 
 		<?php foreach ($data1 as $tot): ?>
-			{ y: {!!$tot->total!!},label: "Tahun "+{!!$tot->tahun_infaq!!}},
+			{ y: {!!$tot->total!!},label: "Bulan {{$tot->bulan_infaq}}"},
 		<?php endforeach ?>
 		]
 	}]
@@ -37,24 +37,6 @@ $("#chartContainer").CanvasJSChart(options);
 
 }
 </script>
-<div id="design">
-	
-	<form method="POST" action="{{url('infaq_bulan')}}">
-		{{csrf_field()}}
-		<h2>Pilih Tahun :</h2>
-		<div>
-			<select name="select" >
-				<option disabled>--Pilih Tahun--</option>
-				@php for ($tahun=2010;$tahun<=$thn;$tahun++){
-					echo "<option value='$tahun'>$tahun</option>";
-				}
-				@endphp		
-			</select>
-		</div>
-		<button type="submit" id="btn">OKE</button>
-	</form>
-</div>
-
 <div id="chart">
 	<div id="chartContainer" style="height: 700px; width: 100%;"></div>
 </div>
