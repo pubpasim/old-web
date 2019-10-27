@@ -259,6 +259,7 @@
 		</div>
 	</div>
 </section>
+
 <!-- Call To Action Area End -->
 
 <!-- Partner Area Start -->
@@ -283,7 +284,5 @@
 	</div>
 </div>
 <!-- Partner Area End -->
-
-
 
 @include('user.footer')
