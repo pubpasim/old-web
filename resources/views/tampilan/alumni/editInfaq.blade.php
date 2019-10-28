@@ -80,46 +80,67 @@
 
 	}
 </style>
-	<h2>Edit Data Infaq</h2>
-	<div class="container">
-		<form method="POST" action="{{url('editInfaq/'.$infaq->id_infaq)}}">
-			{{csrf_field()}}
-			<div class="row">
-				<div class="col-25">
-					<label for="angkatan">Angkatan</label>
-				</div>
-				<div class="col-75">
-					<select id="angkatan" name="angkatan">
-						<option value="0"> --pilih Angkatan--</option>
-						@foreach($angkatan as $data)
-						<option @if($infaq->id_angkatan==$data->id_angkatan) selected="true"@endif value="{{$data->id_angkatan}}">{{$data->angkatan}}</option>
-						@endforeach
-
-					</select>
-				</div>
+<h2>Edit Data Infaq</h2>
+<div class="container">
+	<form method="POST" action="{{url('editInfaq/'.$infaq->id_infaq)}}">
+		{{csrf_field()}}
+		<div class="row">
+			<div class="col-25">
+				<label for="bulan">Bulan</label>
 			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="bulan">Periode</label>
-				</div>
-				<div class="col-75">
-					<input id="inp" type="month" id="periode" name="periode" value="{{$infaq->periode}}">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="daerah">Total Infaq</label>
-				</div>
-				<div class="col-75">
-					<input id="inp" type="number" name="total" placeholder="Total Infaq..." value="{{$infaq->total_infaq}}">
-				</div>
-			</div>
-			<div class="row" style="margin-top: 15px;">
-				<input type="submit" value="Simpan">
-			</div>
-			
-		</form>
+			<div class="col-75">
+				<select name="tahun">
+					<option>--Tahun--</option>
+					@php 
+					$th=getdate();
+					$thn=$th['year'];
+					for ($x=2011; $x <= $thn; $x++){ 
+					@endphp 
+					<option @if($infaq->tahun_infaq==$x)selected='true' @endif value='{{$x}}'>Tahun {{$x}}</option>
+					@php
+				}
+				@endphp
+			</select>
+		</div>
 	</div>
+	<div class="row">
+		<div class="col-25">
+			<label for="bulan">Bulan</label>
+		</div>
+		<div class="col-75">
+			
+			<select name="bulan">
+				<option>--Bulan--</option>
+				<option @if($infaq->bulan_infaq=="January") selected="true" @endif value="January">January</option>
+				<option @if($infaq->bulan_infaq=="February") selected="true" @endif value="February">February</option>
+				<option @if($infaq->bulan_infaq=="Maret") selected="true" @endif value="Maret">Maret</option>
+				<option @if($infaq->bulan_infaq=="April") selected="true" @endif value="April">April</option>
+				<option @if($infaq->bulan_infaq=="Mei") selected="true" @endif value="Mei">Mei</option>
+				<option @if($infaq->bulan_infaq=="Juni") selected="true" @endif value="Juni">Juni</option>
+				<option @if($infaq->bulan_infaq=="Juli") selected="true" @endif value="Juli">Juli</option>
+				<option @if($infaq->bulan_infaq=="Agustus") selected="true" @endif value="Agustus">Agustus</option>
+				<option @if($infaq->bulan_infaq=="September") selected="true" @endif value="September">September</option>
+				<option @if($infaq->bulan_infaq=="Oktober") selected="true" @endif value="Oktober">Oktober</option>
+				<option @if($infaq->bulan_infaq=="November") selected="true" @endif value="November">November</option>
+				<option @if($infaq->bulan_infaq=="Desember") selected="true" @endif value="Desember">January</option>
+			</select>
+			
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-25">
+			<label for="daerah">Total Infaq</label>
+		</div>
+		<div class="col-75">
+			<input id="inp" type="number" name="total" placeholder="Total Infaq..." value="{{$infaq->total_infaq}}">
+		</div>
+	</div>
+	<div class="row" style="margin-top: 15px;">
+		<input type="submit" value="Simpan">
+	</div>
+
+</form>
+</div>
 
 
 @include('tampilan.foot')

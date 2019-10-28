@@ -23,8 +23,8 @@ class userController extends Controller
     {
        $kegiatan=DB::table('tb_pubdok')->orderby('id_pubdok','DESC')->limit('3')->get();
        $ppmb=DB::table('tb_dokumentasi')->orderby('id_dok','DESC')->limit('10')->get();
-
        $chat=DB::table('tb_pertanyaan')->get();
+
         return view('user.index',compact('kegiatan','ppmb','chat'));
     }
     public function hasilSeleksi()
@@ -42,29 +42,50 @@ class userController extends Controller
         return view('user.hasilSeleksi',compact('tahun','lempar','tpa'));
     }
 
-    public function user_dok_ppmb()
-    {  
-        $dok = DB::table('tb_dokumentasi')->get();
-        return view('user.user_dok_ppmb',compact('dok'));
-    }
-
-    public function user_lulus_tpa($id)
-    {
-        $lulus = DB::table('tb_tpa')->where('id_tpa',$id)->first();
-        $tpa = DB::table('tb_lulus_tpa')->where('fk_tpa',$id)->get();
-        $back = $lulus->id_tahun;
-        return view('user.user_lulus_tpa',compact('id','tpa','back'));
-    }
-
-    public function user_wawancara_akhir($id)
-    {
-        $survei = DB::table('tb_survei')
-        ->select('tb_survei.*','tb_lulus_tpa.nama')
-        ->join('tb_lulus_tpa','tb_survei.nama_peserta','tb_lulus_tpa.id_lulus')
-        ->where('id_tahun3',$id)->get();
-        return view('user.user_survei',compact('survei','id'));
-    }
+public function user_infaq()
+{
+    $lempar="";
+    $th=getdate();
+    $thn=$th['year'];
+    $data1=DB::table('tb_infaq')
+    ->select('tahun_infaq',\DB::raw('SUM(total_infaq) as total'))
+    ->groupBy('tahun_infaq')
+    ->get();
     
+    return view('user.user_infaq',compact('data1','thn','lempar'));
+}
+public function infaq_bulan(Request $request)
+{
+    $data1=DB::table('tb_infaq')
+    ->select('bulan_infaq',\DB::raw('SUM(total_infaq) as total'))
+    ->groupBy('bulan_infaq')
+    ->where('tahun_infaq',$request->select)->get();
+    return view('user.infaq_bulan',compact('data1'));
+}
+
+public function user_dok_ppmb()
+{  
+    $dok = DB::table('tb_dokumentasi')->get();
+    return view('user.user_dok_ppmb',compact('dok'));
+}
+
+public function user_lulus_tpa($id)
+{
+    $lulus = DB::table('tb_tpa')->where('id_tpa',$id)->first();
+    $tpa = DB::table('tb_lulus_tpa')->where('fk_tpa',$id)->get();
+    $back = $lulus->id_tahun;
+    return view('user.user_lulus_tpa',compact('id','tpa','back'));
+}
+
+public function user_wawancara_akhir($id)
+{
+    $survei = DB::table('tb_survei')
+    ->select('tb_survei.*','tb_lulus_tpa.nama')
+    ->join('tb_lulus_tpa','tb_survei.nama_peserta','tb_lulus_tpa.id_lulus')
+    ->where('id_tahun3',$id)->get();
+    return view('user.user_survei',compact('survei','id'));
+}
+
 public function user_tpa($id)
 {   
     $tpa = DB::table('tb_tpa')
@@ -75,39 +96,31 @@ public function user_tpa($id)
 public function user_survei($id)
 {
     $survei = DB::table('tb_survei')
-        ->select('tb_survei.*','tb_lulus_tpa.nama')
-        ->join('tb_lulus_tpa','tb_survei.nama_peserta','tb_lulus_tpa.id_lulus')
-        ->orderBy('tb_lulus_tpa.nama','ASC')
-        ->where('id_tahun3',$id)->get();  
+    ->select('tb_survei.*','tb_lulus_tpa.nama')
+    ->join('tb_lulus_tpa','tb_survei.nama_peserta','tb_lulus_tpa.id_lulus')
+    ->orderBy('tb_lulus_tpa.nama','ASC')
+    ->where('id_tahun3',$id)->get();  
     return view('user.user_survei',compact('survei','id'));
 }
 public function user_psikotes($id)
 {
     $psi = DB::table('tb_psikotest')
-        ->select('tb_psikotest.*','tb_lulus_tpa.nama')
-        ->join('tb_lulus_tpa','tb_psikotest.nama_peserta','tb_lulus_tpa.id_lulus')
-        ->where('id_tahun2',$id)
-        ->orderBy('tb_lulus_tpa.nama','ASC')
-        ->get();
+    ->select('tb_psikotest.*','tb_lulus_tpa.nama')
+    ->join('tb_lulus_tpa','tb_psikotest.nama_peserta','tb_lulus_tpa.id_lulus')
+    ->where('id_tahun2',$id)
+    ->orderBy('tb_lulus_tpa.nama','ASC')
+    ->get();
     return view('user.user_psikotes',compact('psi','id'));
 }
 public function user_final($id)
 {
     $final = DB::table('tb_final')
-        ->select('tb_final.*','tb_lulus_tpa.nama')
-        ->join('tb_lulus_tpa','tb_final.nama_peserta','tb_lulus_tpa.id_lulus')
-        ->orderBy('tb_lulus_tpa.nama','ASC')
-        ->where('id_tahun4',$id)->get();
+    ->select('tb_final.*','tb_lulus_tpa.nama')
+    ->join('tb_lulus_tpa','tb_final.nama_peserta','tb_lulus_tpa.id_lulus')
+    ->orderBy('tb_lulus_tpa.nama','ASC')
+    ->where('id_tahun4',$id)->get();
 
     return view('user.user_final',compact('final'));
-}
-public function user_infaq()
-{
-    $infaq=DB::table('tb_infaq')
-    ->join('tb_angkatan','tb_infaq.id_angkatan','=','tb_angkatan.id_angkatan')
-    ->select('tb_infaq.id_infaq','tb_infaq.periode','tb_infaq.total_infaq','tb_angkatan.angkatan')
-    ->get();
-    return view('user.user_infaq',compact('infaq'));
 }
 public function user_alumni()
 {
@@ -145,341 +158,346 @@ public function user_alumniView(request $request)
         return view('user.user_alumni',compact('angkatan','mahasiswa'));
     }
 }
-    public function login()
-    {
-        return view('user.login');
-    }
-    public function doLogin(Request $request)
-    {
-        $usr = $request->username;
-        $pass = $request->password;
+    /**
+     * Display a listing of the resource. 
+     *
+     * @return \Illuminate\Http\Response
+     */
+    
 
-        //echo $pass;die;
-        $data = DB::table('tb_user')->where('username',$usr)->first();
-        $id_mhs=$data->id_mahasiswa;
-        Session::put('level',$data->level);
-        Session::put('username',$data->username);
-        Session::put('password',$data->password);
-        if($data){
-            if($pass==$data->password){
-                if ($data->level=='admin') {
-                    Session::put('level',$data->level);                    
-                    $count = DB::table('tb_pertanyaan')->count();;
-                    Session::put('jumChat',$count);                    
-                    return redirect('admin');
-                }elseif ($data->level=='alumni') {
-                    return redirect('admin/alumni/'.$id_mhs);
-                }elseif ($data->level=='admin_pub') {
-                    return redirect('admin');
-                }elseif ($data->level=='ikatan_alumni') {
-                    return redirect('admin');
-                }elseif ($data->level=='admin_ppmb') {
-                    return redirect('admin');
-                }                
-            }
-            else{
-                return redirect('login')->with('alert','Password atau Email, Salah !');
-            }
+public function login()
+{
+    return view('user.login');
+}
+public function doLogin(Request $request)
+{
+    $usr = $request->username;
+    $pass = $request->password;
+    $data = DB::table('tb_user')->where('username',$usr)->first();
+    $id_mhs=$data->id_mahasiswa;
+    Session::put('level',$data->level);
+    Session::put('username',$data->username);
+    Session::put('password',$data->password);
+    if($data){
+        if($pass==$data->password){
+            if ($data->level=='admin') {
+                Session::put('level',$data->level);                    
+                $count = DB::table('tb_pertanyaan')->count();;
+                Session::put('jumChat',$count);                    
+                return redirect('admin');
+            }elseif ($data->level=='alumni') {
+                return redirect('admin/alumni/'.$id_mhs);
+            }elseif ($data->level=='admin_pub') {
+                return redirect('admin');
+            }elseif ($data->level=='ikatan_alumni') {
+                return redirect('admin');
+            }elseif ($data->level=='admin_ppmb') {
+                return redirect('admin');
+            }                
         }
         else{
-            return redirect('login')->with('alert','Password atau Email, Salah!');
+            return redirect('login')->with('alert','Password atau Email, Salah !');
         }
-
     }
-    public function tampilUser(){
-        $user=DB::table('tb_user')
-        ->join('tb_mahasiswa', 'tb_user.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
-        ->select('tb_user.id_user','tb_mahasiswa.nama','tb_user.username','tb_user.password','tb_user.level')->get();
-
-        return view('tampilan.user.user',compact('user'));
-    }
-    public function editUser($id){
-        $user=DB::table('tb_user')
-        ->join('tb_mahasiswa', 'tb_user.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
-        ->select('tb_user.id_user','tb_mahasiswa.nama','tb_user.username','tb_user.password','tb_user.level')
-        ->where('tb_user.id_user',$id)->first();
-
-        return view('tampilan.user.editUser',compact('user'));
-    }
-    public function updateUser(Request $request){
-        $user=DB::table('tb_user')->where('id_user',$request->id)->update([
-            'username'=>$request->usr,'password'=>$request->pass,'level'=>$request->level
-        ]);
-        return redirect('tampilUser');
-    }
-    public function hapusUser($id){
-        $user=DB::table('tb_user')->where('id_user',$id)->delete();
-        return redirect('tampilUser');
-    }
-    public function tambahUser(){
-        $lempar="";
-        $angkatan=DB::table('tb_angkatan')->orderby('angkatan')->get();
-        $mahasiswa=DB::table('tb_mahasiswa')->get();
-        return view('tampilan.user.tambah',compact('angkatan','lempar','mahasiswa'));
-    }
-    public function simpanUser(Request $request){
-        $user=DB::table('tb_user')->insert([
-            'id_mahasiswa'=>$request->nama,'username'=>$request->usr,'password'=>$request->pass,'level'=>$request->level
-        ]);
-        return redirect('tampilUser');
-    }
-    public function tambahUser_store(Request $request){
-        $lempar=$request->select;
-        $angkatan=DB::table('tb_angkatan')->orderby('angkatan')->get();
-        $mahasiswa=DB::table('tb_mahasiswa')->where('id_angkatan',$request->select)->get();
-        return view('tampilan.user.tambah',compact('angkatan','mahasiswa','lempar'));
-    }
-    public function view_mhs(){
-        $angkatan=DB::table('tb_angkatan')->orderby('angkatan')->get();
-        $lempar="data";
-        $mahasiswa = DB::table('tb_mahasiswa')
-        ->join('tb_daerah', 'tb_mahasiswa.id_daerah', '=', 'tb_daerah.id_daerah')
-        ->join('tb_angkatan','tb_mahasiswa.id_angkatan', '=', 'tb_angkatan.id_angkatan')
-        ->join('tb_sekolah', 'tb_mahasiswa.id_sekolah', '=', 'tb_sekolah.id_sekolah')
-        ->join('tb_orgpub', 'tb_mahasiswa.id_orgpub', '=', 'tb_orgpub.id_orgpub')
-        ->join('tb_orgppmb', 'tb_mahasiswa.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
-        ->join('tb_statusPub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statusPub.id_statusPub')
-        ->join('tb_jurusan', 'tb_mahasiswa.id_jur', '=', 'tb_jurusan.id_jur')
-        ->select('tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status')
-        ->where('tb_statusPub.status','PUB Aktif')
-        ->orderby('tb_angkatan.angkatan')->get();
-        return view('user.mahasiswa',compact('angkatan','mahasiswa','lempar'));
-    }
-    public function view_dataMhs(Request $request){
-        $angkatan=DB::table('tb_angkatan')->orderby('angkatan')->get();
-        $lempar=$request->select;
-        $mahasiswa = DB::table('tb_mahasiswa')
-        ->join('tb_daerah', 'tb_mahasiswa.id_daerah', '=', 'tb_daerah.id_daerah')
-        ->join('tb_angkatan','tb_mahasiswa.id_angkatan', '=', 'tb_angkatan.id_angkatan')
-        ->join('tb_sekolah', 'tb_mahasiswa.id_sekolah', '=', 'tb_sekolah.id_sekolah')
-        ->join('tb_orgpub', 'tb_mahasiswa.id_orgpub', '=', 'tb_orgpub.id_orgpub')
-        ->join('tb_orgppmb', 'tb_mahasiswa.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
-        ->join('tb_statusPub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statusPub.id_statusPub')
-        ->join('tb_jurusan', 'tb_mahasiswa.id_jur', '=', 'tb_jurusan.id_jur')
-        ->select('tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status')
-        ->where('tb_angkatan.angkatan',$request->select)
-        ->where('tb_statusPub.status','PUB Aktif')
-        ->orderby('tb_mahasiswa.nama')->get();
-        if ($request->select=="") {
-            return redirect('user/mahasiswa');
-        }else{     
-           return view('user.mahasiswa',compact('angkatan','mahasiswa','lempar'));
-        }
-        
+    else{
+        return redirect('login')->with('alert','Password atau Email, Salah!');
     }
 
-    public function pelatihan(){
-        $angkatan=DB::table('tb_angkatan')
-        ->where('angkatan','>=','16')
-        ->orderby('angkatan')->get();
-        $pelatihan1=DB::table('tb_detpelatihan')
-        ->join('tb_angkatan','tb_detpelatihan.id_angkatan','=','tb_angkatan.id_angkatan')
-        ->join('tb_pelatihan','tb_detpelatihan.id_pelatihan','=','tb_pelatihan.id_pelatihan')
-        ->select('tb_pelatihan.pelatihan')->get();
-        $lempar="";
-        return view('user.pelatihan',compact('angkatan','lempar','pelatihan1'));
-    }
-    public function pelatihan_data(Request $request){
-        $angkatan=DB::table('tb_angkatan')
-        ->where('angkatan','>=','16')
-        ->orderby('angkatan')->get();
-        $pelatihan1=DB::table('tb_detpelatihan')
-        ->join('tb_pelatihan','tb_detpelatihan.id_pelatihan','=','tb_pelatihan.id_pelatihan')
-        ->select('tb_pelatihan.pelatihan')->where('tb_detpelatihan.id_angkatan',$request->select)->get();
-        $lempar=$request->select;
-        return view('user.pelatihan',compact('angkatan','lempar','pelatihan1'));
-    }
+}
+public function tampilUser(){
+    $user=DB::table('tb_user')
+    ->join('tb_mahasiswa', 'tb_user.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
+    ->select('tb_user.id_user','tb_mahasiswa.nama','tb_user.username','tb_user.password','tb_user.level')->get();
 
-    public function profile()
-    {
-        return view('user.profile');
-    }
-    public function syarat_ketentuan()
-    {
-        $syarat=syaratKetentuanModel::all();
-        return view('User.syarat_user',compact('syarat'));
-    }
+    return view('tampilan.user.user',compact('user'));
+}
+public function editUser($id){
+    $user=DB::table('tb_user')
+    ->join('tb_mahasiswa', 'tb_user.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
+    ->select('tb_user.id_user','tb_mahasiswa.nama','tb_user.username','tb_user.password','tb_user.level')
+    ->where('tb_user.id_user',$id)->first();
+
+    return view('tampilan.user.editUser',compact('user'));
+}
+public function updateUser(Request $request){
+    $user=DB::table('tb_user')->where('id_user',$request->id)->update([
+        'username'=>$request->usr,'password'=>$request->pass,'level'=>$request->level
+    ]);
+    return redirect('tampilUser');
+}
+public function hapusUser($id){
+    $user=DB::table('tb_user')->where('id_user',$id)->delete();
+    return redirect('tampilUser');
+}
+public function tambahUser(){
+    $lempar="";
+    $angkatan=DB::table('tb_angkatan')->orderby('angkatan')->get();
+    $mahasiswa=DB::table('tb_mahasiswa')->get();
+    return view('tampilan.user.tambah',compact('angkatan','lempar','mahasiswa'));
+}
+public function simpanUser(Request $request){
+    $user=DB::table('tb_user')->insert([
+        'id_mahasiswa'=>$request->nama,'username'=>$request->usr,'password'=>$request->pass,'level'=>$request->level
+    ]);
+    return redirect('tampilUser');
+}
+public function tambahUser_store(Request $request){
+    $lempar=$request->select;
+    $angkatan=DB::table('tb_angkatan')->orderby('angkatan')->get();
+    $mahasiswa=DB::table('tb_mahasiswa')->where('id_angkatan',$request->select)->get();
+    return view('tampilan.user.tambah',compact('angkatan','mahasiswa','lempar'));
+}
+public function view_mhs(){
+    $angkatan=DB::table('tb_angkatan')->orderby('angkatan')->get();
+    $lempar="data";
+    $mahasiswa = DB::table('tb_mahasiswa')
+    ->join('tb_daerah', 'tb_mahasiswa.id_daerah', '=', 'tb_daerah.id_daerah')
+    ->join('tb_angkatan','tb_mahasiswa.id_angkatan', '=', 'tb_angkatan.id_angkatan')
+    ->join('tb_sekolah', 'tb_mahasiswa.id_sekolah', '=', 'tb_sekolah.id_sekolah')
+    ->join('tb_orgpub', 'tb_mahasiswa.id_orgpub', '=', 'tb_orgpub.id_orgpub')
+    ->join('tb_orgppmb', 'tb_mahasiswa.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
+    ->join('tb_statusPub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statusPub.id_statusPub')
+    ->join('tb_jurusan', 'tb_mahasiswa.id_jur', '=', 'tb_jurusan.id_jur')
+    ->select('tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status')
+    ->where('tb_statusPub.status','PUB Aktif')
+    ->orderby('tb_angkatan.angkatan')->get();
+    return view('user.mahasiswa',compact('angkatan','mahasiswa','lempar'));
+}
+public function view_dataMhs(Request $request){
+    $angkatan=DB::table('tb_angkatan')->orderby('angkatan')->get();
+    $lempar=$request->select;
+    $mahasiswa = DB::table('tb_mahasiswa')
+    ->join('tb_daerah', 'tb_mahasiswa.id_daerah', '=', 'tb_daerah.id_daerah')
+    ->join('tb_angkatan','tb_mahasiswa.id_angkatan', '=', 'tb_angkatan.id_angkatan')
+    ->join('tb_sekolah', 'tb_mahasiswa.id_sekolah', '=', 'tb_sekolah.id_sekolah')
+    ->join('tb_orgpub', 'tb_mahasiswa.id_orgpub', '=', 'tb_orgpub.id_orgpub')
+    ->join('tb_orgppmb', 'tb_mahasiswa.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
+    ->join('tb_statusPub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statusPub.id_statusPub')
+    ->join('tb_jurusan', 'tb_mahasiswa.id_jur', '=', 'tb_jurusan.id_jur')
+    ->select('tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status')
+    ->where('tb_angkatan.angkatan',$request->select)
+    ->where('tb_statusPub.status','PUB Aktif')
+    ->orderby('tb_mahasiswa.nama')->get();
+    if ($request->select=="") {
+        return redirect('user/mahasiswa');
+    }else{     
+     return view('user.mahasiswa',compact('angkatan','mahasiswa','lempar'));
+ }
+
+}
+
+public function pelatihan(){
+    $angkatan=DB::table('tb_angkatan')
+    ->where('angkatan','>=','16')
+    ->orderby('angkatan')->get();
+    $pelatihan1=DB::table('tb_detpelatihan')
+    ->join('tb_angkatan','tb_detpelatihan.id_angkatan','=','tb_angkatan.id_angkatan')
+    ->join('tb_pelatihan','tb_detpelatihan.id_pelatihan','=','tb_pelatihan.id_pelatihan')
+    ->select('tb_pelatihan.pelatihan')->get();
+    $lempar="";
+    return view('user.pelatihan',compact('angkatan','lempar','pelatihan1'));
+}
+public function pelatihan_data(Request $request){
+    $angkatan=DB::table('tb_angkatan')
+    ->where('angkatan','>=','16')
+    ->orderby('angkatan')->get();
+    $pelatihan1=DB::table('tb_detpelatihan')
+    ->join('tb_pelatihan','tb_detpelatihan.id_pelatihan','=','tb_pelatihan.id_pelatihan')
+    ->select('tb_pelatihan.pelatihan')->where('tb_detpelatihan.id_angkatan',$request->select)->get();
+    $lempar=$request->select;
+    return view('user.pelatihan',compact('angkatan','lempar','pelatihan1'));
+}
+
+public function profile()
+{
+    return view('user.profile');
+}
+public function syarat_ketentuan()
+{
+    $syarat=syaratKetentuanModel::all();
+    return view('User.syarat_user',compact('syarat'));
+}
 
 
-    public function ppmb_profile()
-    {
-        return view('user.profile_ppmb');
-    }
-    public function jadwal_ppmb()
-    {
-        $tes=DB::table('tb_jadwal')->get();
-        $periode=DB::table('tb_periode')->get();
-        $detjadwalppmb=DB::table('tb_detjadwal')
-        ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
-        ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
-        ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
-        ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
-        ->get();
-        return view('User.jadwal_ppmb_user',compact('detjadwalppmb','tes','periode'));
-    }
-    public function organisasi_ppmb(Request $request)
-    {
+public function ppmb_profile()
+{
+    return view('user.profile_ppmb');
+}
+public function jadwal_ppmb()
+{
+    $tes=DB::table('tb_jadwal')->get();
+    $periode=DB::table('tb_periode')->get();
+    $detjadwalppmb=DB::table('tb_detjadwal')
+    ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
+    ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
+    ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
+    ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
+    ->get();
+    return view('User.jadwal_ppmb_user',compact('detjadwalppmb','tes','periode'));
+}
+public function organisasi_ppmb(Request $request)
+{
         //ketua
-        $ketua=DB::table('tb_detorg_ppmb')
-        ->join('tb_mahasiswa','tb_detorg_ppmb.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
-        ->join('tb_orgppmb','tb_detorg_ppmb.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
-        ->select('tb_mahasiswa.id_mahasiswa','tb_orgppmb.jabatan','tb_mahasiswa.nama')
-        ->where('tb_orgppmb.jabatan','KETUA PPMB');
-        $ketua2=$ketua->count();
-        $ketua=$ketua->first();
+    $ketua=DB::table('tb_detorg_ppmb')
+    ->join('tb_mahasiswa','tb_detorg_ppmb.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
+    ->join('tb_orgppmb','tb_detorg_ppmb.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
+    ->select('tb_mahasiswa.id_mahasiswa','tb_orgppmb.jabatan','tb_mahasiswa.nama')
+    ->where('tb_orgppmb.jabatan','KETUA PPMB');
+    $ketua2=$ketua->count();
+    $ketua=$ketua->first();
 
         //keamanan
-        $keamanan=DB::table('tb_detorg_ppmb')
-        ->join('tb_mahasiswa','tb_detorg_ppmb.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
-        ->join('tb_orgppmb','tb_detorg_ppmb.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
-        ->select('tb_mahasiswa.id_mahasiswa','tb_orgppmb.jabatan','tb_mahasiswa.nama')
-        ->where('tb_orgppmb.jabatan','KEAMANAN PPMB');
-        $keamanan2=$keamanan->count();
-        $keamanan=$keamanan->first();
+    $keamanan=DB::table('tb_detorg_ppmb')
+    ->join('tb_mahasiswa','tb_detorg_ppmb.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
+    ->join('tb_orgppmb','tb_detorg_ppmb.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
+    ->select('tb_mahasiswa.id_mahasiswa','tb_orgppmb.jabatan','tb_mahasiswa.nama')
+    ->where('tb_orgppmb.jabatan','KEAMANAN PPMB');
+    $keamanan2=$keamanan->count();
+    $keamanan=$keamanan->first();
         //sekretaris
-        $sekretaris=DB::table('tb_detorg_ppmb')
-        ->join('tb_mahasiswa','tb_detorg_ppmb.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
-        ->join('tb_orgppmb','tb_detorg_ppmb.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
-        ->select('tb_mahasiswa.id_mahasiswa','tb_orgppmb.jabatan','tb_mahasiswa.nama')
-        ->where('tb_orgppmb.jabatan','SEKRETARIS PPMB');
-        $sekretaris2=$sekretaris->count();
-        $sekretaris=$sekretaris->first();
+    $sekretaris=DB::table('tb_detorg_ppmb')
+    ->join('tb_mahasiswa','tb_detorg_ppmb.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
+    ->join('tb_orgppmb','tb_detorg_ppmb.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
+    ->select('tb_mahasiswa.id_mahasiswa','tb_orgppmb.jabatan','tb_mahasiswa.nama')
+    ->where('tb_orgppmb.jabatan','SEKRETARIS PPMB');
+    $sekretaris2=$sekretaris->count();
+    $sekretaris=$sekretaris->first();
         //kadiv_humas
-        $kadiv_humas=DB::table('tb_detorg_ppmb')
-        ->join('tb_mahasiswa','tb_detorg_ppmb.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
-        ->join('tb_orgppmb','tb_detorg_ppmb.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
-        ->select('tb_mahasiswa.id_mahasiswa','tb_orgppmb.jabatan','tb_mahasiswa.nama')
-        ->where('tb_orgppmb.jabatan','KOOR DIV HUMAS PPMB');
-        $kadiv_humas2=$kadiv_humas->count();
-        $kadiv_humas=$kadiv_humas->first();        
+    $kadiv_humas=DB::table('tb_detorg_ppmb')
+    ->join('tb_mahasiswa','tb_detorg_ppmb.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
+    ->join('tb_orgppmb','tb_detorg_ppmb.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
+    ->select('tb_mahasiswa.id_mahasiswa','tb_orgppmb.jabatan','tb_mahasiswa.nama')
+    ->where('tb_orgppmb.jabatan','KOOR DIV HUMAS PPMB');
+    $kadiv_humas2=$kadiv_humas->count();
+    $kadiv_humas=$kadiv_humas->first();        
         //kadiv_logistik
-        $kadiv_logistik=DB::table('tb_detorg_ppmb')
-        ->join('tb_mahasiswa','tb_detorg_ppmb.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
-        ->join('tb_orgppmb','tb_detorg_ppmb.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
-        ->select('tb_mahasiswa.id_mahasiswa','tb_orgppmb.jabatan','tb_mahasiswa.nama')
-        ->where('tb_orgppmb.jabatan',' KOOR DIVISI LOGISTIK PPMB');
-        $kadiv_logistik2=$kadiv_logistik->count();
-        $kadiv_logistik=$kadiv_logistik->first();
+    $kadiv_logistik=DB::table('tb_detorg_ppmb')
+    ->join('tb_mahasiswa','tb_detorg_ppmb.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
+    ->join('tb_orgppmb','tb_detorg_ppmb.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
+    ->select('tb_mahasiswa.id_mahasiswa','tb_orgppmb.jabatan','tb_mahasiswa.nama')
+    ->where('tb_orgppmb.jabatan',' KOOR DIVISI LOGISTIK PPMB');
+    $kadiv_logistik2=$kadiv_logistik->count();
+    $kadiv_logistik=$kadiv_logistik->first();
         //kadiv_acara
-        $kadiv_acara=DB::table('tb_detorg_ppmb')
-        ->join('tb_mahasiswa','tb_detorg_ppmb.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
-        ->join('tb_orgppmb','tb_detorg_ppmb.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
-        ->select('tb_mahasiswa.id_mahasiswa','tb_orgppmb.jabatan','tb_mahasiswa.nama')
-        ->where('tb_orgppmb.jabatan','KOOR DIV ACARA PPMB');
-        $kadiv_acara2=$kadiv_acara->count();
-        $kadiv_acara=$kadiv_acara->first();
+    $kadiv_acara=DB::table('tb_detorg_ppmb')
+    ->join('tb_mahasiswa','tb_detorg_ppmb.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
+    ->join('tb_orgppmb','tb_detorg_ppmb.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
+    ->select('tb_mahasiswa.id_mahasiswa','tb_orgppmb.jabatan','tb_mahasiswa.nama')
+    ->where('tb_orgppmb.jabatan','KOOR DIV ACARA PPMB');
+    $kadiv_acara2=$kadiv_acara->count();
+    $kadiv_acara=$kadiv_acara->first();
         //kadiv_kesejahtraan
-        $kadiv_kesejahtraan=DB::table('tb_detorg_ppmb')
-        ->join('tb_mahasiswa','tb_detorg_ppmb.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
-        ->join('tb_orgppmb','tb_detorg_ppmb.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
-        ->select('tb_mahasiswa.id_mahasiswa','tb_orgppmb.jabatan','tb_mahasiswa.nama')
-        ->where('tb_orgppmb.jabatan','KOOR DIV KESEJAHTERAAN PPMB');
-        $kadiv_kesejahtraan2=$kadiv_kesejahtraan->count();
-        $kadiv_kesejahtraan=$kadiv_kesejahtraan->first();
+    $kadiv_kesejahtraan=DB::table('tb_detorg_ppmb')
+    ->join('tb_mahasiswa','tb_detorg_ppmb.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
+    ->join('tb_orgppmb','tb_detorg_ppmb.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
+    ->select('tb_mahasiswa.id_mahasiswa','tb_orgppmb.jabatan','tb_mahasiswa.nama')
+    ->where('tb_orgppmb.jabatan','KOOR DIV KESEJAHTERAAN PPMB');
+    $kadiv_kesejahtraan2=$kadiv_kesejahtraan->count();
+    $kadiv_kesejahtraan=$kadiv_kesejahtraan->first();
         //kadiv_dokumentasi
-        $kadiv_dokumentasi=DB::table('tb_detorg_ppmb')
-        ->join('tb_mahasiswa','tb_detorg_ppmb.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
-        ->join('tb_orgppmb','tb_detorg_ppmb.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
-        ->select('tb_mahasiswa.id_mahasiswa','tb_orgppmb.jabatan','tb_mahasiswa.nama')
-        ->where('tb_orgppmb.jabatan','KOOR DIV DOKUMENTASI PPMB');
-        $kadiv_dokumentasi2=$kadiv_dokumentasi->count();
-        $kadiv_dokumentasi=$kadiv_dokumentasi->first();
-        
+    $kadiv_dokumentasi=DB::table('tb_detorg_ppmb')
+    ->join('tb_mahasiswa','tb_detorg_ppmb.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
+    ->join('tb_orgppmb','tb_detorg_ppmb.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
+    ->select('tb_mahasiswa.id_mahasiswa','tb_orgppmb.jabatan','tb_mahasiswa.nama')
+    ->where('tb_orgppmb.jabatan','KOOR DIV DOKUMENTASI PPMB');
+    $kadiv_dokumentasi2=$kadiv_dokumentasi->count();
+    $kadiv_dokumentasi=$kadiv_dokumentasi->first();
 
-        
-        return view('User.struktur_ppmb_user',compact('ketua','sekretaris','keamanan','kadiv_logistik','kadiv_humas','kadiv_acara','kadiv_dokumentasi','kadiv_kesejahtraan','ketua2','sekretaris2','keamanan2','kadiv_logistik2','kadiv_humas2','kadiv_acara2','kadiv_dokumentasi2','kadiv_kesejahtraan2'));    
-    }
-    public function organisasi_pub(Request $request)
-    {
+
+
+    return view('User.struktur_ppmb_user',compact('ketua','sekretaris','keamanan','kadiv_logistik','kadiv_humas','kadiv_acara','kadiv_dokumentasi','kadiv_kesejahtraan','ketua2','sekretaris2','keamanan2','kadiv_logistik2','kadiv_humas2','kadiv_acara2','kadiv_dokumentasi2','kadiv_kesejahtraan2'));    
+}
+public function organisasi_pub(Request $request)
+{
         //ketua
-        $ketua=DB::table('tb_detorg_pub')
-        ->join('tb_mahasiswa','tb_detorg_pub.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
-        ->join('tb_orgpub','tb_detorg_pub.id_orgpub', '=', 'tb_orgpub.id_orgpub')
-        ->select('tb_mahasiswa.id_mahasiswa','tb_orgpub.jabatan_pub','tb_mahasiswa.nama')
-        ->where('tb_orgpub.jabatan_pub','KETUA PUB');
-        $ketua2=$ketua->count();
-        $ketua=$ketua->first();
+    $ketua=DB::table('tb_detorg_pub')
+    ->join('tb_mahasiswa','tb_detorg_pub.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
+    ->join('tb_orgpub','tb_detorg_pub.id_orgpub', '=', 'tb_orgpub.id_orgpub')
+    ->select('tb_mahasiswa.id_mahasiswa','tb_orgpub.jabatan_pub','tb_mahasiswa.nama')
+    ->where('tb_orgpub.jabatan_pub','KETUA PUB');
+    $ketua2=$ketua->count();
+    $ketua=$ketua->first();
 
         //keamanan
-        $keamanan=DB::table('tb_detorg_pub')
-        ->join('tb_mahasiswa','tb_detorg_pub.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
-        ->join('tb_orgpub','tb_detorg_pub.id_orgpub', '=', 'tb_orgpub.id_orgpub')
-        ->select('tb_mahasiswa.id_mahasiswa','tb_orgpub.jabatan_pub','tb_mahasiswa.nama')
-        ->where('tb_orgpub.jabatan_pub','KEAMANAN PUB');
-        $keamanan2=$keamanan->count();
-        $keamanan=$keamanan->first();
+    $keamanan=DB::table('tb_detorg_pub')
+    ->join('tb_mahasiswa','tb_detorg_pub.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
+    ->join('tb_orgpub','tb_detorg_pub.id_orgpub', '=', 'tb_orgpub.id_orgpub')
+    ->select('tb_mahasiswa.id_mahasiswa','tb_orgpub.jabatan_pub','tb_mahasiswa.nama')
+    ->where('tb_orgpub.jabatan_pub','KEAMANAN PUB');
+    $keamanan2=$keamanan->count();
+    $keamanan=$keamanan->first();
         //sekretaris
-        $sekretaris=DB::table('tb_detorg_pub')
-        ->join('tb_mahasiswa','tb_detorg_pub.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
-        ->join('tb_orgpub','tb_detorg_pub.id_orgpub', '=', 'tb_orgpub.id_orgpub')
-        ->select('tb_mahasiswa.id_mahasiswa','tb_orgpub.jabatan_pub','tb_mahasiswa.nama')
-        ->where('tb_orgpub.jabatan_pub','SEKRETARIS PUB');
-        $sekretaris2=$sekretaris->count();
-        $sekretaris=$sekretaris->first();
+    $sekretaris=DB::table('tb_detorg_pub')
+    ->join('tb_mahasiswa','tb_detorg_pub.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
+    ->join('tb_orgpub','tb_detorg_pub.id_orgpub', '=', 'tb_orgpub.id_orgpub')
+    ->select('tb_mahasiswa.id_mahasiswa','tb_orgpub.jabatan_pub','tb_mahasiswa.nama')
+    ->where('tb_orgpub.jabatan_pub','SEKRETARIS PUB');
+    $sekretaris2=$sekretaris->count();
+    $sekretaris=$sekretaris->first();
         //bendahara ex
-        $bendahara_ex=DB::table('tb_detorg_pub')
-        ->join('tb_mahasiswa','tb_detorg_pub.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
-        ->join('tb_orgpub','tb_detorg_pub.id_orgpub', '=', 'tb_orgpub.id_orgpub')
-        ->select('tb_mahasiswa.id_mahasiswa','tb_orgpub.jabatan_pub','tb_mahasiswa.nama')
-        ->where('tb_orgpub.jabatan_pub','BENDAHARA EKSTERNAL');
-        $bendahara_ex2=$bendahara_ex->count();
-        $bendahara_ex=$bendahara_ex->first();        
+    $bendahara_ex=DB::table('tb_detorg_pub')
+    ->join('tb_mahasiswa','tb_detorg_pub.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
+    ->join('tb_orgpub','tb_detorg_pub.id_orgpub', '=', 'tb_orgpub.id_orgpub')
+    ->select('tb_mahasiswa.id_mahasiswa','tb_orgpub.jabatan_pub','tb_mahasiswa.nama')
+    ->where('tb_orgpub.jabatan_pub','BENDAHARA EKSTERNAL');
+    $bendahara_ex2=$bendahara_ex->count();
+    $bendahara_ex=$bendahara_ex->first();        
         //bendahara in
-        $bendahara_in=DB::table('tb_detorg_pub')
-        ->join('tb_mahasiswa','tb_detorg_pub.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
-        ->join('tb_orgpub','tb_detorg_pub.id_orgpub', '=', 'tb_orgpub.id_orgpub')
-        ->select('tb_mahasiswa.id_mahasiswa','tb_orgpub.jabatan_pub','tb_mahasiswa.nama')
-        ->where('tb_orgpub.jabatan_pub','BENDAHARA INTERNAL');
-        $bendahara_in2=$bendahara_in->count();
-        $bendahara_in=$bendahara_in->first();
+    $bendahara_in=DB::table('tb_detorg_pub')
+    ->join('tb_mahasiswa','tb_detorg_pub.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
+    ->join('tb_orgpub','tb_detorg_pub.id_orgpub', '=', 'tb_orgpub.id_orgpub')
+    ->select('tb_mahasiswa.id_mahasiswa','tb_orgpub.jabatan_pub','tb_mahasiswa.nama')
+    ->where('tb_orgpub.jabatan_pub','BENDAHARA INTERNAL');
+    $bendahara_in2=$bendahara_in->count();
+    $bendahara_in=$bendahara_in->first();
         //div Pen
-        $div_pnd=DB::table('tb_detorg_pub')
-        ->join('tb_mahasiswa','tb_detorg_pub.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
-        ->join('tb_orgpub','tb_detorg_pub.id_orgpub', '=', 'tb_orgpub.id_orgpub')
-        ->select('tb_mahasiswa.id_mahasiswa','tb_orgpub.jabatan_pub','tb_mahasiswa.nama')
-        ->where('tb_orgpub.jabatan_pub','KOOR DIV PENDIDIKAN');
-        $div_pnd2=$div_pnd->count();
-        $div_pnd=$div_pnd->first();
+    $div_pnd=DB::table('tb_detorg_pub')
+    ->join('tb_mahasiswa','tb_detorg_pub.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
+    ->join('tb_orgpub','tb_detorg_pub.id_orgpub', '=', 'tb_orgpub.id_orgpub')
+    ->select('tb_mahasiswa.id_mahasiswa','tb_orgpub.jabatan_pub','tb_mahasiswa.nama')
+    ->where('tb_orgpub.jabatan_pub','KOOR DIV PENDIDIKAN');
+    $div_pnd2=$div_pnd->count();
+    $div_pnd=$div_pnd->first();
         //div kero
-        $div_ker=DB::table('tb_detorg_pub')
-        ->join('tb_mahasiswa','tb_detorg_pub.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
-        ->join('tb_orgpub','tb_detorg_pub.id_orgpub', '=', 'tb_orgpub.id_orgpub')
-        ->select('tb_mahasiswa.id_mahasiswa','tb_orgpub.jabatan_pub','tb_mahasiswa.nama')
-        ->where('tb_orgpub.jabatan_pub','KOOR DIV KEROHANIAN');
-        $div_ker2=$div_ker->count();
-        $div_ker=$div_ker->first();
+    $div_ker=DB::table('tb_detorg_pub')
+    ->join('tb_mahasiswa','tb_detorg_pub.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
+    ->join('tb_orgpub','tb_detorg_pub.id_orgpub', '=', 'tb_orgpub.id_orgpub')
+    ->select('tb_mahasiswa.id_mahasiswa','tb_orgpub.jabatan_pub','tb_mahasiswa.nama')
+    ->where('tb_orgpub.jabatan_pub','KOOR DIV KEROHANIAN');
+    $div_ker2=$div_ker->count();
+    $div_ker=$div_ker->first();
         //div keas
-        $div_kea=DB::table('tb_detorg_pub')
-        ->join('tb_mahasiswa','tb_detorg_pub.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
-        ->join('tb_orgpub','tb_detorg_pub.id_orgpub', '=', 'tb_orgpub.id_orgpub')
-        ->select('tb_mahasiswa.id_mahasiswa','tb_orgpub.jabatan_pub','tb_mahasiswa.nama')
-        ->where('tb_orgpub.jabatan_pub','KOOR DIV KEASRAMAAN');
-        $div_kea2=$div_kea->count();
-        $div_kea=$div_kea->first();
+    $div_kea=DB::table('tb_detorg_pub')
+    ->join('tb_mahasiswa','tb_detorg_pub.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
+    ->join('tb_orgpub','tb_detorg_pub.id_orgpub', '=', 'tb_orgpub.id_orgpub')
+    ->select('tb_mahasiswa.id_mahasiswa','tb_orgpub.jabatan_pub','tb_mahasiswa.nama')
+    ->where('tb_orgpub.jabatan_pub','KOOR DIV KEASRAMAAN');
+    $div_kea2=$div_kea->count();
+    $div_kea=$div_kea->first();
         //div kebe
-        $div_keb=DB::table('tb_detorg_pub')
-        ->join('tb_mahasiswa','tb_detorg_pub.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
-        ->join('tb_orgpub','tb_detorg_pub.id_orgpub', '=', 'tb_orgpub.id_orgpub')
-        ->select('tb_mahasiswa.id_mahasiswa','tb_orgpub.jabatan_pub','tb_mahasiswa.nama')
-        ->where('tb_orgpub.jabatan_pub','KOOR DIV KEBERSIHAN');
-        $div_keb2=$div_keb->count();
-        $div_keb=$div_keb->first();
+    $div_keb=DB::table('tb_detorg_pub')
+    ->join('tb_mahasiswa','tb_detorg_pub.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
+    ->join('tb_orgpub','tb_detorg_pub.id_orgpub', '=', 'tb_orgpub.id_orgpub')
+    ->select('tb_mahasiswa.id_mahasiswa','tb_orgpub.jabatan_pub','tb_mahasiswa.nama')
+    ->where('tb_orgpub.jabatan_pub','KOOR DIV KEBERSIHAN');
+    $div_keb2=$div_keb->count();
+    $div_keb=$div_keb->first();
         //div magang
-        $div_mag=DB::table('tb_detorg_pub')
-        ->join('tb_mahasiswa','tb_detorg_pub.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
-        ->join('tb_orgpub','tb_detorg_pub.id_orgpub', '=', 'tb_orgpub.id_orgpub')
-        ->select('tb_mahasiswa.id_mahasiswa','tb_orgpub.jabatan_pub','tb_mahasiswa.nama')
-        ->where('tb_orgpub.jabatan_pub','KOOR DIV MAGANG');
-        $div_mag2=$div_mag->count();
-        $div_mag=$div_mag->first();
+    $div_mag=DB::table('tb_detorg_pub')
+    ->join('tb_mahasiswa','tb_detorg_pub.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
+    ->join('tb_orgpub','tb_detorg_pub.id_orgpub', '=', 'tb_orgpub.id_orgpub')
+    ->select('tb_mahasiswa.id_mahasiswa','tb_orgpub.jabatan_pub','tb_mahasiswa.nama')
+    ->where('tb_orgpub.jabatan_pub','KOOR DIV MAGANG');
+    $div_mag2=$div_mag->count();
+    $div_mag=$div_mag->first();
         //div kesej
-        $div_sej=DB::table('tb_detorg_pub')
-        ->join('tb_mahasiswa','tb_detorg_pub.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
-        ->join('tb_orgpub','tb_detorg_pub.id_orgpub', '=', 'tb_orgpub.id_orgpub')
-        ->select('tb_mahasiswa.id_mahasiswa','tb_orgpub.jabatan_pub','tb_mahasiswa.nama')
-        ->where('tb_orgpub.jabatan_pub','KOOR DIV KESEJAHTERAAN');
-        $div_sej2=$div_sej->count();
-        $div_sej=$div_sej->first();
+    $div_sej=DB::table('tb_detorg_pub')
+    ->join('tb_mahasiswa','tb_detorg_pub.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
+    ->join('tb_orgpub','tb_detorg_pub.id_orgpub', '=', 'tb_orgpub.id_orgpub')
+    ->select('tb_mahasiswa.id_mahasiswa','tb_orgpub.jabatan_pub','tb_mahasiswa.nama')
+    ->where('tb_orgpub.jabatan_pub','KOOR DIV KESEJAHTERAAN');
+    $div_sej2=$div_sej->count();
+    $div_sej=$div_sej->first();
         //div keseh
         $div_kes=DB::table('tb_detorg_pub')
         ->join('tb_mahasiswa','tb_detorg_pub.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
@@ -757,6 +775,3 @@ public function user_alumniView(request $request)
         return redirect('pertanyaan');
     }
 
-    
-}
- 

@@ -50,6 +50,7 @@
       width: 100%;
       height: 200px;
     }
+    
   </style>
 
 </head>
@@ -86,12 +87,6 @@
               </button>
             </div>
           </div>
-
-
-          <!-- Modal -->
-          
-          
-
         </div>
       </div>
     </div>
@@ -205,4 +200,4 @@
       </div>
     </div>
   </div>
-      <!-- Header Area End -->  
+  <!-- Header Area End -->  
