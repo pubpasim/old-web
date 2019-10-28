@@ -18,10 +18,12 @@ class CreateTbDetorgPpmbTable extends Migration
             $table->integer('id_orgppmb')->unsigned();
             $table->integer('id_angkatan')->unsigned();
             $table->integer('id_mahasiswa')->unsigned();
+            $table->integer('id_periode')->unsigned();
             $table->timestamps();
             $table->foreign('id_angkatan')->references('id_angkatan')->on('tb_angkatan');
             $table->foreign('id_orgppmb')->references('id_orgppmb')->on('tb_orgPpmb');
             $table->foreign('id_mahasiswa')->references('id_mahasiswa')->on('tb_mahasiswa');
+            $table->foreign('id_periode')->references('id_periode')->on('tb_periode');
         });
     }
 

@@ -116,6 +116,7 @@
 						         <th data-field="id_mhs"  data-sortable="true" name="id_mahasiswa">Nama</th>
 						         <th data-field="id_ang" data-sortable="true" name="id_angkatan">Angkatan</th>
 						         <th data-field="id_jab" data-sortable="true" name="id_jabatan">Jabatan</th>
+						         <th data-field="id_periode" data-sortable="true" name="id_periode">Periode</th>
 						        <th>Action</th>
 						      </tr>
 						    </thead>
@@ -127,7 +128,7 @@
 		                                <td>{{$struktur->nama}}</td>
 		                                <td>{{$struktur->angkatan}}</td>
 		                                <td >{{$struktur->jabatan}}</td>
-		              
+		                                <td >{{$struktur->periode}}</td>
 		                                <td align="center" class="col-sm-3">
                                             <a href="/det_struktur_ppmb/edit/{{$struktur->id_detil}}">
                                                 <button type="button" class="btn btn-success btn-square waves-effect waves-square waves-effect" >

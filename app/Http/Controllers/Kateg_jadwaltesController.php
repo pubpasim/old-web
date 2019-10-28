@@ -3,17 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
-class detHasilSelController extends Controller
+class Kateg_jadwaltesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+     public function index()
     {
-        
+        $kategjadwalppmb=DB::table('tb_kategorites')->get();
+        return view('ppmb.jadwal.lihat_jad_kategori',compact('kategjadwalppmb'));        
     }
 
     /**
@@ -23,7 +25,7 @@ class detHasilSelController extends Controller
      */
     public function create()
     {
-        //
+        return view('ppmb.jadwal.tambah_jad_kategori');
     }
 
     /**
@@ -34,7 +36,12 @@ class detHasilSelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $kategjadwalppmb=DB::table('tb_kategorites')->insert([
+         'id_kategori_tes' => $request->id_kategori_tes,
+         'kategori_tes' => $request->kategori_tes
+        ]);
+
+        return redirect('kategori_jadwal_ppmb');
     }
 
     /**
@@ -56,7 +63,8 @@ class detHasilSelController extends Controller
      */
     public function edit($id)
     {
-        //
+        $kategjadwalppmb= DB::table('tb_kategorites')->where('id_kategori_tes',$id)->get();
+        return view('ppmb.jadwal.edit_jad_kategori',compact('kategjadwalppmb'));
     }
 
     /**
@@ -66,10 +74,19 @@ class detHasilSelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+
+        // $this->validate($request[
+        //     'jabatan' => 'required'
+// ]);
+        
+        DB::table('tb_kategorites')->where('id_kategori_tes',$request->id_kategori_tes)->update([
+            'kategori_tes'=>$request->kategori_tes
+        ]);
+        return redirect('/kategori_jadwal_ppmb');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -79,6 +96,8 @@ class detHasilSelController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('tb_kategorites')->where('id_kategori_tes',$id)->delete();
+        return redirect('kategori_jadwal_ppmb');
     }
+
 }

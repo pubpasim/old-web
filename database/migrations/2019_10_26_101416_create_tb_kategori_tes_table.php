@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTbSyaratKetentuanTable extends Migration
+class CreateTbKategoriTesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateTbSyaratKetentuanTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_syarat_ketentuan', function (Blueprint $table) {
-            $table->increments('id_syarat');
-            $table->string('syarat');
-             $table->timestamps();
+        Schema::create('tb_kategoriTes', function (Blueprint $table) {
+            $table->increments('id_kategori_tes');
+            $table->string('kategori_tes');
+            $table->timestamps();
         });
     }
 
@@ -27,6 +27,6 @@ class CreateTbSyaratKetentuanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_syarat_ketentuan');
+        Schema::dropIfExists('tb_kategoriTes');
     }
 }

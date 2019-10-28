@@ -45,6 +45,15 @@
 										@endforeach
 									</select>
 								</div>
+								<div class="form-group">
+									<select class="form-control" id="periode" name="periode">
+										<label>Periode</label>
+										<option value="0"> --Periode--</option>
+										@foreach($periode as $data)
+										<option value="{{$data->id_periode}}">{{$data->periode}}</option>
+										@endforeach
+									</select>
+								</div>
 
 								<button type="submit" class="btn btn-primary">TAMBAH DATA </button>
 										

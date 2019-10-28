@@ -7,6 +7,9 @@
 			}
 		</style>
 		<div id="form1">
+
+
+			
 		<div class="row">
 			<div class="panel-heading">FROM UBAH JADWAL</div>
 					<div class="panel-body">
@@ -17,6 +20,16 @@
 								<div class="form-group">
 									<label>ID Jadwal</label>
 									<input class="form-control" name="id_jadwal" placeholder="Id Jadwal" value="{{$data->id_jadwal}}" readonly="">
+								</div>
+								<div class="form-group">
+									<select class="form-control" id="kategori_tes" name="id_kategori_tes">
+										<label>Kategori Kegiatan / Tes </label>
+										<option value="{{$data->id_kategori_tes}}">{{$data->kategori_tes}}</option>
+										<option value="0"> --Kategori Kegiatan / Tes--</option>
+										@foreach($kategori as $d)
+										<option value="{{$d->id_kategori_tes}}">{{$d->kategori_tes}}</option>
+										@endforeach
+									</select>
 								</div>
 								<div class="form-group">
 									<label>Kegiatan</label>
