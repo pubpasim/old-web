@@ -327,7 +327,7 @@ Route::get('user_down_formulir','userController@user_down_formulir');
 //================================ADMIN ALUMNI=============================//
 
 
-Route::post('Alumni_admin/index{x}','alumni_adminController@index');
+Route::post('Alumni_admin/','alumni_adminController@index');
 Route::get('materilogika', 'userController@materilog');
 Route::get('materibasis', 'userController@materibasis');
 Route::get('materistruktur', 'userController@materistruktur');

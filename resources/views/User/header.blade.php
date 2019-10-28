@@ -114,27 +114,7 @@
                     <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
                   </div>
                   <!-- Nav Start -->
-                  <div class="classynav" >
-                    <ul id="nav">
-                      <li class="active"><a href="{{url('/')}}">Home</a></li>
-                      <li><a href="#">PPMB PUB</a>
-                        <ul class="dropdown">
-                          <li><a href="/organisasi_ppmb/">- Kepanitiaan PPMB</a></li>
-                          <li><a href="/jadwal_ppmb_user">- Jadwal PPMB</a></li>
-                          <li><a href="/syarat_user">- Syarat & Ketentuan</a></li>                          
-                          <li><a href="{{url('user_hasilSeleksi')}}">- Hasil Seleksi</a></li>
-                          <li><a href="{{url('user_dok_ppmb')}}">- Dokumentasi PPMB</a></li>
-                          <li><a href="{{url('user_down_formulir')}}" target="_blank">- Download Formulir</a></li>
-                        </ul>
-                      </li>
-                      <li><a href="#">PUB Aktif</a>
-                        <ul class="dropdown">
-                          <li><a href="{{url('pub_profile')}}">-Sekilas PUB</a></li>
-                          <li><a href="{{url('organisasi_pub')}}">-Organisasi PUB</a></li>
-                          <li><a href="{{url('user/mahasiswa')}}">-Mahasiswa PUB</a></li>
-                          <li><a href="{{url('pelatihan')}}">-Pelatihan PUB</a></li>
-                          <li><a href="{{url('kegiatanPub')}}">-Dokumentasi PUB</a></li>
-            <!-- Menu -->
+                 
             <div class="classy-menu">
               <!-- Menu Close Button -->
               <div class="classycloseIcon">

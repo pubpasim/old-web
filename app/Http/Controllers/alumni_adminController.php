@@ -19,7 +19,7 @@ class alumni_adminController extends Controller
         ->select('tb_mahasiswa.nama','tb_alumni_dok.file','tb_alumni_dok.keterangan')
         ->orderby('id_alumnidok','DESC')->get();
         $data=DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->first();
-        return view('Alumni_admin.index',compact('data','foto'));
+        return view('Alumni_admin/index',compact('data','foto'));
     }
     public function profile(Request $request, $id)
     {
