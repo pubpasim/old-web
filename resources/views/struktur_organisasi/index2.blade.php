@@ -1,4 +1,4 @@
-@include('tampilan.head')	
+@include('tampilan.head')
 <style>
 	#dataTable {
 		font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -91,30 +91,52 @@
 			margin-top: 0;
 		}
 	}
+	th{
+		text-align: center;
+	}
 
 </style>
-	<h1>Edit Data Sekolah</h1>
-	<div class="container">
 
-		@foreach($sek as $data)
-		<form method="POST" action="{{url('tampilan/sekolah/'.$data->id_sekolah)}}" Class="form-horizontal" id="block-validate">
-			{{csrf_field()}}>
-			<div class="row">
-				<div class="panel-heading">FROM UBAH DATA SEKOLAH</div>
-				<div class="panel-body">
-					<div class="col-md-6">
-						<form role="form">
-							
-							<div class="form-group">
-								<label>NAMA SEKOLAH</label>
-								<input class="form-control" placeholder="Nama Sekolah" name="sekolah" value="{{$data->sekolah}}">
-							</div>
-							<button type="submit" class="btn btn-primary">UBAH DATA </button>
-						</form>
+	<div class="container">		
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Struktur Organisasi Ikatan Alumni</h1>
+			</div>
+		</div><!--/.row-->
+
+
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<br><p class="icon-plus-sign"></i> <a href="{{url('struktur_organisasi2/tambah')}}">Tambah Data</a></p>
+					<div class="panel-body">
+						<table class="table table-striped table-bordered table-hover" id="tabel_angkatan">
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>Jabatan</th>
+									<th>Aksi</th>
+								</tr> 
+							</thead>
+							<tbody>
+								@foreach($organisasi as $data)
+
+								<tr>
+									<td>{{$data->id_org}}</td>
+									<td>{{$data->jabatan}}</td>
+									<td align="center">
+										<a href="{{url('struktur_organisasi2/edit/'.$data->id_org)}}">Edit</a>&nbsp;&nbsp;&nbsp;
+										<a href="{{url('struktur_organisasi2/hapus/'.$data->id_org)}}">Hapus</a>
+									</td>
+								</tr>
+
+								@endforeach
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>
-		</form>
-		@endforeach
+		</div>
 	</div>
-include('tampil.foot')
+
+@include('tampilan.foot')

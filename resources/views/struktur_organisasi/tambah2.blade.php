@@ -1,28 +1,5 @@
-@include('tampilan.head')	
+@include('tampilan.head')
 <style>
-	#dataTable {
-		font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-		border-collapse: collapse;
-		width: 75%;
-		margin-right: 50px;
-	}
-
-	#dataTable td, #dataTable th {
-		border: 1px solid #ddd;
-		padding: 8px;
-	}
-
-	#dataTable tr:nth-child(even){background-color: #f2f2f2;}
-
-	#dataTable tr:hover {background-color: #ddd;}
-
-	#dataTable th {
-		padding-top: 12px;
-		padding-bottom: 12px;
-		text-align: left;
-		background-color: #4CAF50;
-		color: white;
-	}
 	* {
 		box-sizing: border-box;
 	}
@@ -58,7 +35,7 @@
 	.container {
 		border-radius: 5px;
 		background-color: #ffffff;
-		padding: 30px;
+		padding: 5px;
 	}
 
 	.col-25 {
@@ -75,6 +52,7 @@
 	#form1{
 		width: 70%;
 		height: 100%;
+
 		margin-left: 17%;
 	}
 	/* Clear floats after the columns */
@@ -91,30 +69,32 @@
 			margin-top: 0;
 		}
 	}
-
 </style>
-	<h1>Edit Data Sekolah</h1>
 	<div class="container">
-
-		@foreach($sek as $data)
-		<form method="POST" action="{{url('tampilan/sekolah/'.$data->id_sekolah)}}" Class="form-horizontal" id="block-validate">
-			{{csrf_field()}}>
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Jabatan Ikatan Alumni</h1>
+			</div>
+		</div>
+		<form method="POST" action="{{URL('struktur_organisasi2/store')}}" Class="form-horizontal" id="block-validate">
+			{{csrf_field()}}
 			<div class="row">
-				<div class="panel-heading">FROM UBAH DATA SEKOLAH</div>
+				<div class="panel-heading">INPUT DATA</div>
 				<div class="panel-body">
 					<div class="col-md-6">
 						<form role="form">
-							
+
 							<div class="form-group">
-								<label>NAMA SEKOLAH</label>
-								<input class="form-control" placeholder="Nama Sekolah" name="sekolah" value="{{$data->sekolah}}">
+								<label>JABATAN</label>
+								<input type="text" name="jabatan">
 							</div>
-							<button type="submit" class="btn btn-primary">UBAH DATA </button>
+							<button type="submit" name="submit" class="btn btn-primary">TAMBAH DATA </button>
+
 						</form>
 					</div>
-				</div>
+					<!--/.row-->	
+				</div><!--/.main-->
 			</div>
 		</form>
-		@endforeach
 	</div>
-include('tampil.foot')
+@include('tampilan.foot')

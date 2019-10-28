@@ -72,37 +72,31 @@
 		}
 	}
 </style>
-
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">Tabel Struktur Organisasi</div>
+					<div class="panel-heading">Tabel Legalitas</div>
 
 					<div class="panel-body">
-						<a href="{{url('tambahStrukAlumni')}}" class="btn btn-info">Add</a>
+						<a href="{{url('tambahLegalitasAdmin')}}" class="btn btn-info">Add</a>
 						<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 						    <thead>
 						    <tr>
 						        <th>No</th>
-						        <th>Nama Alumni</th>						        
-						        <th>Angkatan</th>
-						        <th>Jabatan</th>
-						        <th>Masa Bakti</th>
+						        <th>Foto</th>						        
+						        <th>Keterangan</th>						        
 						        <th>Aksi</th>
 						    </tr>
 						    </thead>
 						    <tbody>
 						    	@php $no = 1; @endphp
-						    	@foreach($struk as $data)
+						    	@foreach($leg as $data)
 						    	<tr>
-						    		<td>{{ $no++}}</td>						    		
-						    		<td>{{$data->nama}}</td>
-						    		<td>{{$data->angkatan}} - {{$data->nama_angkatan}}</td>
-						    		<td>{{$data->jabatan}}</td>
-						    		<td>{{$data->masa_bakti}}</td>
-						    		<td>
-						    			<a href="{{url('editStrukAlumni/'.$data->id_ikatan)}}" class="btn btn-info">Edit</a>
-						    			<a href="{{url('hapusStrukAlumni/'.$data->id_ikatan)}}" class="btn btn-info">Hapus</a>
+						    		<td>{{ $no++}}</td>
+						    		<td> <img src="{{url('imgs')}}/{{($data->foto) }}" width="100" height="100"></td>	
+						    		<td>{{$data->keterangan}}</td>						    		
+						    		<td>						    			
+						    			<a href="{{url('hapusLegalitasAdmin/'.$data->id)}}" class="btn btn-info">Hapus</a>
 						    		</td>
 						    	</tr>
 						    	@endforeach

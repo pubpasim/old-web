@@ -99,7 +99,7 @@
 					<select id="jabatan" name="jabatan">
 						<option value> --Jabatan--</option>
 						@foreach($jab as $dataxx)
-						<option value="{{$dataxx->id_orgpub}}">{{$dataxx->jabatan_pub}}</option>
+						<option value="{{$dataxx->id_org}}">{{$dataxx->jabatan}}</option>
 						@endforeach
 					</select>
 				</div>

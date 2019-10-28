@@ -12,7 +12,6 @@
 
 
 
-
 // Route::get('/home', 'HomeController@index')->name('home');
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -22,7 +21,8 @@ Route::get('admin', function () {
 
 	if (!Session::get('level')) {
 		return redirect('login')->with('alert','Silahkan Login terlebih dahulu');
-	}else{	
+	}else{
+
 		return view('tampilan.index');
 	}
 });
@@ -121,6 +121,15 @@ Route::get('struktur_organisasi/{x}','orgPUBController@edit');
 Route::post('struktur_organisasi/{y}','orgPUBController@update');
 Route::get('struktur_organisasi/hapus/{z}','orgPUBController@destroy');
 
+Route::get('struktur_organisasi2/index','orgPUBController@index2');
+Route::get('struktur_organisasi2/tambah/','orgPUBController@create2');
+Route::post('struktur_organisasi2/store/','orgPUBController@store2');
+Route::get('struktur_organisasi2/edit/{x}','orgPUBController@edit2');
+Route::post('struktur_organisasi2/update/{y}','orgPUBController@update2');
+Route::get('struktur_organisasi2/hapus/{z}','orgPUBController@destroy2');
+
+
+
 Route::get('status_pub','statusPubController@index');
 Route::get('status_pub/tambah/','statusPubController@create');
 Route::post('status_pub/store/','statusPubController@store');
@@ -188,6 +197,10 @@ Route::get('editStrukAlumni/{x}', 'alumniController@editStrukAlumni');
 Route::post('updateStrukAlumni/{x}', 'alumniController@updateStrukAlumni');
 
 
+Route::get('legalitasAdmin','alumniController@legalitasAdmin');
+Route::get('tambahLegalitasAdmin', 'alumniController@tambahLegalitasAdmin');
+Route::post('storeLegalitasAdmin', 'alumniController@storeLegalitasAdmin');
+Route::get('hapusLegalitasAdmin/{x}', 'alumniController@hapusLegalitasAdmin');
 
 Route::get('kegiatanAlumni','alumniController@kegiatanAlumni');
 Route::get('tambahDokAlumni', 'alumniController@tambahDokAlumni');
@@ -333,6 +346,7 @@ Route::post('infaq_bulan', 'userController@infaq_bulan');
 Route::get('user_lulus_tpa/{x}','userController@user_lulus_tpa');
 Route::get('user_dok_ppmb','userController@user_dok_ppmb');
 Route::get('user_down_formulir','userController@user_down_formulir');
+Route::get('legalitas','userController@legalitas');
 //================================ADMIN ALUMNI=============================//
 
 
@@ -355,6 +369,15 @@ Route::get('kegiatanPub','userController@kegiatanPub');
 Route::post('kegiatanPub/pilihdiv','userController@kegiatanPub_pilihdiv');
 Route::get('kegiatanPub/filter/{x}/{y}','userController@kegiatanPub_filter');
 Route::get('pembinaPub', 'userController@pembinaPub');
+
+
+Route::post('storePertanyaan', 'userController@storePertanyaan');
+Route::get('pertanyaan', 'userController@pertanyaan');
+Route::get('jawabPertanyaan/{x}', 'userController@jawabPertanyaan');
+Route::post('storeJawab/{x}', 'userController@storeJawab');
+Route::get('hapusPertanyaan/{x}', 'userController@hapusPertanyaan');
+
+//================================ADMIN ALUMNI=============================//
 
 Route::get('admin/alumni/{x}','alumni_adminController@index');
 Route::get('admin/alumni/profile/{x}','alumni_adminController@profile');

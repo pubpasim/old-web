@@ -2,6 +2,7 @@
 <html>
 <head>
   <title></title>
+  <link rel="shortcut icon" href="/imgs/pub.png" />
   <script type="text/javascript">
     $(document).ready(function(){
       var formInputs = $('input[type="email"],input[type="password"]');

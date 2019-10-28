@@ -105,7 +105,7 @@ class alumniController extends Controller
     public function strukturOrgAlumni()
     {
         $struk = DB::table('tb_ikatan_alumni')
-        ->join('tb_orgpub','tb_orgpub.id_orgpub','tb_ikatan_alumni.id_jabatan')
+        ->join('tb_orgalumni','tb_orgalumni.id_org','tb_ikatan_alumni.id_jabatan')
         ->join('tb_mahasiswa','tb_mahasiswa.id_mahasiswa','tb_ikatan_alumni.id_mahasiswa')
         ->join('tb_angkatan','tb_angkatan.id_angkatan','tb_mahasiswa.id_angkatan')
         ->get();
@@ -119,22 +119,22 @@ class alumniController extends Controller
         ->orderby('angkatan','ASC')
         ->orderby('nama','ASC')        
         ->get();
-        $jab=DB::table('tb_orgpub')->get();
+        $jab=DB::table('tb_orgalumni')->get();
         return view('ikatanAlumni.tambahStruktur',compact('mhs','jab'));
     }
     public function storeStrukAlumni(Request $request)
     {
-       DB::table('tb_ikatan_alumni')
-       ->insert([
+     DB::table('tb_ikatan_alumni')
+     ->insert([
         'id_mahasiswa' => $request->id_mahasiswa,
         'id_jabatan' => $request->jabatan,
         'masa_bakti' => $request->masa_bakti,
     ]);
 
-       return redirect('strukturOrgAlumni');
-   }
-   public function infaq_view()
-   {
+     return redirect('strukturOrgAlumni');
+ }
+ public function infaq_view()
+ {
     $infaq=DB::table('tb_infaq')->get();
     return view('tampilan.alumni.infaq',compact('infaq'));
 }
@@ -147,11 +147,7 @@ public function tambahInfaq()
 public function simpanInfaq(Request $request)
 {
     $bln=DB::table('tb_bulan')->get();
-    if($request->bulan==$bln){
-        $bl=$bln->id_bulan;
-    }else{
-        return redirect('tambahInfaq')->with('alert','Silahkan isi Bulan!');
-    }
+    $bl=$bln->id_bulan;
     $jm=DB::table('tb_infaq')
     ->where('tahun_infaq',$request->tahun)
     ->where('bulan_infaq',$request->bulan)
@@ -168,7 +164,46 @@ public function simpanInfaq(Request $request)
         $idmax =DB::table('tb_mahasiswa')->max('id_mahasiswa');
         return redirect('infaq');
     }
+}
 
+
+public function editStrukAlumni($id)
+{
+    $tamp = DB::table('tb_ikatan_alumni')->where('id_ikatan',$id)->get();
+    $mhs=DB::table('tb_mahasiswa')
+    ->join('tb_angkatan','tb_angkatan.id_angkatan','tb_mahasiswa.id_angkatan')
+    ->where('id_statusPub',2)
+    ->orderby('angkatan','ASC')
+    ->orderby('nama','ASC') 
+    ->get();
+    $jab=DB::table('tb_orgalumni')->get();
+
+    return view('ikatanAlumni.editStruktur',compact('tamp','mhs','jab'));
+}
+public function updateStrukAlumni(Request $request,$id){
+
+    DB::table('tb_ikatan_alumni')
+    ->where('id_ikatan',$id)
+    ->update([
+        'id_mahasiswa' => $request->id_mahasiswa,
+        'id_jabatan' => $request->jabatan,
+        'masa_bakti' => $request->masa_bakti,
+    ]);
+    return redirect('strukturOrgAlumni');
+}
+
+public function hapusStrukAlumni($id)
+{
+    DB::table('tb_ikatan_alumni')->where('id_ikatan',$id)->delete();
+    return redirect('strukturOrgAlumni');
+
+}
+
+
+public function infaq_view()
+{
+    $infaq=DB::table('tb_infaq')->get();
+    return view('tampilan.alumni.infaq',compact('infaq'));
 }
 public function editInfaq($id)
 {
@@ -203,7 +238,45 @@ public function editStrukAlumni($id)
 
     return view('ikatanAlumni.editStruktur',compact('tamp','mhs','jab'));
 }
+
+public function legalitasAdmin()
+{
+    $leg =DB::table('tb_legalitas')->get();
+    return view('ikatanAlumni.legalitasAdmin',compact('leg'));
+}
+
+public function tambahLegalitasAdmin()
+{
+    return view('ikatanAlumni.tambahLegalitasAdmin');
+}
+public function storeLegalitasAdmin(Request $request)
+{
+    $file = $request->file('foto');
+    $nama_file = time()."_".$file->getClientOriginalName();
+
+        // isi dengan nama folder tempat kemana file diupload
+    $tujuan_upload = 'imgs';
+    $file->move($tujuan_upload,$nama_file);
+
+    DB::table('tb_legalitas')
+    ->insert([
+        'foto' => $nama_file,            
+        'keterangan' => $request->keterangan,                        
+    ]);
+
+    return redirect('legalitasAdmin');
+}
+public function hapusLegalitasAdmin($id)
+{
+    DB::table('tb_legalitas')->where('id',$id)->delete();
+    return redirect('legalitasAdmin');
+
+}
+
+
+
 public function updateStrukAlumni(Request $request,$id){
+
 
     DB::table('tb_ikatan_alumni')
     ->where('id_ikatan',$id)
@@ -265,8 +338,8 @@ public function updateDokAlumni(Request $request,$id){
         DB::table('tb_dok_alumni')->where('id',$id)->update([
             'keterangan' => $request->keterangan,         
         ]);   
-    }
-    else{
+
+    }else{
 
         $nama_file = time()."_".$file->getClientOriginalName();
 

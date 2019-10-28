@@ -73,47 +73,32 @@
 	}
 </style>
 	<div class="container">
-		@foreach($tamp as $dataxxx)
-		<form method="POST" action="{{url('updateStrukAlumni/'.$dataxxx->id_ikatan)}}">
+		<form method="POST" action="{{url('storeJawab/'.$id)}}">
 		{{csrf_field()}}
 				
 		<div class="row">
-			<div class="col-25">
-				<label for="jbPUB">Edit Struktur</label>
-			</div>
+
 			
-			<div class="col-75">
-				<label for="jbPUB">Nama Alumni</label>
-				<select id="id_mahasiswa" name="id_mahasiswa">
-					<option value> --Nama Alumni--</option>
-					@foreach($mhs as $data)
-						<option @if($data->id_mahasiswa==$dataxxx->id_mahasiswa) selected @endif value="{{$data->id_mahasiswa}}">{{$data->angkatan}} - {{$data->nama_angkatan}} - {{$data->nama}}</option>
-					@endforeach
-				</select>
-			</div>		
 
-			<div class="col-75">
-				<label for="jbPUB">Jabatan</label>
-				<select id="jabatan" name="jabatan">
-					<option value> --Jabatan--</option>
-					@foreach($jab as $dataxx)
-						<option @if($dataxx->id_org==$dataxxx->id_jabatan) selected @endif value="{{$dataxx->id_org}}">{{$dataxx->jabatan}}</option>
-					@endforeach
-				</select>
+			<div class="col-25">
+				<label>Jawab Pertanyaan</label>
 			</div>
 
 			<div class="col-75">
-				<label for="jbPUB">Masa Bakti</label>
-				<input type="text" class="form-control" name="masa_bakti" placeholder="Ex. 2019 - 2020" value="{{$dataxxx->masa_bakti}}">
-			</div>
+					<label for="Sekolah">Jawaban</label>
+					<textarea class="form-control" name="jawaban"></textarea>
+					
+				</div>
+
+			
 
 		</div>
 		<br>
 		<div class="row" align="center">
-			<input type="submit" value="Simpan">
+			<input type="submit" value="Submit">
 		</div>
-	</form>
-	@endforeach
+		</form>
 </div>
+
 @include('tampilan.foot')
 
