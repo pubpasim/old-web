@@ -30,7 +30,7 @@
 		<div class="foto">
 			<img src="{{url('imgs/mahasiswa')}}/{{$mahasiswa->file}}">
 		</div>
-		<center><strong><h1 >{{$mahasiswa->jabatan}}</h1></strong></center>S
+		<center><strong><h1 >{{$mahasiswa->jabatan}}</h1></strong></center>
 		<div class="">
 			<table align="center">
 				<tr>
@@ -83,9 +83,7 @@
 					<td>:</td>
 					<td>{{$mahasiswa->no_telp}}</td>
 				</tr>	
-	<div class="foto">
-		<img src="{{url('imgs/mahasiswa')}}/{{$mahasiswa->file}}">
-	</div>
+	
 		</table>
 	</div>
 	<div @if($mahasiswa->status!="Alumni") hidden="true" @endif>

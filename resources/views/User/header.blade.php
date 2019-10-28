@@ -83,7 +83,7 @@
             <div class="top-header-content">
               <a href="{{url('https://wa.me/6285722752570')}}" target="_blank"><i class="fa fa-whatsapp"></i> <span>0857-2275-2570</span></a>
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                <i class="icon_mail"></i> <span>Chatt with us</span>
+                <i class="icon_mail"></i> <span>Chat with us</span>
               </button>
             </div>
           </div>
@@ -176,7 +176,7 @@
     </div>
   </header>
 </body>
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">

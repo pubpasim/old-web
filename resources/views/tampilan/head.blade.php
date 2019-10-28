@@ -42,8 +42,8 @@
 				<ul class="user-menu">
 					
 
-					<a href="{{url('pertanyaan')}}"><img src="{{'imgs'}}/{{'xx.png'}}" width="70px" style="position: relative;"></a>
-					<span class="label label-warning" style="position: relative;bottom:20px;right: 15%;">{{Session::get("jumChat")}}</span>
+					<a @if(\Session::get("level")=="ikatan_alumni") id="hide" @endif href="{{url('pertanyaan')}}"><img src="{{'imgs'}}/{{'xx.png'}}" width="70px" style="position: relative;"></a>
+					<span @if(\Session::get("level")=="ikatan_alumni") id="hide" @endif class="label label-warning" style="position: relative;bottom:20px;right: 15%;">{{Session::get("jumChat")}}</span>
 					
 					
 
@@ -154,4 +154,3 @@
 				<li class="active">Icons</li>
 			</ol>
 		</div><!--/.row-->
-		

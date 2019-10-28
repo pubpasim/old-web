@@ -153,7 +153,7 @@
 				@endif		
 				<tr>
 					<td align="center"><b>V</b></td>
-					<td><a href="#"><b><h5>WAWANCARA AKHIR</b></h5></a></td>
+					<td><a href="{{url('jadwal_wawancara_akhir_user')}}"><b><h5>WAWANCARA AKHIR</b></h5></a></td>
 					<td></td>
 				</tr>
 				@if($jad_wawancara_akhir2==0)
@@ -186,7 +186,7 @@
 				@endif
 				<tr>
 					<td align="center"><b>VI</b></td>
-					<td><a href="#"><b><h5>HASIL PENERIMAAN AKHIR PUB(MOU)</b></h5></a></td>
+					<td><h5 style="color: darkcyan; font-weight: bold;">HASIL PENERIMAAN AKHIR PUB(MOU)</b></h5></td>
 					<td></td>
 				</tr>
 				@if($jad_pelak_mou2==0)
