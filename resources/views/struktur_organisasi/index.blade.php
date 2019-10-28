@@ -125,7 +125,7 @@
 									<td>{{$data->id_orgpub}}</td>
 									<td>{{$data->jabatan_pub}}</td>
 									<td align="center">
-										<a href="{{url('struktur_organisasi/edit/'.$data->id_orgpub)}}">Edit</a>&nbsp;&nbsp;&nbsp;
+										<a href="{{url('struktur_organisasi/'.$data->id_orgpub)}}">Edit</a>&nbsp;&nbsp;&nbsp;
 										<a href="{{url('struktur_organisasi/hapus/'.$data->id_orgpub)}}">Hapus</a>
 									</td>
 								</tr>

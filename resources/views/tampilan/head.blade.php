@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>PUB Admin</title>
+	<link rel="shortcut icon" href="/imgs/pub.png" />
 	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 	<link href="/lumino/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/lumino/css/datepicker3.css" rel="stylesheet">
@@ -37,7 +38,15 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="#"><span>PUB'S</span>Admin</a>
+
 				<ul class="user-menu">
+					
+
+					<a href="{{url('pertanyaan')}}"><img src="{{'imgs'}}/{{'xx.png'}}" width="70px" style="position: relative;"></a>
+					<span class="label label-warning" style="position: relative;bottom:20px;right: 15%;">{{Session::get("jumChat")}}</span>
+					
+					
+
 					<li class="dropdown pull-right">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> User <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
@@ -83,9 +92,9 @@
 			<li class="dropdown " >
 				<a @if(\Session::get("level")=="admin_pub" || \Session::get("level")=="admin_ppmb" || \Session::get("level")=="ikatan_alumni" ) id="hide" @endif href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg> Alumni PUB <span class="caret"></span></a>
 				<ul class="dropdown-menu" role="menu">
-					<li><a href="{{url('Alumni_admin/index')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Daftar Alumni</a></li>
+					<li><a href="{{url('alumni')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Daftar Alumni</a></li>
 					<li><a href="{{url('alumni/aktivitas')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg></svg> Aktivitas Alumni</a></li>
-					<li><a href="{{url('alumni/infaq')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"></use></svg> Data Infaq</a></li>
+					<li><a href="{{url('infaq')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"></use></svg> Data Infaq</a></li>
 					
 				</ul>
 			</li>
@@ -95,6 +104,9 @@
 				<ul class="dropdown-menu" role="menu">
 					<li><a href="{{url('strukturOrgAlumni')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Struktur Organisasi</a></li>
 					<li><a href="{{url('kegiatanAlumni')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg></svg> Kegiatan Alumni PUB</a></li>				
+
+					<li><a href="{{url('legalitasAdmin')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg></svg> Legalitas</a></li>				
+
 				</ul>
 			</li>
 			<li class="dropdown ">
@@ -104,12 +116,14 @@
 
 					<li><a href="{{url('periode')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Periode Kepengurusan</a></li>
 
+					<li><a @if(\Session::get("level")=="admin_ppmb" || \Session::get("level")=="ikatan_alumni" ) id="hide" @endif href="{{url('struktur_organisasi/index')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Jabatan PUB</a></li>
 
-					<li><a href="{{url('struktur_organisasi/index')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Jabatan PUB</a></li>
+					<li><a href="{{url('struktur_organisasi2/index')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Jabatan Ikatan Alumni</a></li>
 
-					<li><a href="{{url('tampilUser')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Data User</a></li>
 
-					<li><a href="{{url('struktur_ppmb')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Jabatan PPMB</a></li>
+					<li><a @if(\Session::get("level")=="admin_pub" || \Session::get("level")=="admin_ppmb" || \Session::get("level")=="ikatan_alumni" ) id="hide" @endif href="{{url('tampilUser')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Data User</a></li>
+
+					<li><a @if(\Session::get("level")=="admin_pub" || \Session::get("level")=="ikatan_alumni" ) id="hide" @endif href="{{url('struktur_ppmb')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Jabatan PPMB</a></li>
 
 					<li><a href="{{url('kateg_jadwal_ppmb')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Kategori Tes PPMB</a></li>
 
@@ -122,11 +136,9 @@
 
 					<li><a href="{{url('tampilan/jurusan/viewjur')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Jurusan</a></li>
 
-					<li><a href="{{url('status_sos')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Status Sosial</a></li>
+					<li><a @if(\Session::get("level")=="admin_pub" || \Session::get("level")=="admin_ppmb" || \Session::get("level")=="ikatan_alumni" ) id="hide" @endif href="{{url('status_sos')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Status Sosial</a></li>
 
-					<li><a href="{{url('status_pub/index/')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Status PUB</a></li>
-
-					<li><a href="{{url('status_pub')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Status PUB</a></li>
+					<li><a @if(\Session::get("level")=="admin_pub" || \Session::get("level")=="admin_ppmb" || \Session::get("level")=="ikatan_alumni" ) id="hide" @endif href="{{url('status_pub')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Status PUB</a></li>
 					
 				</ul>
 			</li>

@@ -88,6 +88,6 @@ class pelatihanController extends Controller
      */
     public function destroy($id_pelatihan)
     {
-        DB::table('tb_pelatihan')->where('id_peltihan',$id_peltihan)->delete();
+        DB::table('tb_pelatihan')->where('id_pelatihan',$id_pelatihan)->delete();
         return redirect('pelatihan.index');
     }}

@@ -18,6 +18,36 @@
 							<div class="form-group">
 								<label>Struktur Organisasi</label>
 
+
+								<div class="col-75">
+									<select id="det_orgpub" name="angkatan">
+										<option value="0"> --Angkatan--</option>
+										@foreach($angkatan as $data)
+										<option value="{{$data->id_angkatan}}">{{$data->angkatan}}</option>
+									
+										@endforeach
+									</select>
+								</div>
+
+								<div class="col-75">
+									<select id="det_orgpub" name="pelatihan">
+										<option value="0"> --Pelatihan--</option>
+										@foreach($pelatihan as $data)
+										<option value="{{$data->id_pelatihan}}">{{$data->pelatihan}}</option>
+										@endforeach
+									</select>
+								</div>
+									
+								</div>
+							<div class="col-75">
+							<button type="submit" name="submit" class="btn btn-primary">TAMBAH DATA</button>
+							</div>
+
+																
+								
+					
+		</div>
+	</form>
 							</div>
 
 							<div class="col-75">

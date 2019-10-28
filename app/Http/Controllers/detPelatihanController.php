@@ -21,12 +21,7 @@ class detPelatihanController extends Controller
         ->get(); 
         return view('Alumni_admin.det_pelatihan.index',compact('detpelatihan'));
 
-        // $detjadwalppmb=DB::table('tb_detjadwal')
-        // ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
-        // ->join('tb_angkatan','tb_angkatan.id_angkatan','=','tb_detjadwal.id_angkatan')
-        // ->select('tb_detjadwal.id_detjadwal','tb_jadwal.kegiatan','tb_angkatan.angkatan','tb_detjadwal.keterangan')
-        // ->get();
-        // return view('ppmb.jadwal.detjadwal.detjadwal_lihat',compact('detjadwalppmb'));
+    
     }
 
     /**
@@ -42,10 +37,7 @@ class detPelatihanController extends Controller
 
         return view('Alumni_admin.det_pelatihan.tambah',compact('detpelatihan','angkatan','pelatihan'));
 
-        // $kegiatan=DB::table('tb_jadwal')->get();
-        // $angkatan=DB::table('tb_angkatan')->get();
-        // return view('ppmb.jadwal.detjadwal.detjadwal_tambah',compact('kegiatan','angkatan'));
-
+        
     }
 
     /**
@@ -60,28 +52,22 @@ class detPelatihanController extends Controller
         $detpelatihan->id_detpelatihan=$request->det_pelatihan;
         $detpelatihan->id_angkatan=$request->angkatan;
         $detpelatihan->id_pelatihan=$request->pelatihan;
-        $detpelatihan->file=$request->file;
-        $file = $request->file;
+        //$detpelatihan->file=$request->file;
+        // $file = $request->file;
  
-        $nama_file = time()."_".$detpelatihan->getClientOriginalName();
+        // $nama_file = time()."_".$detpelatihan->getClientOriginalName();
  
-                // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload = 'data_file';
-        $detpelatihan->move($tujuan_upload,$nama_file);
+        //         // isi dengan nama folder tempat kemana file diupload
+        // $tujuan_upload = 'data_file';
+        // $detpelatihan->move($tujuan_upload,$nama_file);
  
-        Gambar::create([
-            'file' => $nama_file]);
-        $file->save();
-        $detpelatihan->save();
+        // Gambar::create([
+        //     'file' => $nama_file]);
+        // $file->save();
+         $detpelatihan->save();
         return redirect('Alumni_admin/det_pelatihan');
 
-        // $detjadwalppmb=new detJadwalModel();
-        // $detjadwalppmb->id_detjadwal=$request->detjadwal;
-        // $detjadwalppmb->id_jadwal=$request->kegiatan;
-        // $detjadwalppmb->id_angkatan=$request->angkatan;
-        // $detjadwalppmb->keterangan=$request->keterangan;
-        // $detjadwalppmb->save();
-        // return redirect('detjadwal_ppmb');
+        
     }
 
     /**
@@ -112,15 +98,7 @@ class detPelatihanController extends Controller
         return view('Alumni_admin.det_pelatihan.edit',compact('det_pelatihan','angkatan','pelatihan'));
 
 
-        // $kegiatan=DB::table('tb_jadwal')->get();
-        // $angkatan=DB::table('tb_angkatan')->get();
-        // $detjadwalppmb= DB::table('tb_detjadwal')
-        // ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
-        // ->join('tb_angkatan','tb_angkatan.id_angkatan','=','tb_detjadwal.id_angkatan')
-        // ->select('tb_detjadwal.id_detjadwal','tb_jadwal.id_jadwal','tb_jadwal.kegiatan','tb_angkatan.id_angkatan','tb_angkatan.angkatan','tb_detjadwal.keterangan')
-        // ->where('id_detjadwal',$id)->get();
-        // return view('ppmb.jadwal.detjadwal.detjadwal_edit',compact('detjadwalppmb','kegiatan','angkatan'));
-
+        
 
     }
 

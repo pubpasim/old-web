@@ -1,5 +1,5 @@
-
 @include('Alumni_admin.head')
+    
 
         <!-- Welcome section -->
         <section id="welcome" class="tm-section">

@@ -30,7 +30,7 @@
 		text-align: center;
 		margin: 10%;
 	}
-	button{
+	#bt{
 		background-color: #16A085;
 		color: white;
 		width: 180px;
@@ -38,19 +38,19 @@
 		border-radius: 10px;
 		border-style: groove;
 	}
-	button:hover{
+	#bt:hover{
 		background-color: #1ABC9C;
 	}
 </style>
 <div >
 	<div class="tengah">
 			<center><h1>Pelatihan PUB</h1></center>
-			<a href="{{url('materilogika')}}"><button> Logika Dan Algoritma</button></a>
-			<a href="{{url('materibasis')}}"><button> Basis Data</button></a>
-			<a href="{{url('materistruktur')}}"><button> Struktur Data</button></a>
-			<a href="{{url('materihtml')}}"><button> HTML</button></a>
-			<a href="{{url('materifund')}}"><button> Fundamental</button></a>
-			<a href="{{url('materifundljt')}}"><button> Lanjutan</button></a>
+			<a href="{{url('materilogika')}}"><button id="bt" > Logika Dan Algoritma</button></a>
+			<a href="{{url('materibasis')}}"><button id="bt"> Basis Data</button></a>
+			<a href="{{url('materistruktur')}}"><button id="bt"> Struktur Data</button></a>
+			<a href="{{url('materihtml')}}"><button id="bt"> HTML</button></a>
+			<a href="{{url('materifund')}}"><button id="bt"> Fundamental</button></a>
+			<a href="{{url('materifundljt')}}"><button id="bt"> Lanjutan</button></a>
 	</div>
 	
 	
