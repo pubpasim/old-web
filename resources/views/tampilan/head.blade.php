@@ -41,7 +41,7 @@
 				<ul class="user-menu">
 					
 
-					<a href="{{url('pertanyaan')}}"><img src="{{"imgs"}}/{{"xx.png"}}" width="70px" style="position: relative;"></a>
+					<a href="{{url('pertanyaan')}}"><img src="{{'imgs'}}/{{'xx.png'}}" width="70px" style="position: relative;"></a>
 					<span class="label label-warning" style="position: relative;bottom:20px;right: 15%;">{{Session::get("jumChat")}}</span>
 					
 					
@@ -90,7 +90,7 @@
 			<li class="dropdown " >
 				<a @if(\Session::get("level")=="admin_pub" || \Session::get("level")=="admin_ppmb" || \Session::get("level")=="ikatan_alumni" ) id="hide" @endif href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg> Alumni PUB <span class="caret"></span></a>
 				<ul class="dropdown-menu" role="menu">
-					<li><a href="{{url('Alumni_admin/index')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Daftar Alumni</a></li>
+					<li><a href="{{url('alumni')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Daftar Alumni</a></li>
 					<li><a href="{{url('alumni/aktivitas')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg></svg> Aktivitas Alumni</a></li>
 					<li><a href="{{url('alumni/infaq')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"></use></svg> Data Infaq</a></li>
 					

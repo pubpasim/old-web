@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 @include('tampilan.head')
 
 
@@ -67,7 +65,7 @@ input[type=submit]:hover {
 }
 
 
-
+<
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .col-25, .col-75, input[type=submit] {
@@ -75,46 +73,8 @@ input[type=submit]:hover {
     margin-top: 0;
   }
 }
+
 </style>
-<div id="form1">
-	<div class="container">
-	  <form action="">
-	  <div class="row">
-	    <div class="col-75">
-	      <h2 align="center">Dokumentasi Alumni PUB</h2>
-	    </div>
-	  </div>
-	  <div class="row">
-	  	<div class="col-25">
-	  <table class="table table-bordered">
-	<h2 align="center">Dokumentasi Alumni</h2>
-	<tr>
-		<th>Foto</th>
-		<th>Keterangan</th>
-		<th ><a href="{{('tambahdok_alumni')}}" class="btn btn-primary">Tambah Dokumensi</a></th> 
-	</tr>
-	<tbody>
-		@foreach($dokalumni as $data)
-		<td><img src="alumni/images/gambar/{{($data->foto_alumni)}}"width='100'></td>
-		<td>{{($data->keterangan)}}</td>		
-			<a href="{{url('')}}" class="btn btn-warning">Ubah</a>
-			<br/><br/>
-			<a href="{{url()}}" class="btn-danger btn" onclick="return confirm('apakah anda yakin?')">Hapus</a>
-		</td>
-	</tr>
-	<?php $nomor++; ?>
-	@endforeach
-</tbody>
-</table>
-	   </div>
-	  </div>
-	  </form>
-	</div>
-</div>
-	
-@include('tampilan.foot')
-=======
-@include('tampilan.head')
 	
 	<div class="kiri">
 		<h1>Angkatan</h1>
@@ -163,58 +123,4 @@ input[type=submit]:hover {
 	</div>
 
 @include('tampilan.foot')
-<script type="text/javascript">
-	$(document).ready( function () {
-		$('#myTable').DataTable();
-	} );
 
-	$('.sel').each(function() {
-		$(this).children('select').css('display', 'none');
-
-		var $current = $(this);
-
-		$(this).find('option').each(function(i) {
-			if (i == 0) {
-				$current.prepend($('<div>', {
-					class: $current.attr('class').replace(/sel/g, 'sel__box')
-				}));
-
-				var placeholder = $(this).text();
-				$current.prepend($('<span>', {
-					class: $current.attr('class').replace(/sel/g, 'sel__placeholder'),
-					text: placeholder,
-					'data-placeholder': placeholder
-				}));
-
-				return;
-			}
-
-			$current.children('div').append($('<span>', {
-				class: $current.attr('class').replace(/sel/g, 'sel__box__options'),
-				text: $(this).text()
-			}));
-		});
-	});
-
-// Toggling the `.active` state on the `.sel`.
-$('.sel').click(function() {
-	$(this).toggleClass('active');
-});
-
-// Toggling the `.selected` state on the options.
-$('.sel__box__options').click(function() {
-	var txt = $(this).text();
-	var index = $(this).index();
-
-	$(this).siblings('.sel__box__options').removeClass('selected');
-	$(this).addClass('selected');
-
-	var $currentSel = $(this).closest('.sel');
-	$currentSel.children('.sel__placeholder').text(txt);
-	$currentSel.children('select').prop('selectedIndex', index + 1);
-});
-
-</script>
-
-
->>>>>>> 716e1ab00453b6d54683f46219eb35ef48f23d9e
