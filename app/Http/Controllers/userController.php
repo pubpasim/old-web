@@ -775,3 +775,4 @@ public function organisasi_pub(Request $request)
         return redirect('pertanyaan');
     }
 
+}
