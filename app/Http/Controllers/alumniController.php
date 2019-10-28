@@ -133,11 +133,7 @@ class alumniController extends Controller
 
      return redirect('strukturOrgAlumni');
  }
- public function infaq_view()
- {
-    $infaq=DB::table('tb_infaq')->get();
-    return view('tampilan.alumni.infaq',compact('infaq'));
-}
+ 
 public function tambahInfaq()
 {
     $bulan=DB::table('tb_bulan')->get();
@@ -167,19 +163,6 @@ public function simpanInfaq(Request $request)
 }
 
 
-public function editStrukAlumni($id)
-{
-    $tamp = DB::table('tb_ikatan_alumni')->where('id_ikatan',$id)->get();
-    $mhs=DB::table('tb_mahasiswa')
-    ->join('tb_angkatan','tb_angkatan.id_angkatan','tb_mahasiswa.id_angkatan')
-    ->where('id_statusPub',2)
-    ->orderby('angkatan','ASC')
-    ->orderby('nama','ASC') 
-    ->get();
-    $jab=DB::table('tb_orgalumni')->get();
-
-    return view('ikatanAlumni.editStruktur',compact('tamp','mhs','jab'));
-}
 public function updateStrukAlumni(Request $request,$id){
 
     DB::table('tb_ikatan_alumni')
@@ -190,13 +173,6 @@ public function updateStrukAlumni(Request $request,$id){
         'masa_bakti' => $request->masa_bakti,
     ]);
     return redirect('strukturOrgAlumni');
-}
-
-public function hapusStrukAlumni($id)
-{
-    DB::table('tb_ikatan_alumni')->where('id_ikatan',$id)->delete();
-    return redirect('strukturOrgAlumni');
-
 }
 
 
@@ -234,7 +210,7 @@ public function editStrukAlumni($id)
     ->orderby('angkatan','ASC')
     ->orderby('nama','ASC') 
     ->get();
-    $jab=DB::table('tb_orgpub')->get();
+    $jab=DB::table('tb_orgalumni')->get();
 
     return view('ikatanAlumni.editStruktur',compact('tamp','mhs','jab'));
 }
@@ -273,20 +249,6 @@ public function hapusLegalitasAdmin($id)
 
 }
 
-
-
-public function updateStrukAlumni(Request $request,$id){
-
-
-    DB::table('tb_ikatan_alumni')
-    ->where('id_ikatan',$id)
-    ->update([
-        'id_mahasiswa' => $request->id_mahasiswa,
-        'id_jabatan' => $request->jabatan,
-        'masa_bakti' => $request->masa_bakti,
-    ]);
-    return redirect('strukturOrgAlumni');
-}
 
 public function hapusStrukAlumni($id)
 {

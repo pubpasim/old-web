@@ -41,7 +41,7 @@
 		height: 5px;
 		background-color: black;
 		position: relative;
-		top:-580px;
+		top:-980px;
 		z-index: -1;
 	}
 	#vrt{

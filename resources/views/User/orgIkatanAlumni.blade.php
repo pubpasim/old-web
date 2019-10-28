@@ -16,7 +16,7 @@
 		background-color: grey;
 		border-radius: 7px;
 		border: 1px solid darkcyan;
-		margin-top: 50px;
+		margin-top: 15px;
 		color: white;
 	}
 	#keamanan{
@@ -25,15 +25,32 @@
 		background-color: grey;
 		border-radius: 7px;
 		border: 1px solid darkcyan;
-		margin-top: 50px;
+		margin-top: 10px;
+		margin-left: 900PX;
+		margin-bottom: 30px;
 		color: white;
 	}
 	#lurus{
 		width: 5px;
-		height: 400px;
+		height: 650px;
 		background-color: darkcyan;
 		position: relative;
-		top:-300px;
+		top:-420px;
+		z-index: -1;
+	}
+	#lurus2{
+		width: 10px;
+		height: 650px;
+		border-style: dashed;
+		border-top: none;
+		border-bottom: none;
+		border-left: none;
+		border-color: darkcyan;
+		position: relative;
+		
+		position: relative;
+		top:-1070px;
+		left: -12px;
 		z-index: -1;
 	}
 	#horizon{
@@ -41,9 +58,22 @@
 		height: 5px;
 		background-color: darkcyan;
 		position: relative;
-		top:-580px;
+		top:10px;
 		z-index: -1;
 	}
+	#horizon3{
+		width: 400px;
+		height: 40px;
+		border-style: dashed;
+		border-top: none;
+		border-right: none;
+		border-left: none;
+		border-color: darkcyan;
+		position: relative;
+		top:-40px;
+		z-index: -1;
+	}
+
 	#horizontal{
 		z-index: -3;
 		background-color: darkcyan;
@@ -75,7 +105,7 @@
 		border: 1px solid darkcyan;
 		color: white;
 		position: relative;
-		top:-650px;
+		top:-1450px;
 		right: -220px;
 	}
 	#sekretaris{
@@ -86,7 +116,7 @@
 		border: 1px solid darkcyan;
 		color: white;
 		position: relative;
-		top:-800px;
+		top:-1600px;
 		left: -220px;
 	}
 
@@ -98,11 +128,39 @@
 		border: 1px solid darkcyan;		
 		color: white;
 		position: relative;
-		top:160px;
+		top:200px;
 		right:350px;
 	}
 
 	#koman{
+		width: 400px;
+		height: 40px;
+		border-style: dashed;
+		border-top: none;
+		border-right: none;
+		border-left: none;
+		border-color: darkcyan;
+		position: relative;
+		top:-150px;
+		right: -200px;
+		z-index: -1;
+		
+	}
+	#koman3{
+		width: 400px;
+		height: 40px;
+		border-style: solid;
+		border-top: none;
+		border-right: none;
+		border-left: none;
+		border-color: darkcyan;
+		position: relative;
+		top:-180px;
+		right: -200px;
+		z-index: -1;
+		
+	}
+	#koman2{
 		width: 250px;
 		height: 40px;
 		border-style: dashed;
@@ -111,27 +169,55 @@
 		border-left: none;
 		border-color: darkcyan;
 		position: relative;
-		top:-880px;
+		top:90px;
+		left: -150px;
 		z-index: -1;
 		
 	}
 	#horizon2{
-		width: 1100px;
+		width: 900px;
 		height: 5px;
 		background-color: darkcyan;
 		position: relative;
-		top:-665px;
+		top:-1380px;
+		z-index: -1;
+
+	}
+	#horizon4{
+		width: 910px;
+		height: 5px;
+		border-style: dashed;
+		border-bottom: none;
+		border-right: none;
+		border-left: none;
+		border-color: darkcyan;
+		position: relative;
+		position: relative;
+		top:-1390px;
 		z-index: -1;
 
 	}
 	#vrt3{
 		width: 5px;
-		height: 40px;
+		height: 180px;
 		background-color: darkcyan;
 		position: relative;
-		top:-665px;
+		top:-1390px;
 		z-index: -1;
-		left: -547px;
+		left: -447px;
+	}
+	#vrt31{
+		width: 5px;
+		height: 60px;
+		border-style: dashed;
+		border-top: none;
+		border-bottom: none;
+		border-left: none;
+		border-color: darkcyan;
+		position: relative;
+		top:-1575px;
+		z-index: -1;
+		left: -455px;
 	}
 	#pnd{
 		width: 200px;
@@ -141,8 +227,30 @@
 		border: 1px solid darkcyan;
 		color: white;
 		position: relative;
-		top:-665px;
-		left: -530px;
+		top:-1590px;
+		left: -430px;
+	}
+	#hr1{
+		width: 230px;
+		height: 50px;
+		border-style: dashed;
+		border-bottom: none;
+		border-color: darkcyan;
+		position: relative;
+		top:-1545px;
+		z-index: -1;
+		left: -450px;
+	}
+	#hr2{
+		width: 230px;
+		height: 50px;
+		border-style: dashed;
+		border-bottom: none;
+		border-color: darkcyan;
+		position: relative;
+		top:-1910px;
+		z-index: -1;
+		left: 0px;
 	}
 	#vrt4{
 		width: 5px;
@@ -161,17 +269,28 @@
 		border: 1px solid darkcyan;
 		color: white;
 		position: relative;
-		top:-795px;
+		top:-1550px;
 		left: -325px;
+	}
+	#ker2{
+		width: 200px;
+		height: 90px;
+		background-color: grey;
+		border-radius: 7px;
+		border: 1px solid darkcyan;
+		color: white;
+		position: relative;
+		top:-1640px;
+		left: -550px;
 	}
 	#vrt5{
 		width: 5px;
 		height: 40px;
 		background-color: darkcyan;
 		position: relative;
-		top:-925px;
+		top:-1910px;
 		z-index: -1;
-		left: -150px;
+		left: 0px;
 	}
 	#keb{
 		width: 200px;
@@ -181,8 +300,8 @@
 		border: 1px solid darkcyan;
 		color: white;
 		position: relative;
-		top:-925px;
-		left: -120px;
+		top:-1910px;
+		left: 0px;
 	}
 	#vrt6{
 		width: 5px;
@@ -201,8 +320,19 @@
 		border: 1px solid darkcyan;
 		color: white;
 		position: relative;
-		top:-1055px;
-		right: -85px;
+		top:-1910px;
+		right: 120px;
+	}
+	#sej2{
+		width: 200px;
+		height: 90px;
+		background-color: grey;
+		border-radius: 7px;
+		border: 1px solid darkcyan;
+		color: white;
+		position: relative;
+		top:-2000px;
+		left: 120px;
 	}
 	#vrt7{
 		width: 5px;
@@ -229,9 +359,22 @@
 		height: 40px;
 		background-color: darkcyan;
 		position: relative;
-		top:-1315px;
+		top:-2310px;
 		z-index: -1;
-		right: -548px;
+		left: 448px;
+	}
+	#vrt81{
+		width: 5px;
+		height: 40px;
+		border-style: dashed;
+		border-right: none;
+		border-top: none; 
+		border-bottom: none;
+		border-color: darkcyan;
+		position: relative;
+		top:-2350px;
+		z-index: -1;
+		left: 455px;
 	}
 	#mag{
 		width: 200px;
@@ -241,8 +384,8 @@
 		border: 1px solid darkcyan;
 		color: white;
 		position: relative;
-		top:-1315px;
-		right: -548px;
+		top:-2350px;
+		left: 448px;
 	}
 	#vrt9{
 		width: 5px;
@@ -282,16 +425,12 @@
 			
 			<div id="awal">
 				<div id="judul">PEMBINA IKA PUB</div>
-				<p>aaaaaaaaaaaaaaaaaaaaaa</p>
-			</div>
-			<div id="horizontal"></div>
-			<div id="pembina">
-				<div id="judul">PEMBINA PUB</div>
 				<p>Abdul Hafiz Tanjung,S.E.,M.Si.,AK.,CA</p>
 			</div>
-
-			<div id="ketua">
-				<div id="judul">KETUA ALUMNI</div>
+			<div id="koman2"></div>
+			<div id="horizontal"></div>
+			<div id="pembina">
+				<div id="judul">KETUA</div>
 				@if($ketua2==0)
 				<p>data Kosong</p>
 				@else
@@ -300,6 +439,17 @@
 				</a>
 				@endif
 			</div>
+			<div id="ketua">
+				<div id="judul">WAKIL KETUA</div>
+				@if($ketua2==0)
+				<p>data Kosong</p>
+				@else
+				<a href="{{url('detail/org/'.$ketua->id_mahasiswa)}}">
+					<p>{{$ketua->nama}}</p>
+				</a>
+				@endif
+			</div>
+
 			<div id="keamanan">
 				<div id="judul">KEAMANAN</div>
 				@if($keamanan2==0)
@@ -311,11 +461,15 @@
 				@endif
 			</div>
 
-			<div id="lurus"></div>
+			
 			<div id="horizon"></div>
-			<div id="vrt"></div>
-			<div id="vrt2"></div>
+			<div id="horizon3"></div>
+			<div id="koman"></div>
+			<div id="koman3"></div>
+			<div id="lurus"></div>
+			<div id="lurus2"></div>
 			<div id="bendahara">
+
 				<div id="judul">BENDAHARA</div>
 				@if($bendahara_ex2==0)
 				<p>data Kosong</p>
@@ -342,9 +496,11 @@
 				</a>
 				@endif
 			</div>
-			<div id="koman"></div>
+
 			<div id="horizon2"></div>
+			<div id="horizon4"></div>
 			<div id="vrt3"></div>
+			<div id="vrt31"></div>
 			<div id="pnd">
 				<div id="judul">DIVISI PENDIDIKAN</div>
 				@if($div_pnd2==0)
@@ -355,7 +511,7 @@
 				</a>
 				@endif
 			</div>
-			<div id="vrt4"></div>
+			<div id="hr1"></div>
 			<div id="ker">
 				<div id="judul">DIVISI KEROHANIAN</div>
 
@@ -367,7 +523,17 @@
 				</a>
 				@endif
 			</div>
-			<div id="vrt5"></div>
+			<div id="ker2">
+				<div id="judul">DIVISI KEROHANIAN</div>
+
+				@if($div_ker2==0)
+				<p>data Kosong</p>
+				@else
+				<a href="{{url('detail/org/'.$div_ker->id_mahasiswa)}}">
+					<p>{{$div_ker->nama}}</p>
+				</a>
+				@endif
+			</div>
 			<div id="keb">
 				<div id="judul">DIVISI KEBERSIHAN</div>
 				@if($div_keb2==0)
@@ -378,7 +544,8 @@
 				</a>
 				@endif
 			</div>
-			<div id="vrt6"></div>
+			<div id="vrt5"></div>
+			<div id="hr2"></div>
 			<div id="sej">
 				<div id="judul">DIVISI KESEJAHTERAAN</div>
 				@if($div_sej2==0)
@@ -389,18 +556,18 @@
 				</a>
 				@endif
 			</div>
-			<div id="vrt7"></div>
-			<div id="kes">
-				<div id="judul">DIVISI KESEHATAN</div>
-				@if($div_kes2==0)
+			<div id="sej2">
+				<div id="judul">DIVISI KESEJAHTERAAN</div>
+				@if($div_sej2==0)
 				<p>data Kosong</p>
 				@else
-				<a href="{{url('detail/org/'.$div_kes->id_mahasiswa)}}">
-					<p>{{$div_kes->nama}}</p>
+				<a href="{{url('detail/org/'.$div_sej->id_mahasiswa)}}">
+					<p>{{$div_sej->nama}}</p>
 				</a>
 				@endif
 			</div>
 			<div id="vrt8"></div>
+			<div id="vrt81"></div>
 			<div id="mag">
 				<div id="judul">DIVISI MAGANG</div>
 				@if($div_mag2==0)
