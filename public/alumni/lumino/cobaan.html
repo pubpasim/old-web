@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+
+ <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Aplikasi Penjualan Laptop</title>
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+  <script>tinymce.init({ selector:'textarea' });</script>
+    <link href="http://alkamil.co.id/files/images/slider/2017-02-05.png" rel="shortcut icon" type="image/x-icon" />
+    <script src="http://alkamil.co.id/files/css/numeral.min.js"></script>
+    <!-- Bootstrap -->
+    <link href="http://alkamil.co.id/assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="http://alkamil.co.id/assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="http://alkamil.co.id/assets/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- bootstrap-progressbar -->
+    <link href="http://alkamil.co.id/assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="http://alkamil.co.id/assets/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="http://alkamil.co.id/assets/vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+    <!-- starrr -->
+    <link href="http://alkamil.co.id/assets/vendors/starrr/dist/starrr.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="http://alkamil.co.id/assets/build/css/custom.min.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="http://alkamil.co.id/assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="http://alkamil.co.id/assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="http://alkamil.co.id/assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="http://alkamil.co.id/assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="http://alkamil.co.id/assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="http://alkamil.co.id/assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+
+  </head>
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+  <div class="left_col scroll-view">
+    <div class="navbar nav_title" style="border: 0;">
+        <a href="http://alkamil.co.id/" class="site_title"><span><h3 align="center">Fahmi Ali </h3></span></a>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <!-- menu profile quick info -->
+    <div class="profile">
+      <div class="profile_pic">
+ <img src="3.jpg" alt="..." class="img-circle profile_img">
+        
+      </div>
+      <div class="profile_info">
+        <span>Selamat Datang</span>
+        <h2></h2>
+      </div>
+    </div>
+    <!-- /menu profile quick info -->
+
+    <br />
+
+    <!-- sidebar menu -->
+    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+      <div class="menu_section">
+        <h3>&nbsp;</h3>
+        <ul class="nav side-menu">
+             <li><a href="http://alkamil.co.id/admin_area"> Beranda</a></li>
+                  <li><a>Forms Input</a>
+            <ul class="nav child_menu">
+              <li><a  href="http://alkamil.co.id/jamaah_umroh" >Manage Jamaah Umroh</a></li>
+                            <li><a href="http://alkamil.co.id/agen">Manage Agen</a></li>
+                              <li><a href="http://alkamil.co.id/pembayaran">Pembayaran</a></li>
+            </ul>
+          </li>
+                   
+          <li><a> Laporan</a>
+            <ul class="nav child_menu">
+              <li><a href="http://alkamil.co.id/laporan">Laporan Jama'ah Umroh</a></li>
+                             <li><a href="http://alkamil.co.id/agen/laporan">Laporan Agen Kemitraan</a></li>
+            </ul>
+          </li>
+                  </ul>
+      </div>
+    </div>
+    <!-- /sidebar menu -->
+
+    <!-- /menu footer buttons -->
+    <div class="sidebar-footer hidden-small">
+      <a data-toggle="tooltip" data-placement="top" title="Settings">
+        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+      </a>
+      <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+      </a>
+      <a data-toggle="tooltip" data-placement="top" title="Lock">
+        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+      </a>
+      <a data-toggle="tooltip" data-placement="top" title="Logout">
+        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+      </a>
+    </div>
+    <!-- /menu footer buttons -->
+  </div>
+</div>        <!-- top navigation -->
+         <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+<!--                    <img src="http://alkamil.co.id/assets/production/images" alt=""/>                     -->
+                                          <img src="http://alkamil.co.id/assets/production/images/user.png">
+
+                                         <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                      <li><a href="http://alkamil.co.id/profile"> Profile</a></li>
+                      <li><a href="http://alkamil.co.id/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                  </ul>
+                </li>
+                
+               <li role="presentation" class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false" title="Data Agen">
+                  <b>Agen</b> <i class="fa fa-user"></i>
+                    <span class="badge bg-green">0</span>
+                  </a>
+                                    </li>
+                <li role="presentation" class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false" title="Data Jamaah Umroh">
+                   <b>Jama'ah</b> <i class="fa fa-user"></i>
+                    <span class="badge bg-green">13</span>
+                  </a>
+                     
+                   
+                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list">
+                                          <li>
+                        <a href="http://alkamil.co.id/jamaah_umroh/preview/585" title="WAJIDAH SADJI  Calon Jamaah Umroh">
+                                                  <span class="image"><img src="http://alkamil.co.id/assets/production/images/img.jpg" alt="Profile Image" /></span>
+                                                <span>
+                          <span>WAJIDAH SADJI </span>
+                          <span class="time">13 Hari yang lalu</span>
+                        </span>
+                         <span class="message">
+                             Mendaftar <b>paket hemat i</b> pada tanggal 29 Jan 2019.
+                        </span>
+                      </a>
+                    </li>
+                                          <li>
+                        <a href="http://alkamil.co.id/jamaah_umroh/preview/586" title="TIMBUL SAJURI  Calon Jamaah Umroh">
+                                                  <span class="image"><img src="http://alkamil.co.id/assets/production/images/img.jpg" alt="Profile Image" /></span>
+                                                <span>
+                          <span>TIMBUL SAJURI </span>
+                          <span class="time">13 Hari yang lalu</span>
+                        </span>
+                         <span class="message">
+                             Mendaftar <b>paket hemat i</b> pada tanggal 29 Jan 2019.
+                        </span>
+                      </a>
+                    </li>
+                                          <li>
+                        <a href="http://alkamil.co.id/jamaah_umroh/preview/587" title="MARMI PONIMIN  Calon Jamaah Umroh">
+                                                  <span class="image"><img src="http://alkamil.co.id/assets/production/images/img.jpg" alt="Profile Image" /></span>
+                                                <span>
+                          <span>MARMI PONIMIN </span>
+                          <span class="time">13 Hari yang lalu</span>
+                        </span>
+                         <span class="message">
+                             Mendaftar <b>paket hemat i</b> pada tanggal 29 Jan 2019.
+                        </span>
+                      </a>
+                    </li>
+                                          <li>
+                        <a href="http://alkamil.co.id/jamaah_umroh/preview/588" title="FENITA AYU ARD Calon Jamaah Umroh">
+                                                  <span class="image"><img src="http://alkamil.co.id/assets/production/images/img.jpg" alt="Profile Image" /></span>
+                                                <span>
+                          <span>FENITA AYU ARD</span>
+                          <span class="time">13 Hari yang lalu</span>
+                        </span>
+                         <span class="message">
+                             Mendaftar <b>paket hemat i</b> pada tanggal 29 Jan 2019.
+                        </span>
+                      </a>
+                    </li>
+                                          <li>
+                        <a href="http://alkamil.co.id/jamaah_umroh/preview/589" title="FENDI WAHYUDI  Calon Jamaah Umroh">
+                                                  <span class="image"><img src="http://alkamil.co.id/assets/production/images/img.jpg" alt="Profile Image" /></span>
+                                                <span>
+                          <span>FENDI WAHYUDI </span>
+                          <span class="time">13 Hari yang lalu</span>
+                        </span>
+                         <span class="message">
+                             Mendaftar <b>paket hemat i</b> pada tanggal 29 Jan 2019.
+                        </span>
+                      </a>
+                    </li>
+                                                              <li>
+                      <div class="text-center">
+                        <a href="http://alkamil.co.id/jamaah">
+                          <strong>See All Alerts</strong>
+                          <i class="fa fa-angle-right"></i>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                                    </li>
+              </ul>
+            </nav>
+          </div>
+        </div>                 <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Laporan Jamaah Umroh</h3>
+              </div>
+
+           </div>
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>admin > <small>Aplikasi  Penjualan Laptop</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Settings 1</a>
+                          </li>
+                          <li><a href="#">Settings 2</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <br />
+                    <form action="http://alkamil.co.id/laporan/search" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">                      
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-3">Paket Umroh</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <select class="select2_group form-control" name="paket">
+                             <option value="">-- Pilih Paket -- </option>
+                                                            <option value="1">Paket Hemat</option>
+                                                           <option value="2">Paket Family Satu</option>
+                                                           <option value="5">PAKET AWAL RAMADHAN</option>
+                                                           <option value="6">Paket Family Dua</option>
+                                                           <option value="7">UMROH PLUS TURKEY</option>
+                                                           <option value="8">Paket Family Tiga</option>
+                                                           <option value="9">FAMILY 1 BATAM</option>
+                                                           <option value="10">FAMILY 2 BATAM</option>
+                                                           <option value="11">FAMILY 3 BATAM</option>
+                                                           <option value="12">Paket Hemat I</option>
+                                                           <option value="14">paket Darussalam</option>
+                                                           <option value="15">Paket Firdaus</option>
+                                                           <option value="16">PAKET LIBURAN</option>
+                                                           <option value="17">PAKET EXTRA</option>
+                                                        
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-3">Bulan Keberangkatan</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <select class="select2_group form-control" name="nama_bulan">
+                                <option value="">-- Pilih Bulan Keberangkatan-- </option>
+                                                            <option value="Januari">Januari</option>
+                                                           <option value="Februari">Februari</option>
+                                                           <option value="Maret">Maret</option>
+                                                           <option value="April">April</option>
+                                                           <option value="Mei">Mei</option>
+                                                           <option value="Juni">Juni</option>
+                                                           <option value="Juli">Juli</option>
+                                                           <option value="Agustus">Agustus</option>
+                                                           <option value="September">September</option>
+                                                           <option value="Oktober">Oktober</option>
+                                                           <option value="November">November</option>
+                                                           <option value="Desember">Desember</option>
+                                                        
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-3">Date From</label>
+                        <div class="col-md-3 col-sm-3 col-xs-9">
+                            <input id="datefrom" class="date-picker form-control col-md-7 col-xs-12 " name="date_from" value="2019-02-11" placeholder="Tanggal From" required="required" type="text">
+                            
+                        </div> 
+                        <div class="col-md-3 col-sm-3 col-xs-9">
+                            <input id="dateto" class="date-picker form-control col-md-7 col-xs-12 " name="date_to" placeholder="Tanggal To" value="2019-02-11" required="required" type="text">
+                            
+                        </div>
+                      </div>
+                      
+                                            
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                            
+                        </div>
+                      </div>
+
+                    </form>
+                                      </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+            
+                 <footer>
+  <div class="pull-right">
+    Al-Kamil - Pendaftaran Umroh & Haji Admin Template by <a href="">Alkamil</a>
+  </div>
+  <div class="clearfix"></div>
+</footer>      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="http://alkamil.co.id/assets/vendors/jquery.2.1.1.min.js"></script>
+     <!--Bootstrap--> 
+    <script src="http://alkamil.co.id/assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+     <!--FastClick--> 
+    <script src="http://alkamil.co.id/assets/vendors/fastclick/lib/fastclick.js"></script>
+     <!--NProgress--> 
+    <script src="http://alkamil.co.id/assets/vendors/nprogress/nprogress.js"></script>
+     <!--jQuery Sparklines--> 
+    <script src="http://alkamil.co.id/assets/vendors/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+    
+    <script src="http://alkamil.co.id/assets/vendors/select2/dist/js/select2.full.min.js"></script>
+    <script src="http://alkamil.co.id/assets/vendors/gauge.js/dist/gauge.min.js"></script>
+     <!--bootstrap-progressbar--> 
+    <script src="http://alkamil.co.id/assets/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+     <!--Skycons--> 
+    <script src="http://alkamil.co.id/assets/vendors/skycons/skycons.js"></script>
+    <script src="http://alkamil.co.id/assets/vendors/DateJS/build/date.js"></script>
+     <!--bootstrap-daterangepicker--> 
+    <script src="http://alkamil.co.id/assets/vendors/bootstrap-datepicker.min.js"></script>
+    <link type="text/css" href="http://alkamil.co.id/assets/vendors/datepicker.min.css" rel="stylesheet">
+     <!--Custom Theme Scripts--> 
+    <script src="http://alkamil.co.id/assets/build/js/custom.min.js"></script>
+     <!--iCheck--> 
+    <script src="http://alkamil.co.id/assets/vendors/iCheck/icheck.min.js"></script>
+     <!--Datatables--> 
+    <script src="http://alkamil.co.id/assets/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="http://alkamil.co.id/assets/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="http://alkamil.co.id/assets/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="http://alkamil.co.id/assets/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="http://alkamil.co.id/assets/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="http://alkamil.co.id/assets/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="http://alkamil.co.id/assets/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="http://alkamil.co.id/assets/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="http://alkamil.co.id/assets/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="http://alkamil.co.id/assets/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="http://alkamil.co.id/assets/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="http://alkamil.co.id/assets/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="http://alkamil.co.id/assets/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="http://alkamil.co.id/assets/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="http://alkamil.co.id/assets/vendors/pdfmake/build/vfs_fonts.js"></script>
+     <script src="http://alkamil.co.id/assets/vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+    <!-- Flot -->
+     <!-- Select2 -->
+      <script>
+      $(document).ready(function() {
+        $(":input").inputmask();
+      });
+    </script>
+    <script>
+      $(document).ready(function() {
+        $(".select2_single").select2({
+          placeholder: "Select a state",
+          allowClear: true
+        });
+        $(".select2_group").select2({});
+        $(".select2_multiple").select2({
+//          maximumSelectionLength: 100,
+//          placeholder: "With Max Selection limit 100",
+          allowClear: true
+        });
+      });
+    </script>
+    <!-- /Select2 -->
+    <script>
+      $(document).ready(function() {
+        var handleDataTableButtons = function() {
+          if ($("#datatable-buttons").length) {
+            $("#datatable-buttons").DataTable({
+              dom: "Bfrtip",
+              buttons: [
+                {
+                  extend: "copy",
+                  className: "btn-sm"
+                },
+                {
+                  extend: "csv",
+                  className: "btn-sm"
+                },
+                {
+                  extend: "excel",
+                  className: "btn-sm"
+                },
+                {
+                  extend: "pdfHtml5",
+                  className: "btn-sm"
+                },
+                {
+                  extend: "print",
+                  className: "btn-sm"
+                },
+              ],
+              responsive: true
+            });
+          }
+        };
+
+        TableManageButtons = function() {
+          "use strict";
+          return {
+            init: function() {
+              handleDataTableButtons();
+            }
+          };
+        }();
+
+        $('#datatable').dataTable();
+
+        $('#datatable-keytable').DataTable({
+          keys: true
+        });
+
+        $('#datatable-responsive').DataTable();
+
+        $('#datatable-scroller').DataTable({
+          ajax: "js/datatables/json/scroller-demo.json",
+          deferRender: true,
+          scrollY: 380,
+          scrollCollapse: true,
+          scroller: true
+        });
+
+        $('#datatable-fixed-header').DataTable({
+          fixedHeader: true
+        });
+
+        var $datatable = $('#datatable-checkbox');
+
+        $datatable.dataTable({
+          'order': [[ 1, 'asc' ]],
+          'columnDefs': [
+            { orderable: false, targets: [0] }
+          ]
+        });
+        $datatable.on('draw.dt', function() {
+          $('input').iCheck({
+            checkboxClass: 'icheckbox_flat-green'
+          });
+        });
+
+        TableManageButtons.init();
+      });
+      
+      $('.date-picker').datepicker({
+                autoclose: true,
+                format: 'yyyy/mm/dd',
+                todayHighlight: true
+        })
+        $('.input-daterange').datepicker('setValue', new Date());
+    </script>
+    <!-- jQuery Sparklines -->
+    <script>
+      $(document).ready(function() {
+        $(".sparkline_one").sparkline([2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 7, 5, 4, 3, 5, 6], {
+          type: 'bar',
+          height: '40',
+          barWidth: 9,
+          colorMap: {
+            '7': '#a1a1a1'
+          },
+          barSpacing: 2,
+          barColor: '#26B99A'
+        });
+
+        $(".sparkline_two").sparkline([2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 7, 5, 4, 3, 5, 6], {
+          type: 'line',
+          width: '200',
+          height: '40',
+          lineColor: '#26B99A',
+          fillColor: 'rgba(223, 223, 223, 0.57)',
+          lineWidth: 2,
+          spotColor: '#26B99A',
+          minSpotColor: '#26B99A'
+        });
+      });
+    </script>
+    <script>
+      var icons = new Skycons({
+          "color": "#73879C"
+        }),
+        list = [
+          "clear-day", "clear-night", "partly-cloudy-day",
+          "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
+          "fog"
+        ],
+        i;
+
+      for (i = list.length; i--;)
+        icons.set(list[i], list[i]);
+
+      icons.play();
+      
+      $(document).ready(function(){
+
+        $('.numeric').each(function(){
+            $(this).val(numeral($(this).val()).format('0,0'));
+        });
+        $(document).on('input', '.numeric', function(){
+            $(this).val(numeral($(this).val()).format('0,0'));
+        });
+
+      });
+      
+      $('#myModal').modal('show');
+    </script>
+    <script>
+      $(document).ready(function() {
+		   $( "#nama" ).change(function() {
+			 var namajamaah = $( "#nama" ).val();
+			
+			 if(namajamaah != 0){
+				var base_url_tag = 'http://alkamil.co.id/pembayaran/cek/'+namajamaah;
+				 $.ajax({
+					url: base_url_tag
+				})
+				.done(function( msg ) {
+					var p = msg.pembayaran;
+					
+				var pem ='';
+					if(p == null){
+						var pem = 0;
+					}else {
+						var pem = msg.pembayaran;
+					}
+					var harga = msg.price;
+					var kekurangan = harga - p;
+					//alert(kekurangan);
+					$("#id").val(msg.id);
+					$("#namapaket").val(msg.name);
+					$("#hargapaket").val(harga);
+					$("#pembayaran").val(pem);
+					$("#kekurangan").val(kekurangan);
+					 $("#message").css("display","inline");
+				});
+				return false;
+			 }else{
+						$("#id").val("");
+						$("#namapaket").val("");
+						$("#hargapaket").val("");
+						$("#pembayaran").val("");
+						$("#kekurangan").val("");
+						//$(".pilih_barang").attr("disabled","disabled");
+						$("#message").css("display","none");
+						resetBarang();
+					 }		 
+		  });
+      });
+    </script>
+    
+  </body>
+</html>

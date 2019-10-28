@@ -72,36 +72,37 @@
 		}
 	}
 </style>
-<div id="form1">
+
 	<div class="container">
 		<form method="POST" action="{{url('storeStrukAlumni')}}">
-		{{csrf_field()}}
-				
-		<div class="row">
-			<div class="col-25">
-				<label for="jbPUB">Tambah Struktur</label>
-			</div>
+			{{csrf_field()}}
 			
-			<div class="col-75">
-				<label for="jbPUB">Nama Alumni</label>
-				<select id="id_mahasiswa" name="id_mahasiswa">
-					<option value> --Nama Alumni--</option>
-					@foreach($mhs as $data)
-						<option value="{{$data->id_mahasiswa}}">{{$data->angkatan}} - {{$data->nama_angkatan}} - {{$data->nama}}</option>
-					@endforeach
-				</select>
-			</div>		
+			<div class="row">
+				<div class="col-25">
+					<label for="jbPUB">Tambah Struktur</label>
+				</div>
+				
+				<div class="col-75">
+					<label for="jbPUB">Nama Alumni</label>
+					<select id="id_mahasiswa" name="id_mahasiswa">
+						<option value> --Nama Alumni--</option>
+						@foreach($mhs as $data)
+						<option value="{{$data->id_mahasiswa}}">
+							{{$data->angkatan}} - {{$data->nama_angkatan}} - {{$data->nama}}
+						</option>
+						@endforeach
+					</select>
+				</div>		
 
-			<div class="col-75">
-				<label for="jbPUB">Jabatan</label>
-				<select id="jabatan" name="jabatan">
-					<option value> --Jabatan--</option>
-					@foreach($jab as $dataxx)
+				<div class="col-75">
+					<label for="jbPUB">Jabatan</label>
+					<select id="jabatan" name="jabatan">
+						<option value> --Jabatan--</option>
+						@foreach($jab as $dataxx)
 						<option value="{{$dataxx->id_orgpub}}">{{$dataxx->jabatan_pub}}</option>
-					@endforeach
-				</select>
-			</div>
-
+						@endforeach
+					</select>
+				</div>
 			<div class="col-75">
 				<label for="jbPUB">Masa Bakti</label>
 				<input type="text" class="form-control" name="masa_bakti" placeholder="Ex. 2019 - 2020">
@@ -114,30 +115,4 @@
 		</div>
 	</form>
 </div>
-</div>
-<body >
-	<script src="/lumino/js/jquery-1.11.1.min.js"></script>
-	<script src="/lumino/js/bootstrap.min.js"></script>
-	<script src="/lumino/js/chart.min.js"></script>
-	<script src="/lumino/js/chart-data.js"></script>
-	<script src="/lumino/js/easypiechart.js"></script>
-	<script src="/lumino/js/easypiechart-data.js"></script>
-	<script src="/lumino/js/bootstrap-datepicker.js"></script>
-	<script src="/lumino/js/bootstrap-table.js"></script>
-	<script>
-		!function ($) {
-			$(document).on("click","ul.nav li.parent > a > span.icon", function(){		  
-				$(this).find('em:first').toggleClass("glyphicon-minus");	  
-			}); 
-			$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
-		}(window.jQuery);
-
-		$(window).on('resize', function () {
-		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
-		})
-		$(window).on('resize', function () {
-		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
-		})
-	</script>	
-</body>
-	
+@include('tampilan.foot')

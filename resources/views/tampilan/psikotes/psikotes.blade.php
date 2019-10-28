@@ -1,24 +1,35 @@
 @include('tampilan.head')
-
-<div class="col-sm-5 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">Tabel Psikotes</div>
 
+				@if(\Session::has("alert"))
+                      <div class="alert alert-danger">
+                          <div>{{Session::get("alert")}}</div>
+                      </div>
+                  @endif
+                  
+                  @if(\Session::has("alert-success"))
+                      <div class="alert alert-success">
+                          <div>{{Session::get("alert-success")}}</div>
+                      </div>
+                  @endif
+                  
 				<div class="panel-body">
 					<a href="{{url('tambahPsi/'.$id)}}" class="btn btn-info">Add</a>
+					<a href="{{url('hasilSeleksi')}}" class="btn btn-info">Back</a>
 					<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 						<thead>
 							<tr>
 								<th>No</th>
 								<th>Nama Peserta</th>
+								<th>TTL</th>
 								<th>Jenis Kelamin</th>
 								<th>Jurusan Pilihan</th>
-								<th>Asal Sekolah</th>
 								<th>Asal Daerah</th>
-								<th>No Hp</th>
-								<th>Status</th>
+								<th>Asal Sekolah</th>								
+								<th>No Hp</th>								
 								<th>Aksi</th>
 							</tr>
 						</thead>
@@ -27,31 +38,24 @@
 							@foreach($psi as $data)
 							<tr>
 								<td>{{ $no++}}</td>
-								<td>{{ $data->nama_peserta}}</td>
+								<td>{{ $data->nama}}</td>
+								<td>{{ $data->tempat}}, {{ $data->tanggal}}</td>
 								<td>{{ $data->jk}}</td>
 								<td>{{ $data->jurusan}}</td>
-								<td>{{ $data->asal_sekolah}}</td>
 								<td>{{ $data->asal_daerah}}</td>
-								<td>{{ $data->no_hp}}</td>
-								<td @if($data->jenis == "LULUS") class="btn btn-info" @endif @if($data->jenis == "TIDAK LULUS") class="btn btn-danger" @endif>{{ $data->jenis}}</td>
+								<td>{{ $data->asal_sekolah}}</td>								
+								<td>{{ $data->no_hp}}</td>								
 								<td>
 									<a href="{{url('editPsi/'.$data->id_psi)}}" class="btn btn-info">Edit</a>
 									<a href="{{url('hapusPsi/'.$data->id_psi)}}" class="btn btn-info">Hapus</a>
 								</td>
 							</tr>
 							@endforeach
-
-						</tbody>	
-						<tfoot>
-							<tr>
-								<th colspan="5">Peserta Hadir : {{$dir}}</th>
-								<th colspan="4">Peserta Lulus : {{$lus}}</th>						        
-							</tr>
-						</tfoot>					    
+						</tbody>
 					</table>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	</html>
+@include('tampilan.foot')

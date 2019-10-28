@@ -78,7 +78,6 @@
 		border-style: groove;
 	}
 </style>
-<div id="form1">
 	<div class="container">
 		<form method="POST" action="{{url('mahasiswaEdit/'.$mhsEdit->id_mahasiswa)}}" enctype="multipart/form-data">
 			{{csrf_field()}}
@@ -226,9 +225,16 @@
 				</div>
 			</div>
 			<div class="row">
+				<div class="col-25">
+					<label for="telp">Nomor Telpon</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="telp" name="telp" placeholder="Nomor telpon" value="{{$mhsEdit->no_telp}}">
+				</div>
+			</div>
+			<div class="row">
 				<input type="submit" value="Simpan">
 			</div>
 		</form>
 	</div>
-</div>
 @include('tampilan.foot')

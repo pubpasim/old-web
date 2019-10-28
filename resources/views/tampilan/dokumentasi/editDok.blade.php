@@ -72,7 +72,6 @@
 		}
 	}
 </style>
-<div id="form1">
 	<div class="container">
 		@foreach($dok as $data)
 		<form method="POST" action="{{url('updateDok/'.$data->id_dok)}}" enctype="multipart/form-data">
@@ -105,7 +104,6 @@
 		</div>
 	</form>
 	@endforeach
-</div>
 </div>
 @include('tampilan.foot')
 

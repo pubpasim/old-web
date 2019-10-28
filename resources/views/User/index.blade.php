@@ -22,7 +22,7 @@
 			</div>
 		</div>
 		<!-- Single Welcome Slide -->
-		<div class="single-welcome-slide bg-img bg-overlay" style="background-image: url(imgs/kegiatan/KBB.jpg);" data-img-url="imgs/kegiatan/KBB.jpg">
+		<div class="single-welcome-slide bg-img bg-overlay" style="background-image: url({{url('imgs/gambar/KBB.jpg')}});" data-img-url="imgs/gambar/KBB.jpg">
 			<!-- Welcome Content -->
 			<div class="welcome-content h-100">
 				<div class="container h-100">
@@ -42,7 +42,7 @@
 
 
 		<!-- Single Welcome Slide -->
-		<div class="single-welcome-slide bg-img bg-overlay" style="background-image: url(imgs/kegiatan/akt16_i.jpg);" data-img-url="imgs/kegiatan/akt16_i.jpg">
+		<div class="single-welcome-slide bg-img bg-overlay" style="background-image: url({{url('imgs/gambar/akt16_i.jpg')}});" data-img-url="imgs/gambar/akt16_i.jpg">
 			<!-- Welcome Content -->
 			<div class="welcome-content h-100">
 				<div class="container h-100">
@@ -61,7 +61,7 @@
 		</div>
 
 		<!-- Single Welcome Slide -->
-		<div class="single-welcome-slide bg-img bg-overlay" style="background-image: url(imgs/kegiatan/akt16_a.jpg);" data-img-url="imgs/kegiatan/akt16_a.jpg">
+		<div class="single-welcome-slide bg-img bg-overlay" style="background-image: url({{url('imgs/gambar/akt16_a.jpg')}});" data-img-url="imgs/gambar/akt16_a.jpg">
 			<!-- Welcome Content -->
 			<div class="welcome-content h-100">
 				<div class="container h-100">
@@ -81,7 +81,7 @@
 
 
 		<!-- Welcome Area End -->
-		<div class="single-welcome-slide bg-img bg-overlay" style="background-image: url(imgs/kegiatan/akt17_i.jpg);" data-img-url="imgs/kegiatan/akt17_i.jpg">
+		<div class="single-welcome-slide bg-img bg-overlay" style="background-image: url({{url('imgs/gambar/akt17_i.jpg')}});" data-img-url="imgs/gambar/akt17_i.jpg">
 			<!-- Welcome Content -->
 			<div class="welcome-content h-100">
 				<div class="container h-100">
@@ -100,7 +100,7 @@
 		</div>
 
 		<!-- Single Welcome Slide -->
-		<div class="single-welcome-slide bg-img bg-overlay" style="background-image: url(imgs/kegiatan/akt17_a.jpg);" data-img-url="imgs/kegiatan/akt17_a.jpg">
+		<div class="single-welcome-slide bg-img bg-overlay" style="background-image: url({{url('imgs/gambar/akt17_a.jpg')}});" data-img-url="imgs/gambar/akt17_a.jpg">
 			<!-- Welcome Content -->
 			<div class="welcome-content h-100">
 				<div class="container h-100">
@@ -120,47 +120,6 @@
 	</div>
 </section>
 
-<!-- About Us Area Start -->
-<section class="roberto-about-area section-padding-100-0">
-	<div class="container mt-100">
-		<div class="row align-items-center">
-			<div class="col-12 col-lg-6">
-				<!-- Section Heading -->
-				<div class="section-heading wow fadeInUp" data-wow-delay="100ms">
-					<h6>About Us</h6>
-					<h2>Welcome to <br>Roberto Hotel Luxury</h2>
-				</div>
-				<div class="about-us-content mb-100">
-					<h5 class="wow fadeInUp" data-wow-delay="300ms">With over 340 hotels worldwide, NH Hotel Group offers a wide variety of hotels catering for a perfect stay no matter where your destination.</h5>
-					<p class="wow fadeInUp" data-wow-delay="400ms">Manager: <span>Michen Taylor</span></p>
-					<img src="img/core-img/signature.png" alt="" class="wow fadeInUp" data-wow-delay="500ms">
-				</div>
-			</div>
-			@foreach($kegiatan as $keg)
-			<div class="col-12 col-lg-6">
-				<div class="about-us-thumbnail mb-100 wow fadeInUp" data-wow-delay="700ms">
-					<div class="row no-gutters">
-						<div class="col-6">
-							<div class="single-thumb">
-								<img src="{{url('imgs/kegiatan')}}/{{$keg->file}}" alt="">
-							</div>
-							<div class="single-thumb">
-								<img src="img/bg-img/14.jpg" alt="">
-							</div>
-						</div>
-						<div class="col-6">
-							<div class="single-thumb">
-								<img src="img/bg-img/15.jpg" alt="">
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			@endforeach
-		</div>
-	</div>
-</section>
-<!-- About Us Area End -->
 
 <!-- Service Area Start -->
 <div class="roberto-service-area">
@@ -206,310 +165,83 @@
 		</div>
 	</div>
 </div>
-<!-- Service Area End -->
-
-<!-- Our Room Area Start -->
-
-<section class="roberto-rooms-area">
-	<div class="rooms-slides owl-carousel">
-		@foreach($ppmb as $data)
-		<!-- Single Room Slide -->
-		<div class="single-room-slide d-flex align-items-center">
-			<!-- Thumbnail -->
-			<div class="room-thumbnail h-100 bg-img" style="background-image: url({{url('imgs')}}/{{$data->foto}});"></div>
-
-			<!-- Content -->	
-			
-			<div class="room-content">
-				<h2 data-animation="fadeInUp" data-delay="100ms">{{$data->keterangan}}</h2>
-				
-			</div>
-		</div>
-		@endforeach
-		<!-- Single Room Slide -->
-		<div class="single-room-slide d-flex align-items-center">
-			<!-- Thumbnail -->
-			<div class="room-thumbnail h-100 bg-img" style="background-image: url(img/bg-img/17.jpg);"></div>
-
-			<!-- Content -->
-			<div class="room-content">
-				<h2 data-animation="fadeInUp" data-delay="100ms">Best King Room</h2>
-				<h3 data-animation="fadeInUp" data-delay="300ms">125$ <span>/ Day</span></h3>
-				<ul class="room-feature" data-animation="fadeInUp" data-delay="500ms">
-					<li><span><i class="fa fa-check"></i> Size</span> <span>: 30 ft</span></li>
-					<li><span><i class="fa fa-check"></i> Capacity</span> <span>: Max persion 5</span></li>
-					<li><span><i class="fa fa-check"></i> Bed</span> <span>: King Beds</span></li>
-					<li><span><i class="fa fa-check"></i> Services</span> <span>: Wifi, Television, Bathroom</span></li>
-				</ul>
-				<a href="#" class="btn roberto-btn mt-30" data-animation="fadeInUp" data-delay="700ms">View Details</a>
-			</div>
-		</div>
-	</div>
-</section>
-<!-- Our Room Area End -->
-
-<!-- Testimonials Area Start -->
-<section class="roberto-testimonials-area section-padding-100-0">
+<section class="roberto-cta-area">
 	<div class="container">
-		<div class="row align-items-center">
-			<div class="col-12 col-md-6">
-				<div class="testimonial-thumbnail owl-carousel mb-100">
-					<img src="img/bg-img/10.jpg" alt="">
-					<img src="img/bg-img/11.jpg" alt="">
-				</div>
-			</div>
-
-			<div class="col-12 col-md-6">
-				<!-- Section Heading -->
-				<div class="section-heading">
-					<h6>Testimonials</h6>
-					<h2>Our Guests Love Us</h2>
-				</div>
-				<!-- Testimonial Slide -->
-				<div class="testimonial-slides owl-carousel mb-100">
-
-					<!-- Single Testimonial Slide -->
-					<div class="single-testimonial-slide">
-						<h5>“This can be achieved by applying search engine optimization or popularly known as SEO. This is a marketing strategy which increases the quality and quantity of traffic flow to a particular website via search engines.”</h5>
-						<div class="rating-title">
-							<div class="rating">
-								<i class="icon_star"></i>
-								<i class="icon_star"></i>
-								<i class="icon_star"></i>
-								<i class="icon_star"></i>
-								<i class="icon_star"></i>
+		<div class="container clearfix" style="background-color: #333333;">
+			<div class="chat">   
+				<div class="chat-history">
+					<ul class="chat-ul">
+						<li>
+							<div class="message-data">
+								<span class="message-data-name"><i class="fa fa-circle you"></i> You</span>
 							</div>
-							<h6>Robert Downey <span>- CEO Deercreative</span></h6>
-						</div>
-					</div>
+							<div class="message you-message">
+								A new client?!?! I would love to help them, but where are we going to find the time?
 
-					<!-- Single Testimonial Slide -->
-					<div class="single-testimonial-slide">
-						<h5>“Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus delectus facilis molestias, error vitae praesentium quos eaque qui ea, tempore blanditiis sint reprehenderit, quaerat. Commodi ab architecto sit suscipit exercitationem!”</h5>
-						<div class="rating-title">
-							<div class="rating">
-								<i class="icon_star"></i>
-								<i class="icon_star"></i>
-								<i class="icon_star"></i>
-								<i class="icon_star"></i>
-								<i class="icon_star"></i>
 							</div>
-							<h6>Akash Downey <span>- CEO Deercreative</span></h6>
-						</div>
-					</div>
-
-					<!-- Single Testimonial Slide -->
-					<div class="single-testimonial-slide">
-						<h5>“Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, ex quos. Alias a rem maiores, possimus dicta sit distinctio quis iusto!”</h5>
-						<div class="rating-title">
-							<div class="rating">
-								<i class="icon_star"></i>
-								<i class="icon_star"></i>
-								<i class="icon_star"></i>
-								<i class="icon_star"></i>
-								<i class="icon_star"></i>
+						</li>
+						<li class="clearfix">
+							<div class="message-data align-right">
+								<span class="message-data-name">Ada, your OperationsAlly</span> <i class="fa fa-circle me"></i>
 							</div>
-							<h6>Downey Sarah <span>- CEO Deercreative</span></h6>
-						</div>
-					</div>
-
-					<!-- Single Testimonial Slide -->
-					<div class="single-testimonial-slide">
-						<h5>“Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore sequi laboriosam fugit suscipit aspernatur, minima minus voluptatum, id ab atque similique ex earum. Magni.”</h5>
-						<div class="rating-title">
-							<div class="rating">
-								<i class="icon_star"></i>
-								<i class="icon_star"></i>
-								<i class="icon_star"></i>
-								<i class="icon_star"></i>
-								<i class="icon_star"></i>
+							<div class="message me-message float-right"> We should take a look at your onboarding and service delivery workflows, for most businesess there are many ways to save time and not compromise quality.  </div>
+						</li>
+						<li><h2>or little things are being forgotten that shouldn’t be...</h2></li>
+						<li class="clearfix">
+							<div class="message-data">
+								<span class="message-data-name"><i class="fa fa-circle you"></i> You</span>
 							</div>
-							<h6>Robert Brown <span>- CEO Deercreative</span></h6>
-						</div>
-					</div>
+							<div class="message you-message">
+								What?! No way, how did I miss that. I never forgot that part before.
 
-				</div>
-			</div>
+							</div>
+						</li>
+						<li class="clearfix">
+							<div class="message-data align-right">
+								<span class="message-data-name">Ada, your OperationsAlly</span> <i class="fa fa-circle me"></i>
+							</div>
+							<div class="message me-message float-right">Remembering everything can quickly become impossible as your business grows, we need to take a look at your reminder management system and also see if there are steps in your business we can automate.</div>
+						</li>
+						<li><h2>or you’ve started to notice mistakes and miscommunications ...</h2></li>
+						<li>
+							<div class="message-data">
+								<span class="message-data-name"><i class="fa fa-circle you"></i> You</span>
+							</div>
+							<div class="message you-message">
+								6? Bob told me 8! How did this mix up happen?!
+							</div>
+						</li>
+						<li class="clearfix">
+							<div class="message-data align-right">
+								<span class="message-data-name">Ada, your OperationsAlly</span> <i class="fa fa-circle me"></i>
+							</div>
+							<div class="message me-message float-right">
+							The more people in your business, the more opportunity for mistakes, having a solid system in place for tracking important client data will help avoid these miscommunications.            </div>
+						</li>
+						<li><h2>or it can be hard to find the information you need ...</h2></li>
+						<li>
+							<div class="message-data">
+								<span class="message-data-name"><i class="fa fa-circle you"></i> You</span>
+							</div>
+							<div class="message you-message">
+								I know that I spoke with Mary about this, but where did I put that note...hopefully she also sent me an email...
+
+							</div>
+						</li>
+						<li class="clearfix">
+							<div class="message-data align-right">
+								<span class="message-data-name">Ada, your OperationsAlly</span> <i class="fa fa-circle me"></i>
+							</div>
+							<div class="message me-message float-right">Finding the right information when you need it will save you time and energy. Your data management systems need to grow with your business. All businesses need a dynamic data strategy and a system to ensure that the strategy is implemented correctly.</div>
+						</li>
+					</ul>
+
+				</div> <!-- end chat-history -->
+
+			</div> <!-- end chat -->
 		</div>
 	</div>
 </section>
-<!-- Testimonials Area End -->
-
-<!-- Projects Area Start -->
-<section class="roberto-project-area">
-	<!-- Projects Slide -->
-	<div class="projects-slides owl-carousel">
-		<!-- Single Project Slide -->
-		<div class="single-project-slide active bg-img" style="background-image: url(img/bg-img/5.jpg);">
-			<!-- Project Text -->
-			<div class="project-content">
-				<div class="text">
-					<h6>Entertaiment</h6>
-					<h5>Racing Bike</h5>
-				</div>
-			</div>
-			<!-- Hover Effects -->
-			<div class="hover-effects">
-				<div class="text">
-					<h6>Entertaiment</h6>
-					<h5>Racing Bike</h5>
-					<p>I focus a lot on helping the first time or inexperienced traveler head out prepared and confident...</p>
-				</div>
-				<a href="#" class="btn project-btn">Discover Now <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-			</div>
-		</div>
-
-		<!-- Single Project Slide -->
-		<div class="single-project-slide bg-img" style="background-image: url(img/bg-img/6.jpg);">
-			<!-- Project Text -->
-			<div class="project-content">
-				<div class="text">
-					<h6>Entertaiment</h6>
-					<h5>Racing Bike</h5>
-				</div>
-			</div>
-			<!-- Hover Effects -->
-			<div class="hover-effects">
-				<div class="text">
-					<h6>Entertaiment</h6>
-					<h5>Racing Bike</h5>
-					<p>I focus a lot on helping the first time or inexperienced traveler head out prepared and confident...</p>
-				</div>
-				<a href="#" class="btn project-btn">Discover Now <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-			</div>
-		</div>
-
-		<!-- Single Project Slide -->
-		<div class="single-project-slide bg-img" style="background-image: url(img/bg-img/7.jpg);">
-			<!-- Project Text -->
-			<div class="project-content">
-				<div class="text">
-					<h6>Entertaiment</h6>
-					<h5>Racing Bike</h5>
-				</div>
-			</div>
-			<!-- Hover Effects -->
-			<div class="hover-effects">
-				<div class="text">
-					<h6>Entertaiment</h6>
-					<h5>Racing Bike</h5>
-					<p>I focus a lot on helping the first time or inexperienced traveler head out prepared and confident...</p>
-				</div>
-				<a href="#" class="btn project-btn">Discover Now <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-			</div>
-		</div>
-
-		<!-- Single Project Slide -->
-		<div class="single-project-slide bg-img" style="background-image: url(img/bg-img/8.jpg);">
-			<!-- Project Text -->
-			<div class="project-content">
-				<div class="text">
-					<h6>Entertaiment</h6>
-					<h5>Racing Bike</h5>
-				</div>
-			</div>
-			<!-- Hover Effects -->
-			<div class="hover-effects">
-				<div class="text">
-					<h6>Entertaiment</h6>
-					<h5>Racing Bike</h5>
-					<p>I focus a lot on helping the first time or inexperienced traveler head out prepared and confident...</p>
-				</div>
-				<a href="#" class="btn project-btn">Discover Now <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-			</div>
-		</div>
-
-		<!-- Single Project Slide -->
-		<div class="single-project-slide bg-img" style="background-image: url(img/bg-img/9.jpg);">
-			<!-- Project Text -->
-			<div class="project-content">
-				<div class="text">
-					<h6>Entertaiment</h6>
-					<h5>Racing Bike</h5>
-				</div>
-			</div>
-			<!-- Hover Effects -->
-			<div class="hover-effects">
-				<div class="text">
-					<h6>Entertaiment</h6>
-					<h5>Racing Bike</h5>
-					<p>I focus a lot on helping the first time or inexperienced traveler head out prepared and confident...</p>
-				</div>
-				<a href="#" class="btn project-btn">Discover Now <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-			</div>
-		</div>
-	</div>
-</section>
-<!-- Projects Area End -->
-
-<!-- Blog Area Start -->
-<section class="roberto-blog-area section-padding-100-0">
-	<div class="container">
-		<div class="row">
-			<!-- Section Heading -->
-			<div class="col-12">
-				<div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
-					<h6>Our Blog</h6>
-					<h2>Latest News &amp; Event</h2>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<!-- Single Post Area -->
-			<div class="col-12 col-md-6 col-lg-4">
-				<div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="300ms">
-					<a href="#" class="post-thumbnail"><img src="img/bg-img/2.jpg" alt=""></a>
-					<!-- Post Meta -->
-					<div class="post-meta">
-						<a href="#" class="post-date">Jan 02, 2019</a>
-						<a href="#" class="post-catagory">Event</a>
-					</div>
-					<!-- Post Title -->
-					<a href="#" class="post-title">Learn How To Motivate Yourself</a>
-					<p>How many free autoresponders have you tried? And how many emails did you get through using them?</p>
-					<a href="index.html" class="btn continue-btn"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-				</div>
-			</div>
-
-			<!-- Single Post Area -->
-			<div class="col-12 col-md-6 col-lg-4">
-				<div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="500ms">
-					<a href="#" class="post-thumbnail"><img src="img/bg-img/3.jpg" alt=""></a>
-					<!-- Post Meta -->
-					<div class="post-meta">
-						<a href="#" class="post-date">Jan 02, 2019</a>
-						<a href="#" class="post-catagory">Event</a>
-					</div>
-					<!-- Post Title -->
-					<a href="#" class="post-title">What If Let You Run The Hubble</a>
-					<p>My point here is that if you have no clue for the answers above you probably are not operating a followup.</p>
-					<a href="index.html" class="btn continue-btn"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-				</div>
-			</div>
-
-			<!-- Single Post Area -->
-			<div class="col-12 col-md-6 col-lg-4">
-				<div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="700ms">
-					<a href="#" class="post-thumbnail"><img src="img/bg-img/4.jpg" alt=""></a>
-					<!-- Post Meta -->
-					<div class="post-meta">
-						<a href="#" class="post-date">Jan 02, 2019</a>
-						<a href="#" class="post-catagory">Event</a>
-					</div>
-					<!-- Post Title -->
-					<a href="#" class="post-title">Six Pack Abs The Big Picture</a>
-					<p>Some good steps to take to ensure you are getting what you need out of a autoresponder include…</p>
-					<a href="index.html" class="btn continue-btn"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-				</div>
-			</div>
-
-		</div>
-	</div>
-</section>
-<!-- Blog Area End -->
-
-<!-- Call To Action Area Start -->
 <section class="roberto-cta-area">
 	<div class="container">
 		<div class="cta-content bg-img bg-overlay jarallax" style="background-image: url({{url('imgs/pasim.jpg')}});">
@@ -517,7 +249,7 @@
 				<div class="col-12 col-md-7">
 					<div class="cta-text mb-50">
 						<h2>Contact us now!</h2>
-						<h6>Contact (+12) 345-678-9999 to book directly or for advice</h6>
+						<h6>Contact Abdul Hafiz Tanjung(0857-2275-2570)</h6>
 					</div>
 				</div>
 				<div class="col-12 col-md-5 text-right">
@@ -527,6 +259,7 @@
 		</div>
 	</div>
 </section>
+
 <!-- Call To Action Area End -->
 
 <!-- Partner Area Start -->
@@ -551,7 +284,5 @@
 	</div>
 </div>
 <!-- Partner Area End -->
-
-
 
 @include('user.footer')

@@ -72,42 +72,40 @@
 		}
 	}
 </style>
-<div class="col-sm-5 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="panel panel-default">
-					<div class="panel-heading">Tabel Dokumentasi</div>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">Tabel Dokumentasi</div>
 
-					<div class="panel-body">
-						<a href="{{url('tambahDok')}}" class="btn btn-info">Add</a>
-						<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
-						    <thead>
-						    <tr>
-						        <th>No</th>
-						        <th>Foto</th>						        
-						        <th>Keterangan</th>
-						        <th>Aksi</th>
-						    </tr>
-						    </thead>
-						    <tbody>
-						    	@php $no = 1; @endphp
-						    	@foreach($dok as $data)
-						    	<tr>
-						    		<td>{{ $no++}}</td>
-						    		<td> <img src="{{url('imgs')}}/{{($data->foto) }}" width="100" height="100"></td>						    		
-						    		<td>{{ $data->keterangan}}</td>
-						    		<td>
-						    			<a href="{{url('editDok/'.$data->id_dok)}}" class="btn btn-info">Edit</a>
-						    			<a href="{{url('hapusDok/'.$data->id_dok)}}" class="btn btn-info">Hapus</a>
-						    		</td>
-						    	</tr>
-						    	@endforeach
-						    </tbody>						    
-						</table>
-					</div>
-				</div>
+			<div class="panel-body">
+				<a href="{{url('tambahDok')}}" class="btn btn-info">Add</a>
+				<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+					<thead>
+						<tr>
+							<th>No</th>
+							<th>Foto</th>						        
+							<th>Keterangan</th>
+							<th>Aksi</th>
+						</tr>
+					</thead>
+					<tbody>
+						@php $no = 1; @endphp
+						@foreach($dok as $data)
+						<tr>
+							<td>{{ $no++}}</td>
+							<td> <img src="{{url('imgs')}}/{{($data->foto) }}" width="100" height="100"></td>						    		
+							<td>{{ $data->keterangan}}</td>
+							<td>
+								<a href="{{url('editDok/'.$data->id_dok)}}" class="btn btn-info">Edit</a>
+								<a href="{{url('hapusDok/'.$data->id_dok)}}" class="btn btn-info">Hapus</a>
+							</td>
+						</tr>
+						@endforeach
+					</tbody>						    
+				</table>
 			</div>
 		</div>
+	</div>
 
-@include('tampilan.foot')
+	@include('tampilan.foot')
 

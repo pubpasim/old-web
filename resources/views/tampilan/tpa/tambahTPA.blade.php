@@ -72,7 +72,6 @@
 		}
 	}
 </style>
-<div id="form1">
 	<div class="container">
 		<form method="POST" action="{{url('storeTPA/'.$id)}}">
 			{{csrf_field()}}
@@ -80,6 +79,10 @@
 			<div class="row">
 				<div class="col-25">
 					<label>Tambah TPA</label>
+				</div>
+				<div class="col-75">
+					<label for="Sekolah">Daerah</label>
+					<input type="text" class="form-control" placeholder="Daerah" name="daerah">
 				</div>
 				<div class="col-75">
 					<label for="Sekolah">Sekolah</label>
@@ -101,7 +104,6 @@
 			</div>
 		</form>
 	</div>
-</div>
 
 @include('tampilan.foot')
 

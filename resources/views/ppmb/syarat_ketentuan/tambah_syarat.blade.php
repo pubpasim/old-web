@@ -8,7 +8,6 @@
 		</style>
 		<script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
 
-		<div id="form1">
 		<div class="row">
 			<div class="panel-heading">FROM TAMBAH PERSYARATAN DAN KETENTUAN</div>
 					<div class="panel-body" align="center">
@@ -25,7 +24,6 @@
 						</div>
 					</div>
 				</div>
-			</div>
 	@include('tampilan.foot')
 
 
