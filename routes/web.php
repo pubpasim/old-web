@@ -316,9 +316,6 @@ Route::get('pelatihan_data','userController@pelatihan_data');
 Route::get('pub_dok','userController@kegiatanPub');
 Route::get('pub_dok/kegiatan','dokumentasiPubController@index');
 
-Route::get('hasilSeleksi','userController@hasilSeleksi');
-Route::post('hasilSeleksi','userController@tampilSeleksi');
-
 Route::get('kegiatanPub','userController@kegiatanPub');
 Route::get('user_hasilSeleksi','userController@hasilSeleksi');
 Route::post('user_hasilSeleksi','userController@tampilSeleksi');

@@ -30,7 +30,7 @@
 		text-align: center;
 		margin: 10%;
 	}
-	button{
+	#bt{
 		background-color: #16A085;
 		color: white;
 		width: 180px;
@@ -38,22 +38,19 @@
 		border-radius: 10px;
 		border-style: groove;
 	}
-	button:hover{
+	#bt:hover{
 		background-color: #1ABC9C;
 	}
 </style>
 <div >
 	<div class="tengah">
-			<center><h1>Kegiatan PUB</h1></center>
-			<a href="{{url('kegiatanPub/filter/'.$pendidikan->id_angkatan,$pendidikan->tema)}}"><button>Divisi Pendidikan</button></a>
-			<a href="{{url('kegiatanPub/filter')}}"><button>Divisi Keasramaan</button></a>
-			<a href="{{url('kegiatanPub/filter')}}"><button>Divisi Kesejahteraan</button></a>
-			<a href="{{url('kegiatanPub/filter')}}"><button>Divisi Kerohanian</button></a>
-			<a href="{{url('kegiatanPub/filter')}}"><button>Divisi Kesehatan</button></a>
-			<a href="{{url('kegiatanPub/filter')}}"><button>Divisi Magang</button></a>
-			<a href="{{url('kegiatanPub/filter')}}"><button>Divisi Kebersihan</button></a>
+		<center><h1>Kegiatan PUB</h1></center>
+		@foreach($keg as $kegiatan)
+			<a href="{{url('kegiatanPub/filter/'.$kegiatan->id_angkatan,$kegiatan->tema)}}"><button id="bt">{{$kegiatan->tema}}</button></a>
+		@endforeach
+		
 	</div>
-					
+
 	
 </div>
 
