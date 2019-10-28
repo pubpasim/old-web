@@ -26,6 +26,7 @@
 		display: none;
 	}
 </style>
+
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
@@ -71,7 +72,8 @@
 				<ul class="dropdown-menu" role="menu">
 					<li><a href="{{url('/det_struktur_ppmb')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Struktur Organisasi</a></li>
 					<li><a href="{{url('/syarat_ketentuan')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg></svg> Syarat dan Ketentuan</a></li>
-					<li><a href="{{url('/detjadwal_ppmb')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Jadwal</a></li>
+					<li><a href="{{url('/detjadwal_ppmb')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Jadwal</a>
+					</li>
 					<li><a href="{{url('hasilSeleksi')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Hasil Seleksi</a></li>
 					<li><a href="{{url('dokumentasi')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Dokumentasi</a></li>
 					<li><a href="{{url('uploadFormulir')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Upload Formulir</a></li>
@@ -123,6 +125,10 @@
 
 					<li><a @if(\Session::get("level")=="admin_pub" || \Session::get("level")=="ikatan_alumni" ) id="hide" @endif href="{{url('struktur_ppmb')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Jabatan PPMB</a></li>
 
+					<li><a href="{{url('kateg_jadwal_ppmb')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Kategori Tes PPMB</a></li>
+
+					<li><a href="{{url('jadwal_ppmb')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Kegiatan Tes PPMB</a></li>
+
 					<li><a href="{{url('tampilan/daerah/viewdae')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Daerah</a></li>
 
 					<li><a href="{{url('tampilan/sekolah/viewsek')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Asal Sekolah</a></li>
@@ -148,4 +154,4 @@
 				<li class="active">Icons</li>
 			</ol>
 		</div><!--/.row-->
-	
+		
