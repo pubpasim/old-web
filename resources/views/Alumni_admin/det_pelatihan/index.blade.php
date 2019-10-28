@@ -17,9 +17,7 @@
 						<thead>
 							<tr>
 								<th>No</th>
-								<th>Angkatan</th>
 								<th>Pelatihan</th>
-								<th>File</th>
 								<th>Aksi</th>
 
 							</tr> 
@@ -29,12 +27,13 @@
 							<!-- <tr align="center">	 -->
 								<tr>
 									<td>{{$data->id_detpelatihan}}</td>
-									<td>{{$data->angkatan}}</td>
+									
 									<td>{{$data->pelatihan}}</td>
-									<td>{{$data->file}}</td>
+									
 									<td>
 										<a href="{{url('Alumni_admin/det_pelatihan/edit'.$data->id_detpelatihan)}}"><button>Edit</button></a>&nbsp;&nbsp;
 										<a href="{{url('Alumni_admin/det_pelatihan/hapus'.$data->id_detpelatihan)}}"> <button>Hapus</button></a>
+										<a href="{{url('Alumni_admin/det_pelatihan/detail'.$data->id_detpelatihan)}}"> <button>Detail</button></a>
 									</td>
 								</tr>
 								@endforeach

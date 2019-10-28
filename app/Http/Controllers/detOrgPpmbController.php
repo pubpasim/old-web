@@ -19,7 +19,7 @@ class detOrgPpmbController extends Controller
         ->join('tb_mahasiswa','tb_mahasiswa.id_mahasiswa','=','tb_detorg_ppmb.id_mahasiswa')
         ->join('tb_angkatan','tb_angkatan.id_angkatan','=','tb_detorg_ppmb.id_angkatan')
         ->join('tb_orgppmb','tb_orgppmb.id_orgppmb','=','tb_detorg_ppmb.id_orgppmb')
-        ->select('tb_mahasiswa.nama','tb_angkatan.angkatan','tb_orgppmb.jabatan','tb_detorg_ppmb.id_detil')
+        ->join('tb_periode','tb_periode.id_periode','=','tb_detorg_ppmb.id_periode')
         ->get();
         return view('ppmb.struktur.det_lihat',compact('detorgppmb'));
     }
@@ -34,7 +34,8 @@ class detOrgPpmbController extends Controller
         $jabatan=DB::table('tb_orgppmb')->get();
         $angkatan=DB::table('tb_angkatan')->get();
         $mahasiswa=DB::table('tb_mahasiswa')->get();
-        return view('ppmb.struktur.det_tambah_struktur',compact('jabatan','angkatan','mahasiswa'));
+        $periode=DB::table('tb_periode')->get();
+        return view('ppmb.struktur.det_tambah_struktur',compact('jabatan','angkatan','mahasiswa','periode'));
 
 
     }
@@ -60,7 +61,8 @@ class detOrgPpmbController extends Controller
          DB::table('tb_detorg_ppmb')->insert([
             'id_mahasiswa' => $request->mahasiswa,
             'id_angkatan' => $request->angkatan,
-            'id_orgppmb' => $request->jabatan
+            'id_orgppmb' => $request->jabatan,
+            'id_periode' => $request->periode
         ]);
 
         return redirect('/det_struktur_ppmb');
@@ -89,16 +91,17 @@ class detOrgPpmbController extends Controller
         $jabatan=DB::table('tb_orgppmb')->get();
         $angkatan=DB::table('tb_angkatan')->get();
         $mahasiswa=DB::table('tb_mahasiswa')->get();
+        $periode=DB::table('tb_periode')->get();
 
          $detorgppmb=DB::table('tb_detorg_ppmb')
         ->join('tb_mahasiswa','tb_mahasiswa.id_mahasiswa','=','tb_detorg_ppmb.id_mahasiswa')
         ->join('tb_angkatan','tb_angkatan.id_angkatan','=','tb_detorg_ppmb.id_angkatan')
         ->join('tb_orgppmb','tb_orgppmb.id_orgppmb','=','tb_detorg_ppmb.id_orgppmb')
-        ->select('tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_angkatan.id_angkatan','tb_angkatan.angkatan','tb_orgppmb.id_orgppmb','tb_orgppmb.jabatan','tb_detorg_ppmb.id_detil')
+        ->join('tb_periode','tb_periode.id_periode','=','tb_detorg_ppmb.id_periode')        
         ->where('id_detil',$id)
         ->get();
 
-        return view('ppmb.struktur.det_edit_struktur',compact('jabatan','angkatan','mahasiswa','detorgppmb'));
+        return view('ppmb.struktur.det_edit_struktur',compact('jabatan','angkatan','mahasiswa','periode','detorgppmb'));
     }
 
     /**
@@ -118,7 +121,8 @@ class detOrgPpmbController extends Controller
         DB::table('tb_detorg_ppmb')->where('id_detil',$request->id_pengurus)->update([
             'id_mahasiswa'=>$request->mhs,
             'id_angkatan'=>$request->ang,
-            'id_orgppmb'=>$request->jab
+            'id_orgppmb'=>$request->jab,
+            'id_periode'=>$request->periode
         ]);
         return redirect('/det_struktur_ppmb');
     }

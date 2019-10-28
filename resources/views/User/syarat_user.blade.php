@@ -1,4 +1,4 @@
-@include('User.header')
+  @include('User.header')
 <div id="design" >
 	<h1 align="center">PANITIA PENERIAMAAN MAHASISWA BARU PUB</h1>
 	<h1 align="center">Syarat dan Ketentuan</h1>

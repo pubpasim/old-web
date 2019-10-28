@@ -12,6 +12,15 @@
 									<input class="form-control" name="id_jadwal" placeholder="Id Jadwal" readonly="">
 								</div>
 								<div class="form-group">
+									<select class="form-control" id="kategori_tes" name="id_kategori_tes">
+										<label>Kategori Kegiatan / Tes </label>
+										<option value="0"> --Kategori Kegiatan / Tes--</option>
+										@foreach($kategori as $data)
+										<option value="{{$data->id_kategori_tes}}">{{$data->kategori_tes}}</option>
+										@endforeach
+									</select>
+								</div>
+								<div class="form-group">
 									<label>Kegiatan</label>
 									<input class="form-control" name="jadwal" placeholder="kegiatan">
 								</div>

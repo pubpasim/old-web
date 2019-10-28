@@ -264,12 +264,12 @@
 			
 			<div id="pembina">
 				<div id="judul">PEMBINA PUB</div>
-				<p>Abdul Hafiz Tanjung,S.E.,M.Si.,AK.,CA</p>
+				<a href="{{url('pembinaPub')}}"><p>Abdul Hafiz Tanjung, S.E., M.Si., AK., CA</p></a>
 			</div>
 			<div id="ketua">
 				<div id="judul">KETUA PUB</div>
 				@if($ketua2==0)
-				<p>data Kosong</p>
+				<p></p>
 				@else
 				<a href="{{url('detail/org/'.$ketua->id_mahasiswa)}}">
 					<p>{{$ketua->nama}}</p>

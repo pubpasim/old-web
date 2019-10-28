@@ -10,7 +10,7 @@
 var options = {
 	animationEnabled: true,
 	title:{
-		text: "Jumlah Infaq PUB"   
+		text: "Jumlah Infaq PUB Pertahun"   
 	},
 	axisY:{
 		title:"Jumlah"

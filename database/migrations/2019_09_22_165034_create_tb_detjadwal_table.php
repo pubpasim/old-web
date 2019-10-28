@@ -18,7 +18,7 @@ class CreateTbDetjadwalTable extends Migration
             $table->integer('id_jadwal')->unsigned();
             $table->integer('id_periode')->unsigned();
             $table->integer('id_daerah')->unsigned();
-            $table->string('tanggal_awal');
+            $table->string('tanggal_awal'); 
             $table->string('tanggal_akhir');
             $table->string('waktu');
             $table->integer('id_sekolah')->unsigned();

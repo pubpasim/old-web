@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\detJadwalModel;
-
+                                                                                                                                                                                                            
 class detJadwalController extends Controller
 {
     /**
@@ -26,19 +26,6 @@ class detJadwalController extends Controller
 
     }
 
-     public function user()
-    {
-        $detjadwalppmb=DB::table('tb_detjadwal')
-        ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
-        ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
-        ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
-        ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
-        // ->select('tb_detjadwal.id_detjadwal','tb_detjadwal.tanggal','tb_detjadwal.waktu','tb_detjadwal.tempat','tb_detjadwal.alamat','tb_jadwal.id_jadwal','tb_jadwal.kegiatan','tb_daerah.id_daerah','tb_daerah.kab_kota')
-        ->get();
-        return view('User.jadwal_ppmb_user',compact('detjadwalppmb'));
-
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -50,6 +37,7 @@ class detJadwalController extends Controller
         $daerah=DB::table('tb_daerah')->get();
         $periode=DB::table('tb_periode')->get();
         $sekolah=DB::table('tb_sekolah')->get();
+        $periode=DB::table('tb_periode')->get();
         return view('ppmb.jadwal.detjadwal.detjadwal_tambah',compact('kegiatan','daerah','periode','sekolah'));
     }
 

@@ -123,6 +123,7 @@
 						<option @if($data->jurusan == "S1 Akuntansi") selected="" @endif value="S1 Akuntansi"> S1 Akuntansi</option>
 						<option @if($data->jurusan == "S1 Manajemen") selected="" @endif value="S1 Manajemen"> S1 Manajemen</option>
 						<option @if($data->jurusan == "S1 Sastra Jepang") selected="" @endif value="S1 Sastra Jepang"> S1 Sastra Jepang</option>
+						<option @if($data->jurusan == "S1 Psikologi") selected="" @endif value="S1 Psikologi"> S1 Psikologi</option>
 						<option @if($data->jurusan == "D3 Bahasa Inggris") selected="" @endif value="D3 Bahasa Inggris"> D3 Bahasa Inggris</option>
 						<option @if($data->jurusan == "D3 Manajemen Informatika") selected="" @endif value="D3 Manajemen Informatika"> D3 Manajemen Informatika</option>
 

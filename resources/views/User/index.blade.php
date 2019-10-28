@@ -120,9 +120,9 @@
 	</div>
 </section>
 
-
+<br><br>
 <!-- Service Area Start -->
-<div class="roberto-service-area">
+<div class="roberto-service-area" id="fasilitas">
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
@@ -165,75 +165,29 @@
 		</div>
 	</div>
 </div>
+@foreach($chat as $data)
 <section class="roberto-cta-area">
 	<div class="container">
-		<div class="container clearfix" style="background-color: #333333;">
+		<div class="container clearfix" style="background-color: white;">
 			<div class="chat">   
 				<div class="chat-history">
 					<ul class="chat-ul">
 						<li>
 							<div class="message-data">
-								<span class="message-data-name"><i class="fa fa-circle you"></i> You</span>
+								<span class="message-data-name"><i class="fa fa-circle you"></i>{{{$data->nama}}} - {{{$data->sekolah}}}</span>
 							</div>
 							<div class="message you-message">
-								A new client?!?! I would love to help them, but where are we going to find the time?
-
+								{{$data->pertanyaan}}
 							</div>
 						</li>
-						<li class="clearfix">
+						
+						<li class="clearfix" @if($data->jawaban=="") style="display:none" @endif>
 							<div class="message-data align-right">
-								<span class="message-data-name">Ada, your OperationsAlly</span> <i class="fa fa-circle me"></i>
+								<span class="message-data-name">Admin</span> <i class="fa fa-circle me"></i>
 							</div>
-							<div class="message me-message float-right"> We should take a look at your onboarding and service delivery workflows, for most businesess there are many ways to save time and not compromise quality.  </div>
+							<div class="message me-message float-right">{{$data->jawaban}}</div>
 						</li>
-						<li><h2>or little things are being forgotten that shouldn’t be...</h2></li>
-						<li class="clearfix">
-							<div class="message-data">
-								<span class="message-data-name"><i class="fa fa-circle you"></i> You</span>
-							</div>
-							<div class="message you-message">
-								What?! No way, how did I miss that. I never forgot that part before.
-
-							</div>
-						</li>
-						<li class="clearfix">
-							<div class="message-data align-right">
-								<span class="message-data-name">Ada, your OperationsAlly</span> <i class="fa fa-circle me"></i>
-							</div>
-							<div class="message me-message float-right">Remembering everything can quickly become impossible as your business grows, we need to take a look at your reminder management system and also see if there are steps in your business we can automate.</div>
-						</li>
-						<li><h2>or you’ve started to notice mistakes and miscommunications ...</h2></li>
-						<li>
-							<div class="message-data">
-								<span class="message-data-name"><i class="fa fa-circle you"></i> You</span>
-							</div>
-							<div class="message you-message">
-								6? Bob told me 8! How did this mix up happen?!
-							</div>
-						</li>
-						<li class="clearfix">
-							<div class="message-data align-right">
-								<span class="message-data-name">Ada, your OperationsAlly</span> <i class="fa fa-circle me"></i>
-							</div>
-							<div class="message me-message float-right">
-							The more people in your business, the more opportunity for mistakes, having a solid system in place for tracking important client data will help avoid these miscommunications.            </div>
-						</li>
-						<li><h2>or it can be hard to find the information you need ...</h2></li>
-						<li>
-							<div class="message-data">
-								<span class="message-data-name"><i class="fa fa-circle you"></i> You</span>
-							</div>
-							<div class="message you-message">
-								I know that I spoke with Mary about this, but where did I put that note...hopefully she also sent me an email...
-
-							</div>
-						</li>
-						<li class="clearfix">
-							<div class="message-data align-right">
-								<span class="message-data-name">Ada, your OperationsAlly</span> <i class="fa fa-circle me"></i>
-							</div>
-							<div class="message me-message float-right">Finding the right information when you need it will save you time and energy. Your data management systems need to grow with your business. All businesses need a dynamic data strategy and a system to ensure that the strategy is implemented correctly.</div>
-						</li>
+						
 					</ul>
 
 				</div> <!-- end chat-history -->
@@ -242,6 +196,7 @@
 		</div>
 	</div>
 </section>
+@endforeach
 <section class="roberto-cta-area">
 	<div class="container">
 		<div class="cta-content bg-img bg-overlay jarallax" style="background-image: url({{url('imgs/pasim.jpg')}});">
@@ -253,7 +208,7 @@
 					</div>
 				</div>
 				<div class="col-12 col-md-5 text-right">
-					<a href="#" class="btn roberto-btn mb-50">Contact Now</a>
+					<a href="{{url('https://wa.me/6285722752570')}}" target="_blank" class="btn roberto-btn mb-50">Contact Now</a>
 				</div>
 			</div>
 		</div>

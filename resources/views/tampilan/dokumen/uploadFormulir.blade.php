@@ -1,6 +1,5 @@
 @include('tampilan.head')
 
-<div class="col-sm-5 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="panel panel-default">
@@ -22,7 +21,7 @@
 							@foreach($formulir as $data)
 							<tr>
 								<td>{{ $no++}}</td>
-								<td><embed width="600" height="450" src="{{url('file')}}/{{($data->dokumen) }}" type="application/pdf"></embed></td>
+								<td>{{ $data->dokumen}}</td>
 								
 								<td>{{ $data->keterangan}}</td>
 								<td>									
@@ -36,9 +35,4 @@
 			</div>
 		</div>
 	</div>
-</div>
-
 @include('tampilan.foot')
-
-
-<embed width="600" height="450" src="mypdf.pdf" type="application/pdf"></embed>

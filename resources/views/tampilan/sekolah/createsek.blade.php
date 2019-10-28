@@ -95,7 +95,7 @@
 	</style>
 
 		<div class="container">	
-			<form method="POST" action="{{URL('sekolahModel')}}" Class="form-horizontal" id="block-validate">
+			<form method="POST" action="{{url('sekolahModel')}}" Class="form-horizontal" id="block-validate">
 				{{csrf_field()}}
 				<div class="row">
 					<div class="panel-heading">FROM TAMBAH DATA SEKOLAH</div>

@@ -111,18 +111,9 @@
 			
 			<select name="bulan">
 				<option>--Bulan--</option>
-				<option @if($infaq->bulan_infaq=="January") selected="true" @endif value="January">January</option>
-				<option @if($infaq->bulan_infaq=="February") selected="true" @endif value="February">February</option>
-				<option @if($infaq->bulan_infaq=="Maret") selected="true" @endif value="Maret">Maret</option>
-				<option @if($infaq->bulan_infaq=="April") selected="true" @endif value="April">April</option>
-				<option @if($infaq->bulan_infaq=="Mei") selected="true" @endif value="Mei">Mei</option>
-				<option @if($infaq->bulan_infaq=="Juni") selected="true" @endif value="Juni">Juni</option>
-				<option @if($infaq->bulan_infaq=="Juli") selected="true" @endif value="Juli">Juli</option>
-				<option @if($infaq->bulan_infaq=="Agustus") selected="true" @endif value="Agustus">Agustus</option>
-				<option @if($infaq->bulan_infaq=="September") selected="true" @endif value="September">September</option>
-				<option @if($infaq->bulan_infaq=="Oktober") selected="true" @endif value="Oktober">Oktober</option>
-				<option @if($infaq->bulan_infaq=="November") selected="true" @endif value="November">November</option>
-				<option @if($infaq->bulan_infaq=="Desember") selected="true" @endif value="Desember">January</option>
+				@foreach($bulan as $bl)
+				<option @if($infaq->bulan_infaq==$bl->bulan) selected="true" @endif value="{{$bl->bulan}}">{{$bl->bulan}}</option>
+				@endforeach
 			</select>
 			
 		</div>

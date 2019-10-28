@@ -97,7 +97,7 @@
 				<select id="jabatan" name="jabatan">
 					<option value> --Jabatan--</option>
 					@foreach($jab as $dataxx)
-						<option @if($dataxx->id_orgpub==$dataxxx->id_jabatan) selected @endif value="{{$dataxx->id_orgpub}}">{{$dataxx->jabatan_pub}}</option>
+						<option @if($dataxx->id_org==$dataxxx->id_jabatan) selected @endif value="{{$dataxx->id_org}}">{{$dataxx->jabatan}}</option>
 					@endforeach
 				</select>
 			</div>
