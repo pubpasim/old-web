@@ -98,7 +98,7 @@
 						    		<td>{{ $no++}}</td>						    		
 						    		<td>{{$data->nama}}</td>
 						    		<td>{{$data->angkatan}} - {{$data->nama_angkatan}}</td>
-						    		<td>{{$data->jabatan_pub}}</td>
+						    		<td>{{$data->jabatan}}</td>
 						    		<td>{{$data->masa_bakti}}</td>
 						    		<td>
 						    			<a href="{{url('editStrukAlumni/'.$data->id_ikatan)}}" class="btn btn-info">Edit</a>

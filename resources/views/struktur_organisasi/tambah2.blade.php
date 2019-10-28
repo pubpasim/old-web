@@ -1,6 +1,4 @@
 @include('tampilan.head')
-
-
 <style>
 	* {
 		box-sizing: border-box;
@@ -52,10 +50,10 @@
 		margin-top: 6px;
 	}
 	#form1{
-		width: 750px;
-		height: 500px;
+		width: 70%;
+		height: 100%;
 
-		margin-left: 300px;
+		margin-left: 17%;
 	}
 	/* Clear floats after the columns */
 	.row:after {
@@ -72,47 +70,31 @@
 		}
 	}
 </style>
-
 	<div class="container">
-		<form method="POST" action="{{url('storeStrukAlumni')}}">
-			{{csrf_field()}}
-			
-			<div class="row">
-				<div class="col-25">
-					<label for="jbPUB">Tambah Struktur</label>
-				</div>
-				
-				<div class="col-75">
-					<label for="jbPUB">Nama Alumni</label>
-					<select id="id_mahasiswa" name="id_mahasiswa">
-						<option value> --Nama Alumni--</option>
-						@foreach($mhs as $data)
-						<option value="{{$data->id_mahasiswa}}">
-							{{$data->angkatan}} - {{$data->nama_angkatan}} - {{$data->nama}}
-						</option>
-						@endforeach
-					</select>
-				</div>		
-
-				<div class="col-75">
-					<label for="jbPUB">Jabatan</label>
-					<select id="jabatan" name="jabatan">
-						<option value> --Jabatan--</option>
-						@foreach($jab as $dataxx)
-						<option value="{{$dataxx->id_org}}">{{$dataxx->jabatan}}</option>
-						@endforeach
-					</select>
-				</div>
-			<div class="col-75">
-				<label for="jbPUB">Masa Bakti</label>
-				<input type="text" class="form-control" name="masa_bakti" placeholder="Ex. 2019 - 2020">
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Jabatan Ikatan Alumni</h1>
 			</div>
+		</div>
+		<form method="POST" action="{{URL('struktur_organisasi2/store')}}" Class="form-horizontal" id="block-validate">
+			{{csrf_field()}}
+			<div class="row">
+				<div class="panel-heading">INPUT DATA</div>
+				<div class="panel-body">
+					<div class="col-md-6">
+						<form role="form">
 
-		</div>
-		<br>
-		<div class="row" align="center">
-			<input type="submit" value="Simpan">
-		</div>
-	</form>
-</div>
+							<div class="form-group">
+								<label>JABATAN</label>
+								<input type="text" name="jabatan">
+							</div>
+							<button type="submit" name="submit" class="btn btn-primary">TAMBAH DATA </button>
+
+						</form>
+					</div>
+					<!--/.row-->	
+				</div><!--/.main-->
+			</div>
+		</form>
+	</div>
 @include('tampilan.foot')

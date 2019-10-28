@@ -119,6 +119,15 @@ Route::get('struktur_organisasi/edit/{x}','orgPUBController@edit');
 Route::post('struktur_organisasi/update/{y}','orgPUBController@update');
 Route::get('struktur_organisasi/hapus/{z}','orgPUBController@destroy');
 
+Route::get('struktur_organisasi2/index','orgPUBController@index2');
+Route::get('struktur_organisasi2/tambah/','orgPUBController@create2');
+Route::post('struktur_organisasi2/store/','orgPUBController@store2');
+Route::get('struktur_organisasi2/edit/{x}','orgPUBController@edit2');
+Route::post('struktur_organisasi2/update/{y}','orgPUBController@update2');
+Route::get('struktur_organisasi2/hapus/{z}','orgPUBController@destroy2');
+
+
+
 Route::get('status_pub','statusPubController@index');
 Route::get('status_pub/tambah/','statusPubController@create');
 Route::post('status_pub/store/','statusPubController@store');

@@ -105,7 +105,7 @@ class alumniController extends Controller
     public function strukturOrgAlumni()
     {
         $struk = DB::table('tb_ikatan_alumni')
-        ->join('tb_orgpub','tb_orgpub.id_orgpub','tb_ikatan_alumni.id_jabatan')
+        ->join('tb_orgalumni','tb_orgalumni.id_org','tb_ikatan_alumni.id_jabatan')
         ->join('tb_mahasiswa','tb_mahasiswa.id_mahasiswa','tb_ikatan_alumni.id_mahasiswa')
         ->join('tb_angkatan','tb_angkatan.id_angkatan','tb_mahasiswa.id_angkatan')
         ->get();
@@ -119,7 +119,7 @@ class alumniController extends Controller
         ->orderby('angkatan','ASC')
         ->orderby('nama','ASC')        
         ->get();
-        $jab=DB::table('tb_orgpub')->get();
+        $jab=DB::table('tb_orgalumni')->get();
         return view('ikatanAlumni.tambahStruktur',compact('mhs','jab'));
     }
     public function storeStrukAlumni(Request $request)
@@ -133,6 +133,40 @@ class alumniController extends Controller
 
         return redirect('strukturOrgAlumni');
     }
+
+    public function editStrukAlumni($id)
+    {
+        $tamp = DB::table('tb_ikatan_alumni')->where('id_ikatan',$id)->get();
+        $mhs=DB::table('tb_mahasiswa')
+        ->join('tb_angkatan','tb_angkatan.id_angkatan','tb_mahasiswa.id_angkatan')
+        ->where('id_statusPub',2)
+        ->orderby('angkatan','ASC')
+        ->orderby('nama','ASC') 
+        ->get();
+        $jab=DB::table('tb_orgalumni')->get();
+
+        return view('ikatanAlumni.editStruktur',compact('tamp','mhs','jab'));
+    }
+    public function updateStrukAlumni(Request $request,$id){
+        
+        DB::table('tb_ikatan_alumni')
+        ->where('id_ikatan',$id)
+        ->update([
+            'id_mahasiswa' => $request->id_mahasiswa,
+            'id_jabatan' => $request->jabatan,
+            'masa_bakti' => $request->masa_bakti,
+        ]);
+            return redirect('strukturOrgAlumni');
+    }
+
+    public function hapusStrukAlumni($id)
+    {
+            DB::table('tb_ikatan_alumni')->where('id_ikatan',$id)->delete();
+            return redirect('strukturOrgAlumni');
+        
+    }
+
+
     public function infaq_view()
     {
         $infaq=DB::table('tb_infaq')->get();
@@ -168,39 +202,6 @@ class alumniController extends Controller
     {
         DB::table('tb_infaq')->where('id_infaq',$id)->delete();
         return redirect('infaq');
-    }
-
-       
-    public function editStrukAlumni($id)
-    {
-        $tamp = DB::table('tb_ikatan_alumni')->where('id_ikatan',$id)->get();
-        $mhs=DB::table('tb_mahasiswa')
-        ->join('tb_angkatan','tb_angkatan.id_angkatan','tb_mahasiswa.id_angkatan')
-        ->where('id_statusPub',2)
-        ->orderby('angkatan','ASC')
-        ->orderby('nama','ASC') 
-        ->get();
-        $jab=DB::table('tb_orgpub')->get();
-
-        return view('ikatanAlumni.editStruktur',compact('tamp','mhs','jab'));
-    }
-    public function updateStrukAlumni(Request $request,$id){
-        
-        DB::table('tb_ikatan_alumni')
-        ->where('id_ikatan',$id)
-        ->update([
-            'id_mahasiswa' => $request->id_mahasiswa,
-            'id_jabatan' => $request->jabatan,
-            'masa_bakti' => $request->masa_bakti,
-        ]);
-            return redirect('strukturOrgAlumni');
-    }
-
-    public function hapusStrukAlumni($id)
-    {
-            DB::table('tb_ikatan_alumni')->where('id_ikatan',$id)->delete();
-            return redirect('strukturOrgAlumni');
-        
     }
 
 

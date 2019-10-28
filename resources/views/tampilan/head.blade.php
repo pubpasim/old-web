@@ -39,16 +39,12 @@
 				<a class="navbar-brand" href="#"><span>PUB'S</span>Admin</a>
 
 				<ul class="user-menu">
-					<?php
-				        if(Session::get("level") == "admin"){
-				  ?>
+					
 
 					<a href="{{url('pertanyaan')}}"><img src="{{"imgs"}}/{{"xx.png"}}" width="70px" style="position: relative;"></a>
 					<span class="label label-warning" style="position: relative;bottom:20px;right: 15%;">{{Session::get("jumChat")}}</span>
 					
-					<?php  
-						}
-					?>
+					
 
 					<li class="dropdown pull-right">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> User <span class="caret"></span></a>
@@ -120,6 +116,7 @@
 
 
 					<li><a href="{{url('struktur_organisasi/index')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Jabatan PUB</a></li>
+					<li><a href="{{url('struktur_organisasi2/index')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Jabatan Ikatan Alumni</a></li>
 
 					<li><a href="{{url('tampilUser')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Data User</a></li>
 
