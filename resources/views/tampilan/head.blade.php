@@ -37,7 +37,19 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="#"><span>PUB'S</span>Admin</a>
+
 				<ul class="user-menu">
+					<?php
+				        if(Session::get("level") == "admin"){
+				  ?>
+
+					<a href="{{url('pertanyaan')}}"><img src="{{"imgs"}}/{{"xx.png"}}" width="70px" style="position: relative;"></a>
+					<span class="label label-warning" style="position: relative;bottom:20px;right: 15%;">{{Session::get("jumChat")}}</span>
+					
+					<?php  
+						}
+					?>
+
 					<li class="dropdown pull-right">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> User <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
@@ -94,6 +106,9 @@
 				<ul class="dropdown-menu" role="menu">
 					<li><a href="{{url('strukturOrgAlumni')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Struktur Organisasi</a></li>
 					<li><a href="{{url('kegiatanAlumni')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg></svg> Kegiatan Alumni PUB</a></li>				
+
+					<li><a href="{{url('legalitasAdmin')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg></svg> Legalitas</a></li>				
+
 				</ul>
 			</li>
 			<li class="dropdown ">

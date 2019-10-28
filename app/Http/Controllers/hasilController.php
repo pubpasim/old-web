@@ -178,8 +178,9 @@ class hasilController extends Controller
     }
     public function hapusTPA($id)
     {
+        $x = DB::table('tb_tpa')->where('id_tpa',$id)->first();
     	DB::table('tb_tpa')->where('id_tpa',$id)->delete();
-        return redirect('dataTPA/'.$id);
+        return redirect('dataTPA/'.$x->id_tahun);
     }
 
 

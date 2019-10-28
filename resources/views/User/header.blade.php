@@ -17,7 +17,7 @@
 
   <!-- Favicon -->
   <link rel="icon" href="./img/core-img/favicon.png">
-
+  <link rel="shortcut icon" href="/imgs/pub.png" />
   <!-- Stylesheet -->
   <link rel="stylesheet" href="/roberto-master/style.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -38,7 +38,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <style type="text/css">
     #pesan{
-      width: 400px;
+      width: 100%;
       height: 35px;
       border-radius: 5px;
       border-style: groove;
@@ -47,8 +47,8 @@
     }
     #text{
       margin: 10px;
-      width: 400px;
-      height: 250px;
+      width: 100%;
+      height: 200px;
     }
   </style>
 
@@ -80,9 +80,9 @@
 
           <div class="col-6">
             <div class="top-header-content">
-              <a href="#"><i class="fa fa-whatsapp"></i> <span>0857-2275-2570</span></a>
+              <a href="{{url('https://wa.me/6285722752570')}}" target="_blank"><i class="fa fa-whatsapp"></i> <span>0857-2275-2570</span></a>
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                <i class="icon_mail"></i> <span>Chatt with us</span>
+                <i class="icon_mail"></i> <span>Chat with us</span>
               </button>
             </div>
           </div>
@@ -151,6 +151,7 @@
                         <ul class="dropdown">
                           <li><a href="{{url('org_ikatan_alumni')}}">-Organisasi</a></li>
                           <li><a href="{{url('keg_ikatan_alumni')}}">-Dokumentasi</a></li>
+                          <li><a href="{{url('legalitas')}}">-Legalitas</a></li>
                         </ul>
 
                       </li>
@@ -179,7 +180,7 @@
       </div>
     </div>
   </header>
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -188,16 +189,19 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <input id="pesan" type="text" name="nama" placeholder="Masukkan Nama"><br>
-          <input id="pesan" type="text" name="sekolah" placeholder="Masukkan Asal Sekolah"><br>
-          <input id="pesan" type="text" name="daerah" placeholder="Masukkan Asal Daerah"><br>
-          <textarea id="text" placeholder="Pertanyaan..."></textarea>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">keluar</button>
-          <button type="button" class="btn btn-primary">Kirim Pesan</button>
-        </div>
+        <form method="post" action="{{url('storePertanyaan')}}">
+          {{csrf_field()}}
+          <div class="modal-body">
+            <input id="pesan" type="text" name="nama" placeholder="Masukkan Nama"><br>
+            <input id="pesan" type="text" name="sekolah" placeholder="Masukkan Asal Sekolah"><br>
+            <input id="pesan" type="text" name="daerah" placeholder="Masukkan Asal Daerah"><br>
+            <textarea id="text" placeholder="Pertanyaan..." name="pertanyaan"></textarea>
+          </div>        
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">keluar</button>
+            <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

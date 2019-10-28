@@ -208,13 +208,48 @@ class alumniController extends Controller
     }
 
 
+    public function legalitasAdmin()
+    {
+        $leg =DB::table('tb_legalitas')->get();
+        return view('ikatanAlumni.legalitasAdmin',compact('leg'));
+    }
+
+    public function tambahLegalitasAdmin()
+    {
+        return view('ikatanAlumni.tambahLegalitasAdmin');
+    }
+    public function storeLegalitasAdmin(Request $request)
+    {
+        $file = $request->file('foto');
+        $nama_file = time()."_".$file->getClientOriginalName();
+         
+        // isi dengan nama folder tempat kemana file diupload
+        $tujuan_upload = 'imgs';
+        $file->move($tujuan_upload,$nama_file);
+
+        DB::table('tb_legalitas')
+        ->insert([
+            'foto' => $nama_file,            
+            'keterangan' => $request->keterangan,                        
+        ]);
+
+        return redirect('legalitasAdmin');
+    }
+    public function hapusLegalitasAdmin($id)
+    {
+            DB::table('tb_legalitas')->where('id',$id)->delete();
+            return redirect('legalitasAdmin');
+        
+    }
+
+
+
     public function kegiatanAlumni()
     {
         $dok =DB::table('tb_dok_alumni')
         ->get();
         return view('ikatanAlumni.kegiatanAlumni',compact('dok'));
     }
-
 
     public function tambahDokAlumni()
     {

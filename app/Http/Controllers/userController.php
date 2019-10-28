@@ -16,14 +16,16 @@ class userController extends Controller
     }
     public function legalitas()
     {
-        $dok = DB::table('tb_dok_alumni')->where('keterangan','Legalitas')->get();
+        $dok = DB::table('tb_legalitas')->get();
         return view('user.legalitas',compact('dok'));
     }
     public function index()
     {
        $kegiatan=DB::table('tb_pubdok')->orderby('id_pubdok','DESC')->limit('3')->get();
        $ppmb=DB::table('tb_dokumentasi')->orderby('id_dok','DESC')->limit('10')->get();
-        return view('user.index',compact('kegiatan','ppmb'));
+
+       $chat=DB::table('tb_pertanyaan')->get();
+        return view('user.index',compact('kegiatan','ppmb','chat'));
     }
     public function hasilSeleksi()
     {
@@ -161,6 +163,9 @@ public function user_alumniView(request $request)
         if($data){
             if($pass==$data->password){
                 if ($data->level=='admin') {
+                    Session::put('level',$data->level);                    
+                    $count = DB::table('tb_pertanyaan')->count();;
+                    Session::put('jumChat',$count);                    
                     return redirect('admin');
                 }elseif ($data->level=='alumni') {
                     return redirect('admin/alumni/'.$id_mhs);
@@ -710,5 +715,48 @@ public function user_alumniView(request $request)
         
         return view('User.totalAlumni',compact('lk','pr','totalL','totalP','total'));
     }
+
+    public function storePertanyaan(Request $request)
+    {
+        
+        DB::table('tb_pertanyaan')->insert([
+            'nama'=> $request->nama,
+            'sekolah'=> $request->sekolah,
+            'daerah'=> $request->daerah,
+            'pertanyaan'=> $request->pertanyaan,
+            'jawaban'=>"",
+        ]);
+        return back();
+    }
+    public function pertanyaan(Request $request)
+    {       
+        $chat = DB::table('tb_pertanyaan')->get();
+        return view ('tampilan.chat.chat',compact('chat'));
+    }
+    public function jawabPertanyaan(Request $request,$id)
+    {       
+        return view ('tampilan.chat.jawabChat',compact('id'));
+    }
+    public function storeJawab(Request $request,$id)
+    {
+        if($request->jawaban==""){
+            DB::table('tb_pertanyaan')->where('id',$id)->update([            
+                'jawaban'=>"",
+            ]);    
+        }
+        else{
+            DB::table('tb_pertanyaan')->where('id',$id)->update([            
+                'jawaban'=>$request->jawaban,
+            ]);    
+        }
+        
+        return redirect('pertanyaan');
+    }
+    public function hapusPertanyaan($id){
+        DB::table('tb_pertanyaan')->where('id',$id)->delete();
+        return redirect('pertanyaan');
+    }
+
+    
 }
  

@@ -5,12 +5,12 @@ use Illuminate\Support\Facades\Session;
 
 
 
-
 Route::get('admin', function () {
 
 	if (!Session::get('level')) {
 		return redirect('login')->with('alert','Silahkan Login terlebih dahulu');
-	}else{	
+	}else{
+
 		return view('tampilan.index');
 	}
 });
@@ -172,6 +172,10 @@ Route::get('editStrukAlumni/{x}', 'alumniController@editStrukAlumni');
 Route::post('updateStrukAlumni/{x}', 'alumniController@updateStrukAlumni');
 
 
+Route::get('legalitasAdmin','alumniController@legalitasAdmin');
+Route::get('tambahLegalitasAdmin', 'alumniController@tambahLegalitasAdmin');
+Route::post('storeLegalitasAdmin', 'alumniController@storeLegalitasAdmin');
+Route::get('hapusLegalitasAdmin/{x}', 'alumniController@hapusLegalitasAdmin');
 
 Route::get('kegiatanAlumni','alumniController@kegiatanAlumni');
 Route::get('tambahDokAlumni', 'alumniController@tambahDokAlumni');
@@ -329,6 +333,11 @@ Route::get('fdmljtjava', 'userController@materifdmjavaljt');
 Route::get('totalAlumni', 'userController@totalAlumni');
 Route::get('pembinaPub', 'userController@pembinaPub');
 
+Route::post('storePertanyaan', 'userController@storePertanyaan');
+Route::get('pertanyaan', 'userController@pertanyaan');
+Route::get('jawabPertanyaan/{x}', 'userController@jawabPertanyaan');
+Route::post('storeJawab/{x}', 'userController@storeJawab');
+Route::get('hapusPertanyaan/{x}', 'userController@hapusPertanyaan');
 
 //================================ADMIN ALUMNI=============================//
 Route::get('admin/alumni/{x}','alumni_adminController@index');

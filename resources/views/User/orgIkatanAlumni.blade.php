@@ -44,6 +44,11 @@
 		top:-580px;
 		z-index: -1;
 	}
+	#horizontal{
+		z-index: -3;
+		background-color: darkcyan;
+		
+	}
 	#vrt{
 		width: 5px;
 		height: 40px;
@@ -84,6 +89,19 @@
 		top:-800px;
 		left: -220px;
 	}
+
+	#awal{
+		width: 250px;
+		height: 90px;
+		background-color: grey;
+		border-radius: 7px;
+		border: 1px solid darkcyan;		
+		color: white;
+		position: relative;
+		top:160px;
+		right:350px;
+	}
+
 	#koman{
 		width: 250px;
 		height: 40px;
@@ -262,10 +280,16 @@
 		<center>
 			<h2>STRUKTUR ORGANISASI IKATAN ALUMNI</h2>
 			
+			<div id="awal">
+				<div id="judul">PEMBINA IKA PUB</div>
+				<p>aaaaaaaaaaaaaaaaaaaaaa</p>
+			</div>
+			<div id="horizontal"></div>
 			<div id="pembina">
 				<div id="judul">PEMBINA PUB</div>
 				<p>Abdul Hafiz Tanjung,S.E.,M.Si.,AK.,CA</p>
 			</div>
+
 			<div id="ketua">
 				<div id="judul">KETUA ALUMNI</div>
 				@if($ketua2==0)
@@ -286,6 +310,7 @@
 				</a>
 				@endif
 			</div>
+
 			<div id="lurus"></div>
 			<div id="horizon"></div>
 			<div id="vrt"></div>
