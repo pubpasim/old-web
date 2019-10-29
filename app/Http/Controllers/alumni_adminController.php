@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Session;
 
 class alumni_adminController extends Controller
 {
@@ -14,12 +15,27 @@ class alumni_adminController extends Controller
      */
     public function index($id)
     {
+<<<<<<< HEAD
         $foto=DB::table('tb_alumni_dok')
         ->join('tb_mahasiswa','tb_alumni_dok.id_mahasiswa','=','tb_mahasiswa.id_mahasiswa')
         ->select('tb_mahasiswa.nama','tb_alumni_dok.file','tb_alumni_dok.keterangan')
         ->orderby('id_alumnidok','DESC')->get();
         $data=DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->first();
         return view('Alumni_admin/index',compact('data','foto'));
+=======
+       
+        if (!Session::get('level')) {
+            return redirect('login')->with('alert','Silahkan Login terlebih dahulu');
+        }else{
+            
+            $foto=DB::table('tb_alumni_dok')
+            ->join('tb_mahasiswa','tb_alumni_dok.id_mahasiswa','=','tb_mahasiswa.id_mahasiswa')
+            ->select('tb_mahasiswa.nama','tb_alumni_dok.file','tb_alumni_dok.keterangan')
+            ->orderby('id_alumnidok','DESC')->get();
+            $data=DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->first();
+            return view('Alumni_admin.index',compact('data','foto'));
+        }
+>>>>>>> 5da011cf61fbbd5594d35725333dee9ebb1110a1
     }
     public function profile(Request $request, $id)
     {
@@ -170,12 +186,12 @@ class alumni_adminController extends Controller
     }
     public function aktivitas($id)
     {
-     $foto=DB::table('tb_alumni_dok')->where('id_mahasiswa',$id)->orderby('id_alumnidok','DESC')->get();
-     $data=DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->first();
-     return view('Alumni_admin.aktivitas',compact('data','foto'));
- }
- public function storeAktivitas(Request $request)
- {
+       $foto=DB::table('tb_alumni_dok')->where('id_mahasiswa',$id)->orderby('id_alumnidok','DESC')->get();
+       $data=DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->first();
+       return view('Alumni_admin.aktivitas',compact('data','foto'));
+   }
+   public function storeAktivitas(Request $request)
+   {
     $file = $request->file('foto');
     $nama_file = time()."_".$file->getClientOriginalName();
 
@@ -203,22 +219,22 @@ public function updateAktivitas(Request $request)
 {
     if ($request->foto=="") {
         DB::table('tb_alumni_dok')->where('id_alumnidok',$request->id_dok)->update([           
-                'keterangan' => $request->contact_message      
-            ]);  
-        }else{
-           $file = $request->file('foto');
-           $nama_file = time()."_".$file->getClientOriginalName();
+            'keterangan' => $request->contact_message      
+        ]);  
+    }else{
+     $file = $request->file('foto');
+     $nama_file = time()."_".$file->getClientOriginalName();
 
         // isi dengan nama folder tempat kemana file diupload
-           $tujuan_upload = ('imgs');
-           $file->move($tujuan_upload,$nama_file);
+     $tujuan_upload = ('imgs');
+     $file->move($tujuan_upload,$nama_file);
 
-           DB::table('tb_alumni_dok')->where('id_alumnidok',$request->id_dok)->update([
-            'file' => $nama_file,            
-            'keterangan' => $request->contact_message        
-            ]);
-       }
-       return redirect('admin/alumni/aktivitas/'.$request->id_mhs);
+     DB::table('tb_alumni_dok')->where('id_alumnidok',$request->id_dok)->update([
+        'file' => $nama_file,            
+        'keterangan' => $request->contact_message        
+    ]);
+ }
+ return redirect('admin/alumni/aktivitas/'.$request->id_mhs);
 }
 public function hapusAktivitas($id,$id_dok)
 {
@@ -233,7 +249,7 @@ public function hapusAktivitas($id,$id_dok)
     public function create()
     {
 
-   }
+    }
 
     /**
      * Store a newly created resource in storage.

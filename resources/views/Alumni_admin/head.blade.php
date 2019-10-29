@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Neaty HTML Web Template</title>
+    <title>Admin Alumni</title>
 <!--
 Neaty HTML Template
 http://www.templatemo.com/tm-501-neaty
@@ -65,7 +65,7 @@ http://www.templatemo.com/tm-501-neaty
         }
     </style>
 </head>
-<body>        
+<body>    
     <div class="container">
         <div class="row">
             <div class="tm-left-right-container">

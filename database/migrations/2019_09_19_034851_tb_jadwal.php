@@ -15,9 +15,10 @@ class TbJadwal extends Migration
     {
         Schema::create('tb_jadwal',function(Blueprint $table){
             $table->increments('id_jadwal');
+            $table->integer('id_kategori_tes')->unsigned();
             $table->string('kegiatan');
-            $table->rememberToken();
             $table->timestamps();
+            $table->foreign('id_kategori_tes')->references('id_kategori_tes')->on('tb_kategorites');
         });
     }
 

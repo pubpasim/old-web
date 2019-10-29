@@ -10,31 +10,13 @@
 							<!-- Footer Logo -->
 							<a href="#" class="footer-logo"><img src="img/core-img/logo2.png" alt=""></a>
 
-							<h4>+12 345-678-9999</h4>
-							<span>Info.colorlib@gmail.com</span>
-							<span>856 Cordia Extension Apt. 356, Lake Deangeloburgh, South Africa</span>
+							<h4>0857-2275-2570</h4>
+							<span>pubunaspasim@gmail.com</span>
+							<span>Jalan Dakota No. 8a Sukaraja, Cicendo, Bandung, Jawa Barat, Indonesia</span>
 						</div>
 					</div>
 
-					<!-- Single Footer Widget Area -->
-					<div class="col-12 col-sm-6 col-lg-3">
-						<div class="single-footer-widget mb-80">
-							<!-- Widget Title -->
-							<h5 class="widget-title">Our Blog</h5>
-
-							<!-- Single Blog Area -->
-							<div class="latest-blog-area">
-								<a href="#" class="post-title">Freelance Design Tricks How</a>
-								<span class="post-date"><i class="fa fa-clock-o" aria-hidden="true"></i> Okt 16, 2019</span>
-							</div>
-
-							<!-- Single Blog Area -->
-							<div class="latest-blog-area">
-								<a href="#" class="post-title">Free Advertising For Your Online</a>
-								<span class="post-date"><i class="fa fa-clock-o" aria-hidden="true"></i> Jan 02, 2019</span>
-							</div>
-						</div>
-					</div>
+					
 					<!-- Single Footer Widget Area -->
 					<div class="col-12 col-sm-4 col-lg-2">
 						<div class="single-footer-widget mb-80">
@@ -43,10 +25,10 @@
 
 							<!-- Footer Nav -->
 							<ul class="footer-nav">
-								<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> PUB</a></li>
-								<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Fasilitas</a></li>
-								<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> PPMB</a></li>
-								<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Alumni</a></li>
+								<li><a href="{{url("#pub")}}"><i class="fa fa-caret-right" aria-hidden="true"></i> PUB</a></li>
+								<li><a href="{{url("#fasilitas")}}"><i class="fa fa-caret-right" aria-hidden="true"></i> Fasilitas</a></li>
+								<li><a href="{{url("#ppmb")}}"><i class="fa fa-caret-right" aria-hidden="true"></i> PPMB</a></li>
+								<li><a href="{{url("#alumni")}}"><i class="fa fa-caret-right" aria-hidden="true"></i> Alumni</a></li>
 							</ul>
 						</div>
 					</div>
@@ -55,8 +37,8 @@
 					<div class="col-12 col-sm-8 col-lg-4">
 						<div class="single-footer-widget mb-80">
 							<!-- Widget Title -->
-							<h5 class="widget-title">Subscribe Newsletter</h5>
-							<span>Subscribe our newsletter gor get notification about new updates.</span>
+							<h5 class="widget-title">Subscribe</h5>
+							<span>Subscribe For Get Information About Us</span>
 
 							<!-- Newsletter Form -->
 							<form action="index.html" class="nl-form">
@@ -77,7 +59,7 @@
 						<!-- Copywrite Text -->
 						<div class="copywrite-text">
 							<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+								Copyright &copy;<script>document.write(new Date().getFullYear());</script> Pemberdayaan Umat Berkelanjutan
 								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
 							</div>
 						</div>

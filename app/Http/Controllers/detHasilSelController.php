@@ -13,7 +13,7 @@ class detHasilSelController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**

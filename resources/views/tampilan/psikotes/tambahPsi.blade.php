@@ -114,6 +114,7 @@
 						<option value="S1 Manajemen"> S1 Manajemen</option>
 						<option value="S1 Psikologi"> S1 Psikologi</option>
 						<option value="S1 Sastra Jepang"> S1 Sastra Jepang</option>
+						<option value="S1 Sastra Jepang"> S1 Psikologi</option>
 						<option value="D3 Bahasa Inggris"> D3 Bahasa Inggris</option>
 						<option value="D3 Manajemen Informatika"> D3 Manajemen Informatika</option>
 

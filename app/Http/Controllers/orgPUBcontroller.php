@@ -3,37 +3,21 @@
 namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
+USE App\orgPUBmodel;
 
 class orgPUBcontroller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $organisasi=DB::table('tb_orgpub')->get();
         return view('struktur_organisasi.index',compact('organisasi'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+   public function create()
     {
         $organisasi=DB::table('tb_orgpub')->get();
         return view('struktur_organisasi.tambah',compact('organisasi'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         DB::table('tb_orgpub')->insert
@@ -42,6 +26,7 @@ class orgPUBcontroller extends Controller
             ]);
         return redirect ('struktur_organisasi/index');
     }
+
 
     /**
      * Display the specified resource.
@@ -60,9 +45,9 @@ class orgPUBcontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id_orgpub)
+    public function edit($id)
     {
-        $organisasi = DB::table('tb_orgpub')->where('id_orgpub',$id_orgpub)->get();
+        $organisasi=orgPUBmodel::where('id_orgpub',$id)->get();
         return view('struktur_organisasi/edit',compact('organisasi'));
     }
 
@@ -73,13 +58,12 @@ class orgPUBcontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_orgpub)
+    public function update(Request $request, $id)
     {
-        DB::table('tb_orgpub')->where('id_orgpub',$id_orgpub)->update([
-            'jabatan'=>$request->tb_orgpub
-        ]);
-        return redirect('struktur_organisasi/'.$id);
+         $organisasi=orgPUBmodel::where('id_orgpub',$id)->update(['jabatan_pub'=>$request->jabatan_pub]);
+        return redirect('struktur_organisasi/index');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -87,9 +71,49 @@ class orgPUBcontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id_orgpub)
+    public function destroy($id)
     {
-        DB::table('tb_orgpub')->where('id_orgpub',$id_orgpub)->delete();
-        return redirect('struktur_organisasi.index');
+        $organisasi=orgPUBmodel::where('id_orgpub',$id)->delete();
+        return redirect('struktur_organisasi/index');
+    }
+
+
+    public function index2()
+    {
+        $organisasi=DB::table('tb_orgalumni')->get();
+        return view('struktur_organisasi.index2',compact('organisasi'));
+    }
+   public function create2()
+    {
+        $organisasi=DB::table('tb_orgalumni')->get();
+        return view('struktur_organisasi.tambah2',compact('organisasi'));
+    }
+
+    public function store2(Request $request)
+    {
+        DB::table('tb_orgalumni')->insert
+            ([
+                'jabatan'=>$request->jabatan
+            ]);
+        return redirect ('struktur_organisasi2/index');
+    }
+
+    public function edit2($id_org)
+    {
+        $organisasi = DB::table('tb_orgalumni')->where('id_org',$id_org)->get();
+        return view('struktur_organisasi.edit2',compact('organisasi','id_org'));
+    }
+    public function update2(Request $request, $id_org)
+    {
+        DB::table('tb_orgalumni')->where('id_org',$id_org)->update([
+            'jabatan'=>$request->jabatan
+        ]);
+        return redirect ('struktur_organisasi2/index');
+    }
+
+    public function destroy2($id_org)
+    {
+        DB::table('tb_orgalumni')->where('id_org',$id_org)->delete();
+        return redirect ('struktur_organisasi2/index');
     }
 }

@@ -17,7 +17,7 @@
 
   <!-- Favicon -->
   <link rel="icon" href="./img/core-img/favicon.png">
-
+  <link rel="shortcut icon" href="/imgs/pub.png" />
   <!-- Stylesheet -->
   <link rel="stylesheet" href="/roberto-master/style.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -48,7 +48,7 @@
     #text{
       margin: 10px;
       width: 100%;
-      height: 250px;
+      height: 200px;
     }
     
   </style>
@@ -81,7 +81,7 @@
 
           <div class="col-6">
             <div class="top-header-content">
-              <a href="#"><i class="fa fa-whatsapp"></i> <span>0857-2275-2570</span></a>
+              <a href="{{url('https://wa.me/6285722752570')}}" target="_blank"><i class="fa fa-whatsapp"></i> <span>0857-2275-2570</span></a>
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                 <i class="icon_mail"></i> <span>Chat with us</span>
               </button>
@@ -124,7 +124,7 @@
               <div class="classynav" >
                 <ul id="nav">
                   <li class="active"><a href="{{url('/')}}">Home</a></li>
-                  <li><a href="#">PPMB PUB</a>
+                  <li><a href="#" id="ppmb">PPMB PUB</a>
                     <ul class="dropdown">
                       <li><a href="/organisasi_ppmb/">- Kepanitiaan PPMB</a></li>
                       <li><a href="/jadwal_ppmb_user">- Jadwal PPMB</a></li>
@@ -134,7 +134,7 @@
                       <li><a href="{{url('user_down_formulir')}}" target="_blank">- Download Formulir</a></li>
                     </ul>
                   </li>
-                  <li><a href="#">PUB Aktif</a>
+                  <li><a href="#" id="pub">PUB Aktif</a>
                     <ul class="dropdown">
                       <li><a href="{{url('pub_profile')}}">-Sekilas PUB</a></li>
                       <li><a href="{{url('organisasi_pub')}}">-Organisasi PUB</a></li>
@@ -144,7 +144,7 @@
 
                     </ul>
                   </li>
-                  <li><a href="#">Alumni PUB</a>
+                  <li><a href="#" id="alumni">Alumni PUB</a>
                     <ul class="dropdown">
                       <li><a href="{{url('user_alumni')}}">-Data Alumni PUB</a></li>
                       <li><a href="{{url('user_infaq')}}">-Data Infaq Alumni</a></li>
@@ -152,6 +152,7 @@
                         <ul class="dropdown">
                           <li><a href="{{url('org_ikatan_alumni')}}">-Organisasi</a></li>
                           <li><a href="{{url('keg_ikatan_alumni')}}">-Dokumentasi</a></li>
+                          <li><a href="{{url('legalitas')}}">-Legalitas</a></li>
                         </ul>
 
                       </li>
@@ -180,6 +181,7 @@
       </div>
     </div>
   </header>
+</body>
   <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -189,16 +191,19 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <input id="pesan" type="text" name="nama" placeholder="Masukkan Nama"><br>
-          <input id="pesan" type="text" name="sekolah" placeholder="Masukkan Asal Sekolah"><br>
-          <input id="pesan" type="text" name="daerah" placeholder="Masukkan Asal Daerah"><br>
-          <textarea id="text" placeholder="Pertanyaan..."></textarea>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">keluar</button>
-          <button type="button" class="btn btn-primary">Kirim Pesan</button>
-        </div>
+        <form method="post" action="{{url('storePertanyaan')}}">
+          {{csrf_field()}}
+          <div class="modal-body">
+            <input id="pesan" type="text" name="nama" placeholder="Masukkan Nama"><br>
+            <input id="pesan" type="text" name="sekolah" placeholder="Masukkan Asal Sekolah"><br>
+            <input id="pesan" type="text" name="daerah" placeholder="Masukkan Asal Daerah"><br>
+            <textarea id="text" placeholder="Pertanyaan..." name="pertanyaan"></textarea>
+          </div>        
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">keluar</button>
+            <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

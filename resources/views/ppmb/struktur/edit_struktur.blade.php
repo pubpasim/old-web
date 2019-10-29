@@ -13,7 +13,7 @@
 
 							<form role="form" action="/struktur_ppmb/update" method="POST">
 								 {{ @csrf_field() }}
-								 <?php  foreach($detorgppmb as $data) {?>
+								 <?php  foreach($orgppmb as $data) {?>
 								<div class="form-group">
 									<label>ID Jabatan</label>
 									<input class="form-control" name="id_jabatan" placeholder="Id Jabatan" value="{{$data->id_orgppmb}}" readonly="">
@@ -23,7 +23,7 @@
 									<input class="form-control" name="jabatan" placeholder="Jabatan" value="{{$data->jabatan}}">
 								</div>
 								<?php } ?>
-								<button type="submit" class="btn btn-primary">TAMBAH DATA </button>			
+								<button type="submit" class="btn btn-primary">SIMPAN DATA </button>			
 							</form>
 						</div>
 					</div>

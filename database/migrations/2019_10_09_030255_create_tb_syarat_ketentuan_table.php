@@ -16,6 +16,7 @@ class CreateTbSyaratKetentuanTable extends Migration
         Schema::create('tb_syarat_ketentuan', function (Blueprint $table) {
             $table->increments('id_syarat');
             $table->string('syarat');
+             $table->timestamps();
         });
     }
 
