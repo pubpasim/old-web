@@ -1,45 +1,58 @@
 
 @include('tampilan.head')
-		
-	<div class="row">
-		<div class="col-lg-12">
-			<h1 class="page-header">DaftraAngkatan PUB</h1>
-		</div>
-	</div><!--/.row-->
-	<div class="row">
-		<div class="col-lg-12">
-			<div class="panel panel-default">
-				<div class="panel-heading">Tabel Angkatan</div>
-				<br><p class="icon-plus-sign"></i> <a href="{{url('tampilan/angkatan/createang')}}">Tambah Data</a></p>
-				<div class="panel-body">
-					<table class="table table-striped table-bordered table-hover" id="tabel_angkatan">
+
+<div class="row">
+	<div class="col-lg-12">
+		<h1 align="center" class="page-header">Daftar Angkatan PUB</h1>
+	</div>
+</div><!--/.row-->
+@if(\Session::has('alert'))
+<div class="alert">
+	{{Session::get('alert')}}!!
+</div>
+@endif
+<div class="row" style="padding: 20px;">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">Tabel Angkatan</div>
+			<div class="panel-body">
+				<br><p class="icon-plus-sign"></i> <a href="{{url('tampilan/angkatan/createang')}}"><button class="btn btn-primary">Tambah Data</button></a></p>
+				<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="asc" id="tabel_angkatan">
+					<thead>
+						<tr>
+							<th  ><center>No</center></th>
+							<th ><center>Angkatan</center></th>
+							<th ><center>Nama Angkatan</center></th>
+							<th align="text-center"><center>Aksi</center></th>
+						</tr>
 						<thead>
-							<tr>
-								<th data-field="state" data-checkbox="true" name=""><center>No</center></th>
-								<th data-field="id" data-sortable="true"><center>Nama Angkatan</center></th>
-								<th data-field="name"  data-sortable="true"><center>Angkatan</center></th>
-								<th colspan="2" align="text-center"><center>Aksi</center></th>
-							</tr>
+							@php
+							$no=1;
+							@endphp
+							<tbody>
+								@foreach($ang as $data)
+								<tr> 
 
-							@foreach($ang as $data)
-							<tr> 
+									<td ><center>{{$no++}}</center></td>
+									<td><center>{{$data->angkatan}}</center></td>  
+									<td ><center>{{$data->nama_angkatan}}</center></td>
+									<td><center>
+										<a href="{{URL('tampilan/angkatan/'.$data->id_angkatan)}}" class=" icon-edit-sign">
+											<button class="btn btn-primary">Edit</button>
+										</a>
+										<a href="{{URL('tampilan/angkatan/hapus/'.$data->id_angkatan)}}" class="icon-trash">
+											<button class="btn btn-danger">Hapus</button>
+										</a></center>
+									</td>
 
-								<td ><center>{{$data->id_angkatan}}</center></td>
-								<td ><center>{{$data->nama_angkatan}}</center></td>
-								<td><center>{{$data->angkatan}}</center></td>  
-								<th><a href="{{URL('tampilan/angkatan/'.$data->id_angkatan)}}" class=" icon-edit-sign"><center>EDIT</center></a></th>
-								<th><a href="{{URL('tampilan/angkatan/hapu/'.$data->id_angkatan)}}" class="icon-trash"><center>Hapus</center></a></th>
+								</tr>
 
-							</tr>
-
-							@endforeach
-
-
-						</thead>
-					</table>
+								@endforeach
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-@include('tampilan.foot')
+	@include('tampilan.foot')

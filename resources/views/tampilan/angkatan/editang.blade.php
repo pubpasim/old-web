@@ -1,16 +1,10 @@
 
 @include('tampilan.head')
-	<div class="row">
-		<ol class="breadcrumb">
-			<li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
-			<li class="active">Icons</li>
-		</ol>
-	</div><!--/.row-->
 	@foreach($ang as $data)
 	<form method="POST" action="{{URL('tampilan/angkatan/'.$data->id_angkatan)}}" Class="form-horizontal" id="block-validate">
-		{{csrf_field()}}>
-		<div class="row">
-			<div class="panel-heading">FROM UBAH DATA ANGKATAN</div>
+		{{csrf_field()}} 
+		<div class="row" style="padding: 20px;">
+			<div class="panel-heading">FORM UBAH DATA ANGKATAN</div>
 			<div class="panel-body">
 				<div class="col-md-6">
 					<form role="form">
