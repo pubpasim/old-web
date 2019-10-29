@@ -15,15 +15,6 @@ class alumni_adminController extends Controller
      */
     public function index($id)
     {
-<<<<<<< HEAD
-        $foto=DB::table('tb_alumni_dok')
-        ->join('tb_mahasiswa','tb_alumni_dok.id_mahasiswa','=','tb_mahasiswa.id_mahasiswa')
-        ->select('tb_mahasiswa.nama','tb_alumni_dok.file','tb_alumni_dok.keterangan')
-        ->orderby('id_alumnidok','DESC')->get();
-        $data=DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->first();
-        return view('Alumni_admin/index',compact('data','foto'));
-=======
-       
         if (!Session::get('level')) {
             return redirect('login')->with('alert','Silahkan Login terlebih dahulu');
         }else{
@@ -35,7 +26,6 @@ class alumni_adminController extends Controller
             $data=DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->first();
             return view('Alumni_admin.index',compact('data','foto'));
         }
->>>>>>> 5da011cf61fbbd5594d35725333dee9ebb1110a1
     }
     public function profile(Request $request, $id)
     {

@@ -399,12 +399,8 @@ Route::get('legalitas','userController@legalitas');
  
 Route::get('admin/alumni/{x}','alumni_adminController@index');
 
-
-<<<<<<< HEAD
 Route::post('Alumni_admin/','alumni_adminController@index');
-=======
-Route::post('Alumni_admin/index/{x}','alumni_adminController@index');
->>>>>>> 5da011cf61fbbd5594d35725333dee9ebb1110a1
+
 Route::get('materilogika', 'userController@materilog');
 Route::get('materibasis', 'userController@materibasis');
 Route::get('materistruktur', 'userController@materistruktur');
