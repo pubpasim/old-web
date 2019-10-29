@@ -97,46 +97,43 @@
 
 </style>
 
-	<div class="container">		
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header">Struktur Organisasi PUB</h1>
-			</div>
-		</div><!--/.row-->
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header">Struktur Organisasi PUB</h1>
+	</div>
+</div><!--/.row-->
 
+<div class="row" style="padding: 20px;">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">Data Jabatan PUB</div>
+			<div class="panel-body">
+				<br><p class="icon-plus-sign"></i> <a href="{{url('struktur_organisasi/tambah')}}"><button class="btn btn-primary">Tambah Data</button></a></p>
+				<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="asc">
+					<thead>
+						<tr>
+							<th>No</th>
+							<th>Jabatan</th>
+							<th>Aksi</th>
+						</tr> 
+					</thead>
+					<tbody>
+						@foreach($organisasi as $data)
 
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="panel panel-default">
-					<br><p class="icon-plus-sign"></i> <a href="{{url('struktur_organisasi/tambah')}}">Tambah Data</a></p>
-					<div class="panel-body">
-						<table class="table table-striped table-bordered table-hover" id="tabel_angkatan">
-							<thead>
-								<tr>
-									<th>No</th>
-									<th>Jabatan</th>
-									<th>Aksi</th>
-								</tr> 
-							</thead>
-							<tbody>
-								@foreach($organisasi as $data)
+						<tr>
+							<td>{{$data->id_orgpub}}</td>
+							<td>{{$data->jabatan_pub}}</td>
+							<td align="center">
+								<a href="{{url('struktur_organisasi/'.$data->id_orgpub)}}"><button class="btn btn-primary">Edit</button></a>&nbsp;&nbsp;&nbsp;
+								<a href="{{url('struktur_organisasi/hapus/'.$data->id_orgpub)}}"><button class="btn btn-danger">Hapus</button></a>
+							</td>
+						</tr>
 
-								<tr>
-									<td>{{$data->id_orgpub}}</td>
-									<td>{{$data->jabatan_pub}}</td>
-									<td align="center">
-										<a href="{{url('struktur_organisasi/'.$data->id_orgpub)}}">Edit</a>&nbsp;&nbsp;&nbsp;
-										<a href="{{url('struktur_organisasi/hapus/'.$data->id_orgpub)}}">Hapus</a>
-									</td>
-								</tr>
-
-								@endforeach
-							</tbody>
-						</table>
-					</div>
-				</div>
+						@endforeach
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
 
-@include('tampilan.foot')
+	@include('tampilan.foot')

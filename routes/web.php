@@ -149,6 +149,9 @@ Route::get('tampilan/daerah/delet/{id}','daerahController@destroy');
 
 Route::get('tampilan/angkatan/viewang','angkatanController@index');
 Route::get('tampilan/angkatan/createang','angkatanController@create');
+Route::get('tampilan/angkatan/hapus/{x}','angkatanController@destroy');
+Route::get('tampilan/angkatan/{x}','angkatanController@edit');
+Route::post('tampilan/angkatan/{x}','angkatanController@update');
 
 Route::get('tampilan/daerah/viewdae','daerahController@index');
 Route::get('tampilan/daerah/createdae','daerahController@create');

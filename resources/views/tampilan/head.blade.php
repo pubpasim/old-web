@@ -25,6 +25,17 @@
 	#hide{
 		display: none;
 	}
+	.alert{
+		width: 93%;
+		height: 100%;
+		background-color: #ff9999;
+		padding: 10px;
+		text-align: center;
+		border-radius: 3px;
+		color: white;
+		font-style: bold;
+		font-family: century gothic;
+	}
 </style>
 
 <body>
