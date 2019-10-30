@@ -13,12 +13,8 @@
 							<tr>
 								<th>No</th>
 								<th>Nama</th>
-								<th>Jenis Kelamin</th>
-								<th>TTL</th>
-								<th>Asal Daerah</th>
-								<th>Asal Sekolah</th>
-								<th>Alamat</th>
-								<th>No Hp</th>
+								<th>Jenis Kelamin</th>															
+								<th>Asal Sekolah</th>								
 								<th>Aksi</th>
 							</tr>
 						</thead>
@@ -28,12 +24,8 @@
 							<tr>
 								<td>{{ $no++}}</td>
 								<td>{{ $data->nama}}</td>
-								<td>{{ $data->jk}}</td>
-								<td>{{ $data->tempat}}, {{ $data->tanggal}}</td>
-								<td>{{ $data->daerah}}</td>
+								<td>{{ $data->jk}}</td>								
 								<td>{{ $data->sekolah}}</td>
-								<td>{{ $data->alamat}}</td>
-								<td>{{ $data->no_hp}}</td>
 								<td>
 									<a href="{{url('editLulusTPA/'.$data->id_lulus)}}" class="btn btn-info">Edit</a>
 									<a href="{{url('hapusLulusTPA/'.$data->id_lulus)}}" class="btn btn-info">Hapus</a>
