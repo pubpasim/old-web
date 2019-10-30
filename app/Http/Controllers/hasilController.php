@@ -83,7 +83,10 @@ class hasilController extends Controller
     public function lulusTPA($id)
     {
         $lulus = DB::table('tb_tpa')->where('id_tpa',$id)->first();
-        $tpa = DB::table('tb_lulus_tpa')->where('fk_tpa',$id)->get();
+        $tpa = DB::table('tb_lulus_tpa')
+        ->orderBy('nama','asc')
+        ->where('fk_tpa',$id)->get();
+
         $back = $lulus->id_tahun;
         return view('tampilan.tpa.lulusTPA',compact('id','tpa','back'));
     }
@@ -97,13 +100,9 @@ class hasilController extends Controller
         $x = DB::table('tb_tpa')->where('id_tpa',$id)->first();
         DB::table('tb_lulus_tpa')->insert([
             'nama' => $request->nama,
-            'jk' => $request->jk,
-            'tanggal' => $request->tanggal,
-            'tempat' => $request->tempat,
+            'jk' => $request->jk,            
             'daerah' => $request->daerah,
-            'sekolah' => $request->sekolah,
-            'alamat' => $request->alamat,
-            'no_hp' => $request->no_hp,
+            'sekolah' => $request->sekolah,            
             'fk_tpa' => $id,
             
         ]);
@@ -123,13 +122,9 @@ class hasilController extends Controller
 
         DB::table('tb_lulus_tpa')->where('id_lulus',$id)->update([
             'nama' => $request->nama,
-            'jk' => $request->jk,
-            'tanggal' => $request->tanggal,
-            'tempat' => $request->tempat,
+            'jk' => $request->jk,            
             'daerah' => $request->daerah,
-            'sekolah' => $request->sekolah,
-            'alamat' => $request->alamat,
-            'no_hp' => $request->no_hp,
+            'sekolah' => $request->sekolah,            
             'fk_tpa' => $x->fk_tpa,
             
         ]);
@@ -186,17 +181,10 @@ class hasilController extends Controller
         return redirect('dataTPA/'.$x->id_tahun);
     }
 
-
-
-
-
-
-
-
     public function dataPsikotes($id)
     {
     	$psi = DB::table('tb_psikotest')
-        ->select('tb_psikotest.*','tb_lulus_tpa.nama')
+        ->select('tb_psikotest.*','tb_lulus_tpa.*')
         ->join('tb_lulus_tpa','tb_psikotest.nama_peserta','tb_lulus_tpa.id_lulus')
         ->where('id_tahun2',$id)
         ->orderBy('tb_lulus_tpa.nama','ASC')
@@ -229,12 +217,9 @@ class hasilController extends Controller
             'nama_peserta' => $request->nama_peserta,
             'jurusan' => $request->jurusan,
 
-            'jk' => $data->jk,
-            'tanggal' => $data->tanggal,
-            'tempat' => $data->tempat,            
+            'jk' => $data->jk,         
             'asal_sekolah' => $data->sekolah,
-            'asal_daerah' => $data->daerah,
-            'no_hp' => $data->no_hp,            
+            'asal_daerah' => $data->daerah,            
             'id_tahun2' => $id,
         ]);
         return redirect('dataPsikotes/'.$id);
@@ -267,13 +252,10 @@ class hasilController extends Controller
     {
         DB::table('tb_psikotest')->where('id_psi',$request->id_psi)->update([
             'nama_peserta' => $request->nama_peserta,
-            'jk' => $request->jk,
-            'tanggal' => $request->tanggal,
-            'tempat' => $request->tempat,
+            'jk' => $request->jk,            
             'jurusan' => $request->jurusan,
             'asal_sekolah' => $request->asal_sekolah,
-            'asal_daerah' => $request->asal_daerah,
-            'no_hp' => $request->no_hp,            
+            'asal_daerah' => $request->asal_daerah,            
         ]);
         return redirect('dataPsikotes/'.$id);
     }
@@ -285,7 +267,7 @@ class hasilController extends Controller
     public function dataWawancaraAkhir($id)
     {
     	$survei = DB::table('tb_survei')
-        ->select('tb_survei.*','tb_lulus_tpa.nama')
+        ->select('tb_survei.*','tb_lulus_tpa.*')
         ->join('tb_lulus_tpa','tb_survei.nama_peserta','tb_lulus_tpa.id_lulus')
         ->orderBy('tb_lulus_tpa.nama','ASC')
         ->where('id_tahun3',$id)->get();    	
@@ -296,7 +278,7 @@ class hasilController extends Controller
         $nama = DB::table('tb_lulus_tpa')
         ->select('tb_lulus_tpa.id_lulus','tb_lulus_tpa.sekolah','tb_lulus_tpa.nama')
         ->join('tb_tpa','tb_lulus_tpa.fk_tpa','tb_tpa.id_tpa')
-        ->join('tb_psikotest','tb_lulus_tpa.id_lulus','tb_psikotest.nama_peserta')
+        ->join('tb_home','tb_lulus_tpa.id_lulus','tb_home.nama_peserta')
         ->where('tb_tpa.id_tahun',$id)
         ->orderBy('tb_lulus_tpa.nama','ASC')
         ->get();
@@ -309,18 +291,14 @@ class hasilController extends Controller
         if($x > 0){
             return redirect('dataWawancaraAkhir/'.$id)->with('alert','Data Sudah Di Inputkan');
         }
-        $data = DB::table('tb_psikotest')->where('nama_peserta',$request->nama_peserta)->first();
+        $data = DB::table('tb_home')->where('nama_peserta',$request->nama_peserta)->first();
 
         DB::table('tb_survei')->where('id_tahun3',$id)->insert([
-            'nama_peserta' => $request->nama_peserta,
-            
-            'jk' => $data->jk,
-            'tanggal' => $data->tanggal,
-            'tempat' => $data->tempat,
+            'nama_peserta' => $request->nama_peserta,            
+            'jk' => $data->jk,            
             'jurusan' => $data->jurusan,
             'asal_sekolah' => $data->asal_sekolah,
             'asal_daerah' => $data->asal_daerah,
-            'no_hp' => $data->no_hp,            
             'id_tahun3' => $id,
         ]);
         return redirect('dataWawancaraAkhir/'.$id);
@@ -352,13 +330,10 @@ class hasilController extends Controller
 
         DB::table('tb_survei')->where('id_survei',$request->id_survei)->update([
             'nama_peserta' => $request->nama_peserta,
-            'jk' => $request->jk,
-            'tanggal' => $request->tanggal,
-            'tempat' => $request->tempat,
+            'jk' => $request->jk,            
             'jurusan' => $request->jurusan,
             'asal_sekolah' => $request->asal_sekolah,
-            'asal_daerah' => $request->asal_daerah,
-            'no_hp' => $request->no_hp,            
+            'asal_daerah' => $request->asal_daerah,            
         ]);
         return redirect('dataWawancaraAkhir/'.$id);
     }
@@ -409,12 +384,9 @@ class hasilController extends Controller
             'nama_peserta' => $request->nama_peserta,
 
             'jk' => $data->jk,
-            'tanggal' => $data->tanggal,
-            'tempat' => $data->tempat,
             'jurusan' => $data->jurusan,
             'asal_sekolah' => $data->asal_sekolah,
             'asal_daerah' => $data->asal_daerah,
-            'no_hp' => $data->no_hp,            
             'id_tahun4' => $id,
         ]);
 
@@ -449,14 +421,88 @@ class hasilController extends Controller
         DB::table('tb_final')->where('id_final',$request->id_final)->update([
             'nama_peserta' => $request->nama_peserta,
             'jk' => $request->jk,
-            'tanggal' => $request->tanggal,
-            'tempat' => $request->tempat,
             'jurusan' => $request->jurusan,
             'asal_sekolah' => $request->asal_sekolah,
-            'asal_daerah' => $request->asal_daerah,
-            'no_hp' => $request->no_hp,            
+            'asal_daerah' => $request->asal_daerah,            
         ]);
         return redirect('dataFinal/'.$id);
     }
+
+
+
+
+    public function dataHome($id)
+    {
+        $home = DB::table('tb_home')
+        ->select('tb_home.*','tb_lulus_tpa.*')
+        ->join('tb_lulus_tpa','tb_home.nama_peserta','tb_lulus_tpa.id_lulus')
+        ->orderBy('tb_lulus_tpa.nama','ASC')
+        ->where('id_tahun5',$id)->get();        
+        return view('tampilan.home.home',compact('home','id'));
+    }
+    public function tambahHome($id)
+    {
+        $nama = DB::table('tb_lulus_tpa')
+        ->select('tb_lulus_tpa.id_lulus','tb_lulus_tpa.sekolah','tb_lulus_tpa.nama')
+        ->join('tb_tpa','tb_lulus_tpa.fk_tpa','tb_tpa.id_tpa')
+        ->join('tb_psikotest','tb_lulus_tpa.id_lulus','tb_psikotest.nama_peserta')
+        ->where('tb_tpa.id_tahun',$id)
+        ->orderBy('tb_lulus_tpa.nama','ASC')
+        ->get();
+           
+        return view('tampilan.home.tambahHome',compact('id','nama'));
+    }
+    public function storeHome(Request $request,$id)
+    {
+        $x = DB::table('tb_home')->where('nama_peserta',$request->nama_peserta)->count();
+        if($x > 0){
+            return redirect('dataHome/'.$id)->with('alert','Data Sudah Di Inputkan');
+        }
+        $data = DB::table('tb_psikotest')->where('nama_peserta',$request->nama_peserta)->first();
+
+        DB::table('tb_home')->where('id_tahun5',$id)->insert([
+            'nama_peserta' => $request->nama_peserta,            
+            'jk' => $data->jk,            
+            'jurusan' => $data->jurusan,
+            'asal_sekolah' => $data->asal_sekolah,
+            'asal_daerah' => $data->asal_daerah,
+            'id_tahun5' => $id,
+        ]);
+        return redirect('dataHome/'.$id);
+    }
+
+    public function editHome($idx)
+    {
+        $x = DB::table('tb_home')->where('id_home',$idx)->first();
+        $id = $x->id_tahun5;
+        $home = DB::table('tb_home')->where('id_home',$idx)->get();
+
+        $nama = DB::table('tb_lulus_tpa')
+        ->join('tb_home','tb_lulus_tpa.id_lulus','tb_home.nama_peserta')
+        ->where('tb_home.id_tahun5',$id)
+        ->orderBy('tb_lulus_tpa.nama','ASC')
+        ->get();       
+
+        return view('tampilan.home.editHome',compact('home','id','nama'));
+    }
+    public function updateHome(Request $request,$id)
+    {
+
+        DB::table('tb_home')->where('id_home',$request->id_home)->update([
+            'nama_peserta' => $request->nama_peserta,
+            'jk' => $request->jk,            
+            'jurusan' => $request->jurusan,
+            'asal_sekolah' => $request->asal_sekolah,
+            'asal_daerah' => $request->asal_daerah,            
+        ]);
+        return redirect('dataHome/'.$id);
+    }
+    public function hapusHome($id)
+    {
+        $x = DB::table('tb_home')->where('id_home',$id)->first();
+        DB::table('tb_home')->where('id_home',$id)->delete();
+        return redirect('dataHome/'.$x->id_tahun5);
+    }
+
 
 }

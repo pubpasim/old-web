@@ -73,70 +73,72 @@
 	}
 </style>
 	<div class="container">
-		@foreach($final as $data)
-		<form method="POST" action="{{url('updateFinal/'.$id)}}">
+		<form method="POST" action="{{url('storeHome/'.$id)}}">
 		{{csrf_field()}}
 				
 		<div class="row">
-
-			
-
 			<div class="col-25">
-				<label>Edit Penandatanganan MOU</label>
+				<label>Tambah Home Visit</label>
 			</div>
-
-			<div class="col-75">
-					<label for="Sekolah">Id Peserta</label>
-					<input readonly="" value="{{$data->id_final}}" type="text" class="form-control" placeholder="Nama Peserta" name="id_final">
-				</div>
-			
-			<div class="col-75">
+			<div class="col-75">			
 					<label for="nama_peserta">Nama Peserta</label>
 					<select id="jurusan" name="nama_peserta">
 						<option value="0"> --Nama Peserta--</option>
-						@foreach($nama as $datax)
-							<option value="{{$datax->id_lulus}}" @if($datax->id_lulus==$data->nama_peserta) selected="" @endif >{{$datax->nama}}</option>
+						@php $no = 1; @endphp
+						@foreach($nama as $data)
+							<option value="{{$data->id_lulus}}">{{$no++}}. {{$data->nama}} -- {{$data->sekolah}}</option>
 						@endforeach
 					</select>					
 				</div>
-				<div class="col-75">
+				<!-- <div class="col-75">
 					<label for="nama_peserta">Jenis Kelamin</label>
 					<select id="jk" name="jk">
-						<option @if($data->jk == "Laki - Laki") selected="" @endif value="Laki - Laki"> Laki - Laki</option>
-						<option @if($data->jk == "Perempuan") selected="" @endif value="Perempuan"> Perempuan</option>
+						<option value="Laki - Laki"> Laki - Laki</option>
+						<option value="Perempuan"> Perempuan</option>
 					</select>
-				</div>				
+				</div>
+				<div class="col-75">
+					<label for="Sekolah">Tempat Lahir</label>
+					<input type="text" class="form-control" placeholder="Tempat Lahir" name="tempat">
+				</div>
+				<div class="col-75">
+					<label for="Sekolah">Tanggal Lahir</label>
+					<input type="date" class="form-control" placeholder="tgl" name="tanggal">
+				</div>
 
 			<div class="col-75">
 				<label for="nama_peserta">Jurusan Pilihan</label>
 				<select id="jurusan" name="jurusan">
-						<option value="0" disabled=""> --Jurusan Pilihan--</option>
-						<option  @if($data->jurusan == "S1 Teknik Informatika") selected="" @endif value="S1 Teknik Informatika"> S1 Teknik Informatika</option>
-						<option @if($data->jurusan == "S1 Akuntansi") selected="" @endif value="S1 Akuntansi"> S1 Akuntansi</option>
-						<option @if($data->jurusan == "S1 Manajemen") selected="" @endif value="S1 Manajemen"> S1 Manajemen</option>
-						<option @if($data->jurusan == "S1 Sastra Jepang") selected="" @endif value="S1 Sastra Jepang"> S1 Sastra Jepang</option>
-						<option @if($data->jurusan == "D3 Bahasa Inggris") selected="" @endif value="D3 Bahasa Inggris"> D3 Bahasa Inggris</option>
-						<option @if($data->jurusan == "D3 Manajemen Informatika") selected="" @endif value="D3 Manajemen Informatika"> D3 Manajemen Informatika</option>
+					<option value="0" disabled=""> --Jurusan Pilihan--</option>
+					<option value="S1 Teknik Informatika"> S1 Teknik Informatika</option>
+					<option value="S1 Akuntansi"> S1 Akuntansi</option>
+					<option value="S1 Manajemen"> S1 Manajemen</option>
+					<option value="S1 Sastra Jepang"> S1 Sastra Jepang</option>
+					<option value="D3 Bahasa Inggris"> D3 Bahasa Inggris</option>
+					<option value="D3 Manajemen Informatika"> D3 Manajemen Informatika</option>
 
-						
-					</select>
+					
+				</select>
 			</div>
 			<div class="col-75">
 				<label for="asal_sekolah">Asal Sekolah</label>
-				<input value="{{$data->asal_sekolah}}" type="text" class="form-control" placeholder="Asal Sekolah" name="asal_sekolah">
+				<input type="text" class="form-control" placeholder="Asal Sekolah" name="asal_sekolah">
 			</div>
 			<div class="col-75">
 				<label for="asal_daerah">Asal Daerah</label>
-				<input value="{{$data->asal_daerah}}" type="text" class="form-control" placeholder="asal_daerah" name="asal_daerah">
+				<input type="text" class="form-control" placeholder="Asal Daerah" name="asal_daerah">
 			</div>
-
+			<div class="col-75">
+				<label for="no_hp">No HP</label>
+				<input type="text" class="form-control" placeholder="no_hp" name="no_hp">
+			</div> -->
+			
 		</div>
 		<br>
 		<div class="row" align="center">
 			<input type="submit" value="Submit">
 		</div>
 		</form>
-		@endforeach
 </div>
 
 @include('tampilan.foot')

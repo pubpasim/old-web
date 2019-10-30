@@ -1,7 +1,7 @@
 @include('User.header')
 <div id="design" style="width: 90%;">
 	<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
-		<h2 align="center"><b>HASIL PSIKOTEST</b></h4>
+		<h2 align="center"><b>HASIL HOME VISIT</b></h4>
 		<h4 align="center"><b>PEMBERDAYAAN UMAT BERKELANJUTAN (PUB)</b></h4>
 		<h4 align="center"><b>PERIODE {{$periode->tahun}}</b></h4>
 		<thead>
@@ -15,7 +15,7 @@
 		</thead>
 		<tbody>
 			@php $no = 1; @endphp
-			@foreach($psi as $data)
+			@foreach($home as $data)
 			<tr>
 				<td>{{ $no++}}</td>
 				<td>{{ $data->nama}}</td>								

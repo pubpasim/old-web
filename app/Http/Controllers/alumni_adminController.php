@@ -15,10 +15,14 @@ class alumni_adminController extends Controller
      */
     public function index($id)
     {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8751b9a5ff2a2e38156fbea2c3f7778741c7547c
         if (!Session::get('level')) {
             return redirect('login')->with('alert','Silahkan Login terlebih dahulu');
         }else{
-            
+
             $foto=DB::table('tb_alumni_dok')
             ->join('tb_mahasiswa','tb_alumni_dok.id_mahasiswa','=','tb_mahasiswa.id_mahasiswa')
             ->select('tb_mahasiswa.nama','tb_alumni_dok.file','tb_alumni_dok.keterangan')
@@ -151,7 +155,7 @@ class alumni_adminController extends Controller
         ->join('tb_statusSos', 'tb_mahasiswa.id_statusSos', '=', 'tb_statusSos.id_statusSos')
         ->join('tb_jurusan', 'tb_mahasiswa.id_jur', '=', 'tb_jurusan.id_jur')
         ->select('tb_mahasiswa.jenis_kelamin','tb_mahasiswa.no_telp','tb_angkatan.angkatan','tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status','tb_statusSos.status AS spkw','tb_mahasiswa.file');
-        $mahasiswa=$data->where('tb_statusPub.status','PUB Aktif')->get();
+
         $data=$data->where('tb_mahasiswa.id_mahasiswa',$id)->first();
         return view('Alumni_admin.editProfil',compact('data','dr','skl','sts1','sts2','angkt','orgpub','orgppmb','jur'));
     }
@@ -176,12 +180,12 @@ class alumni_adminController extends Controller
     }
     public function aktivitas($id)
     {
-       $foto=DB::table('tb_alumni_dok')->where('id_mahasiswa',$id)->orderby('id_alumnidok','DESC')->get();
-       $data=DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->first();
-       return view('Alumni_admin.aktivitas',compact('data','foto'));
-   }
-   public function storeAktivitas(Request $request)
-   {
+     $foto=DB::table('tb_alumni_dok')->where('id_mahasiswa',$id)->orderby('id_alumnidok','DESC')->get();
+     $data=DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->first();
+     return view('Alumni_admin.aktivitas',compact('data','foto'));
+ }
+ public function storeAktivitas(Request $request)
+ {
     $file = $request->file('foto');
     $nama_file = time()."_".$file->getClientOriginalName();
 
@@ -212,24 +216,52 @@ public function updateAktivitas(Request $request)
             'keterangan' => $request->contact_message      
         ]);  
     }else{
-     $file = $request->file('foto');
-     $nama_file = time()."_".$file->getClientOriginalName();
+       $file = $request->file('foto');
+       $nama_file = time()."_".$file->getClientOriginalName();
 
         // isi dengan nama folder tempat kemana file diupload
-     $tujuan_upload = ('imgs');
-     $file->move($tujuan_upload,$nama_file);
+       $tujuan_upload = ('imgs');
+       $file->move($tujuan_upload,$nama_file);
 
-     DB::table('tb_alumni_dok')->where('id_alumnidok',$request->id_dok)->update([
+       DB::table('tb_alumni_dok')->where('id_alumnidok',$request->id_dok)->update([
         'file' => $nama_file,            
         'keterangan' => $request->contact_message        
     ]);
- }
- return redirect('admin/alumni/aktivitas/'.$request->id_mhs);
+   }
+   return redirect('admin/alumni/aktivitas/'.$request->id_mhs);
 }
 public function hapusAktivitas($id,$id_dok)
 {
     DB::table('tb_alumni_dok')->where('id_alumnidok',$id_dok)->delete();
     return redirect('admin/alumni/aktivitas/'.$id);
+}
+public function akun($id)
+{
+    $akun=DB::table('tb_user')->where('id_mahasiswa',$id)->first();
+    $data=DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->first();
+    return view('Alumni_admin.akun',compact('data','akun'));
+}
+public function akunEdit(Request $request,$id)
+{
+    $akun=DB::table('tb_user')->where('id_user',$request->id_usr)->first();
+    if($akun->username==$request->uss){
+        if($akun->password==$request->pss){
+            if($request->psw1==$request->psw2){
+                DB::table('tb_user')->where('id_user',$request->id_usr)->update([
+                    'username'=>$request->usr,
+                    'password'=>$request->psw2
+                ]);
+                return redirect('admin/alumni/'.$id);
+            }else{
+                return redirect('admin/alumni/akun/'.$id)->with('alert','Konfirmasi password gagal !');
+            }
+        }else{
+            return redirect('admin/alumni/akun/'.$id)->with('alert','Password Salah !');
+        }
+    }else{
+        return redirect('admin/alumni/akun/'.$id)->with('alert','Username Salah !');
+    }
+    
 }
     /**
      * Show the form for creating a new resource.

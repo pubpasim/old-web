@@ -5,10 +5,12 @@
 				height: 500px;
 				margin-left: 300px;
 			}
-			</style>
-				<div class="row">
-					<div class="panel-heading">FROM UBAH PANITIA</div>
+		</style>
+		<div class="row" style="padding: 20px;">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
 					<div class="panel-body">
+						<div class="panel-heading">Form Edit Struktur Organisasi PPMB</div>
 						<div class="col-md-6">
 
 							<form role="form" action="/det_struktur_ppmb/update" method="POST">
@@ -49,7 +51,7 @@
 										@endforeach
 									</select>
 								</div>
-									<div class="form-group">
+								<div class="form-group">
 									<select class="form-control" id="periode" name="periode">
 										<label>Periode</label>
 										<option value="{{$d->id_periode}}">{{$d->periode}}</option>
@@ -67,4 +69,4 @@
 						</div>
 					</div>
 				</div>
-			@include('tampilan.foot')
+				@include('tampilan.foot')

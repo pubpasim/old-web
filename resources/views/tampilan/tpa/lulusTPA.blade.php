@@ -13,10 +13,8 @@
 							<tr>
 								<th>No</th>
 								<th>Nama</th>
-								<th>Jenis Kelamin</th>
-								
-								<th>Asal Daerah</th>
-								<th>Asal Sekolah</th>
+								<th>Jenis Kelamin</th>															
+								<th>Asal Sekolah</th>								
 								<th>Aksi</th>
 							</tr>
 						</thead>
@@ -26,8 +24,7 @@
 							<tr>
 								<td>{{ $no++}}</td>
 								<td>{{ $data->nama}}</td>
-								<td>{{ $data->jk}}</td>
-								<td>{{ $data->daerah}}</td>
+								<td>{{ $data->jk}}</td>								
 								<td>{{ $data->sekolah}}</td>
 								<td>
 									<a href="{{url('editLulusTPA/'.$data->id_lulus)}}" class="btn btn-info">Edit</a>
