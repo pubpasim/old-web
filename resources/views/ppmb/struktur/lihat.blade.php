@@ -33,7 +33,7 @@
 									<td>{{$struktur->jabatan}}</td>
 
 									<td align="center" class="col-sm-3">
-										<a href="/struktur_ppmb/edit/{{$struktur->id_orgppmb}}">
+										<a href="/struktur_ppmb/edit/{{$struktur->id_orgppmb}}" onclick="return confirm('Hapus data ?');">
 											<button type="button" class="btn btn-success btn-square waves-effect waves-square waves-effect" >
 												<i class="material-icons">Edit</i><span class="icon-name"></span>
 											</button>

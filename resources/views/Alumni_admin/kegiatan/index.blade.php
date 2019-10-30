@@ -28,7 +28,7 @@
 									<a href="{{url('pelatihan/edit'.$data->id_pelatihan)}}">Edit</a>
 								</td>
 								<td>
-									<a href="{{url('pelatihan/hapus'.$data->id_pelatihan)}}">Hapus</a>
+									<a href="{{url('pelatihan/hapus'.$data->id_pelatihan)}}" onclick="return confirm('Hapus data ?');">Hapus</a>
 								</td>
 							</tr>	
 							@endforeach

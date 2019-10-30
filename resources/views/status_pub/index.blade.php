@@ -125,7 +125,7 @@
 							<td>{{$data->status}}</td>
 							<td>
 								<a href="{{url('status_pub/edit/'.$data->id_statusPub)}}">Edit</a>
-								<a href="{{url('status_pub/hapus/'.$data->id_statusPub)}}">Hapus</a>
+								<a href="{{url('status_pub/hapus/'.$data->id_statusPub)}}" onclick="return confirm('Hapus data ?');">Hapus</a>
 							</td>
 						</tr>
 						@endforeach

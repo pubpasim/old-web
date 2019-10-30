@@ -41,7 +41,7 @@
 								<td >{{$struktur->jabatan}}</td>
 
 								<td align="center" class="col-sm-3">
-									<a href="/det_struktur_ppmb/edit/{{$struktur->id_detil}}">
+									<a href="/det_struktur_ppmb/edit/{{$struktur->id_detil}}" onclick="return confirm('Hapus data ?');">
 										<button type="button" class="btn btn-success btn-square waves-effect waves-square waves-effect" >
 											<i class="material-icons">Edit</i><span class="icon-name"></span>
 										</button>

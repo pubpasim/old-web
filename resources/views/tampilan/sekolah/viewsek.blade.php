@@ -123,7 +123,7 @@
 									<td ><center>{{$data->id_sekolah}}</center></td>
 									<td ><center>{{$data->sekolah}}</center></td>
 									<th><a href="{{url('tampilan/sekolah/'.$data->id_sekolah)}}" class=" icon-edit-sign"><center>EDIT</center></a></th>
-									<th><a href="{{url('tampilan/sekolah/hps/'.$data->id_sekolah)}}" class="icon-trash"><center>Hapus</center></a></th>
+									<th><a href="{{url('tampilan/sekolah/hps/'.$data->id_sekolah)}}" class="icon-trash" onclick="return confirm('Hapus data ?');"><center>Hapus</center></a></th>
 
 								</tr>
 

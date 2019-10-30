@@ -140,7 +140,7 @@
 						      				<button class="btn btn-primary" style="background-color: green;">Edit</button>
 						      			</a>
 						      			<a href="{{url('detorg_pub/hapus/'.$data->id_detorg_pub)}}">
-						      				<button style="background-color: red;" class="btn btn-primary">hapus</button>
+						      				<button style="background-color: red;" class="btn btn-primary" onclick="return confirm('Hapus data ?');">hapus</button>
 						      			</a>
 						      		</td>
 						      	</tr>

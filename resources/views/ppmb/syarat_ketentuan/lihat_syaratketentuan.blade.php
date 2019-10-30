@@ -27,7 +27,7 @@
 						<div>
 							<!-- <a href="syarat_ketentuan/create"><button>Tambah</button></a>	 -->
 							<a href="syarat_ketentuan/edit/{{$data->id_syarat}}"><button class="btn btn-primary">Ubah</button></a>	
-							<a href="syarat_ketentuan/delete/{{$data->id_syarat}}"><button class="btn btn-danger">Hapus</button></a>	
+							<a href="syarat_ketentuan/delete/{{$data->id_syarat}}" onclick="return confirm('Hapus data ?');"><button class="btn btn-danger">Hapus</button></a>	
 						</div>
 						<div class="row">
 							<div class="col-md-12">

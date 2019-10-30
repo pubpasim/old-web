@@ -129,7 +129,7 @@
 						<td>{{$inf->bulan_infaq}} {{$inf->tahun_infaq}}</td>
 						<td>{{$inf->total_infaq}}</td>
 						
-						<td><a href="{{url('editInfaq/'.$inf->id_infaq)}}"><button class="btn btn-primary">Edit</button></a>&nbsp;<a href="{{url('hapusInfaq/'.$inf->id_infaq)}}"><button class="btn btn-primary" style="background-color: red;">Hapus</button></a></td>
+						<td><a href="{{url('editInfaq/'.$inf->id_infaq)}}"><button class="btn btn-primary">Edit</button></a>&nbsp;<a href="{{url('hapusInfaq/'.$inf->id_infaq)}}"><button class="btn btn-primary" style="background-color: red;" onclick="return confirm('Hapus data ?');">Hapus</button></a></td>
 					</tr>
 					@endforeach
 				</tbody>

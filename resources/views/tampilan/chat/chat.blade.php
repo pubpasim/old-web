@@ -40,7 +40,7 @@
 								<td>{{ $data->jawaban}}</td>
 								<td>
 									<a href="{{url('jawabPertanyaan/'.$data->id)}}" class="btn btn-info">Jawab</a>
-									<a href="{{url('hapusPertanyaan/'.$data->id)}}" class="btn btn-info">Hapus</a>
+									<a href="{{url('hapusPertanyaan/'.$data->id)}}" class="btn btn-info" onclick="return confirm('Hapus data ?');">Hapus</a>
 								</td>
 							</tr>
 							@endforeach

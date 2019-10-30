@@ -130,7 +130,7 @@
 							<td>{{$mhs->nama_jur}}</td>
 							<td>{{$mhs->no_telp}}</td>
 							<td><a href="{{url('detail/org/'.$mhs->id_mahasiswa)}}"><button type="reset" class="btn btn-default">Detail</button></a>&nbsp;&nbsp;
-							<a href="{{url('mahasiswaHapus/'.$mhs->id_mahasiswa)}}"><button class="btn btn-primary" style="background-color: red;">Hapus</button></a>&nbsp;&nbsp;
+							<a href="{{url('mahasiswaHapus/'.$mhs->id_mahasiswa)}}" onclick="return confirm('Hapus data ?');"><button class="btn btn-primary" style="background-color: red;">Hapus</button></a>&nbsp;&nbsp;
 							<a href="{{url('mahasiswaEdit/'.$mhs->id_mahasiswa)}}"><button class="btn btn-primary">Edit</button></a></td>
 						</tr>
 						@endforeach

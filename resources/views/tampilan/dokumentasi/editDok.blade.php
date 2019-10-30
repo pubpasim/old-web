@@ -72,39 +72,46 @@
 		}
 	}
 </style>
-	<div class="container">
-		@foreach($dok as $data)
-		<form method="POST" action="{{url('updateDok/'.$data->id_dok)}}" enctype="multipart/form-data">
-		{{csrf_field()}}
-				
-		<div class="row">
-			<div class="col-25">
-				<label for="jbPUB">Dokumentasi</label>
+<div class="row" style="padding: 20px;">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">Edit Dokumentasi</div>
+			<div class="panel-body">
+				@foreach($dok as $data)
+				<form method="POST" action="{{url('updateDok/'.$data->id_dok)}}" enctype="multipart/form-data">
+					{{csrf_field()}}
+					<div class="row">
+						<div class="col-25">
+							<label for="Foto">Foto</label>
+						</div>
+						<div class="col-75">
+							<img src="{{url('imgs')}}/{{($data->foto) }}" width="80%">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-75">
+							<input type="file" class="faorm-control" name="foto">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-25">
+							<label for="Foto">Kegiatan</label>
+						</div>
+						<div class="col-75">
+							<textarea id="keterangan" name="keterangan" >{{$data->keterangan}}</textarea>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-25">
+							<input type="submit" value="Simpan">
+						</div>
+					</div>
+				</form>
+				@endforeach
 			</div>
-			<div class="col-75">
-				<label for="tahun">Foto</label>
-				<input type="file" class="faorm-control" name="foto">
-			</div>
-
-			<div class="col-75">
-				<label for="jbPUB">Kegiatan</label>
-				<select id="keterangan" name="keterangan">
-					<option value="TPA dan Wawancara Awal">TPA dan Wawancara Awal</option>
-					<option value="Psikotest">Psikotest</option>
-					<option value="Home Visit">Home Visit</option>
-					<option value="Wawancara Akhir">Wawancara Akhir</option>
-					<option value="MOU">MOU</option>
-				</select>
-			</div>
-
 		</div>
-		<br>
-		<div class="row" align="center">
-			<input type="submit" value="Simpan">
-		</div>
-	</form>
-	@endforeach
+	</div>
 </div>
+
 @include('tampilan.foot')
 
-	
