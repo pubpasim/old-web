@@ -38,6 +38,9 @@ class userController extends Controller
     }
     public function tampilSeleksi(Request $request)
     {
+        if($request->tahun==0){
+            return redirect('user_hasilSeleksi')->with('alert','Pilih Tahun Seleksi Terlebih Dulu');
+        }
         $tpa="";
         $lempar = $request->tahun;
         $tahun = DB::table('tb_tahunSel')->get();
@@ -97,12 +100,6 @@ public function infaq_bulan(Request $request)
     ->select('bulan_infaq','total_infaq as total','id_bulan')
     ->where('tahun_infaq',$request->select)->orderby('id_bulan')->get();
     return view('user.infaq_bulan',compact('data1','thn'));
-}
-
-public function user_dok_ppmb()
-{  
-    $dok = DB::table('tb_dokumentasi')->get();
-    return view('user.user_dok_ppmb',compact('dok'));
 }
 
 public function user_lulus_tpa($id)
@@ -1300,6 +1297,108 @@ public function pembinaPub()
 
         ->get();
         return view('user.sosialisasi_kesekolah',compact('sekolah_sos'));        
+    }
+   
+
+    public function user_dok_ppmb()
+    {  
+        $tpa="";
+        $lempar="";
+        $tahun = DB::table('tb_tahunSel')->get();
+        $periode = "";
+        return view('user.user_dok_ppmb',compact('tahun','lempar','tpa','periode'));
+
+        // $dok = DB::table('tb_dokumentasi')->get();
+        // return view('user.user_dok_ppmb',compact('dok'));
+    }
+    public function user_hasil_dok_ppmb(Request $request)
+    {
+        if($request->tahun==0){
+            return redirect('user_dok_ppmb')->with('alert','Pilih Periode Terlebih Dulu');
+        }
+        $tpa="";
+        $lempar = $request->tahun;
+        $tahun = DB::table('tb_tahunSel')->get();
+        $x = DB::table('tb_tahunSel')->where('id',$request->tahun)->first();
+        $periode = $x->tahun;
+        return view('user.user_dok_ppmb',compact('tahun','lempar','tpa','periode'));
+    }
+
+    public function user_dok_sosialisasi($id)
+    {          
+        $dok = DB::table('tb_dokumentasi')
+        ->where([
+            ['kategori','Sosialisasi'],
+            ['id_tahun',$id],
+        ])->get();
+
+        $x = DB::table('tb_tahunSel')->where('id',$id)->first();
+        $periode = $x->tahun;
+        return view('user.user_dok_sosialisasi',compact('dok','periode'));
+    }
+    public function user_dok_tpa($id)
+    {          
+        $dok = DB::table('tb_dokumentasi')
+        ->where([
+            ['kategori','TPA'],
+            ['id_tahun',$id],
+        ])->get();
+
+        $x = DB::table('tb_tahunSel')->where('id',$id)->first();
+        $periode = $x->tahun;
+        return view('user.user_dok_tpa',compact('dok','periode'));
+    }
+    public function user_dok_psikotest($id)
+    {          
+
+        $dok = DB::table('tb_dokumentasi')
+        ->where([
+            ['kategori','Psikotest'],
+            ['id_tahun',$id],
+        ])->get();
+
+        $x = DB::table('tb_tahunSel')->where('id',$id)->first();
+        $periode = $x->tahun;
+        return view('user.user_dok_psikotest',compact('dok','periode'));
+    }
+    public function user_dok_home_visit($id)
+    {          
+        
+        $dok = DB::table('tb_dokumentasi')
+        ->where([
+            ['kategori','Home Visit'],
+            ['id_tahun',$id],
+        ])->get();
+
+        $x = DB::table('tb_tahunSel')->where('id',$id)->first();
+        $periode = $x->tahun;
+        return view('user.user_dok_survei',compact('dok','periode'));
+    }
+    public function user_dok_wawancara_akhir($id)
+    {          
+        
+        $dok = DB::table('tb_dokumentasi')
+        ->where([
+            ['kategori','Wawancara Akhir'],
+            ['id_tahun',$id],
+        ])->get();
+
+        $x = DB::table('tb_tahunSel')->where('id',$id)->first();
+        $periode = $x->tahun;
+        return view('user.user_dok_wawancara_akhir',compact('dok','periode'));
+    }
+    public function user_dok_mou($id)
+    {          
+        
+        $dok = DB::table('tb_dokumentasi')
+        ->where([
+            ['kategori','MOU'],
+            ['id_tahun',$id],
+        ])->get();
+
+        $x = DB::table('tb_tahunSel')->where('id',$id)->first();
+        $periode = $x->tahun;
+        return view('user.user_dok_mou',compact('dok','periode'));
     }
 
 }

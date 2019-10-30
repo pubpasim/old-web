@@ -408,6 +408,17 @@ Route::get('user_lulus_tpa/{x}','userController@user_lulus_tpa');
 Route::get('user_dok_ppmb','userController@user_dok_ppmb');
 Route::get('user_down_formulir','userController@user_down_formulir');
 Route::get('legalitas','userController@legalitas');
+
+
+
+Route::post('user_hasil_dok_ppmb','userController@user_hasil_dok_ppmb');
+
+Route::get('user_dok_sosialisasi/{x}','userController@user_dok_sosialisasi');
+Route::get('user_dok_tpa/{x}','userController@user_dok_tpa');
+Route::get('user_dok_psikotest/{x}','userController@user_dok_psikotest');
+Route::get('user_dok_home_visit/{x}','userController@user_dok_home_visit');
+Route::get('user_dok_wawancara_akhir/{x}','userController@user_dok_wawancara_akhir');
+Route::get('user_dok_mou/{x}','userController@user_dok_mou');
 //================================ADMIN ALUMNI=============================//
  
 Route::get('admin/alumni/{x}','alumni_adminController@index');

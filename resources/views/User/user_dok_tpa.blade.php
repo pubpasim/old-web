@@ -13,8 +13,9 @@
 	}
 </style>
 	<div style="text-align: center;">
-		<h3 style="color: darkcyan;" align="center"><b>KEGIATAN IKATAN ALUMNI</b></h3>
-		<h4 align="center"><b>PEMBERDAYAAN UMAT BERKELANJUTAN (PUB)</b></h4>		
+		<h3 style="color: darkcyan;" align="center"><b>KEGIATAN TPA & WAWANCARA AWAL PPMB</b></h3>
+		<h4 align="center"><b>PEMBERDAYAAN UMAT BERKELANJUTAN (PUB)</b></h4>
+		<h4 align="center"><b>PERIODE {{$periode}}</b></h4>
 		<br><br>
 		@foreach($dok as $data)	
 			<figure class="x">
