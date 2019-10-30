@@ -112,6 +112,7 @@
 						<option value="S1 Teknik Informatika"> S1 Teknik Informatika</option>
 						<option value="S1 Akuntansi"> S1 Akuntansi</option>
 						<option value="S1 Manajemen"> S1 Manajemen</option>
+						<option value="S1 Psikologi"> S1 Psikologi</option>
 						<option value="S1 Sastra Jepang"> S1 Sastra Jepang</option>
 						<option value="S1 Sastra Jepang"> S1 Psikologi</option>
 						<option value="D3 Bahasa Inggris"> D3 Bahasa Inggris</option>

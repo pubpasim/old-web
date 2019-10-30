@@ -11,7 +11,6 @@
 							{{csrf_field()}}
 							<div class="row" style="padding: 20px;">
 								<div class="panel-body">
-									{{ @csrf_field() }}
 									<div class="form-group">
 										<label>ID Periode</label>
 										<input class="form-control" name="id_periode" placeholder="Id Periode" readonly="">

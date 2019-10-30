@@ -95,12 +95,12 @@
 </style>
 
 	<h1>Daftar Mahasiswa PUB</h1>
-	<div class="container">
+	
 		<form method="POST" action="{{url('detorg_pub/store')}}" Class="form-horizontal" id="block-validate">
 			{{csrf_field()}}
 			<div class="row">
-				<div class="panel-heading">TAMBAH DATA</div>
 				<div class="panel-body">
+					<div class="panel-heading">Tambah DAata Struktur Organisasi PUB</div>
 					<div class="col-md-6">
 						<form role="form">
 							<div class="row">

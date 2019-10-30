@@ -5,8 +5,8 @@
 		display: inline-block;
 		border: 1px solid darkcyan;
 		margin: 10px;
-		width: 300px;
-		height: 300px;
+		width: 600px;
+		height: 600px;
 	}
 	.x{
 		display: inline-block;

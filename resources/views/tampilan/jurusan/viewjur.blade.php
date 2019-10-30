@@ -27,7 +27,7 @@
 								<td ><center>{{$data->id_jur}}</center></td>
 								<td ><center>{{$data->nama_jur}}</center></td>
 								<th><a href="{{URL('tampilan/jurusan/'.$data->id_jur)}}" class=" icon-edit-sign"><center>EDIT</center></a></th>
-								<th><a href="{{URL('tampilan/jurusan/del/'.$data->id_jur)}}" class="icon-trash"><center>Hapus</center></a></th>
+								<th><a href="{{URL('tampilan/jurusan/del/'.$data->id_jur)}}" class="icon-trash" onclick="return confirm('Hapus data ?');"><center>Hapus</center></a></th>
 
 							</tr>
 

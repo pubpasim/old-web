@@ -94,14 +94,12 @@
 
 </style>
 
-
-	<h1>Daftar Mahasiswa PUB</h1>
-	<div class="container">
+	<div class="row">
 		<form method="POST" action="{{URL('detorg_pub/update/'.$detail->id_detorg_pub)}}" Class="form-horizontal" id="block-validate">
 			{{csrf_field()}}
 			<div class="row">
-				<div class="panel-heading">TAMBAH DATA</div>
 				<div class="panel-body">
+					<div class="panel-heading">Edit Organisasi PUB</div>
 					<div class="col-md-6">
 						<form role="form">
 							<div class="row">

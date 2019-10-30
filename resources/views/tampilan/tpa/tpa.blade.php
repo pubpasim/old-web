@@ -29,7 +29,7 @@
 								<td>{{ $data->jml_gagal}}</td>
 								<td>
 									<a href="{{url('editTPA/'.$data->id_tpa)}}" class="btn btn-info">Edit</a>
-									<a href="{{url('hapusTPA/'.$data->id_tpa)}}" class="btn btn-info">Hapus</a>
+									<a href="{{url('hapusTPA/'.$data->id_tpa)}}" class="btn btn-info" onclick="return confirm('Hapus data ?');">Hapus</a>
 								</td>
 							</tr>
 							@endforeach

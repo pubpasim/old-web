@@ -119,7 +119,7 @@
 						<td>{{$data->password}}</td>
 						<td>{{$data->level}}</td>
 						<td><a href="{{url('editUser/'.$data->id_user)}}"><button type="reset" class="btn btn-default">Edit</button></a></td>
-						<td><a href="{{url('hapusUser/'.$data->id_user)}}"><button class="btn btn-primary" style="background-color: red;">Hapus</button></a></td>
+						<td><a href="{{url('hapusUser/'.$data->id_user)}}" onclick="return confirm('Hapus data ?');"><button class="btn btn-primary" style="background-color: red;">Hapus</button></a></td>
 					</tr>
 					@endforeach
 				</tbody>

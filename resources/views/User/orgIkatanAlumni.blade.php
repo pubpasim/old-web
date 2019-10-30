@@ -586,17 +586,6 @@
 				</a>
 				@endif
 			</div>
-			<div id="vrt9"></div>
-			<div id="kea">
-				<div id="judul">DIVISI KEASRAMAAN</div>
-				@if($bidang_penggembangan2==0)
-				<p>data Kosong</p>
-				@else
-				<a href="{{url('detail/org/'.$bidang_penggembangan->id_mahasiswa)}}">
-					<p>{{$bidang_penggembangan->nama}}</p>
-				</a>
-				@endif
-			</div>
 		</center>
 	</div>
 </div>

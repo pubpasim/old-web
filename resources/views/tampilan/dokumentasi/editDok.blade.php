@@ -72,53 +72,57 @@
 		}
 	}
 </style>
-	<div class="container">
-		@foreach($dok as $data)
-		<form method="POST" action="{{url('updateDok/'.$data->id_dok)}}" enctype="multipart/form-data">
-		{{csrf_field()}}
-				
-		<div class="row">
-			<div class="col-25">
-				<label for="jbPUB">Dokumentasi</label>
-			</div>
-			<div class="col-75">
-				<label for="tahun">Foto</label>
-				<input type="file" class="faorm-control" name="foto">
-			</div>
+<div class="row" style="padding: 20px;">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">Edit Dokumentasi</div>
+			<div class="panel-body">
+				@foreach($dok as $data)
+				<form method="POST" action="{{url('updateDok/'.$data->id_dok)}}" enctype="multipart/form-data">
+					{{csrf_field()}}
+					<div class="row">
+					<div class="col-75">
+						<label for="tahun">Foto</label>
+						<input type="file" class="faorm-control" name="foto">
+					</div>
 
-			<div class="col-75">
-					<label for="jbPUB">Kategori</label>
-					<select id="keterangan" name="kategori">
-						<option @if($data->kategori=="Sosialisasi") selected="" @endif value="Sosialisasi">Sosialisasi</option>
-						<option @if($data->kategori=="TPA") selected="" @endif value="TPA">TPA</option>
-						<option @if($data->kategori=="Psikotest") selected="" @endif value="Psikotest">Psikotest</option>
-						<option @if($data->kategori=="Home Visit") selected="" @endif value="Home Visit">Home Visit</option>
-						<option @if($data->kategori=="Wawancara Akhir") selected="" @endif value="Wawancara Akhir">Wawancara Akhir</option>
-						<option @if($data->kategori=="MOU") selected="" @endif value="MOU">MOU</option>
-					</select>
-				</div>
-				<div class="col-75">
-					<label for="tahun">Keterangan</label>
-					<input type="text" value="{{$data->keterangan}}" class="form-control" name="keterangan">
-				</div>
-				<div class="col-75">
-					<label for="jbPUB">Periode</label>
-					<select id="keterangan" name="id_tahun">
-						@foreach($tahun as $datas)
-							<option @if($data->id_tahun==$datas->id) selected="" @endif value="{{$datas->id}}">{{$datas->tahun}}</option>
-						@endforeach
-						
-					</select>
-				</div>
+					<div class="col-75">
+							<label for="jbPUB">Kategori</label>
+							<select id="keterangan" name="kategori">
+								<option @if($data->kategori=="Sosialisasi") selected="" @endif value="Sosialisasi">Sosialisasi</option>
+								<option @if($data->kategori=="TPA") selected="" @endif value="TPA">TPA</option>
+								<option @if($data->kategori=="Psikotest") selected="" @endif value="Psikotest">Psikotest</option>
+								<option @if($data->kategori=="Home Visit") selected="" @endif value="Home Visit">Home Visit</option>
+								<option @if($data->kategori=="Wawancara Akhir") selected="" @endif value="Wawancara Akhir">Wawancara Akhir</option>
+								<option @if($data->kategori=="MOU") selected="" @endif value="MOU">MOU</option>
+							</select>
+						</div>
+						<div class="col-75">
+							<label for="tahun">Keterangan</label>
+							<input type="text" value="{{$data->keterangan}}" class="form-control" name="keterangan">
+						</div>
+						<div class="col-75">
+							<label for="jbPUB">Periode</label>
+							<select id="keterangan" name="id_tahun">
+								@foreach($tahun as $datas)
+									<option @if($data->id_tahun==$datas->id) selected="" @endif value="{{$datas->id}}">{{$datas->tahun}}</option>
+								@endforeach
+								
+							</select>
+						</div>
 
+				</div>
+				<br>
+				<div class="row" align="center">
+					<input type="submit" value="Simpan">
+						</div>
+					</div>
+				</form>
+				@endforeach
+			</div>
 		</div>
-		<br>
-		<div class="row" align="center">
-			<input type="submit" value="Simpan">
-		</div>
-	</form>
-	@endforeach
+	</div>
 </div>
+
 @include('tampilan.foot')
 
-	

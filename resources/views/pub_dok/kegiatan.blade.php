@@ -110,7 +110,7 @@
 						<td>{{$keg->tema}}</td>
 					<td>{{$keg->keterangan}}</td>
 					<td><img src="{{url('imgs/kegiatan')}}/{{$keg->file}}" width="200px"></td>
-					<td><a href="{{url('hapus/kegiatan/'.$keg->id_pubdok)}}"><button class="btn btn-primary" style="background-color: red;">Hapus</button></a>&nbsp;&nbsp;<a href="{{url('edit/kegiatan/'.$keg->id_pubdok)}}"><button class="btn btn-primary">Edit</button></a></td>
+					<td><a href="{{url('hapus/kegiatan/'.$keg->id_pubdok)}}" onclick="return confirm('Hapus data ?');"><button class="btn btn-primary" style="background-color: red;">Hapus</button></a>&nbsp;&nbsp;<a href="{{url('edit/kegiatan/'.$keg->id_pubdok)}}"><button class="btn btn-primary">Edit</button></a></td>
 				</tr>
 				@endforeach
 				
