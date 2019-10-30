@@ -191,11 +191,11 @@ class mahasiswaController extends Controller
             $tujuan_upload = ('imgs/mahasiswa');
             $file->move($tujuan_upload,$nama_file);
             DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->update([
-                'nama'=>$request->Tname,'NIM'=>$request->nim,'id_daerah'=>$request->daerah,'id_angkatan'=>$request->angkatan,'id_sekolah'=>$request->skl,'id_statusSos'=>$request->spkw,'id_orgpub'=>$request->jbPUB,'id_orgppmb'=>$request->jbPPMB,'id_jur'=>$request->jurusan, 'id_statusPub'=>$request->alm,'jenis_kelamin'=>$request->kelamin,'id_statusPub'=>$request->st_pub,'file'=>$nama_file
+                'nama'=>$request->Tname,'NIM'=>$request->nim,'id_daerah'=>$request->daerah,'id_angkatan'=>$request->angkatan,'id_sekolah'=>$request->skl,'id_statusSos'=>$request->spkw,'id_orgpub'=>$request->jbPUB,'id_orgppmb'=>$request->jbPPMB,'id_jur'=>$request->jurusan, 'id_statusPub'=>$request->alm,'jenis_kelamin'=>$request->kelamin,'id_statusPub'=>$request->st_pub,'file'=>$nama_file,'no_telp'=>$request->telp
             ]);
         }else{
             DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->update([
-                'nama'=>$request->Tname,'NIM'=>$request->nim,'id_daerah'=>$request->daerah,'id_angkatan'=>$request->angkatan,'id_sekolah'=>$request->skl,'id_statusSos'=>$request->spkw,'id_orgpub'=>$request->jbPUB,'id_orgppmb'=>$request->jbPPMB,'id_jur'=>$request->jurusan, 'id_statusPub'=>$request->alm,'jenis_kelamin'=>$request->kelamin,'id_statusPub'=>$request->st_pub
+                'nama'=>$request->Tname,'NIM'=>$request->nim,'id_daerah'=>$request->daerah,'id_angkatan'=>$request->angkatan,'id_sekolah'=>$request->skl,'id_statusSos'=>$request->spkw,'id_orgpub'=>$request->jbPUB,'id_orgppmb'=>$request->jbPPMB,'id_jur'=>$request->jurusan, 'id_statusPub'=>$request->alm,'jenis_kelamin'=>$request->kelamin,'id_statusPub'=>$request->st_pub,'no_telp'=>$request->telp
             ]);
         }
         
