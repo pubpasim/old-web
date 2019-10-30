@@ -732,6 +732,7 @@ public function organisasi_pub(Request $request)
     }
     public function kegiatanPub_filter(Request $request,$id,$div)
     {
+        $lempar=$request->select;
         $keg=DB::table('tb_pubdok')
         ->join('tb_angkatan','tb_pubdok.id_angkatan','=','tb_angkatan.id_angkatan')
         ->select('tb_pubdok.id_angkatan','tb_pubdok.id_pubdok','tb_pubdok.file','tb_pubdok.keterangan','tb_pubdok.tema')
@@ -828,11 +829,48 @@ public function pembinaPub()
 
 
     public function kegiatanPub_pilihdiv(Request $request){
-        $keg=DB::table('tb_pubdok')
-        ->join('tb_angkatan','tb_pubdok.id_angkatan','=','tb_angkatan.id_angkatan')
-        ->select('tb_pubdok.id_angkatan','tb_pubdok.id_pubdok','tb_pubdok.file','tb_pubdok.keterangan','tb_pubdok.tema')
-        ->where('tb_pubdok.id_angkatan',$request->select)->get();
-        return view('user.pilihdivisi',compact('keg'));
+        $kes=DB::table('tb_pubdok')
+        ->where('tb_pubdok.id_angkatan',$request->select)
+        ->where('tb_pubdok.tema','Divisi Kesehatan');
+        $kes2=$kes->count();
+        $kes=$kes->first();
+
+        $keb=DB::table('tb_pubdok')
+        ->where('tb_pubdok.id_angkatan',$request->select)
+        ->where('tb_pubdok.tema','Divisi Kebersihan');
+        $keb2=$keb->count();
+        $keb=$keb->first();
+
+        $magang=DB::table('tb_pubdok')
+        ->where('tb_pubdok.id_angkatan',$request->select)
+        ->where('tb_pubdok.tema','Divisi Magang');
+        $magang2=$magang->count();
+        $magang=$magang->first();
+
+        $pendidikan=DB::table('tb_pubdok')
+        ->where('tb_pubdok.id_angkatan',$request->select)
+        ->where('tb_pubdok.tema','Divisi Pendidikan');
+        $pendidikan2=$pendidikan->count();
+        $pendidikan=$pendidikan->first();
+
+        $kerohanian=DB::table('tb_pubdok')
+        ->where('tb_pubdok.id_angkatan',$request->select)
+        ->where('tb_pubdok.tema','Divisi Kerohanian');
+        $kerohanian2=$kerohanian->count();
+        $kerohanian=$kerohanian->first();
+
+        $kesejahteraan=DB::table('tb_pubdok')
+        ->where('tb_pubdok.id_angkatan',$request->select)
+        ->where('tb_pubdok.tema','Divisi Kesejahteraan');
+        $kesejahteraan2=$kesejahteraan->count();
+        $kesejahteraan=$kesejahteraan->first();
+
+        $keasramaan=DB::table('tb_pubdok')
+        ->where('tb_pubdok.id_angkatan',$request->select)
+        ->where('tb_pubdok.tema','Divisi Keasramaan');
+        $keasramaan2=$keasramaan->count();
+        $keasramaan=$keasramaan->first();        
+        return view('user.pilihdivisi',compact('kes','kes2','keb','keb2','magang','magang2','pendidikan','pendidikan2','kerohanian','kerohanian2','kesejahteraan','kesejahteraan2','keasramaan','keasramaan2'));
     }
    
     public function orgIkatanAlumni(Request $request)
