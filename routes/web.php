@@ -149,6 +149,9 @@ Route::get('tampilan/daerah/delet/{id}','daerahController@destroy');
 
 Route::get('tampilan/angkatan/viewang','angkatanController@index');
 Route::get('tampilan/angkatan/createang','angkatanController@create');
+Route::get('tampilan/angkatan/hapus/{x}','angkatanController@destroy');
+Route::get('tampilan/angkatan/{x}','angkatanController@edit');
+Route::post('tampilan/angkatan/{x}','angkatanController@update');
 
 Route::get('tampilan/daerah/viewdae','daerahController@index');
 Route::get('tampilan/daerah/createdae','daerahController@create');
@@ -325,6 +328,13 @@ Route::get('hapusDok/{x}', 'ppmbDokController@hapusDok');
 Route::get('editDok/{x}', 'ppmbDokController@editDok');
 Route::post('updateDok/{x}', 'ppmbDokController@updateDok');
 
+Route::get('dataHome/{x}', 'hasilController@dataHome');
+Route::get('tambahHome/{x}', 'hasilController@tambahHome');
+Route::post('storeHome/{x}', 'hasilController@storeHome');
+Route::get('hapusHome/{x}', 'hasilController@hapusHome');
+Route::get('editHome/{x}', 'hasilController@editHome');
+Route::post('updateHome/{x}', 'hasilController@updateHome');
+
 
 //===================================USER=================================//
 Route::get('/','userController@index');
@@ -384,6 +394,9 @@ Route::get('user_tpa/{x}','userController@user_tpa');
 Route::get('user_wawancara_akhir/{x}','userController@user_wawancara_akhir');
 Route::get('user_psikotes/{x}','userController@user_psikotes');
 Route::get('user_final/{x}','userController@user_final');
+
+Route::get('user_home/{x}','userController@user_home');
+
 Route::get('org_ikatan_alumni', 'userController@OrgIkatanAlumni');
 Route::get('keg_ikatan_alumni', 'userController@KegIkatanAlumni');
 Route::get('user_infaq', 'userController@user_infaq');
@@ -429,6 +442,8 @@ Route::get('hapusPertanyaan/{x}', 'userController@hapusPertanyaan');
 
 //================================ADMIN ALUMNI=============================//
 
+Route::post('akunEdit/{x}','alumni_adminController@akunEdit');
+Route::get('admin/alumni/akun/{x}','alumni_adminController@akun');
 Route::get('admin/alumni/{x}','alumni_adminController@index');
 Route::get('admin/alumni/profile/{x}','alumni_adminController@profile');
 Route::get('admin/alumni/aktivitas/{x}','alumni_adminController@aktivitas');

@@ -26,22 +26,25 @@ class userController extends Controller
      $ppmb=DB::table('tb_dokumentasi')->orderby('id_dok','DESC')->limit('10')->get();
      $chat=DB::table('tb_pertanyaan')->get();
 
-     return view('user.index',compact('kegiatan','ppmb','chat'));
- }
- public function hasilSeleksi()
- {
-    $tpa="";
-    $lempar="";
-    $tahun = DB::table('tb_tahunSel')->get();
-    return view('user.hasilSeleksi',compact('tahun','lempar','tpa'));
-}
-public function tampilSeleksi(Request $request)
-{
-    $tpa="";
-    $lempar = $request->tahun;
-    $tahun = DB::table('tb_tahunSel')->get();
-    return view('user.hasilSeleksi',compact('tahun','lempar','tpa'));
-}
+        return view('user.index',compact('kegiatan','ppmb','chat'));
+    }
+    public function hasilSeleksi()
+    {
+        $tpa="";
+        $lempar="";
+        $tahun = DB::table('tb_tahunSel')->get();
+        $periode = "";
+        return view('user.hasilSeleksi',compact('tahun','lempar','tpa','periode'));
+    }
+    public function tampilSeleksi(Request $request)
+    {
+        $tpa="";
+        $lempar = $request->tahun;
+        $tahun = DB::table('tb_tahunSel')->get();
+        $x = DB::table('tb_tahunSel')->where('id',$request->tahun)->first();
+        $periode = $x->tahun;
+        return view('user.hasilSeleksi',compact('tahun','lempar','tpa','periode'));
+    }
 
 public function user_infaq()
 {
@@ -105,18 +108,22 @@ public function user_dok_ppmb()
 public function user_lulus_tpa($id)
 {
     $lulus = DB::table('tb_tpa')->where('id_tpa',$id)->first();
-    $tpa = DB::table('tb_lulus_tpa')->where('fk_tpa',$id)->get();
+    $tpa = DB::table('tb_lulus_tpa')->orderBy('nama','asc')->where('fk_tpa',$id)->get();
     $back = $lulus->id_tahun;
-    return view('user.user_lulus_tpa',compact('id','tpa','back'));
+    $daerah = $lulus->daerah;
+    $periode = DB::table('tb_tahunSel')->where('id',$back)->first();    
+    return view('user.user_lulus_tpa',compact('id','tpa','back','periode','daerah'));
 }
 
 public function user_wawancara_akhir($id)
 {
     $survei = DB::table('tb_survei')
-    ->select('tb_survei.*','tb_lulus_tpa.nama')
+    ->select('tb_survei.*','tb_lulus_tpa.*')
     ->join('tb_lulus_tpa','tb_survei.nama_peserta','tb_lulus_tpa.id_lulus')
+    ->orderBy('tb_lulus_tpa.nama','ASC')
     ->where('id_tahun3',$id)->get();
-    return view('user.user_survei',compact('survei','id'));
+    $periode = DB::table('tb_tahunSel')->where('id',$id)->first();
+    return view('user.user_survei',compact('survei','id','periode'));
 }
 
 public function user_tpa($id)
@@ -124,26 +131,29 @@ public function user_tpa($id)
     $tpa = DB::table('tb_tpa')
     ->orderBy('tb_tpa.daerah','ASC')
     ->where('id_tahun',$id)->get();
-    return view('user.user_tpa',compact('tpa','id'));
+    $periode = DB::table('tb_tahunSel')->where('id',$id)->first();
+    return view('user.user_tpa',compact('tpa','id','periode'));
 }
-public function user_survei($id)
+public function user_home($id)
 {
-    $survei = DB::table('tb_survei')
-    ->select('tb_survei.*','tb_lulus_tpa.nama')
-    ->join('tb_lulus_tpa','tb_survei.nama_peserta','tb_lulus_tpa.id_lulus')
+    $home = DB::table('tb_home')
+    ->select('tb_home.*','tb_lulus_tpa.*')
+    ->join('tb_lulus_tpa','tb_home.nama_peserta','tb_lulus_tpa.id_lulus')
     ->orderBy('tb_lulus_tpa.nama','ASC')
-    ->where('id_tahun3',$id)->get();  
-    return view('user.user_survei',compact('survei','id'));
+    ->where('id_tahun5',$id)->get();  
+    $periode = DB::table('tb_tahunSel')->where('id',$id)->first();
+    return view('user.user_home',compact('home','id','periode'));
 }
 public function user_psikotes($id)
 {
     $psi = DB::table('tb_psikotest')
-    ->select('tb_psikotest.*','tb_lulus_tpa.nama')
+    ->select('tb_psikotest.*','tb_lulus_tpa.*')
     ->join('tb_lulus_tpa','tb_psikotest.nama_peserta','tb_lulus_tpa.id_lulus')
     ->where('id_tahun2',$id)
     ->orderBy('tb_lulus_tpa.nama','ASC')
     ->get();
-    return view('user.user_psikotes',compact('psi','id'));
+    $periode = DB::table('tb_tahunSel')->where('id',$id)->first();
+    return view('user.user_psikotes',compact('psi','id','periode'));
 }
 public function user_final($id)
 {
@@ -152,8 +162,9 @@ public function user_final($id)
     ->join('tb_lulus_tpa','tb_final.nama_peserta','tb_lulus_tpa.id_lulus')
     ->orderBy('tb_lulus_tpa.nama','ASC')
     ->where('id_tahun4',$id)->get();
+    $periode = DB::table('tb_tahunSel')->where('id',$id)->first();
 
-    return view('user.user_final',compact('final'));
+    return view('user.user_final',compact('final','periode'));
 }
 public function user_alumni()
 {

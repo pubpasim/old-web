@@ -91,15 +91,7 @@
 						<option>Laki - Laki</option>
 						<option>Perempuan</option>
 					</select>
-				</div>
-				<div class="col-75">
-					<label for="Sekolah">Tempat Lahir</label>
-					<input type="text" class="form-control" placeholder="Tempat Lahir" name="tempat">
-				</div>
-				<div class="col-75">
-					<label for="Sekolah">Tanggal Lahir</label>
-					<input type="date" class="form-control" placeholder="tgl" name="tanggal">
-				</div>
+				</div>				
 				<div class="col-75">
 					<label for="Sekolah">Daerah</label>
 					<input type="text" class="form-control" placeholder="Daerah" name="daerah">
@@ -107,16 +99,6 @@
 				<div class="col-75">
 					<label for="Sekolah">Sekolah</label>
 					<input type="text" class="form-control" placeholder="Sekolah" name="sekolah">
-				</div>
-
-				<div class="col-75">
-					<label for="Sekolah">Alamat</label>
-					<input type="text" class="form-control" placeholder="Alamat" name="alamat">
-				</div>
-				<div class="col-75">
-					<label for="Sekolah">No_Hp</label>
-					<input type="number" class="form-control" placeholder="No Hp" name="no_hp">
-				</div>
 				
 
 			</div>

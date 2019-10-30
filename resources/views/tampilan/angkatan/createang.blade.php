@@ -1,10 +1,11 @@
 @include('tampilan.head')		
+<div class="container">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">DaftraAngkatan PUB</h1>
+			<h1 class="page-header">Daftar Angkatan PUB</h1>
 		</div>
 	</div><!--/.row-->
-	<div class="row">
+	<div class="row" style="padding: 20px;">
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<form method="POST" action="{{URL('angkatanModel')}}" Class="form-horizontal" id="block-validate" style="margin-left: 30px;">
@@ -31,5 +32,5 @@
 			</div>
 		</div>
 	</div>
-	
+</div>
 @include('tampilan.foot')

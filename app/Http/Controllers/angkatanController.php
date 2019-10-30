@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use DB;
 class angkatanController extends Controller
 {
     /**
@@ -16,7 +17,7 @@ class angkatanController extends Controller
      */
     public function index()
     {
-        $ang=angkatanModel::all();
+        $ang=DB::table('tb_angkatan')->orderBy('angkatan','ASC')->get();
         return view('tampilan/angkatan/viewang',compact('ang'));
     }
 
@@ -38,7 +39,7 @@ class angkatanController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $ang=new angkatanModel();
         $ang->nama_angkatan=$request->nama_angkatan;
         $ang->angkatan=$request->angkatan;
@@ -55,7 +56,7 @@ class angkatanController extends Controller
      */
     public function show($id)
     {
-        
+
     }
 
     /**
@@ -92,7 +93,17 @@ class angkatanController extends Controller
      */
     public function destroy($id)
     {
-        $ang=angkatanModel::where('id_angkatan',$id)->delete();
-       return redirect('tampilan/angkatan/viewang');
+        $mh=DB::table('tb_mahasiswa')->where('id_angkatan',$id)->count();
+        $ppmb=DB::table('tb_detorg_ppmb')->where('id_angkatan',$id)->count();
+        $pub=DB::table('tb_detorg_pub')->where('id_angkatan',$id)->count();
+        $pub_dok=DB::table('tb_pubdok')->where('id_angkatan',$id)->count();
+        $ppmb_dok=DB::table('tb_ppmb_dok')->where('id_angkatan',$id)->count();
+        if($mh>0 || $ppmb>0 || $pub>0 || $pub_dok>0 || $ppmb_dok>0){
+            return redirect('tampilan/angkatan/viewang')->with('alert','Data sedang digunakan di tabel lain!');
+        }else{
+            $ang=angkatanModel::where('id_angkatan',$id)->delete();
+            return redirect('tampilan/angkatan/viewang');
+        }
+        
     }
 }

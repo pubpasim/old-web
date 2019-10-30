@@ -93,28 +93,38 @@
 			}
 
 		</style>
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Edit Jabatan Organisasi</h1>
+			</div>
+		</div><!--/.row-->
 
-			<h1>Edit Data</h1>
-			<div class="container">
-				@foreach ($organisasi as $data)
-				<form method="POST" action="{{URL('struktur_organisasi/'.$data->id_orgpub)}}" Class="form-horizontal" id="block-validate">
-					{{csrf_field()}}
-					<div class="row">
-						<div class="panel-heading">INPUT DATA</div>
-						<div class="panel-body">
-							<div class="col-md-6">
-								<form role="form">
-									
-									<div class="form-group">
-										<label>JABATAN</label>
-										<input type="text" name="jabatan_pub" value="{{$data->jabatan_pub}}">
-									</div>
-									<button type="submit" name="submit" class="btn btn-primary">SIMPAN DATA </button>
-								</form>
+		<div class="row" >
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">INPUT DATA</div>
+					@foreach ($organisasi as $data)
+					<form  method="POST" action="{{URL('struktur_organisasi/'.$data->id_orgpub)}}" Class="form-horizontal" id="block-validate">
+						{{csrf_field()}}
+						<div class="row" style="padding: 20px;">
+							
+							<div class="panel-body">
+								<div class="col-md-6">
+									<form role="form">
+
+										<div class="form-group">
+											<label>JABATAN</label>
+											<input type="text" name="jabatan_pub" value="{{$data->jabatan_pub}}">
+										</div>
+										<button type="submit" name="submit" class="btn btn-primary">SIMPAN DATA </button>
+									</form>
+								</div>
 							</div>
 						</div>
-					</div>
-				</form>
-				@endforeach
+					</form>
+					@endforeach
+				</div>
 			</div>
+		</div>
+
 		@include('tampilan.foot')

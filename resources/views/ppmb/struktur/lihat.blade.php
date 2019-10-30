@@ -10,8 +10,9 @@
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">DATA PANITIA PPMB</div>
-					<a href="struktur_ppmb/create"><button type="submit" class="btn btn-primary">Tambah Data </button></a>
+					
 					<div class="panel-body">
+						<a href="struktur_ppmb/create"><button type="submit" class="btn btn-primary">Tambah Data </button></a>
 						<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="asc">
 							<thead>
 								<tr align="center">  
