@@ -1,4 +1,4 @@
-<?php
+id<?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -16,7 +16,8 @@ class CreateTbJadwalSurvey extends Migration
         Schema::create('tb_jadwal_survey', function (Blueprint $table) {
             $table->increments('id_jad_survey');
             $table->integer('id_daerah')->unsigned();
-            $table->string('waktu');
+            $table->string('tanggal_awal');
+            $table->string('tanggal_akhir');
             $table->string('jumlah_peserta');
             $table->integer('id_periode')->unsigned();
             $table->timestamps();

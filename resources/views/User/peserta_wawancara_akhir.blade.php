@@ -1,5 +1,6 @@
 
 @include('User.header')
+@include('lib_tgl')
 <style type="text/css">
 
 	#header {
@@ -25,7 +26,7 @@
 	<div >
 		<h2 align="center"><b>PESERTA WAWANCARA AKHIR</b></h4>
 			<h4 align="center"><b>PEMBERDAYAAN UMAT BERKELANJUTAN (PUB)</b></h4>
-			<h4 align="center"><b></b></h4>
+			<h4 align="center"><b>PERIODE {{$tahun->periode}} </b></h4>
 
 		</div>
 		<div>
@@ -38,7 +39,8 @@
 						<th>NAMA PESERTA</th>	
 						<th>ASAL DAERAH</th>
 						<th>ASAL SEKOLAH</th>
-						<th>WAKTU PELAKSANAAN</th>
+						<th>HARI</th>
+						<th>TANGGAL</th>
 					</tr>
 				</thead>
 				
@@ -49,7 +51,8 @@
 						<td>{{$data->peserta}}</td>
 						<td>{{$data->kab_kot}}</td>
 						<td>{{$data->sekolah}}</td>
-						<td>Hari ke-{{$data->hari}}, Tanggal {{$data->tanggal}}</td>
+						<td>Ke- {{$data->hari}}</td> 
+						<td><p><?php echo  tglIndo($data->tanggal,true); ?></p> </td>
 					</tr>
 					@endforeach
 					

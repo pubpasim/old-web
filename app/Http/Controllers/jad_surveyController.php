@@ -105,6 +105,6 @@ class jad_surveyController extends Controller
     public function destroy($id)
     {
         DB::table('tb_jadwal_survey')->where('id_jad_survey',$id)->delete();
-        return redirect('jad_survey');
+        return redirect('/jad_survey');
     }
 }
