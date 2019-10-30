@@ -6,11 +6,8 @@
 				<th>No</th>
 				<th>Nama</th>
 				<th>Jenis Kelamin</th>
-				<th>TTL</th>
 				<th>Asal Daerah</th>
 				<th>Asal Sekolah</th>
-				<th>Alamat</th>
-				<th>No Hp</th>				
 			</tr>
 		</thead>
 		<tbody>
@@ -20,11 +17,8 @@
 				<td>{{ $no++}}</td>
 				<td>{{ $data->nama}}</td>
 				<td>{{ $data->jk}}</td>
-				<td>{{ $data->tempat}}, {{ $data->tanggal}}</td>
 				<td>{{ $data->daerah}}</td>
 				<td>{{ $data->sekolah}}</td>
-				<td>{{ $data->alamat}}</td>
-				<td>{{ $data->no_hp}}</td>				
 			</tr>
 			@endforeach
 		</tbody>						    
