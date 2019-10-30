@@ -125,7 +125,7 @@
 
 					<li><a @if(\Session::get("level")=="admin_pub" || \Session::get("level")=="ikatan_alumni" ) id="hide" @endif href="{{url('struktur_ppmb')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Jabatan PPMB</a></li>
 
-					<li><a href="{{url('kateg_jadwal_ppmb')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Kategori Tes PPMB</a></li>
+					<li><a href="{{url('kategori_jadwal_ppmb')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Kategori Tes PPMB</a></li>
 
 					<li><a href="{{url('jadwal_ppmb')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Kegiatan Tes PPMB</a></li>
 

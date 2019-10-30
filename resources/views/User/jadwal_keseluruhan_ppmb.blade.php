@@ -1,5 +1,8 @@
 
 @include('User.header')
+@include('lib_tgl')
+
+
 <style type="text/css">
 
 	#header {
@@ -20,6 +23,17 @@
 		border: 1px solid black;
 		color:black ;
 	}
+	#text-position{
+		text-align:center;
+		font-weight: bold;
+		color:black ;
+	}
+	#text-keg{
+		font-weight: bold;
+		color:black ;	
+	}
+
+	
 
 </style>
 <div id="design">
@@ -28,8 +42,8 @@
 		<h2>Pilih Periode</h2>
 		
 		<div>
-			<select name="select_periode"  >
-				<option value="0" >--Pilih Periode--</option>
+			<select name="select_periode" id="periode"  >
+				<option value="0">--Pilih Periode--</option>
 				@foreach($periode as $data)
 				<option value="{{$data->id_periode}}">
 					Periode {{$data->periode }}
@@ -45,22 +59,22 @@
 	<div >
 		<h2 align="center"><b>JADWAL PENERIAMAAN MAHASISWA/I BARU PUB</b></h4>
 			<h4 align="center"><b>PEMBERDAYAAN UMAT BERKELANJUTAN (PUB)</b></h4>
-			<h4 align="center"><b>PERIODE </b></h4>
-
+			<h4 align="center"><b>PERIODE {{$tahun->periode}} </b></h4>
+ 
 		</div>
 		<div>
 			
 			<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc" data-pagination="25"  >
 				<thead>
 					<tr id="header" bgcolor="#FFFF0">
-						<th>NO</th>
-						<th>KEGIATAN</th>
-						<th>TANGGAL</th>
+						<th><p  id="text-position">NO</p></th>
+						<th><p  id="text-position">KEGIATAN</p></th>
+						<th><p  id="text-position">TANGGAL</p></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td align="center"><b>I</b></td>
+						<td align="center"><p  id="text-position">I</p></td>
 						<td><a href="{{url('daerah_sos_ppmb_user/'.$lempar)}}"><b><h5>SOSIALISASI</b></h5></a></td>
 						<td></td>
 					</tr>
@@ -71,15 +85,15 @@
 							<p>Data Kosong</p>
 							@else
 							<td></td>
-							<td>
-								<p><h5>{{$jad_sos->kegiatan}}</h5></p>   
+							<td align="center">	
+								<h5><p  id="text-keg">{{$jad_sos->kegiatan}}</p></h5>
 							</td>                                                                           
-							<td>{{$jad_sos->tanggal_awal}} s/d {{$jad_sos->tanggal_akhir}}</td>
+							<td><p  id="text-position"><?php echo  tglIndo($jad_sos->tanggal_awal)."&nbsp"."s/d"."&nbsp". tglIndo($jad_sos->tanggal_akhir); ?> </p></td>
 						</tr>
 						@endif
 						<tr>
-							<td align="center"><b>II</b></td>
-							<td><a href="{{url('jadwal_tpa_user')}}"><b><h5>TES POTENSIAL AKADEMIK (TPA) & WAWANCARA AWAL</b></h5></a></td>
+							<td align="center"><p  id="text-position">II</p></td>
+							<td><a href="{{url('jadwal_tpa_user/'.$lempar)}}"><b><h5>TES POTENSIAL AKADEMIK (TPA) & WAWANCARA AWAL</b></h5></a></td>
 							<td></td>
 						</tr>
 						@If($jad_tpa2==0)
@@ -90,14 +104,15 @@
 								@else
 
 							</td>
+							<td></td>
 							<td >
-								<p><h5>{{$jad_tpa->kegiatan}}</h5></p>   
+								<h5><p  id="text-keg">{{$jad_tpa->kegiatan}}</p></h5> 
 							</td>                                                                                
-							<td>{{$jad_tpa->tanggal_awal}} s/d {{$jad_tpa->tanggal_akhir}}</td>
+							<td><p  id="text-position"><?php echo  tglIndo($jad_tpa->tanggal_awal)."&nbsp"."s/d"."&nbsp". tglIndo($jad_tpa->tanggal_akhir); ?> </p></td>
 						</tr>
 						@endif
 						<tr>
-							<td align="center"><b>III</b></td>
+							<td align="center"><p  id="text-position">III</p></td>
 							<td><a href="#"><b><h5>PSIKOTES</b></h5></a></td>
 							<td></td>
 						</tr>
@@ -111,9 +126,9 @@
 							</td>
 							<td></td>
 							<td>
-								<p><h5>{{$jad_psikotes->kegiatan}}</h5></p>
+								<h5><p  id="text-keg">{{$jad_psikotes->kegiatan}}</p></h5>
 							</td>                                                                   
-							<td>{{$jad_psikotes->tanggal_awal}} s/d {{$jad_psikotes->tanggal_akhir}}</td>
+							<td><p  id="text-position"><?php echo  tglIndo($jad_psikotes->tanggal_awal);?></p> </td>
 						</tr>
 						@endif
 						@if($jad_pengumu_psiko2==0)
@@ -126,15 +141,15 @@
 							</td>
 							<td></td>
 							<td>
-								<p><h5>{{$jad_pengumu_psiko->kegiatan}}</h5></p>
+								<h5><p  id="text-keg">{{$jad_pengumu_psiko->kegiatan}}</p></h5>
 							</td>                                                                          
-							<td>{{$jad_pengumu_psiko->tanggal_awal}} s/d {{$jad_pengumu_psiko->tanggal_akhir}}</td>
+							<td><p  id="text-position"><?php echo  tglIndo($jad_pengumu_psiko->tanggal_awal)."&nbsp"."s/d"."&nbsp". tglIndo($jad_pengumu_psiko->tanggal_akhir); ?></p> </td>
 						</tr>
 						@endif
 
 						<tr>
-							<td align="center"><b>IV</b></td>
-							<td><a href="{{url('jadwal_survey_user')}}"><b><h5>HOME VISIT / SURVEY</b></h5></a></td>
+							<td align="center"><p  id="text-position">IV</p></td>
+							<td><a href="{{url('jadwal_survey_user/'.$lempar)}}"><b><h5>HOME VISIT / SURVEY</b></h5></a></td>
 							<td></td>
 						</tr>
 						@if($jad_survey2==0)
@@ -146,14 +161,14 @@
 							</td>
 							<td></td>
 							<td>
-								<p><h5>{{$jad_survey->kegiatan}}</h5></p> 
+								<h5><p  id="text-keg">{{$jad_survey->kegiatan}}</p></h5> 
 							</td>                                                                         
-					<td>{{$jad_survey->tanggal_awal}} s/d {{$jad_survey->tanggal_akhir}}</td>
+					<td><p  id="text-position"><?php echo  tglIndo($jad_survey->tanggal_awal)."&nbsp"."s/d"."&nbsp". tglIndo($jad_survey->tanggal_akhir); ?> </p></td>
 				</tr>
 				@endif		
 				<tr>
-					<td align="center"><b>V</b></td>
-					<td><a href="{{url('jadwal_wawancara_akhir_user')}}"><b><h5>WAWANCARA AKHIR</b></h5></a></td>
+					<td align="center"><p  id="text-position">V</p></td>
+					<td><a href="{{url('jadwal_wawancara_akhir_user/'.$lempar)}}"><b><h5>WAWANCARA AKHIR</b></h5></a></td>
 					<td></td>
 				</tr>
 				@if($jad_wawancara_akhir2==0)
@@ -165,9 +180,9 @@
 					</td>
 					<td></td>
 					<td>
-						<p><h5>{{$jad_wawancara_akhir->kegiatan}}</h5></p>   
+						<h5><p  id="text-keg">{{$jad_wawancara_akhir->kegiatan}}</p></h5>   
 					</td>                                                                         
-					<td>{{$jad_wawancara_akhir->tanggal_awal}} s/d {{$jad_wawancara_akhir->tanggal_akhir}}</td>
+					<td><p  id="text-position"><?php echo  tglIndo($jad_wawancara_akhir->tanggal_awal)."&nbsp"."s/d"."&nbsp". tglIndo($jad_wawancara_akhir->tanggal_akhir); ?> </p></td>
 				</tr>
 				@endif
 				@if($jad_pengu_wawancara_akhir2==0)
@@ -179,13 +194,13 @@
 					</td>
 					<td></td>
 					<td>
-						<p><h5>{{$jad_pengu_wawancara_akhir->kegiatan}}</h5></p>   
+						<h5><p  id="text-keg">{{$jad_pengu_wawancara_akhir->kegiatan}}</p></h5>   
 					</td>                                                                         
-					<td>{{$jad_pengu_wawancara_akhir->tanggal_awal}} s/d {{$jad_pengu_wawancara_akhir->tanggal_akhir}}</td>
+					<td><p  id="text-position"><?php echo  tglIndo($jad_pengu_wawancara_akhir->tanggal_awal)."&nbsp"."s/d"."&nbsp". tglIndo($jad_pengu_wawancara_akhir->tanggal_akhir); ?></p> </td>
 				</tr>
 				@endif
 				<tr>
-					<td align="center"><b>VI</b></td>
+					<td align="center"><p  id="text-position">VI</p></td>
 					<td><h5 style="color: darkcyan; font-weight: bold;">HASIL PENERIMAAN AKHIR PUB(MOU)</b></h5></td>
 					<td></td>
 				</tr>
@@ -198,9 +213,9 @@
 					</td>
 					<td></td>
 					<td>
-						<p><h5>{{$jad_pelak_mou->kegiatan}}</h5></p>   
+						<h5><p  id="text-keg">{{$jad_pelak_mou->kegiatan}}</p></h5>   
 					</td>                                                                           
-					<td>{{$jad_pelak_mou->tanggal_awal}} s/d {{$jad_pelak_mou->tanggal_akhir}}</td>
+					<td><p  id="text-position"><?php echo  tglIndo($jad_pelak_mou->tanggal_awal); ?></p> </td>
 				</tr>
 				@endif
 			</tbody>
@@ -208,6 +223,7 @@
 	</div>
 </div>
 </div>	
+
 
 @include('User.footer')
 

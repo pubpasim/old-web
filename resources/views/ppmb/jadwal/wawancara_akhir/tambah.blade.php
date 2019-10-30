@@ -54,7 +54,7 @@
 										<label></label>
 										<option value="0"> --Waktu Pelaksanaan--</option>
 										<option value="1">Hari Pertama</option>
-										<option value="2">Hari Pertama</option>
+										<option value="2">Hari Kedua</option>
 										<option value="3">Hari Ketiga</option>
 									</select>
 								</div>

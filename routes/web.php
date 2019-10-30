@@ -86,8 +86,8 @@ Route::get('/daerah_sos_ppmb','daerah_sosController@index');
 Route::get('/daerah_sos_ppmb/create','daerah_sosController@create');
 Route::post('/daerah_sos_ppmb/store','daerah_sosController@store');
 Route::get('/daerah_sos_ppmb/edit/{id}','daerah_sosController@edit');
-Route::post('/daerah_sos_ppmb/update','daerahsosController@update');
-Route::get('/daerah_sos_ppmb/delete/{id}','daerahsosController@destroy');
+Route::post('/daerah_sos_ppmb/update/{x}','daerah_sosController@update');
+Route::get('/daerah_sos_ppmb/delete/{id}','daerah_sosController@destroy');
 
 //jadwal_tpa
 Route::get('/jad_tpa','jad_tpaController@index'); 
@@ -103,7 +103,7 @@ Route::get('jad_survey/create','jad_surveyController@create');
 Route::post('/jad_survey/store','jad_surveyController@store');
 Route::get('/jad_survey/edit/{id}','jad_surveyController@edit');
 Route::post('/jad_survey/update','jad_surveyController@update');
-Route::get('/jad_survey/{id}','jad_surveyController@destroy');
+Route::get('/jad_survey/delete/{id}','jad_surveyController@destroy');
 
 
 //peserta wawancara
@@ -112,7 +112,7 @@ Route::get('jad_wawancara_akhir/create','peserta_wawancara_akhirController@creat
 Route::post('/jad_wawancara_akhir/store','peserta_wawancara_akhirController@store');
 Route::get('/jad_wawancara_akhir/edit/{id}','peserta_wawancara_akhirController@edit');
 Route::post('/jad_wawancara_akhir/update','peserta_wawancara_akhirController@update');
-Route::get('/jad_wawancara_akhir/{id}','peserta_wawancara_akhirController@destroy');
+Route::get('/jad_wawancara_akhir/delete/{id}','peserta_wawancara_akhirController@destroy');
 //d
 
 //periode
@@ -362,9 +362,9 @@ Route::get('/jadwal_ppmb_user','UserController@jadwal_keseluruhan_ppmb');
 Route::post('/detailjadwal_ppmb_user','UserController@detailjadwal_keseluruhan_ppmb');
 Route::get('sosialisasi_kesekolah/{x}','userController@sekolah_sos');
 Route::get('daerah_sos_ppmb_user/{x}','userController@daerah_sos');
-Route::get('jadwal_tpa_user','userController@jadwal_tpa');
-Route::get('jadwal_survey_user','userController@jadwal_survey');
-Route::get('jadwal_wawancara_akhir_user','userController@jadwal_wankhir');
+Route::get('jadwal_tpa_user/{x}','userController@jadwal_tpa');
+Route::get('jadwal_survey_user/{x}','userController@jadwal_survey');
+Route::get('jadwal_wawancara_akhir_user/{x}','userController@jadwal_wankhir');
 Route::get('/syarat_user','UserController@syarat_ketentuan');
 Route::get('organisasi_ppmb/','userController@organisasi_ppmb');
 Route::post('tampil_organisasi_ppmb/','userController@tampil_organisasi_ppmb');

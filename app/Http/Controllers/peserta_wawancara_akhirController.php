@@ -67,12 +67,12 @@ class peserta_wawancara_akhirController extends Controller
     {
         $periode=DB::table('tb_periode')->get();
         $daerah=DB::table('tb_daerah')->get();
-         $sekolah=DB::table('tb_sekolah')->get();
-         $jad_wawancara_akhir=DB::table('tb_peserta_wawancara_akhir')
+        $sekolah=DB::table('tb_sekolah')->get();
+        $jad_wawancara_akhir=DB::table('tb_peserta_wawancara_akhir')
         ->join('tb_periode','tb_periode.id_periode','=','tb_peserta_wawancara_akhir.id_periode')
         ->join('tb_daerah','tb_daerah.id_daerah','=','tb_peserta_wawancara_akhir.id_daerah')
         ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_peserta_wawancara_akhir.id_sekolah')
-        ->where('id_jad_wawancara_akhir',$id) 
+        ->where('id_pesera_wawancara_akhir',$id) 
         ->get();
          return view('ppmb.jadwal.wawancara_akhir.edit',compact('jad_wawancara_akhir','periode','daerah','sekolah'));
 

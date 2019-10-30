@@ -13,9 +13,9 @@ class daerah_sosController extends Controller
      * @return \Illuminate\Http\Response
      */
    //jadwal kegiatan tes
-     public function index()
+    public function index()
     {
-       
+
         $daerah_sos=DB::table('tb_daerah_sos')
         ->join('tb_daerah','tb_daerah_sos.id_daerah','=','tb_daerah.id_daerah')
         ->join('tb_periode','tb_daerah_sos.id_periode','=','tb_periode.id_periode')
@@ -45,36 +45,44 @@ class daerah_sosController extends Controller
      */
     public function store(Request $request)
     {
-       DB::table('tb_daerah_sos')->insert([
-            'id_daerah_sos'=>$request->id_daerah_sos,
-            'id_periode'=>$request->id_periode,
-            'id_daerah'=>$request->id_daerah,
-            'id_sekolah'=>$request->tempat
+        $sek=DB::table('tb_daerah_sos')->where('id_sekolah',$request->tempat)->count();
+        $dae=DB::table('tb_daerah_sos')->where('id_daerah',$request->id_daerah)->count();
+        $per=DB::table('tb_daerah_sos')->where('id_periode',$request->id_periode)->count();
+        if($sek>0 && $dae>0 && $per>0){
+            return redirect('/daerah_sos_ppmb/create')->with('alert','Data Tersebut Sudah Ada !');
+        }else{
+            DB::table('tb_daerah_sos')->insert([
+                'id_periode'=>$request->id_periode,
+                'id_daerah'=>$request->id_daerah,
+                'id_sekolah'=>$request->tempat
 
-       ]);
-        return redirect('daerah_sos_ppmb');
+            ]);
+            return redirect('daerah_sos_ppmb');    
+        }
+
     }
 
-   
+
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-   public function edit($id)
+    public function edit($id)
     {
-       $periode=DB::table('tb_periode')->get();
-        $sekolah=DB::table('tb_sekolah')->get();
-        $daerah=DB::table('tb_daerah')->get();
-        $daerah_sos=DB::table('tb_daerah_sos')
-        ->join('tb_daerah','tb_daerah_sos.id_daerah','=','tb_daerah.id_daerah')
-        ->join('tb_periode','tb_daerah_sos.id_periode','=','tb_periode.id_periode')
-        ->join('tb_sekolah','tb_daerah_sos.id_sekolah','=','tb_sekolah.id_sekolah')
-        ->where('id_daerah_sos',$id)
-        ->get();
-        return view('ppmb.jadwal.daerahSos.edit',compact('daerah_sos','daerah','periode','sekolah'));
-    }
+     $periode=DB::table('tb_periode')->get();
+     $sekolah=DB::table('tb_sekolah')->get();
+     $daerah=DB::table('tb_daerah')->get();
+     $daerah_sos=DB::table('tb_daerah_sos')
+     ->join('tb_daerah','tb_daerah_sos.id_daerah','=','tb_daerah.id_daerah')
+     ->join('tb_periode','tb_daerah_sos.id_periode','=','tb_periode.id_periode')
+     ->join('tb_sekolah','tb_daerah_sos.id_sekolah','=','tb_sekolah.id_sekolah')
+     ->select('tb_daerah_sos.id_daerah_sos','tb_daerah.kab_kot','tb_sekolah.sekolah','tb_periode.periode')
+     ->where('id_daerah_sos',$id)
+     ->first();
+     return view('ppmb.jadwal.daerahSos.edit',compact('daerah_sos','daerah','periode','sekolah'));
+ }
 
     /**
      * Update the specified resource in storage.
@@ -83,14 +91,14 @@ class daerah_sosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request,$id)
     {
 
         // $this->validate($request[
         //     'jabatan' => 'required'
 // ]);
-        
-        DB::table('tb_jadwal')->where('id_daerah_sos',$request->id_daerah_sos)->update([
+
+        DB::table('tb_daerah_sos')->where('id_daerah_sos',$id)->update([
             'id_periode'=>$request->id_periode,
             'id_daerah'=>$request->id_daerah,
             'id_sekolah'=>$request->tempat

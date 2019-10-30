@@ -1,5 +1,6 @@
 
 @include('User.header')
+@include('lib_tgl')
 <style type="text/css">
 
 	#header {
@@ -7,8 +8,6 @@
 		border: 1px solid black;
 		text-align:center;
 		color: black;
-
-
 
 	}
 	#body{
@@ -22,11 +21,32 @@
 		border: 1px solid black;
 		color:black ;
 	}
+        th {
+            background-color: #FFFF0;
+            color: black;
+            font-weight: bold;
+             text-align: center;
+            padding: 10px
+        }
+        td{
+        	color: black;
+         /*   font-weight: bold;*/
+           /* text-align: center;*/
+        }
+        tr.zebra1 {
+            background-color:#FFFFFF;
+        }
+        tr.zebra2 {
+            background-color:#eeedee;
+        }
+        tr.zebra1:hover, tr.zebra2:hover{
+            background-color:lightseagreen;
+        }
 </style>
 	<div >
 		<h2 align="center"><b>JADWAL TPA & WAWANCARA AWAL</b></h4>
 			<h4 align="center"><b>PEMBERDAYAAN UMAT BERKELANJUTAN (PUB)</b></h4>
-			<h4 align="center"><b>PERIODE </b></h4>
+			<h4 align="center"><b>PERIODE {{$tahun->periode}}</b></h4>
 
 		</div>
 		<div>
@@ -48,7 +68,7 @@
 					<tr>
 						<td>{{$no++}}</td>
 						<td>{{$data->kab_kot}}</td>
-						<td>{{$data->tanggal}}</td>
+						<td><p  id="text-position"><?php echo  tglIndo($data->tanggal,true);?></p> </td>
 						<td>{{$data->waktu}} s/d Selesai</td> 
 						<td>{{$data->sekolah}}</td>
 					</tr>

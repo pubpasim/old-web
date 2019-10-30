@@ -51,12 +51,12 @@
 							<td>{{$data->sekolah}}</td>
 							<td>{{$data->alamat}}</td>
 							<td>
-								<a href="/detjadwal_ppmb/edit/{{$data->id_detjadwal}}">
+								<a href="{{url('detjadwal_ppmb/edit/'.$data->id_detjadwal)}}">
 									<button type="button" class="btn btn-success btn-square waves-effect waves-square waves-effect" >
 										<i class="material-icons">Edit</i><span class="icon-name"></span>
 									</button>
 								</a>
-								<a href="/detjadwal_ppmb/delete/{{$data->id_detjadwal}}">
+								<a href="{{url('detjadwal_ppmb/delete/'.$data->id_detjadwal)}}">
 									<button type="button" class="btn btn-danger btn-square waves-effect waves-square waves-effect">
 										<i class="material-icons">Hapus</i><span class="icon-name"></span>
 									</button>
