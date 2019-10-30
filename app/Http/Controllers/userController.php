@@ -33,14 +33,17 @@ class userController extends Controller
         $tpa="";
         $lempar="";
         $tahun = DB::table('tb_tahunSel')->get();
-        return view('user.hasilSeleksi',compact('tahun','lempar','tpa'));
+        $periode = "";
+        return view('user.hasilSeleksi',compact('tahun','lempar','tpa','periode'));
     }
     public function tampilSeleksi(Request $request)
     {
         $tpa="";
         $lempar = $request->tahun;
         $tahun = DB::table('tb_tahunSel')->get();
-        return view('user.hasilSeleksi',compact('tahun','lempar','tpa'));
+        $x = DB::table('tb_tahunSel')->where('id',$request->tahun)->first();
+        $periode = $x->tahun;
+        return view('user.hasilSeleksi',compact('tahun','lempar','tpa','periode'));
     }
 
 public function user_infaq()
