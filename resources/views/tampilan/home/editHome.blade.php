@@ -73,17 +73,17 @@
 	}
 </style>
 	<div class="container">
-		@foreach($survei as $data)
-		<form method="POST" action="{{url('updateWawancaraAkhir/'.$id)}}">
+		@foreach($home as $data)
+		<form method="POST" action="{{url('updateHome/'.$id)}}">
 			{{csrf_field()}}
 			
 			<div class="row">
 				<div class="col-25">
-					<label>Edit Wawancara Akhir</label>
+					<label>Edit Home Visit</label>
 				</div>
 				<div class="col-75">
 					<label for="nama_peserta">Id Peserta</label>
-					<input readonly="" value="{{$data->id_survei}}" type="text" class="form-control" placeholder="Nama Peserta" name="id_survei"> 
+					<input readonly="" value="{{$data->id_home}}" type="text" class="form-control" placeholder="Nama Peserta" name="id_survei"> 
 				</div>
 				<div class="col-75">
 					<label for="nama_peserta">Nama Peserta</label>

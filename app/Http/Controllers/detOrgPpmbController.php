@@ -32,8 +32,13 @@ class detOrgPpmbController extends Controller
     public function create()
     {
         $jabatan=DB::table('tb_orgppmb')->get();
-        $angkatan=DB::table('tb_angkatan')->get();
-        $mahasiswa=DB::table('tb_mahasiswa')->get();
+        $angkatan=DB::table('tb_angkatan')->where('angkatan','>=','16')->orderBy('angkatan')->get();
+        $mahasiswa=DB::table('tb_mahasiswa')
+        ->join('tb_statusPub','tb_mahasiswa.id_statusPub','=','tb_statusPub.id_statusPub')
+        ->select('tb_mahasiswa.nama','tb_mahasiswa.id_mahasiswa','tb_statusPub.id_statusPub')
+        ->where('tb_statusPub.status','PUB Aktif')
+        ->orderBy('tb_mahasiswa.nama')
+        ->get();
         $periode=DB::table('tb_periode')->get();
         return view('ppmb.struktur.det_tambah_struktur',compact('jabatan','angkatan','mahasiswa','periode'));
 

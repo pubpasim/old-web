@@ -93,14 +93,7 @@
 						<option @if($data->jk == "Perempuan") selected="" @endif value="Perempuan"> Perempuan</option>
 					</select>
 				</div>
-				<div class="col-75">
-					<label for="Sekolah">Tempat Lahir</label>
-					<input value="{{$data->tempat}}" type="text" class="form-control" placeholder="Tempat Lahir" name="tempat">
-				</div>
-				<div class="col-75">
-					<label for="Sekolah">Tanggal Lahir</label>
-					<input value="{{$data->tanggal}}" type="date" class="form-control" placeholder="tgl" name="tanggal">
-				</div>
+				
 				<div class="col-75">
 					<label for="Sekolah">Daerah</label>
 					<input value="{{$data->daerah}}" type="text" class="form-control" placeholder="Daerah" name="daerah">
@@ -109,15 +102,7 @@
 					<label for="Sekolah">Sekolah</label>
 					<input value="{{$data->sekolah}}" type="text" class="form-control" placeholder="Sekolah" name="sekolah">
 				</div>
-
-				<div class="col-75">
-					<label for="Sekolah">Alamat</label>
-					<input value="{{$data->alamat}}" type="text" class="form-control" placeholder="Alamat" name="alamat">
-				</div>
-				<div class="col-75">
-					<label for="Sekolah">No_Hp</label>
-					<input value="{{$data->no_hp}}" type="number" class="form-control" placeholder="No Hp" name="no_hp">
-				</div>
+				
 				
 
 			</div>
