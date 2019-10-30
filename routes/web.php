@@ -328,6 +328,13 @@ Route::get('hapusDok/{x}', 'ppmbDokController@hapusDok');
 Route::get('editDok/{x}', 'ppmbDokController@editDok');
 Route::post('updateDok/{x}', 'ppmbDokController@updateDok');
 
+Route::get('dataHome/{x}', 'hasilController@dataHome');
+Route::get('tambahHome/{x}', 'hasilController@tambahHome');
+Route::post('storeHome/{x}', 'hasilController@storeHome');
+Route::get('hapusHome/{x}', 'hasilController@hapusHome');
+Route::get('editHome/{x}', 'hasilController@editHome');
+Route::post('updateHome/{x}', 'hasilController@updateHome');
+
 
 //===================================USER=================================//
 Route::get('/','userController@index');
@@ -387,6 +394,9 @@ Route::get('user_tpa/{x}','userController@user_tpa');
 Route::get('user_wawancara_akhir/{x}','userController@user_wawancara_akhir');
 Route::get('user_psikotes/{x}','userController@user_psikotes');
 Route::get('user_final/{x}','userController@user_final');
+
+Route::get('user_home/{x}','userController@user_home');
+
 Route::get('org_ikatan_alumni', 'userController@OrgIkatanAlumni');
 Route::get('keg_ikatan_alumni', 'userController@KegIkatanAlumni');
 Route::get('user_infaq', 'userController@user_infaq');

@@ -23,13 +23,10 @@
 						<thead>
 							<tr>
 								<th>No</th>
-								<th>Nama Peserta</th>
-								<th>TTL</th>
-								<th>Jenis Kelamin</th>
+								<th>Nama Peserta</th>																
 								<th>Jurusan Pilihan</th>
 								<th>Asal Daerah</th>
 								<th>Asal Sekolah</th>								
-								<th>No Hp</th>								
 								<th>Aksi</th>
 							</tr>
 						</thead>
@@ -38,13 +35,10 @@
 							@foreach($psi as $data)
 							<tr>
 								<td>{{ $no++}}</td>
-								<td>{{ $data->nama}}</td>
-								<td>{{ $data->tempat}}, {{ $data->tanggal}}</td>
-								<td>{{ $data->jk}}</td>
+								<td>{{ $data->nama}}</td>																
 								<td>{{ $data->jurusan}}</td>
-								<td>{{ $data->asal_daerah}}</td>
-								<td>{{ $data->asal_sekolah}}</td>								
-								<td>{{ $data->no_hp}}</td>								
+								<td>{{ $data->daerah}}</td>
+								<td>{{ $data->sekolah}}</td>																
 								<td>
 									<a href="{{url('editPsi/'.$data->id_psi)}}" class="btn btn-info">Edit</a>
 									<a href="{{url('hapusPsi/'.$data->id_psi)}}" class="btn btn-info">Hapus</a>

@@ -16,8 +16,9 @@
 	</form>
 	<br><br>
 	<div @if($lempar=="") style="display: none;" @endif>
-		<a href="{{url('user_tpa/'.$lempar)}}" class="btn btn-info btn-sm">Hasil TPA</a>
+		<a href="{{url('user_tpa/'.$lempar)}}" class="btn btn-info btn-sm">Hasil TPA & Wawancara Awal</a>
 		<a href="{{url('user_psikotes/'.$lempar)}}" class="btn btn-info btn-sm">Hasil Psikotes</a>
+		<a href="{{url('user_home/'.$lempar)}}" class="btn btn-info btn-sm">Hasil Home</a>
 		<a href="{{url('user_wawancara_akhir/'.$lempar)}}" class="btn btn-info btn-sm">Hasil Wawancara Akhir</a>
 		<a href="{{url('user_final/'.$lempar)}}" class="btn btn-info btn-sm">Hasil Penandatanganan MOU</a>
 	</div>
