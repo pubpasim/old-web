@@ -432,6 +432,8 @@ Route::get('hapusPertanyaan/{x}', 'userController@hapusPertanyaan');
 
 //================================ADMIN ALUMNI=============================//
 
+Route::post('akunEdit/{x}','alumni_adminController@akunEdit');
+Route::get('admin/alumni/akun/{x}','alumni_adminController@akun');
 Route::get('admin/alumni/{x}','alumni_adminController@index');
 Route::get('admin/alumni/profile/{x}','alumni_adminController@profile');
 Route::get('admin/alumni/aktivitas/{x}','alumni_adminController@aktivitas');

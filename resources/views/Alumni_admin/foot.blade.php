@@ -1,3 +1,8 @@
+<?php 
+  for ($i=1; $i <10 ; $i++) { 
+    echo "<br>";
+  }
+ ?>
 <footer>
   <p class="tm-copyright-p">Copyright &copy; <span class="tm-current-year"></span>| PUB Angkatan 16 
     
