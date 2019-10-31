@@ -78,176 +78,184 @@
 		border-style: groove;
 	}
 </style>
-	<div class="container">
-		<form method="POST" action="{{url('simpan/mahasiswa')}}" enctype="multipart/form-data">
-			{{csrf_field()}}
-			<div class="row">
-				<div class="col-25">
-					<label for="nim">NIM</label>
-				</div>
-				<div class="col-75">
-					<input type="text" id="nim" name="nim" placeholder="Masukkan NIM">
-				</div>
-			</div>
+<div class="row" >
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-heading"><h2 align="center">Tambah Data Mahasiswa PUB</h2></div>
+			<div class="panel-body">
+				<form method="POST" action="{{url('simpan/mahasiswa')}}" enctype="multipart/form-data">
+					{{csrf_field()}}
+					<div class="row">
+						<div class="col-25">
+							<label for="nim">NIM</label>
+						</div>
+						<div class="col-75">
+							<input type="text" id="nim" name="nim" placeholder="Masukkan NIM">
+						</div>
+					</div>
 
-			<div class="row">
-				<div class="col-25">
-					<label for="nama">Nama Lengkap</label>
-				</div>
-				<div class="col-75">
-					<input type="text" id="Tname" name="Tname" placeholder="Nama Lengkap">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="tl">Tempat Lahir</label>
-				</div>
-				<div class="col-75">
-					<input type="text" id="tl" name="tl" placeholder="tempat lahir">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="tgl">Tanggal Lahir</label>
-				</div>
-				<div class="col-75">
-					<input type="date" id="tgl" name="tgl" placeholder="Tanggal Lahir">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="kelamin">Jenis Kelamin</label>
-				</div>
-				<div class="col-75">
-					<input type="radio" id="kelamin" name="kelamin" value="Laki-laki">Laki-laki
-					<input type="radio" id="kelamin" name="kelamin" value="Perempuan">Perempuan
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="daerah">Asal Daerah</label>
-				</div>
-				<div class="col-75">
-					<select id="daerah" name="daerah">
-						<option value="0"> --pilih daerah--</option>
-						@foreach($dr as $data)
-						<option value="{{$data->id_daerah}}">{{$data->kab_kot}}</option>
-						@endforeach
-					</select>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="angkatan">Angkatan</label>
-				</div>
-				<div class="col-75">
-					<select id="angkatan" name="angkatan">
-						<option value="0"> --pilih Angkatan--</option>
-						@foreach($angkt as $data)
-						<option value="{{$data->id_angkatan}}">{{$data->angkatan}}</option>
-						@endforeach
+					<div class="row">
+						<div class="col-25">
+							<label for="nama">Nama Lengkap</label>
+						</div>
+						<div class="col-75">
+							<input type="text" id="Tname" name="Tname" placeholder="Nama Lengkap">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-25">
+							<label for="tl">Tempat Lahir</label>
+						</div>
+						<div class="col-75">
+							<input type="text" id="tl" name="tl" placeholder="tempat lahir">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-25">
+							<label for="tgl">Tanggal Lahir</label>
+						</div>
+						<div class="col-75">
+							<input type="date" id="tgl" name="tgl" placeholder="Tanggal Lahir">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-25">
+							<label for="kelamin">Jenis Kelamin</label>
+						</div>
+						<div class="col-75">
+							<input type="radio" id="kelamin" name="kelamin" value="Laki-laki">Laki-laki
+							<input type="radio" id="kelamin" name="kelamin" value="Perempuan">Perempuan
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-25">
+							<label for="daerah">Asal Daerah</label>
+						</div>
+						<div class="col-75">
+							<select id="daerah" name="daerah">
+								<option value="0"> --pilih daerah--</option>
+								@foreach($dr as $data)
+								<option value="{{$data->id_daerah}}">{{$data->kab_kot}}</option>
+								@endforeach
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-25">
+							<label for="angkatan">Angkatan</label>
+						</div>
+						<div class="col-75">
+							<select id="angkatan" name="angkatan">
+								<option value="0"> --pilih Angkatan--</option>
+								@foreach($angkt as $data)
+								<option value="{{$data->id_angkatan}}">{{$data->angkatan}}</option>
+								@endforeach
 
-					</select>
-				</div>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-25">
+							<label for="skl">Asal Sekolah</label>
+						</div>
+						<div class="col-75">
+							<select id="skl" name="skl">
+								<option value="0"> --pilih Asal Sekolah--</option>
+								@foreach($skl as $data)
+								<option value="{{$data->id_sekolah}}">{{$data->sekolah}}</option>
+								@endforeach
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-25">
+							<label for="spkw">Status PUB</label>
+						</div>
+						<div class="col-75">
+							<select id="spkw" name="st_pub">
+								<option disabled="true"> --Status PUB--</option>
+								@foreach($sts2 as $data)
+								<option value="{{$data->id_statusPub}}">{{$data->status}}</option>
+								@endforeach
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-25">
+							<label for="spkw">Status Perkawinan</label>
+						</div>
+						<div class="col-75">
+							<select id="spkw" name="spkw">
+								<option disabled="true"> --Status Perkawinan--</option>
+								@foreach($sts1 as $data)
+								<option value="{{$data->id_statusSos}}">{{$data->status}}</option>
+								@endforeach
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-25">
+							<label for="jbPUB">Jabatan di PUB</label>
+						</div>
+						<div class="col-75">
+							<select id="jbPUB" name="jbPUB">
+								<option disabled="true"> --Jabatan di PUB--</option>
+								<option value="0">Tidak Ada</option>
+								@foreach($orgpub as $data)
+								<option value="{{$data->id_orgpub}}">{{$data->jabatan_pub}}</option>
+								@endforeach
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-25">
+							<label for="jbPUB">Jabatan di PPMB</label>
+						</div>
+						<div class="col-75">
+							<select id="jbPPMB" name="jbPPMB">
+								<option disabled="true"> --Jabatan di PPMB--</option>
+								@foreach($orgppmb as $data)
+								<option value="{{$data->id_orgppmb}}">{{$data->jabatan}}</option>
+								@endforeach
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-25">
+							<label for="jurusan">Jurusan</label>
+						</div>
+						<div class="col-75">
+							<select id="jurusan" name="jurusan">
+								<option disabled="true"> --Jurusan--</option>
+								@foreach($jur as $data)
+								<option value="{{$data->id_jur}}">{{$data->nama_jur}}</option>
+								@endforeach
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-25">
+							<label for="jurusan">Foto</label>
+						</div>
+						<div class="col-75">
+							<input  type="file" name="foto">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-25">
+							<label for="telp">Nomor Telpon</label>
+						</div>
+						<div class="col-75">
+							<input type="text" id="telp" name="telp" placeholder="Nomor telpon">
+						</div>
+					</div>
+					<div class="row">
+						<br><br>
+						<input type="submit" value="Simpan">
+					</div>
+				</form>
 			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="skl">Asal Sekolah</label>
-				</div>
-				<div class="col-75">
-					<select id="skl" name="skl">
-						<option value="0"> --pilih Asal Sekolah--</option>
-						@foreach($skl as $data)
-						<option value="{{$data->id_sekolah}}">{{$data->sekolah}}</option>
-						@endforeach
-					</select>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="spkw">Status PUB</label>
-				</div>
-				<div class="col-75">
-					<select id="spkw" name="st_pub">
-						<option disabled="true"> --Status PUB--</option>
-						@foreach($sts2 as $data)
-						<option value="{{$data->id_statusPub}}">{{$data->status}}</option>
-						@endforeach
-					</select>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="spkw">Status Perkawinan</label>
-				</div>
-				<div class="col-75">
-					<select id="spkw" name="spkw">
-						<option disabled="true"> --Status Perkawinan--</option>
-						@foreach($sts1 as $data)
-						<option value="{{$data->id_statusSos}}">{{$data->status}}</option>
-						@endforeach
-					</select>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="jbPUB">Jabatan di PUB</label>
-				</div>
-				<div class="col-75">
-					<select id="jbPUB" name="jbPUB">
-						<option disabled="true"> --Jabatan di PUB--</option>
-						<option value="0">Tidak Ada</option>
-						@foreach($orgpub as $data)
-						<option value="{{$data->id_orgpub}}">{{$data->jabatan_pub}}</option>
-						@endforeach
-					</select>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="jbPUB">Jabatan di PPMB</label>
-				</div>
-				<div class="col-75">
-					<select id="jbPPMB" name="jbPPMB">
-						<option disabled="true"> --Jabatan di PPMB--</option>
-						@foreach($orgppmb as $data)
-						<option value="{{$data->id_orgppmb}}">{{$data->jabatan}}</option>
-						@endforeach
-					</select>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="jurusan">Jurusan</label>
-				</div>
-				<div class="col-75">
-					<select id="jurusan" name="jurusan">
-						<option disabled="true"> --Jurusan--</option>
-						@foreach($jur as $data)
-						<option value="{{$data->id_jur}}">{{$data->nama_jur}}</option>
-						@endforeach
-					</select>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="jurusan">Foto</label>
-				</div>
-				<div class="col-75">
-					<input id="uploadFile" type="file" name="foto">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="telp">Nomor Telpon</label>
-				</div>
-				<div class="col-75">
-					<input type="text" id="telp" name="telp" placeholder="Nomor telpon">
-				</div>
-			</div>
-			<div class="row">
-				<input type="submit" value="Simpan">
-			</div>
-		</form>
+		</div>
 	</div>
+</div>
 @include('tampilan.foot')

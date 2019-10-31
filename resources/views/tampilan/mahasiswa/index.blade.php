@@ -93,51 +93,59 @@
 					margin-top: 0;
 				}
 			}
+			button{
+				width: 100px;
+			}
 
 		</style>
 
-			<br>
-			<h1>Daftar Mahasiswa PUB</h1>
-			<div class="container">
-				<a href="{{url('tambah/mahasiswa')}}"><button class="btn btn-primary" style=" background-color: #339966; width: 100%;"><svg class="glyph stroked plus sign" style="height: 30px;"><use xlink:href="#stroked-plus-sign"/></svg></button></a>
-				<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
-					<thead>
-						<tr>
-							<th>NIM</th>
-							<th>NAMA</th>
-							<th>TTL</th>
-							<th>ASAL DAERAH</th>
-							<th>ASAL SEKOLAH</th>
-							<th>JABATAN DI PUB</th>
-							<th>JABATAN DI PPMB</th>
-							<th>STATUS PUB</th>
-							<th>PRODI</th>
-							<th>NO TELPON</th>
-							<th>AKSI</th>
-						</tr>
-					</thead>
-					<tbody>
-						@foreach($mahasiswa as $mhs)
-						<tr>
-							<td>{{$mhs->nim}}</td>
-							<td>{{$mhs->nama}}</td>
-							<td>{{$mhs->tempat_lahir}},&nbsp;{{$mhs->tanggal_lahir}}</td>
-							<td>{{$mhs->kab_kot}}</td>
-							<td>{{$mhs->sekolah}}</td>
-							<td>{{$mhs->jabatan_pub}}</td>
-							<td>{{$mhs->jabatan}}</td>
-							<td>{{$mhs->status}}</td>
-							<td>{{$mhs->nama_jur}}</td>
-							<td>{{$mhs->no_telp}}</td>
-							<td><a href="{{url('detail/org/'.$mhs->id_mahasiswa)}}"><button type="reset" class="btn btn-default">Detail</button></a>&nbsp;&nbsp;
-							<a href="{{url('mahasiswaHapus/'.$mhs->id_mahasiswa)}}" onclick="return confirm('Hapus data ?');"><button class="btn btn-primary" style="background-color: red;">Hapus</button></a>&nbsp;&nbsp;
-							<a href="{{url('mahasiswaEdit/'.$mhs->id_mahasiswa)}}"><button class="btn btn-primary">Edit</button></a></td>
-						</tr>
-						@endforeach
-					</tbody>
-				</table>
-			</div>
-		
+		<br>
 
-		@include('tampilan.foot')
+		<div class="row" >
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading"><h2 align="center">Daftar Mahasiswa PUB</h2></div>
+
+					<div class="panel-body">
+						<a href="{{url('tambah/mahasiswa')}}"><button class="btn btn-primary">Tambah Data</button></a>
+						<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+							<thead>
+								<tr>
+									<th>NIM</th>
+									<th>NAMA</th>
+									<th>TTL</th>
+									<th>JENIS KELAMIN</th>
+									<th>AKT</th>
+									<th>PRODI</th>
+									<th>NO TELPON</th>
+									<th>FOTO</th>
+									<th>AKSI</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach($mahasiswa as $mhs)
+								<tr>
+									<td>{{$mhs->nim}}</td>
+									<td>{{$mhs->nama}}</td>
+									<td>{{$mhs->tempat_lahir}},&nbsp;{{$mhs->tanggal_lahir}}</td>
+									<td>{{$mhs->jenis_kelamin}}</td>
+									<td>{{$mhs->angkatan}}</td>
+									<td>{{$mhs->nama_jur}}</td>
+									<td>{{$mhs->no_telp}}</td>
+									<td><img src="{{url('imgs/mahasiswa')}}/{{$mhs->file}}" style="width: 100px;"></td>
+									<td align="center"><a href="{{url('detail/org/'.$mhs->id_mahasiswa)}}"><button type="reset" class="btn btn-default">Detail</button></a>
+										<a href="{{url('mahasiswaHapus/'.$mhs->id_mahasiswa)}}" onclick="return confirm('Apakah Anda Yakin ?');"><button class="btn btn-primary" style="background-color: red;">Hapus</button></a>
+										<a href="{{url('mahasiswaEdit/'.$mhs->id_mahasiswa)}}"><button class="btn btn-primary">Edit</button></a></td>
+									</tr>
+									@endforeach
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+			@include('tampilan.foot')
 

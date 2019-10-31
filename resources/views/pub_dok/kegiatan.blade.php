@@ -80,42 +80,49 @@
 		background-color: #2498DB;
 		color: white;
 	}
+	button{
+		width: 100px;
+	}
 </style>
-	@if($errors->has('success'))
-	<div class="alert alert-success">Succes</div>
-	@endif
-	@if($errors->has('alert'))
-	<div class="alert alert-success">{{ $message }}</div>
-	@endif
-	<h1>Dokumentasi Kegiatan PUB</h1>
-	<div class="container">
-		<a href="{{url('tambah_pubdok')}}"><button id="uploadFile">Tambah</button></a>
-		<table id="myTable">
-			<thead>
-				<tr>
-					<th>NO</th>
-					<th>ANGKATAN</th>
-					<th>KEGIATAN DIVISI</th>
-					<th>KETERANGAN</th>
-					<th>DOKUMENTASI</th>
-					
-				</tr>
-			</thead>
-			<tbody>
-				@php $no=1; @endphp
-				@foreach($kegiatan as $keg)
-				<tr>
-					<td>{{$no++}}</td>
-						<td> Angkatan {{$keg->angkatan}}</td>
-						<td>{{$keg->tema}}</td>
-					<td>{{$keg->keterangan}}</td>
-					<td><img src="{{url('imgs/kegiatan')}}/{{$keg->file}}" width="200px"></td>
-					<td><a href="{{url('hapus/kegiatan/'.$keg->id_pubdok)}}" onclick="return confirm('Hapus data ?');"><button class="btn btn-primary" style="background-color: red;">Hapus</button></a>&nbsp;&nbsp;<a href="{{url('edit/kegiatan/'.$keg->id_pubdok)}}"><button class="btn btn-primary">Edit</button></a></td>
-				</tr>
-				@endforeach
-				
-            </select>
-			</tbody>
-		</table>
-	</div>
-@include('tampilan.foot')
+@if($errors->has('success'))
+<div class="alert alert-success">Succes</div>
+@endif
+@if($errors->has('alert'))
+<div class="alert alert-success">{{ $message }}</div>
+@endif
+<h1>Dokumentasi Kegiatan PUB</h1>
+<div class="row" >
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-heading"><h2 align="center">Data Dokumentasi Mahasiswa PUB</h2></div>
+			<div class="panel-body">
+				<a href="{{url('tambah_pubdok')}}"><button class="btn btn-primary" id="uploadFile">Tambah Data</button></a>
+				<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+					<thead>
+						<tr>
+							<th>NO</th>
+							<th>ANGKATAN</th>
+							<th>KEGIATAN DIVISI</th>
+							<th>KETERANGAN</th>
+							<th>DOKUMENTASI</th>
+							<th>AKSI</th>
+						</tr>
+					</thead>
+					<tbody>
+						@php $no=1; @endphp
+						@foreach($kegiatan as $keg)
+						<tr>
+							<td>{{$no++}}</td>
+							<td> Angkatan {{$keg->angkatan}}</td>
+							<td>{{$keg->tema}}</td>
+							<td>{{$keg->keterangan}}</td>
+							<td><img src="{{url('imgs/kegiatan')}}/{{$keg->file}}" width="100px"></td>
+							<td><a href="{{url('hapus/kegiatan/'.$keg->id_pubdok)}}" onclick="return confirm('Hapus data ?');"><button class="btn btn-primary" style="background-color: red;">Hapus</button></a>&nbsp;&nbsp;<a href="{{url('edit/kegiatan/'.$keg->id_pubdok)}}"><button class="btn btn-primary">Edit</button></a></td>
+						</tr>
+						@endforeach
+
+					</select>
+				</tbody>
+			</table>
+		</div>
+		@include('tampilan.foot')

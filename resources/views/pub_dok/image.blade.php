@@ -73,78 +73,80 @@
     }
     #uploadFile{
         height: 50px;
-        width: 510px;
+        width: 100%;
         border-radius: 5px;
         border-style: groove;
     }
 </style>
-    <h1>Tambah Data Kegiatan</h1>
-    <div class="container">
-        <form method="POST" action="{{url('simpan/kegiatan')}}" enctype="multipart/form-data">
-            {{csrf_field()}}
-            <div class="row">
-                <div class="col-25">
+<h1></h1>
+<div class="row" >
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h2 align="center">Tambah Data Dokumentasi PUB</h2></div>
+            <div class="panel-body">
+                <form method="POST" action="{{url('simpan/kegiatan')}}" enctype="multipart/form-data">
+                    {{csrf_field()}}
+                    <div class="row">
+                        <div class="col-25">
+                            @if ($errors->has('foto'))
+                            <div class="alert alert-danger">Format atau ukuran file tidak sesuai</div>
+                            @endif
+                            <label for="jurusan">Foto Kegiatan</label>
+                        </div>
+                        <div class="col-75">
+                            <input id="uploadFile" type="file" name="foto">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="spkw">Angkatan</label>
+                        </div>
+                        <div class="col-75">
+                            <select name="select"  >
+                                <option >--Pilih Angkatan--</option>
+                                @foreach($angkatan as $data)
+                                <option value="{{$data->id_angkatan}}">
+                                    Angkatan {{ $data->angkatan }}
+                                </option>
+                                @endforeach
 
-                    @if ($errors->has('foto'))
-                    <div class="alert alert-danger">Format atau ukuran file tidak sesuai</div>
-                    @endif
-                    <label for="jurusan">Foto Kegiatan</label>
-                </div>
-                <div class="col-75">
-                    <input id="uploadFile" type="file" name="foto">
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-25">
-                    <label for="spkw">Angkatan</label>
-            </div>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="spkw">Divisi</label>
+                        </div>
 
-            <div class="row">
-                    <div class="col-25">
-            <select name="select"  >
-                <option value="" disabled>--Pilih Angkatan--</option>
-                @foreach($angkatan as $data)
-                <option value="{{$data->id_angkatan}}">
-                    Angkatan {{ $data->angkatan }}
-                </option>
-                @endforeach
-                
-            </select>
+                        <div class="col-75">
+                            <select id="kegiatan" name="kegiatan">
+                                <option> --pilih Divisi--</option>
+                                <option>Divisi Pendidikan</option>
+                                <option>Divisi Kerohanian</option>
+                                <option>Divisi Kebersihan</option>
+                                <option>Divisi Keasramaan</option>
+                                <option>Divisi Magang</option>
+                                <option>Divisi Kesehatan</option>
+                                <option>Divisi Kesejahteraan</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="jurusan">Keterangan</label>
+                        </div>
+                        <div class="col-75">
+                            <textarea name="ket" style="width: 100%;height: 70%;"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <input type="submit" value="Simpan">
+                    </div>
+                </form>
             </div>
-            </div>
-
-            <div class="row">
-                <div class="col-25">
-                    <label for="spkw">Divisi</label>
-            </div>
-
-                <div class="col-75">
-                    <select id="kegiatan" name="kegiatan">
-                        <option disabled="false"> --pilih Divisi--</option>
-                        <option>Divisi Pendidikan</option>
-                        <option>Divisi Kerohanian</option>
-                        <option>Divisi Kebersihan</option>
-                        <option>Divisi Keasramaan</option>
-                        <option>Divisi Magang</option>
-                        <option>Divisi Kesehatan</option>
-                        <option>Divisi Kesejahteraan</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-25">
-                    <label for="jurusan">Keterangan</label>
-                </div>
-                <div class="col-75">
-
-                    <textarea name="ket" style="width: 50%;height: 30%;"></textarea>
-
-                </div>
-            </div>
-            <div class="row">
-                <input type="submit" value="Simpan">
-            </div>
-        </form>
+        </div>
     </div>
+</div>
+
+
 @include('tampilan.foot')
