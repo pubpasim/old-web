@@ -292,12 +292,9 @@ public function user_alumniView(request $request)
     $angkatan=DB::table('tb_angkatan')
     ->where('angkatan','>=','16')
     ->orderby('angkatan')->get();
-    $pelatihan1=DB::table('tb_detpelatihan')
-    ->join('tb_angkatan','tb_detpelatihan.id_angkatan','=','tb_angkatan.id_angkatan')
-    ->join('tb_pelatihan','tb_detpelatihan.id_pelatihan','=','tb_pelatihan.id_pelatihan')
-    ->select('tb_pelatihan.pelatihan')->get();
+   
     $lempar="";
-    return view('user.pelatihan',compact('angkatan','lempar','pelatihan1'));
+    return view('user.pelatihan',compact('angkatan','lempar'));
 }
 public function pelatihan_data(Request $request){
     $angkatan=DB::table('tb_angkatan')
