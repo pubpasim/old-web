@@ -554,7 +554,7 @@ public function tampil_organisasi_ppmb(request $request)
     $kadiv_dokumentasi2=$kadiv_dokumentasi->count();
     $kadiv_dokumentasi=$kadiv_dokumentasi->first();
 
-    return view('User.struktur_ppmb_user',compact('ketua','sekretaris','bendahara_ex','bendahara_in','keamanan','kadiv_logistik','kadiv_humas','kadiv_acara','kadiv_dokumentasi','kadiv_kesejahtraan','ketua2','sekretaris2','bendahara_ex2','bendahara_in2','keamanan2','kadiv_logistik2','kadiv_humas2','kadiv_acara2','kadiv_dokumentasi2','kadiv_kesejahtraan2','lempar','periode','kepengurusan'));   
+    return view('User.struktur_ppmb_user',compact('ketua','sekretaris','bendahara_ex','bendahara_in','keamanan','kadiv_logistik','kadiv_humas','kadiv_acara','kadiv_dokumentasi','kadiv_kesejahtraan','ketua2','sekretaris2','bendahara_ex2','bendahara_in2','keamanan2','kadiv_logistik2','kadiv_humas2','kadiv_acara2','kadiv_dokumentasi2','kadiv_kesejahtraan2','lempar','periode'));   
 }
 public function organisasi_pub(Request $request)
 {
@@ -890,15 +890,15 @@ public function orgIkatanAlumni(Request $request)
     ->select('tb_mahasiswa.id_mahasiswa','tb_orgalumni.jabatan','tb_mahasiswa.nama')
     ->where('tb_orgalumni.jabatan','Departemen Kerja Sama');
     $dep_kerjasama2=$dep_kerjasama->count();
-    $dep_kerjasama=$dep_kerjasama->first();
+    $dep_kerjasama=$dep_kerjasama->get();
 
     $bid_humas=DB::table('tb_ikatan_alumni')
     ->join('tb_mahasiswa','tb_ikatan_alumni.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
     ->join('tb_orgalumni','tb_ikatan_alumni.id_jabatan', '=', 'tb_orgalumni.id_org')
     ->select('tb_mahasiswa.id_mahasiswa','tb_orgalumni.jabatan','tb_mahasiswa.nama')
-    ->where('tb_orgalumni.jabatan','Bidang Humas');
+    ->where('tb_orgalumni.jabatan','Departemen Kerja Sama');
     $bid_humas2=$bid_humas->count();
-    $bid_humas=$bid_humas->first();
+    $bid_humas=$bid_humas->get();
 
         //div kero
     $dep_publikasi=DB::table('tb_ikatan_alumni')
@@ -907,7 +907,7 @@ public function orgIkatanAlumni(Request $request)
     ->select('tb_mahasiswa.id_mahasiswa','tb_orgalumni.jabatan','tb_mahasiswa.nama')
     ->where('tb_orgalumni.jabatan','Departemen Publikasi Informasi');
     $dep_publikasi2=$dep_publikasi->count();
-    $dep_publikasi=$dep_publikasi->first();
+    $dep_publikasi=$dep_publikasi->get();
         //div keas
     $dep_pengembangan=DB::table('tb_ikatan_alumni')
     ->join('tb_mahasiswa','tb_ikatan_alumni.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
@@ -915,7 +915,7 @@ public function orgIkatanAlumni(Request $request)
     ->select('tb_mahasiswa.id_mahasiswa','tb_orgalumni.jabatan','tb_mahasiswa.nama')
     ->where('tb_orgalumni.jabatan','Departemen Pengembangan Usaha');
     $dep_pengembangan2=$dep_pengembangan->count();
-    $dep_pengembangan=$dep_pengembangan->first();
+    $dep_pengembangan=$dep_pengembangan->get();
         //div kebe
     $dep_penggalangan=DB::table('tb_ikatan_alumni')
     ->join('tb_mahasiswa','tb_ikatan_alumni.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
@@ -923,7 +923,7 @@ public function orgIkatanAlumni(Request $request)
     ->select('tb_mahasiswa.id_mahasiswa','tb_orgalumni.jabatan','tb_mahasiswa.nama')
     ->where('tb_orgalumni.jabatan','Departemen Penggalangan Dana');
     $dep_penggalangan2=$dep_penggalangan->count();
-    $dep_penggalangan=$dep_penggalangan->first();
+    $dep_penggalangan=$dep_penggalangan->get();
         //div magang
     $bidang_penggembangan=DB::table('tb_ikatan_alumni')
     ->join('tb_mahasiswa','tb_ikatan_alumni.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
@@ -931,7 +931,7 @@ public function orgIkatanAlumni(Request $request)
     ->select('tb_mahasiswa.id_mahasiswa','tb_orgalumni.jabatan','tb_mahasiswa.nama')
     ->where('tb_orgalumni.jabatan','Bidang Pengembangan SDM');
     $bidang_penggembangan2=$bidang_penggembangan->count();
-    $bidang_penggembangan=$bidang_penggembangan->first();
+    $bidang_penggembangan=$bidang_penggembangan->get();
         //div kesej
     $koor_angkatan=DB::table('tb_ikatan_alumni')
     ->join('tb_mahasiswa','tb_ikatan_alumni.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
@@ -1136,7 +1136,7 @@ public function jadwal_keseluruhan_ppmb()
     $jad_pelak_mou=$jad_pelak_mou->first();
 
 
-    return view('User.jadwal_keseluruhan_ppmb',compact('jad_sos','jad_sos2','jad_tpa','jad_tpa2','jad_psikotes','jad_psikotes2','jad_survey','jad_survey2','jad_wawancara_akhir','jad_wawancara_akhir2','tes','periode','lempar','jad_pengumu_psiko','jad_pengu_wawancara_akhir','jad_pelak_mou','jad_pengumu_psiko2','jad_pengu_wawancara_akhir2','jad_pelak_mou2','tahun'));
+    return view('User.jadwal_keseluruhan_ppmb',compact('jad_sos','jad_sos2','jad_tpa','jad_tpa2','jad_psikotes','jad_psikotes2','jad_survey','jad_survey2','jad_wawancara_akhir','jad_wawancara_akhir2','periode','lempar','jad_pengumu_psiko','jad_pengu_wawancara_akhir','jad_pelak_mou','jad_pengumu_psiko2','jad_pengu_wawancara_akhir2','jad_pelak_mou2','tahun'));
 }
  
     public function user_dok_ppmb()
@@ -1349,7 +1349,7 @@ public function detailjadwal_keseluruhan_ppmb(request $request)
     $jad_pelak_mou2=$jad_pelak_mou->count();
     $jad_pelak_mou=$jad_pelak_mou->first();
 
-    return view('User.jadwal_keseluruhan_ppmb',compact('jad_sos','jad_sos2','jad_tpa','jad_tpa2','jad_psikotes','jad_psikotes2','jad_survey','jad_survey2','jad_wawancara_akhir','jad_wawancara_akhir2','tes','periode','lempar','jad_pengumu_psiko','jad_pengu_wawancara_akhir','jad_pelak_mou','jad_pengu_wawancara_akhir2','jad_pelak_mou2','jad_pengumu_psiko2','tahun'));
+    return view('User.jadwal_keseluruhan_ppmb',compact('jad_sos','jad_sos2','jad_tpa','jad_tpa2','jad_psikotes','jad_psikotes2','jad_survey','jad_survey2','jad_wawancara_akhir','jad_wawancara_akhir2','periode','lempar','jad_pengumu_psiko','jad_pengu_wawancara_akhir','jad_pelak_mou','jad_pengu_wawancara_akhir2','jad_pelak_mou2','jad_pengumu_psiko2','tahun'));
 }
 public function jadwal_tpa($periode)
 {
