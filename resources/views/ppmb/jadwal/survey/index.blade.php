@@ -157,6 +157,7 @@
 									<td><b>Total Peserta</b></td>
 									<td></td>
 									<td></td>
+									<td></td>
 									<td><b><?php echo $total ?> Orang</b></td>
 									<td></td>
 

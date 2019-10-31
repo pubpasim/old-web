@@ -1312,22 +1312,24 @@ public function daerah_sos($periode)
     $daerah_sos=DB::table('tb_daerah_sos')
     ->join('tb_daerah','tb_daerah_sos.id_daerah','=','tb_daerah.id_daerah')
     ->join('tb_periode','tb_daerah_sos.id_periode','=','tb_periode.id_periode')
-    ->join('tb_sekolah','tb_daerah_sos.id_sekolah','=','tb_sekolah.id_sekolah')
-    ->where('tb_daerah_sos.id_periode',$periode)
-    ->get();
+    ->select('tb_daerah.kab_kot','tb_daerah.id_daerah')->groupBy('tb_daerah.id_daerah')
+    ->where('tb_daerah_sos.id_periode',$periode)->get();
     return view('user.daerah_sos_user',compact('daerah_sos','tahun'));        
 }
 public function sekolah_sos($id)
 {
+     $tahun=DB::table('tb_periode')
+   ->select('tb_periode.periode')
+   ->where('tb_periode.id_periode',$id)
+   ->first();
     
     $sekolah_sos=DB::table('tb_daerah_sos')
     ->join('tb_daerah','tb_daerah_sos.id_daerah','=','tb_daerah.id_daerah')
     ->join('tb_periode','tb_daerah_sos.id_periode','=','tb_periode.id_periode')
     ->join('tb_sekolah','tb_daerah_sos.id_sekolah','=','tb_sekolah.id_sekolah')
     ->where('tb_daerah.id_daerah',$id)
-
     ->get();
-    return view('user.sosialisasi_kesekolah',compact('sekolah_sos'));        
+    return view('user.sosialisasi_kesekolah',compact('sekolah_sos','tahun'));        
 }
 
 }
