@@ -70,6 +70,13 @@ public function infaq_bulan(Request $request)
     return view('user.infaq_bulan',compact('data1','thn'));
 }
 
+
+public function user_dok_ppmb()
+{  
+    $dok = DB::table('tb_dokumentasi')->get();
+    return view('user.user_dok_ppmb',compact('dok'));
+}
+
 public function user_lulus_tpa($id)
 {
     $lulus = DB::table('tb_tpa')->where('id_tpa',$id)->first();
@@ -145,6 +152,7 @@ public function user_alumni()
     ->select('tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status')->where('tb_statusPub.status','Alumni')->orderby('tb_angkatan.angkatan')->get();
     return view('user.user_alumni',compact('angkatan','mahasiswa'));
 }
+
 public function user_alumniView(request $request)
 {
     $angkatan=DB::table('tb_angkatan')->orderby('angkatan')->get();
@@ -167,6 +175,7 @@ public function user_alumniView(request $request)
         return view('user.user_alumni',compact('angkatan','mahasiswa'));
     }
 }
+
 public function login()
 {
     return view('user.login');
@@ -204,7 +213,6 @@ public function doLogin(Request $request)
     else{
         return redirect('login')->with('alert','Password atau Email, Salah!');
     }
-
 }
 public function tampilUser(){
     $user=DB::table('tb_user')
@@ -283,8 +291,8 @@ public function view_dataMhs(Request $request){
     if ($request->select=="") {
         return redirect('user/mahasiswa');
     }else{     
-     return view('user.mahasiswa',compact('angkatan','mahasiswa','lempar'));
- }
+       return view('user.mahasiswa',compact('angkatan','mahasiswa','lempar'));
+   }
 
 }
 
@@ -292,7 +300,7 @@ public function pelatihan(){
     $angkatan=DB::table('tb_angkatan')
     ->where('angkatan','>=','16')
     ->orderby('angkatan')->get();
-   
+
     $lempar="";
     return view('user.pelatihan',compact('angkatan','lempar'));
 }
@@ -318,10 +326,6 @@ public function syarat_ketentuan()
 }
 
 
-public function ppmb_profile()
-{
-    return view('user.profile_ppmb');
-}
 public function jadwal_ppmb()
 {
     $tes=DB::table('tb_jadwal')->get();
@@ -826,6 +830,7 @@ public function kegiatanPub_pilihdiv(Request $request){
     return view('user.pilihdivisi',compact('kes','kes2','keb','keb2','magang','magang2','pendidikan','pendidikan2','kerohanian','kerohanian2','kesejahteraan','kesejahteraan2','keasramaan','keasramaan2'));
 }
 
+
 public function orgIkatanAlumni(Request $request)
 {
         //ketua
@@ -994,11 +999,11 @@ public function storePertanyaan(Request $request)
 {
 
     DB::table('tb_pertanyaan')->insert([
-        'nama'=> $request->nama,
-        'sekolah'=> $request->sekolah,
-        'daerah'=> $request->daerah,
-        'pertanyaan'=> $request->pertanyaan,
-        'jawaban'=>"",
+    'nama'=> $request->nama,
+    'sekolah'=> $request->sekolah,
+    'daerah'=> $request->daerah,
+    'pertanyaan'=> $request->pertanyaan,
+    'jawaban'=>"",
     ]);
     return back();
 }
@@ -1015,224 +1020,224 @@ public function storeJawab(Request $request,$id)
 {
     if($request->jawaban==""){
         DB::table('tb_pertanyaan')->where('id',$id)->update([            
-            'jawaban'=>"",
+        'jawaban'=>"",
         ]);    
-    }else{
-        DB::table('tb_pertanyaan')->where('id',$id)->update([            
+        }else{
+            DB::table('tb_pertanyaan')->where('id',$id)->update([            
             'jawaban'=>$request->jawaban,
-        ]);    
+            ]);    
+        }
+
+        return redirect('pertanyaan');
+    }
+    public function hapusPertanyaan($id){
+        DB::table('tb_pertanyaan')->where('id',$id)->delete();
+        return redirect('pertanyaan');
+    }
+    public function jadwal_keseluruhan_ppmb()
+    {
+        $tahun=DB::table('tb_periode')->orderby('periode','DESC')->first();
+        $periode=DB::table('tb_periode')->orderby('periode') ->get();
+        $lempar="data";
+
+        $jad_sos=DB::table('tb_detjadwal')
+        ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
+        ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
+        ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
+        ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
+        ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
+        ->where('tb_jadwal.kegiatan','Sosialisasi Ke Daerah-Daerah')
+        ->where('tb_periode.periode',$tahun->periode);
+        $jad_sos2=$jad_sos->count();
+        $jad_sos=$jad_sos->first();
+
+        $jad_tpa=DB::table('tb_detjadwal')
+        ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
+        ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
+        ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
+        ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
+        ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
+        ->where('tb_jadwal.kegiatan','Tes Ke Daerah-daerah')
+        ->where('tb_periode.periode',$tahun->periode);
+        $jad_tpa2=$jad_tpa->count();
+        $jad_tpa=$jad_tpa->first();
+
+
+        $jad_psikotes=DB::table('tb_detjadwal')
+        ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
+        ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
+        ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
+        ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
+        ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
+        ->where('tb_jadwal.kegiatan','Pelaksanaan Psikotes')
+        ->where('tb_periode.periode',$tahun->periode);
+
+        $jad_psikotes2=$jad_psikotes->count();
+        $jad_psikotes=$jad_psikotes->first();
+
+
+        $jad_pengumu_psiko=DB::table('tb_detjadwal')
+        ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
+        ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
+        ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
+        ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
+        ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
+        ->where('tb_jadwal.kegiatan','Pengumuman Psikotes')
+        ->where('tb_periode.periode',$tahun->periode);
+
+        $jad_pengumu_psiko2=$jad_pengumu_psiko->count();
+        $jad_pengumu_psiko=$jad_pengumu_psiko->first();
+
+        $jad_survey=DB::table('tb_detjadwal')
+        ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
+        ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
+        ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
+        ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
+        ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
+        ->where('tb_jadwal.kegiatan','Pelaksanaan Home Visit')
+        ->where('tb_periode.periode',$tahun->periode);
+        $jad_survey2=$jad_survey->count();
+        $jad_survey=$jad_survey->first();
+
+        $jad_wawancara_akhir=DB::table('tb_detjadwal')
+        ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
+        ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
+        ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
+        ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
+        ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
+        ->where('tb_jadwal.kegiatan','Pelaksanaan Wawancara Akhir')
+        ->where('tb_periode.periode',$tahun->periode);
+        $jad_wawancara_akhir2=$jad_wawancara_akhir->count();
+        $jad_wawancara_akhir=$jad_wawancara_akhir->first();
+
+        $jad_pengu_wawancara_akhir=DB::table('tb_detjadwal')
+        ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
+        ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
+        ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
+        ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
+        ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
+        ->where('tb_jadwal.kegiatan','Pengumuman Wawancara Akhir')
+        ->where('tb_periode.periode',$tahun->periode);
+
+        $jad_pengu_wawancara_akhir2=$jad_pengu_wawancara_akhir->count();
+        $jad_pengu_wawancara_akhir=$jad_pengu_wawancara_akhir->first();
+
+        $jad_pelak_mou=DB::table('tb_detjadwal')
+        ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
+        ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
+        ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
+        ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
+        ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
+        ->where('tb_jadwal.kegiatan','Pelaksanaan Penandatanganan Draf MOU')
+        ->where('tb_periode.periode',$tahun->periode);
+
+        $jad_pelak_mou2=$jad_pelak_mou->count();
+        $jad_pelak_mou=$jad_pelak_mou->first();
+
+        return view('User.jadwal_keseluruhan_ppmb',compact('jad_sos','jad_sos2','jad_tpa','jad_tpa2','jad_psikotes','jad_psikotes2','jad_survey','jad_survey2','jad_wawancara_akhir','jad_wawancara_akhir2','periode','lempar','jad_pengumu_psiko','jad_pengu_wawancara_akhir','jad_pelak_mou','jad_pengumu_psiko2','jad_pengu_wawancara_akhir2','jad_pelak_mou2','tahun'));
     }
 
-    return redirect('pertanyaan');
-}
-public function hapusPertanyaan($id){
-    DB::table('tb_pertanyaan')->where('id',$id)->delete();
-    return redirect('pertanyaan');
-}
-public function jadwal_keseluruhan_ppmb()
-{
-    $tahun=DB::table('tb_periode')->orderby('periode','DESC')->first();
-    $periode=DB::table('tb_periode')->orderby('periode') ->get();
-    $lempar="data";
-
-    $jad_sos=DB::table('tb_detjadwal')
-    ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
-    ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
-    ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
-    ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
-    ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
-    ->where('tb_jadwal.kegiatan','Sosialisasi Ke Daerah-Daerah')
-    ->where('tb_periode.periode',$tahun->periode);
-    $jad_sos2=$jad_sos->count();
-    $jad_sos=$jad_sos->first();
-
-    $jad_tpa=DB::table('tb_detjadwal')
-    ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
-    ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
-    ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
-    ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
-    ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
-    ->where('tb_jadwal.kegiatan','Tes Ke Daerah-daerah')
-    ->where('tb_periode.periode',$tahun->periode);
-    $jad_tpa2=$jad_tpa->count();
-    $jad_tpa=$jad_tpa->first();
-
-
-    $jad_psikotes=DB::table('tb_detjadwal')
-    ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
-    ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
-    ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
-    ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
-    ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
-    ->where('tb_jadwal.kegiatan','Pelaksanaan Psikotes')
-    ->where('tb_periode.periode',$tahun->periode);
-
-    $jad_psikotes2=$jad_psikotes->count();
-    $jad_psikotes=$jad_psikotes->first();
-
-
-    $jad_pengumu_psiko=DB::table('tb_detjadwal')
-    ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
-    ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
-    ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
-    ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
-    ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
-    ->where('tb_jadwal.kegiatan','Pengumuman Psikotes')
-    ->where('tb_periode.periode',$tahun->periode);
-
-    $jad_pengumu_psiko2=$jad_pengumu_psiko->count();
-    $jad_pengumu_psiko=$jad_pengumu_psiko->first();
-
-    $jad_survey=DB::table('tb_detjadwal')
-    ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
-    ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
-    ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
-    ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
-    ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
-    ->where('tb_jadwal.kegiatan','Pelaksanaan Home Visit')
-    ->where('tb_periode.periode',$tahun->periode);
-    $jad_survey2=$jad_survey->count();
-    $jad_survey=$jad_survey->first();
-
-    $jad_wawancara_akhir=DB::table('tb_detjadwal')
-    ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
-    ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
-    ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
-    ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
-    ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
-    ->where('tb_jadwal.kegiatan','Pelaksanaan Wawancara Akhir')
-    ->where('tb_periode.periode',$tahun->periode);
-    $jad_wawancara_akhir2=$jad_wawancara_akhir->count();
-    $jad_wawancara_akhir=$jad_wawancara_akhir->first();
-
-    $jad_pengu_wawancara_akhir=DB::table('tb_detjadwal')
-    ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
-    ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
-    ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
-    ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
-    ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
-    ->where('tb_jadwal.kegiatan','Pengumuman Wawancara Akhir')
-    ->where('tb_periode.periode',$tahun->periode);
-
-    $jad_pengu_wawancara_akhir2=$jad_pengu_wawancara_akhir->count();
-    $jad_pengu_wawancara_akhir=$jad_pengu_wawancara_akhir->first();
-
-    $jad_pelak_mou=DB::table('tb_detjadwal')
-    ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
-    ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
-    ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
-    ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
-    ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
-    ->where('tb_jadwal.kegiatan','Pelaksanaan Penandatanganan Draf MOU')
-    ->where('tb_periode.periode',$tahun->periode);
-
-    $jad_pelak_mou2=$jad_pelak_mou->count();
-    $jad_pelak_mou=$jad_pelak_mou->first();
-
-
-    return view('User.jadwal_keseluruhan_ppmb',compact('jad_sos','jad_sos2','jad_tpa','jad_tpa2','jad_psikotes','jad_psikotes2','jad_survey','jad_survey2','jad_wawancara_akhir','jad_wawancara_akhir2','periode','lempar','jad_pengumu_psiko','jad_pengu_wawancara_akhir','jad_pelak_mou','jad_pengumu_psiko2','jad_pengu_wawancara_akhir2','jad_pelak_mou2','tahun'));
-}
-
-public function user_dok_ppmb()
-{  
-    $tpa="";
-    $lempar="";
-    $tahun = DB::table('tb_tahunSel')->get();
-    $periode = "";
-    return view('user.user_dok_ppmb',compact('tahun','lempar','tpa','periode'));
+    public function user_dok_ppmb()
+    {  
+        $tpa="";
+        $lempar="";
+        $tahun = DB::table('tb_tahunSel')->get();
+        $periode = "";
+        return view('user.user_dok_ppmb',compact('tahun','lempar','tpa','periode'));
 
         // $dok = DB::table('tb_dokumentasi')->get();
         // return view('user.user_dok_ppmb',compact('dok'));
-}
-public function user_hasil_dok_ppmb(Request $request)
-{
-    if($request->tahun==0){
-        return redirect('user_dok_ppmb')->with('alert','Pilih Periode Terlebih Dulu');
     }
-    $tpa="";
-    $lempar = $request->tahun;
-    $tahun = DB::table('tb_tahunSel')->get();
-    $x = DB::table('tb_tahunSel')->where('id',$request->tahun)->first();
-    $periode = $x->tahun;
-    return view('user.user_dok_ppmb',compact('tahun','lempar','tpa','periode'));
-}
+    public function user_hasil_dok_ppmb(Request $request)
+    {
+        if($request->tahun==0){
+            return redirect('user_dok_ppmb')->with('alert','Pilih Periode Terlebih Dulu');
+        }
+        $tpa="";
+        $lempar = $request->tahun;
+        $tahun = DB::table('tb_tahunSel')->get();
+        $x = DB::table('tb_tahunSel')->where('id',$request->tahun)->first();
+        $periode = $x->tahun;
+        return view('user.user_dok_ppmb',compact('tahun','lempar','tpa','periode'));
+    }
 
-public function user_dok_sosialisasi($id)
-{          
-    $dok = DB::table('tb_dokumentasi')
-    ->where([
+    public function user_dok_sosialisasi($id)
+    {          
+        $dok = DB::table('tb_dokumentasi')
+        ->where([
         ['kategori','Sosialisasi'],
         ['id_tahun',$id],
-    ])->get();
+        ])->get();
 
-    $x = DB::table('tb_tahunSel')->where('id',$id)->first();
-    $periode = $x->tahun;
-    return view('user.user_dok_sosialisasi',compact('dok','periode'));
-}
-public function user_dok_tpa($id)
-{          
-    $dok = DB::table('tb_dokumentasi')
-    ->where([
+        $x = DB::table('tb_tahunSel')->where('id',$id)->first();
+        $periode = $x->tahun;
+        return view('user.user_dok_sosialisasi',compact('dok','periode'));
+    }
+    public function user_dok_tpa($id)
+    {          
+        $dok = DB::table('tb_dokumentasi')
+        ->where([
         ['kategori','TPA'],
         ['id_tahun',$id],
-    ])->get();
+        ])->get();
 
-    $x = DB::table('tb_tahunSel')->where('id',$id)->first();
-    $periode = $x->tahun;
-    return view('user.user_dok_tpa',compact('dok','periode'));
-}
-public function user_dok_psikotest($id)
-{          
+        $x = DB::table('tb_tahunSel')->where('id',$id)->first();
+        $periode = $x->tahun;
+        return view('user.user_dok_tpa',compact('dok','periode'));
+    }
+    public function user_dok_psikotest($id)
+    {          
 
-    $dok = DB::table('tb_dokumentasi')
-    ->where([
+        $dok = DB::table('tb_dokumentasi')
+        ->where([
         ['kategori','Psikotest'],
         ['id_tahun',$id],
-    ])->get();
+        ])->get();
 
-    $x = DB::table('tb_tahunSel')->where('id',$id)->first();
-    $periode = $x->tahun;
-    return view('user.user_dok_psikotest',compact('dok','periode'));
-}
-public function user_dok_home_visit($id)
-{          
+        $x = DB::table('tb_tahunSel')->where('id',$id)->first();
+        $periode = $x->tahun;
+        return view('user.user_dok_psikotest',compact('dok','periode'));
+    }
+    public function user_dok_home_visit($id)
+    {          
 
-    $dok = DB::table('tb_dokumentasi')
-    ->where([
+        $dok = DB::table('tb_dokumentasi')
+        ->where([
         ['kategori','Home Visit'],
         ['id_tahun',$id],
-    ])->get();
+        ])->get();
 
-    $x = DB::table('tb_tahunSel')->where('id',$id)->first();
-    $periode = $x->tahun;
-    return view('user.user_dok_survei',compact('dok','periode'));
-}
-public function user_dok_wawancara_akhir($id)
-{          
+        $x = DB::table('tb_tahunSel')->where('id',$id)->first();
+        $periode = $x->tahun;
+        return view('user.user_dok_survei',compact('dok','periode'));
+    }
+    public function user_dok_wawancara_akhir($id)
+    {          
 
-    $dok = DB::table('tb_dokumentasi')
-    ->where([
+        $dok = DB::table('tb_dokumentasi')
+        ->where([
         ['kategori','Wawancara Akhir'],
         ['id_tahun',$id],
-    ])->get();
+        ])->get();
 
-    $x = DB::table('tb_tahunSel')->where('id',$id)->first();
-    $periode = $x->tahun;
-    return view('user.user_dok_wawancara_akhir',compact('dok','periode'));
-}
-public function user_dok_mou($id)
-{          
+        $x = DB::table('tb_tahunSel')->where('id',$id)->first();
+        $periode = $x->tahun;
+        return view('user.user_dok_wawancara_akhir',compact('dok','periode'));
+    }
+    public function user_dok_mou($id)
+    {          
 
-    $dok = DB::table('tb_dokumentasi')
-    ->where([
+        $dok = DB::table('tb_dokumentasi')
+        ->where([
         ['kategori','MOU'],
         ['id_tahun',$id],
-    ])->get();
+        ])->get();
 
-    $x = DB::table('tb_tahunSel')->where('id',$id)->first();
-    $periode = $x->tahun;
-    return view('user.user_dok_mou',compact('dok','periode'));
-}
+        $x = DB::table('tb_tahunSel')->where('id',$id)->first();
+        $periode = $x->tahun;
+        return view('user.user_dok_mou',compact('dok','periode'));
+    }
+
 public function detailjadwal_keseluruhan_ppmb(request $request)
 {
     $periode=DB::table('tb_periode')->orderby('periode')->get();
@@ -1251,7 +1256,6 @@ public function detailjadwal_keseluruhan_ppmb(request $request)
     ->where('tb_detjadwal.id_periode',$request->select_periode)
     ->where('tb_jadwal.kegiatan','Sosialisasi Ke Daerah-Daerah')
     ->get();
-
     $jad_sos2=$jad_sos->count();
     $jad_sos=$jad_sos->first();
 
@@ -1340,10 +1344,10 @@ public function detailjadwal_keseluruhan_ppmb(request $request)
     ->where('tb_jadwal.kegiatan','Pelaksanaan Penandatanganan Draf MOU')
     ->get();
 
-    $jad_pelak_mou2=$jad_pelak_mou->count();
-    $jad_pelak_mou=$jad_pelak_mou->first();
+$jad_pelak_mou2=$jad_pelak_mou->count();
+$jad_pelak_mou=$jad_pelak_mou->first();
 
-    return view('User.jadwal_keseluruhan_ppmb',compact('jad_sos','jad_sos2','jad_tpa','jad_tpa2','jad_psikotes','jad_psikotes2','jad_survey','jad_survey2','jad_wawancara_akhir','jad_wawancara_akhir2','tes','periode','lempar','jad_pengumu_psiko','jad_pengu_wawancara_akhir','jad_pelak_mou','jad_pengu_wawancara_akhir2','jad_pelak_mou2','jad_pengumu_psiko2','tahun'));
+return view('User.jadwal_keseluruhan_ppmb',compact('jad_sos','jad_sos2','jad_tpa','jad_tpa2','jad_psikotes','jad_psikotes2','jad_survey','jad_survey2','jad_wawancara_akhir','jad_wawancara_akhir2','tes','periode','lempar','jad_pengumu_psiko','jad_pengu_wawancara_akhir','jad_pelak_mou','jad_pengu_wawancara_akhir2','jad_pelak_mou2','jad_pengumu_psiko2','tahun'));
 
 }
 public function jadwal_tpa($periode)

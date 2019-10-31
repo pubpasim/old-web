@@ -22,15 +22,19 @@
 		position: relative;
 		left: 35%;
 	}
+	#size{
+		width: 500px;
+		
+	}
 
 </style>
 <div id="det" >
 	
 	<br><br><br>
 		<div class="foto">
-			<img src="{{url('imgs/mahasiswa')}}/{{$mahasiswa->file}}">
+			<img src="{{url('imgs/mahasiswa')}}/{{$mahasiswa->file}}" id="size">
 		</div>
-		<center><strong><h1 >{{$mahasiswa->jabatan}}</h1></strong></center>
+		<center><strong><h1 >{{$mahasiswa->nama}}</h1></strong></center>
 		<div class="">
 			<table align="center">
 				<tr>
@@ -49,6 +53,11 @@
 					<td>{{$mahasiswa->tempat_lahir}}, {{$mahasiswa->tanggal_lahir}}</td>
 				</tr>
 				<tr>
+					<td>Jenis Kelamin</td>
+					<td>:</td>
+					<td>{{$mahasiswa->jenis_kelamin}}</td>
+				</tr>
+				<tr>
 					<td>Angkatan</td>
 					<td>:</td>
 					<td>{{$mahasiswa->angkatan}}</td>
@@ -59,9 +68,14 @@
 					<td>{{$mahasiswa->nama_angkatan}}</td>
 				</tr>
 				<tr>
-					<td>Jenis Kelamin</td>
+					<td>Jabatan di PUB</td>
 					<td>:</td>
-					<td>{{$mahasiswa->jenis_kelamin}}</td>
+					<td>{{$mahasiswa->jabatan_pub}}</td>
+				</tr>
+				<tr>
+					<td>Jabatan di PPMB</td>
+					<td>:</td>
+					<td>{{$mahasiswa->jabatan}}</td>
 				</tr>
 				<tr>
 					<td>Asal Daerah</td>

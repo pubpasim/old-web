@@ -97,8 +97,14 @@
               <span class="navbarToggler"><span></span><span></span><span></span></span>
             </div>
 
-
-            <!-- Menu -->
+                <!-- Menu -->
+                <div class="classy-menu">
+                  <!-- Menu Close Button -->
+                  <div class="classycloseIcon">
+                    <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                  </div>
+                  <!-- Nav Start -->
+                 
             <div class="classy-menu">
               <!-- Menu Close Button -->
               <div class="classycloseIcon">
