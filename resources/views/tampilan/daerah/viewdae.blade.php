@@ -111,7 +111,7 @@
 						<table class="table table-striped table-bordered table-hover" id="tabel_angkatan">
 							<thead>
 								<tr>
-									<th data-field="state" data-checkbox="true" name ""><center>No</center></th>
+									<th data-field="state" data-checkbox="true" ><center>No</center></th>
 									<th data-field="id" data-sortable="true"><center>Nama Daerah </center></th>
 									<th colspan="2" align="text-center"><center>Aksi</center></th>
 								</tr>
@@ -122,7 +122,7 @@
 									<td ><center>{{$data->id_daerah}}</center></td>
 									<td ><center>{{$data->kab_kot}}</center></td>
 									<th><a href="{{URL('tampilan/daerah/'.$data->id_daerah)}}" class=" icon-edit-sign"><center>EDIT</center></a></th>
-									<th><a href="{{URL('tampilan/daerah/delet/'.$data->id_daerah)}}" class="icon-trash"><center>Hapus</center></a></th>
+									<th><a href="{{URL('tampilan/daerah/delet/'.$data->id_daerah)}}" class="icon-trash" onclick="return confirm('Hapus data ?');"><center>Hapus</center></a></th>
 
 								</tr>
 

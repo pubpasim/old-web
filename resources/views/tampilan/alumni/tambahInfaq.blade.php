@@ -91,57 +91,66 @@
 		font-family: century gothic;
 	}
 </style>
-<div class="container">
-	<form method="POST" action="{{url('tambahInfaq')}}">
-		{{csrf_field()}}
-		@if(\Session::has("alert"))
-		<div class="alert alert-danger">
-			<div>{{Session::get("alert")}}</div>
-		</div>
-		@endif
-		<div class="row">
-			<div class="col-25">
-				<label for="bulan">Bulan</label>
-			</div>
-			<div class="col-75">
-				<select name="tahun">
-					<option>--Tahun--</option>
-					<?php 
-					$th=getdate();
-					$thn=$th['year'];
-					for ($x=2011; $x <= $thn; $x++) { 
-						echo "<option value='$x'>Tahun $x</option>";
-					}
-					?>
-				</select>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-25">
-				<label for="bulan">Bulan</label>
-			</div>
-			<div class="col-75">
-				<select name="bulan">
-					<option>--Bulan--</option>
-					@foreach($bulan as $bl)
-						<option value="{{$bl->bulan}}">{{$bl->bulan}}</option>
-					@endforeach
-				</select>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-25">
-				<label for="daerah">Total Infaq</label>
-			</div>
-			<div class="col-75">
-				<input id="inp" type="number" name="total" placeholder="Total Infaq...">
-			</div>
-		</div>
-		<div class="row" style="margin-top: 15px;">
-			<input type="submit" value="Simpan">
-		</div>
 
-	</form>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-heading"><h1 align="center">Data Infaq Alumni PUB</h1></div>
+			<div class="panel-body">
+				<form method="POST" action="{{url('tambahInfaq')}}">
+					{{csrf_field()}}
+					@if(\Session::has("alert"))
+					<div class="alert alert-danger">
+						<div>{{Session::get("alert")}}</div>
+					</div>
+					@endif
+					<div class="row">
+						<div class="col-25">
+							<label for="bulan">Bulan</label>
+						</div>
+						<div class="col-75">
+							<select name="tahun">
+								<option>--Tahun--</option>
+								<?php 
+								$th=getdate();
+								$thn=$th['year'];
+								for ($x=2011; $x <= $thn; $x++) { 
+									echo "<option value='$x'>Tahun $x</option>";
+								}
+								?>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-25">
+							<label for="bulan">Bulan</label>
+						</div>
+						<div class="col-75">
+							<select name="bulan">
+								<option>--Bulan--</option>
+								@foreach($bulan as $bl)
+								<option value="{{$bl->bulan}}">{{$bl->bulan}}</option>
+								@endforeach
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-25">
+							<label for="daerah">Total Infaq</label>
+						</div>
+						<div class="col-75">
+							<input id="inp" type="number" name="total" placeholder="Total Infaq...">
+						</div>
+					</div>
+					<div class="row" style="margin-top: 15px;">
+						<input type="submit" value="Simpan">
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
+
 
 @include('tampilan.foot')

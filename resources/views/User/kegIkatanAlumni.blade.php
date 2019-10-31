@@ -9,10 +9,13 @@
 		height: 250px;
 	}
 	.x{
-		display: inline-block;	
+		display: inline-block;
 	}
 </style>
-	<div>
+	<div style="text-align: center;">
+		<h3 style="color: darkcyan;" align="center"><b>KEGIATAN IKATAN ALUMNI</b></h3>
+		<h4 align="center"><b>PEMBERDAYAAN UMAT BERKELANJUTAN (PUB)</b></h4>		
+		<br><br>
 		@foreach($dok as $data)	
 			<figure class="x">
 				<img src="{{url('imgs')}}/{{($data->foto) }}" class="tengah">	

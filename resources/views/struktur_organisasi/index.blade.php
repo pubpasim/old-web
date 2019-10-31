@@ -124,7 +124,7 @@
 							<td>{{$data->id_orgpub}}</td>
 							<td>{{$data->jabatan_pub}}</td>
 							<td align="center">
-								<a href="{{url('struktur_organisasi/'.$data->id_orgpub)}}"><button class="btn btn-primary">Edit</button></a>&nbsp;&nbsp;&nbsp;
+								<a href="{{url('struktur_organisasi/'.$data->id_orgpub)}}" onclick="return confirm('Hapus data ?');"><button class="btn btn-primary">Edit</button></a>&nbsp;&nbsp;&nbsp;
 								<a href="{{url('struktur_organisasi/hapus/'.$data->id_orgpub)}}"><button class="btn btn-danger">Hapus</button></a>
 							</td>
 						</tr>

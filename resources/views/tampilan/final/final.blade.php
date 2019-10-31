@@ -42,7 +42,7 @@
 								<td>{{ $data->asal_daerah}}</td>								
 								<td>
 									<a href="{{url('editFinal/'.$data->id_final)}}" class="btn btn-info">Edit</a>
-									<a href="{{url('hapusFinal/'.$data->id_final)}}" class="btn btn-info">Hapus</a>
+									<a href="{{url('hapusFinal/'.$data->id_final)}}" class="btn btn-info" onclick="return confirm('Hapus data ?');">Hapus</a>
 								</td>
 							</tr>
 							@endforeach

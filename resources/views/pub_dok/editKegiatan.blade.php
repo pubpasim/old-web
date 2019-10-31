@@ -73,59 +73,66 @@
     }
     #uploadFile{
         height: 50px;
-        width: 510px;
+        width: 100%;
         border-radius: 5px;
         border-style: groove;
     }
 </style>
-    <h1>Edit data Kegiatan</h1>
-    <div class="container">
-        <form method="POST" action="{{url('edit/kegiatan/'.$dokumen->id_pubdok)}}" enctype="multipart/form-data">
-            {{csrf_field()}}
-            @if ($errors->has('foto'))
-            <div class="alert alert-danger">Format atau ukuran file tidak sesuai</div>
-            @endif
-            <div class="row">
-                <div class="col-25">
-                    <label for="jurusan">Foto Kegiatan</label>
-                </div>
-                <div class="col-75">
-                    <input id="uploadFile" type="file" name="foto" value="{{$dokumen->file}}">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-25">
-                    <label for="spkw">Tema Kegiatan</label>
-                </div>
-                <div class="col-75">
-                    <select id="kegiatan" name="kegiatan">
-                        <option disabled="false"> --pilih kegiatan--</option>
-                        <option @if($dokumen->tema=="Pengajian") selected="true" @endif >Pengajian</option>
-                        <option @if($dokumen->tema=="Pelatihan") selected="true" @endif>Pelatihan</option>
-                        <option @if($dokumen->tema=="Magang") selected="true" @endif>Magang</option>
-                        <option @if($dokumen->tema=="Bersih-bersih") selected="true" @endif>Bersih-bersih</option>
-                        <option @if($dokumen->tema=="Kuliah") selected="true" @endif>Kuliah</option>
-                        <option @if($dokumen->tema=="Pembinaan") selected="true" @endif>Pembinaan</option>
-                        <option @if($dokumen->tema=="Pemilihan PUB") selected="true" @endif>Pemilihan PUB</option>
-                        <option @if($dokumen->tema=="Bakti Sosial") selected="true" @endif>Bakti Sosial</option>
-                        <option @if($dokumen->tema=="Masak-masak") selected="true" @endif>Masak-masak</option>
-                        <option @if($dokumen->tema=="Makan-makan") selected="true" @endif>Makan-makan</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-25">
-                    <label for="jurusan">Keterangan</label>
-                </div>
-                <div class="col-75">
+<div class="row" >
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h2 align="center">Edit Data Dokumentasi PUB</h2></div>
+            <div class="panel-body">
+                <form method="POST" action="{{url('edit/kegiatan/'.$dokumen->id_pubdok)}}" enctype="multipart/form-data">
+                    {{csrf_field()}}
+                    @if ($errors->has('foto'))
+                    <div class="alert alert-danger">Format atau ukuran file tidak sesuai</div>
+                    @endif
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="jurusan">Foto Kegiatan</label>
+                        </div>
+                        <div class="col-75">
+                            <input id="uploadFile" type="file" name="foto" value="{{$dokumen->file}}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="spkw">Tema Kegiatan</label>
+                        </div>
+                        <div class="col-75">
+                            <select id="kegiatan" name="kegiatan">
+                                <option disabled="false"> --pilih kegiatan--</option>
+                                <option @if($dokumen->tema=="Pengajian") selected="true" @endif >Pengajian</option>
+                                <option @if($dokumen->tema=="Pelatihan") selected="true" @endif>Pelatihan</option>
+                                <option @if($dokumen->tema=="Magang") selected="true" @endif>Magang</option>
+                                <option @if($dokumen->tema=="Bersih-bersih") selected="true" @endif>Bersih-bersih</option>
+                                <option @if($dokumen->tema=="Kuliah") selected="true" @endif>Kuliah</option>
+                                <option @if($dokumen->tema=="Pembinaan") selected="true" @endif>Pembinaan</option>
+                                <option @if($dokumen->tema=="Pemilihan PUB") selected="true" @endif>Pemilihan PUB</option>
+                                <option @if($dokumen->tema=="Bakti Sosial") selected="true" @endif>Bakti Sosial</option>
+                                <option @if($dokumen->tema=="Masak-masak") selected="true" @endif>Masak-masak</option>
+                                <option @if($dokumen->tema=="Makan-makan") selected="true" @endif>Makan-makan</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="jurusan">Keterangan</label>
+                        </div>
+                        <div class="col-75">
 
-                    <textarea name="ket" style="width: 50%;height: 30%;">{{$dokumen->keterangan}}</textarea>
+                            <textarea name="ket" style="width: 100%;height: 50%;">{{$dokumen->keterangan}}</textarea>
 
-                </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <input type="submit" value="Simpan">
+                    </div>
+                </form>
             </div>
-            <div class="row">
-                <input type="submit" value="Simpan">
-            </div>
-        </form>
+        </div>
     </div>
+</div>
+
 @include('tampilan.foot')

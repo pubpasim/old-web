@@ -94,66 +94,48 @@
 
 </style>
 
+<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-heading"><h2 align="center">Struktur Organisasi PUB</h2></div>
+			<div class="panel-body">
+				<br><p class="icon-plus-sign"></i> <a href="{{url('detorg_pub/tambah')}}"><button class="btn btn-primary">Tambah Data</button></a></p>
+				<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+					<thead>
+						<tr>
+							<th>No</th>
+							<th>Jabatan</th>
+							<th>Angkatan</th>
+							<th>Mahasiswa</th>
+							<th>Aksi</th>
+						</tr> 
+					</thead>
+					<tbody>
+						@php $no=1; @endphp
+						@foreach($detorg_pub as $data)
 
-	<h1>Daftar Mahasiswa PUB</h1>
-	<div class="container">
-		
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header">Struktur Organisasi PUB</h1>
-			</div>
-		</div><!--/.row-->
+						<tr align="center">
+							<td>{{$no++}}</td>
+							<td>{{$data->jabatan_pub}}</td>
+							<td>{{$data->angkatan}}</td>
+							<td>{{$data->nama}}</td>
 
-		
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="panel panel-default">
-					<div class="panel-heading">Struktur Organisasi PUB</div>
-					<br><p class="icon-plus-sign"></i> <a href="{{url('detorg_pub/tambah')}}">Tambah Data</a></p>
-					<div class="panel-body">
-						<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
-						    <!-- <thead>
-						    <tr>   
-						        <th data-field="id_orgpub" data-sortable="true" name="id_orgpub">ID</th>
-						        <th data-field="name"  data-
-						        sortable="true" name="jabatan">Jabatan</th>
-						      </tr>
-						      <tr> -->
-						      	<tr>
-						      		<td>No</td>
-						      		<td>Jabatan</td>
-						      		<td>Angkatan</td>
-						      		<td>Mahasiswa</td>
-						      		<td>Aksi</td>
-						      	</tr> 
-						      	@php $no=1; @endphp
-						      	@foreach($detorg_pub as $data)
+							<td>
+								<a href="{{url('detorg_pub/edit/'.$data->id_detorg_pub)}}">
+									<button class="btn btn-primary" style="background-color: green;">Edit</button>
+								</a>
+								<a href="{{url('detorg_pub/hapus/'.$data->id_detorg_pub)}}" onclick="return confirm('Apakah anda yakin akan menghapus data ?');">
+									<button style="background-color: red;" class="btn btn-primary" >hapus</button>
+								</a>
+							</td>
+						</tr>
 
-						      	<tr align="center">
-						      		<td>{{$no++}}</td>
-						      		<td>{{$data->jabatan_pub}}</td>
-						      		<td>{{$data->angkatan}}</td>
-						      		<td>{{$data->nama}}</td>
-
-						      		<td>
-						      			<a href="{{url('detorg_pub/edit/'.$data->id_detorg_pub)}}">
-						      				<button class="btn btn-primary" style="background-color: green;">Edit</button>
-						      			</a>
-						      			<a href="{{url('detorg_pub/hapus/'.$data->id_detorg_pub)}}">
-						      				<button style="background-color: red;" class="btn btn-primary">hapus</button>
-						      			</a>
-						      		</td>
-						      	</tr>
-
-						      	@endforeach
-
-						      </tr>
-						  </thead>
-						</table>
-					</div>
-				</div>
+						@endforeach
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
+</div>
 
 @include('tampilan.foot')

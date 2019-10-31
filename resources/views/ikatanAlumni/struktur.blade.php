@@ -102,7 +102,7 @@
 						    		<td>{{$data->masa_bakti}}</td>
 						    		<td>
 						    			<a href="{{url('editStrukAlumni/'.$data->id_ikatan)}}" class="btn btn-info">Edit</a>
-						    			<a href="{{url('hapusStrukAlumni/'.$data->id_ikatan)}}" class="btn btn-info">Hapus</a>
+						    			<a href="{{url('hapusStrukAlumni/'.$data->id_ikatan)}}" class="btn btn-info" onclick="return confirm('Hapus data ?');">Hapus</a>
 						    		</td>
 						    	</tr>
 						    	@endforeach

@@ -16,7 +16,7 @@ class alumni_adminController extends Controller
     public function index($id)
     {
 
-        if (!Session::get('level')) {
+        if (!Session::get('level')=="alumni") {
             return redirect('login')->with('alert','Silahkan Login terlebih dahulu');
         }else{
 

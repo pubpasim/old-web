@@ -31,6 +31,7 @@
   <link href="/css/slide.css" rel="stylesheet">
   <link href="/css/struktur.css" rel="stylesheet">
   <link href="/css/footer.css" rel="stylesheet">
+  <link href="/lumino/css/styles.css" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 
@@ -64,22 +65,11 @@
 
   <!-- Header Area Start -->
   <header class="header-area">
-    <!-- Search Form -->
-    <div class="search-form d-flex align-items-center">
-      <div class="container">
-        <form action="#" method="get">
-          <input type="search" name="search-form-input" id="searchFormInput" placeholder="Type your keyword ...">
-          <button type="submit"><i class="icon_search"></i></button>
-        </form>
-      </div>
-    </div>
-
-    <!-- Top Header Area Start -->
     <div class="top-header-area">
       <div class="container">
         <div class="row">
 
-          <div class="col-6">
+          <div class="col-12">
             <div class="top-header-content">
               <a href="{{url('https://wa.me/6285722752570')}}" target="_blank"><i class="fa fa-whatsapp"></i> <span>0857-2275-2570</span></a>
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -175,7 +165,6 @@
       </div>
     </div>
   </header>
-</body>
   <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">

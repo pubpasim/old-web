@@ -45,9 +45,81 @@
 <div >
 	<div class="tengah">
 		<center><h1>Kegiatan PUB</h1></center>
-		@foreach($keg as $kegiatan)
-			<a href="{{url('kegiatanPub/filter/'.$kegiatan->id_angkatan,$kegiatan->tema)}}"><button id="bt">{{$kegiatan->tema}}</button></a>
-		@endforeach
+			@if($kes2>0)
+				<a href="{{url('kegiatanPub/filter/'.$kes->id_angkatan,$kes->tema)}}">
+					<button id="bt">Divisi Kesehatan</button>
+				</a>
+			@else
+				<a href="{{url('kegiatanPub/filter/'.'0','Divisi Kesehatan')}}">
+					<button id="bt">Divisi Kesehatan</button>
+				</a>
+			@endif
+
+			@if($keb2>0)
+				<a href="{{url('kegiatanPub/filter/'.$keb->id_angkatan,$keb->tema)}}">
+					<button id="bt">Divisi Kebersihan</button>
+				</a>
+			@else
+				<a href="{{url('kegiatanPub/filter/'.'0','Divisi Kebersihan')}}">
+					<button id="bt">Divisi Kebersihan</button>
+				</a>
+			@endif
+
+			@if($magang2>0)
+				<a href="{{url('kegiatanPub/filter/'.$magang->id_angkatan,$magang->tema)}}">
+					<button id="bt">Divisi Magang</button>
+				</a>
+			@else
+				<a href="{{url('kegiatanPub/filter/'.'0','Divisi Magang')}}">
+					<button id="bt">Divisi Magang</button>
+				</a>
+			@endif
+
+			@if($pendidikan2>0)
+				<a href="{{url('kegiatanPub/filter/'.$pendidikan->id_angkatan,$pendidikan->tema)}}">
+					<button id="bt">Divisi Pendidikan</button>
+				</a>
+			@else
+				<a href="{{url('kegiatanPub/filter/'.'0','Divisi Pendidikan')}}">
+					<button id="bt">Divisi Pendidikan</button>
+				</a>
+			@endif
+
+			@if($kerohanian2>0)
+				<a href="{{url('kegiatanPub/filter/'.$kerohanian->id_angkatan,$kerohanian->tema)}}">
+					<button id="bt">Divisi Kerohanian</button>
+				</a>
+			@else
+				<a href="{{url('kegiatanPub/filter/'.'0','Divisi Kerohanian')}}">
+					<button id="bt">Divisi Kerohanian</button>
+				</a>
+			@endif
+
+			@if($kesejahteraan2>0)
+				<a href="{{url('kegiatanPub/filter/'.$kesejahteraan->id_angkatan,$kesejahteraan->tema)}}">
+					<button id="bt">Divisi Kesejahteraan</button>
+				</a>
+			@else
+				<a href="{{url('kegiatanPub/filter/'.'0','Divisi Kesejahteraan')}}">
+					<button id="bt">Divisi Kesejahteraan</button>
+				</a>
+			@endif
+
+			@if($keasramaan2>0)
+				<a href="{{url('kegiatanPub/filter/'.$keasramaan->id_angkatan,$keasramaan->tema)}}">
+					<button id="bt">Divisi Keasramaan</button>
+				</a>
+			@else
+				<a href="{{url('kegiatanPub/filter/'.'0','Divisi Keasramaan')}}">
+					<button id="bt">Divisi Keasramaan</button>
+				</a>
+			@endif
+
+
+			
+			
+			
+		
 		
 	</div>
 

@@ -4,7 +4,7 @@
 
 <div id="design" style="width: 90%;">
 	<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
-		<h2 align="center"><b>HASIL TPA & WAWANCARA AWAL</b></h4>
+		<h3 style="color: darkcyan;"align="center"><b>HASIL TPA & WAWANCARA AWAL</b></h3>
 		<h4 align="center"><b>PEMBERDAYAAN UMAT BERKELANJUTAN (PUB)</b></h4>
 		<h4 align="center"><b>PERIODE {{$periode->tahun}}</b></h4>
 		<thead>

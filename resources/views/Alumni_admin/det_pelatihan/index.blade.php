@@ -32,7 +32,7 @@
 									
 									<td>
 										<a href="{{url('Alumni_admin/det_pelatihan/edit'.$data->id_detpelatihan)}}"><button>Edit</button></a>&nbsp;&nbsp;
-										<a href="{{url('Alumni_admin/det_pelatihan/hapus'.$data->id_detpelatihan)}}"> <button>Hapus</button></a>
+										<a href="{{url('Alumni_admin/det_pelatihan/hapus'.$data->id_detpelatihan)}}" onclick="return confirm('Hapus data ?');"> <button>Hapus</button></a>
 										<a href="{{url('Alumni_admin/det_pelatihan/detail'.$data->id_detpelatihan)}}"> <button>Detail</button></a>
 									</td>
 								</tr>

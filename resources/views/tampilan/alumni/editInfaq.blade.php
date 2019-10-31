@@ -81,56 +81,64 @@
 	}
 </style>
 <h2>Edit Data Infaq</h2>
-<div class="container">
-	<form method="POST" action="{{url('editInfaq/'.$infaq->id_infaq)}}">
-		{{csrf_field()}}
-		<div class="row">
-			<div class="col-25">
-				<label for="bulan">Bulan</label>
-			</div>
-			<div class="col-75">
-				<select name="tahun">
-					<option>--Tahun--</option>
-					@php 
-					$th=getdate();
-					$thn=$th['year'];
-					for ($x=2011; $x <= $thn; $x++){ 
-					@endphp 
-					<option @if($infaq->tahun_infaq==$x)selected='true' @endif value='{{$x}}'>Tahun {{$x}}</option>
-					@php
-				}
-				@endphp
-			</select>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-25">
-			<label for="bulan">Bulan</label>
-		</div>
-		<div class="col-75">
-			
-			<select name="bulan">
-				<option>--Bulan--</option>
-				@foreach($bulan as $bl)
-				<option @if($infaq->bulan_infaq==$bl->bulan) selected="true" @endif value="{{$bl->bulan}}">{{$bl->bulan}}</option>
-				@endforeach
-			</select>
-			
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-25">
-			<label for="daerah">Total Infaq</label>
-		</div>
-		<div class="col-75">
-			<input id="inp" type="number" name="total" placeholder="Total Infaq..." value="{{$infaq->total_infaq}}">
-		</div>
-	</div>
-	<div class="row" style="margin-top: 15px;">
-		<input type="submit" value="Simpan">
-	</div>
 
-</form>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-heading"><h1 align="center">Edit Infaq Alumni PUB</h1></div>
+			<div class="panel-body">
+				<form method="POST" action="{{url('editInfaq/'.$infaq->id_infaq)}}">
+					{{csrf_field()}}
+					<div class="row">
+						<div class="col-25">
+							<label for="bulan">Bulan</label>
+						</div>
+						<div class="col-75">
+							<select name="tahun">
+								<option>--Tahun--</option>
+								@php 
+								$th=getdate();
+								$thn=$th['year'];
+								for ($x=2011; $x <= $thn; $x++){ 
+								@endphp 
+								<option @if($infaq->tahun_infaq==$x)selected='true' @endif value='{{$x}}'>Tahun {{$x}}</option>
+								@php
+							}
+							@endphp
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-25">
+						<label for="bulan">Bulan</label>
+					</div>
+					<div class="col-75">
+
+						<select name="bulan">
+							<option>--Bulan--</option>
+							@foreach($bulan as $bl)
+							<option @if($infaq->bulan_infaq==$bl->bulan) selected="true" @endif value="{{$bl->bulan}}">{{$bl->bulan}}</option>
+							@endforeach
+						</select>
+
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-25">
+						<label for="daerah">Total Infaq</label>
+					</div>
+					<div class="col-75">
+						<input id="inp" type="number" name="total" placeholder="Total Infaq..." value="{{$infaq->total_infaq}}">
+					</div>
+				</div>
+				<div class="row" style="margin-top: 15px;">
+					<input type="submit" value="Simpan">
+				</div>
+
+			</form>
+		</div>
+	</div>
+</div>
 </div>
 
 
