@@ -107,15 +107,6 @@
 					</select>
 				</div>
 				<div class="col-75">
-					<label for="Sekolah">Tempat Lahir</label>
-					<input type="text" value="{{$data->tempat}}" class="form-control" placeholder="Tempat Lahir" name="tempat">
-				</div>
-				<div class="col-75">
-					<label for="Sekolah">Tanggal Lahir</label>
-					<input type="date" value="{{$data->tanggal}}" class="form-control" placeholder="tgl" name="tanggal">
-				</div>
-
-				<div class="col-75">
 					<label for="nama_peserta">Jurusan Pilihan</label>
 					<select id="jurusan" name="jurusan">
 						<option value="0" disabled=""> --Jurusan Pilihan--</option>
@@ -137,10 +128,6 @@
 				<div class="col-75">
 					<label for="asal_daerah">Asal Daerah</label>
 					<input value="{{$data->asal_daerah}}" type="text" class="form-control" placeholder="asal_daerah" name="asal_daerah">
-				</div>
-				<div class="col-75">
-					<label for="no_hp">No HP</label>
-					<input value="{{$data->no_hp}}" type="text" class="form-control" placeholder="no_hp" name="no_hp">
 				</div>				
 			</div>
 			<br>

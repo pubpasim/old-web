@@ -28,8 +28,7 @@ class userController extends Controller
      return view('user.index',compact('kegiatan','ppmb','chat'));
  }
 
-        return view('user.index',compact('kegiatan','ppmb','chat'));
-    }
+   
     public function hasilSeleksi()
     {
         $tpa="";
@@ -221,7 +220,7 @@ public function user_alumniView(request $request)
     {
         $usr = $request->username;
         $pass = $request->password;
-        if($usr=="Hafiz" && $pass=="020400"){
+        if($usr=="Hafiz" && $pass=="040200"){
             Session::put('level','admin');                    
             $count = DB::table('tb_pertanyaan')->count();;
             Session::put('jumChat',$count);                    

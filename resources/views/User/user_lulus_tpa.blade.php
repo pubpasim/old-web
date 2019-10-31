@@ -9,14 +9,8 @@
 			<tr>
 				<th>No</th>
 				<th>Nama</th>
-<<<<<<< HEAD
-				<th>Jenis Kelamin</th>
-				<th>Asal Daerah</th>
-				<th>Asal Sekolah</th>
-=======
 				<th>Asal Daerah</th>
 				<th>Asal Sekolah</th>		
->>>>>>> 8751b9a5ff2a2e38156fbea2c3f7778741c7547c
 			</tr>
 		</thead>
 		<tbody>
@@ -24,16 +18,9 @@
 			@foreach($tpa as $data)
 			<tr>
 				<td>{{ $no++}}</td>
-<<<<<<< HEAD
-				<td>{{ $data->nama}}</td>
-				<td>{{ $data->jk}}</td>
-				<td>{{ $data->daerah}}</td>
-				<td>{{ $data->sekolah}}</td>
-=======
 				<td>{{ $data->nama}}</td>				
 				<td>{{ $data->daerah}}</td>
 				<td>{{ $data->sekolah}}</td>		
->>>>>>> 8751b9a5ff2a2e38156fbea2c3f7778741c7547c
 			</tr>
 			@endforeach
 		</tbody>						    

@@ -22,13 +22,17 @@
 		position: relative;
 		left: 35%;
 	}
+	#size{
+		width: 500px;
+		
+	}
 
 </style>
 <div id="det" >
 	
 	<br><br><br>
 		<div class="foto">
-			<img src="{{url('imgs/mahasiswa')}}/{{$mahasiswa->file}}">
+			<img src="{{url('imgs/mahasiswa')}}/{{$mahasiswa->file}}" id="size">
 		</div>
 		<center><strong><h1 >{{$mahasiswa->nama}}</h1></strong></center>
 		<div class="">

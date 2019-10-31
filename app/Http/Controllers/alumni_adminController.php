@@ -15,10 +15,6 @@ class alumni_adminController extends Controller
      */
     public function index($id)
     {
-<<<<<<< HEAD
-=======
-
->>>>>>> 8751b9a5ff2a2e38156fbea2c3f7778741c7547c
         if (!Session::get('level')) {
             return redirect('login')->with('alert','Silahkan Login terlebih dahulu');
         }else{

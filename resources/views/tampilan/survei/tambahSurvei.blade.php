@@ -84,8 +84,9 @@
 					<label for="nama_peserta">Nama Peserta</label>
 					<select id="jurusan" name="nama_peserta">
 						<option value="0"> --Nama Peserta--</option>
+						@php $no = 1; @endphp
 						@foreach($nama as $data)
-							<option value="{{$data->id_lulus}}">{{$data->nama}} -- {{$data->sekolah}}</option>
+							<option value="{{$data->id_lulus}}">{{$no++}}. {{$data->nama}} -- {{$data->sekolah}}</option>
 						@endforeach
 					</select>					
 				</div>
