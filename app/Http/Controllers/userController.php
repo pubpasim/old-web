@@ -22,29 +22,31 @@ class userController extends Controller
     public function index()
     {
 
-     $kegiatan=DB::table('tb_pubdok')->orderby('id_pubdok','DESC')->limit('3')->get();
-     $ppmb=DB::table('tb_dokumentasi')->orderby('id_dok','DESC')->limit('10')->get();
-     $chat=DB::table('tb_pertanyaan')->get();
-
-     return view('user.index',compact('kegiatan','ppmb','chat'));
- }
- public function hasilSeleksi()
- {
-    $tpa="";
-    $lempar="";
-    $tahun = DB::table('tb_tahunSel')->get();
-    $periode = "";
-    return view('user.hasilSeleksi',compact('tahun','lempar','tpa','periode'));
-}
-public function tampilSeleksi(Request $request)
-{
-    $tpa="";
-    $lempar = $request->tahun;
-    $tahun = DB::table('tb_tahunSel')->get();
-    $x = DB::table('tb_tahunSel')->where('id',$request->tahun)->first();
-    $periode = $x->tahun;
-    return view('user.hasilSeleksi',compact('tahun','lempar','tpa','periode'));
-}
+         $kegiatan=DB::table('tb_pubdok')->orderby('id_pubdok','DESC')->limit('3')->get();
+         $ppmb=DB::table('tb_dokumentasi')->orderby('id_dok','DESC')->limit('10')->get();
+         $chat=DB::table('tb_pertanyaan')->get();
+        return view('user.index',compact('kegiatan','ppmb','chat'));
+    }
+    public function hasilSeleksi()
+    {
+        $tpa="";
+        $lempar="";
+        $tahun = DB::table('tb_tahunSel')->get();
+        $periode = "";
+        return view('user.hasilSeleksi',compact('tahun','lempar','tpa','periode'));
+    }
+    public function tampilSeleksi(Request $request)
+    {
+        if($request->tahun==0){
+            return redirect('user_hasilSeleksi')->with('alert','Pilih Tahun Seleksi Terlebih Dulu');
+        }
+        $tpa="";
+        $lempar = $request->tahun;
+        $tahun = DB::table('tb_tahunSel')->get();
+        $x = DB::table('tb_tahunSel')->where('id',$request->tahun)->first();
+        $periode = $x->tahun;
+        return view('user.hasilSeleksi',compact('tahun','lempar','tpa','periode'));
+    }
 
 public function user_infaq()
 {
@@ -59,37 +61,6 @@ public function user_infaq()
     return view('user.user_infaq',compact('data1','thn','lempar'));
 }
 
-
-// public function user_tpa($id)
-// {   
-//     $tpa = DB::table('tb_tpa')->where('id_tahun',$id)->get();
-//     return view('user.user_tpa',compact('tpa','id'));
-// }
-// public function user_survei($id)
-// {
-//     $survei = DB::table('tb_survei')->where('id_tahun3',$id)->get();
-//     return view('user.user_survei',compact('survei','id'));
-// }
-// public function user_psikotes($id)
-// {
-//     $psi = DB::table('tb_psikotest')->where('id_tahun2',$id)->get();
-//     return view('user.user_psikotes',compact('psi','id'));
-// }
-// public function user_final($id)
-// {
-//     $final = DB::table('tb_final')->where('id_tahun4',$id)->get();
-
-//     return view('user.user_final',compact('final'));
-// }
-// public function user_infaq()
-// {
-//     $infaq=DB::table('tb_infaq')
-//     ->join('tb_angkatan','tb_infaq.id_angkatan','=','tb_angkatan.id_angkatan')
-//     ->select('tb_infaq.id_infaq','tb_infaq.periode','tb_infaq.total_infaq','tb_angkatan.angkatan')
-//     ->get();
-//     return view('user.user_infaq',compact('infaq'));
-// }
-
 public function infaq_bulan(Request $request)
 {
     $thn=$request->select;
@@ -97,12 +68,6 @@ public function infaq_bulan(Request $request)
     ->select('bulan_infaq','total_infaq as total','id_bulan')
     ->where('tahun_infaq',$request->select)->orderby('id_bulan')->get();
     return view('user.infaq_bulan',compact('data1','thn'));
-}
-
-public function user_dok_ppmb()
-{  
-    $dok = DB::table('tb_dokumentasi')->get();
-    return view('user.user_dok_ppmb',compact('dok'));
 }
 
 public function user_lulus_tpa($id)
@@ -202,13 +167,6 @@ public function user_alumniView(request $request)
         return view('user.user_alumni',compact('angkatan','mahasiswa'));
     }
 }
-    /**
-     * Display a listing of the resource. 
-     *
-     * @return \Illuminate\Http\Response
-     */
-    
-
     public function login()
     {
         return view('user.login');
@@ -596,7 +554,7 @@ public function tampil_organisasi_ppmb(request $request)
     $kadiv_dokumentasi2=$kadiv_dokumentasi->count();
     $kadiv_dokumentasi=$kadiv_dokumentasi->first();
 
-    return view('User.struktur_ppmb_user',compact('ketua','sekretaris','bendahara_ex','bendahara_in','keamanan','kadiv_logistik','kadiv_humas','kadiv_acara','kadiv_dokumentasi','kadiv_kesejahtraan','ketua2','sekretaris2','bendahara_ex2','bendahara_in2','keamanan2','kadiv_logistik2','kadiv_humas2','kadiv_acara2','kadiv_dokumentasi2','kadiv_kesejahtraan2','lempar','periode','kepengurusan'));   
+    return view('User.struktur_ppmb_user',compact('ketua','sekretaris','bendahara_ex','bendahara_in','keamanan','kadiv_logistik','kadiv_humas','kadiv_acara','kadiv_dokumentasi','kadiv_kesejahtraan','ketua2','sekretaris2','bendahara_ex2','bendahara_in2','keamanan2','kadiv_logistik2','kadiv_humas2','kadiv_acara2','kadiv_dokumentasi2','kadiv_kesejahtraan2','lempar','periode'));   
 }
 public function organisasi_pub(Request $request)
 {
@@ -932,15 +890,15 @@ public function orgIkatanAlumni(Request $request)
     ->select('tb_mahasiswa.id_mahasiswa','tb_orgalumni.jabatan','tb_mahasiswa.nama')
     ->where('tb_orgalumni.jabatan','Departemen Kerja Sama');
     $dep_kerjasama2=$dep_kerjasama->count();
-    $dep_kerjasama=$dep_kerjasama->first();
+    $dep_kerjasama=$dep_kerjasama->get();
 
     $bid_humas=DB::table('tb_ikatan_alumni')
     ->join('tb_mahasiswa','tb_ikatan_alumni.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
     ->join('tb_orgalumni','tb_ikatan_alumni.id_jabatan', '=', 'tb_orgalumni.id_org')
     ->select('tb_mahasiswa.id_mahasiswa','tb_orgalumni.jabatan','tb_mahasiswa.nama')
-    ->where('tb_orgalumni.jabatan','Bidang Humas');
+    ->where('tb_orgalumni.jabatan','Departemen Kerja Sama');
     $bid_humas2=$bid_humas->count();
-    $bid_humas=$bid_humas->first();
+    $bid_humas=$bid_humas->get();
 
         //div kero
     $dep_publikasi=DB::table('tb_ikatan_alumni')
@@ -949,7 +907,7 @@ public function orgIkatanAlumni(Request $request)
     ->select('tb_mahasiswa.id_mahasiswa','tb_orgalumni.jabatan','tb_mahasiswa.nama')
     ->where('tb_orgalumni.jabatan','Departemen Publikasi Informasi');
     $dep_publikasi2=$dep_publikasi->count();
-    $dep_publikasi=$dep_publikasi->first();
+    $dep_publikasi=$dep_publikasi->get();
         //div keas
     $dep_pengembangan=DB::table('tb_ikatan_alumni')
     ->join('tb_mahasiswa','tb_ikatan_alumni.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
@@ -957,7 +915,7 @@ public function orgIkatanAlumni(Request $request)
     ->select('tb_mahasiswa.id_mahasiswa','tb_orgalumni.jabatan','tb_mahasiswa.nama')
     ->where('tb_orgalumni.jabatan','Departemen Pengembangan Usaha');
     $dep_pengembangan2=$dep_pengembangan->count();
-    $dep_pengembangan=$dep_pengembangan->first();
+    $dep_pengembangan=$dep_pengembangan->get();
         //div kebe
     $dep_penggalangan=DB::table('tb_ikatan_alumni')
     ->join('tb_mahasiswa','tb_ikatan_alumni.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
@@ -965,7 +923,7 @@ public function orgIkatanAlumni(Request $request)
     ->select('tb_mahasiswa.id_mahasiswa','tb_orgalumni.jabatan','tb_mahasiswa.nama')
     ->where('tb_orgalumni.jabatan','Departemen Penggalangan Dana');
     $dep_penggalangan2=$dep_penggalangan->count();
-    $dep_penggalangan=$dep_penggalangan->first();
+    $dep_penggalangan=$dep_penggalangan->get();
         //div magang
     $bidang_penggembangan=DB::table('tb_ikatan_alumni')
     ->join('tb_mahasiswa','tb_ikatan_alumni.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
@@ -973,7 +931,7 @@ public function orgIkatanAlumni(Request $request)
     ->select('tb_mahasiswa.id_mahasiswa','tb_orgalumni.jabatan','tb_mahasiswa.nama')
     ->where('tb_orgalumni.jabatan','Bidang Pengembangan SDM');
     $bidang_penggembangan2=$bidang_penggembangan->count();
-    $bidang_penggembangan=$bidang_penggembangan->first();
+    $bidang_penggembangan=$bidang_penggembangan->get();
         //div kesej
     $koor_angkatan=DB::table('tb_ikatan_alumni')
     ->join('tb_mahasiswa','tb_ikatan_alumni.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
@@ -1079,7 +1037,6 @@ public function hapusPertanyaan($id){
 }
 public function jadwal_keseluruhan_ppmb()
 {
-
     $tahun=DB::table('tb_periode')->orderby('periode','DESC')->first();
     $periode=DB::table('tb_periode')->orderby('periode') ->get();
     $lempar="data";
@@ -1179,9 +1136,109 @@ public function jadwal_keseluruhan_ppmb()
     $jad_pelak_mou=$jad_pelak_mou->first();
 
 
-    return view('User.jadwal_keseluruhan_ppmb',compact('jad_sos','jad_sos2','jad_tpa','jad_tpa2','jad_psikotes','jad_psikotes2','jad_survey','jad_survey2','jad_wawancara_akhir','jad_wawancara_akhir2','tes','periode','lempar','jad_pengumu_psiko','jad_pengu_wawancara_akhir','jad_pelak_mou','jad_pengumu_psiko2','jad_pengu_wawancara_akhir2','jad_pelak_mou2','tahun'));
+    return view('User.jadwal_keseluruhan_ppmb',compact('jad_sos','jad_sos2','jad_tpa','jad_tpa2','jad_psikotes','jad_psikotes2','jad_survey','jad_survey2','jad_wawancara_akhir','jad_wawancara_akhir2','periode','lempar','jad_pengumu_psiko','jad_pengu_wawancara_akhir','jad_pelak_mou','jad_pengumu_psiko2','jad_pengu_wawancara_akhir2','jad_pelak_mou2','tahun'));
 }
+ 
+    public function user_dok_ppmb()
+    {  
+        $tpa="";
+        $lempar="";
+        $tahun = DB::table('tb_tahunSel')->get();
+        $periode = "";
+        return view('user.user_dok_ppmb',compact('tahun','lempar','tpa','periode'));
 
+        // $dok = DB::table('tb_dokumentasi')->get();
+        // return view('user.user_dok_ppmb',compact('dok'));
+    }
+    public function user_hasil_dok_ppmb(Request $request)
+    {
+        if($request->tahun==0){
+            return redirect('user_dok_ppmb')->with('alert','Pilih Periode Terlebih Dulu');
+        }
+        $tpa="";
+        $lempar = $request->tahun;
+        $tahun = DB::table('tb_tahunSel')->get();
+        $x = DB::table('tb_tahunSel')->where('id',$request->tahun)->first();
+        $periode = $x->tahun;
+        return view('user.user_dok_ppmb',compact('tahun','lempar','tpa','periode'));
+    }
+
+    public function user_dok_sosialisasi($id)
+    {          
+        $dok = DB::table('tb_dokumentasi')
+        ->where([
+            ['kategori','Sosialisasi'],
+            ['id_tahun',$id],
+        ])->get();
+
+        $x = DB::table('tb_tahunSel')->where('id',$id)->first();
+        $periode = $x->tahun;
+        return view('user.user_dok_sosialisasi',compact('dok','periode'));
+    }
+    public function user_dok_tpa($id)
+    {          
+        $dok = DB::table('tb_dokumentasi')
+        ->where([
+            ['kategori','TPA'],
+            ['id_tahun',$id],
+        ])->get();
+
+        $x = DB::table('tb_tahunSel')->where('id',$id)->first();
+        $periode = $x->tahun;
+        return view('user.user_dok_tpa',compact('dok','periode'));
+    }
+    public function user_dok_psikotest($id)
+    {          
+
+        $dok = DB::table('tb_dokumentasi')
+        ->where([
+            ['kategori','Psikotest'],
+            ['id_tahun',$id],
+        ])->get();
+
+        $x = DB::table('tb_tahunSel')->where('id',$id)->first();
+        $periode = $x->tahun;
+        return view('user.user_dok_psikotest',compact('dok','periode'));
+    }
+    public function user_dok_home_visit($id)
+    {          
+        
+        $dok = DB::table('tb_dokumentasi')
+        ->where([
+            ['kategori','Home Visit'],
+            ['id_tahun',$id],
+        ])->get();
+
+        $x = DB::table('tb_tahunSel')->where('id',$id)->first();
+        $periode = $x->tahun;
+        return view('user.user_dok_survei',compact('dok','periode'));
+    }
+    public function user_dok_wawancara_akhir($id)
+    {          
+        
+        $dok = DB::table('tb_dokumentasi')
+        ->where([
+            ['kategori','Wawancara Akhir'],
+            ['id_tahun',$id],
+        ])->get();
+
+        $x = DB::table('tb_tahunSel')->where('id',$id)->first();
+        $periode = $x->tahun;
+        return view('user.user_dok_wawancara_akhir',compact('dok','periode'));
+    }
+    public function user_dok_mou($id)
+    {          
+        
+        $dok = DB::table('tb_dokumentasi')
+        ->where([
+            ['kategori','MOU'],
+            ['id_tahun',$id],
+        ])->get();
+
+        $x = DB::table('tb_tahunSel')->where('id',$id)->first();
+        $periode = $x->tahun;
+        return view('user.user_dok_mou',compact('dok','periode'));
+    }
 public function detailjadwal_keseluruhan_ppmb(request $request)
 {
     $periode=DB::table('tb_periode')->orderby('periode')->get();
@@ -1292,7 +1349,7 @@ public function detailjadwal_keseluruhan_ppmb(request $request)
     $jad_pelak_mou2=$jad_pelak_mou->count();
     $jad_pelak_mou=$jad_pelak_mou->first();
 
-    return view('User.jadwal_keseluruhan_ppmb',compact('jad_sos','jad_sos2','jad_tpa','jad_tpa2','jad_psikotes','jad_psikotes2','jad_survey','jad_survey2','jad_wawancara_akhir','jad_wawancara_akhir2','tes','periode','lempar','jad_pengumu_psiko','jad_pengu_wawancara_akhir','jad_pelak_mou','jad_pengu_wawancara_akhir2','jad_pelak_mou2','jad_pengumu_psiko2','tahun'));
+    return view('User.jadwal_keseluruhan_ppmb',compact('jad_sos','jad_sos2','jad_tpa','jad_tpa2','jad_psikotes','jad_psikotes2','jad_survey','jad_survey2','jad_wawancara_akhir','jad_wawancara_akhir2','periode','lempar','jad_pengumu_psiko','jad_pengu_wawancara_akhir','jad_pelak_mou','jad_pengu_wawancara_akhir2','jad_pelak_mou2','jad_pengumu_psiko2','tahun'));
 }
 public function jadwal_tpa($periode)
 {

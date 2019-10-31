@@ -81,29 +81,40 @@
 				<form method="POST" action="{{url('updateDok/'.$data->id_dok)}}" enctype="multipart/form-data">
 					{{csrf_field()}}
 					<div class="row">
-						<div class="col-25">
-							<label for="Foto">Foto</label>
+					<div class="col-75">
+						<label for="tahun">Foto</label>
+						<input type="file" class="faorm-control" name="foto">
+					</div>
+
+					<div class="col-75">
+							<label for="jbPUB">Kategori</label>
+							<select id="keterangan" name="kategori">
+								<option @if($data->kategori=="Sosialisasi") selected="" @endif value="Sosialisasi">Sosialisasi</option>
+								<option @if($data->kategori=="TPA") selected="" @endif value="TPA">TPA</option>
+								<option @if($data->kategori=="Psikotest") selected="" @endif value="Psikotest">Psikotest</option>
+								<option @if($data->kategori=="Home Visit") selected="" @endif value="Home Visit">Home Visit</option>
+								<option @if($data->kategori=="Wawancara Akhir") selected="" @endif value="Wawancara Akhir">Wawancara Akhir</option>
+								<option @if($data->kategori=="MOU") selected="" @endif value="MOU">MOU</option>
+							</select>
 						</div>
 						<div class="col-75">
-							<img src="{{url('imgs')}}/{{($data->foto) }}" width="80%">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-75">
-							<input type="file" class="faorm-control" name="foto">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-25">
-							<label for="Foto">Kegiatan</label>
+							<label for="tahun">Keterangan</label>
+							<input type="text" value="{{$data->keterangan}}" class="form-control" name="keterangan">
 						</div>
 						<div class="col-75">
-							<textarea id="keterangan" name="keterangan" >{{$data->keterangan}}</textarea>
+							<label for="jbPUB">Periode</label>
+							<select id="keterangan" name="id_tahun">
+								@foreach($tahun as $datas)
+									<option @if($data->id_tahun==$datas->id) selected="" @endif value="{{$datas->id}}">{{$datas->tahun}}</option>
+								@endforeach
+								
+							</select>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-25">
-							<input type="submit" value="Simpan">
+
+				</div>
+				<br>
+				<div class="row" align="center">
+					<input type="submit" value="Simpan">
 						</div>
 					</div>
 				</form>

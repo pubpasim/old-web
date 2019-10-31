@@ -14,7 +14,8 @@ class ppmbDokController extends Controller
     }
     public function tambahDok()
     {
-        return view('tampilan.dokumentasi.tambahDok');
+        $tahun = DB::table('tb_TahunSel')->get();
+        return view('tampilan.dokumentasi.tambahDok',compact('tahun'));
     }
     public function storeDok(Request $request)
     {
@@ -28,15 +29,18 @@ class ppmbDokController extends Controller
         DB::table('tb_dokumentasi')
         ->insert([
             'foto' => $nama_file,            
-            'keterangan' => $request->keterangan,                       
+            'keterangan' => $request->keterangan,
+            'kategori' => $request->kategori,
+            'id_tahun' => $request->id_tahun,
         ]);
 
         return redirect('dokumentasi');
     }
     public function editDok($id)
     {
+        $tahun = DB::table('tb_TahunSel')->get();
         $dok = DB::table('tb_dokumentasi')->where('id_dok',$id)->get();
-        return view('tampilan.dokumentasi.editDok',compact('dok'));
+        return view('tampilan.dokumentasi.editDok',compact('dok','tahun'));
     }
     public function updateDok(Request $request,$id){
         $file = $request->file('foto');
@@ -44,7 +48,9 @@ class ppmbDokController extends Controller
             if($file == ""){
                 $nama_file = ""; 
                     DB::table('tb_dokumentasi')->where('id_dok',$id)->update([
-                    'keterangan' => $request->keterangan,         
+                    'keterangan' => $request->keterangan,
+                    'kategori' => $request->kategori,
+                    'id_tahun' => $request->id_tahun,         
                 ]);   
             }
             else{
@@ -58,7 +64,9 @@ class ppmbDokController extends Controller
 
                 DB::table('tb_dokumentasi')->where('id_dok',$id)->update([
                     'foto' => $nama_file,
-                    'keterangan' => $request->keterangan,         
+                    'keterangan' => $request->keterangan,
+                    'kategori' => $request->kategori,
+                    'id_tahun' => $request->id_tahun,         
                 ]);   
             }
 

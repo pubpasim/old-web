@@ -86,13 +86,27 @@
 				</div>
 
 				<div class="col-75">
-					<label for="jbPUB">Kegiatan</label>
-					<select id="keterangan" name="keterangan">
-						<option value="TPA dan Wawancara Awal">TPA dan Wawancara Awal</option>
+					<label for="jbPUB">Kategori</label>
+					<select id="keterangan" name="kategori">
+						<option value="Sosialisasi">Sosialisasi</option>
+						<option value="TPA">TPA</option>
 						<option value="Psikotest">Psikotest</option>
 						<option value="Home Visit">Home Visit</option>
 						<option value="Wawancara Akhir">Wawancara Akhir</option>
 						<option value="MOU">MOU</option>
+					</select>
+				</div>
+				<div class="col-75">
+					<label for="tahun">Keterangan</label>
+					<input type="text" class="form-control" name="keterangan">
+				</div>
+				<div class="col-75">
+					<label for="jbPUB">Periode</label>
+					<select id="keterangan" name="id_tahun">
+						@foreach($tahun as $data)
+							<option value="{{$data->id}}">{{$data->tahun}}</option>
+						@endforeach
+						
 					</select>
 				</div>
 

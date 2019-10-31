@@ -5,14 +5,18 @@
 		display: inline-block;
 		border: 1px solid darkcyan;
 		margin: 10px;
-		width: 600px;
-		height: 600px;
+		width: 280px;
+		height: 250px;
 	}
 	.x{
 		display: inline-block;
 	}
 </style>
 	<div style="text-align: center;">
+		<h3 style="color: darkcyan;" align="center"><b>KEGIATAN TPA & WAWANCARA AWAL PPMB</b></h3>
+		<h4 align="center"><b>PEMBERDAYAAN UMAT BERKELANJUTAN (PUB)</b></h4>
+		<h4 align="center"><b>PERIODE {{$periode}}</b></h4>
+		<br><br>
 		@foreach($dok as $data)	
 			<figure class="x">
 				<img src="{{url('imgs')}}/{{($data->foto) }}" class="tengah">	

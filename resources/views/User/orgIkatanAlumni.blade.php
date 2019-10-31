@@ -29,6 +29,7 @@
 		margin-left: 900PX;
 		margin-bottom: 30px;
 		color: white;
+		z-index: 999;
 	}
 	#lurus{
 		width: 5px;
@@ -179,7 +180,7 @@
 		height: 5px;
 		background-color: darkcyan;
 		position: relative;
-		top:-1380px;
+		top:-1420px;
 		z-index: -1;
 
 	}
@@ -193,16 +194,16 @@
 		border-color: darkcyan;
 		position: relative;
 		position: relative;
-		top:-1390px;
+		top:-1433px;
 		z-index: -1;
 
 	}
 	#vrt3{
 		width: 5px;
-		height: 180px;
+		height: 150px;
 		background-color: darkcyan;
 		position: relative;
-		top:-1390px;
+		top:-1430px;
 		z-index: -1;
 		left: -447px;
 	}
@@ -215,19 +216,19 @@
 		border-left: none;
 		border-color: darkcyan;
 		position: relative;
-		top:-1575px;
+		top:-1580px;
 		z-index: -1;
 		left: -455px;
 	}
 	#pnd{
 		width: 200px;
-		height: 90px;
+		height: 50px;
 		background-color: grey;
 		border-radius: 7px;
 		border: 1px solid darkcyan;
 		color: white;
 		position: relative;
-		top:-1590px;
+		top:-1600px;
 		left: -430px;
 	}
 	#hr1{
@@ -237,7 +238,7 @@
 		border-bottom: none;
 		border-color: darkcyan;
 		position: relative;
-		top:-1545px;
+		top:-1540px;
 		z-index: -1;
 		left: -450px;
 	}
@@ -248,7 +249,7 @@
 		border-bottom: none;
 		border-color: darkcyan;
 		position: relative;
-		top:-1910px;
+		top:-2020px;
 		z-index: -1;
 		left: 0px;
 	}
@@ -263,44 +264,44 @@
 	}
 	#ker{
 		width: 200px;
-		height: 90px;
+		height: 145px;
 		background-color: grey;
 		border-radius: 7px;
 		border: 1px solid darkcyan;
 		color: white;
 		position: relative;
-		top:-1550px;
+		top:-1540px;
 		left: -325px;
 	}
 	#ker2{
 		width: 200px;
-		height: 90px;
+		height: 180px;
 		background-color: grey;
 		border-radius: 7px;
 		border: 1px solid darkcyan;
 		color: white;
 		position: relative;
-		top:-1640px;
+		top:-1685px;
 		left: -550px;
 	}
 	#vrt5{
 		width: 5px;
-		height: 40px;
+		height: 70px;
 		background-color: darkcyan;
 		position: relative;
-		top:-1910px;
+		top:-2020px;
 		z-index: -1;
 		left: 0px;
 	}
 	#keb{
 		width: 200px;
-		height: 90px;
+		height: 50px;
 		background-color: grey;
 		border-radius: 7px;
 		border: 1px solid darkcyan;
 		color: white;
 		position: relative;
-		top:-1910px;
+		top:-2015px;
 		left: 0px;
 	}
 	#vrt6{
@@ -314,24 +315,24 @@
 	}
 	#sej{
 		width: 200px;
-		height: 90px;
+		height: 140px;
 		background-color: grey;
 		border-radius: 7px;
 		border: 1px solid darkcyan;
 		color: white;
 		position: relative;
-		top:-1910px;
+		top:-2035px;
 		right: 120px;
 	}
 	#sej2{
 		width: 200px;
-		height: 90px;
+		height: 140px;
 		background-color: grey;
 		border-radius: 7px;
 		border: 1px solid darkcyan;
 		color: white;
 		position: relative;
-		top:-2000px;
+		top:-2175px;
 		left: 120px;
 	}
 	#vrt7{
@@ -359,7 +360,7 @@
 		height: 40px;
 		background-color: darkcyan;
 		position: relative;
-		top:-2310px;
+		top:-2510px;
 		z-index: -1;
 		left: 448px;
 	}
@@ -372,19 +373,19 @@
 		border-bottom: none;
 		border-color: darkcyan;
 		position: relative;
-		top:-2350px;
+		top:-2555px;
 		z-index: -1;
 		left: 455px;
 	}
 	#mag{
 		width: 200px;
-		height: 90px;
+		height: 140px;
 		background-color: grey;
 		border-radius: 7px;
 		border: 1px solid darkcyan;
 		color: white;
 		position: relative;
-		top:-2350px;
+		top:-2555px;
 		left: 448px;
 	}
 	#vrt9{
@@ -511,46 +512,36 @@
 			<div id="vrt31"></div>
 			<div id="pnd">
 				<div id="judul">BIDANG HUMAS</div>
-				@if($bid_humas2==0)
-				<p>data Kosong</p>
-				@else
-				<a href="{{url('detail/org/'.$bid_humas->id_mahasiswa)}}">
-					<p>{{$bid_humas->nama}}</p>
-				</a>
-				@endif
-			</div>
+				</div>
 			<div id="hr1"></div>
 			<div id="ker">
-				<div id="judul">DEPARTEMEN KERJASAMA</div>
-
-				@if($dep_kerjasama2==0)
-				<p>data Kosong</p>
-				@else
-				<a href="{{url('detail/org/'.$dep_kerjasama->id_mahasiswa)}}">
-					<p>{{$dep_kerjasama->nama}}</p>
-				</a>
-				@endif
-			</div>
-			<div id="ker2">
-				<div id="judul">DEPARTEMEN PUBLIKASI </div>
+				<div id="judul">DEPARTEMEN PUBLIKASI DAN INFORMASI</div>
 
 				@if($dep_publikasi2==0)
 				<p>data Kosong</p>
 				@else
-				<a href="{{url('detail/org/'.$dep_publikasi->id_mahasiswa)}}">
-					<p>{{$dep_publikasi->nama}}</p>
+				@foreach($dep_publikasi as $depub)
+				<a href="{{url('detail/org/'.$depub->id_mahasiswa)}}">					
+						<p>{{$depub->nama}}</p>					
 				</a>
+				@endforeach
+				@endif
+			</div>
+			<div id="ker2">
+				<div id="judul">DEPARTEMEN KERJA SAMA </div>
+
+				@if($dep_kerjasama2==0)
+				<p>data Kosong</p>
+				@else
+				@foreach($dep_kerjasama as $depker)
+				<a href="{{url('detail/org/'.$depker->id_mahasiswa)}}">					
+						<p>{{$depker->nama}}</p>					
+				</a>
+				@endforeach
 				@endif
 			</div>
 			<div id="keb">
-				<div id="judul">BIDANG DANA DAN USAHA</div>
-				@if($dep_pengembangan2==0)
-				<p>data Kosong</p>
-				@else
-				<a href="{{url('detail/org/'.$dep_pengembangan->id_mahasiswa)}}">
-					<p>{{$dep_pengembangan->nama}}</p>
-				</a>
-				@endif
+				<div id="judul">BIDANG DANA DAN USAHA</div>				
 			</div>
 			<div id="vrt5"></div>
 			<div id="hr2"></div>
@@ -559,9 +550,11 @@
 				@if($dep_penggalangan2==0)
 				<p>data Kosong</p>
 				@else
-				<a href="{{url('detail/org/'.$dep_penggalangan->id_mahasiswa)}}">
-					<p>{{$dep_penggalangan->nama}}</p>
+				@foreach($dep_penggalangan as $deppeng)
+				<a href="{{url('detail/org/'.$deppeng->id_mahasiswa)}}">					
+						<p>{{$deppeng->nama}}</p>					
 				</a>
+				@endforeach
 				@endif
 			</div>
 			<div id="sej2">
@@ -569,32 +562,25 @@
 				@if($dep_pengembangan2==0)
 				<p>data Kosong</p>
 				@else
-				<a href="{{url('detail/org/'.$dep_pengembangan->id_mahasiswa)}}">
-					<p>{{$dep_pengembangan->nama}}</p>
+				@foreach($dep_pengembangan as $deppengem)
+				<a href="{{url('detail/org/'.$deppengem->id_mahasiswa)}}">					
+						<p>{{$deppengem->nama}}</p>					
 				</a>
+				@endforeach
 				@endif
 			</div>
 			<div id="vrt8"></div>
 			<div id="vrt81"></div>
 			<div id="mag">
-				<div id="judul">BIDANG PENGEMBANGAN</div>
+				<div id="judul">BIDANG PENGEMBANGAN SDM</div>
 				@if($bidang_penggembangan2==0)
 				<p>data Kosong</p>
 				@else
-				<a href="{{url('detail/org/'.$bidang_penggembangan->id_mahasiswa)}}">
-					<p>{{$bidang_penggembangan->nama}}</p>
+				@foreach($bidang_penggembangan as $bidpengem)
+				<a href="{{url('detail/org/'.$bidpengem->id_mahasiswa)}}">					
+						<p>{{$bidpengem->nama}}</p>					
 				</a>
-				@endif
-			</div>
-			<div id="vrt9"></div>
-			<div id="kea">
-				<div id="judul">DIVISI KEASRAMAAN</div>
-				@if($bidang_penggembangan2==0)
-				<p>data Kosong</p>
-				@else
-				<a href="{{url('detail/org/'.$bidang_penggembangan->id_mahasiswa)}}">
-					<p>{{$bidang_penggembangan->nama}}</p>
-				</a>
+				@endforeach
 				@endif
 			</div>
 		</center>

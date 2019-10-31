@@ -1,8 +1,19 @@
 @include('User.header')
 <div id="design" style="width: 90%;">
 	<center>
+	@if(\Session::has("alert"))
+                      <div class="alert alert-danger">
+                          <div>{{Session::get("alert")}}</div>
+                      </div>
+                  @endif
+                  
+                  @if(\Session::has("alert-success"))
+                      <div class="alert alert-success">
+                          <div>{{Session::get("alert-success")}}</div>
+                      </div>
+                  @endif
 	@if($periode!="")
-	<h2 align="center"><b>DAFTAR HASIL SELEKSI</b></h4>
+	<h3 style="color: darkcyan;" align="center"><b>DAFTAR HASIL SELEKSI</b></h3>
 	<h4 align="center"><b>PEMBERDAYAAN UMAT BERKELANJUTAN (PUB)</b></h4>
 	<h4 align="center"><b>PERIODE {{$periode}}</b></h4>
 	@endif
