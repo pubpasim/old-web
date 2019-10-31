@@ -21,13 +21,20 @@
 		background-color: #808080;
 		border: 1px solid black;
 		color:black ;
+
+	}
+	#kecil{
+		width:70%;
+		height: 100%;
+		margin-left: 15%;
 	}
 </style>
 
+<div id="kecil" >
 	<div >
-		<h2 align="center"><b>SEKOLAH YANG DI SOSIALISASI</b></h4>
+		<h2 align="center"><b>DAFTAR SEKOLAH YANG DI SOSIALISASI</b></h2>
 			<h4 align="center"><b>PEMBERDAYAAN UMAT BERKELANJUTAN (PUB)</b></h4>
-			<h4 align="center"><b></b></h4>
+			<h4 align="center"><b>PERIODE {{$tahun->periode}} </b></h4>
 
 		</div>
 		<div>
@@ -53,6 +60,7 @@
 		</table>
 	</div>
 </div>
+
 </div>	
 
 @include('User.footer')
