@@ -6,15 +6,16 @@
 				margin-left: 300px;
 			}
 		</style>
-		<div id="form1">
-		<div class="row">
-			<div class="panel-heading">FROM UBAH JADWAL</div>
-					<div class="panel-body">
-						<div class="col-md-6">
 
+		<div class="row" >
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="panel-heading"><h2 align="center">FORM UBAH JADWAL</h2></div>
+						<div class="col-md-6">
 							<form role="form" action="{{url('jad_tpa/update')}}" method="POST">
-								 {{ @csrf_field() }}
-								 @foreach($jad_tpa as $data)
+								{{ @csrf_field() }}
+								@foreach($jad_tpa as $data)
 								<div class="form-group">
 									<label>ID Jadwal</label>
 									<input class="form-control" name="id_jad_tpa" placeholder="Id Jadal Tpa" readonly="" value="{{$data->id_jad_tpa}}">
@@ -60,5 +61,6 @@
 						</div>
 					</div>
 				</div>
-			</div>	
-	@include('tampilan.foot')
+			</div>
+		</div>
+		@include('tampilan.foot')

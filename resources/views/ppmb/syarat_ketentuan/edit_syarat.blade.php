@@ -13,7 +13,7 @@
 			<div class="panel-heading">FROM EDIT PERSYARATAN DAN KETENTUAN</div>
 					<div class="panel-body" align="center">
 						<div class="col-md-12">
-							<form method="POST" action="/syarat_ketentuan/update">
+							<form method="POST" action="{{url('syarat_ketentuan/update')}}">
 								{{ @csrf_field() }}
 									@foreach($syarat as $data)
 								<div class="form-group">

@@ -74,9 +74,9 @@
 		margin-top: 6px;
 	}
 	#form1{
-			width: 70%;
-			height: 100%;
-			margin-left: 17%;
+		width: 70%;
+		height: 100%;
+		margin-left: 17%;
 
 	}
 	/* Clear floats after the columns */
@@ -95,25 +95,38 @@
 	}
 
 </style>
-	<h1>Daftar Daerah</h1>
-	<div class="container">			
-			<form method="POST" action="{{URL('daerahModel')}}" Class="form-horizontal" id="block-validate">
-				{{csrf_field()}}
-				<div class="row">
-					<div class="panel-heading">FROM TAMBAH DATA DAERAH</div>
-					<div class="panel-body">
-						<div class="col-md-6">
-							<form role="form">
+<div class="row" style="padding: 20px;">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div class="panel-heading">FORM TAMBAH DATA DAERAH</div>	
+				<div class="col-md-6">
+					
+					<form method="POST" action="{{URL('daerahModel')}}" Class="form-horizontal" id="block-validate">
+						{{csrf_field()}}
+						<div class="panel-body">
+							<div class="col-md-6">
+								<form role="form">
 
-								<div class="form-group">
-									<label>NAMA DAERAH</label>
-									<input class="form-control" placeholder="Nama Daerah" name="kab_kot">
-								</div>
-								<button type="submit" class="btn btn-primary">TAMBAH DATA </button>
-							</form>	
+									<div class="form-group">
+										<label>NAMA DAERAH</label>
+										<input class="form-control" placeholder="Masukan Nama Daerah" name="kab_kot">
+										@if(\Session::has('alert'))
+										<div class="alert">
+											{{Session::get('alert')}}
+										</div>
+										@endif
+
+									</div>
+									<button type="submit" class="btn btn-primary">TAMBAH DATA </button>
+								</form>	
+							</div>
 						</div>
 					</div>
-				</div>
-			</form>
+				</form>
+			</div>
 		</div>
+	</div>
+</div>
+</div>
 @include('tampilan.foot')

@@ -47,7 +47,7 @@
 				@foreach($daerah_sos as $data)
 				<tr>
 					<td>{{$no++}}</td>
-					<td><a href="{{url('sosialisasi_kesekolah/'.$data->id_daerah)}}">{{$data->kab_kot}}</a></td>
+					<td><a href="{{url('sosialisasi_kesekolah/'.$data->id_daerah,$data->id_periode)}}">{{$data->kab_kot}}</a></td>
 				</tr>
 				@endforeach
 

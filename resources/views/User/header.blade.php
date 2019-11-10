@@ -31,7 +31,7 @@
   <link href="/css/slide.css" rel="stylesheet">
   <link href="/css/struktur.css" rel="stylesheet">
   <link href="/css/footer.css" rel="stylesheet">
-  <link href="/lumino/css/styles.css" rel="stylesheet">
+ 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 

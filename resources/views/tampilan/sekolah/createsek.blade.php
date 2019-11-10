@@ -94,24 +94,29 @@
 
 	</style>
 
-		<div class="container">	
-			<form method="POST" action="{{url('sekolahModel')}}" Class="form-horizontal" id="block-validate">
-				{{csrf_field()}}
-				<div class="row">
-					<div class="panel-heading">FROM TAMBAH DATA SEKOLAH</div>
-					<div class="panel-body">
-						<div class="col-md-6">
-							<form role="form">
+	<div class="container">	
+		<form method="POST" action="{{url('sekolahModel')}}" Class="form-horizontal" id="block-validate">
+			{{csrf_field()}}
+			<div class="row">
+				<div class="panel-heading">FORM TAMBAH DATA SEKOLAH</div>
+				<div class="panel-body">
+					<div class="col-md-6">
+						<form role="form">
 
-								<div class="form-group">
-									<label>NAMA SEKOLAH</label>
-									<input class="form-control" placeholder="Nama Sekolah" name="sekolah">
+							<div class="form-group">
+								<label>NAMA SEKOLAH</label>
+								<input class="form-control" placeholder="Masukan Nama Sekolah" name="sekolah">
+								@if(\Session::has('alert'))
+								<div class="alert">
+									{{Session::get('alert')}}
 								</div>
-								<button type="submit" class="btn btn-primary">TAMBAH DATA </button>	
-							</form>
-						</div>
-					</div>	
-				</div>
-			</form>
-		</div>
+								@endif
+							</div>
+							<button type="submit" class="btn btn-primary">TAMBAH DATA </button>	
+						</form>
+					</div>
+				</div>	
+			</div>
+		</form>
+	</div>
 	@include('tampilan.foot')

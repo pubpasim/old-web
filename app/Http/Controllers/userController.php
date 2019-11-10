@@ -70,13 +70,6 @@ public function infaq_bulan(Request $request)
     return view('user.infaq_bulan',compact('data1','thn'));
 }
 
-
-public function user_dok_ppmb()
-{  
-    $dok = DB::table('tb_dokumentasi')->get();
-    return view('user.user_dok_ppmb',compact('dok'));
-}
-
 public function user_lulus_tpa($id)
 {
     $lulus = DB::table('tb_tpa')->where('id_tpa',$id)->first();
@@ -1042,9 +1035,7 @@ public function storeJawab(Request $request,$id)
 
         $jad_sos=DB::table('tb_detjadwal')
         ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
-        ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
         ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
-        ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
         ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
         ->where('tb_jadwal.kegiatan','Sosialisasi Ke Daerah-Daerah')
         ->where('tb_periode.periode',$tahun->periode);
@@ -1053,9 +1044,7 @@ public function storeJawab(Request $request,$id)
 
         $jad_tpa=DB::table('tb_detjadwal')
         ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
-        ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
         ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
-        ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
         ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
         ->where('tb_jadwal.kegiatan','Tes Ke Daerah-daerah')
         ->where('tb_periode.periode',$tahun->periode);
@@ -1065,9 +1054,7 @@ public function storeJawab(Request $request,$id)
 
         $jad_psikotes=DB::table('tb_detjadwal')
         ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
-        ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
         ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
-        ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
         ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
         ->where('tb_jadwal.kegiatan','Pelaksanaan Psikotes')
         ->where('tb_periode.periode',$tahun->periode);
@@ -1078,9 +1065,7 @@ public function storeJawab(Request $request,$id)
 
         $jad_pengumu_psiko=DB::table('tb_detjadwal')
         ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
-        ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
         ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
-        ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
         ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
         ->where('tb_jadwal.kegiatan','Pengumuman Psikotes')
         ->where('tb_periode.periode',$tahun->periode);
@@ -1090,9 +1075,7 @@ public function storeJawab(Request $request,$id)
 
         $jad_survey=DB::table('tb_detjadwal')
         ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
-        ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
         ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
-        ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
         ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
         ->where('tb_jadwal.kegiatan','Pelaksanaan Home Visit')
         ->where('tb_periode.periode',$tahun->periode);
@@ -1101,9 +1084,7 @@ public function storeJawab(Request $request,$id)
 
         $jad_wawancara_akhir=DB::table('tb_detjadwal')
         ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
-        ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
         ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
-        ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
         ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
         ->where('tb_jadwal.kegiatan','Pelaksanaan Wawancara Akhir')
         ->where('tb_periode.periode',$tahun->periode);
@@ -1112,9 +1093,7 @@ public function storeJawab(Request $request,$id)
 
         $jad_pengu_wawancara_akhir=DB::table('tb_detjadwal')
         ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
-        ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
         ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
-        ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
         ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
         ->where('tb_jadwal.kegiatan','Pengumuman Wawancara Akhir')
         ->where('tb_periode.periode',$tahun->periode);
@@ -1124,9 +1103,7 @@ public function storeJawab(Request $request,$id)
 
         $jad_pelak_mou=DB::table('tb_detjadwal')
         ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
-        ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
         ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
-        ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
         ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
         ->where('tb_jadwal.kegiatan','Pelaksanaan Penandatanganan Draf MOU')
         ->where('tb_periode.periode',$tahun->periode);
@@ -1249,9 +1226,7 @@ public function detailjadwal_keseluruhan_ppmb(request $request)
 
     $jad_sos=DB::table('tb_detjadwal')
     ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
-    ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
     ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
-    ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
     ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
     ->where('tb_detjadwal.id_periode',$request->select_periode)
     ->where('tb_jadwal.kegiatan','Sosialisasi Ke Daerah-Daerah')
@@ -1261,9 +1236,7 @@ public function detailjadwal_keseluruhan_ppmb(request $request)
 
     $jad_tpa=DB::table('tb_detjadwal')
     ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
-    ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
     ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
-    ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
     ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
     ->where('tb_detjadwal.id_periode',$request->select_periode)
     ->where('tb_jadwal.kegiatan','Tes ke Daerah-daerah')
@@ -1273,9 +1246,7 @@ public function detailjadwal_keseluruhan_ppmb(request $request)
 
     $jad_psikotes=DB::table('tb_detjadwal')
     ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
-    ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
     ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
-    ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
     ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
     ->where('tb_detjadwal.id_periode',$request->select_periode)
     ->where('tb_jadwal.kegiatan','Pelaksanaan Psikotes')
@@ -1285,9 +1256,7 @@ public function detailjadwal_keseluruhan_ppmb(request $request)
 
     $jad_pengumu_psiko=DB::table('tb_detjadwal')
     ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
-    ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
     ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
-    ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
     ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
     ->where('tb_detjadwal.id_periode',$request->select_periode)
     ->where('tb_jadwal.kegiatan','Pengumuman Psikotes')
@@ -1298,9 +1267,7 @@ public function detailjadwal_keseluruhan_ppmb(request $request)
 
     $jad_survey=DB::table('tb_detjadwal')
     ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
-    ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
     ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
-    ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
     ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
     ->where('tb_detjadwal.id_periode',$request->select_periode)
     ->where('tb_jadwal.kegiatan','Pelaksanaan Home Visit')
@@ -1310,9 +1277,7 @@ public function detailjadwal_keseluruhan_ppmb(request $request)
 
     $jad_wawancara_akhir=DB::table('tb_detjadwal')
     ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
-    ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
     ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
-    ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
     ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
     ->where('tb_detjadwal.id_periode',$request->select_periode)
     ->where('tb_jadwal.kegiatan','Pelaksanaan Wawancara Akhir')
@@ -1323,9 +1288,7 @@ public function detailjadwal_keseluruhan_ppmb(request $request)
 
     $jad_pengu_wawancara_akhir=DB::table('tb_detjadwal')
     ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
-    ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
     ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
-    ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
     ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
     ->where('tb_detjadwal.id_periode',$request->select_periode)
     ->where('tb_jadwal.kegiatan','Pengumuman Wawancara Akhir')
@@ -1336,9 +1299,7 @@ public function detailjadwal_keseluruhan_ppmb(request $request)
 
     $jad_pelak_mou=DB::table('tb_detjadwal')
     ->join('tb_jadwal','tb_jadwal.id_jadwal','=','tb_detjadwal.id_jadwal')
-    ->join('tb_daerah','tb_daerah.id_daerah','=','tb_detjadwal.id_daerah')
     ->join('tb_periode','tb_periode.id_periode','=','tb_detjadwal.id_periode')
-    ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_detjadwal.id_sekolah')
     ->select('tb_jadwal.kegiatan','tb_detjadwal.tanggal_awal','tb_detjadwal.tanggal_akhir')
     ->where('tb_detjadwal.id_periode',$request->select_periode)
     ->where('tb_jadwal.kegiatan','Pelaksanaan Penandatanganan Draf MOU')
@@ -1361,6 +1322,7 @@ public function jadwal_tpa($periode)
     ->join('tb_periode','tb_periode.id_periode','=','tb_jadwal_tpa.id_periode')
     ->join('tb_daerah','tb_daerah.id_daerah','=','tb_jadwal_tpa.id_daerah')
     ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_jadwal_tpa.id_daerah')
+    ->orderby('tb_jadwal_tpa.tanggal')
     ->where('tb_jadwal_tpa.id_periode',$periode)
     ->get();
     return view('user.jadwal_tpa_user',compact('jad_tpa','tahun'));        
@@ -1408,21 +1370,23 @@ public function daerah_sos($periode)
     $daerah_sos=DB::table('tb_daerah_sos')
     ->join('tb_daerah','tb_daerah_sos.id_daerah','=','tb_daerah.id_daerah')
     ->join('tb_periode','tb_daerah_sos.id_periode','=','tb_periode.id_periode')
+    ->select('tb_daerah.kab_kot','tb_daerah.id_daerah','tb_jadwal.id_jadwal','tb_jadwal.kab_kot')->groupBy('tb_daerah.kab_kot')
+    ->where('tb_daerah_sos.id_periode',$periode)
+    ->get();
 
-    ->select('tb_daerah.kab_kot','tb_daerah.id_daerah')->groupBy('tb_daerah.id_daerah')
-    ->where('tb_daerah_sos.id_periode',$periode)->get();
     return view('user.daerah_sos_user',compact('daerah_sos','tahun'));        
 }
-public function sekolah_sos($id)
+public function sekolah_sos($id,$periode)
 {
    $tahun=DB::table('tb_periode')
    ->select('tb_periode.periode')
-   ->where('tb_periode.id_periode',$id)
+   ->where('tb_periode.id_periode',$periode)
    ->first();
    $sekolah_sos=DB::table('tb_daerah_sos')
    ->join('tb_daerah','tb_daerah_sos.id_daerah','=','tb_daerah.id_daerah')
    ->join('tb_periode','tb_daerah_sos.id_periode','=','tb_periode.id_periode')
    ->join('tb_sekolah','tb_daerah_sos.id_sekolah','=','tb_sekolah.id_sekolah')
+   ->groupby('tb_sekolah.sekolah')
    ->where('tb_daerah.id_daerah',$id)
    ->get();
    return view('user.sosialisasi_kesekolah',compact('sekolah_sos','tahun'));        

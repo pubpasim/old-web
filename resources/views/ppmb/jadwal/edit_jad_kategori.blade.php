@@ -12,6 +12,11 @@
 					<div class="panel-heading">KATEGORI JADWAL TES PPMB</div>
 					<div class="panel-body">		
 						<form role="form" action="{{URL('kategori_jadwal_ppmb/update')}}" method="POST">
+							@if(\Session::has('alert'))
+							<div class="alert">
+								{{Session::get('alert')}}
+							</div>
+							@endif
 							{{ @csrf_field() }}
 							<?php  foreach($kategjadwalppmb as $data) {?>
 								<div class="form-group">

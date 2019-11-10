@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\sekolahModel;
+use DB;
 use Illuminate\Http\Request;
 
 class sekolahController extends Controller
@@ -10,9 +11,9 @@ class sekolahController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $sek=sekolahModel::all();
+     public function index()
+     {
+        $sek=sekolahModel::all()->sortby('sekolah');
         return view('tampilan/sekolah/viewsek',compact('sek'));
     }
 
@@ -23,8 +24,8 @@ class sekolahController extends Controller
      */
     public function create()
     {
-           return view('tampilan/sekolah/createsek');
-    }
+     return view('tampilan/sekolah/createsek');
+ }
 
     /**
      * Store a newly created resource in storage.
@@ -34,10 +35,19 @@ class sekolahController extends Controller
      */
     public function store(Request $request)
     {
-        $sek=new sekolahModel();
-        $sek->sekolah=$request->sekolah;
-        $sek->save();
-        return redirect('tampilan/sekolah/viewsek');
+        $data=DB::table('tb_sekolah')
+        ->where('sekolah',$request->sekolah)
+        ->count();
+        if ($request->sekolah==""){
+            return redirect('tampilan/sekolah/createsek')->with('alert','Maaf, Silahkan Isi terlebih dahulu!');
+        }if ($data>0 ) {
+            return redirect('tampilan/sekolah/createsek')->with('alert','Maaf, Data Sudah Ada!');
+        }else{
+            $sek=new sekolahModel();
+            $sek->sekolah=$request->sekolah;
+            $sek->save();
+            return redirect('tampilan/sekolah/viewsek');
+        }
     }
 
     /**
@@ -72,9 +82,17 @@ class sekolahController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $sek=sekolahModel::where('id_sekolah',$id)->update(['sekolah'=>$request->sekolah]);
-        return redirect('tampilan/sekolah/viewsek');
+        $sek=sekolahModel::where('id_sekolah',$id)->get();
+        $data=DB::table('tb_sekolah')
+        ->where('sekolah',$request->sekolah)
+        ->count();
+        if ($request->sekolah==""){
+           return view('tampilan/sekolah/editsek',compact('sek'))->with('alert','Maaf, Silahkan Isi terlebih dahulu!');
+        }else{
+           $sek=sekolahModel::where('id_sekolah',$id)->update(['sekolah'=>$request->sekolah]);
+           return redirect('tampilan/sekolah/viewsek');
     }
+}
 
     /**
      * Remove the specified resource from storage.

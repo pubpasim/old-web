@@ -274,7 +274,7 @@
 			<h2>STRUKTUR ORGANISASI PPMB PUB</h2>
 			<div id="pembina">
 				<div id="judul">PEMBINA PUB</div>
-				<p>Abdul Hafiz Tanjung,S.E.,M.Si.,AK.,CA</p>
+				<a href="{{url('pembinaPub')}}"><p>Abdul Hafiz Tanjung,S.E.,M.Si.,AK.,CA</p></a>
 			</div>
 			<div id="ketua">
 				<div id="judul">KETUA PPMB</div>
@@ -389,5 +389,10 @@
 	</div>
 </div>
 </div>
+<?php 
+	for ($x=0; $x <10 ; $x++) { 
+		echo "<br>";
+	}
+ ?>
 
 @include('User.footer')

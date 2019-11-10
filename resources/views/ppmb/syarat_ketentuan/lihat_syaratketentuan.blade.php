@@ -17,7 +17,7 @@
 						<br>
 					</div>
 					<div class="row" style="padding: 20px;">
-						<a href="syarat_ketentuan/create"><button type="submit" class="btn btn-primary">Tambah Data </button></a>	
+						<a href="{{url('syarat_ketentuan/create')}}"><button type="submit" class="btn btn-primary">Tambah Data </button></a>	
 					</div>
 					
 					<br>
@@ -26,8 +26,8 @@
 						?>
 						<div>
 							<!-- <a href="syarat_ketentuan/create"><button>Tambah</button></a>	 -->
-							<a href="syarat_ketentuan/edit/{{$data->id_syarat}}"><button class="btn btn-primary">Ubah</button></a>	
-							<a href="syarat_ketentuan/delete/{{$data->id_syarat}}" onclick="return confirm('Hapus data ?');"><button class="btn btn-danger">Hapus</button></a>	
+							<a href="{{url('syarat_ketentuan/edit/'.$data->id_syarat)}}"><button class="btn btn-primary">Ubah</button></a>	
+							<a href="{{url('syarat_ketentuan/delete/'.$data->id_syarat)}}" onclick="return confirm('Hapus data ?');"><button class="btn btn-danger">Hapus</button></a>	
 						</div>
 						<div class="row">
 							<div class="col-md-12">

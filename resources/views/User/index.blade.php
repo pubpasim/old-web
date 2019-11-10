@@ -218,42 +218,43 @@
 <br><br>
 
 
-<div class="col-md-11" style="margin-left: 3%;">
+<div class="cht" style="margin-left: 10%;">
 	<div class="panel panel-default chat">
 		<div class="panel-heading" id="accordion"><svg class="glyph stroked two-messages"><use xlink:href="#stroked-two-messages"></use></svg> Chat</div>
-		
-		<div class="panel-body">
-			@foreach($chat as $data)
-			<ul>
-				<li class="left clearfix">
-					<span class="chat-img pull-left">
-						<img src="{{url('imgs/icon/user1.png')}}" width="70px" alt="User Avatar" class="img-circle" />
-					</span>
-					<div class="chat-body clearfix">
-						<div class="header">
-							<strong class="primary-font">{{{$data->nama}}}</strong> <small class="text-muted"> - {{{$data->sekolah}}}</small>
+		<div class="scroll"> 
+			<div class="panel-body">
+				@foreach($chat as $data)
+				<ul>
+					<li class="left clearfix">
+						<span class="chat-img pull-left">
+							<img src="{{url('imgs/icon/user1.png')}}" width="70px" alt="User Avatar" class="img-circle" />
+						</span>
+						<div class="chat-body clearfix">
+							<div class="header">
+								<strong class="primary-font">{{{$data->nama}}}</strong> <small class="text-muted"> - {{{$data->sekolah}}}</small>
+							</div>
+							<p style="font-size: 14px;">
+								{{$data->pertanyaan}}
+							</p>
 						</div>
-						<p style="font-size: 14px;">
-							{{$data->pertanyaan}}
-						</p>
-					</div>
-				</li>
-				<li class="right clearfix" @if($data->jawaban=="") style="display:none" @endif>
-					<span class="chat-img pull-right">
-						<img src="{{url('imgs/icon/admin.png')}}" width="70px" alt="User Avatar" class="img-circle" />
-					</span>
-					<div class="chat-body clearfix">
-						<div class="header">
-							<strong class="pull-right primary-font">Admin</strong> <small class="text-muted"></small>
+					</li>
+					<li class="right clearfix" @if($data->jawaban=="") style="display:none" @endif>
+						<span class="chat-img pull-right">
+							<img src="{{url('imgs/icon/admin.png')}}" width="70px" alt="User Avatar" class="img-circle" />
+						</span>
+						<div class="chat-body clearfix">
+							<div class="header">
+								<strong class="pull-right primary-font">Admin</strong> <small class="text-muted"></small>
+							</div>
+							<p style="font-size: 14px;" class="pull-right">
+								{{$data->jawaban}}
+							</p>
 						</div>
-						<p style="font-size: 14px;" class="pull-right">
-							{{$data->jawaban}}
-						</p>
-					</div>
-				</li>
-				
-			</ul>
-			@endforeach
+					</li>
+
+				</ul>
+				@endforeach
+			</div>
 		</div>
 		
 	</div>

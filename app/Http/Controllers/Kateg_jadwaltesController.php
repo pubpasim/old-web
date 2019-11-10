@@ -12,7 +12,7 @@ class Kateg_jadwaltesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     public function index()
+    public function index()
     {
         $kategjadwalppmb=DB::table('tb_kategorites')->get();
         return view('ppmb.jadwal.lihat_jad_kategori',compact('kategjadwalppmb'));        
@@ -36,13 +36,24 @@ class Kateg_jadwaltesController extends Controller
      */
     public function store(Request $request)
     {
-        $kategjadwalppmb=DB::table('tb_kategorites')->insert([
+
+     $data=DB::table('tb_kategorites')
+     ->where('kategori_tes',$request->kategori_tes)
+     ->count();
+     if ($request->kategori_tes==""){
+        return redirect('/kategori_jadwal_ppmb/create')->with('alert','Maaf, Silahkan Isi terlebih dahulu!');
+    }if ($data>0 ) {
+        return redirect('/kategori_jadwal_ppmb/create')->with('alert','Maaf, Data Sudah Ada!');
+    }else{
+
+        DB::table('tb_kategorites')->insert([
          'id_kategori_tes' => $request->id_kategori_tes,
          'kategori_tes' => $request->kategori_tes
-        ]);
+     ]);
 
         return redirect('kategori_jadwal_ppmb');
     }
+}
 
     /**
      * Display the specified resource.
@@ -77,15 +88,20 @@ class Kateg_jadwaltesController extends Controller
     public function update(Request $request)
     {
 
-        // $this->validate($request[
-        //     'jabatan' => 'required'
-// ]);
-        
+
+     $data=DB::table('tb_kategorites')
+     ->where('kategori_tes',$request->kategori_tes)
+     ->count();
+     if ($request->kategori_tes==""){
+        return redirect('/kategori_jadwal_ppmb/edit/'.$request->id_kategori_tes)->with('alert','Maaf, Silahkan Isi terlebih dahulu!');
+    }else{
+
         DB::table('tb_kategorites')->where('id_kategori_tes',$request->id_kategori_tes)->update([
             'kategori_tes'=>$request->kategori_tes
         ]);
         return redirect('/kategori_jadwal_ppmb');
     }
+}
 
 
     /**

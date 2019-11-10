@@ -36,7 +36,7 @@
 	<div @if($lempar=="") style="display: none;" @endif>
 		<a href="{{url('user_tpa/'.$lempar)}}" class="btn btn-info">Hasil TPA & Wawancara Awal</a>
 		<a href="{{url('user_psikotes/'.$lempar)}}" class="btn btn-info">Hasil Psikotes</a>
-		<a href="{{url('user_home/'.$lempar)}}" class="btn btn-info">Hasil Home</a>
+		<a href="{{url('user_home/'.$lempar)}}" class="btn btn-info">Hasil Home Visit</a>
 		<a href="{{url('user_wawancara_akhir/'.$lempar)}}" class="btn btn-info">Hasil Wawancara Akhir</a>
 		<a href="{{url('user_final/'.$lempar)}}" class="btn btn-info">Hasil Penandatanganan MOU</a>
 	</div>

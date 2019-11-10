@@ -5,7 +5,12 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">JADWAL KEGIATAN PPMB</div>
 					<div class="panel-body">
-						<form role="form" action="/jadwal_ppmb/store" method="POST">
+						<form role="form" action="{{url('jadwal_ppmb/store')}}" method="POST">
+							@if(\Session::has('alert'))
+							<div class="alert">
+								{{Session::get('alert')}}
+							</div>
+							@endif
 							{{ @csrf_field() }}
 							<div class="form-group">
 								<label>ID Jadwal</label>

@@ -3,39 +3,6 @@
 @include('lib_tgl')
 
 
-<style type="text/css">
-
-	#header {
-		border-radius: 7px;
-		border: 1px solid black;
-		text-align:center;
-		color: black;
-
-	}
-	#body{
-		background-color: #808080;
-		color:black;
-		text-align:center;
-		text-decoration-color:black;
-	}
-	#judul{
-		background-color: #808080;
-		border: 1px solid black;
-		color:black ;
-	}
-	#text-position{
-		text-align:center;
-		font-weight: bold;
-		color:black ;
-	}
-	#text-keg{
-		font-weight: bold;
-		color:black ;	
-	}
-
-	
-
-</style>
 <div id="design">
 	<form method="POST" action="{{url('detailjadwal_ppmb_user')}}">
 		{{csrf_field()}}
@@ -88,7 +55,7 @@
 							<td align="center">	
 								<h5><p  id="text-keg">{{$jad_sos->kegiatan}}</p></h5>
 							</td>                                                                           
-							<td><p  id="text-position"><?php echo  tglIndo($jad_sos->tanggal_awal)."&nbsp"."s/d"."&nbsp". tglIndo($jad_sos->tanggal_akhir); ?> </p></td>
+							<td><p  id="text-position"><?php echo tglIndo($jad_sos->tanggal_awal)."&nbsp"."s/d"."&nbsp".tglIndo($jad_sos->tanggal_akhir); ?> </p></td>
 						</tr>
 						@endif
 						<tr>
@@ -108,7 +75,7 @@
 							<td >
 								<h5><p  id="text-keg">{{$jad_tpa->kegiatan}}</p></h5> 
 							</td>                                                                                
-							<td><p  id="text-position"><?php echo  tglIndo($jad_tpa->tanggal_awal)."&nbsp"."s/d"."&nbsp". tglIndo($jad_tpa->tanggal_akhir); ?> </p></td>
+							<td><p  id="text-position"><?php echo tglIndo($jad_tpa->tanggal_awal)."&nbsp"."s/d"."&nbsp".tglIndo($jad_tpa->tanggal_akhir); ?> </p></td>
 						</tr>
 						@endif
 						<tr>
@@ -128,7 +95,7 @@
 							<td>
 								<h5><p  id="text-keg">{{$jad_psikotes->kegiatan}}</p></h5>
 							</td>                                                                   
-							<td><p  id="text-position"><?php echo  tglIndo($jad_psikotes->tanggal_awal);?></p> </td>
+							<td><p  id="text-position"><?php echo tglIndo($jad_psikotes->tanggal_awal);?></p> </td>
 						</tr>
 						@endif
 						@if($jad_pengumu_psiko2==0)
@@ -143,7 +110,7 @@
 							<td>
 								<h5><p  id="text-keg">{{$jad_pengumu_psiko->kegiatan}}</p></h5>
 							</td>                                                                          
-							<td><p  id="text-position"><?php echo  tglIndo($jad_pengumu_psiko->tanggal_awal)."&nbsp"."s/d"."&nbsp". tglIndo($jad_pengumu_psiko->tanggal_akhir); ?></p> </td>
+							<td><p  id="text-position"><?php echo tglIndo($jad_pengumu_psiko->tanggal_awal)."&nbsp"."s/d"."&nbsp".tglIndo($jad_pengumu_psiko->tanggal_akhir); ?></p> </td>
 						</tr>
 						@endif
 
@@ -163,7 +130,7 @@
 							<td>
 								<h5><p  id="text-keg">{{$jad_survey->kegiatan}}</p></h5> 
 							</td>                                                                         
-					<td><p  id="text-position"><?php echo  tglIndo($jad_survey->tanggal_awal)."&nbsp"."s/d"."&nbsp". tglIndo($jad_survey->tanggal_akhir); ?> </p></td>
+					<td><p  id="text-position"><?php echo tglIndo($jad_survey->tanggal_awal)."&nbsp"."s/d"."&nbsp".tglIndo($jad_survey->tanggal_akhir); ?> </p></td>
 				</tr>
 				@endif		
 				<tr>
@@ -182,7 +149,7 @@
 					<td>
 						<h5><p  id="text-keg">{{$jad_wawancara_akhir->kegiatan}}</p></h5>   
 					</td>                                                                         
-					<td><p  id="text-position"><?php echo  tglIndo($jad_wawancara_akhir->tanggal_awal)."&nbsp"."s/d"."&nbsp". tglIndo($jad_wawancara_akhir->tanggal_akhir); ?> </p></td>
+					<td><p  id="text-position"><?php echo tglIndo($jad_wawancara_akhir->tanggal_awal)."&nbsp"."s/d"."&nbsp".tglIndo($jad_wawancara_akhir->tanggal_akhir); ?> </p></td>
 				</tr>
 				@endif
 				@if($jad_pengu_wawancara_akhir2==0)
@@ -196,7 +163,7 @@
 					<td>
 						<h5><p  id="text-keg">{{$jad_pengu_wawancara_akhir->kegiatan}}</p></h5>   
 					</td>                                                                         
-					<td><p  id="text-position"><?php echo  tglIndo($jad_pengu_wawancara_akhir->tanggal_awal)."&nbsp"."s/d"."&nbsp". tglIndo($jad_pengu_wawancara_akhir->tanggal_akhir); ?></p> </td>
+					<td><p  id="text-position"><?php echo tglIndo($jad_pengu_wawancara_akhir->tanggal_awal)."&nbsp"."s/d"."&nbsp".tglIndo($jad_pengu_wawancara_akhir->tanggal_akhir); ?></p> </td>
 				</tr>
 				@endif
 				<tr>
@@ -215,7 +182,7 @@
 					<td>
 						<h5><p  id="text-keg">{{$jad_pelak_mou->kegiatan}}</p></h5>   
 					</td>                                                                           
-					<td><p  id="text-position"><?php echo  tglIndo($jad_pelak_mou->tanggal_awal); ?></p> </td>
+					<td><p  id="text-position"><?php echo tglIndo($jad_pelak_mou->tanggal_awal); ?></p> </td>
 				</tr>
 				@endif
 			</tbody>

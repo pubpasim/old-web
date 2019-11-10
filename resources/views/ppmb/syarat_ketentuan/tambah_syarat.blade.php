@@ -12,7 +12,7 @@
 			<div class="panel-heading">FROM TAMBAH PERSYARATAN DAN KETENTUAN</div>
 					<div class="panel-body" align="center">
 						<div class="col-md-12">
-							<form method="POST" action="/syarat_ketentuan/store">
+							<form method="POST" action="{{url('syarat_ketentuan/store')}}">
 								{{ @csrf_field() }}
 								<div class="form-group">
 									<input type="text" name="id_syarat"  readonly="" hidden="true">

@@ -77,17 +77,17 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li class="active"><a href="{{url('admin')}}"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
+			<li class="active"><a href="{{url('dashboard')}}"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
 			<li class="dropdown " >
 				<a @if(\Session::get("level")=="admin_pub" || \Session::get("level")=="ikatan_alumni") id="hide" @endif href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg> PPMB <span class="caret"></span></a>
 				<ul class="dropdown-menu" role="menu">
 					<li><a href="{{url('/det_struktur_ppmb')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg>Struktur Organisasi</a></li>
-					<li><a href="{{url('/syarat_ketentuan')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></svg></svg> Syarat dan Ketentuan</a></li>
-					<li><a href="{{url('/detjadwal_ppmb')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Jadwal</a>
+					<li><a href="{{url('/syarat_ketentuan')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></use></svg> Syarat dan Ketentuan</a></li>
+					<li><a href="{{url('/detjadwal_ppmb')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></use></svg> Jadwal</a>
 					</li>
-					<li><a href="{{url('hasilSeleksi')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Hasil Seleksi</a></li>
-					<li><a href="{{url('dokumentasi')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Dokumentasi</a></li>
-					<li><a href="{{url('uploadFormulir')}}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Upload Formulir</a></li>
+					<li><a href="{{url('hasilSeleksi')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></use></svg> Hasil Seleksi</a></li>
+					<li><a href="{{url('dokumentasi')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></use></svg> Dokumentasi</a></li>
+					<li><a href="{{url('uploadFormulir')}}"><svg class="glyph stroked blank document"><use xlink:href="#stroked-blank-document"/></use></svg> Upload Formulir</a></li>
 				</ul>
 			</li>
 			<li class="dropdown " > 

@@ -3,7 +3,7 @@
 			<div class="co  l-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<div class="panel-heading">FROM TAMBAH JADWAL</div>
+						<div class="panel-heading">FORM TAMBAH JADWAL</div>
 						<form role="form" action="{{url('daerah_sos_ppmb/store')}}" method="POST">
 							@if(\Session::has('alert'))
 								<div class="alert">

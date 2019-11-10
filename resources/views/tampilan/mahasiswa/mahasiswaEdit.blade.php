@@ -115,6 +115,22 @@
 					</div>
 					<div class="row">
 						<div class="col-25">
+							<label for="tl">Tempat Lahir</label>
+						</div>
+						<div class="col-75">
+							<input type="text" id="tl" name="tl" placeholder="tempat lahir" value="{{$mhsEdit->tempat_lahir}}">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-25">
+							<label for="tgl">Tanggal Lahir</label>
+						</div>
+						<div class="col-75">
+							<input type="date" id="tgl" name="tgl" placeholder="Tanggal Lahir" value="{{$mhsEdit->tanggal_lahir}}">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-25">
 							<label for="daerah">Asal Daerah</label>
 						</div>
 						<div class="col-75">

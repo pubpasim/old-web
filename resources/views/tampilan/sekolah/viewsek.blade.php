@@ -74,10 +74,10 @@
 		margin-top: 6px;
 	}
 	#form1{
-			width: 70%;
-			height: 100%;
-			margin-left: 17%;
-		}
+		width: 70%;
+		height: 100%;
+		margin-left: 17%;
+	}
 	/* Clear floats after the columns */
 	.row:after {
 		content: "";
@@ -94,48 +94,49 @@
 	}
 
 </style>
-	<h1>Daftar Asal Sekolah</h1>
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header">ASAL SEKOLAH</h1>
-			</div>
-		</div><!--/.row-->
+<iv class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+			<div class="panel-heading"><center><b>DATA SEKOLAH</b></center></div>
+			<br><a href="{{url('tampilan/sekolah/createsek')}}"><button type="submit" class="btn btn-primary">Tambah Data </button></a>
+			<div class="panel-body">
+					<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="asc" >
+					<thead>
+						<tr>
+							<th ><center>No</center></th>
+							<th ><center>Asal Sekolah</center></th>
+							<th colspan="2"><center>Aksi</center></th>
+						</tr>
+					</thead>
+					<tbody>
+						@php $no=1; @endphp
+						@foreach($sek as $data)
+						<tr> 
+							<td ><center>{{$no++}}</center></td>
+							<td ><center>{{$data->sekolah}}</center></td>
+							<td><a href="{{url('tampilan/sekolah/'.$data->id_sekolah)}}" class=" icon-edit-sign">
+								<center><button type="button" class="btn btn-success btn-square waves-effect waves-square waves-effect" >
+									<i class="material-icons">Edit</i><span class="icon-name"></span>
+								</button>
+								</center>
+							</a>
+						   </td>
+							<td><a href="{{url('tampilan/sekolah/hps/'.$data->id_sekolah)}}" class="icon-trash" onclick="return confirm('Hapus data ?');">
+								<center><button type="button" class="btn btn-danger btn-square waves-effect waves-square waves-effect">
+								<i class="material-icons">Hapus</i><span class="icon-name"></span>
+								</button>
+								</center>
+								</a>
+							</td>
 
-		
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="panel panel-default">
-					<div class="panel-heading">Tabel Asal Sekolah</div>
-					<br><p class="icon-plus-sign"></i> <a href="{{url('tampilan/sekolah/createsek')}}">Tambah Data</a></p></div>
-					<div class="panel-body">
-						<table class="table table-striped table-bordered table-hover" id="tabel_angkatan">
-							<thead>
-								<tr>
-									<th data-field="state" data-checkbox="true" name ""><center>No</center></th>
-									<th data-field="id" data-sortable="true"><center>Asal Sekolah</center></th>
-									<th colspan="2" align="text-center"><center>Aksi</center></th>
-								</tr>
+						</tr>
 
-								@foreach($sek as $data)
-								<tr> 
-
-									<td ><center>{{$data->id_sekolah}}</center></td>
-									<td ><center>{{$data->sekolah}}</center></td>
-									<th><a href="{{url('tampilan/sekolah/'.$data->id_sekolah)}}" class=" icon-edit-sign"><center>EDIT</center></a></th>
-									<th><a href="{{url('tampilan/sekolah/hps/'.$data->id_sekolah)}}" class="icon-trash" onclick="return confirm('Hapus data ?');"><center>Hapus</center></a></th>
-
-								</tr>
-
-								@endforeach
-
-
-							</thead>
-						</table>
-					</div>
-				</div>
+						@endforeach
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
+</div>
 
 @include('tampilan.foot')

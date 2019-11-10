@@ -5,7 +5,7 @@
 				<div class="panel panel-default">
 
 					<div class="panel-body">
-						<div class="panel-heading"><h2 align="center">FROM UBAH DAERAH YANG DISOSIALISASI</h2></div>
+						<div class="panel-heading"><h2 align="center">FORM UBAH DAERAH YANG DISOSIALISASI</h2></div>
 
 						<div class="col-md-6">
 

@@ -12,12 +12,13 @@ class jad_surveyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     public function index()
+    public function index()
     {
-       
+
         $jad_survey=DB::table('tb_jadwal_survey')
         ->join('tb_periode','tb_periode.id_periode','=','tb_jadwal_survey.id_periode')
         ->join('tb_daerah','tb_daerah.id_daerah','=','tb_jadwal_survey.id_daerah')
+        ->orderby('tanggal_awal')
         ->get();
         return view('ppmb.jadwal.survey.index',compact('jad_survey'));        
     }
@@ -30,7 +31,7 @@ class jad_surveyController extends Controller
     public function create()
     {
         $periode=DB::table('tb_periode')->get();
-        $daerah=DB::table('tb_daerah')->get();
+        $daerah=DB::table('tb_daerah')->orderby('kab_kot')->get();
         return view('ppmb.jadwal.survey.tambah',compact('periode','daerah'));
     }
 
@@ -42,28 +43,40 @@ class jad_surveyController extends Controller
      */
     public function store(Request $request)
     {
-        DB::table('tb_jadwal_survey')->insert([
-            'id_jad_survey'=>$request->id_jad_survey,
-            'id_periode'=>$request->id_periode,
-            'id_daerah'=>$request->id_daerah,
-            'waktu'=>$request->tanggal,
-            'jumlah_peserta'=>$request->jumlah_peserta
+        $data=DB::table('tb_jadwal_survey')
+        ->join('tb_periode','tb_periode.id_periode','=','tb_jadwal_survey.id_periode')
+        ->join('tb_daerah','tb_daerah.id_daerah','=','tb_jadwal_survey.id_daerah')
+        ->count();
+        
+        if ($request->id_periode=="" || $request->id_daerah=="" || $request->tanggal_awal=="" || $request->tanggal_akhir=="" || $request->jumlah_peserta=="") {
+            return redirect('jad_survey/create')->with('alert','Maaf, data tidak boleh kosong!');
+        }if ($data>0) {
+            return redirect('jad_survey/create')->with('alert','Maaf, data sudah ada!');
+        }else{
+            DB::table('tb_jadwal_survey')->insert([
+                'id_jad_survey'=>$request->id_jad_survey,
+                'id_periode'=>$request->id_periode,
+                'id_daerah'=>$request->id_daerah,
+                'tanggal_awal'=>$request->tanggal_awal,
+                'tanggal_akhir'=>$request->tanggal_akhir,
+                'jumlah_peserta'=>$request->jumlah_peserta
 
-        ]);   
-        return redirect('jad_survey');
+            ]);   
+            return redirect('jad_survey');
+        }
     }
 
-   
+
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-   public function edit($id)
+    public function edit($id)
     {
         $periode=DB::table('tb_periode')->get();
-        $daerah=DB::table('tb_daerah')->get();
+        $daerah=DB::table('tb_daerah')->orderby('kab_kot')->get();
         $jad_survey=DB::table('tb_jadwal_survey')
         ->join('tb_periode','tb_periode.id_periode','=','tb_jadwal_survey.id_periode')
         ->join('tb_daerah','tb_daerah.id_daerah','=','tb_jadwal_survey.id_daerah')
@@ -85,15 +98,34 @@ class jad_surveyController extends Controller
         // $this->validate($request[
         //     'jabatan' => 'required'
 // ]);
+        $periode=DB::table('tb_periode')->get();
+        $daerah=DB::table('tb_daerah')->orderby('kab_kot')->get();
+        $jad_survey=DB::table('tb_jadwal_survey')
+        ->join('tb_periode','tb_periode.id_periode','=','tb_jadwal_survey.id_periode')
+        ->join('tb_daerah','tb_daerah.id_daerah','=','tb_jadwal_survey.id_daerah')
+        ->where('id_jad_survey',$request->id_jad_survey) 
+        ->get();
         
+        $data=DB::table('tb_jadwal_survey')
+        ->join('tb_periode','tb_periode.id_periode','=','tb_jadwal_survey.id_periode')
+        ->join('tb_daerah','tb_daerah.id_daerah','=','tb_jadwal_survey.id_daerah')
+        ->count();
+        
+        if ($request->id_periode=="" || $request->id_daerah=="" || $request->tanggal_awal=="" || $request->tanggal_akhir=="" || $request->jumlah_peserta=="") {
+           return view('ppmb.jadwal.survey.edit',compact('jad_survey','periode','daerah'))->with('alert','Maaf, data tidak boleh kosong!');
+        }if ($data>0) {
+         return view('ppmb.jadwal.survey.edit',compact('jad_survey','periode','daerah'))->with('alert','Maaf, data sudah ada!');
+        }else{
         DB::table('tb_jadwal_survey')->where('id_jad_survey',$request->id_jad_survey)->update([
             'id_periode'=>$request->id_periode,
             'id_daerah'=>$request->id_daerah,
-            'waktu'=>$request->tanggal,
+            'tanggal_awal'=>$request->tanggal_awal,
+            'tanggal_akhir'=>$request->tanggal_akhir,
             'jumlah_peserta'=>$request->jumlah_peserta
         ]);
         return redirect('/jad_survey');
     }
+}
 
 
     /**

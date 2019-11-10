@@ -25,8 +25,7 @@
 
 </style>
 <div id="det" >
-	<center><strong><h1 >{{$mahasiswa->jabatan}}</h1></strong></center>
-	<br><br><br>
+		<br><br><br>
 		<div class="foto">
 			<img src="{{url('imgs/mahasiswa')}}/{{$mahasiswa->file}}">
 		</div>

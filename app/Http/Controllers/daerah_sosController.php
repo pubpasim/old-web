@@ -33,7 +33,7 @@ class daerah_sosController extends Controller
     {
         $daerah_sos=DB::table('tb_daerah')->get();
         $periode=DB::table('tb_periode')->get();
-        $sekolah=DB::table('tb_sekolah')->get();
+        $sekolah=DB::table('tb_sekolah')->orderby('sekolah')->get();
         return view('ppmb.jadwal.daerahSos.tambah',compact('daerah_sos','periode','sekolah'));
     }
 

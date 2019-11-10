@@ -214,3 +214,25 @@
     font-style: bold;
     font-family: century gothic;
   }
+  .scroll{
+  width: 70%;
+  background: white;
+  color: black;
+  padding: 10px;
+  overflow: scroll;
+  height: 550px;
+  
+  /*script tambahan khusus untuk IE */
+  scrollbar-face-color: #CE7E00; 
+  scrollbar-shadow-color: #FFFFFF; 
+  scrollbar-highlight-color: #6F4709; 
+  scrollbar-3dlight-color: #11111; 
+  scrollbar-darkshadow-color: #6F4709; 
+  scrollbar-track-color: #FFE8C1; 
+  scrollbar-arrow-color: #6F4709;
+}
+.cht{
+  width: 80%;
+  padding-right: -100px;
+
+}

@@ -10,7 +10,6 @@
 					<thead>
 						<tr align="center">  
 							<th data-field="No" data-sortable="true" name="No">No</th>
-							<th data-field="id" data-sortable="true" name="id_kategori_tes">ID Kategori Jadwal</th>
 							<th data-field="name"  data-
 							sortable="true" name="kategori_tes">Kategori Jadwal Tes</th>
 							<th>Action</th>
@@ -22,7 +21,6 @@
 						@foreach($kategjadwalppmb as $data)
 						<tr>
 							<td><?php echo $no++; ?></td>
-							<td >{{$data->id_kategori_tes}}</td>
 							<td>{{$data->kategori_tes}}</td>
 
 							<td align="center" class="col-sm-3">

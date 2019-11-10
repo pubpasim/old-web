@@ -12,7 +12,12 @@
 					<div class="panel-body">
 						<div class="panel-heading">FROM TAMBAH PANITIA</div>
 						<div class="col-md-6">
-							<form role="form" action="/det_struktur_ppmb/store" method="POST">
+							<form role="form" action="{{url('det_struktur_ppmb/store')}}" method="POST">
+								@if(\Session::has('alert'))
+								<div class="alert">
+									{{Session::get('alert')}}
+								</div>
+								@endif
 								{{ @csrf_field() }}
 								<div class="form-group">
 									<label>ID Panitia</label>
@@ -21,7 +26,7 @@
 								<div class="form-group">
 									<select class="form-control" id="mahasiswa" name="mahasiswa">
 										<label>Mahasiswa</label>
-										<option value="0"> --Mahasiswa--</option>
+										<option > --Mahasiswa--</option>
 										@foreach($mahasiswa as $data)
 										<option value="{{$data->id_mahasiswa}}">{{$data->nama}}</option>
 										@endforeach
@@ -30,7 +35,7 @@
 								<div class="form-group">
 									<select class="form-control" id="angkatan" name="angkatan">
 										<label>Angkatan</label>
-										<option value="0"> --Angkatan--</option>
+										<option > --Angkatan--</option>
 										@foreach($angkatan as $data)
 										<option value="{{$data->id_angkatan}}">{{$data->angkatan}}</option>
 										@endforeach
@@ -48,7 +53,7 @@
 								<div class="form-group">
 									<select class="form-control" id="periode" name="periode">
 										<label>Periode</label>
-										<option value="0"> --Periode--</option>
+										<option > --Periode--</option>
 										@foreach($periode as $data)
 										<option value="{{$data->id_periode}}">{{$data->periode}}</option>
 										@endforeach

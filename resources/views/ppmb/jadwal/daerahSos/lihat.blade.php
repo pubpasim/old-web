@@ -5,7 +5,7 @@
 		<div class="panel panel-default">
 
 			<div class="panel-body">
-				<div class="panel-heading"><h2 align="center">DAERAH YANG DILAKUKAN SOSIALISASI</h2></div><br>
+				<div class="panel-heading"><h2 align="center">DATA DAERAH SOSIALISASI</h2></div><br>
 				<a href="{{url('daerah_sos_ppmb/create')}}"><button type="submit" class="btn btn-primary">Tambah Data </button></a>
 
 				<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="asc">

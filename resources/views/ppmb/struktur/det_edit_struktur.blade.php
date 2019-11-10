@@ -12,8 +12,8 @@
 					<div class="panel-body">
 						<div class="panel-heading">Form Edit Struktur Organisasi PPMB</div>
 						<div class="col-md-6">
-
-							<form role="form" action="/det_struktur_ppmb/update" method="POST">
+							
+							<form role="form" action="{{url('det_struktur_ppmb/update/')}}" method="POST">
 								@foreach($detorgppmb as $d)
 								{{ @csrf_field() }}
 								<div class="form-group">

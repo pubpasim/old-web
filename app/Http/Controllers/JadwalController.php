@@ -14,12 +14,12 @@ class JadwalController extends Controller
      * @return \Illuminate\Http\Response
      */
      ///kateg jadwal
-     
+
 
     //jadwal kegiatan tes
-     public function index()
+    public function index()
     {
-       
+
         $jadwalppmb=DB::table('tb_jadwal')
         ->join('tb_kategorites','tb_kategorites.id_kategori_tes','=','tb_jadwal.id_kategori_tes')
         ->select('tb_jadwal.id_jadwal','tb_jadwal.kegiatan','tb_kategorites.kategori_tes')
@@ -46,21 +46,32 @@ class JadwalController extends Controller
      */
     public function store(Request $request)
     {
+      $data=DB::table('tb_jadwal')
+      ->where('kegiatan',$request->jadwal)
+      ->count();
+      if ($request->jadwal=="") {
+        return redirect('/jadwal_ppmb/create')->with('alert','Mohon Mengisi semua Field !');
+    }
+    if($data>0){
+        return redirect('/jadwal_ppmb/create')->with('alert','Maaf, Data Tersebut Sudah Ada !');
+    }else{
+
         $jadwalppmb=new Jadwalmodel();
         $jadwalppmb->id_kategori_tes=$request->id_kategori_tes;
         $jadwalppmb->kegiatan=$request->jadwal;
         $jadwalppmb->save();
         return redirect('jadwal_ppmb');
     }
+}
 
-   
+
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-   public function edit($id)
+    public function edit($id)
     {
         $kategori=DB::table('tb_kategorites')->get();
         $jadwalppmb=DB::table('tb_jadwal')
@@ -79,16 +90,19 @@ class JadwalController extends Controller
      */
     public function update(Request $request)
     {
+       $data=DB::table('tb_jadwal')
+       ->where('kegiatan',$request->jadwal)
+       ->count();
+       if ($request->jadwal=="") {
+        return redirect('/jadwal_ppmb/edit/'.$request->id_kategori_tes)->with('alert','Mohon Mengisi semua Field !');
+        }else{
 
-        // $this->validate($request[
-        //     'jabatan' => 'required'
-// ]);
-        
-        DB::table('tb_jadwal')->where('id_jadwal',$request->id_jadwal)->update([
-            'id_kategori_tes'=>$request->id_kategori_tes,
-            'kegiatan'=>$request->jadwal
-        ]);
-        return redirect('/jadwal_ppmb');
+            DB::table('tb_jadwal')->where('id_jadwal',$request->id_jadwal)->update([
+                'id_kategori_tes'=>$request->id_kategori_tes,
+                'kegiatan'=>$request->jadwal
+            ]);
+            return redirect('/jadwal_ppmb');
+        }
     }
 
 

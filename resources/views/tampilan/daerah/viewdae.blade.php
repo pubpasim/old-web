@@ -1,6 +1,6 @@
 
 @include('tampilan.head')
-<<style>
+<style>
 	#dataTable {
 		font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 		border-collapse: collapse;
@@ -74,10 +74,10 @@
 		margin-top: 6px;
 	}
 	#form1{
-			width: 70%;
-			height: 100%;
-			margin-left: 17%;
-		}
+		width: 70%;
+		height: 100%;
+		margin-left: 17%;
+	}
 	/* Clear floats after the columns */
 	.row:after {
 		content: "";
@@ -94,48 +94,47 @@
 	}
 
 </style>
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header">DAERAH ASAL</h1>
-			</div>
-		</div>
-
-		
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="panel panel-default">
-					<div class="panel-heading">Tabel Daerah</div>
-					<br><p class="icon-plus-sign"></i> <a href="{{url('tampilan/daerah/createdae')}}">Tambah Data</a></p>
-					<div class="panel-body">
-						<table class="table table-striped table-bordered table-hover" id="tabel_angkatan">
-							<thead>
-								<tr>
-									<th data-field="state" data-checkbox="true" ><center>No</center></th>
-									<th data-field="id" data-sortable="true"><center>Nama Daerah </center></th>
-									<th colspan="2" align="text-center"><center>Aksi</center></th>
-								</tr>
-
-								@foreach($dae as $data)
-								<tr> 
-
-									<td ><center>{{$data->id_daerah}}</center></td>
-									<td ><center>{{$data->kab_kot}}</center></td>
-									<th><a href="{{URL('tampilan/daerah/'.$data->id_daerah)}}" class=" icon-edit-sign"><center>EDIT</center></a></th>
-									<th><a href="{{URL('tampilan/daerah/delet/'.$data->id_daerah)}}" class="icon-trash" onclick="return confirm('Hapus data ?');"><center>Hapus</center></a></th>
-
-								</tr>
-
-								@endforeach
-
-
-							</thead>
-						</table>
-					</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading"><center><b>DATA DAERAH</b></center></div>
+				<br><a href="{{url('tampilan/daerah/createdae')}}"><button type="submit" class="btn btn-primary">Tambah Data </button></a>
+				<div class="panel-body">
+					<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="asc" >
+						<thead>
+							<tr>
+								<th><center>No</center></th>
+								<th><center>Nama Daerah </center></th>
+								<th><center>Aksi</center></th>
+							</tr>
+						</thead>
+						<tbody>
+							@php $no=1; @endphp
+							@foreach($dae as $data)
+							<tr> 
+								<td ><center>{{$no++}}</center></td>
+								<td ><center>{{$data->kab_kot}}</center></td>
+								<td>
+									<a href="{{URL('tampilan/daerah/'.$data->id_daerah)}}" class=" icon-edit-sign">
+										<button type="button" class="btn btn-success btn-square waves-effect waves-square waves-effect" >
+											<i class="material-icons">Edit</i><span class="icon-name"></span>
+										</button>
+									</a>
+									<a href="{{URL('tampilan/daerah/delet/'.$data->id_daerah)}}" class="icon-trash" onclick="return confirm('Hapus data ?');">
+										<button type="button" class="btn btn-danger btn-square waves-effect waves-square waves-effect">
+											<i class="material-icons">Hapus</i><span class="icon-name"></span>
+										</button>
+									</a>
+								</td>
+							</tr>
+							@endforeach
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 
 
 @include('tampilan.foot')

@@ -22,6 +22,13 @@
 	<p style="width:125%;">
 		Beliau mempunyai hobi membaca dan menulis, dalam mengembangkan hobinya ada beberapa buku yang telah beliau tulis dan telah di publikasikan yaitu 1) “Akuntansi  Pemerintahan Daerah Sesuai dengan PP No.24 Tahun 2005” yang diterbitkan oleh Alpabeta, 2) “ Penatausahaan dan akuntansi Keuangan Daerah untuk SKPD” yang diterbitkan oleh Salemba Empat,  3) “ Penatausahaan dan akuntansi Keuangan Daerah untuk SKPKD dan Pemda “ yang di terbitkan oleh Salemba Empat, 4) “Akuntansi Pemerintahan Daerah Berbasis Akrual” diterbitkan oleh  Alpabeta, dan 5) “Akuntansi Keuangan Daerah Berbasis Akrual untuk SKPD” diterbitkan oleh Alpabeta. Selain mempunyai hobi menulis dan membaca beliau juga mempunyai hobi lain yaitu travelling. Hobi travelling tersebut dapat tersalurkan dalam program PUB karena dalam tahapan perekrutan mahasiswa PUB terdapat beberapa kegiatan layaknya travelling seperti kegiatan TPA dan survey yang dilaksanakan di beberapa daerah di Pulau Jawa dan Sumatera.
 	</p>
+	<br>
+	<br>
+	<p align="right">
+		<i>
+		Sekretaris PUB
+		</i>
+	</p>
 	
 </div>
 <?php 

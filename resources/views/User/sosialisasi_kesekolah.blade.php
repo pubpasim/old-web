@@ -34,8 +34,8 @@
 	<div >
 		<h2 align="center"><b>DAFTAR SEKOLAH YANG DI SOSIALISASI</b></h2>
 			<h4 align="center"><b>PEMBERDAYAAN UMAT BERKELANJUTAN (PUB)</b></h4>
-			<h4 align="center"><b>PERIODE {{$tahun->periode}} </b></h4>
-
+			<h4 align="center"><b>PERIODE {{$tahun->periode}}</b></h4>
+		
 		</div>
 		<div>
 			

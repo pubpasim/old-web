@@ -93,28 +93,33 @@
 	}
 
 </style>
-	<h1>Edit Data Sekolah</h1>
-	<div class="container">
+<div class="row" style="padding: 20px;">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div class="panel-heading">FORM UBAH DATA SEKOLAH</div>	
+				<div class="col-md-6">
 
-		@foreach($sek as $data)
-		<form method="POST" action="{{url('tampilan/sekolah/'.$data->id_sekolah)}}" Class="form-horizontal" id="block-validate">
-			{{csrf_field()}}>
-			<div class="row">
-				<div class="panel-heading">FROM UBAH DATA SEKOLAH</div>
-				<div class="panel-body">
-					<div class="col-md-6">
-						<form role="form">
-							
-							<div class="form-group">
-								<label>NAMA SEKOLAH</label>
-								<input class="form-control" placeholder="Nama Sekolah" name="sekolah" value="{{$data->sekolah}}">
+					@foreach($sek as $data)
+					<form method="POST" action="{{url('tampilan/sekolah/'.$data->id_sekolah)}}" Class="form-horizontal" id="block-validate">
+						{{csrf_field()}}
+
+
+						<div class="form-group">
+							<label>NAMA SEKOLAH</label>
+							<input class="form-control" placeholder="Masukan Nama Sekolah" name="sekolah" value="{{$data->sekolah}}">
+							@if(\Session::has('alert'))
+							<div class="alert">
+								{{Session::get('alert')}}
 							</div>
-							<button type="submit" class="btn btn-primary">UBAH DATA </button>
-						</form>
-					</div>
+							@endif
+						</div>
+						<button type="submit" class="btn btn-primary">UBAH DATA </button>
+					</form>
+					@endforeach
 				</div>
 			</div>
-		</form>
-		@endforeach
+		</div>
 	</div>
-include('tampil.foot')
+</div>
+@include('tampilan.foot')

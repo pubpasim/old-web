@@ -6,14 +6,16 @@
 				margin-left: 300px;
 			}
 		</style>
-		<div id="form1">
-		<div class="row">
-			<div class="panel-heading">FROM TAMBAH JADWAL</div>
+		<div class="row" >
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					
 					<div class="panel-body">
+						<div class="panel-heading"><h2 align="center">FORM TAMBAH JADWAL</h2></div>
 						<div class="col-md-6">
 
 							<form role="form" action="{{url('jad_tpa/store')}}" method="POST">
-								 {{ @csrf_field() }}
+								{{ @csrf_field() }}
 								<div class="form-group">
 									<label>ID Jadwal</label>
 									<input class="form-control" name="id_jad_tpa" placeholder="Id Jadal Tpa" readonly="">
@@ -51,11 +53,12 @@
 										@endforeach
 									</select>
 								</div>
-								
+
 								<button type="submit" class="btn btn-primary">TAMBAH DATA </button>			
 							</form>
 						</div>
 					</div>
 				</div>
-			</div>	
-	@include('tampilan.foot')
+			</div>
+		</div>	
+		@include('tampilan.foot')

@@ -100,7 +100,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">JADWAL KEGIATAN PPMB</div>
+					<div class="panel-heading"></div>
 					<div class="panel-body">
 						<a href="{{url('tambah/mahasiswa')}}"><button class="btn btn-primary">Tambah Data Mahasiswa</button></a>
 						<table  data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">

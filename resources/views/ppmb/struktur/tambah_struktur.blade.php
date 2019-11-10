@@ -1,12 +1,18 @@
 		@include('tampilan.head')
 		
-			
-				<div class="row">
-					<div class="panel-heading">FROM TAMBAH PANITIA</div>
+		<div class="row" style="padding: 20px;">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
 					<div class="panel-body">
+						<div class="panel-heading">FORM TAMBAH DATA JABATAN</div>
 						<div class="col-md-6">
 
-							<form role="form" action="/struktur_ppmb/store" method="POST">
+							<form role="form" action="{{url('struktur_ppmb/store')}}" method="POST">
+								@if(\Session::has('alert'))
+								<div class="alert">
+									{{Session::get('alert')}}
+								</div>
+								@endif
 								{{ @csrf_field() }}
 								<div class="form-group">
 									<label>ID Jabatan</label>
@@ -22,4 +28,7 @@
 						</div>
 					</div>
 				</div>
-			@include('tampilan.foot')
+			</div>
+		</div>
+
+		@include('tampilan.foot')

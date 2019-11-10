@@ -73,10 +73,10 @@
 		margin-top: 6px;
 	}
 	#form1{
-			width: 70%;
-			height: 100%;
-			margin-left: 17%;
-		}
+		width: 70%;
+		height: 100%;
+		margin-left: 17%;
+	}
 	/* Clear floats after the columns */
 	.row:after {
 		content: "";
@@ -93,29 +93,35 @@
 	}
 
 </style>
-	<h1>Daftar Daerah</h1>
-	<div class="container">
-				
-			@foreach($dae as $data)
-			<form method="POST" action="{{URL('tampilan/daerah/'.$data->id_daerah)}}" Class="form-horizontal" id="block-validate">
-				{{csrf_field()}}>
-				<div class="row">
-					<div class="panel-heading">FROM UBAH DATA DAERAH</div>
-					<div class="panel-body">
-						<div class="col-md-6">
-							<form role="form">
+<div class="row" style="padding: 20px;">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div class="panel-heading">FORM UBAH DATA DAERAH</div>	
+				<div class="col-md-6">
 
-								<div class="form-group">
-									<label>NAMA DAERAH</label>
-									<input class="form-control" placeholder="Nama Daerah" name="kab_kot" value="{{$data->kab_kot}}">
-								</div>
-								<button type="submit" class="btn btn-primary">UBAH DATA </button>
-							</form>
-							@endforeach	
+					@foreach($dae as $data)
+					<form method="POST" action="{{URL('tampilan/daerah/'.$data->id_daerah)}}" Class="form-horizontal" id="block-validate">
+						{{csrf_field()}}
+
+						<div class="form-group">
+							<label>NAMA DAERAH</label>
+							<input class="form-control" placeholder="Masukan Nama Daerah" name="kab_kot" value="{{$data->kab_kot}}">
+							
+							@if(\Session::has('alert'))
+							<div class="alert">
+								{{Session::get('alert')}}
+							</div>
+							@endif
 						</div>
-					</div>
+						<button type="submit" class="btn btn-primary">UBAH DATA </button>
+					</form>
+					@endforeach	
 				</div>
-			</form>
+			</div>
 		</div>
+	</div>
+</div>
+
 
 @include('tampilan.foot')

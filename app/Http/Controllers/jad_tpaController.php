@@ -19,6 +19,7 @@ class jad_tpaController extends Controller
         ->join('tb_periode','tb_periode.id_periode','=','tb_jadwal_tpa.id_periode')
         ->join('tb_daerah','tb_daerah.id_daerah','=','tb_jadwal_tpa.id_daerah')
         ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_jadwal_tpa.id_sekolah')
+        ->orderby('tb_jadwal_tpa.tanggal')
         ->get();
         return view('ppmb.jadwal.tpa.lihat',compact('jad_tpa'));        
     }
