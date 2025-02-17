@@ -1,3 +1,4 @@
 @foreach($formulir as $data)
-<embed width="600" height="450" src="{{url('file')}}/{{($data->dokumen) }}" type="application/pdf"></embed>
+<?php header("Location: /file/$data->dokumen");
+header("Content-Disposition: filename=$data->dokumen");?>
 @endforeach

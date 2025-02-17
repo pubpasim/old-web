@@ -47,7 +47,7 @@ class SyaratController extends Controller
             'syarat' => $request->syarat
         ]);
 
-        return redirect('/syarat_ketentuan');
+        return redirect('syarat_ketentuan');
     }
 
     /**
@@ -90,7 +90,7 @@ class SyaratController extends Controller
         DB::table('tb_syarat_ketentuan')
         ->where('id_syarat',$request->id_syarat)
         ->update(['syarat'=>$request->syarat]);
-        return redirect('/syarat_ketentuan');
+        return redirect('syarat_ketentuan');
     }
    
     /**
@@ -102,6 +102,6 @@ class SyaratController extends Controller
     public function destroy($id)
     {
         DB::table('tb_syarat_ketentuan')->where('id_syarat',$id)->delete(); 
-        return redirect('/syarat_ketentuan');
+        return redirect('syarat_ketentuan');
     }
 }

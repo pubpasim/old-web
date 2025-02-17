@@ -19,7 +19,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">Data Periode Kepengurusan</div>
 				<div class="panel-body">
-					<a href="periode/create"><button type="submit" class="btn btn-primary">Tambah Data </button></a>
+					<a href="{{url('periode/create')}}"><button type="submit" class="btn btn-primary">Tambah Data </button></a>
 					<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="asc">
 						<thead>
 							<tr align="center">  
@@ -38,12 +38,12 @@
 								<td>{{$data->periode}}</td>
 
 								<td align="center" class="col-sm-3">
-									<a href="/periode/edit/{{$data->id_periode}}">
+									<a href="{{url('periode/edit/'.$data->id_periode)}}">
 										<button type="button" class="btn btn-success btn-square waves-effect waves-square waves-effect" >
 											<i class="material-icons">Edit</i><span class="icon-name"></span>
 										</button>
 									</a>
-									<a href="/periode/delete/{{$data->id_periode}}">
+									<a href="{{url('periode/delete/'.$data->id_periode)}}">
 										<button type="button" class="btn btn-danger btn-square 
 										waves-effect waves-square waves-effect">
 										<i class="material-icons">Hapus</i><span class="icon-name"></span>

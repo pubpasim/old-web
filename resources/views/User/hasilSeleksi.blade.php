@@ -1,4 +1,4 @@
-@include('User.header')
+@include('user.header')
 <div id="design" style="width: 90%;">
 	<center>
 	@if(\Session::has("alert"))
@@ -43,4 +43,4 @@
 	<br><br>
 	</center>
 </div>
-@include('User.footer')
+@include('user.footer')

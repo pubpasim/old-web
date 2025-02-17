@@ -1,14 +1,14 @@
 </div>
 
-<script src="/lumino/js/jquery-1.11.1.min.js"></script>
-<script src="/lumino/js/bootstrap.min.js"></script>
-<script src="/lumino/js/chart.min.js"></script>
-<script src="/lumino/js/chart-data.js"></script>
-<script src="/lumino/js/easypiechart.js"></script>
-<script src="/lumino/js/easypiechart-data.js"></script>
-<script src="/lumino/js/bootstrap-datepicker.js"></script>
-<script src="/lumino/js/bootstrap-table.js"></script>
-	<script type="text/javascript" src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="{{url('/lumino/js/jquery-1.11.1.min.js')}}"></script>
+<script src="{{url('/lumino/js/bootstrap.min.js')}}"></script>
+<script src="{{url('/lumino/js/chart.min.js')}}"></script>
+<script src="{{url('/lumino/js/chart-data.js')}}"></script>
+<script src="{{url('/lumino/js/easypiechart.js')}}"></script>
+<script src="{{url('/lumino/js/easypiechart-data.js')}}"></script>
+<script src="{{url('/lumino/js/bootstrap-datepicker.js')}}"></script>
+<script src="{{url('/lumino/js/bootstrap-table.js')}}"></script>
+	<script type="text/javascript" src="{{url('//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js')}}"></script>
 <script type="text/javascript">
 	$(document).ready( function () {
 		$('#myTable').DataTable();
@@ -33,6 +33,22 @@
 		if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
 	})
 </script>	
+
+        <script>
+    		$("#tempat").select2();
+    	</script>
+    	<script>
+    		$("#daerah").select2();
+    	</script>
+    	
+    		<!--<script>-->
+    		<!--	$(document).ready(function(){-->
+    		<!--		$('#demo2').multipleSelect({-->
+    		<!--			placeholder: "Pilih Daerah",-->
+    		<!--			filter:true-->
+    		<!--		});-->
+    		<!--	});-->
+    		<!--</script>-->
 </body>
 
 </html>

@@ -23,7 +23,7 @@
 							@foreach($tpa as $data)
 							<tr>
 								<td>{{ $no++}}</td>
-								<td>{{ $data->daerah}}</td>
+								<td>{{ $data->kab_kot}}</td>
 								<td>{{ $data->sekolah}}</td>								
 								<td><a href="{{url('lulusTPA/'.$data->id_tpa)}}">{{ $data->jml_lulus}}</a></td>
 								<td>{{ $data->jml_gagal}}</td>

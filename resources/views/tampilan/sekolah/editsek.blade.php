@@ -98,7 +98,7 @@
 
 		@foreach($sek as $data)
 		<form method="POST" action="{{url('tampilan/sekolah/'.$data->id_sekolah)}}" Class="form-horizontal" id="block-validate">
-			{{csrf_field()}}>
+			{{csrf_field()}}
 			<div class="row">
 				<div class="panel-heading">FROM UBAH DATA SEKOLAH</div>
 				<div class="panel-body">
@@ -117,4 +117,4 @@
 		</form>
 		@endforeach
 	</div>
-include('tampil.foot')
+@include('tampilan.foot')

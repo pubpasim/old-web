@@ -115,7 +115,7 @@ class detPelatihanController extends Controller
             'id_angkatan'=>$request->angkatan,
             'id_pelatihan'=>$reques->pelatihan
         ]);
-        return redirect('/detpelatihan');
+        return redirect('detpelatihan');
     }
 
     /**

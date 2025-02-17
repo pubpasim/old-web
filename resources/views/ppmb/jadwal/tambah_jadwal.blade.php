@@ -5,7 +5,7 @@
 					<div class="panel-body">
 						<div class="col-md-6">
 
-							<form role="form" action="/jadwal_ppmb/store" method="POST">
+							<form role="form" action="{{url('jadwal_ppmb/store')}}" method="POST">
 								 {{ @csrf_field() }}
 								<div class="form-group">
 									<label>ID Jadwal</label>

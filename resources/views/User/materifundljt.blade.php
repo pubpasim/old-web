@@ -3,37 +3,11 @@
 <html>
 <head>
 	<style type="text/css">
-	.table1 {
-		font-family: sans-serif;
-		color: #444;
-		border-collapse: collapse;
-		width: 50%;
-		border: 1px solid #f2f5f7;
-	}
-
-	.table1 tr th{
-		background: #35A9DB;
-		color: #fff;
-		font-weight: normal;
-	}
-
-	.table1, th, td {
-		padding: 8px 20px;
-		text-align: center;
-	}
-
-	.table1 tr:hover {
-		background-color: #f5f5f5;
-	}
-
-	.table1 tr:nth-child(even) {
-		background-color: #f2f2f2;
-	}
 	.tengah{
 		text-align: center;
 		margin: 10%;
 	}
-	button{
+	#btnn{
 		background-color: #16A085;
 		color: white;
 		width: 180px;
@@ -41,7 +15,7 @@
 		border-radius: 10px;
 		border-style: groove;
 	}
-	button:hover{
+	#btnn:hover{
 		background-color: #1ABC9C;
 	}
 </style>
@@ -49,18 +23,19 @@
 	<title>Fundamental Lanjutan</title>
 </head>
 <body>
-	<div id="design" >
-	<center><img src="{{url('imgs')}}/{{('ljt.png') }}" width="30%"></center>
+	@foreach($materi as $data)
+	<div class="tengah">
+	<center><img src="{{url('imgs')}}/{{($data->poto) }}" width="40%"></center>
 	<h1 align="center">Lanjutan</h1>
 		<center><p>
-			<a href="{{url('fdmljtjava')}}"><button>Java</button></a>
-			<a href="{{url('fdmljtvb')}}"><button>VB.Net</button></a>
-			<a href="{{url('fdmljtphp')}}"><button>PHP</button></a>
+			<a href="{{url('fdmljtjava')}}"><button id="btnn">Java</button></a>
+			<a href="{{url('fdmljtvb')}}"><button id="btnn">VB.Net</button></a>
+			<a href="{{url('fdmljtphp')}}"><button id="btnn">PHP</button></a>
 		</p>
 		</center>
 
 	</div>
-
+	@endforeach
 </body>
 </html>
 @include('user.footer')

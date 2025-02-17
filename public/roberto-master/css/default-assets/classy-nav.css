@@ -11,7 +11,8 @@
   z-index: 1;
   background-color: #ffffff; }
   .classy-nav-container * {
-    box-sizing: border-box; }
+    box-sizing: border-box;
+    border-bottom: 0;}
   .classy-nav-container a {
     -webkit-transition-duration: 500ms;
     transition-duration: 500ms;

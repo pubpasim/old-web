@@ -4,9 +4,7 @@
   }
  ?>
 <footer>
-  <p class="tm-copyright-p">Copyright &copy; <span class="tm-current-year"></span>| PUB Angkatan 16 
-    
-  | Designed by TemplateMo</p>
+  <p class="tm-copyright-p">Copyright &copy; <span class="tm-current-year"></span>| PUB Angkatan 16</p>
 </footer>
 </div>  
 
@@ -16,9 +14,9 @@
 </div> <!-- container -->
 
 <!-- load JS files -->
-<script src="/neaty/js/jquery-1.11.3.min.js"></script>             <!-- jQuery (https://jquery.com/download/) -->
-<script src="/neaty/js/jquery.magnific-popup.min.js"></script>     <!-- Magnific pop-up (http://dimsemenov.com/plugins/magnific-popup/) -->
-<script src="/neaty/js/jquery.singlePageNav.min.js"></script>      <!-- Single Page Nav (https://github.com/ChrisWojcik/single-page-nav) -->
+<script src="{{url('/neaty/js/jquery-1.11.3.min.js')}}"></script>             <!-- jQuery (https://jquery.com/download/) -->
+<script src="{{url('/neaty/js/jquery.magnific-popup.min.js')}}"></script>     <!-- Magnific pop-up (http://dimsemenov.com/plugins/magnific-popup/) -->
+<script src="{{url('/neaty/js/jquery.singlePageNav.min.js')}}"></script>      <!-- Single Page Nav (https://github.com/ChrisWojcik/single-page-nav) -->
 <script>     
   document.getElementById("uploadBtn").onchange = function () {
     document.getElementById("uploadFile").value = this.value;

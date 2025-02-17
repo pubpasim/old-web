@@ -1,4 +1,4 @@
-@include('User.header')
+@include('user.header')
 <style>
 	table {
 		border-collapse: collapse;
@@ -16,21 +16,28 @@
 		background-color: #4CAF50;
 		color: white;
 	}
-	.foto{
-		width: 30%;
-		height: 100%;
-		position: relative;
-		left: 35%;
+	
+	.foto {
+	    background-image: url("{{url('imgs/mahasiswa')}}/{{$mahasiswa->file}}");
+	    background-size: cover;
+        margin: auto;
+        width: 40vh;
+        height: 50vh;
+        max-width: 384px;
+        color: white;
+        line-height: 75vh;
 	}
+
 
 </style>
 <div id="det" >
 	
-	<br><br><br>
+	<br>
 		<div class="foto">
-			<img src="{{url('imgs/mahasiswa')}}/{{$mahasiswa->file}}">
+			<!--<img src="" style="border: 3px solid darkcyan;width:25%;height: 10%;">-->
+			www.pubpasim.org
 		</div>
-		<center><strong><h1 >{{$mahasiswa->jabatan}}</h1></strong></center>
+		<!--<center><strong><h1 >{{$mahasiswa->jabatan_pub}}</h1></strong></center>-->
 		<div class="">
 			<table align="center">
 				<tr>
@@ -43,20 +50,15 @@
 					<td>:</td>
 					<td>{{$mahasiswa->nama}}</td>
 				</tr>
-				<tr>
-					<td>Tempat, Tanggal Lahir</td>
-					<td>:</td>
-					<td>{{$mahasiswa->tempat_lahir}}, {{$mahasiswa->tanggal_lahir}}</td>
-				</tr>
+				<!--<tr>-->
+				<!--	<td>Tempat, Tanggal Lahir</td>-->
+				<!--	<td>:</td>-->
+				<!--	<td>{{$mahasiswa->tempat_lahir}}, {{$mahasiswa->tanggal_lahir}}</td>-->
+				<!--</tr>-->
 				<tr>
 					<td>Angkatan</td>
 					<td>:</td>
-					<td>{{$mahasiswa->angkatan}}</td>
-				</tr>
-				<tr>
-					<td>Nama Angkatan</td>
-					<td>:</td>
-					<td>{{$mahasiswa->nama_angkatan}}</td>
+					<td>{{$mahasiswa->angkatan}} ({{$mahasiswa->nama_angkatan}})</td>
 				</tr>
 				<tr>
 					<td>Jenis Kelamin</td>
@@ -74,15 +76,15 @@
 					<td>{{$mahasiswa->sekolah}}</td>
 				</tr>
 				<tr>
-					<td>Prodi</td>
+					<td>Jurusan</td>
 					<td>:</td>
 					<td>{{$mahasiswa->nama_jur}}</td>
 				</tr>
-				<tr>
-					<td>No Telpon</td>
-					<td>:</td>
-					<td>{{$mahasiswa->no_telp}}</td>
-				</tr>	
+				<!--<tr>-->
+				<!--	<td>No Telpon</td>-->
+				<!--	<td>:</td>-->
+				<!--	<td>{{$mahasiswa->no_telp}}</td>-->
+				<!--</tr>	-->
 	
 		</table>
 	</div>
@@ -135,4 +137,4 @@
 		
 	</div>
 </div>
-@include('User.footer')
+@include('user.footer')

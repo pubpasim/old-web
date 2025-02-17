@@ -93,23 +93,35 @@
                     <input id="uploadFile" type="file" name="foto" value="{{$dokumen->file}}">
                 </div>
             </div>
+            
+             <div class="row">
+                    <div class="col-25">
+            <select name="select" id="angkatan">
+                <option value="" disabled>Pilih Angkatan</option>
+                @foreach($angkatan as $data)
+                <option value="{{$data->id_angkatan}}">
+                    Angkatan {{ $data->angkatan }}
+                </option>
+                @endforeach
+                
+            </select>
+            </div>
+            </div>
+            
             <div class="row">
                 <div class="col-25">
-                    <label for="spkw">Tema Kegiatan</label>
+                    <label for="jurusan">Divisi</label>
                 </div>
                 <div class="col-75">
+                    @php $dok=$dokumen->tema; @endphp
                     <select id="kegiatan" name="kegiatan">
-                        <option disabled="false"> --pilih kegiatan--</option>
-                        <option @if($dokumen->tema=="Pengajian") selected="true" @endif >Pengajian</option>
-                        <option @if($dokumen->tema=="Pelatihan") selected="true" @endif>Pelatihan</option>
-                        <option @if($dokumen->tema=="Magang") selected="true" @endif>Magang</option>
-                        <option @if($dokumen->tema=="Bersih-bersih") selected="true" @endif>Bersih-bersih</option>
-                        <option @if($dokumen->tema=="Kuliah") selected="true" @endif>Kuliah</option>
-                        <option @if($dokumen->tema=="Pembinaan") selected="true" @endif>Pembinaan</option>
-                        <option @if($dokumen->tema=="Pemilihan PUB") selected="true" @endif>Pemilihan PUB</option>
-                        <option @if($dokumen->tema=="Bakti Sosial") selected="true" @endif>Bakti Sosial</option>
-                        <option @if($dokumen->tema=="Masak-masak") selected="true" @endif>Masak-masak</option>
-                        <option @if($dokumen->tema=="Makan-makan") selected="true" @endif>Makan-makan</option>
+                        <option @if($dok="Divisi Pendidikan") selected="true" @endif value="Divisi Pendidikan">Divisi Pendidikan</option>
+                        <option @if($dok="Divisi Kerohanian") selected="true" @endif value="Divisi Kerohanian">Divisi Kerohanian</option>
+                        <option @if($dok="Divisi Kebersihan") selected="true" @endif value="Divisi Kebersihan">Divisi Kebersihan</option>
+                        <option @if($dok="Divisi Keasramaan") selected="true" @endif value="Divisi Keasramaan">Divisi Keasramaan</option>
+                        <option @if($dok="Divisi Magang") selected="true" @endif value="Divisi Magang">Divisi Magang</option>
+                        <option @if($dok="Divisi Kesehatan") selected="true" @endif value="Divisi Kesehatan">Divisi Kesehatan</option>
+                        <option @if($dok="Divisi Kesejahteraan") selected="true" @endif value="Divisi Kesejahteraan">Divisi Kesejahteraan</option>
                     </select>
                 </div>
             </div>
@@ -128,4 +140,8 @@
             </div>
         </form>
     </div>
+    <script>
+    		$("#kegiatan").select2();
+    		$("#angkatan").select2();
+    	</script>
 @include('tampilan.foot')

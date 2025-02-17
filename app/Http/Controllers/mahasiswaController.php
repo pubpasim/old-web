@@ -22,14 +22,15 @@ class mahasiswaController extends Controller
      */
     public function index()
     {
+       
         $mahasiswa = DB::table('tb_mahasiswa')
         ->join('tb_daerah', 'tb_mahasiswa.id_daerah', '=', 'tb_daerah.id_daerah')
         ->join('tb_sekolah', 'tb_mahasiswa.id_sekolah', '=', 'tb_sekolah.id_sekolah')
         ->join('tb_orgpub', 'tb_mahasiswa.id_orgpub', '=', 'tb_orgpub.id_orgpub')
         ->join('tb_orgppmb', 'tb_mahasiswa.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
-        ->join('tb_statusPub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statusPub.id_statusPub')
+        ->join('tb_statuspub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statuspub.id_statusPub')
         ->join('tb_jurusan', 'tb_mahasiswa.id_jur', '=', 'tb_jurusan.id_jur')
-        ->select('tb_mahasiswa.tempat_lahir','tb_mahasiswa.tanggal_lahir','tb_mahasiswa.no_telp','tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status')->where('tb_statusPub.status','PUB Aktif')->get();
+        ->select('tb_mahasiswa.tempat_lahir','tb_mahasiswa.tanggal_lahir','tb_mahasiswa.no_telp','tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statuspub.status')->where('tb_statuspub.status','PUB Aktif')->get();
         return view('tampilan.mahasiswa.index',compact('mahasiswa'));
 
     }
@@ -45,10 +46,10 @@ class mahasiswaController extends Controller
         ->select('tb_daerah.id_daerah','tb_daerah.kab_kot')->orderby('tb_daerah.kab_kot')->get();
         $skl=DB::table('tb_sekolah')
         ->select('tb_sekolah.id_sekolah','tb_sekolah.sekolah')->orderby('tb_sekolah.sekolah')->get();
-        $sts1=DB::table('tb_statusSos')
-        ->select('tb_statusSos.id_statusSos','tb_statusSos.status')->get();
-        $sts2=DB::table('tb_statusPub')
-        ->select('tb_statusPub.id_statusPub','tb_statusPub.status')->get();
+        $sts1=DB::table('tb_statussos')
+        ->select('tb_statussos.id_statusSos','tb_statussos.status')->get();
+        $sts2=DB::table('tb_statuspub')
+        ->select('tb_statuspub.id_statusPub','tb_statuspub.status')->get();
         $angkt=DB::table('tb_angkatan')
         ->select('tb_angkatan.id_angkatan','tb_angkatan.angkatan')->orderby('tb_angkatan.angkatan')
         ->get();
@@ -114,10 +115,10 @@ class mahasiswaController extends Controller
         ->select('tb_daerah.id_daerah','tb_daerah.kab_kot')->get();
         $skl=DB::table('tb_sekolah')
         ->select('tb_sekolah.id_sekolah','tb_sekolah.sekolah')->get();
-        $sts1=DB::table('tb_statusSos')
-        ->select('tb_statusSos.id_statusSos','tb_statusSos.status')->get();
-        $sts2=DB::table('tb_statusPub')
-        ->select('tb_statusPub.id_statusPub','tb_statusPub.status')->get();
+        $sts1=DB::table('tb_statussos')
+        ->select('tb_statussos.id_statusSos','tb_statussos.status')->get();
+        $sts2=DB::table('tb_statuspub')
+        ->select('tb_statuspub.id_statusPub','tb_statuspub.status')->get();
         $angkt=DB::table('tb_angkatan')
         ->select('tb_angkatan.id_angkatan','tb_angkatan.angkatan')->get();
         $orgpub=DB::table('tb_orgpub')
@@ -133,11 +134,11 @@ class mahasiswaController extends Controller
         ->join('tb_sekolah', 'tb_mahasiswa.id_sekolah', '=', 'tb_sekolah.id_sekolah')
         ->join('tb_orgpub', 'tb_mahasiswa.id_orgpub', '=', 'tb_orgpub.id_orgpub')
         ->join('tb_orgppmb', 'tb_mahasiswa.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
-        ->join('tb_statusPub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statusPub.id_statusPub')
-        ->join('tb_statusSos', 'tb_mahasiswa.id_statusSos', '=', 'tb_statusSos.id_statusSos')
+        ->join('tb_statuspub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statuspub.id_statusPub')
+        ->join('tb_statussos', 'tb_mahasiswa.id_statusSos', '=', 'tb_statussos.id_statusSos')
         ->join('tb_jurusan', 'tb_mahasiswa.id_jur', '=', 'tb_jurusan.id_jur')
-        ->select('tb_mahasiswa.no_telp','tb_mahasiswa.jenis_kelamin','tb_angkatan.angkatan','tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status','tb_statusSos.status AS spkw','tb_mahasiswa.file');
-        $mahasiswa=$data->where('tb_statusPub.status','PUB Aktif')->get();
+        ->select('tb_mahasiswa.tempat_lahir','tb_mahasiswa.tanggal_lahir','tb_mahasiswa.no_telp','tb_mahasiswa.jenis_kelamin','tb_angkatan.angkatan','tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statuspub.status','tb_statussos.status AS spkw','tb_mahasiswa.file');
+        $mahasiswa=$data->where('tb_statuspub.status','PUB Aktif')->get();
         $mhsEdit=$data->where('tb_mahasiswa.id_mahasiswa',$id)->first();
         return view('tampilan.mahasiswa.mahasiswaEdit',compact('mhsEdit','dr','skl','sts1','sts2','angkt','orgpub','orgppmb','jur'));
     }
@@ -147,10 +148,10 @@ class mahasiswaController extends Controller
         ->select('tb_daerah.id_daerah','tb_daerah.kab_kot')->get();
         $skl=DB::table('tb_sekolah')
         ->select('tb_sekolah.id_sekolah','tb_sekolah.sekolah')->get();
-        $sts1=DB::table('tb_statusSos')
-        ->select('tb_statusSos.id_statusSos','tb_statusSos.status')->get();
-        $sts2=DB::table('tb_statusPub')
-        ->select('tb_statusPub.id_statusPub','tb_statusPub.status')->get();
+        $sts1=DB::table('tb_statussos')
+        ->select('tb_statussos.id_statusSos','tb_statussos.status')->get();
+        $sts2=DB::table('tb_statuspub')
+        ->select('tb_statuspub.id_statusPub','tb_statuspub.status')->get();
         $angkt=DB::table('tb_angkatan')
         ->select('tb_angkatan.id_angkatan','tb_angkatan.angkatan')->get();
         $orgpub=DB::table('tb_orgpub')
@@ -166,11 +167,11 @@ class mahasiswaController extends Controller
         ->join('tb_sekolah', 'tb_mahasiswa.id_sekolah', '=', 'tb_sekolah.id_sekolah')
         ->join('tb_orgpub', 'tb_mahasiswa.id_orgpub', '=', 'tb_orgpub.id_orgpub')
         ->join('tb_orgppmb', 'tb_mahasiswa.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
-        ->join('tb_statusPub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statusPub.id_statusPub')
-        ->join('tb_statusSos', 'tb_mahasiswa.id_statusSos', '=', 'tb_statusSos.id_statusSos')
+        ->join('tb_statuspub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statuspub.id_statusPub')
+        ->join('tb_statussos', 'tb_mahasiswa.id_statusSos', '=', 'tb_statussos.id_statusSos')
         ->join('tb_jurusan', 'tb_mahasiswa.id_jur', '=', 'tb_jurusan.id_jur')
-        ->select('tb_mahasiswa.no_telp','tb_mahasiswa.jenis_kelamin','tb_angkatan.angkatan','tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status','tb_statusSos.status AS spkw','tb_mahasiswa.file');
-        $mahasiswa=$data->where('tb_statusPub.status','Alumni')->get();
+        ->select('tb_mahasiswa.tempat_lahir','tb_mahasiswa.tanggal_lahir','tb_mahasiswa.no_telp','tb_mahasiswa.jenis_kelamin','tb_angkatan.angkatan','tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statuspub.status','tb_statussos.status AS spkw','tb_mahasiswa.file');
+        $mahasiswa=$data->where('tb_statuspub.status','Alumni')->get();
         $mhsEdit=$data->where('tb_mahasiswa.id_mahasiswa',$id)->first();
         return view('tampilan.mahasiswa.mahasiswaEdit',compact('mhsEdit','dr','skl','sts1','sts2','angkt','orgpub','orgppmb','jur'));
     }
@@ -191,11 +192,11 @@ class mahasiswaController extends Controller
             $tujuan_upload = ('imgs/mahasiswa');
             $file->move($tujuan_upload,$nama_file);
             DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->update([
-                'nama'=>$request->Tname,'NIM'=>$request->nim,'id_daerah'=>$request->daerah,'id_angkatan'=>$request->angkatan,'id_sekolah'=>$request->skl,'id_statusSos'=>$request->spkw,'id_orgpub'=>$request->jbPUB,'id_orgppmb'=>$request->jbPPMB,'id_jur'=>$request->jurusan, 'id_statusPub'=>$request->alm,'jenis_kelamin'=>$request->kelamin,'id_statusPub'=>$request->st_pub,'file'=>$nama_file
+                'nama'=>$request->Tname,'NIM'=>$request->nim,'id_daerah'=>$request->daerah,'id_angkatan'=>$request->angkatan,'id_sekolah'=>$request->skl,'id_statusSos'=>$request->spkw,'id_orgpub'=>$request->jbPUB,'id_orgppmb'=>$request->jbPPMB,'id_jur'=>$request->jurusan, 'id_statusPub'=>$request->alm,'jenis_kelamin'=>$request->kelamin,'id_statusPub'=>$request->st_pub,'file'=>$nama_file,'tanggal_lahir'=>$request->tgl,'tempat_lahir'=>$request->tl,
             ]);
         }else{
             DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->update([
-                'nama'=>$request->Tname,'NIM'=>$request->nim,'id_daerah'=>$request->daerah,'id_angkatan'=>$request->angkatan,'id_sekolah'=>$request->skl,'id_statusSos'=>$request->spkw,'id_orgpub'=>$request->jbPUB,'id_orgppmb'=>$request->jbPPMB,'id_jur'=>$request->jurusan, 'id_statusPub'=>$request->alm,'jenis_kelamin'=>$request->kelamin,'id_statusPub'=>$request->st_pub
+                'nama'=>$request->Tname,'NIM'=>$request->nim,'id_daerah'=>$request->daerah,'id_angkatan'=>$request->angkatan,'id_sekolah'=>$request->skl,'id_statusSos'=>$request->spkw,'id_orgpub'=>$request->jbPUB,'id_orgppmb'=>$request->jbPPMB,'id_jur'=>$request->jurusan, 'id_statusPub'=>$request->alm,'jenis_kelamin'=>$request->kelamin,'id_statusPub'=>$request->st_pub,'tanggal_lahir'=>$request->tgl,'tempat_lahir'=>$request->tl,
             ]);
         }
         

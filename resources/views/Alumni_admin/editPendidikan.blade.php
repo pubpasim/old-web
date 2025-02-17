@@ -1,5 +1,17 @@
 
 @include('Alumni_admin.head')
+<style>
+    #x{
+        height:60px;
+        width:100%;
+        border-radius:7px;
+    }
+    #thn{
+        height:50px;
+        width:30%;
+        border-radius:7px;
+    }
+</style>
 <h1 id="judul">Riwayat Pendidikan</h1>
 <div class="container">
 	<form method="POST" action="{{url('editPendidikan')}}">
@@ -8,7 +20,7 @@
 			<tr>
 				<td>Nama Perguruan Tinggi</td>
 				<td>:</td>
-				<td><input type="text" id="kampus" name="kampus" placeholder="Perguruan Tinggi" value="{{$pnd->Universitas}}"></td>
+				<td><input type="text" id="x" name="kampus" placeholder="Perguruan Tinggi" value="{{$pnd->Universitas}}" class="form-control"></td>
 			</tr>
 			@php
 				$jn=strrev($pnd->prodi);
@@ -20,8 +32,7 @@
 				<td>Pendidikan</td>
 				<td>:</td>
 				<td>
-					<select name="pddk">
-						<option>--Pendidikan--</option>
+					<select name="pddk" class="form-control" id="x">
 						<option @if($jn=="D3") selected="true"@endif value="D3">D3</option>
 						<?php for ($x=1; $x <=3; $x++) {  ?>
 							<option @if($jn=="{{S$x}}") selected="true"@endif value='S{{$x}}'>S{{$x}}</option>
@@ -32,7 +43,7 @@
 			<tr>
 				<td>Jurusan</td>
 				<td>:</td>
-				<td><input type="text" name="jur" value="{{$jur}}"></td>
+				<td><input id="x" type="text" name="jur" value="{{$jur}}" class="form-control"></td>
 			</tr>
 			<tr>
 				<td>Tahun Lulus</td>

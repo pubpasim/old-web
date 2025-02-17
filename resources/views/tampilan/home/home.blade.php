@@ -38,7 +38,7 @@
 								<td>{{ $data->nama}}</td>								
 								<td>{{ $data->jurusan}}</td>
 								<td>{{ $data->sekolah}}</td>
-								<td>{{ $data->daerah}}</td>								
+								<td>{{ $data->kab_kot}}</td>								
 								<td>
 									<a href="{{url('editHome/'.$data->id_home)}}" class="btn btn-info">Edit</a>
 									<a href="{{url('hapusHome/'.$data->id_home)}}" class="btn btn-info" onclick="return confirm('Hapus data ?');">Hapus</a>

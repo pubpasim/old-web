@@ -18,7 +18,7 @@ class angkatanController extends Controller
     public function index()
     {
         $ang=DB::table('tb_angkatan')->orderBy('angkatan','ASC')->get();
-        return view('tampilan/angkatan/viewang',compact('ang'));
+        return view('tampilan.angkatan.viewang',compact('ang'));
     }
 
     /**
@@ -28,7 +28,7 @@ class angkatanController extends Controller
      */
     public function create()
     {
-        return view('tampilan/angkatan/createang');
+        return view('tampilan.angkatan.createang');
     }
 
     /**
@@ -68,7 +68,7 @@ class angkatanController extends Controller
     public function edit($id)
     {
         $ang=angkatanModel::where('id_angkatan',$id)->get();
-        return view('tampilan/angkatan/editang',compact('ang'));
+        return view('tampilan.angkatan.editang',compact('ang'));
     }
 
     /**

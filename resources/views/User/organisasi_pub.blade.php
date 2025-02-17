@@ -1,5 +1,4 @@
-
-@include('User.header')
+@include('user.header')
 <style type="text/css">
 	#pembina{
 		width: 250px;
@@ -250,39 +249,94 @@
 		font-style: bold;
 		background-color: black;
 	}
-	a,p{
+	#ck{
 		color: white;
 		text-decoration-line: none;
 		padding-top: 20px;
+	}#cont{
+	    width:130%;
 	}
 
 </style>
-<div  >
+@if(\Session::has("alert"))
+                      <div class="alert alert-danger">
+                          <div>{{Session::get("alert")}}</div>
+                      </div>
+                  @endif
+                  
+                  @if(\Session::has("alert-success"))
+                      <div class="alert alert-success">
+                          <div>{{Session::get("alert-success")}}</div>
+                      </div>
+                  @endif
+<div id="design">
+	<form method="POST" action="{{url('tampil_organisasi_pub')}}">
+		{{csrf_field()}}
+		<h2>Pilih Periode</h2>
+		
+		<div>
+			<select name="select_periode"  >
+				<option value="0" >--Pilih Periode--</option>
+				@foreach($periode as $data)
+				<option value="{{$data->id_periode}}">
+					Periode {{$data->periode }}
+				</option>
+				@endforeach
+				
+			</select>
+		</div>
+		<button type="submit" id="btn">OKE</button>
+	</form>
+</div>
+<br>
+<div @if($lempar=="") style="display: none;" @endif>
+
+<center>
+	@if(\Session::has("alert"))
+          <div class="alert alert-danger">
+              <div>{{Session::get("alert")}}</div>
+          </div>
+      @endif
+      
+      @if(\Session::has("alert-success"))
+          <div class="alert alert-success">
+              <div>{{Session::get("alert-success")}}</div>
+          </div>
+      @endif
+      
+	@if($lempar!="")
+	<h3 style="color: darkcyan;position:relative;left:210px;" align="center"><b>STRUKTUR ORGANISASI PUB</b></h3>
+	<h4 style="color: darkcyan;position:relative;left:210px;" align="center"><b>PEMBERDAYAAN UMAT BERKELANJUTAN</b></h4>
+	<h4 style="color: darkcyan;position:relative;left:210px;" align="center"><b>PERIODE {{$lempar}}</b></h4>
+	@endif
+</center>
+
+<div  id="cont">
 	<div class="content">
 		<center>
-			<h2>STRUKTUR ORGANISASI PUB</h2>
+			<!--<h2>STRUKTUR ORGANISASI PUB</h2>-->
 			
 			<div id="pembina">
 				<div id="judul">PEMBINA PUB</div>
-				<a href="{{url('pembinaPub')}}"><p>Abdul Hafiz Tanjung, S.E., M.Si., AK., CA</p></a>
+				<a id="ck" href="{{url('pembinaPub')}}"><p id="ck">{{$pembina->nama}}</p></a>
 			</div>
 			<div id="ketua">
 				<div id="judul">KETUA PUB</div>
 				@if($ketua2==0)
-				<p></p>
+				<p id="ck"></p>
 				@else
-				<a href="{{url('detail/org/'.$ketua->id_mahasiswa)}}">
-					<p>{{$ketua->nama}}</p>
+				<a id="ck" href="{{url('detail/org/'.$ketua->id_mahasiswa)}}">
+					<p id="ck">{{$ketua->nama}}</p>
 				</a>
 				@endif
 			</div>
 			<div id="keamanan">
 				<div id="judul">KEAMANAN</div>
 				@if($keamanan2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
-				<a href="{{url('detail/org/'.$keamanan->id_mahasiswa)}}">
-					<p>{{$keamanan->nama}}</p>
+				<a id="ck" href="{{url('detail/org/'.$keamanan->id_mahasiswa)}}">
+					<p id="ck">{{$keamanan->nama}}</p>
 				</a>
 				@endif
 			</div>
@@ -293,27 +347,27 @@
 			<div id="bendahara">
 				<div id="judul">BENDAHARA</div>
 				@if($bendahara_ex2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
-				<a href="{{url('detail/org/'.$bendahara_ex->id_mahasiswa)}}">
-					<p>1. {{$bendahara_ex->nama}}</p>
+				<a id="ck" href="{{url('detail/org/'.$bendahara_ex->id_mahasiswa)}}">
+					<p id="ck">1. {{$bendahara_ex->nama}}</p>
 				</a>
 				@endif
 				@if($bendahara_in2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
-				<a href="{{url('detail/org/'.$bendahara_in->id_mahasiswa)}}">
-					<p>2. {{$bendahara_in->nama}}</p>
+				<a id="ck" href="{{url('detail/org/'.$bendahara_in->id_mahasiswa)}}">
+					<p id="ck">2. {{$bendahara_in->nama}}</p>
 				</a>
 				@endif
 			</div>
 			<div id="sekretaris">
 				<div id="judul">SEKRETARIS</div>
 				@if($sekretaris2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
-				<a href="{{url('detail/org/'.$sekretaris->id_mahasiswa)}}">
-					<p>{{$sekretaris->nama}}</p>
+				<a id="ck" href="{{url('detail/org/'.$sekretaris->id_mahasiswa)}}">
+					<p id="ck">{{$sekretaris->nama}}</p>
 				</a>
 				@endif
 			</div>
@@ -323,10 +377,10 @@
 			<div id="pnd">
 				<div id="judul">DIVISI PENDIDIKAN</div>
 				@if($div_pnd2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
-				<a href="{{url('detail/org/'.$div_pnd->id_mahasiswa)}}">
-					<p>{{$div_pnd->nama}}</p>
+				<a id="ck" href="{{url('detail/org/'.$div_pnd->id_mahasiswa)}}">
+					<p id="ck">{{$div_pnd->nama}}</p>
 				</a>
 				@endif
 			</div>
@@ -335,10 +389,10 @@
 				<div id="judul">DIVISI KEROHANIAN</div>
 
 				@if($div_ker2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
-				<a href="{{url('detail/org/'.$div_ker->id_mahasiswa)}}">
-					<p>{{$div_ker->nama}}</p>
+				<a id="ck" href="{{url('detail/org/'.$div_ker->id_mahasiswa)}}">
+					<p id="ck">{{$div_ker->nama}}</p>
 				</a>
 				@endif
 			</div>
@@ -346,10 +400,10 @@
 			<div id="keb">
 				<div id="judul">DIVISI KEBERSIHAN</div>
 				@if($div_keb2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
-				<a href="{{url('detail/org/'.$div_keb->id_mahasiswa)}}">
-					<p>{{$div_keb->nama}}</p>
+				<a id="ck" href="{{url('detail/org/'.$div_keb->id_mahasiswa)}}">
+					<p id="ck">{{$div_keb->nama}}</p>
 				</a>
 				@endif
 			</div>
@@ -357,10 +411,10 @@
 			<div id="sej">
 				<div id="judul">DIVISI KESEJAHTERAAN</div>
 				@if($div_sej2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
-				<a href="{{url('detail/org/'.$div_sej->id_mahasiswa)}}">
-					<p>{{$div_sej->nama}}</p>
+				<a id="ck" href="{{url('detail/org/'.$div_sej->id_mahasiswa)}}">
+					<p id="ck">{{$div_sej->nama}}</p>
 				</a>
 				@endif
 			</div>
@@ -368,10 +422,10 @@
 			<div id="kes">
 				<div id="judul">DIVISI KESEHATAN</div>
 				@if($div_kes2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
-				<a href="{{url('detail/org/'.$div_kes->id_mahasiswa)}}">
-					<p>{{$div_kes->nama}}</p>
+				<a id="ck" href="{{url('detail/org/'.$div_kes->id_mahasiswa)}}">
+					<p id="ck">{{$div_kes->nama}}</p>
 				</a>
 				@endif
 			</div>
@@ -379,10 +433,10 @@
 			<div id="mag">
 				<div id="judul">DIVISI MAGANG</div>
 				@if($div_mag2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
-				<a href="{{url('detail/org/'.$div_mag->id_mahasiswa)}}">
-					<p>{{$div_mag->nama}}</p>
+				<a id="ck" href="{{url('detail/org/'.$div_mag->id_mahasiswa)}}">
+					<p id="ck">{{$div_mag->nama}}</p>
 				</a>
 				@endif
 			</div>
@@ -390,15 +444,15 @@
 			<div id="kea">
 				<div id="judul">DIVISI KEASRAMAAN</div>
 				@if($div_kea2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
-				<a href="{{url('detail/org/'.$div_kea->id_mahasiswa)}}">
-					<p>{{$div_kea->nama}}</p>
+				<a id="ck" href="{{url('detail/org/'.$div_kea->id_mahasiswa)}}">
+					<p id="ck">{{$div_kea->nama}}</p>
 				</a>
 				@endif
 			</div>
 		</center>
 	</div>
 </div>
-
-@include('User.footer')
+</div>
+@include('user.footer')

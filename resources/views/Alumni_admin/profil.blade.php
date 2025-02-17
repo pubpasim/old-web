@@ -1,6 +1,11 @@
 @include('Alumni_admin.head')
+<style>
+    tr{
+        height:70px;
+    }
+</style>
 <hr>
-<h1 id="judul">Profile Alumni PUB</h1>
+<h1 style="font-weight:bold;color:darkcyan;text-align:center;font-size:30px;">PROFILE ALUMNI PUB</h1>
 <hr>
 <table align="center">
 	<tr>
@@ -17,6 +22,11 @@
 		<td>Tempat, Tanggal Lahir</td>
 		<td>:</td>
 		<td>{{$data->tempat_lahir}}, {{$data->tanggal_lahir}}</td>
+	</tr>
+	<tr>
+		<td>Jurusan</td>
+		<td>:</td>
+		<td>{{$data->nama_jur}}</td>
 	</tr>
 	<tr>
 		<td>Angkatan</td>
@@ -63,10 +73,10 @@
 		<td>:</td>
 		<td>{{$data->no_telp}}</td>
 	</tr>
-	<tr><td colspan="2"><a href="{{url('editProfil/'.$data->id_mahasiswa)}}">Edit Profil</a></td></tr>
+	<tr><td colspan="2"><a href="{{url('editProfil/'.$data->id_mahasiswa)}}" class="btn btn-primary">Edit Profil</a></td></tr>
 </table>
 <hr>
-<h1 id="judul">Pendidikan Lanjut</h1>
+<h1 style="font-weight:bold;color:darkcyan;text-align:center;font-size:30px;">PENDIDIKAN LANJUTAN</h1>
 <hr>
 <a href="{{url('tambahPend/'.$data->id_mahasiswa)}}"><button><b>+</b>&nbsp;Tambah Pendidikan Lanjut</button></a>
 <div @if($pendidikan2==0) hidden="true" @endif>
@@ -89,12 +99,12 @@
 			</tr>
 			
 		</table>
-		<a href="{{url('editPendidikan/'.$data->id_mahasiswa,$pnd->id_detpendidikan)}}">Edit Pendidikan Lanjutan</a>
+		<a href="{{url('editPendidikan/'.$data->id_mahasiswa,$pnd->id_detpendidikan)}}" class="btn btn-primary">Edit Pendidikan Lanjutan</a>
 		<hr>
 		@endforeach
 </div>
 <hr>
-<h1 id="judul">Pengalaman Kerja</h1>
+<h1 style="font-weight:bold;color:darkcyan;text-align:center;font-size:30px;">PENGALAMAN KERJA</h1>
 <hr>
 <a href="{{url('tambahPeng/'.$data->id_mahasiswa)}}"><button><b>+</b>&nbsp;Tambah Pengalaman</button></a>
 <div @if($pengalaman2==0) hidden="true" @endif>
@@ -118,7 +128,7 @@
 		</tr>
 	</table>
 	<input type="hidden" name="id_peng" value="{{$peng->id_detpengalaman}}">
-	<a href="{{url('editPengalaman/'.$data->id_mahasiswa,$peng->id_detpengalaman)}}">Edit Pengalaman</a>
+	<a href="{{url('editPengalaman/'.$data->id_mahasiswa,$peng->id_detpengalaman)}}" class="btn btn-primary">Edit Pengalaman</a>
 	<hr>
 	@endforeach
 	

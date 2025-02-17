@@ -1,4 +1,4 @@
-@include('User.header')
+@include('user.header')
 <div id="design" style="width: 90%;">
 	<form method="POST" action="{{url('user_alumni/')}}">
 		{{csrf_field()}}
@@ -38,4 +38,4 @@
 		</tbody>				    
 	</table>
 </div>
-@include('User.footer')
+@include('user.footer')

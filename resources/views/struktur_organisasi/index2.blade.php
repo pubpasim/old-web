@@ -97,46 +97,44 @@
 
 </style>
 
-	<div class="container">		
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header">Struktur Organisasi Ikatan Alumni</h1>
-			</div>
-		</div><!--/.row-->
-
-
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="panel panel-default">
-					<br><p class="icon-plus-sign"></i> <a href="{{url('struktur_organisasi2/tambah')}}">Tambah Data</a></p>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+		    <div class="row" style="padding: 20px;">
 					<div class="panel-body">
-						<table class="table table-striped table-bordered table-hover" id="tabel_angkatan">
-							<thead>
-								<tr>
-									<th>No</th>
-									<th>Jabatan</th>
-									<th>Aksi</th>
-								</tr> 
-							</thead>
-							<tbody>
-								@foreach($organisasi as $data)
-
-								<tr>
-									<td>{{$data->id_org}}</td>
-									<td>{{$data->jabatan}}</td>
-									<td align="center">
-										<a href="{{url('struktur_organisasi2/edit/'.$data->id_org)}}">Edit</a>&nbsp;&nbsp;&nbsp;
-										<a href="{{url('struktur_organisasi2/hapus/'.$data->id_org)}}">Hapus</a>
-									</td>
-								</tr>
-
-								@endforeach
-							</tbody>
-						</table>
-					</div>
-				</div>
+						<div class="page-header"><center><h2>Data Jabatan Organisasi Ikatan Alumni PUB</h2></center></div>
+					     <br><p class="icon-plus-sign"></i> <a href="{{url('struktur_organisasi2/tambah')}}"><button class="btn btn-primary">Tambah Data</button></a></p>
+    					<div class="panel-body">
+    							<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="asc">
+    							<thead>
+    								<tr>
+    									<th>No</th>
+    									<th>Jabatan</th>
+    									<th>Aksi</th>
+    								</tr> 
+    							</thead>
+    							<tbody>
+    								@foreach($organisasi as $data)
+    
+    								<tr>
+    									<td>{{$data->id_org}}</td>
+    									<td>{{$data->jabatan}}</td>
+    									<td>
+    									    <center>
+    										<a href="{{url('struktur_organisasi2/edit/'.$data->id_org)}}"><button class="btn btn-primary">Edit</button></a>&nbsp;&nbsp;&nbsp;
+    										<a href="{{url('struktur_organisasi2/hapus/'.$data->id_org)}}"><button class="btn btn-danger">Hapus</button></a>
+    									    </center>
+    									</td>
+    								</tr>
+    
+    								@endforeach
+    							</tbody>
+    						</table>
+    					</div>
 			</div>
 		</div>
 	</div>
+</div>
+</div>
 
 @include('tampilan.foot')

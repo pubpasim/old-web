@@ -90,7 +90,16 @@
 			<div class="col-75">
 				<label for="jbPUB">Kegiatan</label>
 				<input type="text" class="form-control" name="keterangan" value="{{$data->keterangan}}">
-			</div>			
+			</div>
+			<div class="col-75">
+				<label for="jbPUB">Periode</label>
+				<select id="periode" name="periode">
+					
+					@foreach($periode as $data2)
+					<option @if($data2->id==$data->periode) selected @endif value="{{$data2->id}}">{{$data2->periode}}</option>
+					@endforeach
+				</select>
+			</div>
 
 		</div>
 		<br>

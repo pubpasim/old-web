@@ -33,6 +33,11 @@
 										<i class="material-icons">Edit</i><span class="icon-name"></span>
 									</button>
 								</a>
+								<a href="{{url('daerah_sos_ppmb/foto/'.$data->id_daerah_sos)}}">
+									<button type="button" class="btn btn-primary btn-square waves-effect waves-square waves-effect">
+										<i class="material-icons">Foto</i><span class="icon-name"></span>
+									</button>
+								</a>
 								<a href="{{url('daerah_sos_ppmb/delete/'.$data->id_daerah_sos)}}" onclick="return confirm('Apakah anda yakin ?')">
 									<button type="button" class="btn btn-danger btn-square waves-effect waves-square waves-effect">
 										<i class="material-icons">Hapus</i><span class="icon-name"></span>

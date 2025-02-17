@@ -6,27 +6,31 @@
 				margin-left: 300px;
 			}
 		</style>
-		<script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
-
-		
-		<div class="row">
-			<div class="panel-heading">FROM EDIT PERSYARATAN DAN KETENTUAN</div>
-					<div class="panel-body" align="center">
-						<div class="col-md-12">
-							<form method="POST" action="/syarat_ketentuan/update">
-								{{ @csrf_field() }}
-									@foreach($syarat as $data)
-								<div class="form-group">
-									<input type="text" name="id_syarat" value="{{$data->id_syarat}}" readonly="" hidden="true">
-									<textarea class="ckeditor" id="ckedtor" name="syarat" >{{$data->syarat}}</textarea>
-								</div>
-									@endforeach
-								<button type="submit" class="btn btn-primary">POSTING </button>			
-							</form>
-							
-						</div>
-					</div>
+<script type="text/javascript" src="{{url('ckeditor/ckeditor.js')}}"></script>
+	<div class="container">
+		<div class="panel-heading">FROM EDIT PERSYARATAN DAN KETENTUAN</div>
+		@foreach($syarat as $data)
+		<form method="POST" action="{{url('syarat_ketentuan/update')}}" enctype="multipart/form-data">
+			{{csrf_field()}}
+				<div class="col-75">
+					<input type="text" name="id_syarat" value="{{$data->id_syarat}}" readonly="" hidden="true">
 				</div>
-	@include('tampilan.foot')
+				<div class="col-75">
+					<label for="tahun">Text</label>					
+				</div>
+				<div class="form-group">					
+					<textarea class="ckeditor" id="ckedtor" name="syarat" >{{strip_tags($data->syarat)}}</textarea>
+				</div>
+
+				
+				<div class="row">
+					<button type="submit" class="btn btn-info">Submit</button>
+				</div>
+			</div>
+		</form>
+		@endforeach
+        
+</div>
+@include('tampilan.foot')
 
 

@@ -1,4 +1,16 @@
 @include('Alumni_admin.head')
+<style>
+    #x{
+        height:60px;
+        width:100%;
+        border-radius:7px;
+    }
+    #thn{
+        height:50px;
+        width:30%;
+        border-radius:7px;
+    }
+</style>
 <h1 id="judul">Riwayat Pendidikan</h1>
 <div class="container">
 	<form method="POST" action="{{url('simpanPend')}}">
@@ -7,14 +19,14 @@
 			<tr>
 				<td>Nama Perguruan Tinggi</td>
 				<td>:</td>
-				<td><input type="text" id="kampus" name="kampus" placeholder="Perguruan Tinggi"></td>
+				<td><input class="form-control" type="text" id="x" name="kampus" placeholder="Perguruan Tinggi" required=""></td>
 			</tr>
 			<tr>
 				<td>Pendidikan</td>
 				<td>:</td>
 				<td>
-					<select name="pddk">
-						<option>--Pendidikan--</option>
+					<select name="pddk" required="" id="x">
+						
 						<option value="D3">D3</option>
 						<?php 
 						for ($x=1; $x <=3; $x++) { 
@@ -27,7 +39,7 @@
 			<tr>
 				<td>Jurusan</td>
 				<td>:</td>
-				<td><input type="text" name="jur"></td>
+				<td><input class="form-control" id="x" type="text" name="jur" required="" placeholder="Jurusan"></td>
 			</tr>
 			<tr>
 				<td>Tahun Lulus</td>
@@ -38,7 +50,7 @@
 				</td>
 			</tr>
 		</table>
-		<input type="hidden" name="idmhs" value="{{$id}}">
+		<input id="x" type="hidden" name="idmhs" value="{{$id}}">
 		<input type="submit" value="Tambah" id="btn">
 
 	</form>

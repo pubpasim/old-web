@@ -88,7 +88,7 @@ class JadwalController extends Controller
             'id_kategori_tes'=>$request->id_kategori_tes,
             'kegiatan'=>$request->jadwal
         ]);
-        return redirect('/jadwal_ppmb');
+        return redirect('jadwal_ppmb');
     }
 
 

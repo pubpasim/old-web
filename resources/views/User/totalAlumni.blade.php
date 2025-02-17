@@ -1,4 +1,4 @@
-@include('User.header')
+@include('user.header')
 <script>
 	window.onload = function () {
 
@@ -88,4 +88,4 @@ for($x=0;$x<5;$x++){
 echo "<br>";
 }
 @endphp
-@include('User.footer')
+@include('user.footer')

@@ -84,7 +84,8 @@
 						    <tr>
 						        <th>No</th>
 						        <th>Foto</th>						        
-						        <th>Keterangan</th>						        
+						        <th>Keterangan</th>
+						        <th>Periode</th>
 						        <th>Aksi</th>
 						    </tr>
 						    </thead>
@@ -94,7 +95,8 @@
 						    	<tr>
 						    		<td>{{ $no++}}</td>
 						    		<td> <img src="{{url('imgs')}}/{{($data->foto) }}" width="100" height="100"></td>	
-						    		<td>{{$data->keterangan}}</td>						    		
+						    		<td>{{$data->keterangan}}</td>		
+						    		<td>{{$data->periode}}</td>
 						    		<td>
 						    			<a href="{{url('editDokAlumni/'.$data->id)}}" class="btn btn-info">Edit</a>
 						    			<a href="{{url('hapusDokAlumni/'.$data->id)}}" class="btn btn-info" onclick="return confirm('Hapus data ?');">Hapus</a>

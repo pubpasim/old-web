@@ -11,19 +11,19 @@ Neaty HTML Template
 http://www.templatemo.com/tm-501-neaty
 -->
 <!-- load stylesheets -->
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="{{url('https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css')}}" rel="stylesheet">
 
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">  <!-- Google web font "Open Sans" -->
-<link rel="stylesheet" href="/neaty/css/bootstrap.min.css">                                      <!-- Bootstrap style -->
-<link rel="stylesheet" href="/neaty/css/magnific-popup.css">                                <!-- Magnific pop up style, http://dimsemenov.com/plugins/magnific-popup/ -->
-<link rel="stylesheet" href="/neaty/css/templatemo-style.css">    
-<link rel="shortcut icon" href="/imgs/pub.png" />                               <!-- Templatemo style -->
+<link rel="stylesheet" href="{{url('/neaty/css/bootstrap.min.css')}}">                                      <!-- Bootstrap style -->
+<link rel="stylesheet" href="{{url('/neaty/css/magnific-popup.css')}}">                                <!-- Magnific pop up style, http://dimsemenov.com/plugins/magnific-popup/ -->
+<link rel="stylesheet" href="{{url('/neaty/css/templatemo-style.css')}}">    
+<link rel="shortcut icon" href="{{url('/imgs/pub.png')}}">                               <!-- Templatemo style -->
 
 
 <link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300" rel="stylesheet" type="text/css">
-<link href="style.css" type="tex/css" rel="stylesheet" media="all">
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<link href="{{url('style.css')}}" type="tex/css" rel="stylesheet" media="all">
+<script type="text/javascript" src="{{url('http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js')}}"></script>
 <script type="text/javascript">
     $(function(){
         $("#Div1 input").keypress(function (e) {

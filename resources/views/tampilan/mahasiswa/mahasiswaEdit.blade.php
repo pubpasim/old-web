@@ -100,6 +100,22 @@
 			</div>
 			<div class="row">
 				<div class="col-25">
+					<label for="tl">Tempat Lahir</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="tl" name="tl" placeholder="tempat lahir" value="{{$mhsEdit->tempat_lahir}}">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="nama">Tanggal Lahir</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="Tname" name="tgl" placeholder="Nama Lengkap" value="{{$mhsEdit->tanggal_lahir}}">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
 					<label for="kelamin">Jenis Kelamin</label>
 				</div>
 				<div class="col-75">
@@ -114,7 +130,7 @@
 				</div>
 				<div class="col-75">
 					<select id="daerah" name="daerah">
-						<option value="0"> --pilih daerah--</option>
+						<option value="0"> Pilih daerah</option>
 						@foreach($dr as $data)
 						<option @if($mhsEdit->kab_kot=="$data->kab_kot") selected="true" @endif value="{{$data->id_daerah}}">{{$data->kab_kot}}</option>
 						@endforeach
@@ -127,7 +143,7 @@
 				</div>
 				<div class="col-75">
 					<select id="angkatan" name="angkatan">
-						<option value="0"> --pilih Angkatan--</option>
+						<option value="0"> Pilih Angkatan</option>
 						@foreach($angkt as $data)
 						<option @if($mhsEdit->angkatan=="$data->angkatan") selected="true" @endif value="{{$data->id_angkatan}}">{{$data->angkatan}}</option>
 						@endforeach
@@ -140,8 +156,8 @@
 					<label for="skl">Asal Sekolah</label>
 				</div>
 				<div class="col-75">
-					<select id="skl" name="skl">
-						<option value="0"> --pilih Asal Sekolah--</option>
+					<select id="sekolah" name="skl">
+						<option value="0"> Pilih Asal Sekolah</option>
 						@foreach($skl as $data)
 						<option @if($mhsEdit->sekolah=="$data->sekolah") selected="true" @endif  value="{{$data->id_sekolah}}">{{$data->sekolah}}</option>
 						@endforeach
@@ -154,7 +170,7 @@
 				</div>
 				<div class="col-75">
 					<select id="spkw" name="st_pub">
-						<option disabled="true"> --Status PUB--</option>
+						<option disabled="true"> Status PUB</option>
 						@foreach($sts2 as $data)
 						<option @if($mhsEdit->sekolah=="$data->status") selected="true" @endif value="{{$data->id_statusPub}}">{{$data->status}}</option>
 						@endforeach
@@ -167,7 +183,7 @@
 				</div>
 				<div class="col-75">
 					<select id="spkw" name="spkw">
-						<option disabled="true"> --Status Perkawinan--</option>
+						<option disabled="true"> Status Perkawinan</option>
 						@foreach($sts1 as $data)
 						<option @if($mhsEdit->spkw=="$data->status") selected="true" @endif value="{{$data->id_statusSos}}">{{$data->status}}</option>
 						@endforeach
@@ -179,8 +195,8 @@
 					<label for="jbPUB">Jabatan di PUB</label>
 				</div>
 				<div class="col-75">
-					<select id="jbPUB" name="jbPUB">
-						<option disabled="true"> --Jabatan di PUB--</option>
+					<select id="jabatanpub" name="jbPUB">
+						<option disabled="true"> Jabatan di PUB</option>
 						<option value="0">Tidak Ada</option>
 						@foreach($orgpub as $data)
 						<option @if($mhsEdit->jabatan_pub=="$data->jabatan_pub") selected="true" @endif value="{{$data->id_orgpub}}">{{$data->jabatan_pub}}</option>
@@ -190,11 +206,11 @@
 			</div>
 			<div class="row">
 				<div class="col-25">
-					<label for="jbPUB">Jabatan di PPMB</label>
+					<label for="jabatanppmb">Jabatan di PPMB</label>
 				</div>
 				<div class="col-75">
-					<select id="jbPPMB" name="jbPPMB">
-						<option disabled="true"> --Jabatan di PPMB--</option>
+					<select id="jabatanppmb" name="jbPPMB">
+						<option disabled="true"> Jabatan di PPMB</option>
 						@foreach($orgppmb as $data)
 						<option @if($mhsEdit->jabatan=="$data->jabatan") selected="true" @endif value="{{$data->id_orgppmb}}">{{$data->jabatan}}</option>
 						@endforeach
@@ -208,7 +224,7 @@
 				<div class="col-75">
 
 					<select id="jurusan" name="jurusan">
-						<option disabled="true"> --Jurusan--</option>
+						<option disabled="true"> Jurusan</option>
 						@foreach($jur as $data)
 						<option @if($mhsEdit->nama_jur=="$data->nama_jur") selected="true" @endif value="{{$data->id_jur}}">{{$data->nama_jur}}</option>
 						@endforeach
@@ -237,4 +253,13 @@
 			</div>
 		</form>
 	</div>
+	<script>
+    		$("#jurusan").select2();
+    		$("#jabatanpub").select2();
+    		$("#jabatanppmb").select2();
+    		$("#jabatanppmb").select2();
+    		$("#daerah").select2();
+    		$("#angkatan").select2();
+    		$("#sekolah").select2();
+    	</script>
 @include('tampilan.foot')

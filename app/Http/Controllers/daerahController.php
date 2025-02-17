@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use DB;
 use App\daerahModel;
+
 use Illuminate\Http\Request;
 
 class daerahController extends Controller
@@ -10,9 +12,9 @@ class daerahController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $dae=daerahModel::all();
+     public function index()
+     {
+        $dae=daerahModel::all()->sortby('kab_kot');
         return view('tampilan/daerah/viewdae',compact('dae'));        
     }
 
@@ -34,10 +36,19 @@ class daerahController extends Controller
      */
     public function store(Request $request)
     {
-        $dae=new daerahModel();
-        $dae->kab_kot=$request->kab_kot;
-        $dae->save();
-        return redirect('tampilan/daerah/viewdae');
+        $data=DB::table('tb_daerah')
+        ->where('kab_kot',$request->kab_kot)
+        ->count();
+        if ($request->kab_kot==""){
+            return redirect('tampilan/daerah/createdae')->with('alert','Maaf, Silahkan Isi terlebih dahulu!');
+        }if ($data>0 ) {
+            return redirect('tampilan/daerah/createdae')->with('alert','Maaf, Data Sudah Ada!');
+        }else{
+            $dae=new daerahModel();
+            $dae->kab_kot=$request->kab_kot;
+            $dae->save();
+            return redirect('tampilan/daerah/viewdae');
+        }
     }
 
     /**
@@ -72,9 +83,18 @@ class daerahController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $dae=daerahModel::where('id_daerah',$id)->update(['kab_kot'=>$request->kab_kot]);
-        return redirect('tampilan/daerah/viewdae');
-    }
+
+       $dae=daerahModel::where('id_daerah',$id)->get();
+       $data=DB::table('tb_daerah')
+       ->where('kab_kot',$request->kab_kot)
+       ->count();
+       if ($request->kab_kot==""){
+          return view('tampilan/daerah/editdae',compact('dae'))->with('alert','Maaf, Silahkan Isi terlebih dahulu!');
+       }else{
+          $dae=daerahModel::where('id_daerah',$id)->update(['kab_kot'=>$request->kab_kot]);
+          return redirect('tampilan/daerah/viewdae');
+      }
+  }
 
     /**
      * Remove the specified resource from storage.
@@ -84,7 +104,7 @@ class daerahController extends Controller
      */
     public function destroy($id)
     {
-        $sek=sekolahModel::where('id_daerah',$id)->delete();
+        $sek=daerahModel::where('id_daerah',$id)->delete();
         return redirect('tampilan/daerah/viewdae');
     }
 }

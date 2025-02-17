@@ -5,7 +5,9 @@
 				<div class="panel panel-default">
 
 					<div class="panel-body">
-						<div class="panel-heading"><h2 align="center">FROM UBAH DAERAH YANG DISOSIALISASI</h2></div>
+						<div class="panel-heading"><h2 align="center">FORM UBAH DAERAH TEMPAT SOSIALISASI</h2></div>
+						
+						
 
 						<div class="col-md-6">
 
@@ -16,8 +18,9 @@
 									<input class="form-control" name="id_daerah_sos" placeholder="Id Daerah_sos" readonly="" value="{{$daerah_sos->id_daerah_sos}}">
 								</div>
 								<div class="form-group">
-									<select class="form-control" id="kegiatan" name="id_daerah">
-										<label></label>
+								        <label>Daerah</label>
+									<select class="form-control" id="daerah" name="id_daerah">
+				
 										<option > --Daerah--</option>
 										@foreach($daerah as $data)
 										<option @if($daerah_sos->kab_kot==$data->kab_kot) selected="true" @endif value="{{$data->id_daerah}}">{{$data->kab_kot}}</option>
@@ -25,8 +28,9 @@
 									</select>
 								</div>
 								<div class="form-group">
+								        <label>Periode</label>
 									<select class="form-control" id="periode" name="id_periode">
-										<label>Periode</label>
+										
 										<option value="0"> --Periode--</option>
 										@foreach($periode as $data)
 										<option @if($daerah_sos->periode==$data->periode) selected="true" @endif value="{{$data->id_periode}}">{{$data->periode}}</option>
@@ -34,8 +38,9 @@
 									</select>
 								</div>
 								<div class="form-group">
+								        <label>Tempat</label>
 									<select class="form-control" id="tempat" name="tempat">
-										<label>Tempat</label>
+										
 										<option value="0"> --Tempat--</option>
 										@foreach($sekolah as $data)
 										<option @if($daerah_sos->sekolah==$data->sekolah) selected="true" @endif value="{{$data->id_sekolah}}">{{$data->sekolah}}</option>                          
@@ -43,11 +48,15 @@
 									</select>
 								</div>
 
-								<button type="submit" class="btn btn-primary">TAMBAH DATA </button>			
+								<button type="submit" class="btn btn-primary">SIMPAN</button>			
 							</form>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		 <script>
+    		$("#tempat").select2();
+    		$("#daerah").select2();
+    	</script>
 		@include('tampilan.foot')

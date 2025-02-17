@@ -82,10 +82,17 @@
 				<div class="col-25">
 					<label>Edit Lulus TPA</label>
 				</div>
+				
 				<div class="col-75">
-					<label for="Sekolah">Nama</label>
-					<input value="{{$data->nama}}" type="text" class="form-control" placeholder="Nama" name="nama">
+					<label for="nama">Nama</label>
+					<select id="nama" name="nama">
+						<option value="0"> --Nama--</option>
+						@foreach($nama as $data3)
+							<option>{{$data3->nama}}</option>
+						@endforeach
+					</select>					
 				</div>
+				
 				<div class="col-75">
 					<label for="nama_peserta">Jenis Kelamin</label>
 					<select id="jk" name="jk">
@@ -95,12 +102,23 @@
 				</div>
 				
 				<div class="col-75">
-					<label for="Sekolah">Daerah</label>
-					<input value="{{$data->daerah}}" type="text" class="form-control" placeholder="Daerah" name="daerah">
+					<label for="daerah">Daerah</label>
+					<select id="daerah" name="daerah">
+						<option value="0"> --Daerah--</option>
+						@foreach($daerah as $data1)
+							<option @if($data1->id_daerah == $data->daerah) selected="" @endif value="{{$data1->id_daerah}}" >{{$data1->kab_kot}}</option>
+						@endforeach
+					</select>					
 				</div>
+				
 				<div class="col-75">
-					<label for="Sekolah">Sekolah</label>
-					<input value="{{$data->sekolah}}" type="text" class="form-control" placeholder="Sekolah" name="sekolah">
+					<label for="nama_peserta">Sekolah</label>
+					<select id="sekolah" name="sekolah">
+						<option value="0"> --Sekolah--</option>
+						@foreach($sekolah as $data2)
+							<option @if($data2->id_sekolah == $data->sekolah) selected="" @endif value="{{$data2->id_sekolah}}">{{$data2->sekolah}}</option>
+						@endforeach
+					</select>					
 				</div>
 				
 				
@@ -113,7 +131,10 @@
 		</form>
 		@endforeach
 	</div>
-
-
+<script>
+    $("#daerah").select2();
+    $("#sekolah").select2();
+    $("#nama").select2();
+</script>
 @include('tampilan.foot')
 

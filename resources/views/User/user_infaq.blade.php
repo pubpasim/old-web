@@ -1,4 +1,4 @@
-@include('User.header')
+@include('user.header')
 
 <div id="design" style="width: 90%;">
 
@@ -66,4 +66,4 @@ echo "<br>";
 @endphp
 
 </div>
-@include('User.footer')
+@include('user.footer')

@@ -1,4 +1,4 @@
-@include('User.header')
+@include('user.header')
 <br><br>
 <style type="text/css">
 	img.tengah{		

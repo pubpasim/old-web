@@ -1,4 +1,4 @@
-@include('User.header')
+@include('user.header')
 <div id="design" >
 	<h1 align="center">PROFILE PPMB</h1>
 	<h3 align="center">(Panitia Penerimaan Mahasiswa Baru)</h3>
@@ -62,4 +62,4 @@
 	<div><strong>Penerimaan Mahasiswa Baru</strong></div>
 
 </div>
-@include('User.footer')
+@include('user.footer')

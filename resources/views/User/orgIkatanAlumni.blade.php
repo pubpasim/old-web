@@ -1,5 +1,6 @@
 
-@include('User.header')
+@include('user.header')
+
 <style type="text/css">
 	#pembina{
 		width: 250px;
@@ -412,41 +413,44 @@
 		font-style: bold;
 		background-color: darkcyan;
 	}
-	a,p{
+	#ck{
 		color: white;
 		text-decoration-line: none;
 		padding-top: 20px;
 	}
+	#cont{
+	    width:130%;
+	}
 
 </style>
-<div  >
+<div id="cont">
 	<div class="content">
 		<center>
 			<h2>STRUKTUR ORGANISASI IKATAN ALUMNI</h2>
 			
 			<div id="awal">
 				<div id="judul">PEMBINA IKA PUB</div>
-				<p>Abdul Hafiz Tanjung,S.E.,M.Si.,AK.,CA</p>
+				<a id="ck" href="{{url('pembinaPub')}}"><p id="ck">{{$pembina->nama}}</p></a>
 			</div>
 			<div id="koman2"></div>
 			<div id="horizontal"></div>
 			<div id="pembina">
 				<div id="judul">KETUA</div>
 				@if($ketua2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
-				<a href="{{url('detail/org/'.$ketua->id_mahasiswa)}}">
-					<p>{{$ketua->nama}}</p>
+				<a id="ck" href="{{url('detail/org/'.$ketua->id_mahasiswa)}}">
+					<p id="ck">{{$ketua->nama}}</p>
 				</a>
 				@endif
 			</div>
 			<div id="ketua">
 				<div id="judul">WAKIL KETUA</div>
-				@if($ketua2==0)
-				<p>data Kosong</p>
+				@if($wakil_ketua2==0)
+				<p id="ck">data Kosong</p>
 				@else
-				<a href="{{url('detail/org/'.$ketua->id_mahasiswa)}}">
-					<p>{{$wakil_ketua->nama}}</p>
+				<a id="ck" href="{{url('detail/org/'.$wakil_ketua->id_mahasiswa)}}">
+					<p id="ck">{{$wakil_ketua->nama}}</p>
 				</a>
 				@endif
 			</div>
@@ -454,10 +458,10 @@
 			<div id="keamanan">
 				<div id="judul">KOORDINATOR ANGKATAN</div>
 				@if($koor_angkatan2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
-				<a href="{{url('detail/org/'.$koor_angkatan->id_mahasiswa)}}">
-					<p>{{$koor_angkatan->nama}}</p>
+				<a id="ck" href="{{url('detail/org/'.$koor_angkatan->id_mahasiswa)}}">
+					<p id="ck">{{$koor_angkatan->nama}}</p>
 				</a>
 				@endif
 			</div>
@@ -473,35 +477,35 @@
 
 				<div id="judul">BENDAHARA</div>
 				@if($bendahara2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
-				<a href="{{url('detail/org/'.$bendahara->id_mahasiswa)}}">
-					<p>1. {{$bendahara->nama}}</p>
+				<a id="ck" href="{{url('detail/org/'.$bendahara->id_mahasiswa)}}">
+					<p id="ck">1. {{$bendahara->nama}}</p>
 				</a>
 				@endif
 
 				@if($wakil_bendahara2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
-				<a href="{{url('detail/org/'.$wakil_bendahara->id_mahasiswa)}}">
-					<p>2. {{$wakil_bendahara->nama}}</p>
+				<a id="ck" href="{{url('detail/org/'.$wakil_bendahara->id_mahasiswa)}}">
+					<p id="ck">2. {{$wakil_bendahara->nama}}</p>
 				</a>
 				@endif
 			</div>
 			<div id="sekretaris">
 				<div id="judul">SEKRETARIS</div>
 				@if($sekretaris2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
-				<a href="{{url('detail/org/'.$sekretaris->id_mahasiswa)}}">
-					<p>1. {{$sekretaris->nama}}</p>
+				<a id="ck" href="{{url('detail/org/'.$sekretaris->id_mahasiswa)}}">
+					<p id="ck">1. {{$sekretaris->nama}}</p>
 				</a>
 				@endif
 				@if($wakil_sekretaris2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
-				<a href="{{url('detail/org/'.$wakil_sekretaris->id_mahasiswa)}}">
-					<p>2. {{$wakil_sekretaris->nama}}</p>
+				<a id="ck" href="{{url('detail/org/'.$wakil_sekretaris->id_mahasiswa)}}">
+					<p id="ck">2. {{$wakil_sekretaris->nama}}</p>
 				</a>
 				@endif
 			</div>
@@ -518,11 +522,11 @@
 				<div id="judul">DEPARTEMEN PUBLIKASI DAN INFORMASI</div>
 
 				@if($dep_publikasi2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
 				@foreach($dep_publikasi as $depub)
-				<a href="{{url('detail/org/'.$depub->id_mahasiswa)}}">					
-						<p>{{$depub->nama}}</p>					
+				<a id="ck" href="{{url('detail/org/'.$depub->id_mahasiswa)}}">					
+						<p id="ck">{{$depub->nama}}</p>					
 				</a>
 				@endforeach
 				@endif
@@ -531,11 +535,11 @@
 				<div id="judul">DEPARTEMEN KERJA SAMA </div>
 
 				@if($dep_kerjasama2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
 				@foreach($dep_kerjasama as $depker)
-				<a href="{{url('detail/org/'.$depker->id_mahasiswa)}}">					
-						<p>{{$depker->nama}}</p>					
+				<a id="ck" href="{{url('detail/org/'.$depker->id_mahasiswa)}}">					
+						<p id="ck">{{$depker->nama}}</p>					
 				</a>
 				@endforeach
 				@endif
@@ -548,11 +552,11 @@
 			<div id="sej">
 				<div id="judul">DEPARTEMEN PENGGALANGAN DANA</div>
 				@if($dep_penggalangan2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
 				@foreach($dep_penggalangan as $deppeng)
-				<a href="{{url('detail/org/'.$deppeng->id_mahasiswa)}}">					
-						<p>{{$deppeng->nama}}</p>					
+				<a id="ck" href="{{url('detail/org/'.$deppeng->id_mahasiswa)}}">					
+						<p id="ck">{{$deppeng->nama}}</p>					
 				</a>
 				@endforeach
 				@endif
@@ -560,11 +564,11 @@
 			<div id="sej2">
 				<div id="judul">DEPARTEMEN PENGEMBANGAN USAHA</div>
 				@if($dep_pengembangan2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
 				@foreach($dep_pengembangan as $deppengem)
-				<a href="{{url('detail/org/'.$deppengem->id_mahasiswa)}}">					
-						<p>{{$deppengem->nama}}</p>					
+				<a id="ck" href="{{url('detail/org/'.$deppengem->id_mahasiswa)}}">					
+						<p id="ck">{{$deppengem->nama}}</p>					
 				</a>
 				@endforeach
 				@endif
@@ -574,11 +578,11 @@
 			<div id="mag">
 				<div id="judul">BIDANG PENGEMBANGAN SDM</div>
 				@if($bidang_penggembangan2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
 				@foreach($bidang_penggembangan as $bidpengem)
-				<a href="{{url('detail/org/'.$bidpengem->id_mahasiswa)}}">					
-						<p>{{$bidpengem->nama}}</p>					
+				<a id="ck" href="{{url('detail/org/'.$bidpengem->id_mahasiswa)}}">					
+						<p id="ck">{{$bidpengem->nama}}</p>					
 				</a>
 				@endforeach
 				@endif
@@ -587,4 +591,4 @@
 	</div>
 </div>
 
-@include('User.footer')
+@include('user.footer')

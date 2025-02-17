@@ -2,7 +2,7 @@
 <html>
 <head>
   <title></title>
-  <link rel="shortcut icon" href="/imgs/pub.png" />
+  <link rel="shortcut icon" href="{{url('/imgs/pub.png')}}" />
   <script type="text/javascript">
     $(document).ready(function(){
       var formInputs = $('input[type="email"],input[type="password"]');
@@ -29,9 +29,9 @@
   Session::forget('username');
   Session::forget('password');
 @endphp
-<link href="/css/slide.css" rel="stylesheet">
-<link href="/css/footer.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-2.1.0.min.js" ></script>
+<link href="{{url('/css/slide.css')}}" rel="stylesheet">
+<link href="{{url('/css/footer.css')}}" rel="stylesheet">
+<script src="{{url('https://code.jquery.com/jquery-2.1.0.min.js')}}" ></script>
 <body background="{{url('imgs')}}/{{('pasim2.jpg')}}">
   <div id="formWrapper">
     <form action="{{url('login/masuk')}}" method="POST">
@@ -45,13 +45,19 @@
         <div class="logo">
           <img src="{{url('imgs')}}/{{('pub web.png') }}" width="100%" style="margin-left: 30px;">
         </div>
+        <div>
+            <b>HARAP DIBACA SEBELUM LOGIN!</b>
+            <p> Saat ini sistem sedang dalam proses migrasi data ke sistem baru PUB dan integrasi dengan sistem TPA.
+            Jika Anda melakukan suatu perubahan/modifikasi data, mohon informasikan ke sdr. Anggi Noufal Tanjung
+            atau Raksa Aryasatya untuk menjaga data tetap konsisten dan aman.</p>
+        </div>
         <div class="form-item">
           <input type="username" placeholder="Username" name="username" id="username" class="form-style" autocomplete="off"/>
         </div>
         <div class="form-item">
           <input type="password" placeholder="Password" name="password" id="password" class="form-style" />
-          <!-- <div class="pw-view"><i class="fa fa-eye"></i></div> -->
-          <p><a href="#" ><small>Forgot Password ?</small></a></p>  
+           <div class="pw-view"><i class="fa fa-eye"></i></div> 
+          <p><a href="{{url('')}}" ><small>Forgot Password ?</small></a></p>  
         </div>
         <div class="form-item">
           <p class="pull-left"><a href="{{url('/')}}"><small>Kembali</small></a></p>

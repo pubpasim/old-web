@@ -1,30 +1,27 @@
 @include('user.header')
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Fundamental VB.Net Lanjutan</title>
-</head>
-<body>
-	<div id="design" >
-	<center><img src="{{url('imgs')}}/{{('vb.png') }}" width="30%"></center>
-	<h1 align="center">VB.Net Lanjutan</h1>
-		<p>
-			Maksud dan Tujuan
-			Dengan mempelajari Bahas Fundamental VB.Net, diharapkan mahasiswa PUB dapat menguasai .Net dan dapat menerapkan materi-materi yang telah dipelajari pada pelajaran sebelumnya dengan menggunkan konsep OOP atau berbasis Objek. serta dapat membangun aplikasi menggunkan bahasa Fundamental VB.Net.
-		</p>
-		<p><b>Materi VB.Net</b></p>
-		<p>1. Pengenalan Framework .Net</p>
-		<p>2. 3 tier Architecture </p>
-		<p>3. Data Access</p>
-		<p>4. Business Logic</p>
-		<p>5. Presentation Layar</p>
-		<p>6. Expert Coding</p>
-		<p>7. Validation</p>
-		<p>8. Front-End Start Project</p>
-		<p>9. Front-End Design</p>
-
+<style type="text/css">
+	p{
+		text-indent: 60px;
+		font-size: 16pt;
+		
+	}
+	
+</style>
+@foreach($vb as $data)
+<div id="design">
+	<center><img src="{{url('imgs')}}/{{($data->poto) }}" width="30%" style="border: 3px solid darkcyan;margin-left: 25%;"></center><br><br>
+	<h2 align="center" style="width:125%;">{{$data->keterangan}}</h2><br>
+	<div style='width:125%;'>
+		<?php  
+				echo "<p>".$data->text."</p>";
+			
+			?> 
 	</div>
-
-</body>
-</html>
+	
+</div>
+@endforeach
+<?php 
+for ($i=0; $i <10 ; $i++) { 
+ 	echo "<br>";
+ } ?>
 @include('user.footer')

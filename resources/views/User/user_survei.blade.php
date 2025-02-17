@@ -1,4 +1,4 @@
-@include('User.header')
+@include('user.header')
 <div id="design" style="width: 90%;">
 	<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 		<h3 style="color: darkcyan;" align="center"><b>HASIL WAWANCARA AKHIR</b></h3>
@@ -10,7 +10,7 @@
 				<th>Nama Peserta</th>								
 				<th>Jurusan Pilihan</th>
 				<th>Asal Daerah</th>
-				<th>Asal Sekolah</th>								
+								
 			</tr>
 		</thead>
 		<tbody>
@@ -20,11 +20,11 @@
 				<td>{{ $no++}}</td>
 				<td>{{ $data->nama}}</td>								
 				<td>{{ $data->jurusan}}</td>
-				<td>{{ $data->daerah}}</td>
-				<td>{{ $data->sekolah}}</td>												
+				<td>{{ $data->kab_kot}}</td>
+												
 			</tr>
 			@endforeach
 		</tbody>						    				    
 	</table>
 </div>
-@include('User.footer')
+@include('user.footer')

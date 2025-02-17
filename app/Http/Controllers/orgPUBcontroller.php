@@ -47,7 +47,7 @@ class orgPUBcontroller extends Controller
      */
     public function edit($id)
     {
-        $organisasi=orgPUBmodel::where('id_orgpub',$id)->get();
+        $organisasi=DB::table('tb_orgpub')->where('id_orgpub',$id)->get();
         return view('struktur_organisasi/edit',compact('organisasi'));
     }
 
@@ -60,7 +60,7 @@ class orgPUBcontroller extends Controller
      */
     public function update(Request $request, $id)
     {
-         $organisasi=orgPUBmodel::where('id_orgpub',$id)->update(['jabatan_pub'=>$request->jabatan_pub]);
+         $organisasi=DB::table('tb_orgpub')->where('id_orgpub',$id)->update(['jabatan_pub'=>$request->jabatan_pub]);
         return redirect('struktur_organisasi/index');
     }
 
@@ -73,7 +73,7 @@ class orgPUBcontroller extends Controller
      */
     public function destroy($id)
     {
-        $organisasi=orgPUBmodel::where('id_orgpub',$id)->delete();
+        $organisasi=DB::table('tb_orgpub')->where('id_orgpub',$id)->delete();
         return redirect('struktur_organisasi/index');
     }
 

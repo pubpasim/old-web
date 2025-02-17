@@ -10,10 +10,10 @@
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<div class="panel-heading">Form Edit Struktur Organisasi PPMB</div>
+						<div class="panel-heading">FORM UBAH STRUKTUR KEPENGURUSAN PPMB</div>
 						<div class="col-md-6">
 
-							<form role="form" action="/det_struktur_ppmb/update" method="POST">
+							<form role="form" action="{{url('det_struktur_ppmb/update')}}" method="POST">
 								@foreach($detorgppmb as $d)
 								{{ @csrf_field() }}
 								<div class="form-group">
@@ -22,8 +22,9 @@
 								</div>
 
 								<div class="form-group">
+								    <label>Mahasiswa</label>
 									<select class="form-control" id="mahasiswa" name="mhs">
-										<label>Mahasiswa</label>
+									
 										<option value="{{$d->id_mahasiswa}}">{{$d->nama}}</option>
 										<option > --Mahasiswa--</option>
 										@foreach($mahasiswa as $data)
@@ -32,8 +33,9 @@
 									</select>
 								</div>
 								<div class="form-group">
+									<label>Angkatan</label>
 									<select class="form-control" id="angkatan" name="ang">
-										<label>Angkatan</label>
+										
 										<option value="{{$d->id_angkatan}}">{{$d->angkatan}}</option>
 										<option value="0"> --Angkatan--</option>
 										@foreach($angkatan as $data)
@@ -42,8 +44,9 @@
 									</select>
 								</div>
 								<div class="form-group">
+									<label>Jabatan</label>
 									<select class="form-control" id="jabatan" name="jab">
-										<label>Jabatan</label>
+										
 										<option value="{{$d->id_orgppmb}}">{{$d->jabatan}}</option>
 										<option value="0"> --Jabatan--</option>
 										@foreach($jabatan as $data)
@@ -52,8 +55,8 @@
 									</select>
 								</div>
 								<div class="form-group">
+									<label>Periode</label>
 									<select class="form-control" id="periode" name="periode">
-										<label>Periode</label>
 										<option value="{{$d->id_periode}}">{{$d->periode}}</option>
 										<option value="0"> --Periode--</option>
 										@foreach($periode as $data)
@@ -69,4 +72,19 @@
 						</div>
 					</div>
 				</div>
-				@include('tampilan.foot')
+			</div>
+		</div>
+		<script>
+    		$("#mahasiswa").select2();
+    	</script>
+    	<script>
+    		$("#angkatan").select2();
+    	</script>
+    	<script>
+    		$("#jabatan").select2();
+    	</script>
+    	<script>
+    		$("#periode").select2();
+    	</script>
+		
+		@include('tampilan.foot')

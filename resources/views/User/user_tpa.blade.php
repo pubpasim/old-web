@@ -1,4 +1,4 @@
-@include('User.header')
+@include('user.header')
 
 
 
@@ -21,7 +21,7 @@
 			@foreach($tpa as $data)
 			<tr>
 				<td>{{ $no++}}</td>
-				<td>{{ $data->daerah}}</td>
+				<td>{{ $data->kab_kot}}</td>
 				<td>{{ $data->sekolah}}</td>								
 				<td><a href="{{url('user_lulus_tpa/'.$data->id_tpa)}}">{{ $data->jml_lulus}}</a></td>
 				<td>{{ $data->jml_gagal}}</td>				
@@ -30,4 +30,4 @@
 		</tbody>						    
 	</table>
 </div>
-@include('User.footer')
+@include('user.footer')

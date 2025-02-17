@@ -72,6 +72,17 @@
 		}
 	}
 </style>
+@if(\Session::has("alert"))
+                      <div class="alert alert-danger">
+                          <div>{{Session::get("alert")}}</div>
+                      </div>
+                  @endif
+                  
+                  @if(\Session::has("alert-success"))
+                      <div class="alert alert-success">
+                          <div>{{Session::get("alert-success")}}</div>
+                      </div>
+                  @endif
 	<div class="container">
 		<form method="POST" action="{{url('storeFinal/'.$id)}}">
 			{{csrf_field()}}
@@ -82,10 +93,10 @@
 				</div>
 				<div class="col-75">
 					<label for="nama_peserta">Nama Peserta</label>
-					<select id="jurusan" name="nama_peserta">
+					<select id="nama" name="nama_peserta">
 						<option value="0"> --Nama Peserta--</option>
 						@foreach($nama as $data)
-							<option value="{{$data->id_lulus}}">{{$data->nama}} -- {{$data->sekolah}}</option>
+							<option value="{{$data->id_lulus}}" required="">{{$data->nama}} -- {{$data->sekolah}}</option>
 						@endforeach
 					</select>					
 				</div>	
@@ -97,6 +108,9 @@
 			</div>
 		</form>
 	</div>
+	<script>
+    		$("#nama").select2();
+    	</script>
 
 @include('tampilan.foot')
 

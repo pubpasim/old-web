@@ -14,7 +14,7 @@ class Kateg_jadwaltesController extends Controller
      */
      public function index()
     {
-        $kategjadwalppmb=DB::table('tb_kategorites')->get();
+        $kategjadwalppmb=DB::table('tb_kategorites')->orderby('id_kategori_tes')->get();
         return view('ppmb.jadwal.lihat_jad_kategori',compact('kategjadwalppmb'));        
     }
 
@@ -84,7 +84,7 @@ class Kateg_jadwaltesController extends Controller
         DB::table('tb_kategorites')->where('id_kategori_tes',$request->id_kategori_tes)->update([
             'kategori_tes'=>$request->kategori_tes
         ]);
-        return redirect('/kategori_jadwal_ppmb');
+        return redirect('kategori_jadwal_ppmb');
     }
 
 

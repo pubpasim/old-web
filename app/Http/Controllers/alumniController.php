@@ -16,9 +16,9 @@ class alumniController extends Controller
         ->join('tb_orgpub', 'tb_mahasiswa.id_orgpub', '=', 'tb_orgpub.id_orgpub')
         ->join('tb_angkatan', 'tb_mahasiswa.id_angkatan', '=', 'tb_angkatan.id_angkatan')
         ->join('tb_orgppmb', 'tb_mahasiswa.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
-        ->join('tb_statusPub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statusPub.id_statusPub')
+        ->join('tb_statuspub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statuspub.id_statusPub')
         ->join('tb_jurusan', 'tb_mahasiswa.id_jur', '=', 'tb_jurusan.id_jur')
-        ->select('tb_angkatan.angkatan','tb_mahasiswa.jenis_kelamin','tb_mahasiswa.tempat_lahir','tb_mahasiswa.tanggal_lahir','tb_mahasiswa.no_telp','tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statusPub.status')->where('tb_statusPub.status','Alumni')->get();
+        ->select('tb_angkatan.angkatan','tb_mahasiswa.jenis_kelamin','tb_mahasiswa.tempat_lahir','tb_mahasiswa.tanggal_lahir','tb_mahasiswa.no_telp','tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statuspub.status')->where('tb_statuspub.status','Alumni')->get();
         return view('tampilan.alumni.index',compact('mahasiswa'));
 
     }
@@ -30,7 +30,7 @@ class alumniController extends Controller
     public function aktivitas()
     {
         $lempar="";
-        $angkatan=DB::table('tb_angkatan')->get();
+        $angkatan=DB::table('tb_angkatan')->orderby('angkatan')->get();
         $alumniDok = DB::table('tb_alumni_dok')
         ->join('tb_angkatan', 'tb_alumni_dok.id_angkatan', '=', 'tb_angkatan.id_angkatan')
         ->join('tb_mahasiswa', 'tb_alumni_dok.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
@@ -42,7 +42,7 @@ class alumniController extends Controller
     public function aktivitasTampil(Request $request)
     {
         $lempar=$request->select;
-        $angkatan=DB::table('tb_angkatan')->get();
+        $angkatan=DB::table('tb_angkatan')->orderby('angkatan')->get();
         $alumniDok = DB::table('tb_alumni_dok')
         ->join('tb_angkatan', 'tb_alumni_dok.id_angkatan', '=', 'tb_angkatan.id_angkatan')
         ->join('tb_mahasiswa', 'tb_alumni_dok.id_mahasiswa', '=', 'tb_mahasiswa.id_mahasiswa')
@@ -108,6 +108,7 @@ class alumniController extends Controller
         ->join('tb_orgalumni','tb_orgalumni.id_org','tb_ikatan_alumni.id_jabatan')
         ->join('tb_mahasiswa','tb_mahasiswa.id_mahasiswa','tb_ikatan_alumni.id_mahasiswa')
         ->join('tb_angkatan','tb_angkatan.id_angkatan','tb_mahasiswa.id_angkatan')
+        ->join('tb_periode_ika','tb_periode_ika.id','tb_ikatan_alumni.masa_bakti')
         ->get();
         return view('ikatanAlumni.struktur',compact('struk'));
     }
@@ -120,7 +121,8 @@ class alumniController extends Controller
         ->orderby('nama','ASC')        
         ->get();
         $jab=DB::table('tb_orgalumni')->get();
-        return view('ikatanAlumni.tambahStruktur',compact('mhs','jab'));
+        $periode=DB::table('tb_periode_ika')->get();
+        return view('ikatanAlumni.tambahStruktur',compact('mhs','jab','periode'));
     }
     public function storeStrukAlumni(Request $request)
     {
@@ -136,18 +138,20 @@ class alumniController extends Controller
  
 public function tambahInfaq()
 {
-    $bulan=DB::table('tb_bulan')->get();
+    $bulan=DB::table('tb_bulan')->orderby('id_bulan')->get();
     $angkatan=DB::table('tb_angkatan')->orderby('angkatan')->get();
     return view('tampilan.alumni.tambahInfaq',compact('angkatan','bulan'));
 }
 public function simpanInfaq(Request $request)
 {
-    $bln=DB::table('tb_bulan')->get();
+
+    $bln=DB::table('tb_bulan')->where('bulan',$request->bulan)->first();
     $bl=$bln->id_bulan;
     $jm=DB::table('tb_infaq')
-    ->where('tahun_infaq',$request->tahun)
-    ->where('bulan_infaq',$request->bulan)
-    ->count();
+    ->where([
+        ['tahun_infaq',$request->tahun],
+        ['bulan_infaq',$request->bulan]
+    ])->count();
     if($jm>0){
         return redirect('tambahInfaq')->with('alert','Data tersebut sudah di inputkan!');
     }else{
@@ -178,7 +182,11 @@ public function updateStrukAlumni(Request $request,$id){
 
 public function infaq_view()
 {
-    $infaq=DB::table('tb_infaq')->get();
+    $infaq=DB::table('tb_infaq')
+    ->orderBy('tahun_infaq','ASC')
+    ->orderBy('id_bulan','ASC')
+    ->get();
+    
     return view('tampilan.alumni.infaq',compact('infaq'));
 }
 public function editInfaq($id)
@@ -211,8 +219,8 @@ public function editStrukAlumni($id)
     ->orderby('nama','ASC') 
     ->get();
     $jab=DB::table('tb_orgalumni')->get();
-
-    return view('ikatanAlumni.editStruktur',compact('tamp','mhs','jab'));
+    $periode=DB::table('tb_periode_ika')->get();
+    return view('ikatanAlumni.editStruktur',compact('tamp','mhs','jab','periode'));
 }
 
 public function legalitasAdmin()
@@ -261,6 +269,8 @@ public function hapusStrukAlumni($id)
 public function kegiatanAlumni()
 {
     $dok =DB::table('tb_dok_alumni')
+    ->select('tb_dok_alumni.*','tb_periode_ika.periode as periode')
+    ->join('tb_periode_ika','tb_periode_ika.id','tb_dok_alumni.periode')
     ->get();
     return view('ikatanAlumni.kegiatanAlumni',compact('dok'));
 }
@@ -268,7 +278,8 @@ public function kegiatanAlumni()
 
 public function tambahDokAlumni()
 {
-    return view('ikatanAlumni.tambahDokAlumni');
+    $periode = DB::table('tb_periode_ika')->get();
+    return view('ikatanAlumni.tambahDokAlumni',compact('periode'));
 }
 public function storeDokAlumni(Request $request)
 {
@@ -282,7 +293,8 @@ public function storeDokAlumni(Request $request)
     DB::table('tb_dok_alumni')
     ->insert([
         'foto' => $nama_file,            
-        'keterangan' => $request->keterangan,                        
+        'keterangan' => $request->keterangan,
+        'periode' => $request->periode,
     ]);
 
     return redirect('kegiatanAlumni');
@@ -290,7 +302,8 @@ public function storeDokAlumni(Request $request)
 public function editDokAlumni($id)
 {
     $dok = DB::table('tb_dok_alumni')->where('id',$id)->get();
-    return view('ikatanAlumni.editDokAlumni',compact('dok'));
+    $periode = DB::table('tb_periode_ika')->get();
+    return view('ikatanAlumni.editDokAlumni',compact('dok','periode'));
 }
 public function updateDokAlumni(Request $request,$id){
     $file = $request->file('foto');
@@ -298,7 +311,8 @@ public function updateDokAlumni(Request $request,$id){
     if($file == ""){
         $nama_file = ""; 
         DB::table('tb_dok_alumni')->where('id',$id)->update([
-            'keterangan' => $request->keterangan,         
+            'keterangan' => $request->keterangan,     
+            'periode' => $request->periode,
         ]);   
 
     }else{
@@ -312,17 +326,12 @@ public function updateDokAlumni(Request $request,$id){
 
         DB::table('tb_dok_alumni')->where('id',$id)->update([
             'foto' => $nama_file,
-            'keterangan' => $request->keterangan,                      
+            'keterangan' => $request->keterangan,          
+            'periode' => $request->periode,
         ]);   
     }
 
     return redirect('kegiatanAlumni');
 }
 
-public function hapusDokAlumni($id)
-{
-    DB::table('tb_dok_alumni')->where('id',$id)->delete();
-    return redirect('kegiatanAlumni');
-
-}
 }

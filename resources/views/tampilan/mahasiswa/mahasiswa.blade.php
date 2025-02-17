@@ -129,7 +129,7 @@
 				</div>
 				<div class="col-75">
 					<select id="daerah" name="daerah">
-						<option value="0"> --pilih daerah--</option>
+						<option value="0"> Pilih Daerah</option>
 						@foreach($dr as $data)
 						<option value="{{$data->id_daerah}}">{{$data->kab_kot}}</option>
 						@endforeach
@@ -142,7 +142,7 @@
 				</div>
 				<div class="col-75">
 					<select id="angkatan" name="angkatan">
-						<option value="0"> --pilih Angkatan--</option>
+						<option value="0"> Pilih Angkatan</option>
 						@foreach($angkt as $data)
 						<option value="{{$data->id_angkatan}}">{{$data->angkatan}}</option>
 						@endforeach
@@ -155,8 +155,8 @@
 					<label for="skl">Asal Sekolah</label>
 				</div>
 				<div class="col-75">
-					<select id="skl" name="skl">
-						<option value="0"> --pilih Asal Sekolah--</option>
+					<select id="sekolah" name="skl">
+						<option value="0"> Pilih Asal Sekolah</option>
 						@foreach($skl as $data)
 						<option value="{{$data->id_sekolah}}">{{$data->sekolah}}</option>
 						@endforeach
@@ -169,7 +169,7 @@
 				</div>
 				<div class="col-75">
 					<select id="spkw" name="st_pub">
-						<option disabled="true"> --Status PUB--</option>
+						<option disabled="true"> Status PUB</option>
 						@foreach($sts2 as $data)
 						<option value="{{$data->id_statusPub}}">{{$data->status}}</option>
 						@endforeach
@@ -182,7 +182,7 @@
 				</div>
 				<div class="col-75">
 					<select id="spkw" name="spkw">
-						<option disabled="true"> --Status Perkawinan--</option>
+						<option disabled="true"> Status Perkawinan</option>
 						@foreach($sts1 as $data)
 						<option value="{{$data->id_statusSos}}">{{$data->status}}</option>
 						@endforeach
@@ -194,8 +194,8 @@
 					<label for="jbPUB">Jabatan di PUB</label>
 				</div>
 				<div class="col-75">
-					<select id="jbPUB" name="jbPUB">
-						<option disabled="true"> --Jabatan di PUB--</option>
+					<select id="jabatanpub" name="jbPUB">
+						<option disabled="true"> Jabatan di PUB</option>
 						<option value="0">Tidak Ada</option>
 						@foreach($orgpub as $data)
 						<option value="{{$data->id_orgpub}}">{{$data->jabatan_pub}}</option>
@@ -208,8 +208,8 @@
 					<label for="jbPUB">Jabatan di PPMB</label>
 				</div>
 				<div class="col-75">
-					<select id="jbPPMB" name="jbPPMB">
-						<option disabled="true"> --Jabatan di PPMB--</option>
+					<select id="jabatanppmb" name="jbPPMB">
+						<option disabled="true"> Jabatan di PPMB</option>
 						@foreach($orgppmb as $data)
 						<option value="{{$data->id_orgppmb}}">{{$data->jabatan}}</option>
 						@endforeach
@@ -222,7 +222,7 @@
 				</div>
 				<div class="col-75">
 					<select id="jurusan" name="jurusan">
-						<option disabled="true"> --Jurusan--</option>
+						<option disabled="true"> Jurusan</option>
 						@foreach($jur as $data)
 						<option value="{{$data->id_jur}}">{{$data->nama_jur}}</option>
 						@endforeach
@@ -250,4 +250,13 @@
 			</div>
 		</form>
 	</div>
+	<script>
+    		$("#jurusan").select2();
+    		$("#jabatanpub").select2();
+    		$("#jabatanppmb").select2();
+    		$("#jabatanppmb").select2();
+    		$("#daerah").select2();
+    		$("#angkatan").select2();
+    		$("#sekolah").select2();
+    	</script>
 @include('tampilan.foot')

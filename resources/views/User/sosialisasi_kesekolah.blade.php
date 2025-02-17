@@ -1,5 +1,5 @@
 
-@include('User.header')
+@include('user.header')
 <style type="text/css">
 
 	#header {
@@ -22,6 +22,12 @@
 		border: 1px solid black;
 		color:black ;
 	}
+		#text-position{
+		color: black;
+		font-weight: bold;
+		text-align: center;
+		font-size:15px;
+	}
 </style>
 
 	<div >
@@ -36,16 +42,25 @@
 				@php $no=1; @endphp
 				<thead>
 					<tr id="header" bgcolor="#FFFF0">
-						<th>NO</th>
-						<th>SEKOLAH</th>
+						<th><p  id="text-position">NO</p></th>
+						<th><p  id="text-position">SEKOLAH</p></th>
+						<th><p  id="text-position">FOTO DOKUMENTASI</p></th>
 					</tr>
 				</thead>
-			
 				<tbody>
 					@foreach($sekolah_sos as $data)
 					<tr>
-						<td>{{$no++}}</td>
-						<td>{{$data->sekolah}}</a></td>
+						<td><p align="center">{{$no++}}</p></td>
+						<td>{{$data->sekolah}}</td>
+						<td>
+						    <center>
+						    <a href="{{url('dok_sekolah/lihat/'.$data->id)}}">
+								<button type="button" class="btn btn-success btn-square waves-effect waves-square waves-effect" >
+									<i class="material-icons">Lihat</i><span class="icon-name"></span>
+								</button>
+							</a>
+							</center>
+						</td>
 					</tr>
 					@endforeach
 			   </tbody>
@@ -55,6 +70,6 @@
 </div>
 </div>	
 
-@include('User.footer')
+@include('user.footer')
 
 

@@ -1,6 +1,4 @@
-@include('User.header');
-
-	@include('User.header');
+@include('user.header');
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,4 +60,4 @@ echo "<br>";
 @endphp
 
 
-@include('User.footer');
+@include('user.footer');

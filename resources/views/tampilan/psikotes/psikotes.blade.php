@@ -37,11 +37,11 @@
 								<td>{{ $no++}}</td>
 								<td>{{ $data->nama}}</td>																
 								<td>{{ $data->jurusan}}</td>
-								<td>{{ $data->daerah}}</td>
+								<td>{{ $data->kab_kot}}</td>
 								<td>{{ $data->sekolah}}</td>																
 								<td>
-									<a href="{{url('editPsi/'.$data->id_psi)}}" class="btn btn-info" onclick="return confirm('Hapus data ?');">Edit</a>
-									<a href="{{url('hapusPsi/'.$data->id_psi)}}" class="btn btn-info">Hapus</a>
+									<a href="{{url('editPsi/'.$data->id_psi)}}" class="btn btn-info">Edit</a>
+									<a href="{{url('hapusPsi/'.$data->id_psi)}}" class="btn btn-info" onclick="return confirm('Hapus data ?');">Hapus</a>
 								</td>
 							</tr>
 							@endforeach

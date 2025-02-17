@@ -14,7 +14,7 @@ class ppmbDokController extends Controller
     }
     public function tambahDok()
     {
-        $tahun = DB::table('tb_TahunSel')->get();
+        $tahun = DB::table('tb_tahunsel')->get();
         return view('tampilan.dokumentasi.tambahDok',compact('tahun'));
     }
     public function storeDok(Request $request)
@@ -38,7 +38,7 @@ class ppmbDokController extends Controller
     }
     public function editDok($id)
     {
-        $tahun = DB::table('tb_TahunSel')->get();
+        $tahun = DB::table('tb_tahunsel')->get();
         $dok = DB::table('tb_dokumentasi')->where('id_dok',$id)->get();
         return view('tampilan.dokumentasi.editDok',compact('dok','tahun'));
     }

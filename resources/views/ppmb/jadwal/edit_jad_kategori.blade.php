@@ -6,10 +6,12 @@
 				margin-left: 300px;
 			}
 		</style>
-		<div id="form1">
-		<div class="row">
-			<div class="panel-heading">FROM UBAH KATEGORI TES</div>
+	<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+		    <div class="row" style="padding: 20px;">
 					<div class="panel-body">
+						<div class="page-header"><h3>Form Ubah Kategori Tes</h3></div>
 						<div class="col-md-6">			
 							<form role="form" action="{{URL('kategori_jadwal_ppmb/update')}}" method="POST">
 								 {{ @csrf_field() }}

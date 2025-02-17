@@ -1,6 +1,6 @@
 @include('Alumni_admin.head')
 <hr>
-<h1 id="judul">Aktivitas Saya</h1>
+<p style="font-weight:bold;color:darkcyan;text-align:center;font-size:30px;">AKTIVITAS SAYA</p>
 <section id="welcome" class="tm-section">
 
     <form action="{{url('tambahFoto/aktivitas')}}" method="post" enctype="multipart/form-data">
@@ -13,7 +13,7 @@
         <input  id="uploadFile" placeholder="Pilih File..." disabled="disabled" />
         <div class="fileUpload btn btn-primary">
             <span>Choose file</span>
-            <input name="foto" id="uploadBtn" type="file" class="upload" />
+            <input name="foto" id="uploadBtn" type="file" required="" class="upload" />
         </div>
         <div class="form-group">
             <textarea id="contact_message" name="contact_message" class="form-control" rows="9" placeholder="Keterangan" required></textarea>

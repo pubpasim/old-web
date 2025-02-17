@@ -1,5 +1,5 @@
 
-@include('User.header')
+@include('user.header')
 <style type="text/css">
 	#pembina{
 		width: 250px;
@@ -401,4 +401,4 @@
 	</div>
 </div>
 
-@include('User.footer')
+@include('user.footer')

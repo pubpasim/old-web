@@ -102,7 +102,7 @@
 
             <div class="row">
                     <div class="col-25">
-            <select name="select"  >
+            <select name="select" id="angkatan">
                 <option value="" disabled>--Pilih Angkatan--</option>
                 @foreach($angkatan as $data)
                 <option value="{{$data->id_angkatan}}">
@@ -147,4 +147,9 @@
             </div>
         </form>
     </div>
+    
+<script>
+    		$("#angkatan").select2();
+    		$("#kegiatan").select2();
+    	</script>
 @include('tampilan.foot')

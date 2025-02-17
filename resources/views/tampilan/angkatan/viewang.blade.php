@@ -1,4 +1,3 @@
-
 @include('tampilan.head')
 
 <div class="row">

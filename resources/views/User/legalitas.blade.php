@@ -1,9 +1,9 @@
-@include('User.header')
+@include('user.header')
 <br><br>
 <style type="text/css">
 	img.tengah{		
 		display: inline-block;
-		border: 1px solid darkcyan;
+		border: 3px solid darkcyan;
 		margin: 10px;
 		width: 600px;
 		height: 600px;

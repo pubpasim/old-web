@@ -18,7 +18,9 @@ class jad_tpaController extends Controller
         $jad_tpa=DB::table('tb_jadwal_tpa')
         ->join('tb_periode','tb_periode.id_periode','=','tb_jadwal_tpa.id_periode')
         ->join('tb_daerah','tb_daerah.id_daerah','=','tb_jadwal_tpa.id_daerah')
-        ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_jadwal_tpa.id_daerah')
+        ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_jadwal_tpa.id_sekolah')
+        ->orderby('tb_periode.id_periode','DESC')
+        ->orderby('tb_jadwal_tpa.tanggal','ASC')
         ->get();
         return view('ppmb.jadwal.tpa.lihat',compact('jad_tpa'));        
     }
@@ -31,8 +33,8 @@ class jad_tpaController extends Controller
     public function create()
     {
         $periode=DB::table('tb_periode')->get();
-        $daerah=DB::table('tb_daerah')->get();
-        $sekolah=DB::table('tb_sekolah')->get();
+        $daerah=DB::table('tb_daerah')->orderby('kab_kot')->get();
+        $sekolah=DB::table('tb_sekolah')->orderby('sekolah')->get();
         return view('ppmb.jadwal.tpa.tambah',compact('periode','daerah','sekolah'));
     }
 
@@ -65,10 +67,11 @@ class jad_tpaController extends Controller
      */
    public function edit($id)
     {
+  
         $periode=DB::table('tb_periode')->get();
-        $daerah=DB::table('tb_daerah')->get();
-         $sekolah=DB::table('tb_sekolah')->get();
-         $jad_tpa=DB::table('tb_jadwal_tpa')
+        $daerah=DB::table('tb_daerah')->orderby('kab_kot')->get();
+        $sekolah=DB::table('tb_sekolah')->orderby('sekolah')->get();
+        $jad_tpa=DB::table('tb_jadwal_tpa')
         ->join('tb_periode','tb_periode.id_periode','=','tb_jadwal_tpa.id_periode')
         ->join('tb_daerah','tb_daerah.id_daerah','=','tb_jadwal_tpa.id_daerah')
         ->join('tb_sekolah','tb_sekolah.id_sekolah','=','tb_jadwal_tpa.id_sekolah')
@@ -99,7 +102,7 @@ class jad_tpaController extends Controller
             'waktu'=>$request->waktu,
             'id_sekolah'=>$request->id_sekolah
         ]);
-        return redirect('/jad_tpa');
+        return redirect('jad_tpa');
     }
 
 

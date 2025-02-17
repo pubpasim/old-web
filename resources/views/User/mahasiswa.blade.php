@@ -1,4 +1,4 @@
-@include('User.header')
+@include('user.header')
 <div id="design">
 	
 	<form method="POST" action="{{url('user/mahasiswa')}}">
@@ -10,24 +10,24 @@
 				<option value="" disabled>--Pilih Angkatan--</option>
 				@foreach($angkatan as $data)
 				<option value="{{$data->angkatan}}">
-					Angkatan {{ $data->angkatan }}
+					Angkatan {{ $data->angkatan }} ({{ $data->nama_angkatan }})
 				</option>
 				@endforeach
 				
 			</select>
 		</div>
-		<button type="submit" id="btn">OKE</button>
+		<button type="submit" id="btn">OK</button>
 	</form>
 </div>
 <div class="kanan" @if($lempar=="") style="display: none;" @endif id="kanan" style="padding-left: 100px;">
 	<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 		<thead>
 			<tr>
-				<th>NO</th>
+				<th>NO.</th>
 				<th>NIM</th>
 				<th>NAMA</th>
 				<th>ANGKATAN</th>
-				<th>AKSI</th>
+				<th>TINDAKAN</th>
 			</tr>
 		</thead>
 		<tbody>

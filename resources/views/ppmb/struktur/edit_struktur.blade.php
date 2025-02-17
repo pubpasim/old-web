@@ -7,11 +7,13 @@
 			}
 		</style>
 		<div class="row">
-			<div class="panel-heading">FROM UBAH PANITIA</div>
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+		    <div class="row" style="padding: 20px;">
 					<div class="panel-body">
+						<div class="page-header"><h3>Form Ubah Jabatan PPMB</h3></div>
 						<div class="col-md-6">
-
-							<form role="form" action="/struktur_ppmb/update" method="POST">
+							<form role="form" action="{{url('struktur_ppmb/update')}}" method="POST">
 								 {{ @csrf_field() }}
 								 <?php  foreach($orgppmb as $data) {?>
 								<div class="form-group">
@@ -28,4 +30,7 @@
 						</div>
 					</div>
 				</div>
+	       </div>
+		</div>
+	</div>
 	@include('tampilan.foot')

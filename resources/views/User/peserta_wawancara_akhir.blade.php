@@ -1,5 +1,5 @@
 
-@include('User.header')
+@include('user.header')
 @include('lib_tgl')
 <style type="text/css">
 
@@ -41,6 +41,7 @@
 						<th>ASAL SEKOLAH</th>
 						<th>HARI</th>
 						<th>TANGGAL</th>
+						<th>FOTO DOKUMENTASI</th>
 					</tr>
 				</thead>
 				
@@ -53,6 +54,15 @@
 						<td>{{$data->sekolah}}</td>
 						<td>Ke- {{$data->hari}}</td> 
 						<td><p><?php echo  tglIndo($data->tanggal,true); ?></p> </td>
+						<td>
+						    <center>
+						    <a href="{{url('dok_jad_wawancara_akhir/lihat/'.$data->id)}}">
+								<button type="button" class="btn btn-success btn-square waves-effect waves-square waves-effect" >
+									<i class="material-icons">Lihat</i><span class="icon-name"></span>
+								</button>
+							</a>
+							</center>
+						</td>
 					</tr>
 					@endforeach
 					
@@ -63,6 +73,6 @@
 </div>
 </div>	
 
-@include('User.footer')
+@include('user.footer')
 
 

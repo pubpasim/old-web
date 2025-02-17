@@ -76,7 +76,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">Tabel Struktur Organisasi</div>
+					<div class="panel-heading">Tabel Struktur Organisasi IKA PUB</div>
 
 					<div class="panel-body">
 						<a href="{{url('tambahStrukAlumni')}}" class="btn btn-info">Add</a>
@@ -99,7 +99,7 @@
 						    		<td>{{$data->nama}}</td>
 						    		<td>{{$data->angkatan}} - {{$data->nama_angkatan}}</td>
 						    		<td>{{$data->jabatan}}</td>
-						    		<td>{{$data->masa_bakti}}</td>
+						    		<td>{{$data->periode}}</td>
 						    		<td>
 						    			<a href="{{url('editStrukAlumni/'.$data->id_ikatan)}}" class="btn btn-info">Edit</a>
 						    			<a href="{{url('hapusStrukAlumni/'.$data->id_ikatan)}}" class="btn btn-info" onclick="return confirm('Hapus data ?');">Hapus</a>

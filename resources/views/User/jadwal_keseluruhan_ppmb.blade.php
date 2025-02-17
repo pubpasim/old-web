@@ -1,5 +1,5 @@
 
-@include('User.header')
+@include('user.header')
 @include('lib_tgl')
 
 
@@ -55,9 +55,10 @@
 		<button type="submit" id="btn">OKE</button>
 	</form>
 </div>
+<br>
 <div class="kanan" @if($lempar=="") style="display: none;" @endif id="kanan" style="padding-left: 100px;">
 	<div >
-		<h2 align="center"><b>JADWAL PENERIAMAAN MAHASISWA/I BARU PUB</b></h4>
+		<h2 align="center"><b>JADWAL PENERIMAAN MAHASISWA/I BARU PUB</b></h4>
 			<h4 align="center"><b>PEMBERDAYAAN UMAT BERKELANJUTAN (PUB)</b></h4>
 			<h4 align="center"><b>PERIODE {{$tahun->periode}} </b></h4>
  
@@ -225,6 +226,6 @@
 </div>	
 
 
-@include('User.footer')
+@include('user.footer')
 
 

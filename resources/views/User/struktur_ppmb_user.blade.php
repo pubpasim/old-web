@@ -1,5 +1,5 @@
 
-@include('User.header')
+@include('user.header')
 <style type="text/css">
 	#pembina{
 		width: 250px;
@@ -242,12 +242,17 @@
 		font-style: bold;
 		background-color: black;
 	}
-	a,p{
+	#ck{
 		color: white;
 		text-decoration-line: none;
 		padding-top: 20px;
 	}
+	#cont{
+	    width:130%;
+	}
+
 </style>
+	
 <div id="design">
 	<form method="POST" action="{{url('tampil_organisasi_ppmb')}}">
 		{{csrf_field()}}
@@ -267,22 +272,42 @@
 		<button type="submit" id="btn">OKE</button>
 	</form>
 </div>
+<br>
 <div @if($lempar=="") style="display: none;" @endif>
-<div>
+<center>
+	@if(\Session::has("alert"))
+          <div class="alert alert-danger">
+              <div>{{Session::get("alert")}}</div>
+          </div>
+      @endif
+      
+      @if(\Session::has("alert-success"))
+          <div class="alert alert-success">
+              <div>{{Session::get("alert-success")}}</div>
+          </div>
+      @endif
+      
+	@if($lempar!="")
+	<h3 style="color: darkcyan;position:relative;left:210px;" align="center"><b>STRUKTUR ORGANISASI PPMB</b></h3>
+	<h4 style="color: darkcyan;position:relative;left:210px;" align="center"><b>PEMBERDAYAAN UMAT BERKELANJUTAN</b></h4>
+	<h4 style="color: darkcyan;position:relative;left:210px;" align="center"><b>PERIODE {{$lempar}}</b></h4>
+	@endif
+</center>
+<br><br>
+<div id="cont">
 	<div class="content">
 		<center>
-			<h2>STRUKTUR ORGANISASI PPMB PUB</h2>
 			<div id="pembina">
 				<div id="judul">PEMBINA PUB</div>
-				<p>Abdul Hafiz Tanjung,S.E.,M.Si.,AK.,CA</p>
+				<a id="ck" href="{{url('pembinaPub')}}"><p id="ck">{{$pembina->nama}}</p></a>
 			</div>
 			<div id="ketua">
 				<div id="judul">KETUA PPMB</div>
 				@if($ketua2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
-				<a href="{{url('detail/orgppmb/'.$ketua->id_mahasiswa)}}">
-					<p>{{$ketua->nama}}</p>
+				<a id="ck" href="{{url('detail/orgppmb/'.$ketua->id_mahasiswa)}}">
+					<p id="ck">{{$ketua->nama}}</p>
 				</a>
 				@endif
 			</div>
@@ -293,27 +318,27 @@
 			<div id="bendahara">
 				<div id="judul">BENDAHARA</div>
 				@if($bendahara_ex2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
-				<a href="{{url('detail/orgppmb/'.$bendahara_ex->id_mahasiswa)}}">
-					<p>1. {{$bendahara_ex->nama}}</p>
+				<a id="ck" href="{{url('detail/orgppmb/'.$bendahara_ex->id_mahasiswa)}}">
+					<p id="ck">1. {{$bendahara_ex->nama}}</p>
 				</a>
 				@endif
 				@if($bendahara_in2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
-				<a href="{{url('detail/orgppmb/'.$bendahara_in->id_mahasiswa)}}">
-					<p>2. {{$bendahara_in->nama}}</p>
+				<a id="ck" href="{{url('detail/orgppmb/'.$bendahara_in->id_mahasiswa)}}">
+					<p id="ck">2. {{$bendahara_in->nama}}</p>
 				</a>
 				@endif
 			</div>
 			<div id="sekretaris">
 				<div id="judul">SEKRETARIS</div>
 				@if($sekretaris2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
-				<a href="{{url('detail/orgppmb/'.$sekretaris->id_mahasiswa)}}">
-					<p>{{$sekretaris->nama}}</p>
+				<a id="ck" href="{{url('detail/orgppmb/'.$sekretaris->id_mahasiswa)}}">
+					<p id="ck">{{$sekretaris->nama}}</p>
 				</a>
 				@endif
 			</div>
@@ -323,10 +348,10 @@
 			<div id="pnd">
 				<div id="judul">DIVISI LOGISTIK</div>
 				@if($kadiv_logistik2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
-				<a href="{{url('detail/orgppmb/'.$kadiv_logistik->id_mahasiswa)}}">
-					<p>{{$kadiv_logistik->nama}}</p>
+				<a id="ck" href="{{url('detail/orgppmb/'.$kadiv_logistik->id_mahasiswa)}}">
+					<p id="ck">{{$kadiv_logistik->nama}}</p>
 				</a>
 				@endif
 			</div>
@@ -334,10 +359,10 @@
 			<div id="ker">
 				<div id="judul">DIVISI HUMAS</div>
 				@if($kadiv_humas2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
-				<a href="{{url('detail/orgppmb/'.$kadiv_humas->id_mahasiswa)}}">
-					<p>{{$kadiv_humas->nama}}</p>
+				<a id="ck" href="{{url('detail/orgppmb/'.$kadiv_humas->id_mahasiswa)}}">
+					<p id="ck">{{$kadiv_humas->nama}}</p>
 				</a>
 				@endif
 			</div>
@@ -345,10 +370,10 @@
 			<div id="keb">
 				<div id="judul">DIVISI KONSUMSI</div>
 				@if($kadiv_kesejahtraan2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
-				<a href="{{url('detail/orgppmb/'.$kadiv_kesejahtraan->id_mahasiswa)}}">
-					<p>{{$kadiv_kesejahtraan->nama}}</p>
+				<a id="ck" href="{{url('detail/orgppmb/'.$kadiv_kesejahtraan->id_mahasiswa)}}">
+					<p id="ck">{{$kadiv_kesejahtraan->nama}}</p>
 				</a>
 				@endif
 			</div>
@@ -356,10 +381,10 @@
 			<div id="sej">
 				<div id="judul">DIVISI ACARA</div>
 				@if($kadiv_acara2==0)
-				<p>data Kosong</p> 
+				<p id="ck">data Kosong</p> 
 				@else
-				<a href="{{url('detail/orgppmb/'.$kadiv_acara->id_mahasiswa)}}">
-					<p>{{$kadiv_acara->nama}}</p>
+				<a id="ck" href="{{url('detail/orgppmb/'.$kadiv_acara->id_mahasiswa)}}">
+					<p id="ck">{{$kadiv_acara->nama}}</p>
 				</a>
 				@endif
 			</div>
@@ -367,10 +392,10 @@
 			<div id="kes">
 				<div id="judul">DIVISI DOKUMENTASI</div>
 				@if($kadiv_dokumentasi2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
-				<a href="{{url('detail/orgppmb/'.$kadiv_dokumentasi->id_mahasiswa)}}">
-					<p>{{$kadiv_dokumentasi->nama}}</p>
+				<a id="ck" href="{{url('detail/orgppmb/'.$kadiv_dokumentasi->id_mahasiswa)}}">
+					<p id="ck">{{$kadiv_dokumentasi->nama}}</p>
 				</a>
 				@endif
 			</div>
@@ -378,10 +403,10 @@
 			<div id="mag">
 				<div id="judul">DIVISI KEAMANAN</div>
 				@if($keamanan2==0)
-				<p>data Kosong</p>
+				<p id="ck">data Kosong</p>
 				@else
-				<a href="{{url('detail/orgppmb/'.$keamanan->id_mahasiswa)}}">
-					<p>{{$keamanan->nama}}</p>
+				<a id="ck" href="{{url('detail/orgppmb/'.$keamanan->id_mahasiswa)}}">
+					<p id="ck">{{$keamanan->nama}}</p>
 				</a>
 				@endif
 			</div>
@@ -390,4 +415,4 @@
 </div>
 </div>
 
-@include('User.footer')
+@include('user.footer')

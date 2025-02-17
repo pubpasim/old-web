@@ -106,8 +106,8 @@
 							<option @if($user->level=="admin_pub") selected="true"@endif value="admin_pub">Admin PUB</option>
 							<option @if($user->level=="admin_ppmb") selected="true"@endif value="admin_ppmb">Admin PPMB</option>
 							<option @if($user->level=="alumni") selected="true"@endif value="alumni">Admin Alumni</option>
-							<option @if($user->level=="ikatan_alumni") selected="true"@endif value="ikatan alumni">Admin Ikatan Alumni</option>
-
+							<option @if($user->level=="ikatan_alumni") selected="true"@endif value="ikatan_alumni">Admin Ikatan Alumni</option>
+                            
 						</select>
 					</div>
 				</div>

@@ -93,71 +93,91 @@
 	}
 
 </style>
-
-	<h1>Daftar Mahasiswa PUB</h1>
-	
-		<form method="POST" action="{{url('detorg_pub/store')}}" Class="form-horizontal" id="block-validate">
-			{{csrf_field()}}
-			<div class="row">
-				<div class="panel-body">
-					<div class="panel-heading">Tambah DAata Struktur Organisasi PUB</div>
-					<div class="col-md-6">
-						<form role="form">
-							<div class="row">
-								<div class="form-group">
-									<label>Struktur Organisasi</label>
-								</div>
-								<div class="row">
-									<div class="col-25">
-										<label for="spkw">Jabatan</label>
-									</div>
-									<div class="col-75">
-										<select id="jabatan" name="jabatan">
-											<option value="0"> --Jabatan di PUB--</option>
-											@foreach($jabatan as $data)
-											<option value="{{$data->id_orgpub}}">{{$data->jabatan_pub}}</option>
-											@endforeach
-										</select>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-25">
-										<label for="spkw">Angkatan</label>
-									</div>
-									<div class="col-75">
-										<select id="angkatan" name="angkatan">
-											<option value="0"> --Angkatan--</option>
-											@foreach($angkatan as $data)
-											<option value="{{$data->id_angkatan}}">{{$data->angkatan}}</option>
-											@endforeach
-										</select>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-25">
-										<label for="spkw">Nama Mahasiswa</label>
-									</div>
-									<div class="col-75">
-										<select id="mahasiswa" name="mahasiswa">
-											<option value="0"> --Mahasiswa-- </option>
-											@foreach($mhs as $data)
-											<option value="{{$data->id_mahasiswa}}">{{$data->nama}}</option>
-											@endforeach
-										</select>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-25">
-										<button type="submit" name="submit" class="btn btn-primary">TAMBAH DATA</button>
-									</div>
-
-								</div>
-
-							</form>	
-						</div>
-					</div>
-				</div>
-			</form>
+<form method="POST" action="{{url('detorg_pub/store')}}" Class="form-horizontal" id="block-validate">
+	@if(\Session::has('alert'))
+		<div class="alert">
+			{{Session::get('alert')}}
 		</div>
+	@endif
+	{{csrf_field()}}
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="panel-heading"><h2 align="center">Tambah Data Struktur Organisasi PUB</h2></div>
+					<form role="form">
+						<div class="row">
+							<div class="row">
+								<div class="col-25">
+									<label for="spkw">Jabatan</label>
+								</div>
+								<div class="col-75">
+									<select id="jabatan" name="jabatan">
+										<option value="0"> Jabatan di PUB</option>
+										@foreach($jabatan as $data)
+										<option value="{{$data->id_orgpub}}">{{$data->jabatan_pub}}</option>
+										@endforeach
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-25">
+									<label for="spkw">Periode</label>
+								</div>
+								<div class="col-75">
+									<select id="periode" name="periode">
+										<option value="0"> Periode</option>
+										@foreach($periode as $data2)
+										<option value="{{$data2->id_periode}}">{{$data2->periode}}</option>
+										@endforeach
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-25">
+									<label for="spkw">Angkatan</label>
+								</div>
+								<div class="col-75">
+									<select id="angkatan" name="angkatan">
+										<option value="0"> Angkatan</option>
+										@foreach($angkatan as $data3)
+										<option value="{{$data3->id_angkatan}}">{{$data3->angkatan}}</option>
+										@endforeach
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-25">
+									<label for="spkw">Nama Mahasiswa</label>
+								</div>
+								<div class="col-75">
+									<select id="mahasiswa" name="mahasiswa">
+										<option value="0"> Mahasiswa </option>
+										@foreach($mhs as $data4)
+										<option value="{{$data4->id_mahasiswa}}">{{$data4->nama}}</option>
+										@endforeach
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-25">
+									<button type="submit" name="submit" class="btn btn-primary">TAMBAH DATA</button>
+								</div>
 
-	@include('tampilan.foot')
+							</div>
+						</div>
+					</form>	
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+<script>
+	$("#mahasiswa").select2();
+	$("#angkatan").select2();
+	$("#periode").select2();
+	$("#jabatan").select2();
+</script>
+
+@include('tampilan.foot')

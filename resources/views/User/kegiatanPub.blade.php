@@ -1,5 +1,5 @@
 
-@include('User.header')
+@include('user.header')
 <div id="design">
 	<form method="POST" action="{{url('kegiatanPub/pilihdiv')}}">
 		{{csrf_field()}}
@@ -25,4 +25,4 @@ echo "<br>";
 }
 @endphp
 
-@include('User.footer');
+@include('user.footer');

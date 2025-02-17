@@ -1,4 +1,4 @@
-@include('User.header')
+@include('user.header')
 <style>
 	table {
 		border-collapse: collapse;
@@ -25,11 +25,12 @@
 
 </style>
 <div id="det" >
-	<center><strong><h1 >{{$mahasiswa->jabatan}}</h1></strong></center>
+
 	<br><br><br>
 		<div class="foto">
 			<img src="{{url('imgs/mahasiswa')}}/{{$mahasiswa->file}}">
 		</div>
+		<!--<center><strong><h1 >{{$mahasiswa->jabatan}}</h1></strong></center>-->
 		<div class="">
 			<table align="center">
 				<tr>
@@ -86,4 +87,4 @@
 			</table>
 		</div>
 	</div>
-	@include('User.footer')
+	@include('user.footer')

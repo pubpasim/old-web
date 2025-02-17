@@ -11,7 +11,7 @@
 	<div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">JADWAL KEGIATAN PPMB</div>
-			<a href="jadwal_ppmb/create"><button type="submit" class="btn btn-primary">Tambah Data </button></a>
+			<a href="{{url('jadwal_ppmb/create')}}"><button type="submit" class="btn btn-primary">Tambah Data </button></a>
 			<div class="panel-body">
 				<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="asc">
 					<thead>
@@ -33,12 +33,12 @@
 							<td>{{$data->kegiatan}}</td>
 
 							<td align="center" class="col-sm-3">
-								<a href="/jadwal_ppmb/edit/{{$data->id_jadwal}}">
+								<a href="{{url('jadwal_ppmb/edit/'.$data->id_jadwal)}}">
 									<button type="button" class="btn btn-success btn-square waves-effect waves-square waves-effect" >
 										<i class="material-icons">Edit</i><span class="icon-name"></span>
 									</button>
 								</a>
-								<a href="/jadwal_ppmb/delete/{{$data->id_jadwal}}" onclick="return confirm('Hapus data ?');">
+								<a href="{{url('jadwal_ppmb/delete/'.$data->id_jadwal)}}" onclick="return confirm('Hapus data ?');">
 									<button type="button" class="btn btn-danger btn-square 
 									waves-effect waves-square waves-effect">
 									<i class="material-icons">Hapus</i><span class="icon-name"></span>

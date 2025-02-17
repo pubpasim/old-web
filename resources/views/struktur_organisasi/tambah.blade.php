@@ -73,32 +73,30 @@
 
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">Create Jabatan PUB</h1>
-	</div>
-</div><!--/.row-->
-<div class="row" >
-	<div class="col-lg-12">
 		<div class="panel panel-default">
-			<form method="POST" action="{{URL('struktur_organisasi/store')}}" Class="form-horizontal" id="block-validate">
-				{{csrf_field()}}
-				<div class="row" style="padding: 20px;">
+		    <div class="row" style="padding: 20px;">
 					<div class="panel-body">
-						<div class="panel-heading">INPUT DATA</div>
+						<div class="page-header"><h3>Form Tambah Jabatan PUB</h3></div>
 						<div class="col-md-6">
-							<form role="form">
-
-								<div class="form-group">
-									<label>JABATAN</label>
-									<input type="text" name="jabatan">
-								</div>
-								<button type="submit" name="submit" class="btn btn-primary">TAMBAH DATA </button>
-
-							</form>
-						</div>
-						<!--/.row-->	
-					</div><!--/.main-->
-				</div>
-			</form>
+            			<form method="POST" action="{{URL('struktur_organisasi/store')}}" Class="form-horizontal" id="block-validate">
+            				{{csrf_field()}}
+            							<form role="form">
+            
+            								<div class="form-group">
+            									<label>JABATAN</label>
+            									<input type="text" name="jabatan">
+            								</div>
+            								<button type="submit" name="submit" class="btn btn-primary">TAMBAH DATA </button>
+            
+            							</form>
+            						</div>
+            						<!--/.row-->	
+            					</div><!--/.main-->
+            				</div>
+            			</form>
+            		</div>
+            	</div>
+            </div>	
 		</div>
 	</div>
 </div>

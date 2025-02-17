@@ -72,6 +72,17 @@
 		}
 	}
 </style>
+@if(\Session::has("alert"))
+                      <div class="alert alert-danger">
+                          <div>{{Session::get("alert")}}</div>
+                      </div>
+                  @endif
+                  
+                  @if(\Session::has("alert-success"))
+                      <div class="alert alert-success">
+                          <div>{{Session::get("alert-success")}}</div>
+                      </div>
+                  @endif
 	<div class="container">
 		<form method="POST" action="{{url('storeWawancaraAkhir/'.$id)}}">
 		{{csrf_field()}}
@@ -82,56 +93,13 @@
 			</div>
 			<div class="col-75">			
 					<label for="nama_peserta">Nama Peserta</label>
-					<select id="jurusan" name="nama_peserta">
+					<select id="nama" name="nama_peserta">
 						<option value="0"> --Nama Peserta--</option>
 						@foreach($nama as $data)
-							<option value="{{$data->id_lulus}}">{{$data->nama}} -- {{$data->sekolah}}</option>
+							<option value="{{$data->id_lulus}}" required="">{{$data->nama}} -- {{$data->sekolah}}</option>
 						@endforeach
 					</select>					
 				</div>
-				<!-- <div class="col-75">
-					<label for="nama_peserta">Jenis Kelamin</label>
-					<select id="jk" name="jk">
-						<option value="Laki - Laki"> Laki - Laki</option>
-						<option value="Perempuan"> Perempuan</option>
-					</select>
-				</div>
-				<div class="col-75">
-					<label for="Sekolah">Tempat Lahir</label>
-					<input type="text" class="form-control" placeholder="Tempat Lahir" name="tempat">
-				</div>
-				<div class="col-75">
-					<label for="Sekolah">Tanggal Lahir</label>
-					<input type="date" class="form-control" placeholder="tgl" name="tanggal">
-				</div>
-
-			<div class="col-75">
-				<label for="nama_peserta">Jurusan Pilihan</label>
-				<select id="jurusan" name="jurusan">
-					<option value="0" disabled=""> --Jurusan Pilihan--</option>
-					<option value="S1 Teknik Informatika"> S1 Teknik Informatika</option>
-					<option value="S1 Akuntansi"> S1 Akuntansi</option>
-					<option value="S1 Manajemen"> S1 Manajemen</option>
-					<option value="S1 Sastra Jepang"> S1 Sastra Jepang</option>
-					<option value="D3 Bahasa Inggris"> D3 Bahasa Inggris</option>
-					<option value="D3 Manajemen Informatika"> D3 Manajemen Informatika</option>
-
-					
-				</select>
-			</div>
-			<div class="col-75">
-				<label for="asal_sekolah">Asal Sekolah</label>
-				<input type="text" class="form-control" placeholder="Asal Sekolah" name="asal_sekolah">
-			</div>
-			<div class="col-75">
-				<label for="asal_daerah">Asal Daerah</label>
-				<input type="text" class="form-control" placeholder="Asal Daerah" name="asal_daerah">
-			</div>
-			<div class="col-75">
-				<label for="no_hp">No HP</label>
-				<input type="text" class="form-control" placeholder="no_hp" name="no_hp">
-			</div> -->
-			
 		</div>
 		<br>
 		<div class="row" align="center">
@@ -139,6 +107,10 @@
 		</div>
 		</form>
 </div>
+<script>
+    	
+    		$("#nama").select2();
+    	</script>
 
 @include('tampilan.foot')
 

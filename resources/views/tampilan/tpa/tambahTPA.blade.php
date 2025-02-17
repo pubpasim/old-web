@@ -80,21 +80,33 @@
 				<div class="col-25">
 					<label>Tambah TPA</label>
 				</div>
+				
 				<div class="col-75">
-					<label for="Sekolah">Daerah</label>
-					<input type="text" class="form-control" placeholder="Daerah" name="daerah">
+					<label for="daerah">Daerah</label>
+					<select id="daerah" name="daerah">
+						<option value="0"> --Daerah--</option>
+						@foreach($daerah as $data1)
+							<option value="{{$data1->id_daerah}}" >{{$data1->kab_kot}}</option>
+						@endforeach
+					</select>					
 				</div>
+				
 				<div class="col-75">
-					<label for="Sekolah">Sekolah</label>
-					<input type="text" class="form-control" placeholder="Sekolah" name="sekolah">
+					<label for="nama_peserta">Sekolah</label>
+					<select id="sekolah" name="sekolah">
+						<option value="0"> --Sekolah--</option>
+						@foreach($sekolah as $data2)
+							<option value="{{$data2->id_sekolah}}">{{$data2->sekolah}}</option>
+						@endforeach
+					</select>					
 				</div>
 				<div class="col-75">
 					<label for="jml_peserta">Jumlah Peserta</label>
-					<input type="number" class="form-control" placeholder="Jumlah Peserta" name="jml_peserta">
+					<input type="number" class="form-control" placeholder="Jumlah Peserta" name="jml_peserta" required="">
 				</div>
 				<div class="col-75">
 					<label for="jml_lulus">Jumlah Peserta Lulus</label>
-					<input type="number" class="form-control" placeholder="Jumlah Lulus" name="jml_lulus">
+					<input type="number" class="form-control" placeholder="Jumlah Lulus" name="jml_lulus" required="">
 				</div>
 
 			</div>
@@ -104,6 +116,10 @@
 			</div>
 		</form>
 	</div>
+	<script>
+    		$("#daerah").select2();
+    		$("#sekolah").select2();
+    	</script>
 
 @include('tampilan.foot')
 

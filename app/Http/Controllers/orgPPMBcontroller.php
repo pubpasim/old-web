@@ -15,7 +15,7 @@ class orgPPMBcontroller extends Controller
      */
     public function index()
     {
-        $orgppmb=DB::table('tb_orgppmb')->get();
+        $orgppmb=DB::table('tb_orgppmb')->orderby('jabatan')->get();
         return view('ppmb.struktur.lihat',compact('orgppmb'));
     }
 
@@ -25,7 +25,8 @@ class orgPPMBcontroller extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {  
+    { 
+        
         return view('ppmb.struktur.tambah_struktur');
     }
 
@@ -52,7 +53,7 @@ class orgPPMBcontroller extends Controller
             'jabatan' => $request->jabatan
         ]);
 
-        return redirect('/struktur_ppmb');
+        return redirect('struktur_ppmb');
     }
 
     /**
@@ -95,7 +96,7 @@ class orgPPMBcontroller extends Controller
         DB::table('tb_orgppmb')->where('id_orgppmb',$request->id_jabatan)->update([
             'jabatan'=>$request->jabatan
         ]);
-        return redirect('/struktur_ppmb');
+        return redirect('struktur_ppmb');
     }
 
     /**

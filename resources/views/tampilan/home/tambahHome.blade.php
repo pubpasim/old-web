@@ -72,6 +72,17 @@
 		}
 	}
 </style>
+@if(\Session::has("alert"))
+                      <div class="alert alert-danger">
+                          <div>{{Session::get("alert")}}</div>
+                      </div>
+                  @endif
+                  
+                  @if(\Session::has("alert-success"))
+                      <div class="alert alert-success">
+                          <div>{{Session::get("alert-success")}}</div>
+                      </div>
+                  @endif
 	<div class="container">
 		<form method="POST" action="{{url('storeHome/'.$id)}}">
 		{{csrf_field()}}
@@ -86,7 +97,7 @@
 						<option value="0"> --Nama Peserta--</option>
 						@php $no = 1; @endphp
 						@foreach($nama as $data)
-							<option value="{{$data->id_lulus}}">{{$no++}}. {{$data->nama}} -- {{$data->sekolah}}</option>
+							<option value="{{$data->id_lulus}}" required="">{{$data->nama}} -- {{$data->sekolah}}</option>
 						@endforeach
 					</select>					
 				</div>
@@ -140,6 +151,9 @@
 		</div>
 		</form>
 </div>
-
+<script>
+    		$("#jurusan").select2();
+    	</script>
+    	
 @include('tampilan.foot')
 

@@ -87,7 +87,8 @@
 
 					</select>
 				</div>
-				<button type="submit" id="btn">OKE</button>
+				<br><br>
+				<button type="submit" class="btn btn-primary">OKE</button>
 			</form>
 		</div>
 		<div class="kanan" @if($lempar=="") style="display: none;" @endif id="kanan" style="padding-left: 100px;">
@@ -132,6 +133,7 @@
 								<option value="admin_pub">Admin PUB</option>
 								<option value="admin_ppmb">Admin PPMB</option>
 								<option value="alumni">Admin Alumni</option>
+								<option value="ikatan_alumni">Admin Ikatan Alumni</option>
 
 							</select>
 						</div>
@@ -142,5 +144,8 @@
 				</form>
 			</div>
 		</div>
+		<script>
+    		$("#nama").select2();
+    	</script>
 
 	@include('tampilan.foot')

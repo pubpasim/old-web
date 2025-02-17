@@ -17,7 +17,8 @@ class detOrgPubController extends Controller
         ->join('tb_orgpub','tb_detorg_pub.id_orgpub','=','tb_orgpub.id_orgpub')
         ->join('tb_angkatan','tb_detorg_pub.id_angkatan','=','tb_angkatan.id_angkatan')
         ->join('tb_mahasiswa','tb_detorg_pub.id_mahasiswa','=','tb_mahasiswa.id_mahasiswa')
-        ->select('tb_detorg_pub.id_detorg_pub','tb_orgpub.jabatan_pub','tb_angkatan.angkatan','tb_mahasiswa.nama')->get();
+        ->join('tb_periode','tb_detorg_pub.id_periode','=','tb_periode.id_periode')
+        ->select('tb_detorg_pub.id_detorg_pub','tb_periode.periode','tb_orgpub.jabatan_pub','tb_angkatan.angkatan','tb_mahasiswa.nama')->get();
 
         return view('detorg_pub.index',compact('detorg_pub'));
 
@@ -31,13 +32,14 @@ class detOrgPubController extends Controller
     public function create()
     {
         $angkatan=DB::table('tb_angkatan')->where('angkatan','>=','16')->get();
+        $periode=DB::table('tb_periode')->orderby('periode')->get();
         $mhs=DB::table('tb_mahasiswa')
         ->join('tb_angkatan','tb_mahasiswa.id_angkatan','=','tb_angkatan.id_angkatan')
         ->select('tb_mahasiswa.id_mahasiswa','tb_angkatan.angkatan','tb_angkatan.id_angkatan','tb_mahasiswa.nama')
-        ->where('tb_angkatan.angkatan','>=','16')->get();
+        ->where('tb_angkatan.angkatan','>=','16')->orderby('nama')->get();
         $jabatan=DB::table('tb_orgpub')->get();
         
-        return view('detorg_pub.tambah',compact('mhs','jabatan','angkatan'));
+        return view('detorg_pub.tambah',compact('mhs','jabatan','angkatan','periode'));
     }
 
     /**
@@ -48,12 +50,28 @@ class detOrgPubController extends Controller
      */
     public function store(Request $request)
     {
+        $data = DB::table('tb_detorg_pub')
+        ->join('tb_orgpub','tb_detorg_pub.id_orgpub','=','tb_orgpub.id_orgpub')
+        ->join('tb_angkatan','tb_detorg_pub.id_angkatan','=','tb_angkatan.id_angkatan')
+        ->join('tb_mahasiswa','tb_detorg_pub.id_mahasiswa','=','tb_mahasiswa.id_mahasiswa')
+        ->join('tb_periode','tb_detorg_pub.id_periode','=','tb_periode.id_periode')
+        ->where('periode',$request->periode)
+        ->count();
+
+        if ($request->periode=="" || $request->jabatan=="" || $request->angkatan=="" || $request->mahasiswa=="") {
+            return redirect('detorg_pub/tambah')->with('alert','Maaf, Data tidak boleh kosong!');
+        }if ($data>0) {
+            return redirect('detorg_pub/tambah')->with('alert','Maaf, Data sudah ada!');
+        }else{
+
         DB::table('tb_detorg_pub')->insert([
+                'id_periode'=>$request->periode,
                 'id_orgpub'=>$request->jabatan,
                 'id_angkatan'=>$request->angkatan,
                 'id_mahasiswa'=>$request->mahasiswa
             ]);
-        return redirect ('detorg_pub');
+            return redirect ('detorg_pub');
+        }
     }
 
     /**
@@ -76,14 +94,15 @@ class detOrgPubController extends Controller
     public function edit($id_detorg_pub)
     {
         $angkatan=DB::table('tb_angkatan')->where('angkatan','>=','16')->get();
+        $periode=DB::table('tb_periode')->orderby('periode')->get();
         $mhs=DB::table('tb_mahasiswa')
         ->join('tb_angkatan','tb_mahasiswa.id_angkatan','=','tb_angkatan.id_angkatan')
         ->select('tb_mahasiswa.id_mahasiswa','tb_angkatan.angkatan','tb_angkatan.id_angkatan','tb_mahasiswa.nama')
-        ->where('tb_angkatan.angkatan','>=','16')->get();
+        ->where('tb_angkatan.angkatan','>=','16')->orderby('nama')->get();
         $jabatan=DB::table('tb_orgpub')->get();
 
         $detail = DB::table('tb_detorg_pub')->where('id_detorg_pub',$id_detorg_pub)->first();
-        return view('detorg_pub.edit',compact('detail','angkatan','jabatan','mhs'));
+        return view('detorg_pub.edit',compact('detail','angkatan','jabatan','mhs','periode'));
     }
 
     /**
@@ -96,7 +115,7 @@ class detOrgPubController extends Controller
     public function update(Request $request, $id_detorg_pub)
     {
          DB::table('tb_detorg_pub')->where('id_detorg_pub',$id_detorg_pub)->update([
-            'id_orgpub'=>$request->jabatan,'id_mahasiswa'=>$request->mahasiswa,'id_angkatan'=>$request->angkatan
+            'id_orgpub'=>$request->jabatan,'id_periode'=>$request->periode,'id_mahasiswa'=>$request->mahasiswa,'id_angkatan'=>$request->angkatan
         ]);
         return redirect('detorg_pub');
     }

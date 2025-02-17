@@ -6,19 +6,22 @@
 				margin-left: 300px;
 			}
 		</style>
-		<div id="form1">
-		<div class="row">
-			<div class="panel-heading">FROM TAMBAH JADWAL</div>
+		<div class="row" >
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					
 					<div class="panel-body">
+						<div class="panel-heading"><h2 align="center">FORM TAMBAH JADWAL TPA</h2></div>
 						<div class="col-md-6">
 
 							<form role="form" action="{{url('jad_tpa/store')}}" method="POST">
-								 {{ @csrf_field() }}
+								{{ @csrf_field() }}
 								<div class="form-group">
 									<label>ID Jadwal</label>
 									<input class="form-control" name="id_jad_tpa" placeholder="Id Jadal Tpa" readonly="">
 								</div>
 								<div class="form-group">
+									<label>Periode</label>
 									<select class="form-control" id="periode" name="id_periode">
 										<label>Periode</label>
 										<option value="0"> --Periode--</option>
@@ -28,6 +31,7 @@
 									</select>
 								</div>
 								<div class="form-group">
+								    <label>Daerah</label>
 									<select class="form-control" id="daerah" name="id_daerah">
 										<label></label>
 										<option value="0"> --Daerah--</option>
@@ -37,12 +41,15 @@
 									</select>
 								</div>
 								<div class="form-group">
+								    <label>Tanggal</label>
 									<input class="form-control" type="date" name="tanggal" placeholder="tanggal">
 								</div>
 								<div class="form-group">
+								    <label>Waktu</label>
 									<input class="form-control" type="time" name="waktu" placeholder="waktu">
 								</div>
 								<div class="form-group">
+								    <label>Tempat</label>
 									<select class="form-control" id="id_sekolah" name="id_sekolah">
 										<label>Tempat</label>
 										<option value="0"> --Tempat--</option>
@@ -51,11 +58,17 @@
 										@endforeach
 									</select>
 								</div>
-								
+
 								<button type="submit" class="btn btn-primary">TAMBAH DATA </button>			
 							</form>
 						</div>
 					</div>
 				</div>
-			</div>	
-	@include('tampilan.foot')
+			</div>
+		</div>	
+		<script>
+    		$("#tempat").select2();
+    		$("#daerah").select2();
+    		$("#id_sekolah").select2();
+    	</script>
+		@include('tampilan.foot')

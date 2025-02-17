@@ -40,8 +40,8 @@
 								<td>{{ $data->asal_sekolah}}</td>
 								<td>{{ $data->asal_daerah}}</td>								
 								<td>
-									<a href="{{url('editWawancaraAkhir/'.$data->id_survei)}}" class="btn btn-info" onclick="return confirm('Hapus data ?');">Edit</a>
-									<a href="{{url('hapusWawancaraAkhir/'.$data->id_survei)}}" class="btn btn-info">Hapus</a>
+									<a href="{{url('editWawancaraAkhir/'.$data->id_survei)}}" class="btn btn-info">Edit</a>
+									<a href="{{url('hapusWawancaraAkhir/'.$data->id_survei)}}" class="btn btn-info" onclick="return confirm('Hapus data ?');">Hapus</a>
 								</td>
 							</tr>
 							@endforeach

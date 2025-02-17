@@ -1,5 +1,5 @@
 
-@include('User.header')
+@include('user.header')
 @include('lib_tgl')
 <style type="text/css">
 
@@ -10,10 +10,6 @@
 		text-align: center;
 		font-weight: bold;
 		background-color:#FFFF00;
-
-
-
-
 	}
 	#body{
 		background-color: #808080;
@@ -26,6 +22,12 @@
 		border: 1px solid black;
 		color:black ;
 	}
+	   #text-position{
+    		color: black;
+    		font-weight: bold;
+    		text-align: center;
+    		font-size:15px;
+	}
 </style>
 <div >
 	<h2 align="center"><b>JADWAL HOME VISIT / SURVEY</b></h4>
@@ -36,12 +38,14 @@
 	<div class="panel-body">
 		<table  data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc" >
 			<thead>
-				<tr id="header">  
-					<th >No</th>
-					<th >Nama Daerah</th>
-					<th >Hari/Tanggal</th>
-					<th >Lama Survey</th>
-					<th >Jumlah Peserta</th>
+				<tr id="header" >  
+					<th><p id="text-position">No</p></th>
+					<th><p id="text-position">Nama Daerah</p></th>
+					<th><p id="text-position">Hari/Tanggal</p></th>
+					<th><p id="text-position">Lama Survey</p></th>
+					<th><p id="text-position">Jumlah Peserta</p></th>
+					<th><p id="text-position">Foto Dokumentasi</p></th>
+					
 				</tr>
 			</thead>
 			<tbody>
@@ -49,8 +53,8 @@
 				@foreach($jad_survey as $data)
 				<?php $no++; $total+=$data->jumlah_peserta;?>
 				<tr>
-					<td>{{$no}}</td>
-					<td >{{$data->kab_kot}}</td>
+					<td><p align="center">{{$no}}</p></td>
+					<td><p>{{$data->kab_kot}}</p></td>
 					<td><p><?php 
 
 					if($data->tanggal_awal==$data->tanggal_akhir){
@@ -66,16 +70,25 @@
 				$akhir = date_create($data->tanggal_akhir);
 				$diff  = date_diff( $awal, $akhir );
 				?>
-				<td><?php echo $diff->days+1; ?> Hari</td>
-				<td>{{$data->jumlah_peserta}} Orang</td>
+				<td><p align="center"><?php echo $diff->days+1; ?> Hari</p></td>
+				<td><p align="center">{{$data->jumlah_peserta}} Orang</p></td>
+				<td>
+				    <center>
+				    <a href="{{url('dok_jad_survey/lihat/'.$data->id)}}">
+						<button type="button" class="btn btn-success btn-square waves-effect waves-square waves-effect" >
+							<i class="material-icons">Lihat</i><span class="icon-name"></span>
+						</button>
+					</a>
+					</center>
+				</td>
 			</tr>
 			@endforeach
 			<tr >
-				<td><b>Total Peserta</b></td>
+				<td><p id="text-position">Total Peserta</p></td>
 				<td></td>
 				<td></td>
 				<td></td>
-				<td><b><?php echo $total ?> Orang</b></td>
+				<td><p id="text-position"><?php echo $total ?> Orang</p></td>
 
 			</tr>
 		</tbody>
@@ -83,6 +96,6 @@
 </div>
 </div>	
 
-@include('User.footer')
+@include('user.footer')
 
 

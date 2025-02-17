@@ -89,7 +89,8 @@ class dokumentasiPubController extends Controller
     public function edit($id)
     {
         $dokumen=DB::table('tb_pubdok')->where('id_pubdok',$id)->first();
-        return view('pub_dok.editKegiatan',compact('dokumen'));
+        $angkatan=DB::table('tb_angkatan')->orderby('angkatan')->get();
+        return view('pub_dok.editKegiatan',compact('dokumen','angkatan'));
     }
 
     /**
@@ -101,20 +102,27 @@ class dokumentasiPubController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            // check validtion for image or file
-            'foto' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-      ]);
-         
-        $file = $request->file('foto');
-        $nama_file = time()."_".$file->getClientOriginalName();
-        $tujuan_upload = ('imgs/kegiatan');
-        $file->move($tujuan_upload,$nama_file);
-        DB::table('tb_pubdok')->where('id_pubdok',$id)->update([
-            'file'=>$nama_file,'keterangan'=>$request->ket,'tema'=>$request->kegiatan
-        ]);
-        return redirect('dokumentasiPub')->with('success','portfolio Has been You uploaded successfully.')
-        ->with('image',$nama_file);
+    //     $this->validate($request, [
+    //         // check validtion for image or file
+    //         'foto' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+    //   ]);
+        if($file = $request->file('foto')==""){
+            DB::table('tb_pubdok')->where('id_pubdok',$id)->update([
+                'keterangan'=>$request->ket,'tema'=>$request->kegiatan,'id_angkatan'=>$request->select
+            ]);
+            return redirect('dokumentasiPub');
+        }
+        else{
+            $file = $request->file('foto');
+            $nama_file = time()."_".$file->getClientOriginalName();
+            $tujuan_upload = ('imgs/kegiatan');
+            $file->move($tujuan_upload,$nama_file);
+            DB::table('tb_pubdok')->where('id_pubdok',$id)->update([
+                'file'=>$nama_file,'keterangan'=>$request->ket,'tema'=>$request->kegiatan,'id_angkatan'=>$request->select
+            ]);
+            return redirect('dokumentasiPub');
+        }
+        
     }
 
     /**

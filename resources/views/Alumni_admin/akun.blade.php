@@ -1,5 +1,13 @@
 @include('Alumni_admin.head')
 
+<style>
+    #x{
+        height:60px;
+        width:100%;
+        border-radius:7px;
+    }
+
+</style>
 
 <div class="row">
 	<div class="tab-content pt-3">
@@ -10,18 +18,19 @@
 				<div class="alert">
 					{{Session::get('alert')}}
 				</div>
-				@endif                     
+				@endif            
+				<p style="font-weight:bold;color:darkcyan;text-align:center;font-size:30px;">EDIT AKUN</p>
 				<div class="row">
 					<div class="col-12 col-sm-6 mb-3">
 						<hr>
-						<div class="mb-2"><b>Ubah Username</b></div>
+						<div class="col-12 mb-2" style="font-weight:bold;color:darkcyan;"><b>UBAH USERNAME</b></div>
 						<hr>
 						<div class="row">
 							<div class="col">
 								<div class="form-group">
 									<input type="hidden" name="id_usr" value="{{$akun->id_user}}">
 									<label>Username Lama</label>
-									<input class="form-control" type="text" name="uss" placeholder="Username lama">
+									<input id="x" class="form-control" type="text" name="uss" placeholder="Username lama">
 								</div>
 							</div>
 						</div>
@@ -29,18 +38,18 @@
 							<div class="col">
 								<div class="form-group">
 									<label>Username Baru</label>
-									<input class="form-control" type="text" name="usr" placeholder="Username Baru">
+									<input id="x" class="form-control" type="text" name="usr" placeholder="Username Baru">
 								</div>
 							</div>
 						</div>
 						<hr>
-						<div class="mb-2"><b>Ubah Password</b></div>
+						<div class="col-12 mb-2" style="font-weight:bold;color:darkcyan;"><b>UBAH PASSWORD</b></div>
 						<hr>
 						<div class="row">
 							<div class="col">
 								<div class="form-group">
 									<label>Password Lama</label>
-									<input class="form-control" type="password" name="pss" placeholder="••••••">
+									<input id="x" class="form-control" type="password" name="pss" placeholder="••••••">
 								</div>
 							</div>
 						</div>
@@ -48,7 +57,7 @@
 							<div class="col">
 								<div class="form-group">
 									<label>Password Baru</label>
-									<input class="form-control" type="password" name="psw1" placeholder="••••••">
+									<input id="x" class="form-control" type="password" name="psw1" placeholder="••••••">
 								</div>
 							</div>
 						</div>
@@ -56,7 +65,7 @@
 							<div class="col">
 								<div class="form-group">
 									<label>Konfirmasi Password</label>
-									<input class="form-control" type="password" name="psw2" placeholder="••••••"></div>
+									<input id="x" class="form-control" type="password" name="psw2" placeholder="••••••"></div>
 								</div>
 							</div>
 						</div>

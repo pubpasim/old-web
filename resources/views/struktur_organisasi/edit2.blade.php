@@ -93,28 +93,31 @@
 			}
 
 		</style>
-
-			<h1>Edit Data</h1>
-			<div class="container">
-				@foreach ($organisasi as $data)
-				<form method="POST" action="{{URL('struktur_organisasi2/update/'.$id_org)}}" Class="form-horizontal" id="block-validate">
-					{{csrf_field()}}
-					<div class="row">
-						<div class="panel-heading">INPUT DATA</div>
-						<div class="panel-body">
-							<div class="col-md-6">
-								<form role="form">
-									
-									<div class="form-group">
-										<label>JABATAN</label>
-										<input type="text" name="jabatan" value="{{$data->jabatan}}">
-									</div>
-									<button type="submit" name="submit" class="btn btn-primary">SIMPAN DATA </button>
-								</form>
-							</div>
-						</div>
-					</div>
-				</form>
-				@endforeach
-			</div>
+	<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+		    <div class="row" style="padding: 20px;">
+					<div class="panel-body">
+						<div class="page-header"><h3>Form Ubah Data Jabatan Ikatan Alumni PUB</h3></div>
+						<div class="col-md-6">
+        				@foreach ($organisasi as $data)
+        				<form method="POST" action="{{URL('struktur_organisasi2/update/'.$id_org)}}" Class="form-horizontal" id="block-validate">
+        					{{csrf_field()}}
+        								<form role="form">
+        									
+        									<div class="form-group">
+        										<label>JABATAN</label>
+        										<input type="text" name="jabatan" value="{{$data->jabatan}}">
+        									</div>
+        									<button type="submit" name="submit" class="btn btn-primary">SIMPAN DATA </button>
+        								</form>
+        						
+        				</form>
+        				@endforeach
+                	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 		@include('tampilan.foot')

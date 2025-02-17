@@ -3,7 +3,7 @@
 			<div class="panel-heading">FROM UBAH JADWAL</div>
 					<div class="panel-body">
 						<div class="col-md-6">			
-							<form role="form" action="/jadwal_ppmb/update" method="POST">
+							<form role="form" action="{{url('jadwal_ppmb/update')}}" method="POST">
 								 {{ @csrf_field() }}
 								 <?php  foreach($jadwalppmb as $data) {?>
 								<div class="form-group">
