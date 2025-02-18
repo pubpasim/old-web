@@ -61,12 +61,12 @@ class PeriodeController extends Controller
     public function indexIka()
     {
         $ika=DB::table('tb_periode_ika')->get();
-        return view('ikatanAlumni.periodeIka',compact('ika'));        
+        return view('ikatan_alumni.periodeIka',compact('ika'));        
     }
 
     public function createIka()
     {
-        return view('ikatanAlumni.tambahIka');
+        return view('ikatan_alumni.tambahIka');
     }
 
     public function storeIka(Request $request)
@@ -80,7 +80,7 @@ class PeriodeController extends Controller
    public function editIka($id)
     {
         $periode= DB::table('tb_periode_ika')->where('id',$id)->get();
-        return view('ikatanAlumni.editIka',compact('periode','id'));
+        return view('ikatan_alumni.editIka',compact('periode','id'));
     }
 
     public function updateIka(Request $request,$id)

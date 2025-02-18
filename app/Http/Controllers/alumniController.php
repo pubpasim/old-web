@@ -110,7 +110,7 @@ class alumniController extends Controller
         ->join('tb_angkatan','tb_angkatan.id_angkatan','tb_mahasiswa.id_angkatan')
         ->join('tb_periode_ika','tb_periode_ika.id','tb_ikatan_alumni.masa_bakti')
         ->get();
-        return view('ikatanAlumni.struktur',compact('struk'));
+        return view('ikatan_alumni.struktur',compact('struk'));
     }
     public function tambahStrukAlumni()
     {
@@ -122,7 +122,7 @@ class alumniController extends Controller
         ->get();
         $jab=DB::table('tb_orgalumni')->get();
         $periode=DB::table('tb_periode_ika')->get();
-        return view('ikatanAlumni.tambahStruktur',compact('mhs','jab','periode'));
+        return view('ikatan_alumni.tambahStruktur',compact('mhs','jab','periode'));
     }
     public function storeStrukAlumni(Request $request)
     {
@@ -220,18 +220,18 @@ public function editStrukAlumni($id)
     ->get();
     $jab=DB::table('tb_orgalumni')->get();
     $periode=DB::table('tb_periode_ika')->get();
-    return view('ikatanAlumni.editStruktur',compact('tamp','mhs','jab','periode'));
+    return view('ikatan_alumni.editStruktur',compact('tamp','mhs','jab','periode'));
 }
 
 public function legalitasAdmin()
 {
     $leg =DB::table('tb_legalitas')->get();
-    return view('ikatanAlumni.legalitasAdmin',compact('leg'));
+    return view('ikatan_alumni.legalitasAdmin',compact('leg'));
 }
 
 public function tambahLegalitasAdmin()
 {
-    return view('ikatanAlumni.tambahLegalitasAdmin');
+    return view('ikatan_alumni.tambahLegalitasAdmin');
 }
 public function storeLegalitasAdmin(Request $request)
 {
@@ -272,14 +272,14 @@ public function kegiatanAlumni()
     ->select('tb_dok_alumni.*','tb_periode_ika.periode as periode')
     ->join('tb_periode_ika','tb_periode_ika.id','tb_dok_alumni.periode')
     ->get();
-    return view('ikatanAlumni.kegiatanAlumni',compact('dok'));
+    return view('ikatan_alumni.kegiatanAlumni',compact('dok'));
 }
 
 
 public function tambahDokAlumni()
 {
     $periode = DB::table('tb_periode_ika')->get();
-    return view('ikatanAlumni.tambahDokAlumni',compact('periode'));
+    return view('ikatan_alumni.tambahDokAlumni',compact('periode'));
 }
 public function storeDokAlumni(Request $request)
 {
@@ -303,7 +303,7 @@ public function editDokAlumni($id)
 {
     $dok = DB::table('tb_dok_alumni')->where('id',$id)->get();
     $periode = DB::table('tb_periode_ika')->get();
-    return view('ikatanAlumni.editDokAlumni',compact('dok','periode'));
+    return view('ikatan_alumni.editDokAlumni',compact('dok','periode'));
 }
 public function updateDokAlumni(Request $request,$id){
     $file = $request->file('foto');
