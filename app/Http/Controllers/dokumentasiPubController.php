@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-use App\dokumentasiModel;
+use App\Models\dokumentasiModel;
 class dokumentasiPubController extends Controller
 {
     /**

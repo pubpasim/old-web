@@ -1,15 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\daerahModel;
-use App\sekolahModel;
-use App\angkatanModel;
-use App\orgPUBmodel;
-use App\jurusanModel;
-use App\orgPPMBmodel;
-use App\statusPubmodel;
-use App\statusSosialModel;
-use App\mahasiswaModel;
+use App\Models\daerahModel;
+use App\Models\sekolahModel;
+use App\Models\angkatanModel;
+use App\Models\orgPUBmodel;
+use App\Models\jurusanModel;
+use App\Models\orgPPMBmodel;
+use App\Models\statusPubmodel;
+use App\Models\statusSosialModel;
+use App\Models\mahasiswaModel;
 use DB;
 use Illuminate\Http\Request;
 

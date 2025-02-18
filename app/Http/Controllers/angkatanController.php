@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\angkatanModel;
+use App\Models\angkatanModel;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Input;

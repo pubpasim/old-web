@@ -25,7 +25,7 @@ class alumni_adminController extends Controller
             ->select('tb_mahasiswa.nama','tb_alumni_dok.file','tb_alumni_dok.keterangan')
             ->orderby('id_alumnidok','DESC')->get();
             $data=DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->first();
-            return view('Alumni_admin.index',compact('data','foto'));
+            return view('alumni_admin.index',compact('data','foto'));
         }
     }
     public function profile(Request $request, $id)
@@ -44,12 +44,12 @@ class alumni_adminController extends Controller
         ->join('tb_jurusan', 'tb_mahasiswa.id_jur', '=', 'tb_jurusan.id_jur')
         ->select('tb_mahasiswa.tanggal_lahir','tb_jurusan.nama_jur','tb_mahasiswa.tempat_lahir','tb_mahasiswa.jenis_kelamin','tb_mahasiswa.no_telp','tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_angkatan.nama_angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statuspub.status','tb_mahasiswa.file')
         ->where('tb_mahasiswa.id_mahasiswa',$id)->first();
-        return view('Alumni_admin.profil',compact('data','pendidikan2','pendidikan','pengalaman','pengalaman2'));
+        return view('alumni_admin.profil',compact('data','pendidikan2','pendidikan','pengalaman','pengalaman2'));
     }
     public function tambahPnd($id)
     {
         $data=DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->first();
-        return view('Alumni_admin.tambahPnd',compact('id','data'));
+        return view('alumni_admin.tambahPnd',compact('id','data'));
     }
     public function simpanPnd(Request $request)
     {
@@ -72,7 +72,7 @@ class alumni_adminController extends Controller
         ->select('tb_mahasiswa.tanggal_lahir','tb_mahasiswa.tempat_lahir','tb_mahasiswa.jenis_kelamin','tb_mahasiswa.no_telp','tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_angkatan.angkatan','tb_angkatan.nama_angkatan','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statuspub.status','tb_mahasiswa.file')
         ->where('tb_mahasiswa.id_mahasiswa',$id)->first();
         $pnd=DB::table('tb_detpendidikan')->where('id_detpendidikan',$id_pnd)->first();
-        return view('Alumni_admin.editPendidikan',compact('data','pnd'));
+        return view('alumni_admin.editPendidikan',compact('data','pnd'));
     }
     public function updatePendidikan(Request $request)
     {
@@ -85,7 +85,7 @@ class alumni_adminController extends Controller
     public function tambahPeng($id)
     {
         $data=DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->first();
-        return view('Alumni_admin.tambahPeng',compact('id','data'));
+        return view('alumni_admin.tambahPeng',compact('id','data'));
     }
     public function simpanPeng(Request $request)
     {
@@ -111,7 +111,7 @@ class alumni_adminController extends Controller
         ->select('tb_mahasiswa.jenis_kelamin','tb_mahasiswa.no_telp','tb_angkatan.angkatan','tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statuspub.status','tb_statussos.status AS spkw','tb_mahasiswa.file')
         ->where('tb_mahasiswa.id_mahasiswa',$id)->first();
         $peng=DB::table('tb_detpengalaman')->where('id_detpengalaman',$id_peng)->first();
-        return view('Alumni_admin.editPengalaman',compact('data','peng','id'));
+        return view('alumni_admin.editPengalaman',compact('data','peng','id'));
     }
     public function updatePengalaman(Request $request)
     {
@@ -154,7 +154,7 @@ class alumni_adminController extends Controller
         ->select('tb_mahasiswa.tempat_lahir','tb_mahasiswa.tanggal_lahir','tb_mahasiswa.jenis_kelamin','tb_mahasiswa.no_telp','tb_angkatan.angkatan','tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statuspub.status','tb_statussos.status as spkw','tb_mahasiswa.file');
 
         $data=$data->where('tb_mahasiswa.id_mahasiswa',$id)->first();
-        return view('Alumni_admin.editProfil',compact('data','dr','skl','sts1','sts2','angkt','orgpub','orgppmb','jur'));
+        return view('alumni_admin.editProfil',compact('data','dr','skl','sts1','sts2','angkt','orgpub','orgppmb','jur'));
     }
     public function updateProfil(Request $request, $id)
     {
@@ -180,7 +180,7 @@ class alumni_adminController extends Controller
     {
      $foto=DB::table('tb_alumni_dok')->where('id_mahasiswa',$id)->orderby('id_alumnidok','DESC')->get();
      $data=DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->first();
-     return view('Alumni_admin.aktivitas',compact('data','foto'));
+     return view('alumni_admin.aktivitas',compact('data','foto'));
  }
  public function storeAktivitas(Request $request)
  {
@@ -205,7 +205,7 @@ public function editAktivitas($id,$id_dok)
 {
     $foto=DB::table('tb_alumni_dok')->where('id_alumnidok',$id_dok)->first();
     $data=DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->first();
-    return view('Alumni_admin.editAktivitas',compact('data','foto'));
+    return view('alumni_admin.editAktivitas',compact('data','foto'));
 }
 public function updateAktivitas(Request $request)
 {
@@ -237,7 +237,7 @@ public function akun($id)
 {
     $akun=DB::table('tb_user')->where('id_mahasiswa',$id)->first();
     $data=DB::table('tb_mahasiswa')->where('id_mahasiswa',$id)->first();
-    return view('Alumni_admin.akun',compact('data','akun'));
+    return view('alumni_admin.akun',compact('data','akun'));
 }
 public function akunEdit(Request $request,$id)
 {

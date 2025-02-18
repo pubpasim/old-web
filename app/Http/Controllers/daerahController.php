@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use DB;
-use App\daerahModel;
+use App\Models\daerahModel;
 
 use Illuminate\Http\Request;
 

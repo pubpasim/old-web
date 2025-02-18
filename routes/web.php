@@ -66,7 +66,7 @@ Route::get('det_struktur_ppmb/delete/{id}', [detOrgPpmbController::class, 'destr
 //struktur for user
 
 //detpelatihan
-Route::get('Alumni_admin/pelatihan', [detail_pelatihan::class, 'index']);
+Route::get('alumni_admin/pelatihan', [detail_pelatihan::class, 'index']);
 
 //syarat ketentuan
 Route::get('syarat_ketentuan', [SyaratController::class, 'index']);
@@ -251,12 +251,12 @@ Route::get('detorg_pub/edit/{x}', [detOrgPubController::class, 'edit']);
 Route::post('detorg_pub/update/{x}', [detOrgPubController::class, 'update']);
 Route::get('detorg_pub/hapus/{x}', [detOrgPubController::class, 'destroy']);
 
-Route::get('Alumni_admin/det_pelatihan', [detPelatihanController::class, 'index']);
-Route::get('Alumni_admin/det_pelatihan/tambah', [detPelatihanController::class, 'create']);
-Route::post('Alumni_admin/det_pelatihan/store', [detPelatihanController::class, 'store']);
-Route::get('Alumni_admin/det_pelatihan/edit/{x}', [detPelatihanController::class, 'edit']);
-Route::post('Alumni_admin/det_pelatihan/update/{x}', [detPelatihanController::class, 'update']);
-Route::get('Alumni_admin/det_pelatihan/hapus/{x}', [detPelatihanController::class, 'destroy']);
+Route::get('alumni_admin/det_pelatihan', [detPelatihanController::class, 'index']);
+Route::get('alumni_admin/det_pelatihan/tambah', [detPelatihanController::class, 'create']);
+Route::post('alumni_admin/det_pelatihan/store', [detPelatihanController::class, 'store']);
+Route::get('alumni_admin/det_pelatihan/edit/{x}', [detPelatihanController::class, 'edit']);
+Route::post('alumni_admin/det_pelatihan/update/{x}', [detPelatihanController::class, 'update']);
+Route::get('alumni_admin/det_pelatihan/hapus/{x}', [detPelatihanController::class, 'destroy']);
 
 
 Route::get('alumni/aktivitas', [alumniController::class, 'aktivitas']);
@@ -490,7 +490,7 @@ Route::get('user_dok_mou/{x}', [userController::class, 'user_dok_mou']);
 Route::get('admin/alumni/{x}', [alumni_adminController::class, 'index']);
 
 
-Route::post('Alumni_admin/index/{x}', [alumni_adminController::class, 'index']);
+Route::post('alumni_admin/index/{x}', [alumni_adminController::class, 'index']);
 Route::get('materilogika', [userController::class, 'materilog']);;
 Route::get('materibasis', [userController::class, 'materibasis']);;
 Route::get('materistruktur', [userController::class, 'materistruktur']);;

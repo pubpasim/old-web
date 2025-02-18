@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
-USE App\orgPUBmodel;
+use App\Models\orgPUBmodel;
 
 class orgPUBcontroller extends Controller
 {

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Jadwalmodel;
+use App\Models\Jadwalmodel;
 use DB;
 
 

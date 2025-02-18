@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-use App\detJadwalModel;
+use App\Models\detJadwalModel;
 
 class detJadwalController extends Controller
 {

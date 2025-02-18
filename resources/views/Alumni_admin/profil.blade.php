@@ -1,4 +1,4 @@
-@include('Alumni_admin.head')
+@include('alumni_admin.head')
 <style>
     tr{
         height:70px;
@@ -134,4 +134,4 @@
 	
 	
 </div>
-@include('Alumni_admin.foot')
+@include('alumni_admin.foot')

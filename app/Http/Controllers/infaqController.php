@@ -24,7 +24,7 @@ class infaqController extends Controller
         // ->groupBy('tb_angkatan.angkatan')
         // ->groupBy('tb_mahasiswa.jenis_kelamin');
 
-        return view('User.user_infaq',compact('data1'));  
+        return view('user.user_infaq',compact('data1'));  
     }
     
 

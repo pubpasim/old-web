@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use App\orgPPMBmodel;
+// use App\Models\orgPPMBmodel;
 use Illuminate\Support\Facades\DB;   //ini wajib d Qbuilder
 
 class orgPPMBcontroller extends Controller

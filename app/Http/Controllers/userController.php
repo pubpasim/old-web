@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use DB;
-use App\syaratKetentuanModel;
+use App\Models\syaratKetentuanModel;
 class userController extends Controller
 {
     public function user_down_formulir()

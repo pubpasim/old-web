@@ -7,7 +7,7 @@
 		}
 	</style>
 	<div id="form1">
-		<form method="POST" action="{{URL('Alumni_admin/det_pelatihan/store')}}" Class="form-horizontal" id="block-validate">
+		<form method="POST" action="{{URL('alumni_admin/det_pelatihan/store')}}" Class="form-horizontal" id="block-validate">
 			{{csrf_field()}}
 			<div class="row">
 				<div class="panel-heading">TAMBAH DATA</div>

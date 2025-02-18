@@ -1,4 +1,4 @@
-@include('Alumni_admin.head')
+@include('alumni_admin.head')
 <hr>
 <p style="font-weight:bold;color:darkcyan;text-align:center;font-size:30px;">AKTIVITAS SAYA</p>
 <section id="welcome" class="tm-section">
@@ -42,4 +42,4 @@
     </div>                            
 </section>  
 @endforeach
-@include('Alumni_admin.foot')
+@include('alumni_admin.foot')

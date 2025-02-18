@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\sekolahModel;
+use App\Models\sekolahModel;
 use DB;
 use Illuminate\Http\Request;
 

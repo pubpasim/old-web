@@ -1,5 +1,5 @@
 
-@include('Alumni_admin.head')
+@include('alumni_admin.head')
 <style>
     #x{
         height:60px;
@@ -60,7 +60,7 @@
 
 	</form>
 </div>
-@include('Alumni_admin.foot')
+@include('alumni_admin.foot')
 <script type="text/javascript">
 	function dis() {
 		var cb=document.getElementById('thn');

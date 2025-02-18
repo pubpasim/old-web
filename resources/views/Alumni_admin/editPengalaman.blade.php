@@ -1,4 +1,4 @@
-@include('Alumni_admin.head')
+@include('alumni_admin.head')
 <style>
     #x{
         height:60px;
@@ -51,4 +51,4 @@
 		</div>
 	</form>
 </div>
-@include('Alumni_admin.foot')
+@include('alumni_admin.foot')

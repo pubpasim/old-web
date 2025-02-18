@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\syaratKetentuanModel;
+use App\Models\syaratKetentuanModel;
 use DB;
 
 class SyaratController extends Controller

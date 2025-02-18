@@ -1,4 +1,4 @@
-@include('Alumni_admin.head')
+@include('alumni_admin.head')
 
 <style>
     #x{
@@ -82,4 +82,4 @@
 		</div>
 	</div>
 
-	@include('Alumni_admin.foot')
+	@include('alumni_admin.foot')

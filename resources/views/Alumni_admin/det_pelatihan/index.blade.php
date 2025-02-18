@@ -11,7 +11,7 @@
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">Tabel Angkatan</div>
-				<br><p class="icon-plus-sign"></i> <a href="{{url('Alumni_admin/det_pelatihan/tambah')}}">Tambah Data</a></p>
+				<br><p class="icon-plus-sign"></i> <a href="{{url('alumni_admin/det_pelatihan/tambah')}}">Tambah Data</a></p>
 				<div class="panel-body">
 					<table class="table table-striped table-bordered table-hover" id="s">
 						<thead>
@@ -31,9 +31,9 @@
 									<td>{{$data->pelatihan}}</td>
 									
 									<td>
-										<a href="{{url('Alumni_admin/det_pelatihan/edit'.$data->id_detpelatihan)}}"><button>Edit</button></a>&nbsp;&nbsp;
-										<a href="{{url('Alumni_admin/det_pelatihan/hapus'.$data->id_detpelatihan)}}" onclick="return confirm('Hapus data ?');"> <button>Hapus</button></a>
-										<a href="{{url('Alumni_admin/det_pelatihan/detail'.$data->id_detpelatihan)}}"> <button>Detail</button></a>
+										<a href="{{url('alumni_admin/det_pelatihan/edit'.$data->id_detpelatihan)}}"><button>Edit</button></a>&nbsp;&nbsp;
+										<a href="{{url('alumni_admin/det_pelatihan/hapus'.$data->id_detpelatihan)}}" onclick="return confirm('Hapus data ?');"> <button>Hapus</button></a>
+										<a href="{{url('alumni_admin/det_pelatihan/detail'.$data->id_detpelatihan)}}"> <button>Detail</button></a>
 									</td>
 								</tr>
 								@endforeach

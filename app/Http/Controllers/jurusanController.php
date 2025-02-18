@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\jurusanModel;
+use App\Models\jurusanModel;
 use Illuminate\Http\Request;
 
 class jurusanController extends Controller

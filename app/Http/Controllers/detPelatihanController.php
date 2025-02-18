@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use DB;
-use App\detPelatihanModel;
+use App\Models\detPelatihanModel;
 use Illuminate\Http\Request;
 use App\gambar;
 class detPelatihanController extends Controller
@@ -19,7 +19,7 @@ class detPelatihanController extends Controller
         ->join('tb_pelatihan','tb_pelatihan.id_pelatihan','=','tb_detpelatihan.id_pelatihan')
         ->select('tb_detpelatihan.id_detpelatihan','tb_pelatihan.pelatihan','tb_angkatan.angkatan','tb_detpelatihan.file')
         ->get(); 
-        return view('Alumni_admin.det_pelatihan.index',compact('detpelatihan'));
+        return view('alumni_admin.det_pelatihan.index',compact('detpelatihan'));
 
     
     }
@@ -35,7 +35,7 @@ class detPelatihanController extends Controller
         $angkatan = DB::table('tb_angkatan')->get();
         $pelatihan = DB::table('tb_pelatihan')->get();
 
-        return view('Alumni_admin.det_pelatihan.tambah',compact('detpelatihan','angkatan','pelatihan'));
+        return view('alumni_admin.det_pelatihan.tambah',compact('detpelatihan','angkatan','pelatihan'));
 
         
     }
@@ -65,7 +65,7 @@ class detPelatihanController extends Controller
         //     'file' => $nama_file]);
         // $file->save();
          $detpelatihan->save();
-        return redirect('Alumni_admin/det_pelatihan');
+        return redirect('alumni_admin/det_pelatihan');
 
         
     }
@@ -95,7 +95,7 @@ class detPelatihanController extends Controller
         ->join('tb_pelatihan','tb_pelatihan.id_pelatihan','=','tb_pelatihan.id_pelatihan')
         ->select('tb_detpelatihan.id_detpelatihan','tb_angkatan.id_angkatan','tb_pelatihan.id_pelatihan')
         ->where('id_detpelatihan',$id_detpelatihan)->get();
-        return view('Alumni_admin.det_pelatihan.edit',compact('det_pelatihan','angkatan','pelatihan'));
+        return view('alumni_admin.det_pelatihan.edit',compact('det_pelatihan','angkatan','pelatihan'));
 
 
         

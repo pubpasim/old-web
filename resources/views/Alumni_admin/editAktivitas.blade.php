@@ -1,4 +1,4 @@
-@include('Alumni_admin.head')
+@include('alumni_admin.head')
 <hr>
 <h1 id="judul">Edit Saya</h1>
 <section id="welcome" class="tm-section">
@@ -26,4 +26,4 @@
 
         </section>
 
-@include('Alumni_admin.foot')
+@include('alumni_admin.foot')
