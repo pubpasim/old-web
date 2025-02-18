@@ -351,19 +351,9 @@ public function ppmb_profile()
     return view('user.profile_ppmb');
 }
 
-public function zonasi_covid19_daerah_sosialisasi()
-{
-    return view('user.zonasi_covid19_daerah_sosialisasi');
-}
-
 public function formulir_online()
 {
     return redirect("https://docs.google.com/forms/d/e/1FAIpQLSc6EMO76QdACUMGyiD3Z_MtrjUb7n5gI4JXCmN3aaIgd3soMw/viewform");
-}
-
-public function formulir()
-{
-    return redirect("https://forms.gle/GHBuARXgvWzGyA5Q9");
 }
 
 public function video_profil()

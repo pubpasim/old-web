@@ -18,10 +18,17 @@
                             <div class="welcome-text text-center">
                                 <h6 data-animation="fadeInLeft" data-delay="250ms">{{($data->caption1)}}</h6>
                                 <h2 data-animation="fadeInLeft" data-delay="500ms">{{($data->caption2)}}</h2>
-                                <a data-animation="fadeInLeft" data-delay="750ms" class="tombol tombol-besar"
-                                    href="formulir" target="_blank">
-                                    Isi formulir sekarang
-                                </a>
+                                <div data-animation="fadeInLeft" data-delay="750ms" style="display: flex; justify-content: center; gap: 16px;">
+                                    <a class="tombol tombol-besar" href="https://new.pubpasim.org/id">
+                                        Buka Situs Baru
+                                    </a>
+                                    <a class="tombol tombol-besar" href="https://new.pubpasim.org/id/selections/register">
+                                        Daftar Sekarang
+                                    </a>
+                                    <a class="tombol tombol-besar" href="https://new.pubpasim.org/id/selections/test">
+                                        Ikuti Tes
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>

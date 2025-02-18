@@ -439,7 +439,6 @@ Route::get('detail/org/{x}', [userController::class, 'detail']);
 Route::get('detail/orgppmb/{x}', [userController::class, 'detail_orgppmb']);
 Route::get('pelatihan', [userController::class, 'pelatihan']);
 Route::get('pelatihan_data', [userController::class, 'pelatihan_data']);
-Route::get('zonasi_covid19_daerah_tpa', [userController::class, 'zonasi_covid19_daerah_tpa']);
 
 Route::get('pub_dok', [userController::class, 'kegiatanPub']);
 Route::get('pub_dok/kegiatan', [dokumentasiPubController::class, 'index']);
@@ -465,9 +464,6 @@ Route::post('infaq_bulan', [userController::class, 'infaq_bulan']);;
 Route::get('user_lulus_tpa/{x}', [userController::class, 'user_lulus_tpa']);
 Route::get('user_dok_ppmb', [userController::class, 'user_dok_ppmb']);
 Route::get('download_formulir', [userController::class, 'user_down_formulir']);
-Route::get('/formulir', function () {
-    return redirect('https://forms.gle/DuQR9pArTG8ZYLPY7');
-});
 Route::get('/profile_video', function () {
     return redirect('https://youtu.be/BGh-seYCtdo');
 });

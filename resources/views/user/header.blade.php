@@ -258,15 +258,15 @@
                                         <li class="active"><a href="{{url("/")}}">Beranda</a></li>
                                         <li><a href="{{url("#")}}" id="ppmb">PPMB PUB</a>
                                             <ul class="dropdown">
+                                                <li><a href="https://new.pubpasim.org/id/selections/register">• Pendaftaran</a></li>
+                                                <li><a href="https://new.pubpasim.org/id/selections/test">• Tes</a></li>
                                                 <li><a href="{{url("organisasi_ppmb")}}">• Kepanitiaan PPMB</a></li>
                                                 <li><a href="{{url("jadwal_ppmb_user")}}">• Jadwal PPMB</a></li>
                                                 <li><a href="{{url("syarat_user")}}">• Syarat & Ketentuan</a></li>
                                                 <li><a href="{{url("user_hasilSeleksi")}}">• Hasil Seleksi</a></li>
                                                 <li><a href="{{url("user_dok_ppmb")}}">• Dokumentasi PPMB</a></li>
-                                                <li><a href="{{url("download_formulir")}}" target="_blank">• Download
-                                                        Formulir</a></li>
-                                                <li><a href="{{url("zonasi_covid19_daerah_tpa")}}">• Zonasi
-                                                        COVID-19</a></li>
+                                                <!-- <li><a href="{{url("download_formulir")}}" target="_blank">• Download
+                                                        Formulir</a></li> -->
                                             </ul>
                                         </li>
                                         <li><a href="{{url("#")}}" id="pub">PUB Aktif</a>
