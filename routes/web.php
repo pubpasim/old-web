@@ -1,20 +1,36 @@
 <?php
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-
-
-// Route::get('home', 'HomeController@index')->name('home');
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\orgPPMBcontroller;
+use App\Http\Controllers\detOrgPpmbController;
+use App\Http\Controllers\detail_pelatihan;
+use App\Http\Controllers\SyaratController;
+use App\Http\Controllers\Kateg_jadwaltesController;
+use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\detJadwalController;
+use App\Http\Controllers\daerah_sosController;
+use App\Http\Controllers\userController;
+use App\Http\Controllers\jad_tpaController;
+use App\Http\Controllers\jad_surveyController;
+use App\Http\Controllers\peserta_wawancara_akhirController;
+use App\Http\Controllers\PeriodeController;
+use App\Http\Controllers\sekolahController;
+use App\Http\Controllers\jurusanController;
+use App\Http\Controllers\daerahController;
+use App\Http\Controllers\angkatanController;
+use App\Http\Controllers\orgPubController;
+use App\Http\Controllers\statusPubController;
+use App\Http\Controllers\statusSosialController;
+use App\Http\Controllers\detOrgPubController;
+use App\Http\Controllers\detPelatihanController;
+use App\Http\Controllers\mahasiswaController;
+use App\Http\Controllers\alumniController;
+use App\Http\Controllers\pelatihanController;
+use App\Http\Controllers\pubDokController;
+use App\Http\Controllers\hasilController;
+use App\Http\Controllers\dokumentasiPubController;
+use App\Http\Controllers\ppmbDokController;
+use App\Http\Controllers\alumni_adminController;
 
 
 Route::get('admin', function () {
@@ -32,540 +48,540 @@ Route::get('admin', function () {
 });
 
 //struktur organisasi ppmb
-Route::get('struktur_ppmb','orgPPMBcontroller@index'); 
-Route::get('struktur_ppmb/create','orgPPMBcontroller@create');
-Route::post('struktur_ppmb/store','orgPPMBcontroller@store');
-Route::get('struktur_ppmb/edit/{id}','orgPPMBcontroller@edit');
-Route::post('struktur_ppmb/update','orgPPMBcontroller@update');
-Route::get('struktur_ppmb/delete/{id}','orgPPMBcontroller@destroy');
+Route::get('struktur_ppmb', [orgPPMBcontroller::class, 'index']);
+Route::get('struktur_ppmb/create', [orgPPMBcontroller::class, 'create']);
+Route::post('struktur_ppmb/store', [orgPPMBcontroller::class, 'store']);
+Route::get('struktur_ppmb/edit/{id}', [orgPPMBcontroller::class, 'edit']);
+Route::post('struktur_ppmb/update', [orgPPMBcontroller::class, 'update']);
+Route::get('struktur_ppmb/delete/{id}', [orgPPMBcontroller::class, 'destroy']);
 
 
-//detorg 
-Route::get('det_struktur_ppmb','detOrgPpmbController@index'); 
-Route::get('det_struktur_ppmb/create','detOrgPpmbController@create');
-Route::post('det_struktur_ppmb/store','detOrgPpmbController@store');
-Route::get('det_struktur_ppmb/edit/{id}','detOrgPpmbController@edit');
-Route::post('det_struktur_ppmb/update','detOrgPpmbController@update');
-Route::get('det_struktur_ppmb/delete/{id}','detOrgPpmbController@destroy');
+//detorg
+Route::get('det_struktur_ppmb', [detOrgPpmbController::class, 'index']);
+Route::get('det_struktur_ppmb/create', [detOrgPpmbController::class, 'create']);
+Route::post('det_struktur_ppmb/store', [detOrgPpmbController::class, 'store']);
+Route::get('det_struktur_ppmb/edit/{id}', [detOrgPpmbController::class, 'edit']);
+Route::post('det_struktur_ppmb/update', [detOrgPpmbController::class, 'update']);
+Route::get('det_struktur_ppmb/delete/{id}', [detOrgPpmbController::class, 'destroy']);
 //struktur for user
 
 //detpelatihan
-Route::get('Alumni_admin/pelatihan','detail_pelatihan@index');
+Route::get('Alumni_admin/pelatihan', [detail_pelatihan::class, 'index']);
 
-//syarat ketentuan 
-Route::get('syarat_ketentuan','SyaratController@index'); 
-Route::get('syarat_ketentuan/create','SyaratController@create'); 
-Route::post('syarat_ketentuan/store','SyaratController@store'); 
-Route::get('syarat_ketentuan/edit/{id}','SyaratController@edit');
-Route::post('syarat_ketentuan/update','SyaratController@update');
-Route::get('syarat_ketentuan/delete/{id}','SyaratController@destroy'); 
+//syarat ketentuan
+Route::get('syarat_ketentuan', [SyaratController::class, 'index']);
+Route::get('syarat_ketentuan/create', [SyaratController::class, 'create']);
+Route::post('syarat_ketentuan/store', [SyaratController::class, 'store']);
+Route::get('syarat_ketentuan/edit/{id}', [SyaratController::class, 'edit']);
+Route::post('syarat_ketentuan/update', [SyaratController::class, 'update']);
+Route::get('syarat_ketentuan/delete/{id}', [SyaratController::class, 'destroy']);
 
 
 //kategori jadwal tes
-Route::get('kategori_jadwal_ppmb','Kateg_jadwaltesController@index'); 
-Route::get('kategori_jadwal_ppmb/create','Kateg_jadwaltesController@create');
-Route::post('kategori_jadwal_ppmb/store','Kateg_jadwaltesController@store');
-Route::get('kategori_jadwal_ppmb/edit/{id}','Kateg_jadwaltesController@edit');
-Route::post('kategori_jadwal_ppmb/update','Kateg_jadwaltesController@update');
-Route::get('kategori_jadwal_ppmb/delete/{id}','Kateg_jadwaltesController@destroy');
+Route::get('kategori_jadwal_ppmb', [Kateg_jadwaltesController::class, 'index']);
+Route::get('kategori_jadwal_ppmb/create', [Kateg_jadwaltesController::class, 'create']);
+Route::post('kategori_jadwal_ppmb/store', [Kateg_jadwaltesController::class, 'store']);
+Route::get('kategori_jadwal_ppmb/edit/{id}', [Kateg_jadwaltesController::class, 'edit']);
+Route::post('kategori_jadwal_ppmb/update', [Kateg_jadwaltesController::class, 'update']);
+Route::get('kategori_jadwal_ppmb/delete/{id}', [Kateg_jadwaltesController::class, 'destroy']);
 
 //jadwal
-Route::get('jadwal_ppmb','JadwalController@index'); 
-Route::get('jadwal_ppmb/create','JadwalController@create');
-Route::post('jadwal_ppmb/store','JadwalController@store');
-Route::get('jadwal_ppmb/edit/{id}','JadwalController@edit');
-Route::post('jadwal_ppmb/update','JadwalController@update');
-Route::get('jadwal_ppmb/delete/{id}','JadwalController@destroy');
+Route::get('jadwal_ppmb', [JadwalController::class, 'index']);
+Route::get('jadwal_ppmb/create', [JadwalController::class, 'create']);
+Route::post('jadwal_ppmb/store', [JadwalController::class, 'store']);
+Route::get('jadwal_ppmb/edit/{id}', [JadwalController::class, 'edit']);
+Route::post('jadwal_ppmb/update', [JadwalController::class, 'update']);
+Route::get('jadwal_ppmb/delete/{id}', [JadwalController::class, 'destroy']);
 
 // det jadwal
-Route::get('detjadwal_ppmb','detJadwalController@index'); 
-Route::get('detjadwal_ppmb/create','detJadwalController@create');
-Route::post('detjadwal_ppmb/store','detJadwalController@store');
-Route::get('detjadwal_ppmb/edit/{id}','detJadwalController@edit');
-Route::post('detjadwal_ppmb/update','detJadwalController@update');
-Route::get('detjadwal_ppmb/delete/{id}','detJadwalController@destroy');
+Route::get('detjadwal_ppmb', [detJadwalController::class, 'index']);
+Route::get('detjadwal_ppmb/create', [detJadwalController::class, 'create']);
+Route::post('detjadwal_ppmb/store', [detJadwalController::class, 'store']);
+Route::get('detjadwal_ppmb/edit/{id}', [detJadwalController::class, 'edit']);
+Route::post('detjadwal_ppmb/update', [detJadwalController::class, 'update']);
+Route::get('detjadwal_ppmb/delete/{id}', [detJadwalController::class, 'destroy']);
 
 //daerah sos
-Route::get('daerah_sos_ppmb','daerah_sosController@index'); 
-Route::get('daerah_sos_ppmb/create','daerah_sosController@create');
-Route::post('daerah_sos_ppmb/store','daerah_sosController@store');
-Route::get('daerah_sos_ppmb/edit/{id}','daerah_sosController@edit');
-Route::post('daerah_sos_ppmb/update/{x}','daerah_sosController@update');
-Route::get('daerah_sos_ppmb/delete/{id}','daerah_sosController@destroy');
-Route::get('daerah_sos_ppmb/foto/{id}','daerah_sosController@foto');
-Route::get('dok_sekolah/create/{id}','daerah_sosController@create2');
-Route::post('dok_sekolah/store/{id}','daerah_sosController@store2');
-Route::get('dok_sekolah/edit/{id}','daerah_sosController@edit2');
-Route::post('dok_sekolah/update/{x}','daerah_sosController@update2');
-Route::get('dok_sekolah/delete/{id}','daerah_sosController@destroy2');
-Route::get('dok_sekolah/lihat/{id}','userController@lihat_foto');
+Route::get('daerah_sos_ppmb', [daerah_sosController::class, 'index']);
+Route::get('daerah_sos_ppmb/create', [daerah_sosController::class, 'create']);
+Route::post('daerah_sos_ppmb/store', [daerah_sosController::class, 'store']);
+Route::get('daerah_sos_ppmb/edit/{id}', [daerah_sosController::class, 'edit']);
+Route::post('daerah_sos_ppmb/update/{x}', [daerah_sosController::class, 'update']);
+Route::get('daerah_sos_ppmb/delete/{id}', [daerah_sosController::class, 'destroy']);
+Route::get('daerah_sos_ppmb/foto/{id}', [daerah_sosController::class, 'foto']);
+Route::get('dok_sekolah/create/{id}', [daerah_sosController::class, 'create2']);
+Route::post('dok_sekolah/store/{id}', [daerah_sosController::class, 'store2']);
+Route::get('dok_sekolah/edit/{id}', [daerah_sosController::class, 'edit2']);
+Route::post('dok_sekolah/update/{x}', [daerah_sosController::class, 'update2']);
+Route::get('dok_sekolah/delete/{id}', [daerah_sosController::class, 'destroy2']);
+Route::get('dok_sekolah/lihat/{id}', [userController::class, 'lihat_foto']);
 
-Route::get('jad_tpa/foto/{id}','daerah_sosController@foto2');
-Route::get('dok_jad_tpa/create/{id}','daerah_sosController@create3');
-Route::post('dok_jad_tpa/store/{id}','daerah_sosController@store3');
-Route::get('dok_jad_tpa/edit/{id}','daerah_sosController@edit3');
-Route::post('dok_jad_tpa/update/{x}','daerah_sosController@update3');
-Route::get('dok_jad_tpa/delete/{id}','daerah_sosController@destroy3');
-Route::get('dok_jad_tpa/lihat/{id}','userController@lihat_foto2');
+Route::get('jad_tpa/foto/{id}', [daerah_sosController::class, 'foto2']);
+Route::get('dok_jad_tpa/create/{id}', [daerah_sosController::class, 'create3']);
+Route::post('dok_jad_tpa/store/{id}', [daerah_sosController::class, 'store3']);
+Route::get('dok_jad_tpa/edit/{id}', [daerah_sosController::class, 'edit3']);
+Route::post('dok_jad_tpa/update/{x}', [daerah_sosController::class, 'update3']);
+Route::get('dok_jad_tpa/delete/{id}', [daerah_sosController::class, 'destroy3']);
+Route::get('dok_jad_tpa/lihat/{id}', [userController::class, 'lihat_foto2']);
 
 //jadwal_tpa
-Route::get('jad_tpa','jad_tpaController@index'); 
-Route::get('jad_tpa/create','jad_tpaController@create');
-Route::post('jad_tpa/store','jad_tpaController@store');
-Route::get('jad_tpa/edit/{id}','jad_tpaController@edit');
-Route::post('jad_tpa/update','jad_tpaController@update');
-Route::get('jad_tpa/delete/{id}','jad_tpaController@destroy');
+Route::get('jad_tpa', [jad_tpaController::class, 'index']);
+Route::get('jad_tpa/create', [jad_tpaController::class, 'create']);
+Route::post('jad_tpa/store', [jad_tpaController::class, 'store']);
+Route::get('jad_tpa/edit/{id}', [jad_tpaController::class, 'edit']);
+Route::post('jad_tpa/update', [jad_tpaController::class, 'update']);
+Route::get('jad_tpa/delete/{id}', [jad_tpaController::class, 'destroy']);
 
 //Survey
-Route::get('jad_survey','jad_surveyController@index'); 
-Route::get('jad_survey/create','jad_surveyController@create');
-Route::post('jad_survey/store','jad_surveyController@store');
-Route::get('jad_survey/edit/{id}','jad_surveyController@edit');
-Route::post('jad_survey/update','jad_surveyController@update');
-Route::get('jad_survey/delete/{id}','jad_surveyController@destroy');
+Route::get('jad_survey', [jad_surveyController::class, 'index']);
+Route::get('jad_survey/create', [jad_surveyController::class, 'create']);
+Route::post('jad_survey/store', [jad_surveyController::class, 'store']);
+Route::get('jad_survey/edit/{id}', [jad_surveyController::class, 'edit']);
+Route::post('jad_survey/update', [jad_surveyController::class, 'update']);
+Route::get('jad_survey/delete/{id}', [jad_surveyController::class, 'destroy']);
 
-Route::get('jad_survey/foto/{id}','jad_surveyController@foto');
-Route::get('dok_jad_survey/create/{id}','jad_surveyController@create2');
-Route::post('dok_jad_survey/store/{id}','jad_surveyController@store2');
-Route::get('dok_jad_survey/edit/{id}','jad_surveyController@edit2');
-Route::post('dok_jad_survey/update/{x}','jad_surveyController@update2');
-Route::get('dok_jad_survey/delete/{id}','jad_surveyController@destroy2');
-Route::get('dok_jad_survey/lihat/{id}','userController@lihat_foto3');
+Route::get('jad_survey/foto/{id}', [jad_surveyController::class, 'foto']);
+Route::get('dok_jad_survey/create/{id}', [jad_surveyController::class, 'create2']);
+Route::post('dok_jad_survey/store/{id}', [jad_surveyController::class, 'store2']);
+Route::get('dok_jad_survey/edit/{id}', [jad_surveyController::class, 'edit2']);
+Route::post('dok_jad_survey/update/{x}', [jad_surveyController::class, 'update2']);
+Route::get('dok_jad_survey/delete/{id}', [jad_surveyController::class, 'destroy2']);
+Route::get('dok_jad_survey/lihat/{id}', [userController::class, 'lihat_foto3']);
 
 
 //peserta wawancara
-Route::get('jad_wawancara_akhir','peserta_wawancara_akhirController@index'); 
-Route::get('jad_wawancara_akhir/create','peserta_wawancara_akhirController@create');
-Route::post('jad_wawancara_akhir/store','peserta_wawancara_akhirController@store');
-Route::get('jad_wawancara_akhir/edit/{id}','peserta_wawancara_akhirController@edit');
-Route::post('jad_wawancara_akhir/update','peserta_wawancara_akhirController@update');
-Route::get('jad_wawancara_akhir/delete/{id}','peserta_wawancara_akhirController@destroy');
+Route::get('jad_wawancara_akhir', [peserta_wawancara_akhirController::class, 'index']);
+Route::get('jad_wawancara_akhir/create', [peserta_wawancara_akhirController::class, 'create']);
+Route::post('jad_wawancara_akhir/store', [peserta_wawancara_akhirController::class, 'store']);
+Route::get('jad_wawancara_akhir/edit/{id}', [peserta_wawancara_akhirController::class, 'edit']);
+Route::post('jad_wawancara_akhir/update', [peserta_wawancara_akhirController::class, 'update']);
+Route::get('jad_wawancara_akhir/delete/{id}', [peserta_wawancara_akhirController::class, 'destroy']);
 
-Route::get('jad_wawancara_akhir/foto','peserta_wawancara_akhirController@foto');
-Route::get('dok_jad_wawancara_akhir/create','peserta_wawancara_akhirController@create2');
-Route::post('dok_jad_wawancara_akhir/store','peserta_wawancara_akhirController@store2');
-Route::get('dok_jad_wawancara_akhir/edit/{id}','peserta_wawancara_akhirController@edit2');
-Route::post('dok_jad_wawancara_akhir/update/{x}','peserta_wawancara_akhirController@update2');
-Route::get('dok_jad_wawancara_akhir/delete/{id}','peserta_wawancara_akhirController@destroy2');
-Route::get('dok_jad_wawancara_akhir/lihat/{id}','userController@lihat_foto4');
+Route::get('jad_wawancara_akhir/foto', [peserta_wawancara_akhirController::class, 'foto']);
+Route::get('dok_jad_wawancara_akhir/create', [peserta_wawancara_akhirController::class, 'create2']);
+Route::post('dok_jad_wawancara_akhir/store', [peserta_wawancara_akhirController::class, 'store2']);
+Route::get('dok_jad_wawancara_akhir/edit/{id}', [peserta_wawancara_akhirController::class, 'edit2']);
+Route::post('dok_jad_wawancara_akhir/update/{x}', [peserta_wawancara_akhirController::class, 'update2']);
+Route::get('dok_jad_wawancara_akhir/delete/{id}', [peserta_wawancara_akhirController::class, 'destroy2']);
+Route::get('dok_jad_wawancara_akhir/lihat/{id}', [userController::class, 'lihat_foto4']);
 
 //periode
-Route::get('periode','PeriodeController@index'); 
-Route::get('periode/create','PeriodeController@create');
-Route::post('periode/store','PeriodeController@store');
-Route::get('periode/edit/{id}','PeriodeController@edit');
-Route::post('periode/update','PeriodeController@update');
-Route::get('periode/delete/{id}','PeriodeController@destroy');
+Route::get('periode', [PeriodeController::class, 'index']);
+Route::get('periode/create', [PeriodeController::class, 'create']);
+Route::post('periode/store', [PeriodeController::class, 'store']);
+Route::get('periode/edit/{id}', [PeriodeController::class, 'edit']);
+Route::post('periode/update', [PeriodeController::class, 'update']);
+Route::get('periode/delete/{id}', [PeriodeController::class, 'destroy']);
 
-Route::get('periodeIka','PeriodeController@indexIka'); 
-Route::get('periode/createIka','PeriodeController@createIka');
-Route::post('periode/storeIka','PeriodeController@storeIka');
-Route::get('periode/editIka/{id}','PeriodeController@editIka');
-Route::post('periode/updateIka/{x}','PeriodeController@updateIka');
-Route::get('periode/deleteIka/{id}','PeriodeController@destroyIka');
+Route::get('periodeIka', [PeriodeController::class, 'indexIka']);
+Route::get('periode/createIka', [PeriodeController::class, 'createIka']);
+Route::post('periode/storeIka', [PeriodeController::class, 'storeIka']);
+Route::get('periode/editIka/{id}', [PeriodeController::class, 'editIka']);
+Route::post('periode/updateIka/{x}', [PeriodeController::class, 'updateIka']);
+Route::get('periode/deleteIka/{id}', [PeriodeController::class, 'destroyIka']);
 
-Route::get('tampilan/sekolah/viewsek','sekolahController@index');
-Route::get('tampilan/sekolah/createsek','sekolahController@create');
-Route::post('sekolahModel','sekolahController@store');
-Route::get('tampilan/sekolah/{a}','sekolahController@edit');
-Route::post('tampilan/sekolah/{b}','sekolahController@update');
-Route::get('tampilan/sekolah/hps/{id}','sekolahController@destroy');
+Route::get('tampilan/sekolah/viewsek', [sekolahController::class, 'index']);
+Route::get('tampilan/sekolah/createsek', [sekolahController::class, 'create']);
+Route::post('sekolahModel', [sekolahController::class, 'store']);
+Route::get('tampilan/sekolah/{a}', [sekolahController::class, 'edit']);
+Route::post('tampilan/sekolah/{b}', [sekolahController::class, 'update']);
+Route::get('tampilan/sekolah/hps/{id}', [sekolahController::class, 'destroy']);
 
-Route::get('tampilan/jurusan/viewjur','jurusanController@index');
-Route::get('tampilan/jurusan/createjur','jurusanController@create');
-Route::post('jurusanModel','jurusanController@store');
-Route::post('jurusanModel','jurusanController@store');
-Route::get('tampilan/jurusan/{a}','jurusanController@edit');
-Route::post('tampilan/jurusan/{b}','jurusanController@update');
-Route::get('tampilan/jurusan/del/{id}','jurusanController@destroy');
-Route::get('tampilan/daerah/viewdae','daerahController@index');
+Route::get('tampilan/jurusan/viewjur', [jurusanController::class, 'index']);
+Route::get('tampilan/jurusan/createjur', [jurusanController::class, 'create']);
+Route::post('jurusanModel', [jurusanController::class, 'store']);
+Route::post('jurusanModel', [jurusanController::class, 'store']);
+Route::get('tampilan/jurusan/{a}', [jurusanController::class, 'edit']);
+Route::post('tampilan/jurusan/{b}', [jurusanController::class, 'update']);
+Route::get('tampilan/jurusan/del/{id}', [jurusanController::class, 'destroy']);
+Route::get('tampilan/daerah/viewdae', [daerahController::class, 'index']);
 
-Route::get('tampilan/daerah/createdae','daerahController@create');
-Route::post('daerahModel','daerahController@store');
-Route::get('tampilan/daerah/{a}','daerahController@edit');
-Route::post('tampilan/daerah/{b}','daerahController@update');
-Route::get('tampilan/daerah/delet/{id}','daerahController@destroy');
+Route::get('tampilan/daerah/createdae', [daerahController::class, 'create']);
+Route::post('daerahModel', [daerahController::class, 'store']);
+Route::get('tampilan/daerah/{a}', [daerahController::class, 'edit']);
+Route::post('tampilan/daerah/{b}', [daerahController::class, 'update']);
+Route::get('tampilan/daerah/delet/{id}', [daerahController::class, 'destroy']);
 
-Route::get('tampilan/angkatan/viewang','angkatanController@index');
-Route::get('tampilan/angkatan/createang','angkatanController@create');
-Route::get('tampilan/angkatan/hapus/{x}','angkatanController@destroy');
-Route::get('tampilan/angkatan/{x}','angkatanController@edit');
-Route::post('tampilan/angkatan/{x}','angkatanController@update');
+Route::get('tampilan/angkatan/viewang', [angkatanController::class, 'index']);
+Route::get('tampilan/angkatan/createang', [angkatanController::class, 'create']);
+Route::get('tampilan/angkatan/hapus/{x}', [angkatanController::class, 'destroy']);
+Route::get('tampilan/angkatan/{x}', [angkatanController::class, 'edit']);
+Route::post('tampilan/angkatan/{x}', [angkatanController::class, 'update']);
 
-Route::get('tampilan/daerah/viewdae','daerahController@index');
-Route::get('tampilan/daerah/createdae','daerahController@create');
-
-
-Route::get('struktur_organisasi/index','orgPubController@index');
-Route::get('struktur_organisasi/tambah','orgPubController@create');
-Route::post('struktur_organisasi/store','orgPubController@store');
-Route::get('struktur_organisasi/edit/{x}','orgPubController@edit');
-Route::post('struktur_organisasi/update/{y}','orgPubController@update');
-Route::get('struktur_organisasi/hapus/{z}','orgPubController@destroy');
-
-Route::get('struktur_organisasi2/index','orgPubController@index2');
-Route::get('struktur_organisasi2/tambah','orgPubController@create2');
-Route::post('struktur_organisasi2/store','orgPubController@store2');
-Route::get('struktur_organisasi2/edit/{x}','orgPubController@edit2');
-Route::post('struktur_organisasi2/update/{y}','orgPubController@update2');
-Route::get('struktur_organisasi2/hapus/{z}','orgPubController@destroy2');
+Route::get('tampilan/daerah/viewdae', [daerahController::class, 'index']);
+Route::get('tampilan/daerah/createdae', [daerahController::class, 'create']);
 
 
+Route::get('struktur_organisasi/index', [orgPubController::class, 'index']);
+Route::get('struktur_organisasi/tambah', [orgPubController::class, 'create']);
+Route::post('struktur_organisasi/store', [orgPubController::class, 'store']);
+Route::get('struktur_organisasi/edit/{x}', [orgPubController::class, 'edit']);
+Route::post('struktur_organisasi/update/{y}', [orgPubController::class, 'update']);
+Route::get('struktur_organisasi/hapus/{z}', [orgPubController::class, 'destroy']);
 
-Route::get('status_pub','statusPubController@index');
-Route::get('status_pub/tambah','statusPubController@create');
-Route::post('status_pub/store','statusPubController@store');
-Route::get('status_pub/edit/{x}','statusPubController@edit');
-Route::post('status_pub/update/{y}','statusPubController@update');
-Route::get('status_pub/hapus/{z}','statusPubController@destroy'); 	
-
-Route::get('status_sos','statusSosialController@index');
-Route::get('status_sos/tambah','statusSosialController@create');
-Route::post('status_sos/store','statusSosialController@store');
-Route::get('status_sos/edit/{x}','statusSosialController@edit');
-Route::post('status_sos/update/{x}','statusSosialController@update');
-Route::get('status_sos/hapus/{x}','statusSosialController@destroy'); 
+Route::get('struktur_organisasi2/index', [orgPubController::class, 'index2']);
+Route::get('struktur_organisasi2/tambah', [orgPubController::class, 'create2']);
+Route::post('struktur_organisasi2/store', [orgPubController::class, 'store2']);
+Route::get('struktur_organisasi2/edit/{x}', [orgPubController::class, 'edit2']);
+Route::post('struktur_organisasi2/update/{y}', [orgPubController::class, 'update2']);
+Route::get('struktur_organisasi2/hapus/{z}', [orgPubController::class, 'destroy2']);
 
 
 
-Route::get('detorg_pub','detOrgPubController@index');
-Route::get('detorg_pub/tambah','detOrgPubController@create');
-Route::post('detorg_pub/store','detOrgPubController@store');
-Route::get('detorg_pub/edit/{x}','detOrgPubController@edit');
-Route::post('detorg_pub/update/{x}','detOrgPubController@update');
-Route::get('detorg_pub/hapus/{x}','detOrgPubController@destroy'); 	
+Route::get('status_pub', [statusPubController::class, 'index']);
+Route::get('status_pub/tambah', [statusPubController::class, 'create']);
+Route::post('status_pub/store', [statusPubController::class, 'store']);
+Route::get('status_pub/edit/{x}', [statusPubController::class, 'edit']);
+Route::post('status_pub/update/{y}', [statusPubController::class, 'update']);
+Route::get('status_pub/hapus/{z}', [statusPubController::class, 'destroy']);
 
-Route::get('Alumni_admin/det_pelatihan','detPelatihanController@index');
-Route::get('Alumni_admin/det_pelatihan/tambah','detPelatihanController@create');
-Route::post('Alumni_admin/det_pelatihan/store','detPelatihanController@store');
-Route::get('Alumni_admin/det_pelatihan/edit/{x}','detPelatihanController@edit');
-Route::post('Alumni_admin/det_pelatihan/update/{x}','detPelatihanController@update');
-Route::get('Alumni_admin/det_pelatihan/hapus/{x}','detPelatihanController@destroy'); 	
-
-
-Route::get('alumni/aktivitas','alumniController@aktivitas');
-Route::post('alumni/aktivitas/tampil','alumniController@aktivitasTampil');
-
-Route::get('alumni','alumniController@index');
-Route::get('tambah/mahasiswa','alumniController@create');
-Route::get('mahasiswa','mahasiswaController@index');
-Route::get('tambah/mahasiswa','mahasiswaController@create');
-Route::post('simpan/mahasiswa','mahasiswaController@store');
-Route::get('mahasiswaEdit/{id}','mahasiswaController@edit');
-Route::post('mahasiswaEdit/{x}','mahasiswaController@update');
-Route::get('mahasiswaHapus/{y}','mahasiswaController@destroy');
-Route::get('alumniEdit/{id}','mahasiswaController@editAlumni');
-
-Route::post('angkatanModel','angkatanController@store');
-
-Route::post('lanjut','alumniController@store');
-Route::get('lanjut/pengalaman','alumniController@index2');
-Route::get('tambahAlumni','alumniController@index3');
-
-Route::post('tambah/pendidikan','alumniController@store3');
-Route::get('infaq','alumniController@infaq_view');
-Route::get('tambahInfaq','alumniController@tambahInfaq');
-Route::post('tambahInfaq','alumniController@simpanInfaq');
-Route::get('editInfaq/{id}','alumniController@editInfaq');
-Route::post('editInfaq/{id}','alumniController@updateInfaq');
-Route::get('hapusInfaq/{id}','alumniController@hapusInfaq');
+Route::get('status_sos', [statusSosialController::class, 'index']);
+Route::get('status_sos/tambah', [statusSosialController::class, 'create']);
+Route::post('status_sos/store', [statusSosialController::class, 'store']);
+Route::get('status_sos/edit/{x}', [statusSosialController::class, 'edit']);
+Route::post('status_sos/update/{x}', [statusSosialController::class, 'update']);
+Route::get('status_sos/hapus/{x}', [statusSosialController::class, 'destroy']);
 
 
-Route::get('strukturOrgAlumni','alumniController@strukturOrgAlumni');
-Route::get('tambahStrukAlumni', 'alumniController@tambahStrukAlumni');
-Route::post('storeStrukAlumni', 'alumniController@storeStrukAlumni');
-Route::get('hapusStrukAlumni/{x}', 'alumniController@hapusStrukAlumni');
-Route::get('editStrukAlumni/{x}', 'alumniController@editStrukAlumni');
-Route::post('updateStrukAlumni/{x}', 'alumniController@updateStrukAlumni');
+
+Route::get('detorg_pub', [detOrgPubController::class, 'index']);
+Route::get('detorg_pub/tambah', [detOrgPubController::class, 'create']);
+Route::post('detorg_pub/store', [detOrgPubController::class, 'store']);
+Route::get('detorg_pub/edit/{x}', [detOrgPubController::class, 'edit']);
+Route::post('detorg_pub/update/{x}', [detOrgPubController::class, 'update']);
+Route::get('detorg_pub/hapus/{x}', [detOrgPubController::class, 'destroy']);
+
+Route::get('Alumni_admin/det_pelatihan', [detPelatihanController::class, 'index']);
+Route::get('Alumni_admin/det_pelatihan/tambah', [detPelatihanController::class, 'create']);
+Route::post('Alumni_admin/det_pelatihan/store', [detPelatihanController::class, 'store']);
+Route::get('Alumni_admin/det_pelatihan/edit/{x}', [detPelatihanController::class, 'edit']);
+Route::post('Alumni_admin/det_pelatihan/update/{x}', [detPelatihanController::class, 'update']);
+Route::get('Alumni_admin/det_pelatihan/hapus/{x}', [detPelatihanController::class, 'destroy']);
 
 
-Route::get('legalitasAdmin','alumniController@legalitasAdmin');
-Route::get('tambahLegalitasAdmin', 'alumniController@tambahLegalitasAdmin');
-Route::post('storeLegalitasAdmin', 'alumniController@storeLegalitasAdmin');
-Route::get('hapusLegalitasAdmin/{x}', 'alumniController@hapusLegalitasAdmin');
+Route::get('alumni/aktivitas', [alumniController::class, 'aktivitas']);
+Route::post('alumni/aktivitas/tampil', [alumniController::class, 'aktivitasTampil']);
 
-Route::get('kegiatanAlumni','alumniController@kegiatanAlumni');
-Route::get('tambahDokAlumni', 'alumniController@tambahDokAlumni');
-Route::post('storeDokAlumni', 'alumniController@storeDokAlumni');
-Route::get('hapusDokAlumni/{x}', 'alumniController@hapusDokAlumni');
-Route::get('editDokAlumni/{x}', 'alumniController@editDokAlumni');
-Route::post('updateDokAlumni/{x}', 'alumniController@updateDokAlumni');
+Route::get('alumni', [alumniController::class, 'index']);
+Route::get('tambah/mahasiswa', [alumniController::class, 'create']);
+Route::get('mahasiswa', [mahasiswaController::class, 'index']);
+Route::get('tambah/mahasiswa', [mahasiswaController::class, 'create']);
+Route::post('simpan/mahasiswa', [mahasiswaController::class, 'store']);
+Route::get('mahasiswaEdit/{id}', [mahasiswaController::class, 'edit']);
+Route::post('mahasiswaEdit/{x}', [mahasiswaController::class, 'update']);
+Route::get('mahasiswaHapus/{y}', [mahasiswaController::class, 'destroy']);
+Route::get('alumniEdit/{id}', [mahasiswaController::class, 'editAlumni']);
 
-Route::get('pelatihan/index','pelatihanController@index');
+Route::post('angkatanModel', [angkatanController::class, 'store']);
 
-Route::get('pelatihan/tambah','pelatihanController@create');
-Route::post('pelatihan/store','pelatihanController@store');
-Route::get('pelatihan/edit/{x}','pelatihanController@edit');
-Route::post('pelatihan/update/{x}','pelatihanController@update');
-Route::get('pelatihan/hapus/{x}','pelatihanController@destroy');
+Route::post('lanjut', [alumniController::class, 'store']);
+Route::get('lanjut/pengalaman', [alumniController::class, 'index2']);
+Route::get('tambahAlumni', [alumniController::class, 'index3']);
+
+Route::post('tambah/pendidikan', [alumniController::class, 'store3']);
+Route::get('infaq', [alumniController::class, 'infaq_view']);
+Route::get('tambahInfaq', [alumniController::class, 'tambahInfaq']);
+Route::post('tambahInfaq', [alumniController::class, 'simpanInfaq']);
+Route::get('editInfaq/{id}', [alumniController::class, 'editInfaq']);
+Route::post('editInfaq/{id}', [alumniController::class, 'updateInfaq']);
+Route::get('hapusInfaq/{id}', [alumniController::class, 'hapusInfaq']);
 
 
-Route::get('pub_dok/upload', 'pubDokController@upload');
-Route::post('pub_dok/proses', 'pubDokController@proses_upload');
-Route::get('tambahTahun', 'hasilController@tambahTahun');
+Route::get('strukturOrgAlumni', [alumniController::class, 'strukturOrgAlumni']);
+Route::get('tambahStrukAlumni', [alumniController::class, 'tambahStrukAlumni']);;
+Route::post('storeStrukAlumni', [alumniController::class, 'storeStrukAlumni']);;
+Route::get('hapusStrukAlumni/{x}', [alumniController::class, 'hapusStrukAlumni']);;
+Route::get('editStrukAlumni/{x}', [alumniController::class, 'editStrukAlumni']);;
+Route::post('updateStrukAlumni/{x}', [alumniController::class, 'updateStrukAlumni']);;
 
 
-Route::get('dokumentasiPub','dokumentasiPubController@index');
-Route::get('tambah_pubdok','dokumentasiPubController@create');
-Route::post('simpan/kegiatan','dokumentasiPubController@store');
-Route::get('edit/kegiatan/{x}','dokumentasiPubController@edit');
-Route::post('edit/kegiatan/{x}','dokumentasiPubController@update');
-Route::get('hapus/kegiatan/{x}','dokumentasiPubController@destroy');
+Route::get('legalitasAdmin', [alumniController::class, 'legalitasAdmin']);
+Route::get('tambahLegalitasAdmin', [alumniController::class, 'tambahLegalitasAdmin']);;
+Route::post('storeLegalitasAdmin', [alumniController::class, 'storeLegalitasAdmin']);;
+Route::get('hapusLegalitasAdmin/{x}', [alumniController::class, 'hapusLegalitasAdmin']);;
 
-// Route::get('pub_dok/upload', 'dokumentasiPubController@upload');
-// Route::post('pub_dok/proses', 'dokumentasiPubController@proses_upload');
-// Route::get('tambahTahun', 'ppmbDokController@tambahTahun');
-Route::get('lulusTPA/{x}', 'hasilController@lulusTPA');
-Route::get('tambahLulusTPA/{x}', 'hasilController@tambahLulusTPA');
-Route::post('storeLulusTPA/{x}', 'hasilController@storeLulusTPA');
-Route::get('editLulusTPA/{x}', 'hasilController@editLulusTPA');
-Route::post('updateLulusTPA/{x}', 'hasilController@updateLulusTPA');
-Route::get('hapusLulusTPA/{x}', 'hasilController@hapusLulusTPA');
+Route::get('kegiatanAlumni', [alumniController::class, 'kegiatanAlumni']);
+Route::get('tambahDokAlumni', [alumniController::class, 'tambahDokAlumni']);;
+Route::post('storeDokAlumni', [alumniController::class, 'storeDokAlumni']);;
+Route::get('hapusDokAlumni/{x}', [alumniController::class, 'hapusDokAlumni']);;
+Route::get('editDokAlumni/{x}', [alumniController::class, 'editDokAlumni']);;
+Route::post('updateDokAlumni/{x}', [alumniController::class, 'updateDokAlumni']);;
 
-Route::get('uploadFormulir', 'hasilController@uploadFormulir');
-Route::get('tambahFormulir', 'hasilController@tambahFormulir');
-Route::post('storeFormulir', 'hasilController@storeFormulir');
-Route::get('hapusFormulir/{x}', 'hasilController@hapusFormulir');
+Route::get('pelatihan/index', [pelatihanController::class, 'index']);
 
-Route::get('tambahTPA/{x}', 'hasilController@tambahTPA');
-Route::post('storeTPA/{x}', 'hasilController@storeTPA');
-Route::post('storeTahun', 'hasilController@storeTahun');
-Route::get('hasilSeleksi', 'hasilController@hasil');
-Route::post('hasil2', 'hasilController@hasil2');
-Route::get('dataTPA/{x}', 'hasilController@dataTPA');
-Route::get('editTPA/{x}', 'hasilController@editTPA');
-Route::post('updateTPA/{x}', 'hasilController@updateTPA');
-Route::get('hapusTPA/{x}', 'hasilController@hapusTPA');
+Route::get('pelatihan/tambah', [pelatihanController::class, 'create']);
+Route::post('pelatihan/store', [pelatihanController::class, 'store']);
+Route::get('pelatihan/edit/{x}', [pelatihanController::class, 'edit']);
+Route::post('pelatihan/update/{x}', [pelatihanController::class, 'update']);
+Route::get('pelatihan/hapus/{x}', [pelatihanController::class, 'destroy']);
 
-Route::get('dataPsikotes/{x}', 'hasilController@dataPsikotes');
-Route::get('tambahPsi/{x}', 'hasilController@tambahPsi');
-Route::post('storePsikotes/{x}', 'hasilController@storePsikotes');
-Route::get('hapusPsi/{x}', 'hasilController@hapusPsi');
-Route::get('editPsi/{x}', 'hasilController@editPsi');
-Route::post('updatePsi/{x}', 'hasilController@updatePsi');
 
-Route::get('det_pelatihan','detPelatihanController@index');
+Route::get('pub_dok/upload', [pubDokController::class, 'upload']);;
+Route::post('pub_dok/proses', [pubDokController::class, 'proses_upload']);;
+Route::get('tambahTahun', [hasilController::class, 'tambahTahun']);;
 
-Route::get('dataWawancaraAkhir/{x}', 'hasilController@dataWawancaraAkhir');
-Route::get('tambahWawancaraAkhir/{x}', 'hasilController@tambahWawancaraAkhir');
-Route::post('storeWawancaraAkhir/{x}', 'hasilController@storeWawancaraAkhir');
-Route::get('hapusWawancaraAkhir/{x}', 'hasilController@hapusWawancaraAkhir');
-Route::get('editWawancaraAkhir/{x}', 'hasilController@editWawancaraAkhir');
-Route::post('updateWawancaraAkhir/{x}', 'hasilController@updateWawancaraAkhir');
 
-Route::get('dataFinal/{x}', 'hasilController@dataFinal');
-Route::get('tambahFinal/{x}', 'hasilController@tambahFinal');
-Route::post('storeFinal/{x}', 'hasilController@storeFinal');
-Route::get('hapusFinal/{x}', 'hasilController@hapusFinal');
-Route::get('editFinal/{x}', 'hasilController@editFinal');
-Route::post('updateFinal/{x}', 'hasilController@updateFinal');
+Route::get('dokumentasiPub', [dokumentasiPubController::class, 'index']);
+Route::get('tambah_pubdok', [dokumentasiPubController::class, 'create']);
+Route::post('simpan/kegiatan', [dokumentasiPubController::class, 'store']);
+Route::get('edit/kegiatan/{x}', [dokumentasiPubController::class, 'edit']);
+Route::post('edit/kegiatan/{x}', [dokumentasiPubController::class, 'update']);
+Route::get('hapus/kegiatan/{x}', [dokumentasiPubController::class, 'destroy']);
 
-Route::get('dokumentasi', 'ppmbDokController@dokumentasi');
-Route::get('tambahDok', 'ppmbDokController@tambahDok');
-Route::post('storeDok', 'ppmbDokController@storeDok');
-Route::get('hapusDok/{x}', 'ppmbDokController@hapusDok');
-Route::get('editDok/{x}', 'ppmbDokController@editDok');
-Route::post('updateDok/{x}', 'ppmbDokController@updateDok');
+// Route::get('pub_dok/upload', [dokumentasiPubController::class, 'upload']);;
+// Route::post('pub_dok/proses', [dokumentasiPubController::class, 'proses_upload']);;
+// Route::get('tambahTahun', [ppmbDokController::class, 'tambahTahun']);;
+Route::get('lulusTPA/{x}', [hasilController::class, 'lulusTPA']);;
+Route::get('tambahLulusTPA/{x}', [hasilController::class, 'tambahLulusTPA']);;
+Route::post('storeLulusTPA/{x}', [hasilController::class, 'storeLulusTPA']);;
+Route::get('editLulusTPA/{x}', [hasilController::class, 'editLulusTPA']);;
+Route::post('updateLulusTPA/{x}', [hasilController::class, 'updateLulusTPA']);;
+Route::get('hapusLulusTPA/{x}', [hasilController::class, 'hapusLulusTPA']);;
 
-Route::get('dataHome/{x}', 'hasilController@dataHome');
-Route::get('tambahHome/{x}', 'hasilController@tambahHome');
-Route::post('storeHome/{x}', 'hasilController@storeHome');
-Route::get('hapusHome/{x}', 'hasilController@hapusHome');
-Route::get('editHome/{x}', 'hasilController@editHome');
-Route::post('updateHome/{x}', 'hasilController@updateHome');
+Route::get('uploadFormulir', [hasilController::class, 'uploadFormulir']);;
+Route::get('tambahFormulir', [hasilController::class, 'tambahFormulir']);;
+Route::post('storeFormulir', [hasilController::class, 'storeFormulir']);;
+Route::get('hapusFormulir/{x}', [hasilController::class, 'hapusFormulir']);;
+
+Route::get('tambahTPA/{x}', [hasilController::class, 'tambahTPA']);;
+Route::post('storeTPA/{x}', [hasilController::class, 'storeTPA']);;
+Route::post('storeTahun', [hasilController::class, 'storeTahun']);;
+Route::get('hasilSeleksi', [hasilController::class, 'hasil']);;
+Route::post('hasil2', [hasilController::class, 'hasil2']);;
+Route::get('dataTPA/{x}', [hasilController::class, 'dataTPA']);;
+Route::get('editTPA/{x}', [hasilController::class, 'editTPA']);;
+Route::post('updateTPA/{x}', [hasilController::class, 'updateTPA']);;
+Route::get('hapusTPA/{x}', [hasilController::class, 'hapusTPA']);;
+
+Route::get('dataPsikotes/{x}', [hasilController::class, 'dataPsikotes']);;
+Route::get('tambahPsi/{x}', [hasilController::class, 'tambahPsi']);;
+Route::post('storePsikotes/{x}', [hasilController::class, 'storePsikotes']);;
+Route::get('hapusPsi/{x}', [hasilController::class, 'hapusPsi']);;
+Route::get('editPsi/{x}', [hasilController::class, 'editPsi']);;
+Route::post('updatePsi/{x}', [hasilController::class, 'updatePsi']);;
+
+Route::get('det_pelatihan', [detPelatihanController::class, 'index']);
+
+Route::get('dataWawancaraAkhir/{x}', [hasilController::class, 'dataWawancaraAkhir']);;
+Route::get('tambahWawancaraAkhir/{x}', [hasilController::class, 'tambahWawancaraAkhir']);;
+Route::post('storeWawancaraAkhir/{x}', [hasilController::class, 'storeWawancaraAkhir']);;
+Route::get('hapusWawancaraAkhir/{x}', [hasilController::class, 'hapusWawancaraAkhir']);;
+Route::get('editWawancaraAkhir/{x}', [hasilController::class, 'editWawancaraAkhir']);;
+Route::post('updateWawancaraAkhir/{x}', [hasilController::class, 'updateWawancaraAkhir']);;
+
+Route::get('dataFinal/{x}', [hasilController::class, 'dataFinal']);;
+Route::get('tambahFinal/{x}', [hasilController::class, 'tambahFinal']);;
+Route::post('storeFinal/{x}', [hasilController::class, 'storeFinal']);;
+Route::get('hapusFinal/{x}', [hasilController::class, 'hapusFinal']);;
+Route::get('editFinal/{x}', [hasilController::class, 'editFinal']);;
+Route::post('updateFinal/{x}', [hasilController::class, 'updateFinal']);;
+
+Route::get('dokumentasi', [ppmbDokController::class, 'dokumentasi']);;
+Route::get('tambahDok', [ppmbDokController::class, 'tambahDok']);;
+Route::post('storeDok', [ppmbDokController::class, 'storeDok']);;
+Route::get('hapusDok/{x}', [ppmbDokController::class, 'hapusDok']);;
+Route::get('editDok/{x}', [ppmbDokController::class, 'editDok']);;
+Route::post('updateDok/{x}', [ppmbDokController::class, 'updateDok']);;
+
+Route::get('dataHome/{x}', [hasilController::class, 'dataHome']);;
+Route::get('tambahHome/{x}', [hasilController::class, 'tambahHome']);;
+Route::post('storeHome/{x}', [hasilController::class, 'storeHome']);;
+Route::get('hapusHome/{x}', [hasilController::class, 'hapusHome']);;
+Route::get('editHome/{x}', [hasilController::class, 'editHome']);;
+Route::post('updateHome/{x}', [hasilController::class, 'updateHome']);;
 
 
 //===================================USER=================================//
-Route::get('/','userController@index');
+Route::get('/', [userController::class, 'index']);
 
 //==============================LOGIN=====================================//
 
-Route::get('login','userController@login');
-Route::post('login/masuk','userController@doLogin');
+Route::get('login', [userController::class, 'login']);
+Route::post('login/masuk', [userController::class, 'doLogin']);
 
 //===================================USER=================================//
-Route::get('tampilUser','userController@tampilUser');
-Route::get('tambahUser','userController@tambahUser');
-Route::post('tambahUser/store','userController@tambahUser_store');
-Route::post('tambah/user','userController@simpanUser');
-Route::get('editUser/{x}','userController@editUser');
-Route::post('editUser','userController@updateUser');
-Route::get('hapusUser/{x}','userController@hapusUser');
+Route::get('tampilUser', [userController::class, 'tampilUser']);
+Route::get('tambahUser', [userController::class, 'tambahUser']);
+Route::post('tambahUser/store', [userController::class, 'tambahUser_store']);
+Route::post('tambah/user', [userController::class, 'simpanUser']);
+Route::get('editUser/{x}', [userController::class, 'editUser']);
+Route::post('editUser', [userController::class, 'updateUser']);
+Route::get('hapusUser/{x}', [userController::class, 'hapusUser']);
 
 
 Route::get('/',function () {
 	if (Session::get('level')) {
 		Session::forget('level');
 		return redirect('/');
-	}else{	
+	}else{
 		return redirect('/');
 	}
 });
-Route::get('/','userController@index');
-Route::get('user/mahasiswa','userController@view_mhs');
-Route::post('user/mahasiswa','userController@view_dataMhs');
+Route::get('/', [userController::class, 'index']);
+Route::get('user/mahasiswa', [userController::class, 'view_mhs']);
+Route::post('user/mahasiswa', [userController::class, 'view_dataMhs']);
 
-Route::get('pub_profile','userController@profile');
-Route::get('ppmb_profile','userController@ppmb_profile');
-Route::get('jadwal_ppmb_user','userController@jadwal_keseluruhan_ppmb');
-Route::post('detailjadwal_ppmb_user','userController@detailjadwal_keseluruhan_ppmb');
-Route::get('sosialisasi_kesekolah/{x}/{y}','userController@sekolah_sos');
-Route::get('daerah_sos_ppmb_user/{x}','userController@daerah_sos');
-Route::get('jadwal_tpa_user/{x}','userController@jadwal_tpa');
-Route::get('jadwal_survey_user/{x}','userController@jadwal_survey');
-Route::get('jadwal_wawancara_akhir_user/{x}','userController@jadwal_wankhir');
-Route::get('syarat_user','userController@syarat_ketentuan');
-Route::get('organisasi_ppmb','userController@organisasi_ppmb');
-Route::post('tampil_organisasi_ppmb','userController@tampil_organisasi_ppmb');
-Route::get('organisasi_pub','userController@organisasi_pub');
-Route::post('tampil_organisasi_pub','userController@tampil_organisasi_pub');
-Route::get('detail/org/{x}','userController@detail');
-Route::get('detail/orgppmb/{x}','userController@detail_orgppmb');
-Route::get('pelatihan','userController@pelatihan');
-Route::get('pelatihan_data','userController@pelatihan_data');
-Route::get('zonasi_covid19_daerah_tpa','userController@zonasi_covid19_daerah_tpa');
+Route::get('pub_profile', [userController::class, 'profile']);
+Route::get('ppmb_profile', [userController::class, 'ppmb_profile']);
+Route::get('jadwal_ppmb_user', [userController::class, 'jadwal_keseluruhan_ppmb']);
+Route::post('detailjadwal_ppmb_user', [userController::class, 'detailjadwal_keseluruhan_ppmb']);
+Route::get('sosialisasi_kesekolah/{x}/{y}', [userController::class, 'sekolah_sos']);
+Route::get('daerah_sos_ppmb_user/{x}', [userController::class, 'daerah_sos']);
+Route::get('jadwal_tpa_user/{x}', [userController::class, 'jadwal_tpa']);
+Route::get('jadwal_survey_user/{x}', [userController::class, 'jadwal_survey']);
+Route::get('jadwal_wawancara_akhir_user/{x}', [userController::class, 'jadwal_wankhir']);
+Route::get('syarat_user', [userController::class, 'syarat_ketentuan']);
+Route::get('organisasi_ppmb', [userController::class, 'organisasi_ppmb']);
+Route::post('tampil_organisasi_ppmb', [userController::class, 'tampil_organisasi_ppmb']);
+Route::get('organisasi_pub', [userController::class, 'organisasi_pub']);
+Route::post('tampil_organisasi_pub', [userController::class, 'tampil_organisasi_pub']);
+Route::get('detail/org/{x}', [userController::class, 'detail']);
+Route::get('detail/orgppmb/{x}', [userController::class, 'detail_orgppmb']);
+Route::get('pelatihan', [userController::class, 'pelatihan']);
+Route::get('pelatihan_data', [userController::class, 'pelatihan_data']);
+Route::get('zonasi_covid19_daerah_tpa', [userController::class, 'zonasi_covid19_daerah_tpa']);
 
-Route::get('pub_dok','userController@kegiatanPub');
-Route::get('pub_dok/kegiatan','dokumentasiPubController@index');
+Route::get('pub_dok', [userController::class, 'kegiatanPub']);
+Route::get('pub_dok/kegiatan', [dokumentasiPubController::class, 'index']);
 
-Route::get('kegiatanPub','userController@kegiatanPub');
-Route::get('user_hasilSeleksi','userController@hasilSeleksi');
-Route::post('user_hasilSeleksi','userController@tampilSeleksi');
-Route::get('user_tpa/{x}','userController@user_tpa');
-Route::get('user_wawancara_akhir/{x}','userController@user_wawancara_akhir');
-Route::get('user_psikotes/{x}','userController@user_psikotes');
-Route::get('user_final/{x}','userController@user_final');
+Route::get('kegiatanPub', [userController::class, 'kegiatanPub']);
+Route::get('user_hasilSeleksi', [userController::class, 'hasilSeleksi']);
+Route::post('user_hasilSeleksi', [userController::class, 'tampilSeleksi']);
+Route::get('user_tpa/{x}', [userController::class, 'user_tpa']);
+Route::get('user_wawancara_akhir/{x}', [userController::class, 'user_wawancara_akhir']);
+Route::get('user_psikotes/{x}', [userController::class, 'user_psikotes']);
+Route::get('user_final/{x}', [userController::class, 'user_final']);
 
-Route::get('user_home/{x}','userController@user_home');
+Route::get('user_home/{x}', [userController::class, 'user_home']);
 
-Route::get('org_ikatan_alumni', 'userController@OrgIkatanAlumni');
-Route::get('keg_ikatan_alumni', 'userController@KegIkatanAlumni');
-Route::post('user_dok_ika', 'userController@user_dok_ika');
-Route::get('user_infaq', 'userController@user_infaq');
-Route::get('user_alumni', 'userController@user_alumni');
-Route::post('user_alumni', 'userController@user_alumniView');
-Route::post('infaq_bulan', 'userController@infaq_bulan');
+Route::get('org_ikatan_alumni', [userController::class, 'OrgIkatanAlumni']);;
+Route::get('keg_ikatan_alumni', [userController::class, 'KegIkatanAlumni']);;
+Route::post('user_dok_ika', [userController::class, 'user_dok_ika']);;
+Route::get('user_infaq', [userController::class, 'user_infaq']);;
+Route::get('user_alumni', [userController::class, 'user_alumni']);;
+Route::post('user_alumni', [userController::class, 'user_alumniView']);;
+Route::post('infaq_bulan', [userController::class, 'infaq_bulan']);;
 
-Route::get('user_lulus_tpa/{x}','userController@user_lulus_tpa');
-Route::get('user_dok_ppmb','userController@user_dok_ppmb');
-Route::get('download_formulir','userController@user_down_formulir');
+Route::get('user_lulus_tpa/{x}', [userController::class, 'user_lulus_tpa']);
+Route::get('user_dok_ppmb', [userController::class, 'user_dok_ppmb']);
+Route::get('download_formulir', [userController::class, 'user_down_formulir']);
 Route::get('/formulir', function () {
     return redirect('https://forms.gle/DuQR9pArTG8ZYLPY7');
 });
 Route::get('/profile_video', function () {
     return redirect('https://youtu.be/BGh-seYCtdo');
 });
-Route::get('legalitas','userController@legalitas');
+Route::get('legalitas', [userController::class, 'legalitas']);
 
-Route::get('formulir_online','userController@formulir_online');
-// Route::get('formulir','userController@formulir');
-Route::get('video_profil','userController@video_profil');
+Route::get('formulir_online', [userController::class, 'formulir_online']);
+// Route::get('formulir', [userController::class, 'formulir']);
+Route::get('video_profil', [userController::class, 'video_profil']);
 
-Route::post('user_hasil_dok_ppmb','userController@user_hasil_dok_ppmb');
+Route::post('user_hasil_dok_ppmb', [userController::class, 'user_hasil_dok_ppmb']);
 
-Route::get('user_dok_sosialisasi/{x}','userController@user_dok_sosialisasi');
-Route::get('user_dok_tpa/{x}','userController@user_dok_tpa');
-Route::get('user_dok_psikotest/{x}','userController@user_dok_psikotest');
-Route::get('user_dok_home_visit/{x}','userController@user_dok_home_visit');
-Route::get('user_dok_wawancara_akhir/{x}','userController@user_dok_wawancara_akhir');
-Route::get('user_dok_mou/{x}','userController@user_dok_mou');
-//================================ADMIN ALUMNI=============================//
- 
-Route::get('admin/alumni/{x}','alumni_adminController@index');
-
-
-Route::post('Alumni_admin/index/{x}','alumni_adminController@index');
-Route::get('materilogika', 'userController@materilog');
-Route::get('materibasis', 'userController@materibasis');
-Route::get('materistruktur', 'userController@materistruktur');
-Route::get('materihtml', 'userController@materihtml');
-Route::get('materifund', 'userController@materifdm');
-Route::get('fdmphp', 'userController@materifdmphp');
-Route::get('fdmvb', 'userController@materifdmvb');
-Route::get('fdmjava', 'userController@materifdmjava');
-Route::get('materifundljt', 'userController@materifdmljt');
-Route::get('fdmljtphp', 'userController@materifdmphpljt');
-Route::get('fdmljtvb', 'userController@materifdmvbljt');
-Route::get('fdmljtjava', 'userController@materifdmjavaljt');
-Route::get('totalAlumni', 'userController@totalAlumni');
-
-Route::get('kegiatanPub','userController@kegiatanPub');
-Route::post('kegiatanPub/pilihdiv','userController@kegiatanPub_pilihdiv');
-Route::get('kegiatanPub/filter/{x}/{y}','userController@kegiatanPub_filter');
-Route::get('pembinaPub', 'userController@pembinaPub');
-
-
-Route::post('storePertanyaan', 'userController@storePertanyaan');
-Route::get('pertanyaan', 'userController@pertanyaan');
-Route::get('jawabPertanyaan/{x}', 'userController@jawabPertanyaan');
-Route::post('storeJawab/{x}', 'userController@storeJawab');
-Route::get('hapusPertanyaan/{x}', 'userController@hapusPertanyaan');
-
-Route::get('tampilan_header', 'userController@tampilan_header');
-Route::get('tampilan_header/tambah', 'userController@tampilan_header_tambah');
-Route::post('tampilan_header/store', 'userController@tampilan_header_store');
-Route::get('tampilan_header/edit/{x}', 'userController@tampilan_header_edit');
-Route::post('tampilan_header/update/{x}', 'userController@tampilan_header_update');
-Route::get('tampilan_header/hapus/{x}', 'userController@tampilan_header_hapus');
-
-Route::get('pembina', 'userController@pembina');
-Route::get('pembina/tambah', 'userController@pembina_tambah');
-Route::post('pembina/store', 'userController@pembina_store');
-Route::get('pembina/edit/{x}', 'userController@pembina_edit');
-Route::post('pembina/update/{x}', 'userController@pembina_update');
-Route::get('pembina/hapus/{x}', 'userController@pembina_hapus');
-
-
-Route::get('profil_pub', 'userController@profil_pub');
-Route::get('profil_pub/edit/{x}', 'userController@profil_pub_edit');
-Route::post('profil_pub/update/{x}', 'userController@profil_pub_update');
-
-Route::get('pel_logika', 'userController@pel_logika');
-Route::get('pel_logika/edit/{x}', 'userController@pel_logika_edit');
-Route::post('pel_logika/update/{x}', 'userController@pel_logika_update');
-
-Route::get('pel_basis', 'userController@pel_basis');
-Route::get('pel_basis/edit/{x}', 'userController@pel_basis_edit');
-Route::post('pel_basis/update/{x}', 'userController@pel_basis_update');
-
-Route::get('pel_struktur', 'userController@pel_struktur');
-Route::get('pel_struktur/edit/{x}', 'userController@pel_struktur_edit');
-Route::post('pel_struktur/update/{x}', 'userController@pel_struktur_update');
-
-Route::get('pel_html', 'userController@pel_html');
-Route::get('pel_html/edit/{x}', 'userController@pel_html_edit');
-Route::post('pel_html/update/{x}', 'userController@pel_html_update');
-
-Route::get('pel_fundamental', 'userController@pel_fundamental');
-Route::get('pel_fundamental/edit/{x}', 'userController@pel_fundamental_edit');
-Route::post('pel_fundamental/update/{x}', 'userController@pel_fundamental_update');
-
-Route::get('pel_lanjutan', 'userController@pel_lanjutan');
-Route::get('pel_lanjutan/edit/{x}', 'userController@pel_lanjutan_edit');
-Route::post('pel_lanjutan/update/{x}', 'userController@pel_lanjutan_update');
-
+Route::get('user_dok_sosialisasi/{x}', [userController::class, 'user_dok_sosialisasi']);
+Route::get('user_dok_tpa/{x}', [userController::class, 'user_dok_tpa']);
+Route::get('user_dok_psikotest/{x}', [userController::class, 'user_dok_psikotest']);
+Route::get('user_dok_home_visit/{x}', [userController::class, 'user_dok_home_visit']);
+Route::get('user_dok_wawancara_akhir/{x}', [userController::class, 'user_dok_wawancara_akhir']);
+Route::get('user_dok_mou/{x}', [userController::class, 'user_dok_mou']);
 //================================ADMIN ALUMNI=============================//
 
-Route::post('akunEdit/{x}','alumni_adminController@akunEdit');
-Route::get('admin/alumni/akun/{x}','alumni_adminController@akun');
-Route::get('admin/alumni/{x}','alumni_adminController@index');
-Route::get('admin/alumni/profile/{x}','alumni_adminController@profile');
-Route::get('admin/alumni/aktivitas/{x}','alumni_adminController@aktivitas');
-Route::get('editProfil/{x}','alumni_adminController@editProfil');
-Route::post('simpanProfil/edit/{x}','alumni_adminController@updateProfil');
-Route::post('tambahFoto','alumni_adminController@store');
-Route::get('tambahPend/{x}','alumni_adminController@tambahPnd');
-Route::post('simpanPend','alumni_adminController@simpanPnd');
-Route::get('editPendidikan/{x}/{y}','alumni_adminController@editPendidikan');
-Route::post('editPendidikan','alumni_adminController@updatePendidikan');
+Route::get('admin/alumni/{x}', [alumni_adminController::class, 'index']);
 
-Route::get('tambahPeng/{x}','alumni_adminController@tambahPeng');
-Route::post('tambah/pengalaman','alumni_adminController@simpanPeng');
-Route::get('editPengalaman/{x}/{y}','alumni_adminController@editPengalaman');
-Route::post('updatePengalaman','alumni_adminController@updatePengalaman');
 
-Route::get('admin/aktivitas/{x}','alumni_adminController@aktivitas');
-Route::post('tambahFoto/aktivitas','alumni_adminController@storeAktivitas');
-Route::get('edit/aktivitas/{x}/{y}','alumni_adminController@editAktivitas');
-Route::post('simpan/aktivitasEdit','alumni_adminController@updateAktivitas');
-Route::get('hapusAktivitas/{x}/{y}','alumni_adminController@hapusAktivitas');
+Route::post('Alumni_admin/index/{x}', [alumni_adminController::class, 'index']);
+Route::get('materilogika', [userController::class, 'materilog']);;
+Route::get('materibasis', [userController::class, 'materibasis']);;
+Route::get('materistruktur', [userController::class, 'materistruktur']);;
+Route::get('materihtml', [userController::class, 'materihtml']);;
+Route::get('materifund', [userController::class, 'materifdm']);;
+Route::get('fdmphp', [userController::class, 'materifdmphp']);;
+Route::get('fdmvb', [userController::class, 'materifdmvb']);;
+Route::get('fdmjava', [userController::class, 'materifdmjava']);;
+Route::get('materifundljt', [userController::class, 'materifdmljt']);;
+Route::get('fdmljtphp', [userController::class, 'materifdmphpljt']);;
+Route::get('fdmljtvb', [userController::class, 'materifdmvbljt']);;
+Route::get('fdmljtjava', [userController::class, 'materifdmjavaljt']);;
+Route::get('totalAlumni', [userController::class, 'totalAlumni']);;
+
+Route::get('kegiatanPub', [userController::class, 'kegiatanPub']);
+Route::post('kegiatanPub/pilihdiv', [userController::class, 'kegiatanPub_pilihdiv']);
+Route::get('kegiatanPub/filter/{x}/{y}', [userController::class, 'kegiatanPub_filter']);
+Route::get('pembinaPub', [userController::class, 'pembinaPub']);;
+
+
+Route::post('storePertanyaan', [userController::class, 'storePertanyaan']);;
+Route::get('pertanyaan', [userController::class, 'pertanyaan']);;
+Route::get('jawabPertanyaan/{x}', [userController::class, 'jawabPertanyaan']);;
+Route::post('storeJawab/{x}', [userController::class, 'storeJawab']);;
+Route::get('hapusPertanyaan/{x}', [userController::class, 'hapusPertanyaan']);;
+
+Route::get('tampilan_header', [userController::class, 'tampilan_header']);;
+Route::get('tampilan_header/tambah', [userController::class, 'tampilan_header_tambah']);;
+Route::post('tampilan_header/store', [userController::class, 'tampilan_header_store']);;
+Route::get('tampilan_header/edit/{x}', [userController::class, 'tampilan_header_edit']);;
+Route::post('tampilan_header/update/{x}', [userController::class, 'tampilan_header_update']);;
+Route::get('tampilan_header/hapus/{x}', [userController::class, 'tampilan_header_hapus']);;
+
+Route::get('pembina', [userController::class, 'pembina']);;
+Route::get('pembina/tambah', [userController::class, 'pembina_tambah']);;
+Route::post('pembina/store', [userController::class, 'pembina_store']);;
+Route::get('pembina/edit/{x}', [userController::class, 'pembina_edit']);;
+Route::post('pembina/update/{x}', [userController::class, 'pembina_update']);;
+Route::get('pembina/hapus/{x}', [userController::class, 'pembina_hapus']);;
+
+
+Route::get('profil_pub', [userController::class, 'profil_pub']);;
+Route::get('profil_pub/edit/{x}', [userController::class, 'profil_pub_edit']);;
+Route::post('profil_pub/update/{x}', [userController::class, 'profil_pub_update']);;
+
+Route::get('pel_logika', [userController::class, 'pel_logika']);;
+Route::get('pel_logika/edit/{x}', [userController::class, 'pel_logika_edit']);;
+Route::post('pel_logika/update/{x}', [userController::class, 'pel_logika_update']);;
+
+Route::get('pel_basis', [userController::class, 'pel_basis']);;
+Route::get('pel_basis/edit/{x}', [userController::class, 'pel_basis_edit']);;
+Route::post('pel_basis/update/{x}', [userController::class, 'pel_basis_update']);;
+
+Route::get('pel_struktur', [userController::class, 'pel_struktur']);;
+Route::get('pel_struktur/edit/{x}', [userController::class, 'pel_struktur_edit']);;
+Route::post('pel_struktur/update/{x}', [userController::class, 'pel_struktur_update']);;
+
+Route::get('pel_html', [userController::class, 'pel_html']);;
+Route::get('pel_html/edit/{x}', [userController::class, 'pel_html_edit']);;
+Route::post('pel_html/update/{x}', [userController::class, 'pel_html_update']);;
+
+Route::get('pel_fundamental', [userController::class, 'pel_fundamental']);;
+Route::get('pel_fundamental/edit/{x}', [userController::class, 'pel_fundamental_edit']);;
+Route::post('pel_fundamental/update/{x}', [userController::class, 'pel_fundamental_update']);;
+
+Route::get('pel_lanjutan', [userController::class, 'pel_lanjutan']);;
+Route::get('pel_lanjutan/edit/{x}', [userController::class, 'pel_lanjutan_edit']);;
+Route::post('pel_lanjutan/update/{x}', [userController::class, 'pel_lanjutan_update']);;
+
+//================================ADMIN ALUMNI=============================//
+
+Route::post('akunEdit/{x}', [alumni_adminController::class, 'akunEdit']);
+Route::get('admin/alumni/akun/{x}', [alumni_adminController::class, 'akun']);
+Route::get('admin/alumni/{x}', [alumni_adminController::class, 'index']);
+Route::get('admin/alumni/profile/{x}', [alumni_adminController::class, 'profile']);
+Route::get('admin/alumni/aktivitas/{x}', [alumni_adminController::class, 'aktivitas']);
+Route::get('editProfil/{x}', [alumni_adminController::class, 'editProfil']);
+Route::post('simpanProfil/edit/{x}', [alumni_adminController::class, 'updateProfil']);
+Route::post('tambahFoto', [alumni_adminController::class, 'store']);
+Route::get('tambahPend/{x}', [alumni_adminController::class, 'tambahPnd']);
+Route::post('simpanPend', [alumni_adminController::class, 'simpanPnd']);
+Route::get('editPendidikan/{x}/{y}', [alumni_adminController::class, 'editPendidikan']);
+Route::post('editPendidikan', [alumni_adminController::class, 'updatePendidikan']);
+
+Route::get('tambahPeng/{x}', [alumni_adminController::class, 'tambahPeng']);
+Route::post('tambah/pengalaman', [alumni_adminController::class, 'simpanPeng']);
+Route::get('editPengalaman/{x}/{y}', [alumni_adminController::class, 'editPengalaman']);
+Route::post('updatePengalaman', [alumni_adminController::class, 'updatePengalaman']);
+
+Route::get('admin/aktivitas/{x}', [alumni_adminController::class, 'aktivitas']);
+Route::post('tambahFoto/aktivitas', [alumni_adminController::class, 'storeAktivitas']);
+Route::get('edit/aktivitas/{x}/{y}', [alumni_adminController::class, 'editAktivitas']);
+Route::post('simpan/aktivitasEdit', [alumni_adminController::class, 'updateAktivitas']);
+Route::get('hapusAktivitas/{x}/{y}', [alumni_adminController::class, 'hapusAktivitas']);
