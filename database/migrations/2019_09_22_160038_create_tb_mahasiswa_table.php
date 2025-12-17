@@ -15,7 +15,7 @@ class CreateTbMahasiswaTable extends Migration
     {
         Schema::create('tb_mahasiswa', function (Blueprint $table) {
             $table->increments('id_mahasiswa');
-            $table->string('NIM');
+            $table->string('');
             $table->integer('id_angkatan')->unsigned();
             $table->integer('id_sekolah')->unsigned();
             $table->integer('id_daerah')->unsigned();
@@ -23,8 +23,8 @@ class CreateTbMahasiswaTable extends Migration
             $table->integer('id_orgppmb')->unsigned();
             $table->integer('id_orgpub')->unsigned();
             $table->integer('id_jur')->unsigned();
-            $table->integer('id_statusPub')->unsigned();
-            $table->integer('id_statusSos')->unsigned();
+            $table->integer('id_statuspub')->unsigned();
+            $table->integer('id_statussos')->unsigned();
             $table->timestamps();
 
             $table->foreign('id_angkatan')->references('id_angkatan')->on('tb_angkatan');
@@ -33,8 +33,8 @@ class CreateTbMahasiswaTable extends Migration
             $table->foreign('id_orgppmb')->references('id_orgppmb')->on('tb_orgppmb');
             $table->foreign('id_orgpub')->references('id_orgpub')->on('tb_orgpub');
             $table->foreign('id_jur')->references('id_jur')->on('tb_jurusan');
-            $table->foreign('id_statusPub')->references('id_statusPub')->on('tb_statusPub');
-            $table->foreign('id_statusSos')->references('id_statusSos')->on('tb_statusSos');
+            $table->foreign('id_statuspub')->references('id_statuspub')->on('tb_statusPub');
+            $table->foreign('id_statussos')->references('id_statussos')->on('tb_statusSos');
         });
     }
 

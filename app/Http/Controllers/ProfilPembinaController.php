@@ -46,7 +46,7 @@ class ProfilPembinaController extends Controller
           return redirect('profil_pembina/create')->with('alert','Maaf, Data Field tidak boleh kosong!');
       }else{
         DB::table('tb_profil_pembina')->insert([
-            'id_profilPembina' => $request->id_profilPembina,
+            'id_profilpembina' => $request->id_profilpembina,
             'foto_pembina' => $request->gambar,
             'profil_pembina' =>$request->profil_pembina
         ]);
@@ -73,7 +73,7 @@ class ProfilPembinaController extends Controller
      */
     public function edit($id)
     {
-        $profil_pembina=DB::table('tb_profil_pembina')->where('id_profilPembina',$id)->get();
+        $profil_pembina=DB::table('tb_profil_pembina')->where('id_profilpembina',$id)->get();
         return view('profil_pembina.edit',compact('profil_pembina'));
     }
 
@@ -92,10 +92,10 @@ class ProfilPembinaController extends Controller
 // ]);
 
         if ($request->gambar=="" || $request->profil_pembina=="") {
-          return redirect('profil_pembina/edit/'.$request->id_profilPembina)->with('alert','Maaf, Data Field tidak boleh kosong!');
+          return redirect('profil_pembina/edit/'.$request->id_profilpembina)->with('alert','Maaf, Data Field tidak boleh kosong!');
         }else{
             DB::table('tb_profil_pembina')
-            ->where('id_profilPembina',$request->id_profilPembina)
+            ->where('id_profilpembina',$request->id_profilpembina)
             ->update([
                 'foto_pembina'=>$request->gambar, 
                 'profil_pembina'=>$request->profil_pembina
@@ -113,7 +113,7 @@ class ProfilPembinaController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('tb_profil_pembina')->where('id_profilPembina',$id)->delete(); 
+        DB::table('tb_profil_pembina')->where('id_profilpembina',$id)->delete(); 
         return redirect('profil_pembina');
     }
 }

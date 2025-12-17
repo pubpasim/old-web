@@ -17,8 +17,8 @@ class CreateTbDetpendidikanTable extends Migration
             $table->increments('id_detpendidikan');
             $table->integer('id_mahasiswa')->unsigned();
             $table->string('pendidikan');
-            $table->string('Universitas');
-            $table->string('Tahun_lulus');
+            $table->string('universitas');
+            $table->string('tahun_lulus');
             $table->timestamps();
             $table->foreign('id_mahasiswa')->references('id_mahasiswa')->on('tb_mahasiswa');
         });

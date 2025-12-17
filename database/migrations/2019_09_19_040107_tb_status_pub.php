@@ -14,7 +14,7 @@ class TbStatusPub extends Migration
     public function up()
     {
         Schema::create('tb_statusPub',function(Blueprint $table){
-            $table->increments('id_statusPub');
+            $table->increments('id_statuspub');
             $table->string('status');
             $table->rememberToken();
             $table->timestamps();

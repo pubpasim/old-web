@@ -16,7 +16,7 @@ class alumniController extends Controller
         ->join('tb_orgpub', 'tb_mahasiswa.id_orgpub', '=', 'tb_orgpub.id_orgpub')
         ->join('tb_angkatan', 'tb_mahasiswa.id_angkatan', '=', 'tb_angkatan.id_angkatan')
         ->join('tb_orgppmb', 'tb_mahasiswa.id_orgppmb', '=', 'tb_orgppmb.id_orgppmb')
-        ->join('tb_statuspub', 'tb_mahasiswa.id_statusPub', '=', 'tb_statuspub.id_statusPub')
+        ->join('tb_statuspub', 'tb_mahasiswa.id_statuspub', '=', 'tb_statuspub.id_statuspub')
         ->join('tb_jurusan', 'tb_mahasiswa.id_jur', '=', 'tb_jurusan.id_jur')
         ->select('tb_angkatan.angkatan','tb_mahasiswa.jenis_kelamin','tb_mahasiswa.tempat_lahir','tb_mahasiswa.tanggal_lahir','tb_mahasiswa.no_telp','tb_mahasiswa.id_mahasiswa','tb_mahasiswa.nama','tb_mahasiswa.nim','tb_daerah.kab_kot', 'tb_jurusan.nama_jur', 'tb_sekolah.sekolah','tb_orgpub.jabatan_pub','tb_orgppmb.jabatan','tb_statuspub.status')->where('tb_statuspub.status','Alumni')->get();
         return view('tampilan.alumni.index',compact('mahasiswa'));
@@ -57,7 +57,7 @@ class alumniController extends Controller
         $skl=DB::table('tb_sekolah')
         ->select('tb_sekolah.id_sekolah','tb_sekolah.sekolah')->get();
         $sts1=DB::table('tb_statusSos')
-        ->select('tb_statusSos.id_statusSos','tb_statusSos.status')->get();
+        ->select('tb_statusSos.id_statussos','tb_statusSos.status')->get();
         $angkt=DB::table('tb_angkatan')
         ->select('tb_angkatan.id_angkatan','tb_angkatan.angkatan')->get();
         $orgpub=DB::table('tb_orgpub')
@@ -88,7 +88,7 @@ class alumniController extends Controller
     public function store(Request $request)
     {
         DB::table('tb_mahasiswa')->insert([
-            'nama'=>$request->Tname,'NIM'=>$request->nim,'id_daerah'=>$request->daerah,'id_angkatan'=>$request->angkatan,'id_sekolah'=>$request->skl,'id_statusSos'=>$request->spkw,'id_orgpub'=>$request->jbPUB,'id_orgppmb'=>$request->jbPPMB,'id_jur'=>$request->jurusan, 'id_statusPub'=>$request->alm
+            'nama'=>$request->Tname,''=>$request->nim,'id_daerah'=>$request->daerah,'id_angkatan'=>$request->angkatan,'id_sekolah'=>$request->skl,'id_statussos'=>$request->spkw,'id_orgpub'=>$request->jbPUB,'id_orgppmb'=>$request->jbPPMB,'id_jur'=>$request->jurusan, 'id_statuspub'=>$request->alm
         ]);
         return redirect('lanjut/pengalaman');
     }
@@ -116,7 +116,7 @@ class alumniController extends Controller
     {
         $mhs=DB::table('tb_mahasiswa')
         ->join('tb_angkatan','tb_angkatan.id_angkatan','tb_mahasiswa.id_angkatan')
-        ->where('id_statusPub',2)
+        ->where('id_statuspub',2)
         ->orderby('angkatan','ASC')
         ->orderby('nama','ASC')        
         ->get();
@@ -214,7 +214,7 @@ public function editStrukAlumni($id)
     $tamp = DB::table('tb_ikatan_alumni')->where('id_ikatan',$id)->get();
     $mhs=DB::table('tb_mahasiswa')
     ->join('tb_angkatan','tb_angkatan.id_angkatan','tb_mahasiswa.id_angkatan')
-    ->where('id_statusPub',2)
+    ->where('id_statuspub',2)
     ->orderby('angkatan','ASC')
     ->orderby('nama','ASC') 
     ->get();

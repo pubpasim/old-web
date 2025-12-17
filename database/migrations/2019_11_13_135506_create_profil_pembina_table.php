@@ -13,7 +13,7 @@ class CreateProfilPembinaTable extends Migration
      */
     public function up()
             Schema::create('profil_pembina', function (Blueprint $table) {
-            $table->increments('id_profilPembina');
+            $table->increments('id_profilpembina');
             $table->string('gambar');
             $table->string('profil_pembina');
             $table->timestamps();

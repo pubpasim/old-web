@@ -96,7 +96,7 @@
 	<h1>Daftar Data Status</h1>
 	<div class="container">	
 		
-		<form method="POST" action="{{URL('status_sos/update/'.$status_sos->id_statusSos)}}" Class="form-horizontal" id="block-validate">
+		<form method="POST" action="{{URL('status_sos/update/'.$status_sos->id_statussos)}}" Class="form-horizontal" id="block-validate">
 			{{csrf_field()}}
 			<div class="row">
 				<div class="panel-heading">INPUT DATA</div>

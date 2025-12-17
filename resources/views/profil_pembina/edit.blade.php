@@ -28,7 +28,7 @@
 						@endif
 						@foreach($profil_pembina as $data)
 						<div class="form-group">
-							<input type="text" name="id_profilPembina" value="{{$data->id_profilPembina}}" readonly="" hidden="true">
+							<input type="text" name="id_profilpembina" value="{{$data->id_profilpembina}}" readonly="" hidden="true">
 						</div>
 						<div class="form-group">
 							<div class="col-25">

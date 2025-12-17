@@ -26,8 +26,8 @@
 						?>
 						<div>
 							<!-- <a href="syarat_ketentuan/create"><button>Tambah</button></a>	 -->
-							<a href="{{url('profil_pembina/edit/'.$data->id_profilPembina)}}"><button class="btn btn-primary">Ubah</button></a>	
-							<a href="{{url('profil_pembina/delete/'.$data->id_profilPembina)}}" onclick="return confirm('Hapus data ?');"><button class="btn btn-danger">Hapus</button></a>	
+							<a href="{{url('profil_pembina/edit/'.$data->id_profilpembina)}}"><button class="btn btn-primary">Ubah</button></a>	
+							<a href="{{url('profil_pembina/delete/'.$data->id_profilpembina)}}" onclick="return confirm('Hapus data ?');"><button class="btn btn-danger">Hapus</button></a>	
 						</div>
 						<div class="row">
 							<div class="col-md-12">

@@ -39,8 +39,8 @@ Route::get('admin', function () {
 		return redirect('login')->with('alert','Silakan login terlebih dahulu');
 	}else{
 		$admin=DB::table('tb_user')->where('level','admin')->count();
-		$mhs=DB::table('tb_mahasiswa')->where('id_statusPub',1)->count();
-		$alumni=DB::table('tb_mahasiswa')->where('id_statusPub',2)->count();
+		$mhs=DB::table('tb_mahasiswa')->where('id_statuspub',1)->count();
+		$alumni=DB::table('tb_mahasiswa')->where('id_statuspub',2)->count();
 		$tampilan=DB::table('tb_tampilan_header')->get();
         
 		return view('tampilan.index',compact('admin','mhs','alumni','tampilan'));

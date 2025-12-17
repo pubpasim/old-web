@@ -60,7 +60,7 @@ class statusSosialController extends Controller
      */
     public function edit($id)
     {
-        $status_sos=DB::table('tb_statussos')->where('id_statusSos',$id)->first();
+        $status_sos=DB::table('tb_statussos')->where('id_statussos',$id)->first();
         return view('status_sosial.edit',compact('status_sos'));
     }
 
@@ -73,7 +73,7 @@ class statusSosialController extends Controller
      */
     public function update(Request $request, $id)
     {
-        DB::table('tb_statussos')->where('id_statusSos',$id)->update([
+        DB::table('tb_statussos')->where('id_statussos',$id)->update([
             'status'=>$request->status
         ]);
         return redirect('status_sos');
@@ -87,7 +87,7 @@ class statusSosialController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('tb_statussos')->where('id_statusSos',$id)->delete();
+        DB::table('tb_statussos')->where('id_statussos',$id)->delete();
         return redirect('status_sos');
     }
 }

@@ -95,7 +95,7 @@
 </style>
 	<h1>Daftar Data Angkatan</h1>
 	<div class="container">	
-		<form method="POST" action="{{URL('status_pub/update/'.$status_pub->id_statusPub)}}" Class="form-horizontal" id="block-validate">
+		<form method="POST" action="{{URL('status_pub/update/'.$status_pub->id_statuspub)}}" Class="form-horizontal" id="block-validate">
 			{{csrf_field()}}
 			<div class="row">
 				<div class="panel-heading">INPUT DATA</div>

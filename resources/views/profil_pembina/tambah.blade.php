@@ -28,7 +28,7 @@
 						{{ @csrf_field() }}
 
 						<div class="form-group">
-							<input type="text" name="id_profilPembina"  readonly="" hidden="true">
+							<input type="text" name="id_profilpembina"  readonly="" hidden="true">
 						</div>
 						<div class="form-group">
 							<div class="col-25">

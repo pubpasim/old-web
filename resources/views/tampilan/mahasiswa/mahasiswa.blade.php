@@ -171,7 +171,7 @@
 					<select id="spkw" name="st_pub">
 						<option disabled="true"> Status PUB</option>
 						@foreach($sts2 as $data)
-						<option value="{{$data->id_statusPub}}">{{$data->status}}</option>
+						<option value="{{$data->id_statuspub}}">{{$data->status}}</option>
 						@endforeach
 					</select>
 				</div>
@@ -184,7 +184,7 @@
 					<select id="spkw" name="spkw">
 						<option disabled="true"> Status Perkawinan</option>
 						@foreach($sts1 as $data)
-						<option value="{{$data->id_statusSos}}">{{$data->status}}</option>
+						<option value="{{$data->id_statussos}}">{{$data->status}}</option>
 						@endforeach
 					</select>
 				</div>

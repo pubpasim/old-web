@@ -34,8 +34,8 @@ class detOrgPpmbController extends Controller
         $jabatan=DB::table('tb_orgppmb')->get();
         $angkatan=DB::table('tb_angkatan')->where('angkatan','>=','16')->orderBy('angkatan')->get();
         $mahasiswa=DB::table('tb_mahasiswa')
-        ->join('tb_statuspub','tb_mahasiswa.id_statusPub','=','tb_statuspub.id_statusPub')
-        ->select('tb_mahasiswa.nama','tb_mahasiswa.id_mahasiswa','tb_statuspub.id_statusPub')
+        ->join('tb_statuspub','tb_mahasiswa.id_statuspub','=','tb_statuspub.id_statuspub')
+        ->select('tb_mahasiswa.nama','tb_mahasiswa.id_mahasiswa','tb_statuspub.id_statuspub')
         ->where('tb_statuspub.status','PUB Aktif')
         ->orderBy('tb_mahasiswa.nama')
         ->get();

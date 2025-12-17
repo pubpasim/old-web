@@ -19,7 +19,7 @@ class infaqController extends Controller
 
         // $data2=DB::table('tb_infaq')
         // ->leftJoin('tb_angkatan','tb_mahasiswa.id_angkatan','=','tb_angkatan.id_angkatan')
-        // ->leftJoin('tb_statusPub','tb_mahasiswa.id_statusPub','=','tb_statusPub.id_statusPub')
+        // ->leftJoin('tb_statusPub','tb_mahasiswa.id_statuspub','=','tb_statusPub.id_statuspub')
         // ->select('tb_mahasiswa.jenis_kelamin','tb_angkatan.angkatan',\DB::raw('count(*) as total'))
         // ->groupBy('tb_angkatan.angkatan')
         // ->groupBy('tb_mahasiswa.jenis_kelamin');

@@ -85,7 +85,7 @@
 			<tr>
 				<td>Perguruan Tinggi</td>
 				<td>:</td>
-				<td>{{$pnd->Universitas}}</td>
+				<td>{{$pnd->universitas}}</td>
 			</tr>
 			<tr>
 				<td>Program Studi</td>
@@ -95,7 +95,7 @@
 			<tr>
 				<td>Tahun Lulus</td>
 				<td>:</td>
-				<td>{{$pnd->Tahun_lulus}}</td>
+				<td>{{$pnd->tahun_lulus}}</td>
 			</tr>
 			
 		</table>

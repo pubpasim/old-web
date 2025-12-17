@@ -20,7 +20,7 @@
 			<tr>
 				<td>Nama Perguruan Tinggi</td>
 				<td>:</td>
-				<td><input type="text" id="x" name="kampus" placeholder="Perguruan Tinggi" value="{{$pnd->Universitas}}" class="form-control"></td>
+				<td><input type="text" id="x" name="kampus" placeholder="Perguruan Tinggi" value="{{$pnd->universitas}}" class="form-control"></td>
 			</tr>
 			@php
 				$jn=strrev($pnd->prodi);
@@ -49,8 +49,8 @@
 				<td>Tahun Lulus</td>
 				<td>:</td>
 				<td>
-					<input @if($pnd->Tahun_lulus=="Masih Berjalan") checked="true"@endif value="Masih Berjalan" type="checkbox" id="run" onload="dis();" onclick="dis();">Masih Berjalan&nbsp;&nbsp;
-					<input @if($pnd->Tahun_lulus!="Masih Berjalan") value="{{$pnd->Tahun_lulus}}"@endif id="thn" type="number" max="2099" min="2003" name="lulus" value="2019">
+					<input @if($pnd->tahun_lulus=="Masih Berjalan") checked="true"@endif value="Masih Berjalan" type="checkbox" id="run" onload="dis();" onclick="dis();">Masih Berjalan&nbsp;&nbsp;
+					<input @if($pnd->tahun_lulus!="Masih Berjalan") value="{{$pnd->tahun_lulus}}"@endif id="thn" type="number" max="2099" min="2003" name="lulus" value="2019">
 				</td>
 			</tr>
 		</table>

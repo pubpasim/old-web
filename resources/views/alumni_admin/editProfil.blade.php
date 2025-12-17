@@ -108,7 +108,7 @@
 			<td>
 				<select id="x" name="spkw">
 					@foreach($sts1 as $dt)
-					<option @if($data->spkw=="$dt->status") selected="true" @endif value="{{$dt->id_statusSos}}" >{{$dt->status}}</option>
+					<option @if($data->spkw=="$dt->status") selected="true" @endif value="{{$dt->id_statussos}}" >{{$dt->status}}</option>
 					@endforeach
 				</select>
 			</td>
