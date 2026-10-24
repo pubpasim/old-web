@@ -4,7 +4,7 @@
 # mirroring what nixpacks.toml did. Built on the official PHP image so the patch level is
 # whatever PHP_VERSION says (Nixpacks pins an old nixpkgs archive and cannot be bumped).
 
-ARG PHP_VERSION=8.4.27
+ARG PHP_VERSION=8.5.12
 ARG NGINX_VERSION=1.30.6
 ARG NODE_VERSION=24
 
