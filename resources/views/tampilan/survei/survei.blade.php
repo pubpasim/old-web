@@ -41,7 +41,7 @@
 								<td>{{ $data->asal_daerah}}</td>								
 								<td>
 									<a href="{{url('editWawancaraAkhir/'.$data->id_survei)}}" class="btn btn-info">Edit</a>
-									<a href="{{url('hapusWawancaraAkhir/'.$data->id_survei)}}" class="btn btn-info" onclick="return confirm('Hapus data ?');">Hapus</a>
+									<x-delete-button :action="url('hapusWawancaraAkhir/'.$data->id_survei)" confirm="Hapus data ?" class="btn btn-info">Hapus</x-delete-button>
 								</td>
 							</tr>
 							@endforeach

@@ -122,7 +122,7 @@
     									<td>
     									    <center>
     										<a href="{{url('struktur_organisasi2/edit/'.$data->id_org)}}"><button class="btn btn-primary">Edit</button></a>&nbsp;&nbsp;&nbsp;
-    										<a href="{{url('struktur_organisasi2/hapus/'.$data->id_org)}}"><button class="btn btn-danger">Hapus</button></a>
+    										<x-delete-button :action="url('struktur_organisasi2/hapus/'.$data->id_org)" confirm="Hapus data ?" class="btn btn-danger">Hapus</x-delete-button>
     									    </center>
     									</td>
     								</tr>

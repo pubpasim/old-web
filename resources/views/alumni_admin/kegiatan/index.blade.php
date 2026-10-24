@@ -28,7 +28,7 @@
 									<a href="{{url('pelatihan/edit'.$data->id_pelatihan)}}">Edit</a>
 								</td>
 								<td>
-									<a href="{{url('pelatihan/hapus'.$data->id_pelatihan)}}" onclick="return confirm('Hapus data ?');">Hapus</a>
+									<x-delete-button :action="url('pelatihan/hapus/'.$data->id_pelatihan)" confirm="Hapus data ?" style="background:none;border:0;padding:0;color:inherit;text-decoration:underline;cursor:pointer">Hapus</x-delete-button>
 								</td>
 							</tr>	
 							@endforeach

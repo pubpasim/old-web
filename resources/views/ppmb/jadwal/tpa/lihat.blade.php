@@ -39,11 +39,7 @@
 									<i class="material-icons">Foto</i><span class="icon-name"></span>
 								</button>
 							</a>
-							<a href="{{url('jad_tpa/delete/'.$data->id_jad_tpa)}}" onclick="return confirm('Hapus data ?');">
-								<button type="button" class="btn btn-danger btn-square waves-effect waves-square waves-effect">
-									<i class="material-icons">Hapus</i><span class="icon-name"></span>
-								</button>
-							</a>
+							<x-delete-button :action="url('jad_tpa/delete/'.$data->id_jad_tpa)" confirm="Hapus data ?" class="btn btn-danger btn-square waves-effect waves-square waves-effect"><i class="material-icons">Hapus</i><span class="icon-name"></span></x-delete-button>
 						</td>
 					</tr>
 					@endforeach

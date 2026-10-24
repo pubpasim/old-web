@@ -35,9 +35,7 @@
 									<a href="{{URL('pembina/edit/'.$data->id)}}" class=" icon-edit-sign">
 										<button class="btn btn-primary">Edit</button>
 									</a>
-									<a href="{{URL('pembina/hapus/'.$data->id)}}" class="icon-trash" onclick="return confirm('Hapus data ?');">
-										<button class="btn btn-danger">Hapus</button>
-									</a></center>
+									<x-delete-button :action="url(URL('pembina/hapus/'.$data->id))" confirm="Hapus data ?" form-class="icon-trash" class="btn btn-danger">Hapus</x-delete-button></center>
 								</td>
 
 							</tr>

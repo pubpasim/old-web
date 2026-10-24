@@ -39,9 +39,7 @@
 										<a href="{{URL('tampilan/angkatan/'.$data->id_angkatan)}}" class=" icon-edit-sign">
 											<button class="btn btn-primary">Edit</button>
 										</a>
-										<a href="{{URL('tampilan/angkatan/hapus/'.$data->id_angkatan)}}" class="icon-trash" onclick="return confirm('Hapus data ?');">
-											<button class="btn btn-danger">Hapus</button>
-										</a></center>
+										<x-delete-button :action="url(URL('tampilan/angkatan/hapus/'.$data->id_angkatan))" confirm="Hapus data ?" form-class="icon-trash" class="btn btn-danger">Hapus</x-delete-button></center>
 									</td>
 
 								</tr>

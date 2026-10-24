@@ -96,7 +96,7 @@
 						    		<td> <img src="{{url('imgs')}}/{{($data->foto) }}" width="100" height="100"></td>	
 						    		<td>{{$data->keterangan}}</td>						    		
 						    		<td>						    			
-						    			<a href="{{url('hapusLegalitasAdmin/'.$data->id)}}" class="btn btn-info" onclick="return confirm('Hapus data ?');">Hapus</a>
+						    			<x-delete-button :action="url('hapusLegalitasAdmin/'.$data->id)" confirm="Hapus data ?" class="btn btn-info">Hapus</x-delete-button>
 						    		</td>
 						    	</tr>
 						    	@endforeach

@@ -43,12 +43,7 @@
 											<i class="material-icons">Edit</i><span class="icon-name"></span>
 										</button>
 									</a>
-									<a href="{{url('periode/delete/'.$data->id_periode)}}">
-										<button type="button" class="btn btn-danger btn-square 
-										waves-effect waves-square waves-effect">
-										<i class="material-icons">Hapus</i><span class="icon-name"></span>
-									</button>
-								</a>
+									<x-delete-button :action="url('periode/delete/'.$data->id_periode)" confirm="Hapus data ?" class="btn btn-danger btn-square waves-effect waves-square waves-effect"><i class="material-icons">Hapus</i><span class="icon-name"></span></x-delete-button>
 							</td>
 						</tr>
 						@endforeach

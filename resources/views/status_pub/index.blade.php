@@ -125,7 +125,7 @@
 							<td>{{$data->status}}</td>
 							<td>
 								<a href="{{url('status_pub/edit/'.$data->id_statuspub)}}">Edit</a>
-								<a href="{{url('status_pub/hapus/'.$data->id_statuspub)}}" onclick="return confirm('Hapus data ?');">Hapus</a>
+								<x-delete-button :action="url('status_pub/hapus/'.$data->id_statuspub)" confirm="Hapus data ?" style="background:none;border:0;padding:0;color:inherit;text-decoration:underline;cursor:pointer">Hapus</x-delete-button>
 							</td>
 						</tr>
 						@endforeach

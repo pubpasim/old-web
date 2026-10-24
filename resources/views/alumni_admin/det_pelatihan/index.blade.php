@@ -32,7 +32,7 @@
 									
 									<td>
 										<a href="{{url('alumni_admin/det_pelatihan/edit'.$data->id_detpelatihan)}}"><button>Edit</button></a>&nbsp;&nbsp;
-										<a href="{{url('alumni_admin/det_pelatihan/hapus'.$data->id_detpelatihan)}}" onclick="return confirm('Hapus data ?');"> <button>Hapus</button></a>
+										<x-delete-button :action="url('alumni_admin/det_pelatihan/hapus/'.$data->id_detpelatihan)" confirm="Hapus data ?">Hapus</x-delete-button>
 										<a href="{{url('alumni_admin/det_pelatihan/detail'.$data->id_detpelatihan)}}"> <button>Detail</button></a>
 									</td>
 								</tr>

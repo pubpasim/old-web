@@ -100,7 +100,7 @@
 							<td>{{ $data->kategori}}</td>							
 							<td>
 								<a href="{{url('editDok/'.$data->id_dok)}}" class="btn btn-info">Edit</a>
-								<a href="{{url('hapusDok/'.$data->id_dok)}}" class="btn btn-info" onclick="return confirm('Hapus data ?');">Hapus</a>
+								<x-delete-button :action="url('hapusDok/'.$data->id_dok)" confirm="Hapus data ?" class="btn btn-info">Hapus</x-delete-button>
 							</td>
 						</tr>
 						@endforeach

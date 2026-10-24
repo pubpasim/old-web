@@ -126,9 +126,7 @@
 								<a href="{{url('detorg_pub/edit/'.$data->id_detorg_pub)}}">
 									<button class="btn btn-primary" style="background-color: green;">Edit</button>
 								</a>
-								<a href="{{url('detorg_pub/hapus/'.$data->id_detorg_pub)}}" onclick="return confirm('Apakah anda yakin akan menghapus data ?');">
-									<button style="background-color: red;" class="btn btn-primary" >hapus</button>
-								</a>
+								<x-delete-button :action="url('detorg_pub/hapus/'.$data->id_detorg_pub)" confirm="Apakah anda yakin akan menghapus data ?" class="btn btn-primary" style="background-color: red;">hapus</x-delete-button>
 							</td>
 						</tr>
 

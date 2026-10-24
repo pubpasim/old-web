@@ -41,7 +41,7 @@
 								<td>{{ $data->kab_kot}}</td>								
 								<td>
 									<a href="{{url('editHome/'.$data->id_home)}}" class="btn btn-info">Edit</a>
-									<a href="{{url('hapusHome/'.$data->id_home)}}" class="btn btn-info" onclick="return confirm('Hapus data ?');">Hapus</a>
+									<x-delete-button :action="url('hapusHome/'.$data->id_home)" confirm="Hapus data ?" class="btn btn-info">Hapus</x-delete-button>
 								</td>
 							</tr>
 							@endforeach

@@ -48,12 +48,7 @@
 											<i class="material-icons">Edit</i><span class="icon-name"></span>
 										</button>
 									</a>
-									<a href="{{('det_struktur_ppmb/delete/'.$struktur->id_detil)}}" onclick="return confirm('Hapus data ?');">
-										<button type="button" class="btn btn-danger btn-square 
-										waves-effect waves-square waves-effect">
-										<i class="material-icons">Hapus</i><span class="icon-name"></span>
-									</button>
-								</a>
+									<x-delete-button :action="url(('det_struktur_ppmb/delete/'.$struktur->id_detil))" confirm="Hapus data ?" class="btn btn-danger btn-square waves-effect waves-square waves-effect"><i class="material-icons">Hapus</i><span class="icon-name"></span></x-delete-button>
 							</td>
 						</tr>
 						@endforeach

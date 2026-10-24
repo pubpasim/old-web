@@ -32,7 +32,7 @@
         <div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 push-lg-4 push-md-5">
             <p>{{$kegiatan->keterangan}}</p>
             <a href="{{url('edit/aktivitas/'.$kegiatan->id_mahasiswa,$kegiatan->id_alumnidok)}}"><button>Edit</button></a>
-            <a href="{{url('hapusAktivitas/'.$kegiatan->id_mahasiswa,$kegiatan->id_alumnidok)}}}"><button class="">Hapus</button></a>  
+            <x-delete-button :action="url('hapusAktivitas/'.$kegiatan->id_mahasiswa,$kegiatan->id_alumnidok)" confirm="Hapus data ?">Hapus</x-delete-button>  
         </div>
 
         <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 pull-lg-8 pull-md-7 tm-about-img-container">

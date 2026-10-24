@@ -122,12 +122,7 @@
 								
 							</a>
 						 
-							<a href="{{url('tampilan/sekolah/hps/'.$data->id_sekolah)}}" class="icon-trash" onclick="return confirm('Hapus data ?');">
-							    <button type="button" class="btn btn-danger btn-square waves-effect waves-square waves-effect">
-								<i class="material-icons">Hapus</i><span class="icon-name"></span>
-								</button>
-							
-								</a>
+							<x-delete-button :action="url('tampilan/sekolah/hps/'.$data->id_sekolah)" confirm="Hapus data ?" form-class="icon-trash" class="btn btn-danger btn-square waves-effect waves-square waves-effect"><i class="material-icons">Hapus</i><span class="icon-name"></span></x-delete-button>
 							</td>
 							</center>
 
