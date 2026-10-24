@@ -194,39 +194,31 @@ public function user_alumniView(request $request)
     }
     public function doLogin(Request $request)
     {
-        $usr = $request->username;
-        $pass = $request->password;
-        $data = DB::table('tb_user')->where('username',$usr)->first();
-        if($data){
-          
-            Session::put('level',$data->level);
-            Session::put('username',$data->username);
-            Session::put('password',$data->password);
-            $id_mhs=$data->id_mahasiswa;
-            if($pass==$data->password){
-                if ($data->level=='admin') {
-                    Session::put('level',$data->level);                    
-                    $count = DB::table('tb_pertanyaan')->count();;
-                    Session::put('jumChat',$count);                    
-                    return redirect('admin');
-                }elseif ($data->level=='alumni') {
-                    return redirect('admin/alumni/'.$id_mhs);
-                }elseif ($data->level=='admin_pub') {
-                    return redirect('admin');
-                }elseif ($data->level=='ikatan_alumni') {
-                    
-                    return redirect('admin');
-                }elseif ($data->level=='admin_ppmb') {
-                    return redirect('admin');
-                }                
-            }
-            else{
-                return redirect('login')->with('alert','Password atau Email, Salah !');
-            }
-        }
-        else{
+        $data = DB::table('tb_user')->where('username', $request->username)->first();
+
+        // tb_user.password is still plaintext. hash_equals() avoids PHP's loose comparison
+        // ("0e12" == "0e34"), and nothing may be written to the session before this check passes.
+        if (!$data || $data->password === '' || !hash_equals((string) $data->password, (string) $request->password)) {
             return redirect('login')->with('alert','Password atau Email, Salah!');
         }
+
+        $landing = [
+            'admin' => 'admin',
+            'admin_pub' => 'admin',
+            'ikatan_alumni' => 'admin',
+            'admin_ppmb' => 'admin',
+            'alumni' => 'admin/alumni/'.$data->id_mahasiswa,
+        ];
+        if (!isset($landing[$data->level])) {
+            return redirect('login')->with('alert','Password atau Email, Salah!');
+        }
+
+        $request->session()->regenerate();
+        Session::put('level',$data->level);
+        if ($data->level=='admin') {
+            Session::put('jumChat', DB::table('tb_pertanyaan')->count());
+        }
+        return redirect($landing[$data->level]);
 
     }
     public function tampilUser(){

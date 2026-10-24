@@ -409,13 +409,11 @@ Route::post('editUser', [userController::class, 'updateUser']);
 Route::get('hapusUser/{x}', [userController::class, 'hapusUser']);
 
 
-Route::get('/',function () {
-	if (Session::get('level')) {
-		Session::forget('level');
-		return redirect('/');
-	}else{
-		return redirect('/');
-	}
+// Was registered on '/', where the controller route below replaced it, so /logout was a 404.
+Route::get('logout',function () {
+	request()->session()->invalidate();
+	request()->session()->regenerateToken();
+	return redirect('/');
 });
 Route::get('/', [userController::class, 'index']);
 Route::get('user/mahasiswa', [userController::class, 'view_mhs']);

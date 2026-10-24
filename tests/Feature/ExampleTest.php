@@ -1,7 +1,8 @@
 <?php
 
 it('returns a successful response', function () {
-    $response = $this->get('/');
+    // '/' queries many tables; the login page is the public entry point that needs no data.
+    $response = $this->get('/login');
 
     $response->assertStatus(200);
 });
