@@ -215,6 +215,9 @@ public function user_alumniView(request $request)
 
         $request->session()->regenerate();
         Session::put('level',$data->level);
+        // RestrictAlumni compares these with the ids a request names
+        Session::put('id_mahasiswa',$data->id_mahasiswa);
+        Session::put('id_user',$data->id_user);
         if ($data->level=='admin') {
             Session::put('jumChat', DB::table('tb_pertanyaan')->count());
         }

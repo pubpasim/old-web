@@ -58,9 +58,14 @@ class RequireLogin
         'tampil_organisasi_pub',
     ];
 
+    public static function isPublic(Request $request): bool
+    {
+        return $request->is(self::PUBLIC_PATHS);
+    }
+
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->session()->get('level') || $request->is(self::PUBLIC_PATHS)) {
+        if ($request->session()->get('level') || self::isPublic($request)) {
             return $next($request);
         }
 
