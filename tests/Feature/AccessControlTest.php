@@ -177,3 +177,12 @@ it('renders the delete button as a CSRF-protected DELETE form that asks for conf
         ->toContain('class="btn btn-danger"')
         ->toContain('>Hapus</button>');
 });
+
+it('answers the health check without a session, a cookie or a database', function () {
+    Schema::drop('tb_user');
+    Schema::drop('tb_pertanyaan');
+
+    $response = $this->get('/up')->assertOk();
+
+    expect($response->headers->getCookies())->toBe([]);
+});

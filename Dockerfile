@@ -60,4 +60,8 @@ RUN cp "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
 ENV PORT=80
 EXPOSE 80
+# /up is Laravel's health route: it boots the app but touches neither the session nor the database,
+# so a database outage does not make Swarm restart a healthy container.
+HEALTHCHECK --interval=15s --timeout=5s --start-period=40s --retries=3 \
+    CMD curl -fsS -o /dev/null "http://127.0.0.1:${PORT:-80}/up" || exit 1
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]

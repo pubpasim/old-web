@@ -1,6 +1,12 @@
 #!/bin/sh
 set -e
 
+# Fail fast: without a key every page answers 500 while /up still says "healthy".
+if [ -z "$APP_KEY" ]; then
+    echo "APP_KEY is not set; refusing to start" >&2
+    exit 1
+fi
+
 export PORT="${PORT:-80}"
 envsubst '${PORT}' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf
 
